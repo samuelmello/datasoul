@@ -10,6 +10,7 @@ import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.io.BufferedReader;
@@ -18,7 +19,15 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
+import javax.print.attribute.AttributeSet;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
+import javax.swing.text.rtf.RTFEditorKit;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -32,6 +41,13 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
     private SongsPanel objectManager;
     private ArrayList<String> chordsName;
+    
+    private Style nameStyle;
+    private Style authorStyle;
+    private Style lyricsStyle;
+    private Style chordsStyle;
+    private Style chordShapeStyle;
+    
     /**
      * Creates new form SongViewerPanel
      */
@@ -44,6 +60,40 @@ public class SongViewerPanel extends javax.swing.JPanel {
         comboVersion.setSelectedIndex(0);
         
         chordsName = new ArrayList<String>();
+        
+        StyleContext sc = new StyleContext();
+        Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
+    //prop font
+        nameStyle = sc.addStyle("nameStyle",defaultStyle);
+        authorStyle = sc.addStyle("authorStyle",defaultStyle);
+        lyricsStyle = sc.addStyle("lyricsStyle",defaultStyle);
+        chordsStyle = sc.addStyle("chordsStyle",defaultStyle);
+        chordShapeStyle = sc.addStyle("chordShapeStyle",null);
+
+        setStyles();
+    }
+    
+    private void setStyles(){
+        StyleConstants.setForeground(nameStyle,Color.decode("0x000055"));
+        StyleConstants.setBackground(nameStyle,Color.white);
+        StyleConstants.setFontFamily(nameStyle,"Arial");
+        StyleConstants.setFontSize(nameStyle,20);                
+
+        StyleConstants.setForeground(authorStyle,Color.black);
+        StyleConstants.setBackground(authorStyle,Color.white);
+        StyleConstants.setFontFamily(authorStyle,"Arial");
+        StyleConstants.setFontSize(authorStyle,12);                
+
+        StyleConstants.setForeground(chordsStyle,Color.decode("0x8888cc"));
+        StyleConstants.setBackground(chordsStyle,Color.white);
+        StyleConstants.setFontFamily(chordsStyle,"Arial");
+        StyleConstants.setFontSize(chordsStyle,12);                
+
+        StyleConstants.setForeground(lyricsStyle,Color.black);
+        StyleConstants.setBackground(lyricsStyle,Color.white);
+        StyleConstants.setFontFamily(lyricsStyle,"Arial");
+        StyleConstants.setFontSize(lyricsStyle,12);                
+        
     }
     
     public void viewSong(Song song){
@@ -54,8 +104,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         StringReader sr = null;
         BufferedReader buff= null;
         
-        editorSong.setContentType("text/html");
+        editorSong.setContentType("text/rtf");
         
+        javax.swing.text.Document doc = editorSong.getDocument();
+
         if(comboVersion.getSelectedItem().equals("Complete")){
             strSong = song.getChordsComplete();
         }else{
@@ -64,63 +116,55 @@ public class SongViewerPanel extends javax.swing.JPanel {
         sr = new StringReader(strSong);
         buff = new BufferedReader(sr);
         
-        html.append("<HTML><BODY>");
-        
-        html.append("<TABLE>");        
-        
-        html.append(getFormattedSongName(song.getSongName()));        
-        html.append(getFormattedSongAuthor(song.getSongAuthor()));                
-        
-        html.append("</TABLE>");                
-        html.append("<TABLE>");        
-        try {
+        try {            
+            doc.remove(0,doc.getLength());
+            
+            doc.insertString(doc.getLength(),song.getSongName()+"\n",nameStyle);
+            doc.insertString(doc.getLength(),song.getSongAuthor()+"\n",authorStyle);
+
             line = buff.readLine();
             while((nextline = buff.readLine())!=null){
-                html.append(getFormattedSongLine(line,nextline));
+                addFormattedSongLine(doc,line,nextline);
                 line = nextline;
             }
-            html.append(getFormattedSongLine(line,""));
-        } catch (IOException ex) {
+            addFormattedSongLine(doc,line,"");
+
+            drawChords();            
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-                
-        html.append("</TABLE>");        
-        html.append("</BODY></HTML>");
-
-        editorSong.setText(html.toString());
-        
-        drawChords();
     }
     
-    private String getFormattedSongLine(String line, String nextline){
+    private void addFormattedSongLine(javax.swing.text.Document doc, String line, String nextline) throws BadLocationException{
         if(line==null)
-            return "";
+            return;
         
         if(isChordsLine(line)){
-            return getFormattedChordLine(line,nextline);
+            doc.insertString(doc.getLength(),getFormattedChordLine(line,nextline)+"\n",chordsStyle);
         }else{
-            return getFormattedLyricLine(line);
+            doc.insertString(doc.getLength(),getFormattedLyricLine(line)+"\n",lyricsStyle);
         }
+        return;
     }
     
     private boolean isChordsLine(String line){
-        if(line == null)
-            return false;
-        
-        int size = line.length();
-        int sizewospaces = line.replace(" ","").length();
-        if(sizewospaces>size*0.5){
-            return false;
-        }else{
-            return true;
+
+        String[] chords = line.split(" ");        
+        ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
+        for(int i=0;i<chords.length;i++){
+            if(!chords[i].equals(""))
+            {
+                Chord chord = chordsDB.getChordByName(chords[i]);
+                if(chord==null)
+                    return false;
+            }
         }
+
+        return true;
     }
 
     private String getFormattedLyricLine(String line){
-        String fLine;
-        fLine = "<font size=3 face=arial color=#000000>"+line.replace(" ","&nbsp;")+"</font>";
-        fLine = "<TR>"+fLine+"</TR>";
-        return fLine;
+        return line;
     }
 
     private String getFormattedChordLine(String line,String nextline){
@@ -146,12 +190,12 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 index = strAux.length();
                 if(index<nextline.length()){
                     widthNextLine = fontMetrics.stringWidth(nextline.substring(0,index));                
-                    widthNewLine = fontMetrics.stringWidth(newLine.replace("&nbsp;"," "));                
+                    widthNewLine = fontMetrics.stringWidth(newLine);                
                     neededWidth = (widthNextLine - widthNewLine);
                     spacesNedded = Math.round(neededWidth/spaceSize);
                     spaces = "";
                     for(int j=0;j<spacesNedded;j++)
-                        spaces = spaces + "&nbsp;";
+                        spaces = spaces + " ";
                     newLine = newLine + spaces + chords[i];
                 }else{
                     newLine = newLine + spaces + chords[i];                    
@@ -159,59 +203,38 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 strAux += chords[i] + " ";                    
             }else{
                 strAux += " ";
-                spaces = spaces + "&nbsp;";
+                spaces = spaces + " ";
             }
         }
         
-        newLine = "<font size=3 face=arial color=#8888cc>"+newLine+"</font>";
-        newLine = "<TR>"+newLine+"</TR>";
-
         return newLine;        
     }
     
-    private void drawChords() {
-        editorSongChords.setContentType("text/html");
+    private void drawChords() throws BadLocationException {
+
+        editorSongChords.setContentType("text/rtf");
         
-        StringBuffer html = new StringBuffer();
-        html.append("<HTML><BODY>");
+        javax.swing.text.Document doc = editorSongChords.getDocument();
+        
+        doc.remove(0,doc.getLength());
         
         ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
         for(int i=0; i<chordsName.size();i++){
             Chord chord = chordsDB.getChordByName(chordsName.get(i));
             if(chord!=null){
-                ChordShapePanel csp = new ChordShapePanel(chord.getShape());
-                File file = new File("D:/Meus Documentos/Datasoul/chord_"+i+".jpg");
-                try {
-                    csp.createImage(file);
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-                html.append("<img src=\""+file.getPath()+"\" with=80 height=130>");      
+                ChordShapePanel csp = new ChordShapePanel(chord.getName(),chord.getShape());
+                
+                StyleConstants.setIcon(chordShapeStyle, new ImageIcon(csp.createImage()));
+                doc.insertString(doc.getLength(),"text to be ignored", chordShapeStyle);
+
             }else{
-                html.append("<p>"+chordsName.get(i)+"</p>");                      
+                doc.insertString(doc.getLength(),"\nChord not cataloged "+chordsName.get(i)+"\n", lyricsStyle);                
             }
                 
         }
 
-        html.append("</BODY></HTML>");      
-        editorSongChords.setText(html.toString());        
     }
 
-    private String getFormattedSongName(String line){
-        String fLine;
-        fLine = "<font size=4 face=arial color=#000055>"+line.replace(" ","&nbsp;")+"</font>";
-        fLine = "<B>"+fLine+"</B>";
-        fLine = "<TR>"+fLine+"</TR>";
-        return fLine;
-    }
-
-    private String getFormattedSongAuthor(String line){
-        String fLine;
-        fLine = "<font size=2 face=arial color=#000000>"+line.replace(" ","&nbsp;")+"</font>";
-        fLine = "<B>"+fLine+"</B>";        
-        fLine = "<TR>"+fLine+"</TR>";
-        return fLine;
-    }
 
     public SongsPanel getObjectManager() {
         return objectManager;

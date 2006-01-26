@@ -12,7 +12,12 @@ import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -27,6 +32,8 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
 
     private SongsPanel objectManager;
     private ChordsDB chordsDB;
+    private Style chordShapeStyle;
+    
     /**
      * Creates new form ChordsManagerPanel
      */
@@ -39,6 +46,10 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         tableChordsList.setModel(getChordsDB());
 
         panelChordShapes.setLayout(new GridLayout());
+        
+        StyleContext sc = new StyleContext();
+        Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
+        chordShapeStyle = sc.addStyle("chordShapeStyle",null);
     }
 
     public void loadChords(){
@@ -80,22 +91,29 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     }
 
     private void showChord(){
-        Chord chord = (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0);
-      
-        panelChordShapes.removeAll();
-        
-        ArrayList<String> shapes = chord.getShapes();
-        for(int i=0;i<shapes.size();i++){
-            ChordShapePanel csp = new ChordShapePanel(shapes.get(i));
-            csp.setSize(80,130);
-            csp.setEditable(false);
-            panelChordShapes.add(csp);
-        }
 
+        panelChordShapes.setContentType("text/rtf");
+
+        javax.swing.text.Document doc = panelChordShapes.getDocument();
+
+        try {
         
-        panelChordShapes.setBackground(Color.WHITE);
-        panelChordShapes.revalidate();
-        panelChordShapes.repaint();
+            doc.remove(0,doc.getLength());
+
+            Chord chord = (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0);
+
+            panelChordShapes.removeAll();
+
+            ArrayList<String> shapes = chord.getShapes();
+            for(int i=0;i<shapes.size();i++){
+                ChordShapePanel csp = new ChordShapePanel(chord.getName(), shapes.get(i));
+
+                StyleConstants.setIcon(chordShapeStyle, new ImageIcon(csp.createImage()));
+                    doc.insertString(doc.getLength(),"text to be ignored", chordShapeStyle);
+            }
+        } catch (BadLocationException ex) {
+            ex.printStackTrace();
+        }
     }
     
     /** This method is called from within the constructor to
@@ -111,7 +129,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         scrollChorsList = new javax.swing.JScrollPane();
         tableChordsList = new datasoul.util.DnDTable();
         scroolChordShapesPanel = new javax.swing.JScrollPane();
-        panelChordShapes = new javax.swing.JPanel();
+        panelChordShapes = new javax.swing.JEditorPane();
         btnEdit = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
 
@@ -164,18 +182,6 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
 
         split1.setLeftComponent(scrollChorsList);
 
-        panelChordShapes.setBackground(new java.awt.Color(255, 255, 255));
-        panelChordShapes.setForeground(new java.awt.Color(255, 255, 255));
-        org.jdesktop.layout.GroupLayout panelChordShapesLayout = new org.jdesktop.layout.GroupLayout(panelChordShapes);
-        panelChordShapes.setLayout(panelChordShapesLayout);
-        panelChordShapesLayout.setHorizontalGroup(
-            panelChordShapesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 326, Short.MAX_VALUE)
-        );
-        panelChordShapesLayout.setVerticalGroup(
-            panelChordShapesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 289, Short.MAX_VALUE)
-        );
         scroolChordShapesPanel.setViewportView(panelChordShapes);
 
         split1.setRightComponent(scroolChordShapesPanel);
@@ -277,20 +283,6 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         cef.setLocation(evt.getX(),evt.getY());        
     }//GEN-LAST:event_btnNewMouseClicked
 
-    @Override
-    public void paint(java.awt.Graphics g) {
-
-        super.paint(g);
-
-        int numColumns = (int)Math.floor(scroolChordShapesPanel.getWidth()/100);
-
-        int numRows = (int)Math.ceil(panelChordShapes.getComponentCount()/(numColumns));
-        
-        ((GridLayout)panelChordShapes.getLayout()).setColumns(numColumns);
-        ((GridLayout)panelChordShapes.getLayout()).setRows(numRows);
-
-    }
-
     public ChordsDB getChordsDB() {
         return chordsDB;
     }
@@ -303,7 +295,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
-    private javax.swing.JPanel panelChordShapes;
+    private javax.swing.JEditorPane panelChordShapes;
     private javax.swing.JScrollPane scrollChorsList;
     private javax.swing.JScrollPane scroolChordShapesPanel;
     private javax.swing.JSplitPane split1;
