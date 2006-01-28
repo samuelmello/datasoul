@@ -46,48 +46,55 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
 
         SongListTable songTable = new SongListTable();
         
-        File file = new File("D:/Meus Documentos/Datasoul/songs");
-        String[] files = file.list();
-        int size = files.length;
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "songs";
         
-        for(int i=0; i<size;i++){
-            if(files[i].contains(".song")){
-                File songFile = new File("D:/Meus Documentos/Datasoul/songs/"+files[i]);
-
-                Document dom=null;
-                Node node = null;
-                Song song;
-                try {
+        File file = new File(path);
+        String[] files = file.list();
+        
+        // there is at least one file in the directroy?
+        if (files!=null){
+            int size = files.length;
+            
+            for(int i=0; i<size;i++){
+                if(files[i].contains(".song")){
+                    File songFile = new File(path + System.getProperty("file.separator") + files[i]);
+                    
+                    Document dom=null;
+                    Node node = null;
+                    Song song;
+                    try {
                         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
+                        
                         //Using factory get an instance of document builder
                         DocumentBuilder db = dbf.newDocumentBuilder();
-
+                        
                         //parse using builder to get DOM representation of the XML file
                         dom = db.parse(songFile);
-
+                        
                         //node = dom.getDocumentElement().getChildNodes().item(0);
                         node = dom.getElementsByTagName("Song").item(0);
-
-                }catch(Exception e) {
-                    JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
-                }        
-
-                song = new Song();
-                try {
-                    song.readObject(node);
-                    song.setFileName(songFile.getName());
-                    song.setFilePath(songFile.getPath());
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+                        
+                    }catch(Exception e) {
+                        JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
+                    }
+                    
+                    song = new Song();
+                    try {
+                        song.readObject(node);
+                        song.setFileName(songFile.getName());
+                        song.setFilePath(songFile.getPath());
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
+                    }
+                    
+                    
+                    songTable.addItem(song);
                 }
-
-                
-                songTable.addItem(song);
             }
-        }
+            
+        }//if there is any file
         songTable.setView("FileName");
-        songTable.addTableModelListener(this);        
+        songTable.addTableModelListener(this);
         
         tableSongList.setModel(songTable);
     }

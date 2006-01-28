@@ -54,7 +54,9 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
 
     public void loadChords(){
 
-        File chordsFile = new File("D:/Meus Documentos/Datasoul/chordsDB.xml");
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "chordsDB.xml";
+        
+        File chordsFile = new File(path);
 
         Document dom=null;
         Node node = null;
@@ -71,7 +73,8 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
                 node = dom.getElementsByTagName("ChordsDB").item(0);
 
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\n"+e.getMessage(),"DataSoul Error",0);    
+            return;
         }        
 
         try {

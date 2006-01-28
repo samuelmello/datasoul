@@ -37,7 +37,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         
        ServiceListTable serviceListTable = new ServiceListTable();
         
-       //só para teste
+       //so para teste
        Song song = new Song();
        song.setSongName("Opa");
        serviceListTable.addItem(song);
