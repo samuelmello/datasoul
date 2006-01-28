@@ -159,6 +159,7 @@ public class SongEditorFrame extends javax.swing.JFrame {
         tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Simplified"), scroolChordsSimplified);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
+        btnSave.setText("Save");
         btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSaveMouseClicked(evt);
@@ -168,6 +169,7 @@ public class SongEditorFrame extends javax.swing.JFrame {
         toolBar.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/saveAs.gif")));
+        btnSaveAs.setText("SaveAs");
         btnSaveAs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnSaveAsMouseClicked(evt);
@@ -194,7 +196,7 @@ public class SongEditorFrame extends javax.swing.JFrame {
                                 .add(labelAuthor)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))))
-                    .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 140, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

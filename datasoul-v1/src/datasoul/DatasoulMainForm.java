@@ -70,7 +70,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DataSoul");
+        btnDatashow.setFont(new java.awt.Font("Arial", 1, 11));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
+        btnDatashow.setText("Datashow");
         btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDatashowMouseClicked(evt);
@@ -79,7 +81,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnDatashow);
 
+        btnSongs.setFont(new java.awt.Font("Arial", 1, 11));
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songs.gif")));
+        btnSongs.setText("Songs");
         btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSongsMouseClicked(evt);
@@ -97,15 +101,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(713, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 256, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(571, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(toolBarMain)
-                .addContainerGap(362, Short.MAX_VALUE))
+                .addContainerGap(323, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents

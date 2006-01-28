@@ -104,6 +104,8 @@ public class SongViewerPanel extends javax.swing.JPanel {
         StringReader sr = null;
         BufferedReader buff= null;
         
+        chordsName.clear();
+        
         editorSong.setContentType("text/rtf");
         
         javax.swing.text.Document doc = editorSong.getDocument();

@@ -32,9 +32,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <Component id="toolBarMain" min="-2" pref="114" max="-2" attributes="0"/>
-              <EmptySpace pref="713" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="toolBarMain" min="-2" pref="256" max="-2" attributes="0"/>
+              <EmptySpace pref="571" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="toolBarMain" min="-2" max="-2" attributes="1"/>
-              <EmptySpace pref="362" max="32767" attributes="0"/>
+              <EmptySpace pref="323" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,9 +54,13 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnDatashow">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="11" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/datashow.gif"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Datashow"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDatashowMouseClicked"/>
@@ -64,9 +68,13 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSongs">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Arial" size="11" style="1"/>
+            </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/songs.gif"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Songs"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSongsMouseClicked"/>
