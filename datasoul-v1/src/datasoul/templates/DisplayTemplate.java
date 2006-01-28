@@ -32,8 +32,11 @@ public class DisplayTemplate extends AttributedObject {
         super();
         items = new ArrayList<TemplateItem>();
         
+    }
+    
+    @Override
+    protected void registerProperties(){
         properties.add("Name");
-        
     }
     
     public String getName(){
@@ -72,5 +75,6 @@ public class DisplayTemplate extends AttributedObject {
         }
 
     }
+
 
 }

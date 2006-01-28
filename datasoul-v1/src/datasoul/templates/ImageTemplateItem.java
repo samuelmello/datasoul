@@ -30,9 +30,14 @@ public class ImageTemplateItem extends TemplateItem {
     public ImageTemplateItem(String filename) {
         super();
         properties.add("Filename");
-        this.setFilename(filename);
     }
 
+    @Override
+    protected void registerProperties(){
+        super.registerProperties();
+        this.setFilename(filename);
+    }
+    
     
     public void draw(Graphics2D g) {
         
@@ -61,5 +66,6 @@ public class ImageTemplateItem extends TemplateItem {
         }
         firePropChanged("Filename");
     }
+
     
 }

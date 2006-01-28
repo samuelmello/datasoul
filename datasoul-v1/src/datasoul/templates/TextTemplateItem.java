@@ -54,9 +54,12 @@ public class TextTemplateItem extends TemplateItem {
         
     private AttributedString atribStr;
     
+    
     private DefaultCellEditor alignmentEditor;
     
-    public TextTemplateItem (String text, int height, int width) {
+    @Override
+    protected void registerProperties(){
+        super.registerProperties();
         properties.add("Text");
         properties.add("FontName");
         properties.add("FontSize");
@@ -67,6 +70,14 @@ public class TextTemplateItem extends TemplateItem {
         properties.add("VerticalAlignment");
         properties.add("TextWidth");
         properties.add("Underline");
+
+    }
+
+
+    public TextTemplateItem (String text, int height, int width) {
+        
+        super();
+        
         this.setWidth(width);
         this.setHeight(height);
         this.setText(text);
@@ -75,7 +86,8 @@ public class TextTemplateItem extends TemplateItem {
         this.setVerticalAlignment("Top");
         this.setTextWidth("Regular");
         this.setUnderline("Off");
-        
+        this.setFontName("Serif");
+
         JComboBox cb = new JComboBox();
         cb.addItem("Left");
         cb.addItem("Center");
@@ -111,15 +123,21 @@ public class TextTemplateItem extends TemplateItem {
         registerEditorComboBox("FontName", cb);
         
         registerColorChooser("FontColor");
-
-    
+        
+        
     }
 
     public void draw(Graphics2D g) {
         
          AttributedCharacterIterator aci = this.atribStr.getIterator();
          FontRenderContext frc = g.getFontRenderContext();
-         LineBreakMeasurer lbm = new LineBreakMeasurer(aci, frc);
+         LineBreakMeasurer lbm;
+         try{
+            lbm = new LineBreakMeasurer(aci, frc);
+         }catch(Exception e){
+             e.printStackTrace();
+             return;
+         }
 
          // Compute text font size
          float drawPosY;
@@ -213,8 +231,6 @@ getFullWord: {
     public void setText(String text) {
         this.text = text;
         atribStr = new AttributedString(text);
-        atribStr.addAttribute( TextAttribute.FAMILY, this.getFontName() );
-        atribStr.addAttribute(TextAttribute.SIZE, this.getFontSize());
         firePropChanged("Text");
     }
 
@@ -224,7 +240,7 @@ getFullWord: {
 
     public void setFontName(String fontName) {
         this.fontName = fontName;
-        atribStr.addAttribute( TextAttribute.FAMILY, this.getFontName() );
+        //atribStr.addAttribute( TextAttribute.FAMILY, fontName );
         firePropChanged("FontName");
     }
 

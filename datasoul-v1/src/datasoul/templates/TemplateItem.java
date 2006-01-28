@@ -35,24 +35,28 @@ public abstract class TemplateItem extends AttributedObject {
     private Rectangle rect;
     private String name;
     
+    @Override
+    protected void registerProperties(){
+        properties.add("Name");
+        properties.add("Top");
+        properties.add("Left");
+        properties.add("Width");
+        properties.add("Height");
+        properties.add("Alpha");
+    }
+
+    
     protected TemplateItem(){
         
         super();
         
         this.rect = new Rectangle();
                 
-        properties.add("Name");
         this.setName("");
-
-        properties.add("Top");
         this.setTop(0);
-        properties.add("Left");
         this.setLeft(0);
-        properties.add("Width");
         this.setWidth(0);
-        properties.add("Height");
         this.setHeight(0);
-        properties.add("Alpha");
         this.setAlpha(1f);
         
     }

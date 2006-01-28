@@ -34,7 +34,7 @@ import javax.swing.table.TableModel;
  *
  * @author samuelm
  */
-public class AttributedObject extends SerializableObject implements TableModel {
+public abstract class AttributedObject extends SerializableObject implements TableModel {
     
     protected HashMap<String, Component> propEditors;
     protected MyTableCellEditor tableCellEditor;
@@ -43,9 +43,12 @@ public class AttributedObject extends SerializableObject implements TableModel {
     
     /** Creates a new instance of AttributedObject */
     public AttributedObject() {
-        propEditors = new HashMap<String, Component>();
-        listeners = new ArrayList<javax.swing.event.TableModelListener>();
         
+        propEditors = new HashMap<String, Component>();
+
+        propEditors = new HashMap<String, Component>();
+        
+        listeners = new ArrayList<javax.swing.event.TableModelListener>();
         tableCellEditor = new MyTableCellEditor(new JTextField());
         
     }

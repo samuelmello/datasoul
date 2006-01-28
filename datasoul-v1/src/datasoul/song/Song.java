@@ -43,10 +43,11 @@ public class Song extends SerializableObject{
     
     /** Creates a new instance of Song */
     public Song() {
-        addSerializableObjects();
+        super();
     }
 
-    private void addSerializableObjects(){
+    @Override
+    protected void registerProperties() {
         properties.add("SongName");
         properties.add("SongAuthor");
         properties.add("Lyrics");
@@ -54,6 +55,7 @@ public class Song extends SerializableObject{
         properties.add("ChordsSimplified");
         properties.add("Obs");
     }
+
     
     public void setSongName(String songName){
         this.songName = songName;

@@ -13,14 +13,11 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
-import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 
@@ -28,14 +25,25 @@ import org.w3c.dom.Node;
  *
  * @author Administrador
  */
-public class SerializableObject  implements Transferable, SerializableItf{
+public abstract class SerializableObject  implements Transferable, SerializableItf{
 
     protected ArrayList<String> properties;
     static public DataFlavor serializableObjectFlavor = new DataFlavor(datasoul.util.SerializableObject.class,"serializableObjectFlavor");;
     
+    static private HashMap<Class, ArrayList<String>> propertiesTable = new HashMap<Class, ArrayList<String>>();
+    
+    protected abstract void registerProperties();
+    
     /** Creates a new instance of SerializableObject */
     public SerializableObject() {
-        properties = new ArrayList<String>();
+        
+        if ( propertiesTable.containsKey(this.getClass()) ){
+            properties = propertiesTable.get(this.getClass());
+        }else{
+            properties = new ArrayList<String>();
+            this.registerProperties();
+            propertiesTable.put(this.getClass(), properties);
+        }
         
     }
 

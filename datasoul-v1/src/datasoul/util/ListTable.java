@@ -30,7 +30,6 @@ public class ListTable extends SerializableObject implements TableModel {
         objectList = new ArrayList<Object>();
         listeners = new ArrayList<javax.swing.event.TableModelListener>();
         
-        properties.add("List");
     }
     
     //to do, implement the serialize
@@ -115,6 +114,11 @@ public class ListTable extends SerializableObject implements TableModel {
         for(int i=0;i<this.listeners.size();i++){
             this.listeners.get(i).tableChanged(tme);            
         }
+    }
+
+    @Override
+    protected void registerProperties() {
+        properties.add("List");
     }
     
 }
