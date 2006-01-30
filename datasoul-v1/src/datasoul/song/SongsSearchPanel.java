@@ -86,7 +86,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     song = new Song();
                     try {
                         song.readObject(node);
-                        song.setFileName(songFile.getName());
                         song.setFilePath(songFile.getPath());
                     } catch (Exception e) {
                         JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);

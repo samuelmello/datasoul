@@ -220,7 +220,7 @@ public class ChordEditorFrame extends javax.swing.JFrame {
         if(!this.chordShapePanel6.isEmpty())
                 chord.addShape(this.chordShapePanel6.getShape());
 
-        chord.setName(this.fieldName.getText());
+        chord.setName(this.fieldName.getText().replace(" ",""));
         this.dispose();
     }//GEN-LAST:event_btnApplyMouseClicked
     

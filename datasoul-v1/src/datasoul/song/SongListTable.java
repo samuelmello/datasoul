@@ -34,5 +34,8 @@ public class SongListTable extends ListTable{
         }
     }
 
+    public String getColumnName(int columnIndex) {
+        return "Song Name";
+    }
     
 }

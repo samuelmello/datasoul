@@ -64,6 +64,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="fieldName">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldNameKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelName">
       <Properties>
@@ -188,15 +191,15 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSaveMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnSaveAs">
+        <Component class="javax.swing.JButton" name="btnClose">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/saveAs.gif"/>
+              <Image iconType="3" name="/datasoul/icons/delete.gif"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="SaveAs"/>
+            <Property name="text" type="java.lang.String" value="Close"/>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSaveAsMouseClicked"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCloseMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

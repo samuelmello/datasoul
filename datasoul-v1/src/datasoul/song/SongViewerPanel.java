@@ -6,6 +6,9 @@
 
 package datasoul.song;
 
+import com.sun.image.codec.jpeg.ImageFormatException;
+import com.sun.image.codec.jpeg.JPEGCodec;
+import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
@@ -13,14 +16,23 @@ import datasoul.song.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
+import java.awt.image.BufferedImage;
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.StringReader;
+import java.io.Writer;
 import java.util.ArrayList;
 import javax.print.attribute.AttributeSet;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -48,12 +60,16 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private Style chordsStyle;
     private Style chordShapeStyle;
     
+    private SongTemplate songTemplate;
+    
     /**
      * Creates new form SongViewerPanel
      */
     public SongViewerPanel() {
         initComponents();
 
+        songTemplate = new SongTemplate();
+        
         comboVersion.removeAllItems();
         comboVersion.addItem("Complete");
         comboVersion.addItem("Simplified");
@@ -122,7 +138,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
             doc.remove(0,doc.getLength());
             
             doc.insertString(doc.getLength(),song.getSongName()+"\n",nameStyle);
-            doc.insertString(doc.getLength(),song.getSongAuthor()+"\n",authorStyle);
+            doc.insertString(doc.getLength(),song.getSongAuthor()+"\n\n\n",authorStyle);
 
             line = buff.readLine();
             while((nextline = buff.readLine())!=null){
@@ -234,7 +250,6 @@ public class SongViewerPanel extends javax.swing.JPanel {
             }
                 
         }
-
     }
 
 
@@ -253,8 +268,6 @@ public class SongViewerPanel extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        labelTemplate = new javax.swing.JLabel();
-        comboTemplate = new javax.swing.JComboBox();
         split1 = new javax.swing.JSplitPane();
         panelSong = new javax.swing.JPanel();
         scroolSong = new javax.swing.JScrollPane();
@@ -267,11 +280,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         toolBar = new javax.swing.JToolBar();
         btnPrint = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
-
-        labelTemplate.setFont(new java.awt.Font("Arial", 1, 11));
-        labelTemplate.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE"));
-
-        comboTemplate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btnFormat = new javax.swing.JButton();
 
         split1.setDividerLocation(375);
         scroolSong.setViewportView(editorSong);
@@ -308,12 +317,31 @@ public class SongViewerPanel extends javax.swing.JPanel {
         comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print.gif")));
+        btnPrint.setText("print");
         btnPrint.setAlignmentY(0.0F);
         toolBar.add(btnPrint);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/generatePraiseDoc.gif")));
+        btnExport.setText("Export");
         btnExport.setAlignmentY(0.0F);
+        btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExportMouseClicked(evt);
+            }
+        });
+
         toolBar.add(btnExport);
+
+        btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/format.gif")));
+        btnFormat.setText("Format");
+        btnFormat.setAlignmentY(0.0F);
+        btnFormat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFormatMouseClicked(evt);
+            }
+        });
+
+        toolBar.add(btnFormat);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -324,15 +352,11 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 67, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
+                        .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 222, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 159, Short.MAX_VALUE)
                         .add(labelVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(comboVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 160, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(17, 17, 17)
-                        .add(labelTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(comboTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 185, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(15, 15, 15)
+                        .add(comboVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 160, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -341,25 +365,118 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(labelVersion)
                         .add(comboVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(labelTemplate)
-                        .add(comboTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(labelVersion))
                     .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFormatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFormatMouseClicked
+
+        SongFormatFrame sff = new SongFormatFrame(songTemplate);
+        sff.setVisible(true);
+    }//GEN-LAST:event_btnFormatMouseClicked
+
+        public ByteArrayOutputStream exportRTFSong(ByteArrayOutputStream os) throws Exception{
+            ByteArrayOutputStream os2 = exportRTFLyrics(os);
+            ByteArrayOutputStream os3 = exportRTFChords(os2);
+            return os3;
+        }
+        public ByteArrayOutputStream exportRTFLyrics(ByteArrayOutputStream os) throws Exception{
+              //writes the lyrics and its chords
+              ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+              if(os.toByteArray().length>0){
+                osOut.write(os.toByteArray(),0,os.toByteArray().length-2);
+              }
+
+              javax.swing.text.Document doc = this.editorSong.getDocument();
+              int length = doc.getLength();
+              doc.getDefaultRootElement().getElement(0);
+
+              this.editorSong.getEditorKit().write(osOut, doc, 0, length);
+
+              if(os.toByteArray().length>0){
+                  osOut.write("\n}".getBytes());
+              }
+              
+              osOut.close();
+              
+              return osOut;
+        }
+
+        public ByteArrayOutputStream exportRTFChords(ByteArrayOutputStream os) throws IOException{
+
+              ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+              osOut.write(os.toByteArray(),0,os.toByteArray().length-2);
+              
+              javax.swing.text.Document docChords = this.editorSongChords.getDocument();
+              int chordsLength = docChords.getLength();
+ 
+                ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
+                for(int i=0; i<chordsName.size();i++){
+                    Chord chord = chordsDB.getChordByName(chordsName.get(i));
+                    if(chord!=null){
+                        ChordShapePanel csp = new ChordShapePanel(chord.getName(),chord.getShape());
+
+                        ByteArrayOutputStream baos=new ByteArrayOutputStream();
+                        BufferedImage bi= csp.createImage();
+
+                        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(baos);
+                        encoder.encode(bi);
+
+                        byte[] ba=baos.toByteArray();
+
+                        int len=ba.length,j;
+                        StringBuffer sb=new StringBuffer(len*2);
+                        for (j=0;j<len;j++) {
+                            String sByte=Integer.toHexString((int)(ba[j] & 0xFF));
+                            if (sByte.length()!=2)
+                                sb.append('0'+sByte);
+                            else
+                                sb.append(sByte);
+                        }
+                        String s="{\\pict\\jpegblip " + sb.toString()+"}";
+
+                        osOut.write(s.getBytes());
+                    }else{
+                    }
+
+                }
+                osOut.write("\n}".getBytes());
+                osOut.close();
+                
+                return osOut;
+        }
+    
+    private void btnExportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseClicked
+        JFileChooser fc = new JFileChooser();
+        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
+            try {
+
+                ByteArrayOutputStream osOut = exportRTFSong(new ByteArrayOutputStream());    
+                String filePath = fc.getSelectedFile().getPath();
+                if(!filePath.contains(".rtf"))
+                    filePath = filePath + ".rtf";
+                FileOutputStream fos = new FileOutputStream(filePath);
+                fos.write(osOut.toByteArray());
+                fos.close();
+
+            } catch (Exception ex) {
+            }
+        }
+
+    }//GEN-LAST:event_btnExportMouseClicked
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnFormat;
     private javax.swing.JButton btnPrint;
-    private javax.swing.JComboBox comboTemplate;
     private javax.swing.JComboBox comboVersion;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
-    private javax.swing.JLabel labelTemplate;
     private javax.swing.JLabel labelVersion;
     private javax.swing.JPanel panelSong;
     private javax.swing.JPanel panelSongChords;

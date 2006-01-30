@@ -16,15 +16,11 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="split1" alignment="0" pref="600" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="toolBar" min="-2" pref="67" max="-2" attributes="0"/>
-                      <EmptySpace pref="67" max="32767" attributes="0"/>
+                      <Component id="toolBar" min="-2" pref="222" max="-2" attributes="0"/>
+                      <EmptySpace pref="159" max="32767" attributes="0"/>
                       <Component id="labelVersion" min="-2" pref="44" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Component id="comboVersion" min="-2" pref="160" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="labelTemplate" min="-2" pref="52" max="-2" attributes="1"/>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="comboTemplate" min="-2" pref="185" max="-2" attributes="2"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -37,10 +33,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="labelVersion" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="comboVersion" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="labelTemplate" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="comboTemplate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="labelVersion" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="toolBar" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -51,28 +45,6 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="labelTemplate">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="11" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="datasoul/internationalize.properties" key="TEMPLATE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="comboTemplate">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-    </Component>
     <Container class="javax.swing.JSplitPane" name="split1">
       <Properties>
         <Property name="dividerLocation" type="int" value="375"/>
@@ -179,6 +151,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/print.gif"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="print"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
         </Component>
@@ -187,8 +160,24 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/generatePraiseDoc.gif"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Export"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExportMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnFormat">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/format.gif"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Format"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnFormatMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

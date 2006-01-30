@@ -16,6 +16,7 @@ import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.text.Keymap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -43,6 +44,9 @@ public class SongEditorFrame extends javax.swing.JFrame {
         initComponents();
         Document dom=null;
         Node node=null;
+
+        
+        
         
         try {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -132,9 +136,14 @@ public class SongEditorFrame extends javax.swing.JFrame {
         textChordsSimplified = new javax.swing.JTextPane();
         toolBar = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
-        btnSaveAs = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        fieldName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldNameKeyTyped(evt);
+            }
+        });
 
         labelName.setFont(new java.awt.Font("Arial", 1, 11));
         labelName.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NAME"));
@@ -168,15 +177,15 @@ public class SongEditorFrame extends javax.swing.JFrame {
 
         toolBar.add(btnSave);
 
-        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/saveAs.gif")));
-        btnSaveAs.setText("SaveAs");
-        btnSaveAs.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
+        btnClose.setText("Close");
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnSaveAsMouseClicked(evt);
+                btnCloseMouseClicked(evt);
             }
         });
 
-        toolBar.add(btnSaveAs);
+        toolBar.add(btnClose);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,24 +227,39 @@ public class SongEditorFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSaveAsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAsMouseClicked
-        JFileChooser fc = new JFileChooser();
-        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            song.setFilePath(fc.getSelectedFile().getPath());
-            this.setTitle(song.getFileName());
+    private void fieldNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNameKeyTyped
+        if(evt.getKeyCode()==16)
+            return;
+        String allowed="ZXCVBNMASDFGHJKL«QWERTYUIOPzxcvbnmasdfghjklÁqwertyuiop1234567890'„ı·ÈÛ˙‚ÍÙ‡?";
+        if(!allowed.contains(String.valueOf(evt.getKeyChar())))
+            evt.consume();
+    }//GEN-LAST:event_fieldNameKeyTyped
 
-            saveFile();
-        }
-    }//GEN-LAST:event_btnSaveAsMouseClicked
+    private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnCloseMouseClicked
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         
-        if(song.getFilePath().equals("")){
-            btnSaveAsMouseClicked(evt);
+        if(this.fieldName.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please fill the field \"Song Name\"");
             return;
         }
         
-        saveFile();
+        if(this.fieldName.getText().equals(song.getFilePath())){
+            saveFile();
+        }else{
+            File file = new File(song.getFilePath());
+            file.delete();
+            String filename = this.fieldName.getText();
+            if(!filename.contains(".song"))
+                filename = filename + ".song";
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
+                    "songs"+ System.getProperty("file.separator")+filename;
+            song.setFilePath(path);
+            
+            saveFile();            
+        }
     }//GEN-LAST:event_btnSaveMouseClicked
 
   private void saveFile(){
@@ -272,8 +296,8 @@ public class SongEditorFrame extends javax.swing.JFrame {
   */  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSaveAs;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
     private javax.swing.JLabel labelAuthor;

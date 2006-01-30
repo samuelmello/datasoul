@@ -37,7 +37,6 @@ public class Song extends SerializableObject{
     private String chordsSimplified="";
     private String obs="";
 
-    private String fileName="";    
     private String filePath="";        
     private String view="SongName";
     
@@ -100,12 +99,9 @@ public class Song extends SerializableObject{
         return this.obs;
     }
 
-    public void setFileName(String file){
-        this.fileName = file;
-    }
-
     public String getFileName(){
-        return this.fileName;
+        
+        return this.getSongName();
     }
     public void setFilePath(String file){
         this.filePath = file;
