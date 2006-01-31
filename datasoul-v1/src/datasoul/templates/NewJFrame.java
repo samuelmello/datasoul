@@ -20,6 +20,7 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         initComponents();
         templateEditorPanel1.setPropertiesTable(jTableProperties);
+        jTableItems.setModel( templateEditorPanel1.getTemplate().getModel() );
     }
     
     /** This method is called from within the constructor to
@@ -33,11 +34,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         templateEditorPanel1 = new datasoul.templates.TemplateEditorPanel();
-        jPanel2 = new javax.swing.JPanel();
+        jSplitPane2 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableProperties = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        jTableItems = new javax.swing.JTable();
         jButtonDelete = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -84,6 +85,8 @@ public class NewJFrame extends javax.swing.JFrame {
         );
         jSplitPane1.setLeftComponent(jPanel1);
 
+        jSplitPane2.setDividerLocation(320);
+        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jScrollPane1.setName("jTableProperties");
         jTableProperties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -99,27 +102,24 @@ public class NewJFrame extends javax.swing.JFrame {
         jTableProperties.setName("jTableProperties");
         jScrollPane1.setViewportView(jTableProperties);
 
-        jScrollPane2.setViewportView(jList1);
+        jSplitPane2.setTopComponent(jScrollPane1);
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel2Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 294, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(73, 73, 73))
-        );
-        jSplitPane1.setRightComponent(jPanel2);
+        jTableItems.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableItems);
+
+        jSplitPane2.setRightComponent(jScrollPane2);
+
+        jSplitPane1.setRightComponent(jSplitPane2);
 
         jButtonDelete.setText("Delete");
         jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -292,12 +292,12 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonDelete;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JList jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JTable jTableItems;
     private javax.swing.JTable jTableProperties;
     private javax.swing.JTextField jTextField1;
     private datasoul.templates.TemplateEditorPanel templateEditorPanel1;

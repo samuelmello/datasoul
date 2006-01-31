@@ -54,7 +54,6 @@ public class TextTemplateItem extends TemplateItem {
         
     private AttributedString atribStr;
     
-    
     private DefaultCellEditor alignmentEditor;
     
     @Override
@@ -87,6 +86,8 @@ public class TextTemplateItem extends TemplateItem {
         this.setTextWidth("Regular");
         this.setUnderline("Off");
         this.setFontName("Serif");
+        this.setFontColor(Color.BLACK);
+        this.setOutlineColor(Color.BLACK);
 
         JComboBox cb = new JComboBox();
         cb.addItem("Left");
@@ -123,6 +124,7 @@ public class TextTemplateItem extends TemplateItem {
         registerEditorComboBox("FontName", cb);
         
         registerColorChooser("FontColor");
+        registerColorChooser("OutlineColor");
         
         
     }
@@ -202,14 +204,16 @@ getFullWord: {
                  
                  // draw the text
                  g.setStroke( oldStroke );
-                 g.setColor(getFontColor());
+                 
+                 g.setColor(fontColor);
+                 
                  layout.draw(g, drawPosX, drawPosY + this.getTop());
                  
                  // draw the outline
                  if (this.getFontOutline() > 0.01f){
                      g.setStroke ( new BasicStroke(this.getFontOutline()) );
                      Shape shp = layout.getOutline( AffineTransform.getTranslateInstance(drawPosX, drawPosY + this.getTop()) ); 
-                     g.setColor(getOutlineColor());
+                     g.setColor(outlineColor);
                      g.draw(shp);
                  }
 
@@ -273,10 +277,14 @@ getFullWord: {
     }
 
 
-    public Color getFontColor() {
-        return fontColor;
+    public String getFontColor() {
+        Color color = fontColor;
+        String hexcolor = (color.getRed()>0x09) ? Integer.toHexString(color.getRed()) : Integer.toHexString(color.getRed())+"0";
+        hexcolor = hexcolor + ((color.getGreen()>0x09) ? Integer.toHexString(color.getGreen()) : Integer.toHexString(color.getGreen())+"0");
+        hexcolor = hexcolor + ((color.getBlue()>0x09)?Integer.toHexString(color.getBlue()) : Integer.toHexString(color.getBlue())+"0");
+        return hexcolor;
     }
-
+   
     public void setFontColor(Color fontColor) {
         this.fontColor = fontColor;
         firePropChanged("FontColor");
@@ -287,8 +295,12 @@ getFullWord: {
     }
 
 
-    public Color getOutlineColor() {
-        return outlineColor;
+    public String getOutlineColor() {
+        Color color = outlineColor;
+        String hexcolor = (color.getRed()>0x09) ? Integer.toHexString(color.getRed()) : Integer.toHexString(color.getRed())+"0";
+        hexcolor = hexcolor + ((color.getGreen()>0x09) ? Integer.toHexString(color.getGreen()) : Integer.toHexString(color.getGreen())+"0");
+        hexcolor = hexcolor + ((color.getBlue()>0x09)?Integer.toHexString(color.getBlue()) : Integer.toHexString(color.getBlue())+"0");
+        return hexcolor;
     }
 
     public void setOutlineColor(Color outlineColor) {

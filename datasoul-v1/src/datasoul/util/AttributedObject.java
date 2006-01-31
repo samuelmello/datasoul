@@ -208,18 +208,24 @@ public abstract class AttributedObject extends SerializableObject implements Tab
                 
                 public void focusGained(java.awt.event.FocusEvent evt) {
                     if (!edited){
-                        JColorChooser cc = new JColorChooser();
-                        Color color =  cc.showDialog(JColorTextField.this, "Choose color", Color.BLACK);
                         
-                        String hexcolor = (color.getRed()>0x09) ? Integer.toHexString(color.getRed()) : Integer.toHexString(color.getRed())+"0";
-                        hexcolor = hexcolor + ((color.getGreen()>0x09) ? Integer.toHexString(color.getGreen()) : Integer.toHexString(color.getGreen())+"0");
-                        hexcolor = hexcolor + ((color.getBlue()>0x09)?Integer.toHexString(color.getBlue()) : Integer.toHexString(color.getBlue())+"0");
-                        
-                        JColorTextField.this.setText( hexcolor );
-                        tableCellEditor.setValue( hexcolor );
                         edited = true;
                         
-                        evt.getOppositeComponent().requestFocusInWindow();
+                        JColorChooser cc = new JColorChooser();
+                        Color color =  cc.showDialog(JColorTextField.this, "Choose color", Color.BLACK);
+
+                        if (color != null){
+                            String hexcolor = (color.getRed()>0x09) ? Integer.toHexString(color.getRed()) : Integer.toHexString(color.getRed())+"0";
+                            hexcolor = hexcolor + ((color.getGreen()>0x09) ? Integer.toHexString(color.getGreen()) : Integer.toHexString(color.getGreen())+"0");
+                            hexcolor = hexcolor + ((color.getBlue()>0x09)?Integer.toHexString(color.getBlue()) : Integer.toHexString(color.getBlue())+"0");
+
+                            JColorTextField.this.setText( hexcolor );
+                            tableCellEditor.setValue( hexcolor );
+                        }
+                        
+                        if (evt.getOppositeComponent() != null)
+                            evt.getOppositeComponent().requestFocusInWindow();
+                        
                         
                     }
                 }

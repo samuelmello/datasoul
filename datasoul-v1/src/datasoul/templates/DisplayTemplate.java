@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 /**
@@ -25,18 +26,26 @@ public class DisplayTemplate extends AttributedObject {
     
     ArrayList<TemplateItem> items;
     
+    DisplayTemplateTableModel model;
+    
+    static int defaultItemNameCount = 1;
+    
     private String name;
     
     /** Creates a new instance of DisplayTemplate */
     public DisplayTemplate() {
         super();
         items = new ArrayList<TemplateItem>();
-        
+        model = new DisplayTemplateTableModel();
     }
     
     @Override
     protected void registerProperties(){
         properties.add("Name");
+    }
+    
+    public DisplayTemplateTableModel getModel(){
+        return model;
     }
     
     public String getName(){
@@ -59,11 +68,16 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     public void addItem(TemplateItem t){
+        if (t.getName().equals("")){
+            t.setName("Item #"+defaultItemNameCount++);
+        }
         items.add(t);
+        model.fireTableDataChanged();
     }
     
     public void removeItem(TemplateItem t){
         items.remove(t);
+        model.fireTableDataChanged();
     }
     
     public void paint (Graphics2D g){
@@ -76,5 +90,37 @@ public class DisplayTemplate extends AttributedObject {
 
     }
 
+    public class DisplayTemplateTableModel extends DefaultTableModel {
+        
+        public int getRowCount() {
+            return items.size();
+        }
+
+        public int getColumnCount() {
+            return 1;
+        }
+
+        public String getColumnName(int columnIndex) {
+            return "Item";
+        }
+
+        public Class<?> getColumnClass(int columnIndex) {
+            return String.class;
+        }
+
+        public boolean isCellEditable(int rowIndex, int columnIndex) {
+            return false;
+        }
+
+        public Object getValueAt(int rowIndex, int columnIndex) {
+            return items.get(rowIndex).getName();
+        }
+
+        public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        }
+
+        
+    }
+    
 
 }
