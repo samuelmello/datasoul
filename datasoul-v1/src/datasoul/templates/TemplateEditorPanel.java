@@ -182,6 +182,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     
     public void tableChanged(TableModelEvent e) {
         this.repaint();
+        template.getModel().fireTableDataChanged();
     }
     
     public void deleteSelectedItem(){
