@@ -114,6 +114,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator1.setAlignmentX(0.0F);
         jSeparator1.setAlignmentY(0.0F);
         jSeparator1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jSeparator1.setMaximumSize(new java.awt.Dimension(5, 32767));
         toolBar.add(jSeparator1);
 
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
@@ -124,6 +125,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator2.setAlignmentX(0.0F);
         jSeparator2.setAlignmentY(0.0F);
         jSeparator2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        jSeparator2.setMaximumSize(new java.awt.Dimension(5, 32767));
         toolBar.add(jSeparator2);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.gif")));
@@ -173,10 +175,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 176, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
             .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

@@ -275,12 +275,13 @@ public class SongViewerPanel extends javax.swing.JPanel {
         panelSongChords = new javax.swing.JPanel();
         scroolSongChords = new javax.swing.JScrollPane();
         editorSongChords = new javax.swing.JEditorPane();
-        labelVersion = new javax.swing.JLabel();
-        comboVersion = new javax.swing.JComboBox();
-        toolBar = new javax.swing.JToolBar();
+        jToolBar1 = new javax.swing.JToolBar();
         btnPrint = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
         btnFormat = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        labelVersion = new javax.swing.JLabel();
+        comboVersion = new javax.swing.JComboBox();
 
         split1.setDividerLocation(375);
         scroolSong.setViewportView(editorSong);
@@ -289,11 +290,11 @@ public class SongViewerPanel extends javax.swing.JPanel {
         panelSong.setLayout(panelSongLayout);
         panelSongLayout.setHorizontalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
         );
         split1.setLeftComponent(panelSong);
 
@@ -303,73 +304,63 @@ public class SongViewerPanel extends javax.swing.JPanel {
         panelSongChords.setLayout(panelSongChordsLayout);
         panelSongChordsLayout.setHorizontalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords)
+            .add(scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
         );
         split1.setRightComponent(panelSongChords);
 
-        labelVersion.setFont(new java.awt.Font("Arial", 1, 11));
-        labelVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSION"));
-
-        comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        jToolBar1.setFloatable(false);
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print.gif")));
         btnPrint.setText("print");
-        btnPrint.setAlignmentY(0.0F);
-        toolBar.add(btnPrint);
+        jToolBar1.add(btnPrint);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/generatePraiseDoc.gif")));
         btnExport.setText("Export");
-        btnExport.setAlignmentY(0.0F);
         btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExportMouseClicked(evt);
             }
         });
 
-        toolBar.add(btnExport);
+        jToolBar1.add(btnExport);
 
         btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/format.gif")));
         btnFormat.setText("Format");
-        btnFormat.setAlignmentY(0.0F);
+        btnFormat.setMaximumSize(new java.awt.Dimension(80, 32));
+        btnFormat.setMinimumSize(new java.awt.Dimension(72, 32));
         btnFormat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFormatMouseClicked(evt);
             }
         });
 
-        toolBar.add(btnFormat);
+        jToolBar1.add(btnFormat);
+
+        jToolBar1.add(jSeparator2);
+
+        labelVersion.setFont(new java.awt.Font("Arial", 1, 11));
+        labelVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSION"));
+        jToolBar1.add(labelVersion);
+
+        comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jToolBar1.add(comboVersion);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 222, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 159, Short.MAX_VALUE)
-                        .add(labelVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 44, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(15, 15, 15)
-                        .add(comboVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 160, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
+            .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(comboVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 22, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(labelVersion))
-                    .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -477,13 +468,15 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox comboVersion;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelVersion;
     private javax.swing.JPanel panelSong;
     private javax.swing.JPanel panelSongChords;
     private javax.swing.JScrollPane scroolSong;
     private javax.swing.JScrollPane scroolSongChords;
     private javax.swing.JSplitPane split1;
-    private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
     
 }

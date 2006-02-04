@@ -65,6 +65,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain = new javax.swing.JToolBar();
         btnDatashow = new javax.swing.JButton();
         btnSongs = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         menuBar = new javax.swing.JMenuBar();
         menu = new javax.swing.JMenu();
 
@@ -92,6 +93,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnSongs);
 
+        toolBarMain.add(jSeparator1);
+
         menu.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MENU"));
         menuBar.add(menu);
 
@@ -101,15 +104,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 256, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(571, Short.MAX_VALUE))
+            .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(toolBarMain)
-                .addContainerGap(323, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -181,6 +182,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatashow;
     private javax.swing.JButton btnSongs;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu menu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JToolBar toolBarMain;
