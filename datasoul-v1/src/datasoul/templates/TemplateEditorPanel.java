@@ -198,4 +198,21 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         return this.template;
     }
     
+    public void moveUpSelectedItem(){
+        if (selectedItem != null){
+            template.moveUp(selectedItem);
+            template.getModel().fireTableDataChanged();
+            this.repaint();
+        }
+    }
+
+    public void moveDownSelectedItem(){
+        if (selectedItem != null){
+            template.moveDown(selectedItem);
+            template.getModel().fireTableDataChanged();
+            this.repaint();
+        }
+    }
+    
+    
 }

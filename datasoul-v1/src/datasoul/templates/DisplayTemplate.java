@@ -90,6 +90,31 @@ public class DisplayTemplate extends AttributedObject {
 
     }
 
+    public void moveUp (TemplateItem t){
+        int size = items.size();
+        for (int i=0; i<size-1; i++){
+            if (items.get(i) == t){
+                TemplateItem other = items.get(i+1);
+                items.set(i+1, t);
+                items.set(i, other);
+                break;
+            }
+        }
+    }
+
+    public void moveDown (TemplateItem t){
+        int size = items.size();
+        for (int i=1; i<size; i++){
+            if (items.get(i) == t){
+                TemplateItem other = items.get(i-1);
+                items.set(i-1, t);
+                items.set(i, other);
+                break;
+            }
+        }
+    }
+    
+    
     public class DisplayTemplateTableModel extends DefaultTableModel {
         
         public int getRowCount() {
@@ -113,7 +138,7 @@ public class DisplayTemplate extends AttributedObject {
         }
 
         public Object getValueAt(int rowIndex, int columnIndex) {
-            return items.get(rowIndex).getName();
+            return items.get( items.size()-1 - rowIndex).getName();
         }
 
         public void setValueAt(Object aValue, int rowIndex, int columnIndex) {

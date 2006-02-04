@@ -29,13 +29,13 @@ public class ImageTemplateItem extends TemplateItem {
     /** Creates a new instance of ImageTemplateItem */
     public ImageTemplateItem(String filename) {
         super();
-        properties.add("Filename");
+        this.setFilename(filename);       
     }
 
     @Override
     protected void registerProperties(){
         super.registerProperties();
-        this.setFilename(filename);
+        properties.add("Filename");
     }
     
     
@@ -56,15 +56,17 @@ public class ImageTemplateItem extends TemplateItem {
     }
 
     public void setFilename(String filename) {
-        this.filename = filename;
-        try {
-            img = ImageIO.read( new File(filename) );
-            this.setWidth( img.getWidth() );
-            this.setHeight( img.getHeight() );
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        if (filename != null){
+            this.filename = filename;
+            try {
+                img = ImageIO.read( new File(filename) );
+                this.setWidth( img.getWidth() );
+                this.setHeight( img.getHeight() );
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            firePropChanged("Filename");
         }
-        firePropChanged("Filename");
     }
 
     

@@ -40,11 +40,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jTableProperties = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableItems = new javax.swing.JTable();
-        jTableItems.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        jButtonDelete = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        btnAddText = new javax.swing.JButton();
+        btnAddImage = new javax.swing.JButton();
+        btnMoveUp = new javax.swing.JButton();
+        btnMoveDown = new javax.swing.JButton();
 
         org.jdesktop.layout.GroupLayout jDialog1Layout = new org.jdesktop.layout.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -116,30 +116,45 @@ public class NewJFrame extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableItems.setRowSelectionAllowed(false);
         jScrollPane2.setViewportView(jTableItems);
 
         jSplitPane2.setRightComponent(jScrollPane2);
 
         jSplitPane1.setRightComponent(jSplitPane2);
 
-        jButtonDelete.setText("Delete");
-        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("AddText");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAddText.setText("AddText");
+        btnAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAddTextActionPerformed(evt);
             }
         });
 
-        jButton3.setText("AddImage");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAddImage.setText("AddImage");
+        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAddImageActionPerformed(evt);
+            }
+        });
+
+        btnMoveUp.setText("Move Up");
+        btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoveUpActionPerformed(evt);
+            }
+        });
+
+        btnMoveDown.setText("Move Down");
+        btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoveDownActionPerformed(evt);
             }
         });
 
@@ -149,14 +164,18 @@ public class NewJFrame extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jButton3)
+                .add(btnAddImage)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton2)
+                .add(btnAddText)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButtonDelete)
-                .add(698, 698, 698))
+                .add(btnDelete)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnMoveUp)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnMoveDown)
+                .add(510, 510, 510))
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 967, Short.MAX_VALUE)
+                .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -165,17 +184,27 @@ public class NewJFrame extends javax.swing.JFrame {
                 .add(jSplitPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 506, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jButton3)
-                    .add(jButton2)
-                    .add(jButtonDelete))
+                    .add(btnAddImage)
+                    .add(btnAddText)
+                    .add(btnDelete)
+                    .add(btnMoveUp)
+                    .add(btnMoveDown))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMoveDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveDownActionPerformed
+        templateEditorPanel1.moveDownSelectedItem();
+    }//GEN-LAST:event_btnMoveDownActionPerformed
+
+    private void btnMoveUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveUpActionPerformed
+        templateEditorPanel1.moveUpSelectedItem();
+    }//GEN-LAST:event_btnMoveUpActionPerformed
+
     boolean edited = false;
     
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.setMultiSelectionEnabled(false);
@@ -187,21 +216,21 @@ public class NewJFrame extends javax.swing.JFrame {
             ImageTemplateItem img = new ImageTemplateItem( filename );
             templateEditorPanel1.addItem(img);
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAddImageActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTextActionPerformed
 
         TextTemplateItem txt = new TextTemplateItem("TextItem", 100, 100);
         templateEditorPanel1.addItem(txt);
         this.repaint();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAddTextActionPerformed
 
-    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         
         templateEditorPanel1.deleteSelectedItem();
         
-    }//GEN-LAST:event_jButtonDeleteActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
     
     /**
      * @param args the command line arguments
@@ -224,9 +253,11 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton btnAddImage;
+    private javax.swing.JButton btnAddText;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnMoveDown;
+    private javax.swing.JButton btnMoveUp;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
