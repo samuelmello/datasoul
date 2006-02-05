@@ -13,8 +13,12 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.awt.event.InputEvent;
+import java.io.FileOutputStream;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
+import org.apache.xml.serialize.OutputFormat;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 /**
  *
@@ -214,5 +218,24 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         }
     }
     
+    public void save(String filename){
+        Node n;
+        try {
+            Node node = template.writeObject();
+            Document doc = node.getOwnerDocument();
+            doc.appendChild( node);                        // Add Root to Document
+            FileOutputStream fos = new FileOutputStream( filename );
+            org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
+            OutputFormat outFormat = new OutputFormat();
+            outFormat.setIndenting(true);
+            outFormat.setEncoding("ISO-8859-1");
+            xs.setOutputFormat(outFormat);
+            xs.setOutputByteStream(fos);
+            xs.serialize(doc);
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
     
 }

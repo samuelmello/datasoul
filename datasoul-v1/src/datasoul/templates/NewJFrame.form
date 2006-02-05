@@ -43,10 +43,12 @@
               <Component id="btnMoveUp" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnMoveDown" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="510" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="416" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jSplitPane1" pref="987" max="32767" attributes="0"/>
+              <Component id="jSplitPane1" pref="995" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -62,6 +64,7 @@
                   <Component id="btnDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnMoveUp" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnMoveDown" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -205,7 +208,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddText">
       <Properties>
-        <Property name="text" type="java.lang.String" value="AddText"/>
+        <Property name="text" type="java.lang.String" value="Add Text"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddTextActionPerformed"/>
@@ -213,7 +216,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnAddImage">
       <Properties>
-        <Property name="text" type="java.lang.String" value="AddImage"/>
+        <Property name="text" type="java.lang.String" value="Add Image"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddImageActionPerformed"/>
@@ -233,6 +236,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoveDownActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnSave">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Save As"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

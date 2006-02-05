@@ -45,6 +45,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnAddImage = new javax.swing.JButton();
         btnMoveUp = new javax.swing.JButton();
         btnMoveDown = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         org.jdesktop.layout.GroupLayout jDialog1Layout = new org.jdesktop.layout.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -130,14 +131,14 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        btnAddText.setText("AddText");
+        btnAddText.setText("Add Text");
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTextActionPerformed(evt);
             }
         });
 
-        btnAddImage.setText("AddImage");
+        btnAddImage.setText("Add Image");
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImageActionPerformed(evt);
@@ -158,6 +159,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSave.setText("Save As");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,9 +181,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 .add(btnMoveUp)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnMoveDown)
-                .add(510, 510, 510))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnSave)
+                .add(416, 416, 416))
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+                .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,11 +198,27 @@ public class NewJFrame extends javax.swing.JFrame {
                     .add(btnAddText)
                     .add(btnDelete)
                     .add(btnMoveUp)
-                    .add(btnMoveDown))
+                    .add(btnMoveDown)
+                    .add(btnSave))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogType(JFileChooser.SAVE_DIALOG);
+        fc.setMultiSelectionEnabled(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setControlButtonsAreShown(true);
+        fc.setDialogTitle("Save Template As...");
+        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION ){
+            String filename = fc.getSelectedFile().getAbsolutePath();
+            templateEditorPanel1.save(filename);
+        }
+
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnMoveDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveDownActionPerformed
         templateEditorPanel1.moveDownSelectedItem();
@@ -258,6 +284,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMoveDown;
     private javax.swing.JButton btnMoveUp;
+    private javax.swing.JButton btnSave;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

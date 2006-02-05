@@ -13,10 +13,8 @@ import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
+import org.w3c.dom.Node;
 
 /**
  *
@@ -144,6 +142,27 @@ public class DisplayTemplate extends AttributedObject {
         public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         }
 
+        
+    }
+    
+    @Override
+    public Node writeObject() throws Exception{
+        
+        Node n = super.writeObject();
+        
+        Node nodeItems = n.getOwnerDocument().createElement("TemplateItems");
+        
+        for (int i=0; i< items.size(); i++){
+            
+            Node ti =  items.get(i).writeObject();
+            
+            nodeItems.appendChild( nodeItems.getOwnerDocument().importNode(ti, true) );
+                    
+        }
+        
+        n.appendChild(nodeItems);
+        
+        return n;
         
     }
     

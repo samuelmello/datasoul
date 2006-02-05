@@ -59,12 +59,16 @@ public abstract class SerializableObject  implements Transferable, SerializableI
         Node nodeOut = doc.createElement(this.getClass().getName().replace(this.getClass().getPackage().getName()+".",""));
         Node node; 
         String paramName;
-        String paramValue;
+        Object paramValue;
+        
          for(int i=0;i<properties.size();i++){
             paramName = properties.get(i);
-            paramValue = (String)this.getClass().getMethod("get"+properties.get(i)).invoke(this);         
+            
+            paramValue = this.getClass().getMethod("get"+properties.get(i)).invoke(this);         
             node = doc.createElement(paramName);
-            node.setTextContent(paramValue);
+            if (paramValue != null){
+                node.setTextContent(paramValue.toString());
+            }
             nodeOut.appendChild(node);
         }
               
