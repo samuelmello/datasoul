@@ -46,6 +46,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMoveUp = new javax.swing.JButton();
         btnMoveDown = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        btnOpen = new javax.swing.JButton();
 
         org.jdesktop.layout.GroupLayout jDialog1Layout = new org.jdesktop.layout.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -166,6 +167,13 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnOpen.setText("Open");
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,7 +191,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .add(btnMoveDown)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnSave)
-                .add(416, 416, 416))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnOpen)
+                .add(328, 328, 328))
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
                 .addContainerGap())
@@ -199,11 +209,28 @@ public class NewJFrame extends javax.swing.JFrame {
                     .add(btnDelete)
                     .add(btnMoveUp)
                     .add(btnMoveDown)
-                    .add(btnSave))
+                    .add(btnSave)
+                    .add(btnOpen))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+        
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogType(JFileChooser.OPEN_DIALOG);
+        fc.setMultiSelectionEnabled(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setControlButtonsAreShown(true);
+        fc.setDialogTitle("Select Template");
+        if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
+            String filename = fc.getSelectedFile().getAbsolutePath();
+            templateEditorPanel1.open(filename);
+            jTableItems.setModel( templateEditorPanel1.getTemplate().getModel() );
+        }
+
+    }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         
@@ -246,7 +273,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void btnAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTextActionPerformed
 
-        TextTemplateItem txt = new TextTemplateItem("TextItem", 100, 100);
+        TextTemplateItem txt = new TextTemplateItem();
         templateEditorPanel1.addItem(txt);
         this.repaint();
         
@@ -284,6 +311,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnMoveDown;
     private javax.swing.JButton btnMoveUp;
+    private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnSave;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JPanel jPanel1;

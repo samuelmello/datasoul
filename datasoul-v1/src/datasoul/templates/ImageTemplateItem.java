@@ -26,6 +26,10 @@ public class ImageTemplateItem extends TemplateItem {
     BufferedImage img;
     private String filename;
     
+    public ImageTemplateItem() {
+        super();
+    }
+    
     /** Creates a new instance of ImageTemplateItem */
     public ImageTemplateItem(String filename) {
         super();

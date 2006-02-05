@@ -73,13 +73,13 @@ public class TextTemplateItem extends TemplateItem {
     }
 
 
-    public TextTemplateItem (String text, int height, int width) {
+    public TextTemplateItem () {
         
         super();
         
-        this.setWidth(width);
-        this.setHeight(height);
-        this.setText(text);
+        this.setWidth(100);
+        this.setHeight(100);
+        this.setText("TextItem");
         this.setFontSize(16f);
         this.setAlignment("Left");
         this.setVerticalAlignment("Top");
