@@ -75,13 +75,13 @@ public abstract class SerializableObject  implements Transferable, SerializableI
         return nodeOut.cloneNode(true);
      }
      
-     public void readObject(Node nodeIn) throws Exception{
+     public void readObject(Node nodeIn) throws Exception {
 
         NodeList nodeList= nodeIn.getChildNodes();
         String paramName;
         String paramValue;
         for(int i=0;i<nodeList.getLength();i++){
-            if(nodeList.item(i).getNodeType()==1){
+            if(nodeList.item(i).getNodeType() == Node.ELEMENT_NODE ){
                 paramName = nodeList.item(i).getNodeName(); 
                 paramValue = nodeList.item(i).getTextContent();
                 this.getClass().getMethod("set"+paramName, String.class).invoke(this, paramValue);
