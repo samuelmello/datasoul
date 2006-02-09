@@ -34,12 +34,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datasoul.gif")).getImage());
         
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(datashow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
             .add(toolBarMain)
         );
+
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
@@ -52,7 +53,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         datashow.setVisible(true);
         datashow.validate();
 
-
+        getContentPane().setLayout(layout);
     }
     
     /** This method is called from within the constructor to
