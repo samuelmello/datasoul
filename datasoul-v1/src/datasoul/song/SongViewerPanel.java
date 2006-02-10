@@ -61,6 +61,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private Style chordShapeStyle;
     
     private SongTemplate songTemplate;
+    private Song song;
     
     /**
      * Creates new form SongViewerPanel
@@ -90,26 +91,32 @@ public class SongViewerPanel extends javax.swing.JPanel {
     }
     
     private void setStyles(){
-        StyleConstants.setForeground(nameStyle,Color.decode("0x000055"));
+        StyleConstants.setForeground(nameStyle,Color.decode("0x"+songTemplate.getTitleFontColor()));
         StyleConstants.setBackground(nameStyle,Color.white);
-        StyleConstants.setFontFamily(nameStyle,"Arial");
-        StyleConstants.setFontSize(nameStyle,20);                
+        StyleConstants.setFontFamily(nameStyle,songTemplate.getTitleFontName());
+        StyleConstants.setFontSize(nameStyle,songTemplate.getTitleFontSize());                
 
-        StyleConstants.setForeground(authorStyle,Color.black);
+        StyleConstants.setForeground(authorStyle,Color.decode("0x"+songTemplate.getAuthorFontColor()));
         StyleConstants.setBackground(authorStyle,Color.white);
-        StyleConstants.setFontFamily(authorStyle,"Arial");
-        StyleConstants.setFontSize(authorStyle,12);                
+        StyleConstants.setFontFamily(authorStyle,songTemplate.getAuthorFontName());
+        StyleConstants.setFontSize(authorStyle,songTemplate.getAuthorFontSize());                
 
-        StyleConstants.setForeground(chordsStyle,Color.decode("0x8888cc"));
+        StyleConstants.setForeground(chordsStyle,Color.decode("0x"+songTemplate.getChordsFontColor()));
         StyleConstants.setBackground(chordsStyle,Color.white);
-        StyleConstants.setFontFamily(chordsStyle,"Arial");
-        StyleConstants.setFontSize(chordsStyle,12);                
+        StyleConstants.setFontFamily(chordsStyle,songTemplate.getChordsFontName());
+        StyleConstants.setFontSize(chordsStyle,songTemplate.getChordsFontSize());       
 
-        StyleConstants.setForeground(lyricsStyle,Color.black);
+        StyleConstants.setForeground(lyricsStyle,Color.decode("0x"+songTemplate.getLyricsFontColor()));
         StyleConstants.setBackground(lyricsStyle,Color.white);
-        StyleConstants.setFontFamily(lyricsStyle,"Arial");
-        StyleConstants.setFontSize(lyricsStyle,12);                
+        StyleConstants.setFontFamily(lyricsStyle,songTemplate.getLyricsFontName());
+        StyleConstants.setFontSize(lyricsStyle,songTemplate.getLyricsFontSize());
         
+    }
+    
+    public void refresh(){
+        if(song!=null){
+            viewSong(song);
+        }
     }
     
     public void viewSong(Song song){
@@ -119,6 +126,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         StringBuffer html = new StringBuffer();
         StringReader sr = null;
         BufferedReader buff= null;
+
+        this.song = song;
+        
+        setStyles();        
         
         chordsName.clear();
         
@@ -197,9 +208,11 @@ public class SongViewerPanel extends javax.swing.JPanel {
         int spacesNedded=0;
         
         String[] chords = line.split(" ");
-        Font font = new Font("Arial", Font.PLAIN, 12);
-        FontMetrics fontMetrics = getFontMetrics(font);
-        spaceSize = fontMetrics.stringWidth(" ");
+        Font fontChords = new Font(songTemplate.getChordsFontName(), Font.PLAIN, songTemplate.getChordsFontSize());
+        FontMetrics fontChordsMetrics = getFontMetrics(fontChords);
+        Font fontLyrics = new Font(songTemplate.getLyricsFontName(), Font.PLAIN, songTemplate.getLyricsFontSize());
+        FontMetrics fontLyricsMetrics = getFontMetrics(fontLyrics);
+        spaceSize = fontChordsMetrics.stringWidth(" ");
         
         for(int i=0;i<chords.length;i++){
             if(!chords[i].equals("")){
@@ -207,8 +220,8 @@ public class SongViewerPanel extends javax.swing.JPanel {
                     chordsName.add(chords[i]);
                 index = strAux.length();
                 if(index<nextline.length()){
-                    widthNextLine = fontMetrics.stringWidth(nextline.substring(0,index));                
-                    widthNewLine = fontMetrics.stringWidth(newLine);                
+                    widthNextLine = fontLyricsMetrics.stringWidth(nextline.substring(0,index));                
+                    widthNewLine = fontChordsMetrics.stringWidth(newLine);                
                     neededWidth = (widthNextLine - widthNewLine);
                     spacesNedded = Math.round(neededWidth/spaceSize);
                     spaces = "";
@@ -284,13 +297,14 @@ public class SongViewerPanel extends javax.swing.JPanel {
         comboVersion = new javax.swing.JComboBox();
 
         split1.setDividerLocation(375);
+        editorSong.setEditable(false);
         scroolSong.setViewportView(editorSong);
 
         org.jdesktop.layout.GroupLayout panelSongLayout = new org.jdesktop.layout.GroupLayout(panelSong);
         panelSong.setLayout(panelSongLayout);
         panelSongLayout.setHorizontalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong)
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -298,13 +312,14 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         split1.setLeftComponent(panelSong);
 
+        editorSongChords.setEditable(false);
         scroolSongChords.setViewportView(editorSongChords);
 
         org.jdesktop.layout.GroupLayout panelSongChordsLayout = new org.jdesktop.layout.GroupLayout(panelSongChords);
         panelSongChords.setLayout(panelSongChordsLayout);
         panelSongChordsLayout.setHorizontalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
+            .add(scroolSongChords)
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -357,7 +372,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
@@ -366,7 +381,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
     private void btnFormatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFormatMouseClicked
 
-        SongFormatFrame sff = new SongFormatFrame(songTemplate);
+        SongFormatFrame sff = new SongFormatFrame(this, songTemplate);
         sff.setVisible(true);
     }//GEN-LAST:event_btnFormatMouseClicked
 
@@ -468,7 +483,6 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox comboVersion;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelVersion;

@@ -14,9 +14,13 @@ import datasoul.templates.TextTemplateItem;
  */
 public class SongFormatFrame extends javax.swing.JFrame {
     
+    private SongViewerPanel svp;
+    
     /** Creates new form SongFormatFrame */
-    public SongFormatFrame(SongTemplate songTemplate) {
+    public SongFormatFrame(SongViewerPanel svp, SongTemplate songTemplate) {
         initComponents();
+        
+        this.svp = svp;
         this.tableProperties.setModel(songTemplate);
         ///this.tableProperties.setModel(new TextTemplateItem("Testando",10,10));
         
@@ -35,7 +39,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableProperties = new javax.swing.JTable();
         btnApply = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -59,10 +63,10 @@ public class SongFormatFrame extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setText("Cancel");
-        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnClose.setText("Close");
+        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelMouseClicked(evt);
+                btnCloseMouseClicked(evt);
             }
         });
 
@@ -72,35 +76,35 @@ public class SongFormatFrame extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(121, Short.MAX_VALUE)
                 .add(btnApply)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnCancel))
+                .add(btnClose))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 269, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 13, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnCancel)
+                    .add(btnClose)
                     .add(btnApply)))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyMouseClicked
-
+        svp.refresh();
     }//GEN-LAST:event_btnApplyMouseClicked
 
-    private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
+    private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
         this.dispose();
-    }//GEN-LAST:event_btnCancelMouseClicked
+    }//GEN-LAST:event_btnCloseMouseClicked
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClose;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableProperties;
     // End of variables declaration//GEN-END:variables
