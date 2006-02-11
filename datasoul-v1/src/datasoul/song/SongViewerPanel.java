@@ -16,7 +16,13 @@ import datasoul.song.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -32,8 +38,10 @@ import java.io.Writer;
 import java.util.ArrayList;
 import javax.print.attribute.AttributeSet;
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -149,6 +157,22 @@ public class SongViewerPanel extends javax.swing.JPanel {
     }
     
     public void viewSong(Song song){
+        this.song = song;
+        
+        setStyles();        
+        
+        chordsName.clear();
+
+        try {            
+            drawLyrics(this.editorSong,true);
+            drawChords(this.editorSongChords,true);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+    }
+
+    private void drawLyrics(JEditorPane jep, boolean clearBeforeAdd) throws Exception{
         String strSong="";
         String line="";
         String nextline="";
@@ -156,15 +180,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         StringReader sr = null;
         BufferedReader buff= null;
 
-        this.song = song;
+       
+        jep.setContentType("text/rtf");
         
-        setStyles();        
-        
-        chordsName.clear();
-        
-        editorSong.setContentType("text/rtf");
-        
-        javax.swing.text.Document doc = editorSong.getDocument();
+        javax.swing.text.Document doc = jep.getDocument();
 
         if(comboVersion.getSelectedItem().equals("Complete")){
             strSong = song.getChordsComplete();
@@ -174,24 +193,22 @@ public class SongViewerPanel extends javax.swing.JPanel {
         sr = new StringReader(strSong);
         buff = new BufferedReader(sr);
         
-        try {            
+        if(clearBeforeAdd){
             doc.remove(0,doc.getLength());
-            
-            doc.insertString(doc.getLength(),song.getSongName()+"\n",nameStyle);
-            doc.insertString(doc.getLength(),song.getSongAuthor()+"\n\n\n",authorStyle);
-
-            line = buff.readLine();
-            while((nextline = buff.readLine())!=null){
-                addFormattedSongLine(doc,line,nextline);
-                line = nextline;
-            }
-            addFormattedSongLine(doc,line,"");
-
-            drawChords();            
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
+
+        doc.insertString(doc.getLength(),song.getSongName()+"\n",nameStyle);
+        doc.insertString(doc.getLength(),song.getSongAuthor()+"\n\n\n",authorStyle);
+
+        line = buff.readLine();
+        while((nextline = buff.readLine())!=null){
+            addFormattedSongLine(doc,line,nextline);
+            line = nextline;
+        }
+        addFormattedSongLine(doc,line,"");
+       
     }
+    
     
     private void addFormattedSongLine(javax.swing.text.Document doc, String line, String nextline) throws BadLocationException{
         if(line==null)
@@ -270,13 +287,15 @@ public class SongViewerPanel extends javax.swing.JPanel {
         return newLine;        
     }
     
-    private void drawChords() throws BadLocationException {
+    private void drawChords(JEditorPane jep, boolean clearBeforeAdd) throws BadLocationException {
 
-        editorSongChords.setContentType("text/rtf");
+        jep.setContentType("text/rtf");
         
-        javax.swing.text.Document doc = editorSongChords.getDocument();
+        javax.swing.text.Document doc = jep.getDocument();
         
-        doc.remove(0,doc.getLength());
+        if(clearBeforeAdd){
+            doc.remove(0,doc.getLength());
+        }
         
         ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
         for(int i=0; i<chordsName.size();i++){
@@ -322,6 +341,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         btnExport = new javax.swing.JButton();
         btnFormat = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        labelKey = new javax.swing.JLabel();
+        comboKey = new javax.swing.JComboBox();
+        jSeparator1 = new javax.swing.JSeparator();
         labelVersion = new javax.swing.JLabel();
         comboVersion = new javax.swing.JComboBox();
 
@@ -359,6 +381,12 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.setFloatable(false);
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print.gif")));
         btnPrint.setText("print");
+        btnPrint.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrintMouseClicked(evt);
+            }
+        });
+
         jToolBar1.add(btnPrint);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/generatePraiseDoc.gif")));
@@ -383,7 +411,20 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnFormat);
 
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.add(jSeparator2);
+
+        labelKey.setFont(new java.awt.Font("Arial", 1, 11));
+        labelKey.setText("Key");
+        jToolBar1.add(labelKey);
+
+        comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboKey.setMinimumSize(new java.awt.Dimension(25, 18));
+        comboKey.setPreferredSize(new java.awt.Dimension(25, 22));
+        jToolBar1.add(comboKey);
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar1.add(jSeparator1);
 
         labelVersion.setFont(new java.awt.Font("Arial", 1, 11));
         labelVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSION"));
@@ -407,6 +448,26 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseClicked
+        PrinterJob pj = PrinterJob.getPrinterJob();
+        PageFormat pf = pj.defaultPage();
+        JEditorPane jep = new JEditorPane();
+        try {            
+            drawLyrics(jep,true);
+            drawChords(jep,false);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+      
+        Content content = new Content(jep);
+        pj.setPrintable(content, pf);
+        try {
+            if (pj.printDialog())
+                pj.print();
+        } catch (Exception e) {}
+
+    }//GEN-LAST:event_btnPrintMouseClicked
 
     private void btnFormatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFormatMouseClicked
 
@@ -509,11 +570,14 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnFormat;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JComboBox comboKey;
     private javax.swing.JComboBox comboVersion;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel labelKey;
     private javax.swing.JLabel labelVersion;
     private javax.swing.JPanel panelSong;
     private javax.swing.JPanel panelSongChords;
@@ -521,5 +585,28 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane scroolSongChords;
     private javax.swing.JSplitPane split1;
     // End of variables declaration//GEN-END:variables
-    
+
+    class Content implements Printable {
+        JEditorPane jep;
+        
+        public Content(JEditorPane jep){
+            this.jep = jep; 
+        }
+        
+        public int print(Graphics g, PageFormat pf, int pageIndex) {
+            jep.setSize((int)pf.getWidth(), (int)pf.getHeight());
+            jep.invalidate();
+
+            Graphics2D g2d = (Graphics2D) g;
+            g2d.translate(pf.getImageableX(), pf.getImageableY());
+
+            if (pageIndex==0){
+                jep.paint(g2d);
+            } else{
+                return Printable.NO_SUCH_PAGE;
+            }
+            
+            return Printable.PAGE_EXISTS;
+        }
+    }
 }
