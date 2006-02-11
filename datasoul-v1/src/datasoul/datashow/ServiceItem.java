@@ -111,7 +111,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     
     public void updateHeights(JTable jTable){
         
-        int width = jTable.getWidth();
+        int width = jTable.getWidth() - jTable.getColumn(NUMBER_LABEL).getWidth();
         
         for (int i=0; i< this.getRowCount(); i++ ){
             ServiceItemRenderer r = slides.get(i);

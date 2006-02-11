@@ -44,8 +44,7 @@ public class LivePanel extends javax.swing.JPanel {
         btnLive = new javax.swing.JButton();
         btnBlack = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
-        scroolLive = new javax.swing.JScrollPane();
-        textLive = new javax.swing.JTextArea();
+        serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
 
         labelLive.setFont(new java.awt.Font("Arial", 3, 11));
         labelLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
@@ -55,10 +54,6 @@ public class LivePanel extends javax.swing.JPanel {
         btnBlack.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("BLACK"));
 
         btnClear.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLEAR"));
-
-        textLive.setColumns(20);
-        textLive.setRows(5);
-        scroolLive.setViewportView(textLive);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -74,8 +69,8 @@ public class LivePanel extends javax.swing.JPanel {
                         .add(btnBlack)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClear)))
-                .add(37, 37, 37))
-            .add(scroolLive, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                .add(53, 53, 53))
+            .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -87,7 +82,7 @@ public class LivePanel extends javax.swing.JPanel {
                     .add(btnBlack)
                     .add(btnClear))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scroolLive, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -97,8 +92,7 @@ public class LivePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnLive;
     private javax.swing.JLabel labelLive;
-    private javax.swing.JScrollPane scroolLive;
-    private javax.swing.JTextArea textLive;
+    private datasoul.datashow.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables
     
 }

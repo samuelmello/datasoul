@@ -19,8 +19,6 @@ public class PreviewPanel extends javax.swing.JPanel {
 
     private DatashowPanel objectManager;    
     
-    private TextServiceItem item;
-    
     /**
      * Creates new form PreviewPanel
      */
@@ -51,9 +49,7 @@ public class PreviewPanel extends javax.swing.JPanel {
         comboTemplate = new javax.swing.JComboBox();
         btnGoLive = new javax.swing.JButton();
         labelPreview = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        previewTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
 
         labelTemplate.setFont(new java.awt.Font("Arial", 0, 11));
         labelTemplate.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE"));
@@ -65,96 +61,44 @@ public class PreviewPanel extends javax.swing.JPanel {
         labelPreview.setFont(new java.awt.Font("Arial", 3, 11));
         labelPreview.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PREVIEW"));
 
-        previewTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        previewTable.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                previewTableComponentResized(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(previewTable);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(labelPreview)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 44, Short.MAX_VALUE)
-                        .add(jButton1))
+                    .add(labelPreview)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .add(labelTemplate)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(comboTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 108, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(24, 24, 24)
                 .add(btnGoLive)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                .add(133, 133, 133))
+            .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(labelPreview)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(jButton1)))
+                .add(labelPreview)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(labelTemplate)
                     .add(comboTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnGoLive))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+                .add(24, 24, 24)
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void previewTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_previewTableComponentResized
-        if (item != null){
-            item.updateHeights(previewTable);
-        }
-    }//GEN-LAST:event_previewTableComponentResized
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        String text = "Se paz a mais doce me deres gozar\n\nSe dor a mais forte sofrer\n\nOh seja o que for\nTu me fazes saber\n\nQue feliz\ncom Jesus\neu serei\n!!!";
-        
-        item = new TextServiceItem();
-        item.setText(text);
-        
-        item.registerJTable(previewTable);
-        item.updateHeights(previewTable);
-    }//GEN-LAST:event_jButton1ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLive;
     private javax.swing.JComboBox comboTemplate;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelPreview;
     private javax.swing.JLabel labelTemplate;
-    private javax.swing.JTable previewTable;
+    private datasoul.datashow.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables
     
 }
