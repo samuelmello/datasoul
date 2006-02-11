@@ -13,13 +13,9 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.EventObject;
 import java.util.HashMap;
-import java.util.Iterator;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
@@ -127,9 +123,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         if (found){
             TableModelEvent evt = new TableModelEvent(this, i);
             
-            Iterator<javax.swing.event.TableModelListener> iter = listeners.iterator();
-            while(iter.hasNext()){
-                javax.swing.event.TableModelListener l = iter.next();
+            for (javax.swing.event.TableModelListener l : listeners){
                 l.tableChanged(evt);
             }            
         }

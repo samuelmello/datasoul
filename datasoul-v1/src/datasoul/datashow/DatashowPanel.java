@@ -81,9 +81,8 @@ public SongsSearchPanel getSongsSearchPanel(){
 
         split1.setBorder(null);
         split1.setDividerLocation(250);
-        split1.setDividerSize(10);
         split2.setBorder(null);
-        split2.setDividerLocation(520);
+        split2.setDividerLocation(530);
         split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split2.setOneTouchExpandable(true);
         split2.setRightComponent(auxiliar);
@@ -105,7 +104,7 @@ public SongsSearchPanel getSongsSearchPanel(){
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
         );
         tabOperation.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPERATION"), panelOperation);
 
@@ -125,7 +124,6 @@ public SongsSearchPanel getSongsSearchPanel(){
 
         split4.setBorder(null);
         split4.setDividerLocation(275);
-        split4.setDividerSize(10);
         split4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split4.setMinimumSize(new java.awt.Dimension(10, 10));
         split4.setOneTouchExpandable(true);

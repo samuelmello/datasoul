@@ -111,7 +111,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(toolBarMain)
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addContainerGap(496, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents

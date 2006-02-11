@@ -6,10 +6,7 @@
 
 package datasoul.templates;
 
-import java.awt.Color;
-import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
-import javax.swing.ListSelectionModel;
 
 /**
  *

@@ -13,11 +13,6 @@ import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.TableModel;
 
 /**
  * This class represents a item that can be painted in the 

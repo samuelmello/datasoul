@@ -9,13 +9,10 @@
 
 package datasoul.templates;
 
-import datasoul.templates.DisplayTemplate;
 import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -117,9 +114,7 @@ public class DisplayTemplate extends AttributedObject {
     
     public void paint(Graphics2D g){
         
-        Iterator<TemplateItem> iter = items.iterator();
-        while(iter.hasNext()){
-            TemplateItem t = iter.next();
+        for (TemplateItem t : items){
             t.draw( g );
         }
         
