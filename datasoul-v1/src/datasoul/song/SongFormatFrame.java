@@ -15,17 +15,20 @@ import datasoul.templates.TextTemplateItem;
 public class SongFormatFrame extends javax.swing.JFrame {
     
     private SongViewerPanel svp;
+    private SongTemplate songTemplate;
     
     /** Creates new form SongFormatFrame */
     public SongFormatFrame(SongViewerPanel svp, SongTemplate songTemplate) {
         initComponents();
         
+        this.songTemplate = songTemplate;
+        
         this.svp = svp;
-        this.tableProperties.setModel(songTemplate);
+        this.tableProperties.setModel(this.songTemplate);
         ///this.tableProperties.setModel(new TextTemplateItem("Testando",10,10));
         
         tableProperties.setDefaultEditor(Object.class, songTemplate.getTableCellEditor() );
-        tableProperties.setModel(songTemplate);
+        tableProperties.setModel(this.songTemplate);
 
     }
     
@@ -95,6 +98,13 @@ public class SongFormatFrame extends javax.swing.JFrame {
 
     private void btnApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyMouseClicked
         svp.refresh();
+        try {
+            String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") + "songTemplate.st";
+
+            this.songTemplate.save(filepath);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_btnApplyMouseClicked
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked

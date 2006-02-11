@@ -63,13 +63,42 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private SongTemplate songTemplate;
     private Song song;
     
+    private void loadSongTemplate(){
+        songTemplate = new SongTemplate();
+        
+        File songTemplateFile = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "songTemplate.st");
+        
+        Document dom=null;
+        Node node = null;
+        Song song;
+        if(songTemplateFile.exists()){
+            try {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+                //Using factory get an instance of document builder
+                DocumentBuilder db = dbf.newDocumentBuilder();
+
+                //parse using builder to get DOM representation of the XML file
+                dom = db.parse(songTemplateFile);
+
+                //node = dom.getDocumentElement().getChildNodes().item(0);
+                node = dom.getElementsByTagName("SongTemplate").item(0);
+
+                songTemplate.readObject(node);
+               
+            }catch(Exception e) {
+                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
+            }
+        }
+    }
+    
     /**
      * Creates new form SongViewerPanel
      */
     public SongViewerPanel() {
         initComponents();
 
-        songTemplate = new SongTemplate();
+        loadSongTemplate();
         
         comboVersion.removeAllItems();
         comboVersion.addItem("Complete");

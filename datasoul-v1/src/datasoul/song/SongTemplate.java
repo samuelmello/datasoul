@@ -14,7 +14,11 @@ import datasoul.util.AttributedObject;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.io.FileOutputStream;
 import javax.swing.JComboBox;
+import org.apache.xml.serialize.OutputFormat;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
 
 /**
  *
@@ -292,6 +296,20 @@ public class SongTemplate extends TemplateItem{
             throw new IllegalArgumentException("Invalid Color: "+strColor);
         }
         
+    }
+
+    public void save(String filename) throws Exception {
+        Node node = this.writeObject();
+        Document doc = node.getOwnerDocument();
+        doc.appendChild( node);                        // Add Root to Document
+        FileOutputStream fos = new FileOutputStream( filename );
+        org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
+        OutputFormat outFormat = new OutputFormat();
+        outFormat.setIndenting(true);
+        outFormat.setEncoding("ISO-8859-1");
+        xs.setOutputFormat(outFormat);
+        xs.setOutputByteStream(fos);
+        xs.serialize(doc);
     }
     
 }
