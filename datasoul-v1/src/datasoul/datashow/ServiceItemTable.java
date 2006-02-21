@@ -29,6 +29,8 @@ public class ServiceItemTable extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jSliderZoom = new javax.swing.JSlider();
+        jLabel1 = new javax.swing.JLabel();
 
         jScrollPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -56,24 +58,57 @@ public class ServiceItemTable extends javax.swing.JPanel {
             }
         });
 
+        jSliderZoom.setMaximum(5);
+        jSliderZoom.setMinimum(1);
+        jSliderZoom.setSnapToTicks(true);
+        jSliderZoom.setValue(3);
+        jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderZoomStateChanged(evt);
+            }
+        });
+
+        jLabel1.setText("Zoom");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(73, 73, 73)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .add(jButton1)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 21, Short.MAX_VALUE)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 90, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(jButton1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 15, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jButton1))))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 317, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jSliderZoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderZoomStateChanged
+        int newSize = jSliderZoom.getValue();
+        if (item != null){
+            item.setZoom( jSliderZoom.getValue() );
+            item.updateHeights(displayTable);
+        }
+        
+    }//GEN-LAST:event_jSliderZoomStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -97,12 +132,15 @@ public class ServiceItemTable extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable displayTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSlider jSliderZoom;
     // End of variables declaration//GEN-END:variables
     
     public void setServiceItem(ServiceItem item){
         this.item = item;
         item.registerJTable(displayTable);
+        item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
         
     }

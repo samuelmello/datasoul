@@ -32,6 +32,9 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
      */
     ArrayList<ServiceItemRenderer> slides;
     
+    private String title;
+    
+    
     /** Creates a new instance of ServiceItem */
     public ServiceItem() {
         slides = new ArrayList<ServiceItemRenderer>();
@@ -47,8 +50,17 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     
     
     protected void registerProperties() {
+        properties.add("Title");
     }
 
+    public String getTitle(){
+        return this.title;
+    }
+    
+    public void setTitle(String title){
+        this.title = title;
+    }
+    
     public int getRowCount() {
         if (slides != null){
             return slides.size();
@@ -120,6 +132,12 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         }
 
         
+    }
+    
+    public void setZoom (int f){
+        for (ServiceItemRenderer r : slides){
+            r.setZoom(f);
+        }
     }
     
 }
