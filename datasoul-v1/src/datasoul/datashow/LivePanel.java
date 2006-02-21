@@ -41,34 +41,17 @@ public class LivePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         labelLive = new javax.swing.JLabel();
-        btnLive = new javax.swing.JButton();
-        btnBlack = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
 
         labelLive.setFont(new java.awt.Font("Arial", 3, 11));
         labelLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
-
-        btnLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
-
-        btnBlack.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("BLACK"));
-
-        btnClear.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLEAR"));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(labelLive)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(21, 21, 21)
-                        .add(btnLive)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnBlack)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnClear)))
+                .add(labelLive)
                 .add(53, 53, 53))
             .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
         );
@@ -76,21 +59,13 @@ public class LivePanel extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(labelLive)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnLive)
-                    .add(btnBlack)
-                    .add(btnClear))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 550, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBlack;
-    private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnLive;
     private javax.swing.JLabel labelLive;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables

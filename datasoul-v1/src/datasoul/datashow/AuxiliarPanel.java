@@ -42,31 +42,49 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         tabAuxiliar = new javax.swing.JTabbedPane();
-        panelOverlay = new javax.swing.JPanel();
+        panelDisplay = new javax.swing.JPanel();
+        btnBlack = new javax.swing.JButton();
+        btnClear = new javax.swing.JButton();
         panelClock = new javax.swing.JPanel();
         panelMessage = new javax.swing.JPanel();
 
-        org.jdesktop.layout.GroupLayout panelOverlayLayout = new org.jdesktop.layout.GroupLayout(panelOverlay);
-        panelOverlay.setLayout(panelOverlayLayout);
-        panelOverlayLayout.setHorizontalGroup(
-            panelOverlayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 692, Short.MAX_VALUE)
+        tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        tabAuxiliar.setMinimumSize(new java.awt.Dimension(80, 0));
+        btnBlack.setText("Black");
+
+        btnClear.setText("Clear");
+
+        org.jdesktop.layout.GroupLayout panelDisplayLayout = new org.jdesktop.layout.GroupLayout(panelDisplay);
+        panelDisplay.setLayout(panelDisplayLayout);
+        panelDisplayLayout.setHorizontalGroup(
+            panelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, panelDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(250, Short.MAX_VALUE))
         );
-        panelOverlayLayout.setVerticalGroup(
-            panelOverlayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 96, Short.MAX_VALUE)
+        panelDisplayLayout.setVerticalGroup(
+            panelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, panelDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(btnBlack)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnClear)
+                .addContainerGap(56, Short.MAX_VALUE))
         );
-        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OVERLAY"), panelOverlay);
+        tabAuxiliar.addTab("Display", panelDisplay);
 
         org.jdesktop.layout.GroupLayout panelClockLayout = new org.jdesktop.layout.GroupLayout(panelClock);
         panelClock.setLayout(panelClockLayout);
         panelClockLayout.setHorizontalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 692, Short.MAX_VALUE)
+            .add(0, 329, Short.MAX_VALUE)
         );
         panelClockLayout.setVerticalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 96, Short.MAX_VALUE)
+            .add(0, 124, Short.MAX_VALUE)
         );
         tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
 
@@ -74,11 +92,11 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelMessage.setLayout(panelMessageLayout);
         panelMessageLayout.setHorizontalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 692, Short.MAX_VALUE)
+            .add(0, 329, Short.MAX_VALUE)
         );
         panelMessageLayout.setVerticalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 96, Short.MAX_VALUE)
+            .add(0, 124, Short.MAX_VALUE)
         );
         tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MESSAGE"), panelMessage);
 
@@ -86,19 +104,21 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBlack;
+    private javax.swing.JButton btnClear;
     private javax.swing.JPanel panelClock;
+    private javax.swing.JPanel panelDisplay;
     private javax.swing.JPanel panelMessage;
-    private javax.swing.JPanel panelOverlay;
     private javax.swing.JTabbedPane tabAuxiliar;
     // End of variables declaration//GEN-END:variables
     

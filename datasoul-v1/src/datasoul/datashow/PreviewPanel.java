@@ -45,16 +45,9 @@ public class PreviewPanel extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        labelTemplate = new javax.swing.JLabel();
-        comboTemplate = new javax.swing.JComboBox();
         btnGoLive = new javax.swing.JButton();
         labelPreview = new javax.swing.JLabel();
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
-
-        labelTemplate.setFont(new java.awt.Font("Arial", 0, 11));
-        labelTemplate.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE"));
-
-        comboTemplate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnGoLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GO_LIVE"));
 
@@ -66,38 +59,27 @@ public class PreviewPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(labelPreview)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(labelTemplate)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(comboTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 108, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .add(24, 24, 24)
+                .add(labelPreview)
+                .add(94, 94, 94)
                 .add(btnGoLive)
-                .add(133, 133, 133))
+                .add(195, 195, 195))
             .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(labelPreview)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(labelTemplate)
-                    .add(comboTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(labelPreview)
                     .add(btnGoLive))
-                .add(24, 24, 24)
-                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 487, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLive;
-    private javax.swing.JComboBox comboTemplate;
     private javax.swing.JLabel labelPreview;
-    private javax.swing.JLabel labelTemplate;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables
     
