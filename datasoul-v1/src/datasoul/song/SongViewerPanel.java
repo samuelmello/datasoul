@@ -36,6 +36,7 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Vector;
 import javax.print.attribute.AttributeSet;
 import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
@@ -70,6 +71,11 @@ public class SongViewerPanel extends javax.swing.JPanel {
     
     private SongTemplate songTemplate;
     private Song song;
+    
+    private String keyOrig="";
+    private String keyActual="";
+    
+    private Vector<String> notes = new Vector<String>();
     
     private void loadSongTemplate(){
         songTemplate = new SongTemplate();
@@ -107,6 +113,33 @@ public class SongViewerPanel extends javax.swing.JPanel {
         initComponents();
 
         loadSongTemplate();
+
+        notes.add("C");
+        notes.add("C#");
+        notes.add("D");
+        notes.add("D#");
+        notes.add("E");
+        notes.add("F");
+        notes.add("F#");
+        notes.add("G");
+        notes.add("G#");
+        notes.add("A");
+        notes.add("A#");
+        notes.add("B");
+        comboKey.removeAllItems();
+        comboKey.addItem("C");
+        comboKey.addItem("C#");
+        comboKey.addItem("D");
+        comboKey.addItem("D#");
+        comboKey.addItem("E");
+        comboKey.addItem("F");
+        comboKey.addItem("F#");
+        comboKey.addItem("G");
+        comboKey.addItem("G#");
+        comboKey.addItem("A");
+        comboKey.addItem("A#");
+        comboKey.addItem("B");
+                
         
         comboVersion.removeAllItems();
         comboVersion.addItem("Complete");
@@ -152,13 +185,20 @@ public class SongViewerPanel extends javax.swing.JPanel {
     
     public void refresh(){
         if(song!=null){
-            viewSong(song);
+            showSong();
         }
     }
     
     public void viewSong(Song song){
+        keyOrig="";
+        keyActual="";
+        
         this.song = song;
         
+        showSong();
+    }
+    
+    public void showSong(){
         setStyles();        
         
         chordsName.clear();
@@ -166,10 +206,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         try {            
             drawLyrics(this.editorSong,true);
             drawChords(this.editorSongChords,true);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
     }
 
     private void drawLyrics(JEditorPane jep, boolean clearBeforeAdd) throws Exception{
@@ -262,8 +302,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         
         for(int i=0;i<chords.length;i++){
             if(!chords[i].equals("")){
-                if(!chordsName.contains(chords[i]))
-                    chordsName.add(chords[i]);
+                String thisChord = changeKey(chords[i]);
+                if(!chordsName.contains(thisChord))
+                    chordsName.add(thisChord);
                 index = strAux.length();
                 if(index<nextline.length()){
                     widthNextLine = fontLyricsMetrics.stringWidth(nextline.substring(0,index));                
@@ -273,11 +314,11 @@ public class SongViewerPanel extends javax.swing.JPanel {
                     spaces = "";
                     for(int j=0;j<spacesNedded;j++)
                         spaces = spaces + " ";
-                    newLine = newLine + spaces + chords[i];
+                    newLine = newLine + spaces + thisChord;
                 }else{
-                    newLine = newLine + spaces + chords[i];                    
+                    newLine = newLine + spaces + thisChord;                    
                 }
-                strAux += chords[i] + " ";                    
+                strAux += thisChord + " ";                    
             }else{
                 strAux += " ";
                 spaces = spaces + " ";
@@ -285,6 +326,64 @@ public class SongViewerPanel extends javax.swing.JPanel {
         }
         
         return newLine;        
+    }
+    
+    private String changeKey(String chord){
+        String newChord = chord;
+        
+        if(keyActual.equals("")){
+            keyActual = getNote(chord);        
+            comboKey.setSelectedItem(keyActual);
+        }
+        if(keyOrig.equals(""))
+            keyOrig = getNote(chord);
+
+        //if key was changed
+        if(!keyActual.equals(keyOrig)){
+            int diff = notes.indexOf(keyActual)-notes.indexOf(keyOrig);
+            //main note
+            String note = getNote(chord);
+            int index = notes.indexOf(note);
+            int newIndex = index + diff;
+            if(newIndex<0)
+                newIndex = 12 - newIndex;
+            if(newIndex>11)
+                newIndex = newIndex-12;
+            
+            newChord =  notes.get(newIndex);
+            
+            if(chord.contains("/")){
+                //main note
+                note = getNote(chord.substring(chord.indexOf("/")+1,chord.length()));
+                index = notes.indexOf(note);
+                newIndex = index + diff;
+                if(newIndex<0)
+                    newIndex = 12 - newIndex;
+                if(newIndex>11)
+                    newIndex = newIndex-12;
+                
+                newChord =  newChord+chord.substring(getNote(chord).length(),chord.indexOf("/")+1)+notes.get(newIndex);                
+            }else{
+                newChord =  newChord+chord.substring(note.length(),chord.length());                
+            }
+           
+        }
+
+        return newChord;
+    }
+    
+    private String getNote(String chord){
+        if((chord.length()>1)&&(chord.substring(1,2).equals("#"))){
+            return chord.substring(0,2);
+        }else if((chord.length()>1)&&(chord.substring(1,2).equals("b"))){
+            int index = notes.indexOf(chord.substring(0,1))-1;
+            if(index==-1){
+                index=11;
+            }
+            return notes.get(index);
+        }else{
+            return chord.substring(0,1);
+        }
     }
     
     private void drawChords(JEditorPane jep, boolean clearBeforeAdd) throws BadLocationException {
@@ -421,6 +520,12 @@ public class SongViewerPanel extends javax.swing.JPanel {
         comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboKey.setMinimumSize(new java.awt.Dimension(25, 18));
         comboKey.setPreferredSize(new java.awt.Dimension(25, 22));
+        comboKey.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboKeyActionPerformed(evt);
+            }
+        });
+
         jToolBar1.add(comboKey);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -431,6 +536,12 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.add(labelVersion);
 
         comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboVersion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboVersionActionPerformed(evt);
+            }
+        });
+
         jToolBar1.add(comboVersion);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -448,6 +559,18 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboVersionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboVersionActionPerformed
+        this.refresh();
+    }//GEN-LAST:event_comboVersionActionPerformed
+
+    private void comboKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboKeyActionPerformed
+        if(keyOrig.equals(""))
+            return;
+        
+        keyActual = (String)comboKey.getSelectedItem();
+        this.refresh();
+    }//GEN-LAST:event_comboKeyActionPerformed
 
     private void btnPrintMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseClicked
         PrinterJob pj = PrinterJob.getPrinterJob();
