@@ -49,6 +49,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelMessage = new javax.swing.JPanel();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
+        tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(80, 0));
         btnBlack.setText("Black");
 

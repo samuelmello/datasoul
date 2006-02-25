@@ -1,5 +1,5 @@
 /*
- * NewJFrame.java
+ * TemplateEditorFrame.java
  *
  * Created on December 24, 2005, 12:58 PM
  */
@@ -12,10 +12,12 @@ import javax.swing.JFileChooser;
  *
  * @author  samuelm
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class TemplateEditorFrame extends javax.swing.JFrame {
     
-    /** Creates new form NewJFrame */
-    public NewJFrame() {
+    /**
+     * Creates new form TemplateEditorFrame
+     */
+    public TemplateEditorFrame() {
         initComponents();
         templateEditorPanel1.setPropertiesTable(jTableProperties);
         jTableItems.setModel( templateEditorPanel1.getTemplate().getModel() );
@@ -239,7 +241,7 @@ public class NewJFrame extends javax.swing.JFrame {
         fc.setDialogTitle("Save Template As...");
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION ){
             String filename = fc.getSelectedFile().getAbsolutePath();
-            templateEditorPanel1.save(filename);
+            templateEditorPanel1.save();
         }
 
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -281,26 +283,6 @@ public class NewJFrame extends javax.swing.JFrame {
         templateEditorPanel1.deleteSelectedItem();
         
     }//GEN-LAST:event_btnDeleteActionPerformed
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
-                /*
-                try{
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-                 */
-                 
-                new NewJFrame().setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImage;

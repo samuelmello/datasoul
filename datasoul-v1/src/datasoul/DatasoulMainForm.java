@@ -8,12 +8,8 @@ package datasoul;
 
 import datasoul.datashow.DatashowPanel;
 import datasoul.song.SongsPanel;
-import java.awt.Image;
-import java.awt.LayoutManager;
-import javax.swing.JFileChooser;
+import datasoul.templates.TemplatePanel;
 import javax.swing.UIManager;
-import org.jdesktop.layout.LayoutStyle;
-import java.util.Locale;
 
 /**
  *
@@ -21,8 +17,15 @@ import java.util.Locale;
  */
 public class DatasoulMainForm extends javax.swing.JFrame {
 
+    
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
+    public TemplatePanel templates = new TemplatePanel();
+    
+    org.jdesktop.layout.GroupLayout songsLayout;
+    org.jdesktop.layout.GroupLayout datashowLayout;
+    org.jdesktop.layout.GroupLayout templatesLayout;
+    
     
     /**
      * Creates new form DatasoulMainForm
@@ -33,27 +36,76 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datasoul.gif")).getImage());
         
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+        // Initialize datashow Layout
+        datashowLayout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        datashowLayout.setHorizontalGroup(
+            datashowLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(datashow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
             .add(toolBarMain)
         );
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+        datashowLayout.setVerticalGroup(
+            datashowLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, datashowLayout.createSequentialGroup()
                 .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(datashow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
 
-        songs.setVisible(false);
-        datashow.setVisible(true);
-        datashow.validate();
+        // Initialize songs layout
+        songsLayout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        songsLayout.setHorizontalGroup(
+            songsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(songs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .add(toolBarMain)
+        );
+        songsLayout.setVerticalGroup(
+            songsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, songsLayout.createSequentialGroup()
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(songs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+        );
+        
+        // Initialize templates layout
+        templatesLayout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        templatesLayout.setHorizontalGroup(
+            templatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(templates, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .add(toolBarMain)
+        );
+        templatesLayout.setVerticalGroup(
+            templatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, templatesLayout.createSequentialGroup()
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(templates, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+        );
+        
 
-        getContentPane().setLayout(layout);
+        showPanel("datashow");
+        
+    }
+    
+    private void showPanel(String panel){
+        
+        songs.setVisible(false);
+        datashow.setVisible(false);
+        templates.setVisible(false);
+        
+        if (panel.equals("datashow")){
+            datashow.setVisible(true);
+            getContentPane().setLayout(datashowLayout);
+            datashow.validate();
+        }else if (panel.equals("songs")){
+            songs.setVisible(true);
+            getContentPane().setLayout(songsLayout);
+            songs.validate();
+        }else if (panel.equals("templates")){
+            templates.setVisible(true);
+            getContentPane().setLayout(templatesLayout);
+            templates.validate();
+        }
+        
     }
     
     /** This method is called from within the constructor to
@@ -66,6 +118,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain = new javax.swing.JToolBar();
         btnDatashow = new javax.swing.JButton();
         btnSongs = new javax.swing.JButton();
+        btnTemplates = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         menuBar = new javax.swing.JMenuBar();
         menu = new javax.swing.JMenu();
@@ -94,6 +147,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnSongs);
 
+        btnTemplates.setText("Templates");
+        btnTemplates.setMaximumSize(new java.awt.Dimension(66, 44));
+        btnTemplates.setMinimumSize(new java.awt.Dimension(66, 44));
+        btnTemplates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemplatesActionPerformed(evt);
+            }
+        });
+
+        toolBarMain.add(btnTemplates);
+
         toolBarMain.add(jSeparator1);
 
         menu.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MENU"));
@@ -111,54 +175,27 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                 .add(toolBarMain)
-                .addContainerGap(496, Short.MAX_VALUE))
+                .addContainerGap(408, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
+
+        showPanel("templates");
+        
+    }//GEN-LAST:event_btnTemplatesActionPerformed
+
     private void btnSongsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSongsMouseClicked
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(songs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(songs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
-        );
-
-        datashow.setVisible(false);
-            songs.setVisible(true);
-            songs.validate();
+    
+        showPanel("songs");
   
     }//GEN-LAST:event_btnSongsMouseClicked
 
     private void btnDatashowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatashowMouseClicked
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(datashow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(datashow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
-        );
-
-        songs.setVisible(false);
-            datashow.setVisible(true);
-            datashow.validate();
+        
+        showPanel("datashow");
+        
     }//GEN-LAST:event_btnDatashowMouseClicked
     
     /**
@@ -183,6 +220,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDatashow;
     private javax.swing.JButton btnSongs;
+    private javax.swing.JButton btnTemplates;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JMenu menu;
     private javax.swing.JMenuBar menuBar;

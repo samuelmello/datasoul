@@ -81,8 +81,10 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(51, 255, 0));
-        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        setBackground(new java.awt.Color(204, 255, 204));
+        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        setMaximumSize(new java.awt.Dimension(640, 480));
+        setMinimumSize(new java.awt.Dimension(640, 480));
         setPreferredSize(new java.awt.Dimension(640, 480));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -105,11 +107,11 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 457, Short.MAX_VALUE)
+            .add(0, 660, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 305, Short.MAX_VALUE)
+            .add(0, 509, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -185,6 +187,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         template.getModel().fireTableDataChanged();
     }
     
+    
     public void deleteSelectedItem(){
         if (selectedItem != null){
             selectedItem.removeTableModelListener(this);
@@ -214,18 +217,26 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         }
     }
     
-    public void save(String filename){
+    public void save(){
+        
+        // TODO: Adicionar Validacao de nome
+        
         try{
-            template.save(filename);
+            template.save();
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this,"Unable to save template:\n"+e.getMessage(),"DataSoul Error",0);    
         }        
     }
     
-    public void open(String filename){
+    public void open(String templatename){
         try{
             selectedItem = null;
-            template = new DisplayTemplate(filename);
+            template = TemplateManager.getDisplayTemplate(templatename);
+           
+            for (TemplateItem t : template.getItems()){
+                t.addTableModelListener(this);
+            }
+            
             propTable.setModel(template);
             this.repaint();
         }catch(Exception e) {
@@ -233,6 +244,31 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             JOptionPane.showMessageDialog(this,"Unable to open template:\n"+e.getMessage(),"DataSoul Error",0);    
         }        
         
+    }
+    
+    public void openNewTemplate(){
+        
+        try{
+            // Save the old template, if the user want
+            int save = JOptionPane.showConfirmDialog(this, "Save the changes?", "Save Template", JOptionPane.YES_NO_CANCEL_OPTION);
+            switch (save){
+                case JOptionPane.CANCEL_OPTION:
+                    return;
+                case JOptionPane.YES_OPTION:
+                    template.save();
+                    break;
+            }
+            
+            // Create a new one
+            selectedItem = null;
+            template = new DisplayTemplate();
+            propTable.setModel(template);
+            this.repaint();
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this,"Unable to create template:\n"+e.getMessage(),"DataSoul Error",0);
+        }
     }
     
 }

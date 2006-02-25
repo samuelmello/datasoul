@@ -11,6 +11,7 @@ package datasoul.templates;
 
 import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -40,17 +41,51 @@ public class DisplayTemplate extends AttributedObject {
         super();
         items = new ArrayList<TemplateItem>();
         model = new DisplayTemplateTableModel();
+        
+        // try to find a Name
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        int i = 0;
+        File file = new File(path);
+        String[] files = file.list();
+        
+        boolean found = false;
+        
+        while (found == false){
+            
+            boolean exists = false;
+            String tmp = "Untitled"+i;
+            for (String s : files){
+                if (s.equals(tmp+".template")){
+                    exists = true;
+                    break; //for
+                }
+            }
+            
+            if (exists == false){
+                this.setName(tmp);
+                found = true;
+            }else{
+                i++;
+            }
+
+        }
+        
+
+        
+
     }
     
     /**
      * Loads an existing DisplayTemplate
      */
-    public DisplayTemplate(String filename) throws Exception {
+    public DisplayTemplate(String name) throws Exception {
         
         super();
         items = new ArrayList<TemplateItem>();
         model = new DisplayTemplateTableModel();
         
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String filename = path + System.getProperty("file.separator") + name + ".template";
         
         Document dom=null;
         Node node=null;
@@ -84,8 +119,18 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     public void setName(String name){
+        
+        // TODO: Adicionar Validacao de nome aqui
+        
         this.name = name;
+        firePropChanged("Name");
     }
+    
+    @Override
+    public String toString(){
+        return this.name;
+    }
+    
     
     /**
      * items are exported as default access level to
@@ -244,7 +289,11 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     
-    public void save(String filename) throws Exception {
+    public void save() throws Exception {
+        
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String filename = path + System.getProperty("file.separator") + this.getName()+".template";
+        
         Node node = this.writeObject();
         Document doc = node.getOwnerDocument();
         doc.appendChild( node);                        // Add Root to Document
