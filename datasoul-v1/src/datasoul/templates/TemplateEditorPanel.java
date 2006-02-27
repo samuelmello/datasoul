@@ -33,7 +33,6 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     /** Creates new form TemplateEditorPanel */
     public TemplateEditorPanel() {
         initComponents();
-        template = new DisplayTemplate();
     }
     
     public void addItem(TemplateItem t){
@@ -52,7 +51,9 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         
         Graphics2D g2 =  (Graphics2D) g;
         
-        template.paint(g2);
+        if (template != null){
+            template.paint(g2);
+        }
         
         // if this item is selected, draw a blue border
         if (selectedItem != null){
@@ -176,6 +177,11 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     
     public void setPropertiesTable(JTable prop){
         this.propTable = prop;
+        // NetBeans IDE does not works well when creating 
+        // objects in the constructor. So, we allocate the first template here
+        if (template == null){
+            template = new DisplayTemplate();
+        }
         prop.setModel(template);
     }
     

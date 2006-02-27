@@ -44,7 +44,7 @@ public class TextTemplateItem extends TemplateItem {
     private String vertAlign;
     private String textWidth;
     private String underline;
-    
+    private String content;
     
         
     private AttributedString atribStr;
@@ -54,6 +54,7 @@ public class TextTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
+        properties.add("Content");
         properties.add("Text");
         properties.add("FontName");
         properties.add("FontSize");
@@ -67,6 +68,12 @@ public class TextTemplateItem extends TemplateItem {
 
     }
 
+    private static JComboBox cbAlignment;
+    private static JComboBox cbContent;
+    private static JComboBox cbVerticalAlignment;
+    private static JComboBox cbTextWidth;
+    private static JComboBox cbUnderline;
+    private static JComboBox cbFontName;
 
     public TextTemplateItem () {
         
@@ -74,6 +81,7 @@ public class TextTemplateItem extends TemplateItem {
         
         this.setWidth(100);
         this.setHeight(100);
+        this.setContent("Static");
         this.setText("TextItem");
         this.setFontSize(16f);
         this.setAlignment("Left");
@@ -84,39 +92,59 @@ public class TextTemplateItem extends TemplateItem {
         this.setFontColor(Color.BLACK);
         this.setOutlineColor(Color.BLACK);
 
-        JComboBox cb = new JComboBox();
-        cb.addItem("Left");
-        cb.addItem("Center");
-        cb.addItem("Right");
-        registerEditorComboBox("Alignment", cb);
+        if (cbContent == null){
+            cbContent = new JComboBox();
+            cbContent.addItem("Static");
+            cbContent.addItem("Slide");
+            cbContent.addItem("NextSlide");
+            cbContent.addItem("Title");
+            cbContent.addItem("Clock");
+        }
+        registerEditorComboBox("Content", cbContent);
         
-        cb = new JComboBox();
-        cb.addItem("Top");
-        cb.addItem("Middle");
-        cb.addItem("Bottom");
-        registerEditorComboBox("VerticalAlignment", cb);
+        if (cbAlignment == null){
+            cbAlignment = new JComboBox();
+            cbAlignment.addItem("Left");
+            cbAlignment.addItem("Center");
+            cbAlignment.addItem("Right");
+        }
+        registerEditorComboBox("Alignment", cbAlignment);
         
-        cb = new JComboBox();
-        cb.addItem("Condensed");
-        cb.addItem("SemiCondensed");
-        cb.addItem("Regular");
-        cb.addItem("SemiExtended");
-        cb.addItem("Extended");
-        registerEditorComboBox("TextWidth", cb);
+        if (cbVerticalAlignment == null) {
+            cbVerticalAlignment = new JComboBox();
+            cbVerticalAlignment.addItem("Top");
+            cbVerticalAlignment.addItem("Middle");
+            cbVerticalAlignment.addItem("Bottom");
+        }
+        registerEditorComboBox("VerticalAlignment", cbVerticalAlignment);
+        
+        if (cbTextWidth == null){
+            cbTextWidth = new JComboBox();
+            cbTextWidth.addItem("Condensed");
+            cbTextWidth.addItem("SemiCondensed");
+            cbTextWidth.addItem("Regular");
+            cbTextWidth.addItem("SemiExtended");
+            cbTextWidth.addItem("Extended");
+        }
+        registerEditorComboBox("TextWidth", cbTextWidth);
 
-        cb = new JComboBox();
-        cb.addItem("Off");
-        cb.addItem("Simple");
-        cb.addItem("TwoPixel");
-        cb.addItem("Dotted");
-        cb.addItem("Dashed");
-        registerEditorComboBox("Underline", cb);
+        if (cbUnderline == null){
+            cbUnderline = new JComboBox();
+            cbUnderline.addItem("Off");
+            cbUnderline.addItem("Simple");
+            cbUnderline.addItem("TwoPixel");
+            cbUnderline.addItem("Dotted");
+            cbUnderline.addItem("Dashed");
+        }
+        registerEditorComboBox("Underline", cbUnderline);
         
-        String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-        cb = new JComboBox();
-        for ( int i = 0; i < fontList.length; i++ )
-          cb.addItem( fontList[i] );
-        registerEditorComboBox("FontName", cb);
+        if (cbFontName == null){
+            String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+            cbFontName = new JComboBox();
+            for ( int i = 0; i < fontList.length; i++ )
+              cbFontName.addItem( fontList[i] );
+        }
+        registerEditorComboBox("FontName", cbFontName);
         
         registerColorChooser("FontColor");
         registerColorChooser("OutlineColor");
@@ -448,8 +476,14 @@ getFullWord: {
             atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DASHED);
             firePropChanged("Underline");
         }
-        
-        
     }
     
+    
+    public String getContent(){
+        return this.content;
+    }
+    
+    public void setContent(String content){
+        this.content = content;
+    }
 }
