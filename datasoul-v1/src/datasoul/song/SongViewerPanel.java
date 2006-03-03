@@ -36,6 +36,8 @@ import java.io.OutputStream;
 import java.io.StringReader;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Vector;
 import javax.print.attribute.AttributeSet;
 import javax.swing.ImageIcon;
@@ -76,6 +78,8 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private String keyActual="";
     
     private Vector<String> notes = new Vector<String>();
+
+    private static ArrayList<String> specialWords = new ArrayList<String>();    
     
     private void loadSongTemplate(){
         songTemplate = new SongTemplate();
@@ -139,7 +143,17 @@ public class SongViewerPanel extends javax.swing.JPanel {
         comboKey.addItem("A");
         comboKey.addItem("A#");
         comboKey.addItem("B");
-                
+
+        specialWords.add("Intro");
+        specialWords.add("(1x)");
+        specialWords.add("(2x)");
+        specialWords.add("(3x)");
+        specialWords.add("(4x)");
+        specialWords.add("(5x)");        
+        specialWords.add("(6x)");
+        specialWords.add("(7x)");
+        specialWords.add("(8x)");        
+        specialWords.add("(9x)");        
         
         comboVersion.removeAllItems();
         comboVersion.addItem("Complete");
@@ -263,12 +277,17 @@ public class SongViewerPanel extends javax.swing.JPanel {
     }
     
     private boolean isChordsLine(String line){
-
         String[] chords = line.split(" ");        
         ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
-        for(int i=0;i<chords.length;i++){
+  loop: for(int i=0;i<chords.length;i++){
             if(!chords[i].equals(""))
             {
+                for(int j=0;j<specialWords.size();j++){
+                    if(chords[i].toLowerCase().contains(specialWords.get(j).toLowerCase())){
+                        continue loop;
+                    }
+                }
+                
                 Chord chord = chordsDB.getChordByName(chords[i]);
                 if(chord==null)
                     return false;
@@ -302,8 +321,15 @@ public class SongViewerPanel extends javax.swing.JPanel {
         
         for(int i=0;i<chords.length;i++){
             if(!chords[i].equals("")){
+                boolean specialWord = false;
+                for(int j=0;j<specialWords.size();j++){
+                    if(chords[i].toLowerCase().contains(specialWords.get(j).toLowerCase())){
+                        specialWord = true;
+                    }
+                }
+                
                 String thisChord = changeKey(chords[i]);
-                if(!chordsName.contains(thisChord))
+                if(!chordsName.contains(thisChord)&&!specialWord)
                     chordsName.add(thisChord);
                 index = strAux.length();
                 if(index<nextline.length()){
@@ -400,7 +426,13 @@ public class SongViewerPanel extends javax.swing.JPanel {
         for(int i=0; i<chordsName.size();i++){
             Chord chord = chordsDB.getChordByName(chordsName.get(i));
             if(chord!=null){
-                ChordShapePanel csp = new ChordShapePanel(chord.getName(),chord.getShape());
+                int shapeSize = 1;
+                if(songTemplate.getChordShapeSize().equals("Small")){
+                    shapeSize = 3;
+                }else if(songTemplate.getChordShapeSize().equals("Medium")){
+                    shapeSize = 2;
+                }
+                ChordShapePanel csp = new ChordShapePanel(shapeSize, chord.getName(),chord.getShape());
                 
                 StyleConstants.setIcon(chordShapeStyle, new ImageIcon(csp.createImage()));
                 doc.insertString(doc.getLength(),"text to be ignored", chordShapeStyle);
@@ -637,7 +669,13 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 for(int i=0; i<chordsName.size();i++){
                     Chord chord = chordsDB.getChordByName(chordsName.get(i));
                     if(chord!=null){
-                        ChordShapePanel csp = new ChordShapePanel(chord.getName(),chord.getShape());
+                        int shapeSize = 1;
+                        if(songTemplate.getChordShapeSize().equals("Small")){
+                            shapeSize = 3;
+                        }else if(songTemplate.getChordShapeSize().equals("Medium")){
+                            shapeSize = 2;
+                        }
+                        ChordShapePanel csp = new ChordShapePanel(shapeSize, chord.getName(),chord.getShape());
 
                         ByteArrayOutputStream baos=new ByteArrayOutputStream();
                         BufferedImage bi= csp.createImage();

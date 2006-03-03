@@ -35,18 +35,19 @@ public class SongEditorFrame extends javax.swing.JFrame {
     
 
     private Song song;
-    
+    private SongListTable songListTable;
+    private boolean newSong;
 
     /**
      * Creates new form SongEditorFrame
      */
-    public SongEditorFrame(File file) {
+    public SongEditorFrame(SongListTable songListTable, File file) {
         initComponents();
+        
         Document dom=null;
         Node node=null;
 
-        
-        
+        this.songListTable = songListTable;
         
         try {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -75,27 +76,37 @@ public class SongEditorFrame extends javax.swing.JFrame {
         
         //fill object
         fillGuiValues();
+        
+        newSong = false;
     }
 
     /**
      * Creates new form SongEditorFrame
      */
-    public SongEditorFrame(Song songIn) {
+    public SongEditorFrame(SongListTable songListTable, Song songIn) {
         initComponents();
 
+        this.songListTable = songListTable;
+        
         song = songIn;
         this.setTitle(songIn.getFileName());
         
         //fill object
         fillGuiValues();
+        
+        newSong = false;
     }
     
-    public SongEditorFrame() {
+    public SongEditorFrame(SongListTable songListTable) {
         initComponents();
+
+        this.songListTable = songListTable;
 
         song = new Song();
 
         this.setTitle("");
+        
+        newSong = true;
     }
     
     
@@ -147,9 +158,11 @@ public class SongEditorFrame extends javax.swing.JFrame {
 
         labelName.setFont(new java.awt.Font("Arial", 1, 11));
         labelName.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NAME"));
+        labelName.setFocusable(false);
 
         labelAuthor.setFont(new java.awt.Font("Arial", 1, 11));
         labelAuthor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AUTHOR"));
+        labelAuthor.setFocusable(false);
 
         tabSong.setFont(new java.awt.Font("Arial", 1, 11));
         textLyrics.setFont(new java.awt.Font("Courier New", 0, 12));
@@ -193,24 +206,24 @@ public class SongEditorFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                    .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
                         .add(labelName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
                         .add(labelAuthor)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)))
+                        .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)))
                 .addContainerGap())
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -247,21 +260,21 @@ public class SongEditorFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Please fill the field \"Song Name\"");
             return;
         }
+
+        String filename = this.fieldName.getText();
+        if(!filename.contains(".song"))
+            filename = filename + ".song";
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
+                "songs"+ System.getProperty("file.separator")+filename;
         
-        if(this.fieldName.getText().equals(song.getFilePath())){
-            saveFile();
-        }else{
+        if(!path.equals(song.getFilePath())){
             File file = new File(song.getFilePath());
             file.delete();
-            String filename = this.fieldName.getText();
-            if(!filename.contains(".song"))
-                filename = filename + ".song";
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
-                    "songs"+ System.getProperty("file.separator")+filename;
-            song.setFilePath(path);
-            
-            saveFile();            
         }
+        song.setFilePath(path);
+        
+        saveFile();            
+        
     }//GEN-LAST:event_btnSaveMouseClicked
 
   private void saveFile(){
@@ -279,10 +292,17 @@ public class SongEditorFrame extends javax.swing.JFrame {
             xs.setOutputFormat(outFormat);
             xs.setOutputByteStream(fos);
             xs.serialize(doc);
+            fos.close();
 
         } catch(Exception e){
             JOptionPane.showMessageDialog(this,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
         }
+        
+        if(newSong){
+           songListTable.addItem(song);
+           newSong = false;
+        }
+        songListTable.sortByName();
     }
     
     /**

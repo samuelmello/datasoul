@@ -94,6 +94,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
         }//if there is any file
         songTable.setView("FileName");
         songTable.addTableModelListener(this);
+        songTable.sortByName();
         
         tableSongList.setModel(songTable);
     }
@@ -236,16 +237,13 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
     }//GEN-LAST:event_btnRemoveMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-///        File file = new File("D:/Meus Documentos/Datasoul/songs/"+listSongs.getModel().getElementAt(listSongs.getSelectedIndex())+".song");
-///        SongEditorFrame songEditor = new SongEditorFrame(file);
 
-        SongEditorFrame songEditor = new SongEditorFrame((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));        
+        SongEditorFrame songEditor = new SongEditorFrame((SongListTable)this.tableSongList.getModel(),(Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));        
         songEditor.setVisible(true);
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
-        File file = new File("");
-        SongEditorFrame songEditor = new SongEditorFrame();
+        SongEditorFrame songEditor = new SongEditorFrame((SongListTable)this.tableSongList.getModel());
 
         songEditor.setVisible(true);
     }//GEN-LAST:event_btnNewMouseClicked

@@ -76,9 +76,10 @@ public class ChordsDB extends ListTable{
             if(nodeList.item(i).getNodeType()==1){
                 Chord chord = new Chord();
                 chord.readObject(nodeList.item(i));
-                this.objectList.add(chord);
+                this.addItem(chord);
             }
         }
+        this.sortByName();
      }
     
 }

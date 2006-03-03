@@ -8,6 +8,7 @@ package datasoul.song;
 
 import com.sun.jndi.url.dns.dnsURLContext;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,13 +17,24 @@ import java.util.ArrayList;
 public class ChordEditorFrame extends javax.swing.JFrame {
 
     private Chord chord;
+    private ChordsDB chordsDB;
+    private boolean isNewChord;
+    
     /** Creates new form ChordEditorFrame */
-    public ChordEditorFrame(Chord chord) {
+    public ChordEditorFrame(ChordsDB chordsDB, Chord chord) {
+        if(chord==null){
+            this.chord = new Chord();            
+            isNewChord = true;
+        }else{
+            this.chord = chord;
+            isNewChord = false;
+        }
+        this.chordsDB = chordsDB;
+        
         initComponents();
         
-        this.chord = chord;
         
-        ArrayList<String> shapes = chord.getShapes();
+        ArrayList<String> shapes = this.chord.getShapes();
         if(shapes.size()>0)
             this.chordShapePanel1.setShape(shapes.get(0));
         if(shapes.size()>1)
@@ -36,7 +48,7 @@ public class ChordEditorFrame extends javax.swing.JFrame {
         if(shapes.size()>5)
             this.chordShapePanel6.setShape(shapes.get(5));
         
-        this.fieldName.setText(chord.getName());
+        this.fieldName.setText(this.chord.getName());
     }
     
     /** This method is called from within the constructor to
@@ -206,6 +218,13 @@ public class ChordEditorFrame extends javax.swing.JFrame {
 
     private void btnApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyMouseClicked
         chord.removeAllShapes();
+
+        if(this.fieldName.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please fill the chord name, it is empty");
+            return;
+        }
+
+        chord.setName(this.fieldName.getText().replace(" ",""));
         
         if(!this.chordShapePanel1.isEmpty())
             chord.addShape(this.chordShapePanel1.getShape());
@@ -220,7 +239,11 @@ public class ChordEditorFrame extends javax.swing.JFrame {
         if(!this.chordShapePanel6.isEmpty())
                 chord.addShape(this.chordShapePanel6.getShape());
 
-        chord.setName(this.fieldName.getText().replace(" ",""));
+        if(isNewChord){
+            chordsDB.addItem(this.chord);
+        }
+
+        chordsDB.sortByName();        
         this.dispose();
     }//GEN-LAST:event_btnApplyMouseClicked
     

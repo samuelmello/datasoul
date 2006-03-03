@@ -113,7 +113,7 @@ public class Song extends SerializableObject{
 
     public boolean containsStringInField(String field, String strSearch) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException{
         
-        return (boolean)(((String)this.getClass().getMethod("get"+field).invoke(this)).contains(strSearch));     
+        return (boolean)(((String)this.getClass().getMethod("get"+field).invoke(this)).toLowerCase().contains(strSearch.toLowerCase()));     
     }
     
     public void setView(String view){

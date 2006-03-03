@@ -35,11 +35,23 @@ public class ChordShapePanel extends javax.swing.JPanel {
     private String chordName; 
     private int startFret;
     private boolean editable;
+    private int chordSize;
+    private int sbc;
+    private int sbf;
+    private int snb;
 
     /**
      * Creates new form ChordShapePanel
      */
     public ChordShapePanel() {
+        this.chordSize = 1;
+        //size between chords
+        sbc = 10 - (chordSize - 1)*2;
+        //size between frets
+        sbf = 20 - (chordSize - 1)*4;
+        //note ball size
+        snb = 8 - (chordSize - 1);
+        
         initComponents();
 
         startFret = 1;
@@ -58,7 +70,15 @@ public class ChordShapePanel extends javax.swing.JPanel {
         return false;
     }
     
-    public ChordShapePanel(String chordName, String shape) {
+    public ChordShapePanel(int chordSize, String chordName, String shape) {
+        this.chordSize = chordSize;
+        //size between chords
+        sbc = 10 - (chordSize - 1)*2;
+        //size between frets
+        sbf = 20 - (chordSize - 1)*4;
+        //note ball size
+        snb = 8 - (chordSize - 1);
+        
         initComponents();
 
         startFret = 1;
@@ -107,13 +127,13 @@ public class ChordShapePanel extends javax.swing.JPanel {
 
         //draw white background
         g2.setPaint(Color.white);
-        g2.fill(new Rectangle2D.Double(0,0,80,150));        
+        g2.fill(new Rectangle2D.Double(0,0,30+5*sbc,50+5*sbf));        
 
         //draw chord name
         g2.setPaint(Color.black);        
-        g2.setFont(new Font("Arial", Font.BOLD, 12));
+        g2.setFont(new Font("Arial", Font.BOLD, 13 - chordSize));
         g2.drawString(this.getChordName(), 20, 23);
-        g2.setFont(new Font("Arial", Font.PLAIN, 10));
+        g2.setFont(new Font("Arial", Font.PLAIN, 11 - chordSize));
         
         g2.setPaint(Color.black);        
         g2.drawString(String.valueOf(this.startFret), 2, 43);
@@ -125,19 +145,20 @@ public class ChordShapePanel extends javax.swing.JPanel {
             g2.draw(new Rectangle2D.Double(13,39,3,0));                
         }
         
-        g2.draw(new Rectangle2D.Double(20,31,50,100));        
         //draw horizontal lines
-        g2.draw(new Rectangle2D.Double(20,30,10,100));
-        g2.draw(new Rectangle2D.Double(30,30,10,100));
-        g2.draw(new Rectangle2D.Double(40,30,10,100));        
-        g2.draw(new Rectangle2D.Double(50,30,10,100));
+        g2.draw(new Rectangle2D.Double(20,31,5*sbc,sbf*5));        
+        g2.draw(new Rectangle2D.Double(20,30,sbc,sbf*5));
+        g2.draw(new Rectangle2D.Double(20+sbc,30,sbc,sbf*5));
+        g2.draw(new Rectangle2D.Double(20+2*sbc,30,sbc,sbf*5));        
+        g2.draw(new Rectangle2D.Double(20+3*sbc,30,sbc,sbf*5));
+        g2.draw(new Rectangle2D.Double(20+4*sbc,30,sbc,sbf*5));        
 
         //draw vertical lines
-        g2.draw(new Rectangle2D.Double(20,30,50,20));        
-        g2.draw(new Rectangle2D.Double(20,30,50,40));                
-        g2.draw(new Rectangle2D.Double(20,30,50,60));        
-        g2.draw(new Rectangle2D.Double(20,30,50,80));        
-        g2.draw(new Rectangle2D.Double(20,30,50,100));        
+        g2.draw(new Rectangle2D.Double(20,30,5*sbc,1*sbf));        
+        g2.draw(new Rectangle2D.Double(20,30,5*sbc,2*sbf));                
+        g2.draw(new Rectangle2D.Double(20,30,5*sbc,3*sbf));        
+        g2.draw(new Rectangle2D.Double(20,30,5*sbc,4*sbf));        
+        g2.draw(new Rectangle2D.Double(20,30,5*sbc,5*sbf));        
 
         String[] notes = shape.split(" ");
         int numX = 0;
@@ -151,25 +172,27 @@ public class ChordShapePanel extends javax.swing.JPanel {
                     min = num;
             }
         }
+        
         //print pestana
         if(min>0){
             g2.setPaint(Color.decode("0xff8888"));
             if(numX==0){
                 int fret = (min-startFret+1);
-                g2.fill(new RoundRectangle2D.Double(15,16+20*fret,60,8,8,8));
+                g2.fill(new RoundRectangle2D.Double(20-sbc/2,(30-sbf/2-snb/2)+sbf*fret,6*sbc,snb,snb,snb));
             }else if(numX==1){
                 if(notes[0].equals("X")){
                     int fret = (min-startFret+1);
-                    g2.fill(new RoundRectangle2D.Double(25,16+20*fret,50,8,8,8));
+                    g2.fill(new RoundRectangle2D.Double(20+sbc/2,(30-sbf/2-snb/2)+sbf*fret,5*sbc,snb,snb,snb));
                 }
                 if(notes[5].equals("X")){
                     int fret = (min-startFret+1);
-                    g2.fill(new RoundRectangle2D.Double(15,16+20*fret,50,8,8,8));
+                    g2.fill(new RoundRectangle2D.Double(20-sbc/2,(30-sbf/2-snb/2)+sbf*fret,5*sbc,snb,snb,snb));
                 }
             }
         }
 
-        
+        int sx = 12 - chordSize*2;
+        g2.setFont(new Font("Arial", Font.PLAIN, sx));
         //print the notes
         boolean bassNote = true;
         if(notes.length==6){
@@ -177,33 +200,35 @@ public class ChordShapePanel extends javax.swing.JPanel {
                 if(notes[i].equals("X")){
                     //string without note
                     g2.setPaint(Color.black);        
-                    g2.drawString("X", 17+10*i, 142);
+                    g2.drawString("X", 17+sbc*i, 30+5*sbf+sx/2+7);
                 }else{
                     g2.setPaint(Color.red);        
                     if(Integer.parseInt(notes[i])>0){
                         //finger note
                         int fret = (Integer.parseInt(notes[i])-startFret+1);
-                        g2.fill(new Ellipse2D.Double(16+10*i,16+20*fret,8,8));
+                        g2.fill(new Ellipse2D.Double((20-snb/2)+sbc*i,(30-snb/2-sbf/2)+sbf*fret,snb,snb));
                     }else{
                         //free note
                         g2.setPaint(Color.blue);        
-                        g2.fill(new Ellipse2D.Double(16+10*i,27,8,8));
+                        g2.fill(new Ellipse2D.Double((20-snb/2)+sbc*i,30-snb/2+1,snb,snb));
                     }
                     g2.setPaint(Color.black);        
                     //if is the first note print a filled circle
                     if(bassNote){
-                        g2.fill(new Ellipse2D.Double(17+10*i,135,6,6));                    
+                        g2.fill(new Ellipse2D.Double(17+sbc*i,30+5*sbf+5,7-chordSize,7-chordSize));                    
                         bassNote = false;
                     }else{
-                        g2.draw(new Ellipse2D.Double(17+10*i,135,6,6));                    
+                        g2.draw(new Ellipse2D.Double(17+sbc*i,30+5*sbf+5,7-chordSize,7-chordSize));
                     }
                 }
             }
         }
+
     }
     
     public BufferedImage createImage(){
-        BufferedImage image = new BufferedImage(80,150,java.awt.image.BufferedImage.TYPE_INT_RGB);
+
+        BufferedImage image = new BufferedImage(20+10+5*sbc,30+20+5*sbf,java.awt.image.BufferedImage.TYPE_INT_RGB);
         Graphics g = image.getGraphics();
         
         drawShape(g);
@@ -279,13 +304,13 @@ public class ChordShapePanel extends javax.swing.JPanel {
                 return;
             }
 
-            int chordSelected = (int)Math.ceil((x-15)/10);
+            int chordSelected = (int)Math.ceil((x-15)/sbc);
             String[] notes = shape.split(" ");
             String strAux = "";
             for(int i=0;i<notes.length;i++){
                 if(i==chordSelected)    
-                    if(y<130)
-                        strAux = strAux + ((int)Math.ceil((y-10)/20)+startFret-1)+" ";
+                    if(y<30+5*sbf)
+                        strAux = strAux + ((int)Math.ceil((y-sbc)/sbf)+startFret-1)+" ";
                     else
                         strAux = strAux + "X ";
                 else

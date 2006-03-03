@@ -14,6 +14,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -109,11 +110,12 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
 
             ArrayList<String> shapes = chord.getShapes();
             for(int i=0;i<shapes.size();i++){
-                ChordShapePanel csp = new ChordShapePanel(chord.getName(), shapes.get(i));
+                ChordShapePanel csp = new ChordShapePanel(2, chord.getName(), shapes.get(i));
 
                 StyleConstants.setIcon(chordShapeStyle, new ImageIcon(csp.createImage()));
                     doc.insertString(doc.getLength(),"text to be ignored", chordShapeStyle);
             }
+            
         } catch (BadLocationException ex) {
             ex.printStackTrace();
         }
@@ -266,7 +268,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-        ChordEditorFrame cef = new ChordEditorFrame((Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
+        ChordEditorFrame cef = new ChordEditorFrame(chordsDB, (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
         cef.setVisible(true);
         cef.setLocation(evt.getX(),evt.getY());
     }//GEN-LAST:event_btnEditMouseClicked
@@ -279,9 +281,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeletebtnRemoveMouseClicked
 
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
-        Chord chord = new Chord();
-        getChordsDB().addItem(chord);
-        ChordEditorFrame cef = new ChordEditorFrame(chord);
+        ChordEditorFrame cef = new ChordEditorFrame(chordsDB, null);
         cef.setVisible(true);
         cef.setLocation(evt.getX(),evt.getY());        
     }//GEN-LAST:event_btnNewMouseClicked
