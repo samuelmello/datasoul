@@ -278,7 +278,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
     
     private boolean isChordsLine(String line){
         String[] chords = line.split(" ");        
-        ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
+        ChordsDB chordsDB = ChordsDB.getInstance();
   loop: for(int i=0;i<chords.length;i++){
             if(!chords[i].equals(""))
             {
@@ -422,7 +422,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
             doc.remove(0,doc.getLength());
         }
         
-        ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
+        ChordsDB chordsDB = ChordsDB.getInstance();
         for(int i=0; i<chordsName.size();i++){
             Chord chord = chordsDB.getChordByName(chordsName.get(i));
             if(chord!=null){
@@ -665,7 +665,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
               javax.swing.text.Document docChords = this.editorSongChords.getDocument();
               int chordsLength = docChords.getLength();
  
-                ChordsDB chordsDB = objectManager.getChordsManagerPanel().getChordsDB();
+                ChordsDB chordsDB = ChordsDB.getInstance();
                 for(int i=0; i<chordsName.size();i++){
                     Chord chord = chordsDB.getChordByName(chordsName.get(i));
                     if(chord!=null){

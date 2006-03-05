@@ -41,48 +41,15 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     public ChordsManagerPanel() {
         initComponents();
         
-        setChordsDB(new ChordsDB());
+        chordsDB = ChordsDB.getInstance();
 
-        loadChords();        
-        tableChordsList.setModel(getChordsDB());
+        tableChordsList.setModel(chordsDB);
 
         panelChordShapes.setLayout(new GridLayout());
         
         StyleContext sc = new StyleContext();
         Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
         chordShapeStyle = sc.addStyle("chordShapeStyle",null);
-    }
-
-    public void loadChords(){
-
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "chordsDB.xml";
-        
-        File chordsFile = new File(path);
-
-        Document dom=null;
-        Node node = null;
-        try {
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-                //Using factory get an instance of document builder
-                DocumentBuilder db = dbf.newDocumentBuilder();
-
-                //parse using builder to get DOM representation of the XML file
-                dom = db.parse(chordsFile);
-
-                //node = dom.getDocumentElement().getChildNodes().item(0);
-                node = dom.getElementsByTagName("ChordsDB").item(0);
-
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\n"+e.getMessage(),"DataSoul Error",0);    
-            return;
-        }        
-
-        try {
-            getChordsDB().readObject(node);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
-        }
     }
 
     
@@ -250,7 +217,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try{
-            Node node = getChordsDB().writeObject();
+            Node node = chordsDB.writeObject();
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
             FileOutputStream fos = new FileOutputStream("D:/Meus Documentos/Datasoul/chordsDB.xml");
@@ -286,13 +253,6 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         cef.setLocation(evt.getX(),evt.getY());        
     }//GEN-LAST:event_btnNewMouseClicked
 
-    public ChordsDB getChordsDB() {
-        return chordsDB;
-    }
-
-    public void setChordsDB(ChordsDB chordsDB) {
-        this.chordsDB = chordsDB;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;

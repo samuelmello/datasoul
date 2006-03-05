@@ -196,18 +196,11 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
               <SubComponents>
-                <Component class="datasoul.song.PraiseListPanel" name="praiseList">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Arial" size="11" style="1"/>
-                    </Property>
-                  </Properties>
+                <Component class="datasoul.datashow.ServiceListPanel" name="serviceList">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Praise List">
-                        <Property name="tabTitle" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                          <ResourceString bundle="datasoul/internationalize.properties" key="PRAISE_LIST" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                        </Property>
+                      <JTabbedPaneConstraints tabName="Service List">
+                        <Property name="tabTitle" type="java.lang.String" value="Service List"/>
                       </JTabbedPaneConstraints>
                     </Constraint>
                   </Constraints>

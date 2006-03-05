@@ -33,7 +33,7 @@ import org.w3c.dom.Node;
 public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
     private Object objectManager;    
-    private SongListTable songTable;
+    private AllSongsListTable allSongsListTable;
     /**
      * Creates new form SongsSearchPanel
      */
@@ -49,54 +49,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         comboField.addItem("Lyrics");
         comboField.setSelectedIndex(0);
         
-        songTable = new SongListTable();
+        allSongsListTable = AllSongsListTable.getInstance();
         
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "songs";
-        
-        File file = new File(path);
-        String[] files = file.list();
-        
-        // there is at least one file in the directroy?
-        if (files!=null){
-            int size = files.length;
-            
-            for(int i=0; i<size;i++){
-                if(files[i].contains(".song")){
-                    File songFile = new File(path + System.getProperty("file.separator") + files[i]);
-                    
-                    Document dom=null;
-                    Node node = null;
-                    Song song;
-                    try {
-                        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                        
-                        //Using factory get an instance of document builder
-                        DocumentBuilder db = dbf.newDocumentBuilder();
-                        
-                        //parse using builder to get DOM representation of the XML file
-                        dom = db.parse(songFile);
-                        
-                        //node = dom.getDocumentElement().getChildNodes().item(0);
-                        node = dom.getElementsByTagName("Song").item(0);
-                        
-                    }catch(Exception e) {
-                        JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
-                    }
-                    
-                    song = new Song();
-                    try {
-                        song.readObject(node);
-                        song.setFilePath(songFile.getPath());
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
-                    }
-                    
-                    
-                    songTable.addItem(song);
-                }
-            }
-        }
-        songTable.setView("FileName");
+        tableSongList.setModel(allSongsListTable);
     }
     
     /** This method is called from within the constructor to
@@ -243,10 +198,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         
         SongListTable foundSongTable = new SongListTable();
         
-        for(int i=0; i<songTable.getRowCount();i++){
+        for(int i=0; i<allSongsListTable.getRowCount();i++){
             try {
-                if(((Song)songTable.getValueAt(i,0)).containsStringInField(comboField.getSelectedItem().toString(),fieldString.getText())){
-                    foundSongTable.addItem(songTable.getValueAt(i,0));
+                if(((Song)allSongsListTable.getValueAt(i,0)).containsStringInField(comboField.getSelectedItem().toString(),fieldString.getText())){
+                    foundSongTable.addItem(allSongsListTable.getValueAt(i,0));
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this,"Error in searching.\nErro:"+ex.getMessage(),"DataSoul Error",0);    

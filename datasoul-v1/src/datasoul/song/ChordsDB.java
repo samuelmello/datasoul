@@ -12,9 +12,11 @@ package datasoul.song;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.SerializableObject;
+import java.io.File;
 import java.util.ArrayList;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -28,11 +30,46 @@ import org.w3c.dom.NodeList;
  */
 public class ChordsDB extends ListTable{
 
+    private static ChordsDB instance;
     /** Creates a new instance of ChordsDB */
-    public ChordsDB() {
+    private ChordsDB() {
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "chordsDB.xml";
+        
+        File chordsFile = new File(path);
 
+        Document dom=null;
+        Node node = null;
+        try {
+                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+                //Using factory get an instance of document builder
+                DocumentBuilder db = dbf.newDocumentBuilder();
+
+                //parse using builder to get DOM representation of the XML file
+                dom = db.parse(chordsFile);
+
+                //node = dom.getDocumentElement().getChildNodes().item(0);
+                node = dom.getElementsByTagName("ChordsDB").item(0);
+
+        }catch(Exception e) {
+            JOptionPane.showMessageDialog(null,"Error, the file is not well formed\n"+e.getMessage(),"DataSoul Error",0);    
+            return;
+        }        
+
+        try {
+            this.readObject(node);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+        }
     }
 
+    public static ChordsDB getInstance(){
+        if(instance==null){
+            instance = new ChordsDB();
+        }
+        return instance;
+    }
+    
     public String getColumnName(int columnIndex) {
         return "Chord";
     }

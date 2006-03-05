@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
  *
  * @author Administrador
  */
-public class Song extends SerializableObject{
+public class Song extends ServiceItem{
   
     private String songName="";
     private String songAuthor="";
@@ -53,18 +53,29 @@ public class Song extends SerializableObject{
         properties.add("ChordsComplete");
         properties.add("ChordsSimplified");
         properties.add("Obs");
+
     }
 
-    
     public void setSongName(String songName){
         this.songName = songName;
+        this.setTitle(songName);
     }
     public void setSongAuthor(String songAuthor){
         this.songAuthor = songAuthor;
     }
     public void setLyrics(String lyrics){
         this.lyrics = lyrics;
+
+        String slidesStr[] = lyrics.split("\n\n");
+        slides.clear();
+        TextServiceItemRenderer j;
+        for (int i=0; i<slidesStr.length; i++){
+            j = new TextServiceItemRenderer();
+            j.setText(slidesStr[i]);
+            slides.add(j);
+        }        
     }
+    
     public void setChordsComplete(String chordsComplete){
         this.chordsComplete = chordsComplete;
     }

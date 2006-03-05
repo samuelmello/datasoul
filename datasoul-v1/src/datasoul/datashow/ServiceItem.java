@@ -30,9 +30,9 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     /**
      * Contain the slide itens
      */
-    ArrayList<ServiceItemRenderer> slides;
+    protected ArrayList<ServiceItemRenderer> slides;
     
-    private String title;
+    protected String title;
     
     
     /** Creates a new instance of ServiceItem */

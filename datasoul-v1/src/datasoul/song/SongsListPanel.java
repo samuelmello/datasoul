@@ -44,59 +44,10 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
     
     public void loadMusics(){
 
-        SongListTable songTable = new SongListTable();
+        SongListTable songListTable = AllSongsListTable.getInstance();
+        songListTable.addTableModelListener(this);
         
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "songs";
-        
-        File file = new File(path);
-        String[] files = file.list();
-        
-        // there is at least one file in the directroy?
-        if (files!=null){
-            int size = files.length;
-            
-            for(int i=0; i<size;i++){
-                if(files[i].contains(".song")){
-                    File songFile = new File(path + System.getProperty("file.separator") + files[i]);
-                    
-                    Document dom=null;
-                    Node node = null;
-                    Song song;
-                    try {
-                        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                        
-                        //Using factory get an instance of document builder
-                        DocumentBuilder db = dbf.newDocumentBuilder();
-                        
-                        //parse using builder to get DOM representation of the XML file
-                        dom = db.parse(songFile);
-                        
-                        //node = dom.getDocumentElement().getChildNodes().item(0);
-                        node = dom.getElementsByTagName("Song").item(0);
-                        
-                    }catch(Exception e) {
-                        JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
-                    }
-                    
-                    song = new Song();
-                    try {
-                        song.readObject(node);
-                        song.setFilePath(songFile.getPath());
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
-                    }
-                    
-                    
-                    songTable.addItem(song);
-                }
-            }
-            
-        }//if there is any file
-        songTable.setView("FileName");
-        songTable.addTableModelListener(this);
-        songTable.sortByName();
-        
-        tableSongList.setModel(songTable);
+        tableSongList.setModel(songListTable);
     }
     /** This method is called from within the constructor to
      * initialize the form.

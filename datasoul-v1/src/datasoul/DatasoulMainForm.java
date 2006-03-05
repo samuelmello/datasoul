@@ -7,6 +7,8 @@
 package datasoul;
 
 import datasoul.datashow.DatashowPanel;
+import datasoul.song.AllSongsListTable;
+import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.templates.TemplatePanel;
 import javax.swing.UIManager;
@@ -31,7 +33,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
      * Creates new form DatasoulMainForm
      */
     public DatasoulMainForm() {
-       
+        
         initComponents();
 
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datasoul.gif")).getImage());
@@ -85,6 +87,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         showPanel("datashow");
         
     }
+    
     
     private void showPanel(String panel){
         
@@ -210,6 +213,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             
         }
 
+        //start splashscreen
+        SplashScreen splashScreen = new SplashScreen("/datasoul/icons/splashScreen.gif");
+        splashScreen.splashShow();
+
+        AllSongsListTable.getInstance();
+        ChordsDB.getInstance();
+
+        //stop splashscreen
+        splashScreen.splashHide();        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DatasoulMainForm().setVisible(true);

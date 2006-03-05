@@ -20,8 +20,20 @@ import datasoul.song.*;
  */
 public class ServiceListTable extends ListTable{
     
+    static ServiceListTable instance;
     /** Creates a new instance of ServiceListTable */
-    public ServiceListTable() {
+    private ServiceListTable() {
+       //so para teste
+       Song song = new Song();
+       song.setSongName("Opa");
+       this.addItem(song);        
+    }
+    
+    static ServiceListTable getInstance(){
+        if(instance==null){
+            instance = new ServiceListTable();
+        }
+        return instance;
     }
     
 }

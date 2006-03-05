@@ -24,7 +24,7 @@ public class SongsPanel extends javax.swing.JPanel {
         initComponents();
         
         chordsManagerPanel1.setObjectManager(this);
-        praiseList.setObjectManager(this);
+//        serviceList.setObjectManager(this);
         songViewer.setObjectManager(this);
         songsList.setObjectManager(this);
         songsSearch.setObjectManager(this);
@@ -33,8 +33,8 @@ public class SongsPanel extends javax.swing.JPanel {
     public ChordsManagerPanel getChordsManagerPanel(){
         return chordsManagerPanel1;
     }
-    public PraiseListPanel getPraiseListPanel(){
-        return praiseList;
+    public ServiceListPanel getPraiseListPanel(){
+        return serviceList;
     }
     public SongViewerPanel getSongViewerPanel(){
         return songViewer;
@@ -64,7 +64,7 @@ public class SongsPanel extends javax.swing.JPanel {
         songsSearch = new datasoul.song.SongsSearchPanel();
         chordsManagerPanel1 = new datasoul.song.ChordsManagerPanel();
         tabPraise = new javax.swing.JTabbedPane();
-        praiseList = new datasoul.song.PraiseListPanel();
+        serviceList = new datasoul.datashow.ServiceListPanel();
 
         split1.setBorder(null);
         split1.setDividerLocation(250);
@@ -115,8 +115,7 @@ public class SongsPanel extends javax.swing.JPanel {
         split2.setLeftComponent(panelList);
 
         tabPraise.setFont(new java.awt.Font("Arial", 1, 11));
-        praiseList.setFont(new java.awt.Font("Arial", 1, 11));
-        tabPraise.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PRAISE_LIST"), praiseList);
+        tabPraise.addTab("Service List", serviceList);
 
         split2.setRightComponent(tabPraise);
 
@@ -126,13 +125,13 @@ public class SongsPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(split1)
                 .addContainerGap())
         );
@@ -143,7 +142,7 @@ public class SongsPanel extends javax.swing.JPanel {
     private datasoul.song.ChordsManagerPanel chordsManagerPanel1;
     private javax.swing.JPanel panelList;
     private javax.swing.JPanel panelSongViewer;
-    private datasoul.song.PraiseListPanel praiseList;
+    private datasoul.datashow.ServiceListPanel serviceList;
     private datasoul.song.SongViewerPanel songViewer;
     private datasoul.song.SongsListPanel songsList;
     private datasoul.song.SongsSearchPanel songsSearch;
