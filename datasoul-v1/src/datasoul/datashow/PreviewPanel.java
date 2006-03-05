@@ -34,8 +34,8 @@ public class PreviewPanel extends javax.swing.JPanel {
         this.objectManager = objectManager;
     }
 
-    public void previewItem(){
-        
+    public void previewItem(ServiceItem serviceItem){
+        this.serviceItemTable1.setServiceItem(serviceItem);
     }
     
     /** This method is called from within the constructor to

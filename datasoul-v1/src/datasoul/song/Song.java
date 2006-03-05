@@ -66,7 +66,12 @@ public class Song extends ServiceItem{
     public void setLyrics(String lyrics){
         this.lyrics = lyrics;
 
-        String slidesStr[] = lyrics.split("\n\n");
+        String slidesStr[] ;
+        if(lyrics.contains("\r\n")){
+            slidesStr = lyrics.split("\r\n\r\n");
+        }else{
+            slidesStr = lyrics.split("\n\n");
+        }
         slides.clear();
         TextServiceItemRenderer j;
         for (int i=0; i<slidesStr.length; i++){
