@@ -24,7 +24,7 @@ public class SongsPanel extends javax.swing.JPanel {
         initComponents();
         
         chordsManagerPanel1.setObjectManager(this);
-//        serviceList.setObjectManager(this);
+        serviceList.setObjectManager(this);
         songViewer.setObjectManager(this);
         songsList.setObjectManager(this);
         songsSearch.setObjectManager(this);

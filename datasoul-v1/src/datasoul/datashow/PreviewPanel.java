@@ -18,7 +18,6 @@ import datasoul.song.*;
 public class PreviewPanel extends javax.swing.JPanel {
 
     private DatashowPanel objectManager;    
-    
     /**
      * Creates new form PreviewPanel
      */
@@ -50,6 +49,11 @@ public class PreviewPanel extends javax.swing.JPanel {
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
 
         btnGoLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GO_LIVE"));
+        btnGoLive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoLiveActionPerformed(evt);
+            }
+        });
 
         labelPreview.setFont(new java.awt.Font("Arial", 3, 11));
         labelPreview.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PREVIEW"));
@@ -58,23 +62,29 @@ public class PreviewPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(labelPreview)
-                .add(94, 94, 94)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 292, Short.MAX_VALUE)
                 .add(btnGoLive)
-                .add(195, 195, 195))
+                .addContainerGap())
             .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(labelPreview)
                     .add(btnGoLive))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 487, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
+        ServiceItem previewItem = this.getObjectManager().getPreviewPanel().serviceItemTable1.getServiceItem();
+        
+        this.getObjectManager().getLivePanel().showItem(previewItem);
+    }//GEN-LAST:event_btnGoLiveActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

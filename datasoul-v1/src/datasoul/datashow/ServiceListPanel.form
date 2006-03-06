@@ -81,10 +81,10 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnAddWizard">
+        <Component class="javax.swing.JButton" name="btnExportWizard">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/addWizard.gif"/>
+              <Image iconType="3" name="/datasoul/icons/exportWizard.gif"/>
             </Property>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
@@ -98,6 +98,14 @@
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[5, 32767]"/>
             </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAddWizard">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/addWizard.gif"/>
+            </Property>
+            <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnUp">
@@ -153,6 +161,10 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tableServiceListKeyPressed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableServiceListMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

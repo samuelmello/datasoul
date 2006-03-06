@@ -32,6 +32,10 @@ public class LivePanel extends javax.swing.JPanel {
     public void setObjectManager(DatashowPanel objectManager) {
         this.objectManager = objectManager;
     }
+
+    public void showItem(ServiceItem serviceItem){
+        this.serviceItemTable1.setServiceItem(serviceItem);
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -50,17 +54,17 @@ public class LivePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(labelLive)
                 .add(53, 53, 53))
             .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(labelLive)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 550, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(14, 14, 14)
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     

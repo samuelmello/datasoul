@@ -24,7 +24,9 @@ public class ServiceItemTable extends javax.swing.JPanel {
         labels.put( 1, new JLabel("Small") );
         labels.put( 5, new JLabel("Large") );
         jSliderZoom.setLabelTable(labels);
-        
+
+        ServiceItem empty = new ServiceItem();
+        setServiceItem(empty);
     }
     
     /** This method is called from within the constructor to
@@ -36,7 +38,6 @@ public class ServiceItemTable extends javax.swing.JPanel {
     private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jSliderZoom = new javax.swing.JSlider();
 
         jScrollPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -58,13 +59,6 @@ public class ServiceItemTable extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(displayTable);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jSliderZoom.setMaximum(5);
         jSliderZoom.setMinimum(1);
         jSliderZoom.setPaintLabels(true);
@@ -80,23 +74,17 @@ public class ServiceItemTable extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jButton1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 51, Short.MAX_VALUE)
-                .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jButton1)
-                    .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            .add(layout.createSequentialGroup()
+                .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE))
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -109,17 +97,6 @@ public class ServiceItemTable extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jSliderZoomStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        String text = "Se paz a mais doce me deres gozar\n\nSe dor a mais forte sofrer\n\nOh seja o que for\nTu me fazes saber\n\nQue feliz\ncom Jesus\neu serei\n!!!";
-        
-        TextServiceItem myitem = new TextServiceItem();
-        myitem.setText(text);
-        
-        setServiceItem(myitem);
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jScrollPane1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentResized
         if (item != null){
             item.updateHeights(displayTable);
@@ -130,7 +107,6 @@ public class ServiceItemTable extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable displayTable;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSliderZoom;
     // End of variables declaration//GEN-END:variables
@@ -141,6 +117,10 @@ public class ServiceItemTable extends javax.swing.JPanel {
         item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
         
+    }
+
+    public ServiceItem getServiceItem(){
+        return this.item;        
     }
     
 }

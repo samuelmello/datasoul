@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
  */
 public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
-    private DatashowPanel objectManager;    
+    private Object objectManager;    
     private String fileName="";
     /**
      * Creates new form ServiceListPanel
@@ -66,8 +66,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnSave = new javax.swing.JButton();
         btnSaveAs = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        btnAddWizard = new javax.swing.JButton();
+        btnExportWizard = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        btnAddWizard = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
         btnDown = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
@@ -112,9 +113,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator1.setMaximumSize(new java.awt.Dimension(5, 32767));
         toolBar.add(jSeparator1);
 
-        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
-        btnAddWizard.setAlignmentY(0.0F);
-        toolBar.add(btnAddWizard);
+        btnExportWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportWizard.gif")));
+        btnExportWizard.setAlignmentY(0.0F);
+        toolBar.add(btnExportWizard);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setAlignmentX(0.0F);
@@ -122,6 +123,10 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jSeparator2.setMaximumSize(new java.awt.Dimension(5, 32767));
         toolBar.add(jSeparator2);
+
+        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
+        btnAddWizard.setAlignmentY(0.0F);
+        toolBar.add(btnAddWizard);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.gif")));
         btnUp.setAlignmentY(0.0F);
@@ -164,6 +169,17 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableServiceList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tableServiceListKeyPressed(evt);
+            }
+        });
+        tableServiceList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableServiceListMouseClicked(evt);
+            }
+        });
+
         scroolServiceList.setViewportView(tableServiceList);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -182,6 +198,24 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
+        showItem();
+    }//GEN-LAST:event_tableServiceListKeyPressed
+
+    private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
+        showItem();
+    }//GEN-LAST:event_tableServiceListMouseClicked
+
+    private void showItem(){
+        if(objectManager instanceof DatashowPanel){
+            DatashowPanel om = (DatashowPanel)objectManager;
+            om.getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
+        }else{
+            SongsPanel om = (SongsPanel)objectManager;            
+            om.getSongViewerPanel().viewSong((Song)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
+        }
+    }
+    
     private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
         JFileChooser fc = new JFileChooser();
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
@@ -257,11 +291,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         }
     }
 
-    public DatashowPanel getObjectManager() {
+    public Object getObjectManager() {
         return objectManager;
     }
 
-    public void setObjectManager(DatashowPanel objectManager) {
+    public void setObjectManager(Object objectManager) {
         this.objectManager = objectManager;
     }
       
@@ -284,6 +318,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
+    private javax.swing.JButton btnExportWizard;
     private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSave;

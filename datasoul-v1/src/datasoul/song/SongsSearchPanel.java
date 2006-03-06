@@ -43,6 +43,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         tableSongList.setDroppable(false);
         
         comboField.removeAllItems();
+        comboField.addItem("All");
         comboField.addItem("FileName");
         comboField.addItem("SongName");
         comboField.addItem("SongAuthor");
@@ -200,7 +201,20 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         
         for(int i=0; i<allSongsListTable.getRowCount();i++){
             try {
-                if(((Song)allSongsListTable.getValueAt(i,0)).containsStringInField(comboField.getSelectedItem().toString(),fieldString.getText())){
+                String searchStr;
+                if(String.valueOf(evt.getKeyChar()).equals("\b")){
+                    searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
+                }else{
+                    searchStr = fieldString.getText()+evt.getKeyChar();
+                }
+                if(comboField.getSelectedItem().toString().equals("All")){
+                    for(int j=1; j<comboField.getItemCount();j++){
+                        if(((Song)allSongsListTable.getValueAt(i,0)).containsStringInField(comboField.getItemAt(j).toString(),searchStr)){
+                            foundSongTable.addItem(allSongsListTable.getValueAt(i,0));
+                            break;
+                        }                        
+                    }
+                }else if(((Song)allSongsListTable.getValueAt(i,0)).containsStringInField(comboField.getSelectedItem().toString(),searchStr)){
                     foundSongTable.addItem(allSongsListTable.getValueAt(i,0));
                 }
             } catch (Exception ex) {

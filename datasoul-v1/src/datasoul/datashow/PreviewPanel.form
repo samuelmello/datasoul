@@ -11,11 +11,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" max="-2" attributes="0">
+          <Group type="102" alignment="0" max="-2" attributes="0">
               <Component id="labelPreview" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+              <EmptySpace pref="292" max="32767" attributes="0"/>
               <Component id="btnGoLive" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="195" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Component id="serviceItemTable1" alignment="0" pref="412" max="32767" attributes="0"/>
       </Group>
@@ -27,8 +27,8 @@
                   <Component id="labelPreview" min="-2" max="-2" attributes="0"/>
                   <Component id="btnGoLive" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="serviceItemTable1" min="-2" pref="487" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="serviceItemTable1" pref="487" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,6 +40,9 @@
           <ResourceString bundle="datasoul/internationalize.properties" key="GO_LIVE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoLiveActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelPreview">
       <Properties>
