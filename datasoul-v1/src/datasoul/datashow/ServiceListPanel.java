@@ -115,6 +115,12 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnExportWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportWizard.gif")));
         btnExportWizard.setAlignmentY(0.0F);
+        btnExportWizard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportWizardActionPerformed(evt);
+            }
+        });
+
         toolBar.add(btnExportWizard);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -197,6 +203,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExportWizardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportWizardActionPerformed
+        ExportWizardForm exportWizardForm = new ExportWizardForm();
+        exportWizardForm.setVisible(true);
+    }//GEN-LAST:event_btnExportWizardActionPerformed
 
     private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
         showItem();

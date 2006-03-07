@@ -638,15 +638,26 @@ public class SongViewerPanel extends javax.swing.JPanel {
         public ByteArrayOutputStream exportRTFLyrics(ByteArrayOutputStream os) throws Exception{
               //writes the lyrics and its chords
               ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+              boolean firstPage = true;
               if(os.toByteArray().length>0){
-                osOut.write(os.toByteArray(),0,os.toByteArray().length-2);
+                  osOut.write(os.toByteArray(),0,os.toByteArray().length-2);                  
+                  firstPage = false;
               }
 
               javax.swing.text.Document doc = this.editorSong.getDocument();
               int length = doc.getLength();
               doc.getDefaultRootElement().getElement(0);
-
-              this.editorSong.getEditorKit().write(osOut, doc, 0, length);
+              
+              if(firstPage){
+                  this.editorSong.getEditorKit().write(osOut, doc, 0, length);                  
+              }else{
+                osOut.write("\\page ".getBytes());                                          
+                ByteArrayOutputStream osAux = new ByteArrayOutputStream();
+                this.editorSong.getEditorKit().write(osAux, doc, 0, length);
+                String aux = osAux.toString();
+                int index = aux.indexOf("}}")+2;
+                osOut.write(osAux.toByteArray(),index,osAux.size()-index-2);
+              }
 
               if(os.toByteArray().length>0){
                   osOut.write("\n}".getBytes());
