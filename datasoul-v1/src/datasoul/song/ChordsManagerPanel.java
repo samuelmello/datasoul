@@ -237,7 +237,6 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
         ChordEditorFrame cef = new ChordEditorFrame(chordsDB, (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
         cef.setVisible(true);
-        cef.setLocation(evt.getX(),evt.getY());
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnDeletebtnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletebtnRemoveMouseClicked
@@ -250,7 +249,6 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
         ChordEditorFrame cef = new ChordEditorFrame(chordsDB, null);
         cef.setVisible(true);
-        cef.setLocation(evt.getX(),evt.getY());        
     }//GEN-LAST:event_btnNewMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

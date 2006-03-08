@@ -150,9 +150,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnSongs);
 
+        btnTemplates.setFont(new java.awt.Font("Arial", 1, 11));
+        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/template.gif")));
         btnTemplates.setText("Templates");
-        btnTemplates.setMaximumSize(new java.awt.Dimension(66, 44));
-        btnTemplates.setMinimumSize(new java.awt.Dimension(66, 44));
+        btnTemplates.setMaximumSize(new java.awt.Dimension(88, 44));
+        btnTemplates.setMinimumSize(new java.awt.Dimension(88, 44));
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTemplatesActionPerformed(evt);
@@ -176,9 +178,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(toolBarMain)
-                .addContainerGap(408, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -7,6 +7,9 @@
 package datasoul.song;
 
 import com.sun.jndi.url.dns.dnsURLContext;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -49,6 +52,14 @@ public class ChordEditorFrame extends javax.swing.JFrame {
             this.chordShapePanel6.setShape(shapes.get(5));
         
         this.fieldName.setText(this.chord.getName());
+        
+        this.center();
+    }
+
+    public void center(){
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle frame = getBounds();
+        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
     /** This method is called from within the constructor to
@@ -70,6 +81,7 @@ public class ChordEditorFrame extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         org.jdesktop.layout.GroupLayout chordShapePanel1Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel1);
         chordShapePanel1.setLayout(chordShapePanel1Layout);
         chordShapePanel1Layout.setHorizontalGroup(
@@ -157,14 +169,14 @@ public class ChordEditorFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(fieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 74, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                    .add(layout.createSequentialGroup()
                         .addContainerGap()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
@@ -173,7 +185,7 @@ public class ChordEditorFrame extends javax.swing.JFrame {
                                 .add(chordShapePanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(chordShapePanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                            .add(layout.createSequentialGroup()
                                 .add(chordShapePanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
@@ -188,7 +200,7 @@ public class ChordEditorFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)

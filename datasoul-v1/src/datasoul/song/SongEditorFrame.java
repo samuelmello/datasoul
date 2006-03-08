@@ -10,6 +10,9 @@ import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
@@ -78,6 +81,8 @@ public class SongEditorFrame extends javax.swing.JFrame {
         fillGuiValues();
         
         newSong = false;
+        
+        this.center();        
     }
 
     /**
@@ -95,6 +100,8 @@ public class SongEditorFrame extends javax.swing.JFrame {
         fillGuiValues();
         
         newSong = false;
+        
+        this.center();        
     }
     
     public SongEditorFrame(SongListTable songListTable) {
@@ -107,6 +114,14 @@ public class SongEditorFrame extends javax.swing.JFrame {
         this.setTitle("");
         
         newSong = true;
+        
+        this.center();
+    }
+
+    public void center(){
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle frame = getBounds();
+        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
     
