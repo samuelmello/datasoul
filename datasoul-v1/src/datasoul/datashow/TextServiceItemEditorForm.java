@@ -1,7 +1,7 @@
 /*
  * EditTextItem.java
  *
- * Created on 9 de Março de 2006, 21:04
+ * Created on 9 de Marco de 2006, 21:04
  */
 
 package datasoul.datashow;
