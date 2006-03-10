@@ -147,13 +147,8 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddToListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddToListMouseClicked
-        if(objectManager instanceof DatashowPanel){
-            DatashowPanel om = (DatashowPanel)objectManager;
-            om.getServiceListPanel().addItem(tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-        }else{
-            SongsPanel om = (SongsPanel)objectManager;            
-            om.getPraiseListPanel().addItem(tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-        }
+        for(int item:tableSongList.getSelectedRows())
+            ServiceListTable.getInstance().addItem(tableSongList.getModel().getValueAt(item,0));        
     }//GEN-LAST:event_btnAddToListMouseClicked
 
     private void tableSongListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSongListMouseClicked
@@ -189,12 +184,12 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
 
-        SongEditorFrame songEditor = new SongEditorFrame((SongListTable)this.tableSongList.getModel(),(Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));        
+        SongEditorForm songEditor = new SongEditorForm((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));        
         songEditor.setVisible(true);
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
-        SongEditorFrame songEditor = new SongEditorFrame((SongListTable)this.tableSongList.getModel());
+        SongEditorForm songEditor = new SongEditorForm();
 
         songEditor.setVisible(true);
     }//GEN-LAST:event_btnNewMouseClicked

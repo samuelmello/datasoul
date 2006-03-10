@@ -235,7 +235,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-        ChordEditorFrame cef = new ChordEditorFrame(chordsDB, (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
+        ChordEditorForm cef = new ChordEditorForm(chordsDB, (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
         cef.setVisible(true);
     }//GEN-LAST:event_btnEditMouseClicked
 
@@ -247,7 +247,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDeletebtnRemoveMouseClicked
 
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
-        ChordEditorFrame cef = new ChordEditorFrame(chordsDB, null);
+        ChordEditorForm cef = new ChordEditorForm(chordsDB, null);
         cef.setVisible(true);
     }//GEN-LAST:event_btnNewMouseClicked
 

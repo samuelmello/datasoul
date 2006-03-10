@@ -32,7 +32,7 @@ public class ServiceListTable extends ListTable{
     private ServiceListTable() {
     }
     
-    static ServiceListTable getInstance(){
+    public static ServiceListTable getInstance(){
         if(instance==null){
             instance = new ServiceListTable();
         }
@@ -72,6 +72,10 @@ public class ServiceListTable extends ListTable{
                     Song song = new Song();
                     song.readObject(nodeList.item(i));
                     this.addItem(song);
+                }else if(nodeList.item(i).getNodeName().equals("TextServiceItem")){
+                    TextServiceItem tsi = new TextServiceItem();
+                    tsi.readObject(nodeList.item(i));
+                    this.addItem(tsi);
                 }
             }
         }

@@ -69,6 +69,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnExportWizard = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         btnAddWizard = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
         btnDown = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
@@ -132,7 +133,23 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
         btnAddWizard.setAlignmentY(0.0F);
+        btnAddWizard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
         toolBar.add(btnAddWizard);
+
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
+        btnEdit.setAlignmentY(0.0F);
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        toolBar.add(btnEdit);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.gif")));
         btnUp.setAlignmentY(0.0F);
@@ -203,6 +220,22 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+        if(item instanceof Song){
+            SongEditorForm sef = new SongEditorForm((Song)item);
+            sef.setVisible(true);
+        }else if(item instanceof TextServiceItem){
+            TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
+            tsief.setVisible(true);
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        AddWizardForm awf = new AddWizardForm();
+        awf.setVisible(true);
+    }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnExportWizardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportWizardActionPerformed
         ExportWizardForm exportWizardForm = new ExportWizardForm();
@@ -329,6 +362,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExportWizard;
     private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnRemove;

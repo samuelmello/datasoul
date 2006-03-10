@@ -34,24 +34,21 @@ import org.w3c.dom.Text;
  *
  * @author  Administrador
  */
-public class SongEditorFrame extends javax.swing.JFrame {
+public class SongEditorForm extends javax.swing.JFrame {
     
 
     private Song song;
-    private SongListTable songListTable;
     private boolean newSong;
 
     /**
      * Creates new form SongEditorFrame
      */
-    public SongEditorFrame(SongListTable songListTable, File file) {
+    public SongEditorForm(File file) {
         initComponents();
         
         Document dom=null;
         Node node=null;
 
-        this.songListTable = songListTable;
-        
         try {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -88,11 +85,9 @@ public class SongEditorFrame extends javax.swing.JFrame {
     /**
      * Creates new form SongEditorFrame
      */
-    public SongEditorFrame(SongListTable songListTable, Song songIn) {
+    public SongEditorForm(Song songIn) {
         initComponents();
 
-        this.songListTable = songListTable;
-        
         song = songIn;
         this.setTitle(songIn.getFileName());
         
@@ -104,10 +99,8 @@ public class SongEditorFrame extends javax.swing.JFrame {
         this.center();        
     }
     
-    public SongEditorFrame(SongListTable songListTable) {
+    public SongEditorForm() {
         initComponents();
-
-        this.songListTable = songListTable;
 
         song = new Song();
 
@@ -314,10 +307,10 @@ public class SongEditorFrame extends javax.swing.JFrame {
         }
         
         if(newSong){
-           songListTable.addItem(song);
-           newSong = false;
+            ServiceListTable.getInstance().addItem(song);
+            newSong = false;
+            ServiceListTable.getInstance().sortByName();            
         }
-        songListTable.sortByName();
     }
     
     /**

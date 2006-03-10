@@ -38,8 +38,14 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     /** Creates a new instance of ServiceItem */
     public ServiceItem() {
         slides = new ArrayList<ServiceItemRenderer>();
+        this.title = "";
+        this.slides = new ArrayList<ServiceItemRenderer>();
     }
 
+    public String toString(){
+        return this.title;
+    }
+    
     /**
      * This method should be overriden by upper class to
      * inform the hieght needed to display the item of row.

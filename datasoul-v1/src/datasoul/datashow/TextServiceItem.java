@@ -17,15 +17,24 @@ import javax.swing.JTextArea;
  */
 public class TextServiceItem extends ServiceItem {
     
+    private String text;
+    
     /** Creates a new instance of TextServiceItem */
     public TextServiceItem() {
         super();
+        this.text = "";
     }
     
+    protected void registerProperties() {
+        properties.add("Title");
+        properties.add("Text");        
+    }
              
     public void setText(String text){
         
-        String slidesStr[] = text.split("\n\n");
+        this.text = text.trim();
+        
+        String slidesStr[] = text.trim().split("\n\n");
         slides.clear();
         TextServiceItemRenderer j;
         for (int i=0; i<slidesStr.length; i++){
@@ -33,6 +42,10 @@ public class TextServiceItem extends ServiceItem {
             j.setText(slidesStr[i]);
             slides.add(j);
         }
+    }
+    
+    public String getText(){
+        return this.text;
     }
     
 }

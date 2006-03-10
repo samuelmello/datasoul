@@ -17,14 +17,14 @@ import javax.swing.JOptionPane;
  *
  * @author  Administrador
  */
-public class ChordEditorFrame extends javax.swing.JFrame {
+public class ChordEditorForm extends javax.swing.JFrame {
 
     private Chord chord;
     private ChordsDB chordsDB;
     private boolean isNewChord;
     
     /** Creates new form ChordEditorFrame */
-    public ChordEditorFrame(ChordsDB chordsDB, Chord chord) {
+    public ChordEditorForm(ChordsDB chordsDB, Chord chord) {
         if(chord==null){
             this.chord = new Chord();            
             isNewChord = true;

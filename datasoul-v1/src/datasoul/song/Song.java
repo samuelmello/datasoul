@@ -64,6 +64,8 @@ public class Song extends ServiceItem{
         this.songAuthor = songAuthor;
     }
     public void setLyrics(String lyrics){
+        lyrics = lyrics.trim();
+        
         this.lyrics = lyrics;
 
         String slidesStr[] ;
