@@ -9,6 +9,7 @@
 
 package datasoul.templates;
 
+import datasoul.render.Paintable;
 import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.io.File;
@@ -26,7 +27,7 @@ import org.w3c.dom.NodeList;
  *
  * @author samuelm
  */
-public class DisplayTemplate extends AttributedObject {
+public class DisplayTemplate extends AttributedObject implements Paintable {
     
     ArrayList<TemplateItem> items;
     

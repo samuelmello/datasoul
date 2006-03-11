@@ -42,7 +42,7 @@ public class ImageTemplateItem extends TemplateItem {
         properties.add("Filename");
     }
     
-    
+    @Override
     public void draw(Graphics2D g) {
         
         Composite oldComp = g.getComposite();

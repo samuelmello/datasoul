@@ -6,10 +6,12 @@
 
 package datasoul.datashow;
 
-import datasoul.*;
-import datasoul.util.*;
-import datasoul.datashow.*;
-import datasoul.song.*;
+import datasoul.render.SDLDisplay;
+import datasoul.templates.DisplayTemplate;
+import datasoul.templates.TemplateManager;
+import java.io.IOException;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,50 +44,116 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         tabAuxiliar = new javax.swing.JTabbedPane();
-        panelDisplay = new javax.swing.JPanel();
-        btnBlack = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
+        PanelDisplay = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        btnChangeBackground = new javax.swing.JButton();
+        imgBackground = new datasoul.datashow.ImageDisplayer();
+        btnBlack = new javax.swing.JToggleButton();
+        btnClear = new javax.swing.JToggleButton();
+        sldAlpha = new javax.swing.JSlider();
         panelClock = new javax.swing.JPanel();
         panelMessage = new javax.swing.JPanel();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(80, 0));
+        jButton1.setText("Init Display Test");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btnChangeBackground.setText("Change Background");
+        btnChangeBackground.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChangeBackgroundActionPerformed(evt);
+            }
+        });
+
+        imgBackground.setPreferredSize(new java.awt.Dimension(160, 120));
+        org.jdesktop.layout.GroupLayout imgBackgroundLayout = new org.jdesktop.layout.GroupLayout(imgBackground);
+        imgBackground.setLayout(imgBackgroundLayout);
+        imgBackgroundLayout.setHorizontalGroup(
+            imgBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 158, Short.MAX_VALUE)
+        );
+        imgBackgroundLayout.setVerticalGroup(
+            imgBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 118, Short.MAX_VALUE)
+        );
+
         btnBlack.setText("Black");
+        btnBlack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBlackActionPerformed(evt);
+            }
+        });
 
         btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearActionPerformed(evt);
+            }
+        });
 
-        org.jdesktop.layout.GroupLayout panelDisplayLayout = new org.jdesktop.layout.GroupLayout(panelDisplay);
-        panelDisplay.setLayout(panelDisplayLayout);
-        panelDisplayLayout.setHorizontalGroup(
-            panelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, panelDisplayLayout.createSequentialGroup()
+        sldAlpha.setMaximum(255);
+        sldAlpha.setValue(255);
+        sldAlpha.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sldAlphaStateChanged(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout PanelDisplayLayout = new org.jdesktop.layout.GroupLayout(PanelDisplay);
+        PanelDisplay.setLayout(PanelDisplayLayout);
+        PanelDisplayLayout.setHorizontalGroup(
+            PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(PanelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(panelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(250, Short.MAX_VALUE))
-        );
-        panelDisplayLayout.setVerticalGroup(
-            panelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, panelDisplayLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(btnBlack)
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(PanelDisplayLayout.createSequentialGroup()
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .add(sldAlpha, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 232, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnClear)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
         );
-        tabAuxiliar.addTab("Display", panelDisplay);
+        PanelDisplayLayout.setVerticalGroup(
+            PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(PanelDisplayLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(PanelDisplayLayout.createSequentialGroup()
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jButton1)
+                            .add(btnBlack))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(btnChangeBackground)
+                            .add(btnClear))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(sldAlpha, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        tabAuxiliar.addTab("Display", PanelDisplay);
 
         org.jdesktop.layout.GroupLayout panelClockLayout = new org.jdesktop.layout.GroupLayout(panelClock);
         panelClock.setLayout(panelClockLayout);
         panelClockLayout.setHorizontalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 329, Short.MAX_VALUE)
+            .add(0, 506, Short.MAX_VALUE)
         );
         panelClockLayout.setVerticalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 124, Short.MAX_VALUE)
+            .add(0, 163, Short.MAX_VALUE)
         );
         tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
 
@@ -93,11 +161,11 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelMessage.setLayout(panelMessageLayout);
         panelMessageLayout.setHorizontalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 329, Short.MAX_VALUE)
+            .add(0, 506, Short.MAX_VALUE)
         );
         panelMessageLayout.setVerticalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 124, Short.MAX_VALUE)
+            .add(0, 163, Short.MAX_VALUE)
         );
         tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MESSAGE"), panelMessage);
 
@@ -105,21 +173,89 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void sldAlphaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldAlphaStateChanged
+    
+            //byte alpha = (byte) sldAlpha.getValue();
+            //SDLDisplay.getInstance().setOverlayAlpha(alpha);
+        //TODO
+    }//GEN-LAST:event_sldAlphaStateChanged
+
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+
+           if( btnClear.isSelected() ){
+               SDLDisplay.getInstance().clear(1);
+           }else{
+               SDLDisplay.getInstance().clear(0);
+           }
+
+        
+    }//GEN-LAST:event_btnClearActionPerformed
+
+    private void btnBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBlackActionPerformed
+
+           if( btnBlack.isSelected() ){
+               SDLDisplay.getInstance().black(1);
+           }else{
+               SDLDisplay.getInstance().black(0);
+           }
+        
+    }//GEN-LAST:event_btnBlackActionPerformed
+
+    private void btnChangeBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeBackgroundActionPerformed
+        
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogType(JFileChooser.OPEN_DIALOG);
+        fc.setMultiSelectionEnabled(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setControlButtonsAreShown(true);
+        fc.setDialogTitle("Select Image");
+        
+        try{
+            if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
+                String filename = fc.getSelectedFile().getAbsolutePath();
+                imgBackground.setImage(filename);
+                SDLDisplay d = SDLDisplay.getInstance();                
+                d.paintBackground( imgBackground.getImage() );
+            }
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(this,"Unable to load Background:\n"+e.getMessage(),"DataSoul Error",0);                
+        }
+        
+    }//GEN-LAST:event_btnChangeBackgroundActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        SDLDisplay d = SDLDisplay.getInstance();
+        DisplayTemplate template = null;
+        try {
+            template = TemplateManager.getDisplayTemplate("Teste1");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        d.paintOverlay(template);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBlack;
-    private javax.swing.JButton btnClear;
+    private javax.swing.JPanel PanelDisplay;
+    private javax.swing.JToggleButton btnBlack;
+    private javax.swing.JButton btnChangeBackground;
+    private javax.swing.JToggleButton btnClear;
+    private datasoul.datashow.ImageDisplayer imgBackground;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel panelClock;
-    private javax.swing.JPanel panelDisplay;
     private javax.swing.JPanel panelMessage;
+    private javax.swing.JSlider sldAlpha;
     private javax.swing.JTabbedPane tabAuxiliar;
     // End of variables declaration//GEN-END:variables
     
