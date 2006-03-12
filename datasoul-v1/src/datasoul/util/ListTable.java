@@ -150,7 +150,7 @@ mainloop: for(int i=0;i<objectList.size();i++){
         tableModelChanged();
     }
 
-    private void tableModelChanged(){
+    protected void tableModelChanged(){
         TableModelEvent tme = new TableModelEvent(this);
         for(int i=0;i<this.listeners.size();i++){
             this.listeners.get(i).tableChanged(tme);            

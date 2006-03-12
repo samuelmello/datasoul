@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <jni.h> 
-#include "SDL/SDL.h"
-#include "SDL/SDL_thread.h"
+#include "SDL.h"
+#include "SDL_thread.h"
 #include "datasoul_render_SDLDisplay.h"
 
 #define FRAMETIME_MS 30
@@ -25,7 +25,6 @@ int displayThread (void *arg){
 	Uint32 time1, time2;
 	
 	while (globals.stopDisplay == 0){
-	
 		time1 = SDL_GetTicks();
 		
 		if (globals.needRefresh){
@@ -76,7 +75,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
                 return ;
         }
 
-        globals.screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE | SDL_DOUBLEBUF );
+        globals.screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         rmask = 0xff000000;
         gmask = 0x00ff0000;
@@ -143,7 +142,7 @@ void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
                 //if (i<20){
                 //      fprintf(stderr, "%08x \n", tmp);
                 //}
-                memcpy (surface->pixels+i, &tmp, 4);
+                memcpy ((Uint8*)surface->pixels+i, &tmp, 4);
         }
 
 	

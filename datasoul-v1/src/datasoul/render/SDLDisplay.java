@@ -25,6 +25,10 @@ public class SDLDisplay {
         if (System.getProperty("os.name").equals("Linux")){
             System.load("/home/samuelm/cvs/datasoul-v1/src/native/libdatasoulsdl.so");
         }
+        if (System.getProperty("os.name").contains("Windows")){
+            System.load("D:/Meus Documentos/Utils/nativedll/Debug/nativedll.dll");
+        }
+        
     }
     
     private BufferedImage overlay;

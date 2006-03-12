@@ -26,7 +26,7 @@ public class TextServiceItem extends ServiceItem {
     }
     
     protected void registerProperties() {
-        properties.add("Title");
+        super.registerProperties();
         properties.add("Text");        
     }
              

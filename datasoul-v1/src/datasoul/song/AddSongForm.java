@@ -24,7 +24,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
 
         this.center();
         
-        loadMusics();
+        this.songsSearchPanel.usingInAddSongItemPanel();
     }
 
     public void center(){
@@ -33,13 +33,6 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
-    public void loadMusics(){
-
-        SongListTable songListTable = AllSongsListTable.getInstance();
-        songListTable.addTableModelListener(this);
-        
-        tableSongList.setModel(songListTable);
-    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -48,27 +41,13 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jScrollSongList = new javax.swing.JScrollPane();
-        tableSongList = new javax.swing.JTable();
         btnClose = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
+        songsSearchPanel = new datasoul.song.SongsSearchPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Song");
         setAlwaysOnTop(true);
-        tableSongList.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollSongList.setViewportView(tableSongList);
-
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,21 +66,18 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 61, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnClose)))
-                .addContainerGap())
+            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                .add(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 61, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(btnClose))
+                .add(org.jdesktop.layout.GroupLayout.LEADING, songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jScrollSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                .add(songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 378, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
@@ -116,8 +92,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        for(int item:tableSongList.getSelectedRows())
-            ServiceListTable.getInstance().addItem(tableSongList.getModel().getValueAt(item,0));        
+        this.songsSearchPanel.addItem(evt);
     }//GEN-LAST:event_btnAddActionPerformed
 
     public void tableChanged(TableModelEvent e) {
@@ -128,8 +103,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
-    private javax.swing.JScrollPane jScrollSongList;
-    private javax.swing.JTable tableSongList;
+    private datasoul.song.SongsSearchPanel songsSearchPanel;
     // End of variables declaration//GEN-END:variables
     
 }

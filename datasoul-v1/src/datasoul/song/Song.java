@@ -47,6 +47,7 @@ public class Song extends ServiceItem{
 
     @Override
     protected void registerProperties() {
+        super.registerProperties();
         properties.add("SongName");
         properties.add("SongAuthor");
         properties.add("Lyrics");

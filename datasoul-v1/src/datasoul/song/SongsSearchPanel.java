@@ -100,9 +100,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addToList.gif")));
-        btnAddToList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAddToListMouseClicked(evt);
+        btnAddToList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToListActionPerformed(evt);
             }
         });
 
@@ -136,22 +136,22 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(labelString)
                     .add(labelField))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                    .add(comboField, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .add(comboField, 0, 261, Short.MAX_VALUE))
                 .addContainerGap())
             .add(scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(labelString)
@@ -167,16 +167,18 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAddToListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddToListMouseClicked
-        if(objectManager instanceof DatashowPanel){
-            DatashowPanel om = (DatashowPanel)objectManager;
-            om.getServiceListPanel().addItem(tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-        }else{
-            SongsPanel om = (SongsPanel)objectManager;            
-            om.getPraiseListPanel().addItem(tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-        }
-    }//GEN-LAST:event_btnAddToListMouseClicked
+    private void btnAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToListActionPerformed
+        for(int item:tableSongList.getSelectedRows())
+            ServiceListTable.getInstance().addItem(tableSongList.getModel().getValueAt(item,0));        
+    }//GEN-LAST:event_btnAddToListActionPerformed
 
+    public void usingInAddSongItemPanel(){
+        this.btnAddToList.setVisible(false);
+    }
+    public void addItem(java.awt.event.ActionEvent evt) {                                          
+        btnAddToListActionPerformed(evt);
+    }
+    
     private void tableSongListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSongListMouseClicked
         showItem();
     }//GEN-LAST:event_tableSongListMouseClicked

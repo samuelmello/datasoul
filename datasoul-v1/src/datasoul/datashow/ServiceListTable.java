@@ -13,6 +13,7 @@ import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -28,6 +29,7 @@ import org.w3c.dom.NodeList;
 public class ServiceListTable extends ListTable{
     
     static ServiceListTable instance;
+    
     /** Creates a new instance of ServiceListTable */
     private ServiceListTable() {
     }
@@ -39,6 +41,37 @@ public class ServiceListTable extends ListTable{
         return instance;
     }
 
+    public String getColumnName(int columnIndex) {
+        if(columnIndex == 0)
+            return "Service Item";
+        else
+            return "Template";
+    }
+    
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        if(columnIndex == 0){
+            Object object = objectList.get(rowIndex);
+            return  object;
+        }else{
+            Object object = objectList.get(rowIndex);
+            return  ((ServiceItem)object).getTemplate();
+        }
+    }
+
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        if(columnIndex == 0){
+            objectList.set(rowIndex,(String)aValue.toString());
+            tableModelChanged();
+        }else{
+            ((ServiceItem)objectList.get(rowIndex)).setTemplate((String)aValue.toString());
+            tableModelChanged();
+        }
+    }
+    
+    public int getColumnCount() {
+        return 2;
+    }
+    
      public Node writeObject() throws Exception{
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();

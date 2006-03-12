@@ -47,6 +47,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
     private void initComponents() {
         btnExportSongs = new javax.swing.JButton();
         btnExportServiceList = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Export Wizard");
@@ -84,6 +85,20 @@ public class ExportWizardForm extends javax.swing.JFrame {
             }
         });
 
+        btnCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancel.setFont(new java.awt.Font("Arial", 1, 11));
+        btnCancel.setText("Cancel");
+        btnCancel.setBorderPainted(false);
+        btnCancel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnCancel.setIconTextGap(14);
+        btnCancel.setMaximumSize(new java.awt.Dimension(150, 150));
+        btnCancel.setMinimumSize(new java.awt.Dimension(150, 150));
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,7 +107,8 @@ public class ExportWizardForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(btnExportSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnExportServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnExportServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 380, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -102,12 +118,19 @@ public class ExportWizardForm extends javax.swing.JFrame {
                 .add(btnExportSongs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnExportServiceList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
     private void btnExportServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportServiceListActionPerformed
+        this.dispose();
         JFileChooser fc = new JFileChooser();
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             try {
@@ -151,6 +174,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExportServiceListActionPerformed
 
     private void btnExportSongsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportSongsActionPerformed
+        this.dispose();
         JFileChooser fc = new JFileChooser();
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             try {
@@ -178,6 +202,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnExportServiceList;
     private javax.swing.JButton btnExportSongs;
     // End of variables declaration//GEN-END:variables
