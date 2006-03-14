@@ -51,7 +51,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         comboBox.addItem("Default"); 
         TemplateManager manager = TemplateManager.getInstance();
         manager.refreshAvailableTemplates();
-        for(int i=0; i<manager.getColumnCount(); i++){
+        for(int i=0; i<manager.getRowCount(); i++){
             comboBox.addItem((String)manager.getValueAt(i,0)); 
         }
         this.tableServiceList.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboBox));          
