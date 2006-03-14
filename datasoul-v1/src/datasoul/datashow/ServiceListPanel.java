@@ -7,14 +7,19 @@
 package datasoul.datashow;
 
 import datasoul.*;
+import datasoul.templates.TemplateManager;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -40,9 +45,22 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
        serviceListTable.addTableModelListener(this);        
         
        tableServiceList.setModel(serviceListTable);
-       
+
+        //initTemplateCombo
+        JComboBox comboBox = new JComboBox(); 
+        comboBox.addItem("Default"); 
+        TemplateManager manager = TemplateManager.getInstance();
+        manager.refreshAvailableTemplates();
+        for(int i=0; i<manager.getColumnCount(); i++){
+            comboBox.addItem((String)manager.getValueAt(i,0)); 
+        }
+        this.tableServiceList.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboBox));          
+        
+        this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(colorRenderer);
+        this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(colorRenderer);        
     }
 
+    
     private String getFileName(){
         return this.fileName;
     }
@@ -192,6 +210,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableServiceList.setCellSelectionEnabled(true);
         tableServiceList.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tableServiceListKeyPressed(evt);
@@ -375,5 +394,21 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private datasoul.util.DnDTable tableServiceList;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
+
+     DefaultTableCellRenderer colorRenderer = new DefaultTableCellRenderer() { 
+        public void setValue(Object value) { 
+            if (value instanceof Song) { 
+                setBackground(Color.decode("0xfffff5")); 
+//                setForeground(c.getTextColor()); 
+                setText(value.toString()); 
+            } else if (value instanceof TextServiceItem) { 
+                setBackground(Color.decode("0xf5f5ff")); 
+//                setForeground(c.getTextColor()); 
+                setText(value.toString()); 
+            } else { 
+                super.setValue(value); 
+            } 
+        } 
+     };        
     
 }

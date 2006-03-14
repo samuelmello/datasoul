@@ -14,6 +14,8 @@ import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
 import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -41,6 +43,13 @@ public class ServiceListTable extends ListTable{
         return instance;
     }
 
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if(columnIndex == 0)
+            return false;
+        else
+            return true;
+    }
+    
     public String getColumnName(int columnIndex) {
         if(columnIndex == 0)
             return "Service Item";
@@ -113,5 +122,6 @@ public class ServiceListTable extends ListTable{
             }
         }
      }
+     
     
 }

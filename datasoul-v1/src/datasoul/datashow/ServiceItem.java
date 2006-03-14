@@ -40,7 +40,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     public ServiceItem() {
         slides = new ArrayList<ServiceItemRenderer>();
         this.title = "";
-        this.template = "";
+        this.template = "Default";
         this.slides = new ArrayList<ServiceItemRenderer>();
     }
 

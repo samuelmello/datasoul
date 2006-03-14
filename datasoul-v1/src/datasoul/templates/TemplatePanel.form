@@ -61,7 +61,7 @@
                           </Group>
                           <Component id="templateEditorPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="15" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -84,7 +84,7 @@
                           <Component id="btnMoveDown" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -188,8 +188,8 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jToolBar1" alignment="0" pref="198" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" alignment="1" pref="198" max="32767" attributes="0"/>
+                      <Component id="jToolBar1" alignment="0" pref="247" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" alignment="1" pref="247" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
