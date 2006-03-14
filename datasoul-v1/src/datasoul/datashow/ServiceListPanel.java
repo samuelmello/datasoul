@@ -275,7 +275,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             om.getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
         }else{
             SongsPanel om = (SongsPanel)objectManager;            
-            om.getSongViewerPanel().viewSong((Song)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
+            ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+            if(item instanceof Song)
+                om.getSongViewerPanel().viewSong((Song)item);
         }
     }
     
