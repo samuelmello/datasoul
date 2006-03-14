@@ -37,134 +37,38 @@ public class TemplatePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jSplitPane1 = new javax.swing.JSplitPane();
-        jPanel1 = new javax.swing.JPanel();
-        btnAddText = new javax.swing.JButton();
-        btnMoveUp = new javax.swing.JButton();
-        btnAddImage = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        btnDeleteItem = new javax.swing.JButton();
-        btnMoveDown = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        lblTemplateName = new javax.swing.JLabel();
-        templateEditorPanel1 = new datasoul.templates.TemplateEditorPanel();
         jSplitPane2 = new javax.swing.JSplitPane();
-        jPanel2 = new javax.swing.JPanel();
+        tabTemplates = new javax.swing.JTabbedPane();
+        panelTemplates = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTemplates = new javax.swing.JTable();
         jToolBar1 = new javax.swing.JToolBar();
         btnLoad = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
         btnDeleteTemplate = new javax.swing.JButton();
+        tabProperties = new javax.swing.JTabbedPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableProperties = new javax.swing.JTable();
+        tabTemplateEditor = new javax.swing.JTabbedPane();
+        panelTemplateEditor = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        lblTemplateName = new javax.swing.JLabel();
+        templateEditorPanel1 = new datasoul.templates.TemplateEditorPanel();
+        jToolBar2 = new javax.swing.JToolBar();
+        btnSave = new javax.swing.JButton();
+        btnAddImage = new javax.swing.JButton();
+        btnAddText = new javax.swing.JButton();
+        btnDeleteItem = new javax.swing.JButton();
+        btnMoveUp = new javax.swing.JButton();
+        btnMoveDown = new javax.swing.JButton();
 
+        jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
-        btnAddText.setText("Add Text");
-        btnAddText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddTextActionPerformed(evt);
-            }
-        });
-
-        btnMoveUp.setText("Move Up");
-        btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveUpActionPerformed(evt);
-            }
-        });
-
-        btnAddImage.setText("Add Image");
-        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddImageActionPerformed(evt);
-            }
-        });
-
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnDeleteItem.setText("Delete");
-        btnDeleteItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteItemActionPerformed(evt);
-            }
-        });
-
-        btnMoveDown.setText("Move Down");
-        btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveDownActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Template:");
-
-        lblTemplateName.setText("jLabel2");
-
-        org.jdesktop.layout.GroupLayout templateEditorPanel1Layout = new org.jdesktop.layout.GroupLayout(templateEditorPanel1);
-        templateEditorPanel1.setLayout(templateEditorPanel1Layout);
-        templateEditorPanel1Layout.setHorizontalGroup(
-            templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 636, Short.MAX_VALUE)
-        );
-        templateEditorPanel1Layout.setVerticalGroup(
-            templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 476, Short.MAX_VALUE)
-        );
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(btnAddImage)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnAddText)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnDeleteItem)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnMoveUp)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnMoveDown)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnSave))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(lblTemplateName))
-                    .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(lblTemplateName))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(13, 13, 13)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnAddImage)
-                    .add(btnAddText)
-                    .add(btnDeleteItem)
-                    .add(btnMoveUp)
-                    .add(btnMoveDown)
-                    .add(btnSave))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-        jSplitPane1.setRightComponent(jPanel1);
-
-        jSplitPane2.setDividerLocation(200);
+        jSplitPane2.setBorder(null);
+        jSplitPane2.setDividerLocation(250);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        tabTemplates.setFont(new java.awt.Font("Arial", 1, 11));
+        panelTemplates.setFont(new java.awt.Font("Arial", 1, 11));
         jTableTemplates.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -179,7 +83,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTableTemplates);
 
         jToolBar1.setFloatable(false);
-        btnLoad.setText("Load");
+        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/open.gif")));
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -188,7 +92,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnLoad);
 
-        btnNew.setText("New");
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/new.gif")));
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -197,7 +101,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnNew);
 
-        btnDeleteTemplate.setText("Delete");
+        btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
         btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteTemplateActionPerformed(evt);
@@ -206,22 +110,26 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnDeleteTemplate);
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+        org.jdesktop.layout.GroupLayout panelTemplatesLayout = new org.jdesktop.layout.GroupLayout(panelTemplates);
+        panelTemplates.setLayout(panelTemplatesLayout);
+        panelTemplatesLayout.setHorizontalGroup(
+            panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+        panelTemplatesLayout.setVerticalGroup(
+            panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelTemplatesLayout.createSequentialGroup()
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
-        jSplitPane2.setTopComponent(jPanel2);
+        tabTemplates.addTab("Templates", panelTemplates);
 
+        jSplitPane2.setLeftComponent(tabTemplates);
+
+        tabProperties.setFont(new java.awt.Font("Arial", 1, 11));
+        jScrollPane2.setFont(new java.awt.Font("Arial", 1, 11));
         jTableProperties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -235,19 +143,131 @@ public class TemplatePanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTableProperties);
 
-        jSplitPane2.setRightComponent(jScrollPane2);
+        tabProperties.addTab("Properties", jScrollPane2);
+
+        jSplitPane2.setRightComponent(tabProperties);
 
         jSplitPane1.setLeftComponent(jSplitPane2);
+
+        tabTemplateEditor.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel1.setText("Template:");
+
+        lblTemplateName.setText("jLabel2");
+
+        org.jdesktop.layout.GroupLayout templateEditorPanel1Layout = new org.jdesktop.layout.GroupLayout(templateEditorPanel1);
+        templateEditorPanel1.setLayout(templateEditorPanel1Layout);
+        templateEditorPanel1Layout.setHorizontalGroup(
+            templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 645, Short.MAX_VALUE)
+        );
+        templateEditorPanel1Layout.setVerticalGroup(
+            templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 476, Short.MAX_VALUE)
+        );
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        jToolBar2.add(btnSave);
+
+        btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/image.gif")));
+        btnAddImage.setText("Add Image");
+        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddImageActionPerformed(evt);
+            }
+        });
+
+        jToolBar2.add(btnAddImage);
+
+        btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/text.gif")));
+        btnAddText.setText("Add Text");
+        btnAddText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddTextActionPerformed(evt);
+            }
+        });
+
+        jToolBar2.add(btnAddText);
+
+        btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
+        btnDeleteItem.setText("Delete");
+        btnDeleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteItemActionPerformed(evt);
+            }
+        });
+
+        jToolBar2.add(btnDeleteItem);
+
+        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.gif")));
+        btnMoveUp.setText("Move Up");
+        btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoveUpActionPerformed(evt);
+            }
+        });
+
+        jToolBar2.add(btnMoveUp);
+
+        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.gif")));
+        btnMoveDown.setText("Move Down");
+        btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoveDownActionPerformed(evt);
+            }
+        });
+
+        jToolBar2.add(btnMoveDown);
+
+        org.jdesktop.layout.GroupLayout panelTemplateEditorLayout = new org.jdesktop.layout.GroupLayout(panelTemplateEditor);
+        panelTemplateEditor.setLayout(panelTemplateEditorLayout);
+        panelTemplateEditorLayout.setHorizontalGroup(
+            panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelTemplateEditorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(panelTemplateEditorLayout.createSequentialGroup()
+                        .add(jLabel1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(lblTemplateName)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 441, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 649, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        panelTemplateEditorLayout.setVerticalGroup(
+            panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelTemplateEditorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel1)
+                        .add(lblTemplateName))
+                    .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(38, 38, 38))
+        );
+        tabTemplateEditor.addTab("Template Editor", panelTemplateEditor);
+
+        jSplitPane1.setRightComponent(tabTemplateEditor);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 879, Short.MAX_VALUE)
+            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 942, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -338,8 +358,6 @@ public class TemplatePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSplitPane jSplitPane1;
@@ -347,7 +365,13 @@ public class TemplatePanel extends javax.swing.JPanel {
     private javax.swing.JTable jTableProperties;
     private javax.swing.JTable jTableTemplates;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel lblTemplateName;
+    private javax.swing.JPanel panelTemplateEditor;
+    private javax.swing.JPanel panelTemplates;
+    private javax.swing.JTabbedPane tabProperties;
+    private javax.swing.JTabbedPane tabTemplateEditor;
+    private javax.swing.JTabbedPane tabTemplates;
     private datasoul.templates.TemplateEditorPanel templateEditorPanel1;
     // End of variables declaration//GEN-END:variables
     
