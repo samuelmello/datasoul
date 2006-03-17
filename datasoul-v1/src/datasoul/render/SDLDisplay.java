@@ -60,6 +60,11 @@ public class SDLDisplay {
         
         t.setPriority(Thread.MAX_PRIORITY);
         t.start();
+        try {
+            t.join();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
     }
 
     public static synchronized SDLDisplay getInstance(){
