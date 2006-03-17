@@ -1,11 +1,24 @@
 #include <stdio.h>
 #include <string.h>
 #include <jni.h> 
-#include "SDL.h"
-#include "SDL_thread.h"
+#include <SDL/SDL.h>
+#include <SDL/SDL_thread.h>
 #include "datasoul_render_SDLDisplay.h"
 
+#ifdef VIDEO4LINUX
+#include "linux/SDL_bgrab-1.0.0/SDL_bgrab.h"
+#include <pthread.h>
+#include <sched.h>
+#endif 
+
+#ifdef VIDEO4LINUX
+#define USE_PTHREAD
+#endif
+
 #define FRAMETIME_MS 30
+
+#define BACKGROUND_MODE_STATIC 0
+#define BACKGROUND_MODE_LIVE   1
 
 typedef struct {
 	SDL_Surface *screen;
@@ -15,41 +28,67 @@ typedef struct {
 	int clear;
 	int needRefresh;
 	int stopDisplay;
+	int bgMode;
+
+#ifdef USE_PTHREAD
+	pthread_t displayThread;
+#else
 	SDL_Thread *displayThread;
+#endif
+	
+#ifdef VIDEO4LINUX
+	tSDL_bgrab bgrab;
+#endif
 } globals_t;
 
 static globals_t globals;
 
+#ifdef VIDEO4LINUX
+void* displayThread (void *arg){
+#else
 int displayThread (void *arg){
-
-	Uint32 time1, time2;
+#endif
+	
+	Uint32 time1, time2, time3;
 	
 	while (globals.stopDisplay == 0){
 		time1 = SDL_GetTicks();
 		
-		if (globals.needRefresh){
+		if (globals.needRefresh || globals.bgMode == BACKGROUND_MODE_LIVE){
+
 			// Update the screen
 
 			// we are in black?
-			if (globals.black){
+			if (globals.black && globals.needRefresh){
 				SDL_FillRect (globals.screen, NULL, 0);	
 			}else{
 				// ok, "normal" painting"
-				SDL_BlitSurface(globals.background, NULL, globals.screen, NULL);
+				
+				
+				if (globals.bgMode == BACKGROUND_MODE_LIVE){
+#ifdef VIDEO4LINUX
+					bgrabBlitFramebuffer(&globals.bgrab, globals.screen, 0 /* deintrelace */);
+#endif
+				}else{
+					SDL_BlitSurface(globals.background, NULL, globals.screen, NULL);
+				}
+
 				if (! globals.clear){
 					SDL_BlitSurface(globals.overlay, NULL, globals.screen, NULL);
 				}
 			}
+			time3 = SDL_GetTicks();
 			SDL_Flip(globals.screen);
 			globals.needRefresh = 0;
+
 		}
+		time2 = SDL_GetTicks();
 		
 		// Sleep until the next screen refresh
-		time2 = SDL_GetTicks();
 		if ( (time2 - time1) < FRAMETIME_MS ){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
-		
+		fprintf(stderr, "t1: %d, t2: %d, t3: %d, diff: %d, delay: %d\n", time1, time2, time3, (time2 - time1),FRAMETIME_MS - (time2 - time1));
 	}
 
 }
@@ -61,7 +100,7 @@ int displayThread (void *arg){
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
-(JNIEnv *env, jobject obj){
+(JNIEnv *env, jobject obj, jint width, jint height){
 
 
         SDL_Surface *surface;
@@ -69,13 +108,28 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
         Uint32 rmask, gmask, bmask, amask;
         SDL_Rect rect;
 
-
         if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
         {
                 return ;
         }
 
-        globals.screen = SDL_SetVideoMode( 640, 480, 32, SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME);
+
+#ifdef VIDEO4LINUX
+	bgrabOpen(&globals.bgrab,"/dev/video0");
+
+	/* Print some device info */
+	bgrabPrintInfo(&globals.bgrab);
+
+	/* Configure card */
+	bgrabSetChannel(&globals.bgrab, 2, 0);
+	
+	/* Start! */
+        bgrabStart(&globals.bgrab, width, height, 1);
+	
+#endif
+	
+
+	globals.screen = SDL_SetVideoMode( width, height, 0, SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         rmask = 0xff000000;
         gmask = 0x00ff0000;
@@ -88,7 +142,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
         amask = 0xff000000;
 #endif
 
-        surface = SDL_CreateRGBSurface(SDL_SWSURFACE, 640, 480, 32,
+        surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32,
                         rmask, gmask, bmask, amask);
 
         globals.overlay = SDL_DisplayFormatAlpha(surface);
@@ -98,8 +152,27 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
 
 	globals.needRefresh = 1;
 	globals.stopDisplay = 0;
-	globals.displayThread = SDL_CreateThread( &displayThread, NULL);
+	
+#ifdef USE_PTHREAD
+	
+	// Init the painting thread using the RoundRobin Scheduler
+	// and the highest priority
+	pthread_attr_t attr;
+	pthread_attr_init(&attr);
+	pthread_attr_setschedpolicy(&attr, SCHED_RR);
+        struct sched_param param;
+	param.__sched_priority = sched_get_priority_min(SCHED_RR);
+	pthread_attr_setschedparam(&attr, &param);
+	pthread_create(&globals.displayThread, &attr, &displayThread, NULL);
 
+	// also setup the process scheduler to RoundRobin
+	int x = sched_setscheduler(0, SCHED_RR, &param);
+	if (x != 0){
+		perror("setsched");
+	}
+#else
+	globals.displayThread = SDL_CreateThread( &displayThread, NULL);
+#endif
 }
 
 /*
@@ -112,7 +185,18 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_cleanup
 
 	  int x;
 	  globals.stopDisplay = 1;
+
+#ifdef VIDEO4LINUX
+	  bgrabStop(&globals.bgrab);
+	  bgrabClose(&globals.bgrab);
+#endif
+
+	  
+#ifdef USE_PTHREAD
+	  pthread_join(globals.displayThread, (void*) &x);
+#else
 	  SDL_WaitThread(globals.displayThread, &x);
+#endif
 	  
 }
 
@@ -196,5 +280,14 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_clear
 	  globals.needRefresh = 1;
 }
 
-
+/*
+ * Class:     datasoul_render_SDLDisplay
+ * Method:    setBackgroundMode
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setBackgroundMode
+  (JNIEnv *env, jobject obj, jint mode){
+	  globals.bgMode = mode;
+	  globals.needRefresh = 1;
+}
 

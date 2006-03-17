@@ -44,19 +44,43 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         tabAuxiliar = new javax.swing.JTabbedPane();
+        panelClock = new javax.swing.JPanel();
+        panelMessage = new javax.swing.JPanel();
         PanelDisplay = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnChangeBackground = new javax.swing.JButton();
         imgBackground = new datasoul.datashow.ImageDisplayer();
         btnBlack = new javax.swing.JToggleButton();
         btnClear = new javax.swing.JToggleButton();
-        sldAlpha = new javax.swing.JSlider();
-        panelClock = new javax.swing.JPanel();
-        panelMessage = new javax.swing.JPanel();
+        cbBackgroundMode = new javax.swing.JComboBox();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(80, 0));
+        org.jdesktop.layout.GroupLayout panelClockLayout = new org.jdesktop.layout.GroupLayout(panelClock);
+        panelClock.setLayout(panelClockLayout);
+        panelClockLayout.setHorizontalGroup(
+            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 549, Short.MAX_VALUE)
+        );
+        panelClockLayout.setVerticalGroup(
+            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 248, Short.MAX_VALUE)
+        );
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
+
+        org.jdesktop.layout.GroupLayout panelMessageLayout = new org.jdesktop.layout.GroupLayout(panelMessage);
+        panelMessage.setLayout(panelMessageLayout);
+        panelMessageLayout.setHorizontalGroup(
+            panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 549, Short.MAX_VALUE)
+        );
+        panelMessageLayout.setVerticalGroup(
+            panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 248, Short.MAX_VALUE)
+        );
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MESSAGE"), panelMessage);
+
         jButton1.setText("Init Display Test");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,16 +95,15 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             }
         });
 
-        imgBackground.setPreferredSize(new java.awt.Dimension(160, 120));
         org.jdesktop.layout.GroupLayout imgBackgroundLayout = new org.jdesktop.layout.GroupLayout(imgBackground);
         imgBackground.setLayout(imgBackgroundLayout);
         imgBackgroundLayout.setHorizontalGroup(
             imgBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 158, Short.MAX_VALUE)
+            .add(0, 156, Short.MAX_VALUE)
         );
         imgBackgroundLayout.setVerticalGroup(
             imgBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 118, Short.MAX_VALUE)
+            .add(0, 116, Short.MAX_VALUE)
         );
 
         btnBlack.setText("Black");
@@ -97,11 +120,15 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             }
         });
 
-        sldAlpha.setMaximum(255);
-        sldAlpha.setValue(255);
-        sldAlpha.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                sldAlphaStateChanged(evt);
+        cbBackgroundMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Static", "Live" }));
+        cbBackgroundMode.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbBackgroundModeItemStateChanged(evt);
+            }
+        });
+        cbBackgroundMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBackgroundModeActionPerformed(evt);
             }
         });
 
@@ -111,19 +138,17 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(PanelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(PanelDisplayLayout.createSequentialGroup()
-                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .add(sldAlpha, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 232, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(19, 19, 19)
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(cbBackgroundMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         PanelDisplayLayout.setVerticalGroup(
             PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -139,54 +164,33 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                             .add(btnChangeBackground)
                             .add(btnClear))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(sldAlpha, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(cbBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
         );
         tabAuxiliar.addTab("Display", PanelDisplay);
-
-        org.jdesktop.layout.GroupLayout panelClockLayout = new org.jdesktop.layout.GroupLayout(panelClock);
-        panelClock.setLayout(panelClockLayout);
-        panelClockLayout.setHorizontalGroup(
-            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 506, Short.MAX_VALUE)
-        );
-        panelClockLayout.setVerticalGroup(
-            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 163, Short.MAX_VALUE)
-        );
-        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
-
-        org.jdesktop.layout.GroupLayout panelMessageLayout = new org.jdesktop.layout.GroupLayout(panelMessage);
-        panelMessage.setLayout(panelMessageLayout);
-        panelMessageLayout.setHorizontalGroup(
-            panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 506, Short.MAX_VALUE)
-        );
-        panelMessageLayout.setVerticalGroup(
-            panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 163, Short.MAX_VALUE)
-        );
-        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MESSAGE"), panelMessage);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sldAlphaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sldAlphaStateChanged
-    
-            //byte alpha = (byte) sldAlpha.getValue();
-            //SDLDisplay.getInstance().setOverlayAlpha(alpha);
-        //TODO
-    }//GEN-LAST:event_sldAlphaStateChanged
+    private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
+ 
+        SDLDisplay.getInstance().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
+        
+    }//GEN-LAST:event_cbBackgroundModeItemStateChanged
+
+    private void cbBackgroundModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBackgroundModeActionPerformed
+        
+    }//GEN-LAST:event_cbBackgroundModeActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
 
@@ -251,11 +255,11 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnBlack;
     private javax.swing.JButton btnChangeBackground;
     private javax.swing.JToggleButton btnClear;
+    private javax.swing.JComboBox cbBackgroundMode;
     private datasoul.datashow.ImageDisplayer imgBackground;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel panelClock;
     private javax.swing.JPanel panelMessage;
-    private javax.swing.JSlider sldAlpha;
     private javax.swing.JTabbedPane tabAuxiliar;
     // End of variables declaration//GEN-END:variables
     
