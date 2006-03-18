@@ -86,6 +86,9 @@ public class SDLDisplay {
     public native void black(int active);
     public native void clear(int active);
     public native void setBackgroundMode(int mode);
+    public native void setInputSrc(int src);
+    public native void setInputMode(int mode);
+    public native void setDeintrelaceMode(int mode);
     
 
     public void paintOverlay(Paintable p){

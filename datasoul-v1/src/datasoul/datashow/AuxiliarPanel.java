@@ -53,6 +53,13 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         btnBlack = new javax.swing.JToggleButton();
         btnClear = new javax.swing.JToggleButton();
         cbBackgroundMode = new javax.swing.JComboBox();
+        cbInputSrc = new javax.swing.JComboBox();
+        cbDeintrelaceMode = new javax.swing.JComboBox();
+        cbInputMode = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
@@ -61,7 +68,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelClock.setLayout(panelClockLayout);
         panelClockLayout.setHorizontalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 549, Short.MAX_VALUE)
+            .add(0, 749, Short.MAX_VALUE)
         );
         panelClockLayout.setVerticalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -73,7 +80,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelMessage.setLayout(panelMessageLayout);
         panelMessageLayout.setHorizontalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 549, Short.MAX_VALUE)
+            .add(0, 749, Short.MAX_VALUE)
         );
         panelMessageLayout.setVerticalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -132,29 +139,87 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             }
         });
 
+        cbInputSrc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tuner", "Composite", "S-Video" }));
+        cbInputSrc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbInputSrcActionPerformed(evt);
+            }
+        });
+
+        cbDeintrelaceMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Blend", "Smart Blend", "Smooth Blend" }));
+        cbDeintrelaceMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDeintrelaceModeActionPerformed(evt);
+            }
+        });
+
+        cbInputMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PAL", "NTSC", "SECAM" }));
+        cbInputMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbInputModeActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Background:");
+
+        jLabel2.setText("Input Source:");
+
+        jLabel3.setText("Input Mode:");
+
+        jLabel4.setText("Deintrelace:");
+
         org.jdesktop.layout.GroupLayout PanelDisplayLayout = new org.jdesktop.layout.GroupLayout(PanelDisplay);
         PanelDisplay.setLayout(PanelDisplayLayout);
         PanelDisplayLayout.setHorizontalGroup(
             PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(PanelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .add(19, 19, 19)
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                        .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jLabel1))
+                .add(20, 20, 20)
                 .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                     .add(cbBackgroundMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel2)
+                    .add(jLabel3)
+                    .add(jLabel4))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(PanelDisplayLayout.createSequentialGroup()
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(cbInputSrc, 0, 122, Short.MAX_VALUE)
+                            .add(cbInputMode, 0, 122, Short.MAX_VALUE))
+                        .add(88, 88, 88))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, PanelDisplayLayout.createSequentialGroup()
+                        .add(cbDeintrelaceMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         PanelDisplayLayout.setVerticalGroup(
             PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(PanelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(PanelDisplayLayout.createSequentialGroup()
+                        .add(9, 9, 9)
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel2)
+                            .add(cbInputSrc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel3)
+                            .add(cbInputMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(cbDeintrelaceMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel4)))
                     .add(PanelDisplayLayout.createSequentialGroup()
                         .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jButton1)
@@ -164,7 +229,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                             .add(btnChangeBackground)
                             .add(btnClear))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(cbBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel1)))
                     .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
@@ -174,13 +241,27 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 754, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbDeintrelaceModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDeintrelaceModeActionPerformed
+        SDLDisplay.getInstance().setDeintrelaceMode( cbDeintrelaceMode.getSelectedIndex() );
+    }//GEN-LAST:event_cbDeintrelaceModeActionPerformed
+
+    private void cbInputModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputModeActionPerformed
+        SDLDisplay.getInstance().setInputMode( cbInputMode.getSelectedIndex() );
+    }//GEN-LAST:event_cbInputModeActionPerformed
+
+    private void cbInputSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputSrcActionPerformed
+        SDLDisplay.getInstance().setInputSrc( cbInputSrc.getSelectedIndex() );
+    }//GEN-LAST:event_cbInputSrcActionPerformed
 
     private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
  
@@ -256,8 +337,15 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnChangeBackground;
     private javax.swing.JToggleButton btnClear;
     private javax.swing.JComboBox cbBackgroundMode;
+    private javax.swing.JComboBox cbDeintrelaceMode;
+    private javax.swing.JComboBox cbInputMode;
+    private javax.swing.JComboBox cbInputSrc;
     private datasoul.datashow.ImageDisplayer imgBackground;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel panelClock;
     private javax.swing.JPanel panelMessage;
     private javax.swing.JTabbedPane tabAuxiliar;
