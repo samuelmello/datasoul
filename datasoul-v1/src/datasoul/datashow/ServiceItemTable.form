@@ -13,15 +13,28 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblTemplate" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="78" max="32767" attributes="1"/>
               <Component id="jSliderZoom" min="-2" pref="110" max="-2" attributes="0"/>
           </Group>
-          <Component id="jScrollPane1" alignment="0" pref="273" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="0" pref="306" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Component id="jSliderZoom" min="-2" pref="37" max="-2" attributes="1"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jSliderZoom" min="-2" pref="37" max="-2" attributes="1"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblTemplate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" pref="316" max="32767" attributes="0"/>
           </Group>
@@ -64,6 +77,16 @@
       <Events>
         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="jSliderZoomStateChanged"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Template:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTemplate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="(none)"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

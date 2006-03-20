@@ -251,13 +251,48 @@ getFullWord: {
 
     }
 
+    private void updateAttributes(){
+        atribStr = new AttributedString(text);
+        atribStr.addAttribute( TextAttribute.FAMILY, fontName );
+        atribStr.addAttribute(TextAttribute.SIZE, this.getFontSize());
+        
+        if ( textWidth == null) {
+            // do nothing
+        } else if ( textWidth.equals("Condensed")) {
+            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_CONDENSED);
+        } else if ( textWidth.equals("SemiCondensed")) {
+            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_CONDENSED);
+        } else if ( textWidth.equals("Regular")) {
+            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_REGULAR);
+        } else if ( textWidth.equals("SemiExtended")) {
+            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_EXTENDED);
+        } else if ( textWidth.equals("Extended")) {
+            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_EXTENDED);
+        }
+        
+        if ( underline == null ) {
+            // do nothing
+        } else if ( underline.equals("Off")) {
+            atribStr.addAttribute(TextAttribute.UNDERLINE, null);
+        } else if ( underline.equals("Simple")) {
+            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_ONE_PIXEL);
+        } else if ( underline.equals("Dotted")) {
+            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DOTTED);
+        } else if ( underline.equals("TwoPixel")) {
+            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_TWO_PIXEL);
+        } else if ( underline.equals("Dashed")) {
+            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DASHED);
+        }
+
+    }
+    
     public String getText() {
         return text;
     }
 
     public void setText(String text) {
         this.text = text;
-        atribStr = new AttributedString(text);
+        updateAttributes();
         firePropChanged("Text");
     }
 
@@ -267,7 +302,7 @@ getFullWord: {
 
     public void setFontName(String fontName) {
         this.fontName = fontName;
-        //atribStr.addAttribute( TextAttribute.FAMILY, fontName );
+        updateAttributes();
         firePropChanged("FontName");
     }
 
@@ -277,7 +312,7 @@ getFullWord: {
 
     public void setFontSize(float fontSize) {
         this.fontSize = fontSize;
-        atribStr.addAttribute(TextAttribute.SIZE, this.getFontSize());
+        updateAttributes();
         firePropChanged("FontSize");
     }
 
@@ -366,44 +401,10 @@ getFullWord: {
     
     public void setTextWidth(String width){
         
-        /*
-         *  WIDTH_CONDENSED = 0.75,
-            WIDTH_SEMI_CONDENSED = 0.875,
-            WIDTH_REGULAR = 1.0,
-            WIDTH_SEMI_EXTENDED = 1.25,
-            WIDTH_EXTENDED = 1.5
-         */
-        
-        if ( width.equals("Condensed")) {
-            this.textWidth = width;
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_CONDENSED);
-            firePropChanged("TextWidth");
-        }
-        
-        if ( width.equals("SemiCondensed")) {
-            this.textWidth = width;
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_CONDENSED);
-            firePropChanged("TextWidth");
-        }
-        
-        if ( width.equals("Regular")) {
-            this.textWidth = width;
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_REGULAR);
-            firePropChanged("TextWidth");
-        }
+        this.textWidth = width;
+        updateAttributes();
+        firePropChanged("TextWidth");
 
-        if ( width.equals("SemiExtended")) {
-            this.textWidth = width;
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_EXTENDED);
-            firePropChanged("TextWidth");
-        }
-
-        if ( width.equals("Extended")) {
-            this.textWidth = width;
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_EXTENDED);
-            firePropChanged("TextWidth");
-        }
-        
     }
     
     
@@ -439,43 +440,11 @@ getFullWord: {
     }
     
     public void setUnderline(String under){
-        /*
-         UNDERLINE_LOW_ONE_PIXEL, 
-         UNDERLINE_LOW_TWO_PIXEL, 
-         UNDERLINE_LOW_DOTTED, 
-         UNDERLINE_LOW_GRAY, 
-         UNDERLINE_LOW_DASHED
-         */
 
-        if ( under.equals("Off")) {
-            this.underline = under;
-            atribStr.addAttribute(TextAttribute.UNDERLINE, null);
-            firePropChanged("Underline");
-        }
-        
-        if ( under.equals("Simple")) {
-            this.underline = under;
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_ONE_PIXEL);
-            firePropChanged("Underline");
-        }
-
-        if ( under.equals("Dotted")) {
-            this.underline = under;
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DOTTED);
-            firePropChanged("Underline");
-        }
-
-        if ( under.equals("TwoPixel")) {
-            this.underline = under;
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_TWO_PIXEL);
-            firePropChanged("Underline");
-        }
-
-        if ( under.equals("Dashed")) {
-            this.underline = under;
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DASHED);
-            firePropChanged("Underline");
-        }
+        this.underline = under;
+        updateAttributes();
+        firePropChanged("Underline");
+            
     }
     
     

@@ -39,6 +39,8 @@ public class ServiceItemTable extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
         jSliderZoom = new javax.swing.JSlider();
+        jLabel1 = new javax.swing.JLabel();
+        lblTemplate = new javax.swing.JLabel();
 
         jScrollPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -70,19 +72,33 @@ public class ServiceItemTable extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setText("Template:");
+
+        lblTemplate.setText("(none)");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .add(jLabel1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(lblTemplate)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 78, Short.MAX_VALUE)
                 .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(lblTemplate)
+                            .add(jLabel1))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
         );
@@ -107,8 +123,10 @@ public class ServiceItemTable extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable displayTable;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider jSliderZoom;
+    private javax.swing.JLabel lblTemplate;
     // End of variables declaration//GEN-END:variables
     
     public void setServiceItem(ServiceItem item){
@@ -116,7 +134,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         item.registerJTable(displayTable);
         item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
-        
+        lblTemplate.setText( item.getTemplate() );
     }
 
     public ServiceItem getServiceItem(){
