@@ -20,7 +20,7 @@ import java.nio.ByteBuffer;
  *
  * @author samuelm
  */
-public class SDLDisplay {
+public class SDLDisplay implements DisplayItf {
 
     static {
         // depois a gente arruma isso
@@ -33,8 +33,6 @@ public class SDLDisplay {
         
     }
     
-    public static final int MAIN_OUTPUT_WIDTH = 640;
-    public static final int MAIN_OUTPUT_HEIGHT = 480;
     public static final int BACKGROUND_MODE_STATIC = 0;
     public static final int BACKGROUND_MODE_LIVE = 1;
     
@@ -43,18 +41,28 @@ public class SDLDisplay {
     private BufferedImage background;
     private ByteBuffer backgroundBuf;
     
+    private SDLContentRender contentRender;
+    
     static private SDLDisplay instance = null;
     
-    /** Creates a new instance of SDLDisplay */
-    private SDLDisplay() {
-        overlay = new BufferedImage(MAIN_OUTPUT_WIDTH, MAIN_OUTPUT_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        overlayBuf = ByteBuffer.allocateDirect(MAIN_OUTPUT_WIDTH * MAIN_OUTPUT_HEIGHT * 4);
-        background = new BufferedImage(MAIN_OUTPUT_WIDTH, MAIN_OUTPUT_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        backgroundBuf = ByteBuffer.allocateDirect(MAIN_OUTPUT_WIDTH * MAIN_OUTPUT_HEIGHT * 4);
+    public SDLDisplay(){
+        contentRender = new SDLContentRender(this);
+    }
+    
+    public SDLContentRender getContentRender(){
+        return contentRender;
+    }
+    
+    public void initDisplay (final int width, final int height){
+        
+        overlay = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
+        overlayBuf = ByteBuffer.allocateDirect(width * height * 4);
+        background = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
+        backgroundBuf = ByteBuffer.allocateDirect(width * height * 4);
         
         Thread t = new Thread(){
             public void run(){
-                init(MAIN_OUTPUT_WIDTH, MAIN_OUTPUT_HEIGHT);
+                init(width, height);
             }
         };
         
@@ -65,13 +73,7 @@ public class SDLDisplay {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-    }
-
-    public static synchronized SDLDisplay getInstance(){
-        if (instance == null){
-            instance = new SDLDisplay();
-        }
-        return instance;
+        
     }
     
     @Override

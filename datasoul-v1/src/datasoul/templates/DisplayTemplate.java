@@ -140,7 +140,7 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
      * But the general rule is that other components shall
      * avoid using it directly.
      */
-    ArrayList<TemplateItem> getItems(){
+    public ArrayList<TemplateItem> getItems(){
         return items;
     }
     

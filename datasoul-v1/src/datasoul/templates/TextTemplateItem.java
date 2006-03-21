@@ -74,6 +74,14 @@ public class TextTemplateItem extends TemplateItem {
     private static JComboBox cbTextWidth;
     private static JComboBox cbUnderline;
     private static JComboBox cbFontName;
+    
+    public static final String CONTENT_TITLE = "Title";
+    public static final String CONTENT_SLIDE = "Slide";
+    public static final String CONTENT_NEXTSLIDE = "Next Slide";
+    public static final String CONTENT_CLOCK = "Clock";
+    public static final String CONTENT_TIMER = "Timer";
+    public static final String CONTENT_STATIC = "Static";
+    public static final String DEFAULT_TEXT = "TextItem";
 
     public TextTemplateItem () {
         
@@ -82,7 +90,7 @@ public class TextTemplateItem extends TemplateItem {
         this.setWidth(100);
         this.setHeight(100);
         this.setContent("Static");
-        this.setText("TextItem");
+        this.setText(DEFAULT_TEXT);
         this.setFontSize(16f);
         this.setAlignment("Left");
         this.setVerticalAlignment("Top");
@@ -94,11 +102,12 @@ public class TextTemplateItem extends TemplateItem {
 
         if (cbContent == null){
             cbContent = new JComboBox();
-            cbContent.addItem("Static");
-            cbContent.addItem("Slide");
-            cbContent.addItem("NextSlide");
-            cbContent.addItem("Title");
-            cbContent.addItem("Clock");
+            cbContent.addItem(CONTENT_STATIC);
+            cbContent.addItem(CONTENT_SLIDE);
+            cbContent.addItem(CONTENT_NEXTSLIDE);
+            cbContent.addItem(CONTENT_TITLE);
+            cbContent.addItem(CONTENT_CLOCK);
+            cbContent.addItem(CONTENT_TIMER);
         }
         registerEditorComboBox("Content", cbContent);
         

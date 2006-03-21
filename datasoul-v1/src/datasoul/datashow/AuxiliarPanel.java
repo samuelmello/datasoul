@@ -6,6 +6,8 @@
 
 package datasoul.datashow;
 
+import datasoul.render.ContentManager;
+import datasoul.render.DisplayManager;
 import datasoul.render.SDLDisplay;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
@@ -60,6 +62,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
@@ -168,6 +171,13 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Deintrelace:");
 
+        jButton2.setText("Start Feedback");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout PanelDisplayLayout = new org.jdesktop.layout.GroupLayout(PanelDisplay);
         PanelDisplay.setLayout(PanelDisplayLayout);
         PanelDisplayLayout.setHorizontalGroup(
@@ -175,15 +185,18 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             .add(PanelDisplayLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                        .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .add(jLabel1))
-                .add(20, 20, 20)
-                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(cbBackgroundMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(PanelDisplayLayout.createSequentialGroup()
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                .add(btnClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(btnBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(jLabel1))
+                        .add(20, 20, 20)
+                        .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(cbBackgroundMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .add(jButton2))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -231,9 +244,11 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(cbBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel1)))
+                            .add(jLabel1))
+                        .add(19, 19, 19)
+                        .add(jButton2))
                     .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addContainerGap(106, Short.MAX_VALUE))
         );
         tabAuxiliar.addTab("Display", PanelDisplay);
 
@@ -251,21 +266,32 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        DisplayManager.getMonitorDisplay();
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTemplateLive("monitor");
+        cm.setTitleLive("FooTitulo");
+        cm.setSlideLive("Texto do Slide");
+        cm.setNextSlideLive("Texto do proximo Slide");
+        cm.updateLive();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     private void cbDeintrelaceModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDeintrelaceModeActionPerformed
-        SDLDisplay.getInstance().setDeintrelaceMode( cbDeintrelaceMode.getSelectedIndex() );
+        DisplayManager.getMainDisplay().setDeintrelaceMode( cbDeintrelaceMode.getSelectedIndex() );
     }//GEN-LAST:event_cbDeintrelaceModeActionPerformed
 
     private void cbInputModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputModeActionPerformed
-        SDLDisplay.getInstance().setInputMode( cbInputMode.getSelectedIndex() );
+        DisplayManager.getMainDisplay().setInputMode( cbInputMode.getSelectedIndex() );
     }//GEN-LAST:event_cbInputModeActionPerformed
 
     private void cbInputSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputSrcActionPerformed
-        SDLDisplay.getInstance().setInputSrc( cbInputSrc.getSelectedIndex() );
+        DisplayManager.getMainDisplay().setInputSrc( cbInputSrc.getSelectedIndex() );
     }//GEN-LAST:event_cbInputSrcActionPerformed
 
     private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
  
-        SDLDisplay.getInstance().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
+        DisplayManager.getMainDisplay().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
         
     }//GEN-LAST:event_cbBackgroundModeItemStateChanged
 
@@ -276,9 +302,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
 
            if( btnClear.isSelected() ){
-               SDLDisplay.getInstance().clear(1);
+               DisplayManager.getMainDisplay().clear(1);
            }else{
-               SDLDisplay.getInstance().clear(0);
+               DisplayManager.getMainDisplay().clear(0);
            }
 
         
@@ -287,9 +313,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private void btnBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBlackActionPerformed
 
            if( btnBlack.isSelected() ){
-               SDLDisplay.getInstance().black(1);
+               DisplayManager.getMainDisplay().black(1);
            }else{
-               SDLDisplay.getInstance().black(0);
+               DisplayManager.getMainDisplay().black(0);
            }
         
     }//GEN-LAST:event_btnBlackActionPerformed
@@ -307,7 +333,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
                 String filename = fc.getSelectedFile().getAbsolutePath();
                 imgBackground.setImage(filename);
-                SDLDisplay d = SDLDisplay.getInstance();                
+                SDLDisplay d = DisplayManager.getMainDisplay();                
                 d.paintBackground( imgBackground.getImage() );
             }
         }catch(IOException e){
@@ -318,7 +344,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        SDLDisplay d = SDLDisplay.getInstance();
+        SDLDisplay d = DisplayManager.getMainDisplay();
         DisplayTemplate template = null;
         try {
             template = TemplateManager.getDisplayTemplate("Teste1");
@@ -342,6 +368,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox cbInputSrc;
     private datasoul.datashow.ImageDisplayer imgBackground;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

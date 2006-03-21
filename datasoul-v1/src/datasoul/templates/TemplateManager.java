@@ -109,6 +109,9 @@ public class TemplateManager implements TableModel {
     
     public static DisplayTemplate getDisplayTemplate(String templateName) throws Exception{
 
+        if (templateName == null)
+            return null;
+        
         if (loadedTemplates.containsKey(templateName)){
             return loadedTemplates.get(templateName);
         }else{
