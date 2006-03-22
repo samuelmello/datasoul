@@ -47,5 +47,16 @@ public class TextServiceItem extends ServiceItem {
     public String getText(){
         return this.text;
     }
+
+    public String getSlideText (int rowIndex){
+        
+        try{
+            TextServiceItemRenderer r = (TextServiceItemRenderer) slides.get(rowIndex);
+            return r.getText();
+        }catch(Exception e){
+            return "";
+        }
+        
+    }
     
 }

@@ -10,6 +10,7 @@
 package datasoul.render;
 
 import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -60,6 +61,7 @@ public class SDLDisplay implements DisplayItf {
         background = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         backgroundBuf = ByteBuffer.allocateDirect(width * height * 4);
         
+        
         Thread t = new Thread(){
             public void run(){
                 init(width, height);
@@ -73,6 +75,8 @@ public class SDLDisplay implements DisplayItf {
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
+        
+        paintBackgroundColor(Color.ORANGE);
         
     }
     
@@ -136,6 +140,18 @@ public class SDLDisplay implements DisplayItf {
         backgroundBuf.clear();
         
     }
-    
+
+    public void paintBackgroundColor(Color color){
+
+        Graphics2D g = background.createGraphics();
+        g.setColor(color);
+        g.fillRect(0,0,background.getWidth(), background.getHeight());
+        
+        backgroundBuf.put(((DataBufferByte)background.getRaster().getDataBuffer()).getData() ) ;
+        backgroundBuf.flip();
+        this.nativeSetBackground(backgroundBuf);
+        backgroundBuf.clear();
+        
+    }
     
 }

@@ -190,10 +190,14 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private void showItem(){
         if(objectManager instanceof DatashowPanel){
             DatashowPanel om = (DatashowPanel)objectManager;
-            om.getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+            if (om != null){
+                om.getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+            }
         }else{
-            SongsPanel om = (SongsPanel)objectManager;            
-            om.getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+            SongsPanel om = (SongsPanel)objectManager;     
+            if (om != null){
+                om.getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+            }
         }
     }    
     

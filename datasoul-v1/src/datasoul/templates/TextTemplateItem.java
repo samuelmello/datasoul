@@ -163,6 +163,10 @@ public class TextTemplateItem extends TemplateItem {
 
     public void draw(Graphics2D g) {
         
+         if (this.text.length() == 0){
+             return;
+         }
+        
          AttributedCharacterIterator aci = this.atribStr.getIterator();
          FontRenderContext frc = g.getFontRenderContext();
          LineBreakMeasurer lbm;
@@ -262,6 +266,11 @@ getFullWord: {
 
     private void updateAttributes(){
         atribStr = new AttributedString(text);
+        
+        if (text.length() == 0) {
+            return;
+        }
+        
         if (fontName != null){
             atribStr.addAttribute( TextAttribute.FAMILY, fontName );
         }

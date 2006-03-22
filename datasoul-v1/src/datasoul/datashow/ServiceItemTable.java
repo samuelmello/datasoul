@@ -8,6 +8,7 @@ package datasoul.datashow;
 
 import java.util.Hashtable;
 import javax.swing.JLabel;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -140,5 +141,42 @@ public class ServiceItemTable extends javax.swing.JPanel {
     public ServiceItem getServiceItem(){
         return this.item;        
     }
+    
+    public void addTableListener(ListSelectionListener listener){
+        displayTable.getSelectionModel().addListSelectionListener(listener);
+    }
+    
+    public String getSlideText(){
+        
+        int selectedRow = displayTable.getSelectedRow();
+        if (selectedRow == -1) {
+            return "";
+        }
+
+        if (! (item instanceof TextServiceItem)){
+            return "";
+        }
+        
+        return ((TextServiceItem)item).getSlideText(selectedRow);
+    }
+
+    public String getNextSlideText(){
+        
+        int selectedRow = displayTable.getSelectedRow();
+        if (selectedRow == -1) {
+            return "";
+        }
+        
+        if (selectedRow+1 >= displayTable.getRowCount()){
+            return "";
+        }
+
+        if (! (item instanceof TextServiceItem)){
+            return "";
+        }
+        
+        return ((TextServiceItem)item).getSlideText(selectedRow+1);
+    }
+    
     
 }

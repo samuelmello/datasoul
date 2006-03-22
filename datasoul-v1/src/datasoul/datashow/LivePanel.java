@@ -1,20 +1,13 @@
 package datasoul.datashow;
-/*
- * LivePanel.java
- *
- * Created on 26 de Dezembro de 2005, 23:25
- */
-
-import datasoul.*;
-import datasoul.util.*;
-import datasoul.datashow.*;
-import datasoul.song.*;
+import datasoul.render.ContentManager;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author  Administrador
  */
-public class LivePanel extends javax.swing.JPanel {
+public class LivePanel extends javax.swing.JPanel implements ListSelectionListener {
 
     private DatashowPanel objectManager;
     
@@ -23,6 +16,7 @@ public class LivePanel extends javax.swing.JPanel {
      */
     public LivePanel() {
         initComponents();
+        serviceItemTable1.addTableListener(this);
     }
 
     public DatashowPanel getObjectManager() {
@@ -35,6 +29,12 @@ public class LivePanel extends javax.swing.JPanel {
 
     public void showItem(ServiceItem serviceItem){
         this.serviceItemTable1.setServiceItem(serviceItem);
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTemplateLive(serviceItem.getTemplate());
+        cm.setTitleLive(serviceItem.getTitle());
+        cm.setSlideLive("");
+        cm.setNextSlideLive("");
+        cm.updateLive();
     }
     
     /** This method is called from within the constructor to
@@ -67,6 +67,15 @@ public class LivePanel extends javax.swing.JPanel {
                 .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    public void valueChanged(ListSelectionEvent e) {
+
+        ContentManager cm = ContentManager.getInstance();
+        cm.setSlideLive( serviceItemTable1.getSlideText() );
+        cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
+        cm.updateLive();
+        
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -53,6 +53,10 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
         area.setText(t);
     }
 
+    public String getText(){
+        return area.getText();
+    }
+    
     public void setZoom(int f) {
 
         switch (f){

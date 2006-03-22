@@ -25,6 +25,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         
         auxiliar.setObjectManager(this);
         serviceList.setObjectManager(this);
+        preview.setObjectManager(this);
             
     }
 

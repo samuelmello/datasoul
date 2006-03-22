@@ -241,6 +241,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        
+        if (tableServiceList.getSelectedRow() == -1){
+            return;
+        }
+        
         ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
         if(item instanceof Song){
             SongEditorForm sef = new SongEditorForm((Song)item);

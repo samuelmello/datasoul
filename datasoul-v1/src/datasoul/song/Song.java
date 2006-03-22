@@ -28,7 +28,7 @@ import org.w3c.dom.Node;
  *
  * @author Administrador
  */
-public class Song extends ServiceItem{
+public class Song extends TextServiceItem{
   
     private String songName="";
     private String songAuthor="";
