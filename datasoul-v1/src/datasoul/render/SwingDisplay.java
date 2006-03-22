@@ -38,7 +38,6 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(102, 102, 102));
         setFocusCycleRoot(false);
         setFocusable(false);

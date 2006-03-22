@@ -262,7 +262,9 @@ getFullWord: {
 
     private void updateAttributes(){
         atribStr = new AttributedString(text);
-        atribStr.addAttribute( TextAttribute.FAMILY, fontName );
+        if (fontName != null){
+            atribStr.addAttribute( TextAttribute.FAMILY, fontName );
+        }
         atribStr.addAttribute(TextAttribute.SIZE, this.getFontSize());
         
         if ( textWidth == null) {
@@ -282,7 +284,7 @@ getFullWord: {
         if ( underline == null ) {
             // do nothing
         } else if ( underline.equals("Off")) {
-            atribStr.addAttribute(TextAttribute.UNDERLINE, null);
+            //atribStr.addAttribute(TextAttribute.UNDERLINE, null);
         } else if ( underline.equals("Simple")) {
             atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_ONE_PIXEL);
         } else if ( underline.equals("Dotted")) {

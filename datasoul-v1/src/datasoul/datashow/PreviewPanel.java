@@ -6,10 +6,7 @@
 
 package datasoul.datashow;
 
-import datasoul.*;
-import datasoul.util.*;
-import datasoul.datashow.*;
-import datasoul.song.*;
+import datasoul.render.ContentManager;
 
 /**
  *
@@ -84,6 +81,14 @@ public class PreviewPanel extends javax.swing.JPanel {
         ServiceItem previewItem = this.getObjectManager().getPreviewPanel().serviceItemTable1.getServiceItem();
         
         this.getObjectManager().getLivePanel().showItem(previewItem);
+        
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTemplateLive( previewItem.getTemplate() );
+        cm.setTitleLive( previewItem.getTitle() );
+        cm.setSlideLive("");
+        cm.setNextSlideLive("");
+        cm.updateLive();
+        
     }//GEN-LAST:event_btnGoLiveActionPerformed
     
     

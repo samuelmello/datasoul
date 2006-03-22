@@ -24,12 +24,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         initComponents();
         
         auxiliar.setObjectManager(this);
-        live.setObjectManager(this);
-        monitor.setObjectManager(this);
-        preview.setObjectManager(this);
         serviceList.setObjectManager(this);
-        songsList.setObjectManager(this);
-        songsSearch.setObjectManager(this);
             
     }
 
@@ -48,9 +43,6 @@ public PreviewPanel getPreviewPanel(){
 public ServiceListPanel getServiceListPanel(){
     return serviceList;
 }
-public SongsListPanel getSongsListPanel(){
-    return songsList;
-}
 public SongsSearchPanel getSongsSearchPanel(){
     return songsSearch;
 }
@@ -62,31 +54,23 @@ public SongsSearchPanel getSongsSearchPanel(){
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        split1 = new javax.swing.JSplitPane();
-        panelOperAux = new javax.swing.JPanel();
-        split2 = new javax.swing.JSplitPane();
-        auxiliar = new datasoul.datashow.AuxiliarPanel();
+        split4 = new javax.swing.JSplitPane();
+        jSplitPane1 = new javax.swing.JSplitPane();
         tabOperation = new javax.swing.JTabbedPane();
         panelOperation = new javax.swing.JPanel();
         split3 = new javax.swing.JSplitPane();
         preview = new datasoul.datashow.PreviewPanel();
         live = new datasoul.datashow.LivePanel();
-        split4 = new javax.swing.JSplitPane();
-        tabList = new javax.swing.JTabbedPane();
-        songsList = new datasoul.song.SongsListPanel();
-        songsSearch = new datasoul.song.SongsSearchPanel();
-        monitor = new datasoul.datashow.MonitorPanel();
-        tabServiceList = new javax.swing.JTabbedPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         serviceList = new datasoul.datashow.ServiceListPanel();
+        auxiliar = new datasoul.datashow.AuxiliarPanel();
 
-        split1.setBorder(null);
-        split1.setDividerLocation(250);
-        split2.setBorder(null);
-        split2.setDividerLocation(530);
-        split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        split2.setOneTouchExpandable(true);
-        split2.setRightComponent(auxiliar);
-
+        split4.setBorder(null);
+        split4.setDividerLocation(400);
+        split4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        split4.setMinimumSize(new java.awt.Dimension(10, 10));
+        split4.setOneTouchExpandable(true);
+        jSplitPane1.setDividerLocation(200);
         tabOperation.setFont(new java.awt.Font("Arial", 1, 11));
         panelOperation.setFont(new java.awt.Font("Arial", 1, 11));
         split3.setDividerLocation(300);
@@ -100,84 +84,52 @@ public SongsSearchPanel getSongsSearchPanel(){
         panelOperation.setLayout(panelOperationLayout);
         panelOperationLayout.setHorizontalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
         );
         tabOperation.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPERATION"), panelOperation);
 
-        split2.setLeftComponent(tabOperation);
+        jSplitPane1.setRightComponent(tabOperation);
 
-        org.jdesktop.layout.GroupLayout panelOperAuxLayout = new org.jdesktop.layout.GroupLayout(panelOperAux);
-        panelOperAux.setLayout(panelOperAuxLayout);
-        panelOperAuxLayout.setHorizontalGroup(
-            panelOperAuxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
-        );
-        panelOperAuxLayout.setVerticalGroup(
-            panelOperAuxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, split2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-        );
-        split1.setRightComponent(panelOperAux);
+        jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 11));
+        jTabbedPane1.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
 
-        split4.setBorder(null);
-        split4.setDividerLocation(275);
-        split4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        split4.setMinimumSize(new java.awt.Dimension(10, 10));
-        split4.setOneTouchExpandable(true);
-        tabList.setFont(new java.awt.Font("Arial", 1, 11));
-        tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG_LIST"), songsList);
+        jSplitPane1.setLeftComponent(jTabbedPane1);
 
-        tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONGS_SEARCH"), songsSearch);
+        split4.setLeftComponent(jSplitPane1);
 
-        tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MONITOR"), monitor);
-
-        split4.setTopComponent(tabList);
-
-        tabServiceList.setFont(new java.awt.Font("Arial", 1, 11));
-        tabServiceList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
-
-        split4.setRightComponent(tabServiceList);
-
-        split1.setLeftComponent(split4);
+        split4.setRightComponent(auxiliar);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
-                .addContainerGap())
+            .add(split4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE)
-                .addContainerGap())
+            .add(split4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AuxiliarPanel auxiliar;
+    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private datasoul.datashow.LivePanel live;
     private datasoul.datashow.MonitorPanel monitor;
-    private javax.swing.JPanel panelOperAux;
     private javax.swing.JPanel panelOperation;
     private datasoul.datashow.PreviewPanel preview;
     private datasoul.datashow.ServiceListPanel serviceList;
-    private datasoul.song.SongsListPanel songsList;
     private datasoul.song.SongsSearchPanel songsSearch;
-    private javax.swing.JSplitPane split1;
-    private javax.swing.JSplitPane split2;
     private javax.swing.JSplitPane split3;
     private javax.swing.JSplitPane split4;
     private javax.swing.JTabbedPane tabList;
     private javax.swing.JTabbedPane tabOperation;
-    private javax.swing.JTabbedPane tabServiceList;
     // End of variables declaration//GEN-END:variables
     
 }

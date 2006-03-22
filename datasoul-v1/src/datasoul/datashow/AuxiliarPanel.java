@@ -71,7 +71,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelClock.setLayout(panelClockLayout);
         panelClockLayout.setHorizontalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 749, Short.MAX_VALUE)
+            .add(0, 761, Short.MAX_VALUE)
         );
         panelClockLayout.setVerticalGroup(
             panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -83,7 +83,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         panelMessage.setLayout(panelMessageLayout);
         panelMessageLayout.setHorizontalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 749, Short.MAX_VALUE)
+            .add(0, 761, Short.MAX_VALUE)
         );
         panelMessageLayout.setVerticalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -208,8 +208,8 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                 .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(PanelDisplayLayout.createSequentialGroup()
                         .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(cbInputSrc, 0, 122, Short.MAX_VALUE)
-                            .add(cbInputMode, 0, 122, Short.MAX_VALUE))
+                            .add(cbInputSrc, 0, 134, Short.MAX_VALUE)
+                            .add(cbInputMode, 0, 134, Short.MAX_VALUE))
                         .add(88, 88, 88))
                     .add(org.jdesktop.layout.GroupLayout.LEADING, PanelDisplayLayout.createSequentialGroup()
                         .add(cbDeintrelaceMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -256,9 +256,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 754, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -267,7 +265,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        DisplayManager.getMonitorDisplay();
+
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplateLive("monitor");
         cm.setTitleLive("FooTitulo");
