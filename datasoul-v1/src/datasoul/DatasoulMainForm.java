@@ -122,12 +122,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnDatashow = new javax.swing.JButton();
         btnSongs = new javax.swing.JButton();
         btnTemplates = new javax.swing.JButton();
+        btnConfig = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        menuBar = new javax.swing.JMenuBar();
-        menu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DataSoul");
+        toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
+        toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
         btnDatashow.setFont(new java.awt.Font("Arial", 1, 11));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
         btnDatashow.setText("Datashow");
@@ -163,12 +165,33 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnTemplates);
 
+        btnConfig.setFont(new java.awt.Font("Arial", 1, 11));
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/config.gif")));
+        btnConfig.setText("Config");
+        btnConfig.setMaximumSize(new java.awt.Dimension(88, 44));
+        btnConfig.setMinimumSize(new java.awt.Dimension(88, 44));
+        btnConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigActionPerformed(evt);
+            }
+        });
+
+        toolBarMain.add(btnConfig);
+
+        btnClose.setFont(new java.awt.Font("Arial", 1, 11));
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/close.gif")));
+        btnClose.setText("Close");
+        btnClose.setMaximumSize(new java.awt.Dimension(88, 44));
+        btnClose.setMinimumSize(new java.awt.Dimension(88, 44));
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        toolBarMain.add(btnClose);
+
         toolBarMain.add(jSeparator1);
-
-        menu.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MENU"));
-        menuBar.add(menu);
-
-        setJMenuBar(menuBar);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,11 +202,19 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(447, Short.MAX_VALUE))
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(406, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
 
@@ -233,12 +264,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnDatashow;
     private javax.swing.JButton btnSongs;
     private javax.swing.JButton btnTemplates;
+    private javax.swing.JButton btnTemplates1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JMenu menu;
-    private javax.swing.JMenuBar menuBar;
     private javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables
     
