@@ -180,6 +180,7 @@ public class TextTemplateItem extends TemplateItem {
          // Compute text font size
          float drawPosY;
          float fontReduction = 0f;
+         int limit;
          do {
 
 getFullWord: {
@@ -191,7 +192,11 @@ getFullWord: {
              while (lbm.getPosition() < getText().length() ) {
                  //TextLayout layout = lbm.nextLayout(this.getWidth());
                  
-                 TextLayout layout = lbm.nextLayout(this.getWidth(), getText().length(), true);
+                 limit = lbm.getPosition() + getText().substring( lbm.getPosition() ).indexOf('\n')+1;
+                 if (limit <= lbm.getPosition()){
+                     limit = getText().length();
+                 }
+                 TextLayout layout = lbm.nextLayout(this.getWidth(), limit, true);
                  
                  if (layout == null){
                      break getFullWord;
@@ -225,8 +230,13 @@ getFullWord: {
              g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
              g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha()) );
              while (lbm.getPosition() < getText().length() ) {
-                 
-                 TextLayout layout = lbm.nextLayout(this.getWidth(), getText().length(), true );
+
+                 limit = lbm.getPosition() + getText().substring( lbm.getPosition() ).indexOf('\n')+1;
+                 if (limit <= lbm.getPosition()){
+                     limit = getText().length();
+                 }
+                 TextLayout layout = lbm.nextLayout(this.getWidth(), limit, true);
+
                  drawPosY += layout.getAscent();
 
                  // default alignment = Left

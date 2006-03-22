@@ -39,9 +39,9 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        setEnabled(false);
         setFocusCycleRoot(false);
-        setFocusable(false);
-        setFocusableWindowState(false);
         setResizable(false);
         setUndecorated(true);
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
