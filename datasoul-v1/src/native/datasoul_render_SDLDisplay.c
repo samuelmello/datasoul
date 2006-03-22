@@ -6,14 +6,14 @@
 #include "datasoul_render_SDLDisplay.h"
 
 #ifdef VIDEO4LINUX
-#include "linux/SDL_bgrab-1.0.0/SDL_bgrab.h"
+#define USE_PTHREAD
 #include <pthread.h>
 #include <sched.h>
-#endif 
+#endif
 
 #ifdef VIDEO4LINUX
-#define USE_PTHREAD
-#endif
+#include "linux/SDL_bgrab-1.0.0/SDL_bgrab.h"
+#endif 
 
 #define FRAMETIME_MS 30
 
@@ -38,12 +38,15 @@ typedef struct {
 	
 #ifdef VIDEO4LINUX
 	tSDL_bgrab bgrab;
+	int deintrelaceMode;
+	int inputSrc;
+	int inputMode;
 #endif
 } globals_t;
 
 static globals_t globals;
 
-#ifdef VIDEO4LINUX
+#ifdef USE_PTHREAD
 void* displayThread (void *arg){
 #else
 int displayThread (void *arg){
@@ -67,7 +70,7 @@ int displayThread (void *arg){
 				
 				if (globals.bgMode == BACKGROUND_MODE_LIVE){
 #ifdef VIDEO4LINUX
-					bgrabBlitFramebuffer(&globals.bgrab, globals.screen, 0 /* deintrelace */);
+					bgrabBlitFramebuffer(&globals.bgrab, globals.screen, globals.deintrelaceMode /* deintrelace */);
 #endif
 				}else{
 					SDL_BlitSurface(globals.background, NULL, globals.screen, NULL);
@@ -88,7 +91,7 @@ int displayThread (void *arg){
 		if ( (time2 - time1) < FRAMETIME_MS ){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
-		fprintf(stderr, "t1: %d, t2: %d, t3: %d, diff: %d, delay: %d\n", time1, time2, time3, (time2 - time1),FRAMETIME_MS - (time2 - time1));
+	fprintf(stderr, "t1: %d, t2: %d, t3: %d, diff: %d, delay: %d\n", time1, time2, time3, (time2 - time1),FRAMETIME_MS - (time2 - time1));
 	}
 
 }
@@ -166,10 +169,12 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
 	pthread_create(&globals.displayThread, &attr, &displayThread, NULL);
 
 	// also setup the process scheduler to RoundRobin
+	/*
 	int x = sched_setscheduler(0, SCHED_RR, &param);
 	if (x != 0){
 		perror("setsched");
 	}
+	*/
 #else
 	globals.displayThread = SDL_CreateThread( &displayThread, NULL);
 #endif
@@ -290,4 +295,49 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setBackgroundMode
 	  globals.bgMode = mode;
 	  globals.needRefresh = 1;
 }
+
+/*
+ * Class:     datasoul_render_SDLDisplay
+ * Method:    setInputSrc
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setInputSrc
+  (JNIEnv *env, jobject obj, jint src){
+
+#ifdef VIDEO4LINUX
+	globals.inputSrc = src;
+	bgrabSetChannel(&globals.bgrab, globals.inputSrc, globals.inputMode);
+#endif
+	  
+}
+
+/*
+ * Class:     datasoul_render_SDLDisplay
+ * Method:    setInputMode
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setInputMode
+  (JNIEnv *env, jobject obj, jint mode){
+
+#ifdef VIDEO4LINUX
+	globals.inputMode = mode;
+	bgrabSetChannel(&globals.bgrab, globals.inputSrc, globals.inputMode);
+#endif
+
+}
+
+/*
+ * Class:     datasoul_render_SDLDisplay
+ * Method:    setDeintrelaceMode
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDeintrelaceMode
+  (JNIEnv *env, jobject obj, jint mode){
+
+#ifdef VIDEO4LINUX
+	  globals.deintrelaceMode = mode;
+#endif
+	  
+}
+
 
