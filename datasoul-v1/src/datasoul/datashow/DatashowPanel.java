@@ -35,17 +35,11 @@ public AuxiliarPanel getAuxiliarPanel(){
 public LivePanel getLivePanel(){
     return live;
 }
-public MonitorPanel getMonitorPanel(){
-    return monitor;
-}
 public PreviewPanel getPreviewPanel(){
     return preview;
 }
 public ServiceListPanel getServiceListPanel(){
     return serviceList;
-}
-public SongsSearchPanel getSongsSearchPanel(){
-    return songsSearch;
 }
     
     /** This method is called from within the constructor to
@@ -71,6 +65,7 @@ public SongsSearchPanel getSongsSearchPanel(){
         split4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split4.setMinimumSize(new java.awt.Dimension(10, 10));
         split4.setOneTouchExpandable(true);
+        jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(200);
         tabOperation.setFont(new java.awt.Font("Arial", 1, 11));
         panelOperation.setFont(new java.awt.Font("Arial", 1, 11));
@@ -85,11 +80,11 @@ public SongsSearchPanel getSongsSearchPanel(){
         panelOperation.setLayout(panelOperationLayout);
         panelOperationLayout.setHorizontalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1201, Short.MAX_VALUE)
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
         );
         tabOperation.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPERATION"), panelOperation);
 
@@ -112,7 +107,7 @@ public SongsSearchPanel getSongsSearchPanel(){
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(split4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     
@@ -122,14 +117,11 @@ public SongsSearchPanel getSongsSearchPanel(){
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private datasoul.datashow.LivePanel live;
-    private datasoul.datashow.MonitorPanel monitor;
     private javax.swing.JPanel panelOperation;
     private datasoul.datashow.PreviewPanel preview;
     private datasoul.datashow.ServiceListPanel serviceList;
-    private datasoul.song.SongsSearchPanel songsSearch;
     private javax.swing.JSplitPane split3;
     private javax.swing.JSplitPane split4;
-    private javax.swing.JTabbedPane tabList;
     private javax.swing.JTabbedPane tabOperation;
     // End of variables declaration//GEN-END:variables
     
