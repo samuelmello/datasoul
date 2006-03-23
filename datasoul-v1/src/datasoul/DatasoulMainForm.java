@@ -213,7 +213,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-// TODO add your handling code here:
+        ConfigForm configForm = new ConfigForm();
+        configForm.setVisible(true);
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
