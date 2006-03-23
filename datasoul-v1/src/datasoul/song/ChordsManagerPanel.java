@@ -217,10 +217,12 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try{
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "chordsDB.xml";
+
             Node node = chordsDB.writeObject();
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
-            FileOutputStream fos = new FileOutputStream("D:/Meus Documentos/Datasoul/chordsDB.xml");
+            FileOutputStream fos = new FileOutputStream(path);
             org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
             OutputFormat outFormat = new OutputFormat();
             outFormat.setIndenting(true);

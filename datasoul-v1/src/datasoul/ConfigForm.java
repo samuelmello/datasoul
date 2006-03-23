@@ -1,0 +1,566 @@
+/*
+ * ConfigForm.java
+ *
+ * Created on 22 de Março de 2006, 21:22
+ */
+
+package datasoul;
+
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+
+/**
+ *
+ * @author  Administrador
+ */
+public class ConfigForm extends javax.swing.JFrame {
+
+    private ConfigObj configObj;
+    private ArrayList<Component> components;
+    
+    
+    /** Creates new form ConfigForm */
+    public ConfigForm() {
+        initComponents();
+        
+        components = new ArrayList<Component>();
+        registerComponents();
+        
+        configObj = ConfigObj.getInstance();
+        refreshScreenValues();
+    }
+
+    private void registerComponents(){
+        registerComponent(mainOutput,"MainOutput");
+        registerComponent(mainOutputPositionLeft,"MainOutputPositionLeft");
+        registerComponent(mainOutputPositionTop,"MainOutputPositionTop");
+        registerComponent(mainOutputSizeHeight,"MainOutputSizeHeight");
+        registerComponent(mainOutputSizeWidth,"MainOutputSizeWidth");
+        registerComponent(monitorOutput,"MonitorOutput");
+        registerComponent(monitorOutputPositionLeft,"MonitorOutputPositionLeft");
+        registerComponent(monitorOutputPositionTop,"MonitorOutputPositionTop");
+        registerComponent(monitorOutputSizeHeight,"MonitorOutputSizeHeight");
+        registerComponent(monitorOutputSizeWidth,"MonitorOutputSizeWidth");
+        registerComponent(templateMonitor,"TemplateMonitor");
+        registerComponent(templateText,"TemplateText");
+
+        registerComponent(videoInput,"VideoInput");
+        videoInput.removeAllItems();
+        videoInput.addItem("Tuner");
+        videoInput.addItem("S-Video");
+        videoInput.addItem("Composite");
+        
+        registerComponent(videoDeintrelace,"VideoDeintrelace");
+        videoDeintrelace.removeAllItems();        
+        videoDeintrelace.addItem("None");
+        videoDeintrelace.addItem("Blend");
+        videoDeintrelace.addItem("Smart blend");
+        videoDeintrelace.addItem("Smooth blend");
+        
+        registerComponent(videoMode,"VideoMode");
+        videoMode.removeAllItems();
+        videoMode.addItem("SECAM");
+        videoMode.addItem("NTSC");
+        videoMode.addItem("PAL");
+
+        registerComponent(clockMode,"ClockMode");
+        clockMode.removeAllItems();
+        clockMode.addItem("24 Hours with Seconds");
+        clockMode.addItem("24 Hours without Seconds");
+        clockMode.addItem("AM/PM with Seconds");
+        clockMode.addItem("AM/PM without Seconds");
+    }
+    
+    private void registerComponent(Component component, String string){
+        components.add(component);
+        component.setName(string);
+    }
+    private void setComponentValue(String string, Component component){
+        if(component instanceof JCheckBox){
+            if(string.compareToIgnoreCase("TRUE")==0){
+                ((JCheckBox)component).setSelected(true);
+            }else{
+                ((JCheckBox)component).setSelected(false);
+            }
+        }else if(component instanceof JComboBox){
+            ((JComboBox)component).setSelectedItem(string);
+        }else if(component instanceof JTextField){
+            ((JTextField)component).setText(string);        
+        }
+    }
+
+    private String getComponentValue(Component component){
+        if(component instanceof JCheckBox){
+            if(((JCheckBox)component).isSelected()){
+                return "TRUE";
+            }else{
+                return "FALSE";
+            }
+        }else if(component instanceof JComboBox){
+            return (String)((JComboBox)component).getSelectedItem();
+        }else if(component instanceof JTextField){
+            return ((JTextField)component).getText();
+        }
+        return "";
+    }
+    
+    private void refreshScreenValues(){
+        for(Component component:components){
+            try {
+                setComponentValue((String)configObj.getClass().getMethod("get"+component.getName()).invoke(configObj),component);            
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }            
+        }
+    }
+
+    private void refreshObjectValues(){
+        for(Component component:components){
+            try {
+                configObj.getClass().getMethod("set"+component.getName(), String.class).invoke(configObj, getComponentValue(component));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }            
+        }
+    }
+    
+    /** This method is called from within the constructor to
+     * initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is
+     * always regenerated by the Form Editor.
+     */
+    // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        tabConfig = new javax.swing.JTabbedPane();
+        panelGeneral = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        mainOutput = new javax.swing.JCheckBox();
+        monitorOutput = new javax.swing.JCheckBox();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        templateMonitor = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        templateText = new javax.swing.JComboBox();
+        mainOutputPositionLeft = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        mainOutputPositionTop = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        monitorOutputPositionTop = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        monitorOutputPositionLeft = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        mainOutputSizeWidth = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        mainOutputSizeHeight = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        monitorOutputSizeWidth = new javax.swing.JTextField();
+        monitorOutputSizeHeight = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        clockMode = new javax.swing.JComboBox();
+        panelVideo = new javax.swing.JPanel();
+        videoInputLabel = new javax.swing.JLabel();
+        videoInput = new javax.swing.JComboBox();
+        videoModeLabel = new javax.swing.JLabel();
+        videoMode = new javax.swing.JComboBox();
+        videoDeintrelaceLabel = new javax.swing.JLabel();
+        videoDeintrelace = new javax.swing.JComboBox();
+        btnCancel = new javax.swing.JButton();
+        btnApply = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Config");
+        tabConfig.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel1.setText("Use main output:");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel2.setText("Use monitor output:");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel3.setText("Main output position:");
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel4.setText("Monitor output position:");
+
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel5.setText("Monitor output size:");
+
+        mainOutput.setFont(new java.awt.Font("Arial", 1, 11));
+        mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        mainOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        monitorOutput.setFont(new java.awt.Font("Arial", 1, 11));
+        monitorOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        monitorOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel6.setText("Main output size:");
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel7.setText("Template to monitor output:");
+
+        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel8.setText("Template default to text:");
+
+        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        mainOutputPositionLeft.setText("jTextField1");
+
+        jLabel12.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel12.setText("left");
+
+        mainOutputPositionTop.setText("jTextField1");
+
+        jLabel13.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel13.setText("top");
+
+        monitorOutputPositionTop.setText("jTextField1");
+
+        jLabel14.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel14.setText("left");
+
+        monitorOutputPositionLeft.setText("jTextField1");
+
+        jLabel15.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel15.setText("top");
+
+        mainOutputSizeWidth.setText("jTextField1");
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel16.setText("width");
+
+        mainOutputSizeHeight.setText("jTextField1");
+
+        jLabel17.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel17.setText("height");
+
+        monitorOutputSizeWidth.setText("jTextField1");
+
+        monitorOutputSizeHeight.setText("jTextField1");
+
+        jLabel18.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel18.setText("width");
+
+        jLabel19.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel19.setText("height");
+
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 11));
+        jLabel9.setText("Clock mode:");
+
+        clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        org.jdesktop.layout.GroupLayout panelGeneralLayout = new org.jdesktop.layout.GroupLayout(panelGeneral);
+        panelGeneral.setLayout(panelGeneralLayout);
+        panelGeneralLayout.setHorizontalGroup(
+            panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelGeneralLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, panelGeneralLayout.createSequentialGroup()
+                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                .add(panelGeneralLayout.createSequentialGroup()
+                                    .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(jLabel1)
+                                        .add(jLabel3))
+                                    .add(32, 32, 32)
+                                    .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(mainOutput)
+                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, panelGeneralLayout.createSequentialGroup()
+                                            .add(mainOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                            .add(jLabel12)
+                                            .add(20, 20, 20)))
+                                    .add(5, 5, 5))
+                                .add(panelGeneralLayout.createSequentialGroup()
+                                    .add(jLabel6)
+                                    .add(54, 54, 54)
+                                    .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jLabel16)
+                                    .add(12, 12, 12)))
+                            .add(panelGeneralLayout.createSequentialGroup()
+                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel2)
+                                    .add(panelGeneralLayout.createSequentialGroup()
+                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jLabel4)
+                                            .add(jLabel5))
+                                        .add(15, 15, 15)
+                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(panelGeneralLayout.createSequentialGroup()
+                                                .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                .add(jLabel14))
+                                            .add(monitorOutput)
+                                            .add(panelGeneralLayout.createSequentialGroup()
+                                                .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                                .add(jLabel18)))))
+                                .add(12, 12, 12)))
+                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                .add(panelGeneralLayout.createSequentialGroup()
+                                    .add(monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                    .add(jLabel15)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .add(org.jdesktop.layout.GroupLayout.TRAILING, panelGeneralLayout.createSequentialGroup()
+                                    .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(panelGeneralLayout.createSequentialGroup()
+                                            .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                            .add(jLabel13))
+                                        .add(panelGeneralLayout.createSequentialGroup()
+                                            .add(mainOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                            .add(jLabel17)))
+                                    .add(280, 280, 280)))
+                            .add(panelGeneralLayout.createSequentialGroup()
+                                .add(monitorOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel19)))
+                        .add(280, 280, 280))
+                    .add(panelGeneralLayout.createSequentialGroup()
+                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel7)
+                            .add(jLabel8)
+                            .add(jLabel9))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(clockMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(templateText, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(templateMonitor, 0, 83, Short.MAX_VALUE))
+                        .addContainerGap(182, Short.MAX_VALUE))))
+        );
+        panelGeneralLayout.setVerticalGroup(
+            panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelGeneralLayout.createSequentialGroup()
+                .add(22, 22, 22)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel1)
+                    .add(mainOutput))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel3)
+                    .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel13)
+                    .add(mainOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel12))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel16)
+                    .add(mainOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel17)
+                    .add(jLabel6))
+                .add(14, 14, 14)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(monitorOutput)
+                    .add(jLabel2))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel14)
+                    .add(jLabel4)
+                    .add(monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel15))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(monitorOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel18)
+                    .add(jLabel19)
+                    .add(jLabel5))
+                .add(18, 18, 18)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel7)
+                    .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel8)
+                    .add(templateText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(20, 20, 20)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel9)
+                    .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(79, 79, 79))
+        );
+        tabConfig.addTab("General", panelGeneral);
+
+        videoInputLabel.setFont(new java.awt.Font("Arial", 1, 11));
+        videoInputLabel.setText("Video input:");
+
+        videoInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        videoModeLabel.setFont(new java.awt.Font("Arial", 1, 11));
+        videoModeLabel.setText("Video mode:");
+
+        videoMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        videoDeintrelaceLabel.setFont(new java.awt.Font("Arial", 1, 11));
+        videoDeintrelaceLabel.setText("Video deintrelace");
+
+        videoDeintrelace.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        org.jdesktop.layout.GroupLayout panelVideoLayout = new org.jdesktop.layout.GroupLayout(panelVideo);
+        panelVideo.setLayout(panelVideoLayout);
+        panelVideoLayout.setHorizontalGroup(
+            panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelVideoLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(videoInputLabel)
+                    .add(videoModeLabel)
+                    .add(videoDeintrelaceLabel))
+                .add(31, 31, 31)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(videoMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(videoInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(241, Short.MAX_VALUE))
+        );
+        panelVideoLayout.setVerticalGroup(
+            panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelVideoLayout.createSequentialGroup()
+                .add(25, 25, 25)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoInputLabel)
+                    .add(videoInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(videoModeLabel))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoDeintrelaceLabel)
+                    .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(256, Short.MAX_VALUE))
+        );
+        tabConfig.addTab("Video", panelVideo);
+
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
+        btnApply.setText("Apply");
+        btnApply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApplyActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .addContainerGap(319, Short.MAX_VALUE)
+                .add(btnApply)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnCancel)
+                .addContainerGap())
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(tabConfig, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 439, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(tabConfig)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnCancel)
+                    .add(btnApply))
+                .addContainerGap())
+        );
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
+        refreshObjectValues();
+        configObj.save();
+    }//GEN-LAST:event_btnApplyActionPerformed
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ConfigForm().setVisible(true);
+            }
+        });
+    }
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnApply;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JComboBox clockMode;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JCheckBox mainOutput;
+    private javax.swing.JTextField mainOutputPositionLeft;
+    private javax.swing.JTextField mainOutputPositionTop;
+    private javax.swing.JTextField mainOutputSizeHeight;
+    private javax.swing.JTextField mainOutputSizeWidth;
+    private javax.swing.JCheckBox monitorOutput;
+    private javax.swing.JTextField monitorOutputPositionLeft;
+    private javax.swing.JTextField monitorOutputPositionTop;
+    private javax.swing.JComboBox monitorOutputSize;
+    private javax.swing.JTextField monitorOutputSizeHeight;
+    private javax.swing.JTextField monitorOutputSizeWidth;
+    private javax.swing.JPanel panelGeneral;
+    private javax.swing.JPanel panelVideo;
+    private javax.swing.JTabbedPane tabConfig;
+    private javax.swing.JComboBox templateMonitor;
+    private javax.swing.JComboBox templateText;
+    private javax.swing.JComboBox videoDeintrelace;
+    private javax.swing.JLabel videoDeintrelaceLabel;
+    private javax.swing.JComboBox videoInput;
+    private javax.swing.JLabel videoInputLabel;
+    private javax.swing.JComboBox videoMode;
+    private javax.swing.JLabel videoModeLabel;
+    // End of variables declaration//GEN-END:variables
+    
+}
