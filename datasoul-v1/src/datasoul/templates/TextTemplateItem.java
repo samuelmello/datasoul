@@ -163,7 +163,7 @@ public class TextTemplateItem extends TemplateItem {
 
     public void draw(Graphics2D g) {
         
-         if (this.text.length() == 0){
+         if (text == null || text.length() == 0){
              return;
          }
         
@@ -275,11 +275,14 @@ getFullWord: {
     }
 
     private void updateAttributes(){
-        atribStr = new AttributedString(text);
-        
-        if (text.length() == 0) {
+
+        if (text == null || text.length() == 0) {
             return;
         }
+        
+        
+        atribStr = new AttributedString(text);
+        
         
         if (fontName != null){
             atribStr.addAttribute( TextAttribute.FAMILY, fontName );

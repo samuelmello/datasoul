@@ -28,6 +28,10 @@ public class AuxiliarPanel extends javax.swing.JPanel {
      */
     public AuxiliarPanel() {
         initComponents();
+        btnTimerOff.setSelected(true);
+        pnlTimerStart.setVisible(false);
+        pnlTimerTotal.setVisible(false);
+        
     }
 
     public DatashowPanel getObjectManager() {
@@ -46,7 +50,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         tabAuxiliar = new javax.swing.JTabbedPane();
-        panelClock = new javax.swing.JPanel();
         panelMessage = new javax.swing.JPanel();
         PanelDisplay = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -63,22 +66,27 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        panelClock = new javax.swing.JPanel();
+        pnlTimerStart = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        edtTimerStartMin = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        edtTimerStartSec = new javax.swing.JTextField();
+        pnlTimerTotal = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        edtTimerTotalMin = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        edtTimerTotalSec = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        btnTimerBackward = new javax.swing.JToggleButton();
+        btnTimerForward = new javax.swing.JToggleButton();
+        btnTimerOff = new javax.swing.JToggleButton();
+        jLabel9 = new javax.swing.JLabel();
+        btnApplyTimer = new javax.swing.JButton();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(80, 0));
-        org.jdesktop.layout.GroupLayout panelClockLayout = new org.jdesktop.layout.GroupLayout(panelClock);
-        panelClock.setLayout(panelClockLayout);
-        panelClockLayout.setHorizontalGroup(
-            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 761, Short.MAX_VALUE)
-        );
-        panelClockLayout.setVerticalGroup(
-            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 248, Short.MAX_VALUE)
-        );
-        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
-
         org.jdesktop.layout.GroupLayout panelMessageLayout = new org.jdesktop.layout.GroupLayout(panelMessage);
         panelMessage.setLayout(panelMessageLayout);
         panelMessageLayout.setHorizontalGroup(
@@ -252,6 +260,193 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         );
         tabAuxiliar.addTab("Display", PanelDisplay);
 
+        pnlTimerStart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel5.setText("Start");
+
+        edtTimerStartMin.setText("00");
+        edtTimerStartMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                edtTimerStartMinKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtTimerStartMinKeyTyped(evt);
+            }
+        });
+
+        jLabel6.setText(":");
+
+        edtTimerStartSec.setText("00");
+        edtTimerStartSec.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtTimerStartSecKeyTyped(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout pnlTimerStartLayout = new org.jdesktop.layout.GroupLayout(pnlTimerStart);
+        pnlTimerStart.setLayout(pnlTimerStartLayout);
+        pnlTimerStartLayout.setHorizontalGroup(
+            pnlTimerStartLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlTimerStartLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel5)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(edtTimerStartMin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel6)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(edtTimerStartSec, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 41, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlTimerStartLayout.setVerticalGroup(
+            pnlTimerStartLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlTimerStartLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(pnlTimerStartLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlTimerStartLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel6)
+                        .add(edtTimerStartSec, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(pnlTimerStartLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel5)
+                        .add(edtTimerStartMin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pnlTimerTotal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jLabel7.setText("Total");
+
+        edtTimerTotalMin.setText("00");
+        edtTimerTotalMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtTimerTotalMinKeyTyped(evt);
+            }
+        });
+
+        jLabel8.setText(":");
+
+        edtTimerTotalSec.setText("00");
+        edtTimerTotalSec.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                edtTimerTotalSecKeyTyped(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout pnlTimerTotalLayout = new org.jdesktop.layout.GroupLayout(pnlTimerTotal);
+        pnlTimerTotal.setLayout(pnlTimerTotalLayout);
+        pnlTimerTotalLayout.setHorizontalGroup(
+            pnlTimerTotalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlTimerTotalLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel7)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(edtTimerTotalMin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel8)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(edtTimerTotalSec, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 41, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlTimerTotalLayout.setVerticalGroup(
+            pnlTimerTotalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlTimerTotalLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(pnlTimerTotalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlTimerTotalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel8)
+                        .add(edtTimerTotalSec, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(pnlTimerTotalLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(jLabel7)
+                        .add(edtTimerTotalMin, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnTimerBackward.setText("Backward");
+        btnTimerBackward.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimerBackwardActionPerformed(evt);
+            }
+        });
+
+        btnTimerForward.setText("Forward");
+        btnTimerForward.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimerForwardActionPerformed(evt);
+            }
+        });
+
+        btnTimerOff.setText("Off");
+        btnTimerOff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimerOffActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Timer");
+
+        btnApplyTimer.setText("Apply");
+        btnApplyTimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnApplyTimerActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(jLabel9)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnTimerOff)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnTimerForward)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnTimerBackward)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnApplyTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 29, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnApplyTimer)
+                    .add(btnTimerBackward)
+                    .add(btnTimerForward)
+                    .add(btnTimerOff)
+                    .add(jLabel9))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        org.jdesktop.layout.GroupLayout panelClockLayout = new org.jdesktop.layout.GroupLayout(panelClock);
+        panelClock.setLayout(panelClockLayout);
+        panelClockLayout.setHorizontalGroup(
+            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelClockLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, 0, 355, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, panelClockLayout.createSequentialGroup()
+                        .add(pnlTimerStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(pnlTimerTotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(394, Short.MAX_VALUE))
+        );
+        panelClockLayout.setVerticalGroup(
+            panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelClockLayout.createSequentialGroup()
+                .add(6, 6, 6)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(pnlTimerStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(pnlTimerTotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(136, Short.MAX_VALUE))
+        );
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -263,6 +458,121 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnApplyTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyTimerActionPerformed
+
+        int min, sec, minTot, secTot;
+        
+        if (btnTimerOff.isSelected()){
+            TimerManager.getInstance().setTimerOff();
+        }else if (btnTimerForward.isSelected()){
+            try{
+                min = Integer.parseInt( edtTimerStartMin.getText() );
+            }catch(Exception e){
+                min = 0;
+            }
+            try{
+                sec = Integer.parseInt( edtTimerStartSec.getText() );
+                if (sec > 59) 
+                    sec = 59;
+            }catch(Exception e){
+                sec = 0;
+            }
+            TimerManager.getInstance().setTimerForward( (min*60 + sec)*1000 );
+        }else if (btnTimerBackward.isSelected()){
+            try{
+                min = Integer.parseInt( edtTimerStartMin.getText() );
+            }catch(Exception e){
+                min = 0;
+            }
+            try{
+                sec = Integer.parseInt( edtTimerStartSec.getText() );
+                if (sec > 59) 
+                    sec = 59;
+            }catch(Exception e){
+                sec = 0;
+            }
+            try{
+                minTot = Integer.parseInt( edtTimerTotalMin.getText() );
+            }catch(Exception e){
+                minTot = 0;
+            }
+            try{
+                secTot = Integer.parseInt( edtTimerTotalSec.getText() );
+                if (secTot > 59) 
+                    secTot = 59;
+            }catch(Exception e){
+                secTot = 0;
+            }
+            TimerManager.getInstance().setTimerBackward( (min*60 + sec)*1000, (minTot*60 + secTot)*1000 );
+            
+        }
+        
+    }//GEN-LAST:event_btnApplyTimerActionPerformed
+
+    private void edtTimerTotalSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTimerTotalSecKeyTyped
+        handleNumberKeyPress(evt);
+    }//GEN-LAST:event_edtTimerTotalSecKeyTyped
+
+    private void edtTimerTotalMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTimerTotalMinKeyTyped
+        handleNumberKeyPress(evt);
+    }//GEN-LAST:event_edtTimerTotalMinKeyTyped
+
+    private void edtTimerStartSecKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTimerStartSecKeyTyped
+        handleNumberKeyPress(evt);
+    }//GEN-LAST:event_edtTimerStartSecKeyTyped
+
+    private void edtTimerStartMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTimerStartMinKeyTyped
+        handleNumberKeyPress(evt);
+    }//GEN-LAST:event_edtTimerStartMinKeyTyped
+
+    private void handleNumberKeyPress(java.awt.event.KeyEvent evt){
+        char key = evt.getKeyChar();
+        if (key < '0' || key > '9'){
+            evt.consume();
+        }
+    }
+    
+    
+    private void edtTimerStartMinKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtTimerStartMinKeyPressed
+// TODO add your handling code here:
+    }//GEN-LAST:event_edtTimerStartMinKeyPressed
+
+    private void btnTimerBackwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimerBackwardActionPerformed
+
+        if (btnTimerBackward.isSelected() ){
+            btnTimerForward.setSelected(false);
+            btnTimerOff.setSelected(false);
+        }
+
+        pnlTimerStart.setVisible(true);
+        pnlTimerTotal.setVisible(true);
+        
+    }//GEN-LAST:event_btnTimerBackwardActionPerformed
+
+    private void btnTimerForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimerForwardActionPerformed
+
+        if (btnTimerForward.isSelected() ){
+            btnTimerBackward.setSelected(false);
+            btnTimerOff.setSelected(false);
+        }
+
+        pnlTimerStart.setVisible(true);
+        pnlTimerTotal.setVisible(false);
+        
+    }//GEN-LAST:event_btnTimerForwardActionPerformed
+
+    private void btnTimerOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimerOffActionPerformed
+
+        if (btnTimerOff.isSelected() ){
+            btnTimerBackward.setSelected(false);
+            btnTimerForward.setSelected(false);
+        }
+        
+        pnlTimerStart.setVisible(false);
+        pnlTimerTotal.setVisible(false);
+        
+    }//GEN-LAST:event_btnTimerOffActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
@@ -357,13 +667,21 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelDisplay;
+    private javax.swing.JButton btnApplyTimer;
     private javax.swing.JToggleButton btnBlack;
     private javax.swing.JButton btnChangeBackground;
     private javax.swing.JToggleButton btnClear;
+    private javax.swing.JToggleButton btnTimerBackward;
+    private javax.swing.JToggleButton btnTimerForward;
+    private javax.swing.JToggleButton btnTimerOff;
     private javax.swing.JComboBox cbBackgroundMode;
     private javax.swing.JComboBox cbDeintrelaceMode;
     private javax.swing.JComboBox cbInputMode;
     private javax.swing.JComboBox cbInputSrc;
+    private javax.swing.JTextField edtTimerStartMin;
+    private javax.swing.JTextField edtTimerStartSec;
+    private javax.swing.JTextField edtTimerTotalMin;
+    private javax.swing.JTextField edtTimerTotalSec;
     private datasoul.datashow.ImageDisplayer imgBackground;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -371,8 +689,16 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelClock;
     private javax.swing.JPanel panelMessage;
+    private javax.swing.JPanel pnlTimerStart;
+    private javax.swing.JPanel pnlTimerTotal;
     private javax.swing.JTabbedPane tabAuxiliar;
     // End of variables declaration//GEN-END:variables
     

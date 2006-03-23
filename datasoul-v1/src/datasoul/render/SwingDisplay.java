@@ -19,14 +19,17 @@ import java.awt.image.BufferedImage;
  */
 public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
     
-    SwingContentRender contentRender;
+    private SwingContentRender contentRender;
+    private BufferedImage img;
     
+
     /**
      * Creates new form SwingDisplay
      */
     public SwingDisplay() {
         initComponents();
         contentRender = new SwingContentRender(this);
+        
     }
     
     /** This method is called from within the constructor to
@@ -36,41 +39,43 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        swingDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
-        setEnabled(false);
         setFocusCycleRoot(false);
         setResizable(false);
         setUndecorated(true);
+        org.jdesktop.layout.GroupLayout swingDisplayPanel1Layout = new org.jdesktop.layout.GroupLayout(swingDisplayPanel1);
+        swingDisplayPanel1.setLayout(swingDisplayPanel1Layout);
+        swingDisplayPanel1Layout.setHorizontalGroup(
+            swingDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 424, Short.MAX_VALUE)
+        );
+        swingDisplayPanel1Layout.setVerticalGroup(
+            swingDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 312, Short.MAX_VALUE)
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 400, Short.MAX_VALUE)
+            .add(swingDisplayPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 300, Short.MAX_VALUE)
+            .add(swingDisplayPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    BufferedImage img;
 
     public SwingContentRender getContentRender(){
         return contentRender;
     }
     
-    @Override
-    public void paint (Graphics g){
-        super.paint (g);
-        
-        if (img != null){
-            g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
-        }
-    }
     
     public void updateImg(Paintable p){
 
@@ -89,6 +94,7 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         p.paint(g);
         
         // update the screen
+        swingDisplayPanel1.repaint();
         this.repaint();
         
     }
@@ -100,12 +106,14 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         Graphics g = img.getGraphics();
         g.setColor(Color.ORANGE);
         g.fillRect(0, 0, width, height);
+        swingDisplayPanel1.setImgRef(img);
         this.setVisible(true);
     }
 
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datasoul.render.SwingDisplayPanel swingDisplayPanel1;
     // End of variables declaration//GEN-END:variables
     
 }

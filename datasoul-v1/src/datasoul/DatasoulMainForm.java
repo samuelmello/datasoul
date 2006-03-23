@@ -7,10 +7,12 @@
 package datasoul;
 
 import datasoul.datashow.DatashowPanel;
+import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;
 import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.templates.TemplatePanel;
+import datasoul.datashow.TimerManager;
 import javax.swing.UIManager;
 
 /**
@@ -253,6 +255,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         AllSongsListTable.getInstance();
         ChordsDB.getInstance();
+        ContentManager.getInstance();
+        TimerManager.getInstance();
 
         //stop splashscreen
         splashScreen.splashHide();        
