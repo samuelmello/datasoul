@@ -10,6 +10,7 @@
 package datasoul.render;
 
 import datasoul.templates.DisplayTemplate;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -18,14 +19,18 @@ import datasoul.templates.DisplayTemplate;
 public class SwingContentRender extends ContentRender {
     
     private SwingDisplayPanel display;
+    private DisplayTemplate updateTemplate;
     
     /** Creates a new instance of SwingContentRender */
     public SwingContentRender(SwingDisplayPanel display) {
+        super();
         this.display = display;
     }
 
     public void paint(DisplayTemplate d) {
         display.updateImg(d);
     }
+    
+
     
 }

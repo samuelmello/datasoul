@@ -308,5 +308,15 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
         xs.serialize(doc);
     }
     
+
+    public void cleanUp(){
+        // clean up
+        for (TemplateItem t : items ){
+            if (t instanceof TextTemplateItem) {
+                ((TextTemplateItem)t).setText(TextTemplateItem.DEFAULT_TEXT);
+            }                
+        }
+        
+    }
     
 }

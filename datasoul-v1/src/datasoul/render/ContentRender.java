@@ -13,6 +13,7 @@ import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateItem;
 import datasoul.templates.TemplateManager;
 import datasoul.templates.TextTemplateItem;
+import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -35,10 +36,14 @@ public abstract class ContentRender {
     
     private boolean monitor;
     
-    
+    private Semaphore updSemaphore;
+    private UpdateThread updThread;
     
     /** Creates a new instance of ContentRender */
     public ContentRender() {
+        updSemaphore = new Semaphore(0);
+        updThread = new UpdateThread();
+        updThread.start();
     }
 
     public abstract void paint (DisplayTemplate d);
@@ -105,12 +110,16 @@ public abstract class ContentRender {
         this.monitor = b;
     }
     
+    public void update(){
+        updSemaphore.release();
+    }
+    
     /**
      * Update the screen only if needed. 
      * That is, if the changes were only in content that isn't 
      * being shown, no update is done.
      */
-    public synchronized void update(){
+    public void updateDisplay(){
         
         try {
             DisplayTemplate templ = TemplateManager.getDisplayTemplate(template);
@@ -189,14 +198,7 @@ public abstract class ContentRender {
                 // here we have the template ready for painting
                 paint(templ);
                 
-
-                // clean up
-                for (TemplateItem t : templ.getItems() ){
-                    if (t instanceof TextTemplateItem) {
-                        ((TextTemplateItem)t).setText(TextTemplateItem.DEFAULT_TEXT);
-                    }                
-                }
-
+                templ.cleanUp();
                 
                 // everything has been updated
                 templateChanged = false;
@@ -215,6 +217,19 @@ public abstract class ContentRender {
         }
         
     }
+
     
+    private class UpdateThread extends Thread {
+        public void run(){
+            while (true){
+                try{
+                    updSemaphore.acquire();
+                    updateDisplay();
+                }catch(Exception e){
+                    // ignore
+                }
+            }
+        }
+    }
 }
 
