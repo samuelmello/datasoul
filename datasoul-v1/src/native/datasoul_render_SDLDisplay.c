@@ -41,6 +41,7 @@ typedef struct {
 	int deintrelaceMode;
 	int inputSrc;
 	int inputMode;
+	int debugMode;
 #endif
 } globals_t;
 
@@ -91,7 +92,12 @@ int displayThread (void *arg){
 		if ( (time2 - time1) < FRAMETIME_MS ){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
-//	fprintf(stderr, "t1: %d, t2: %d, t3: %d, diff: %d, delay: %d\n", time1, time2, time3, (time2 - time1),FRAMETIME_MS - (time2 - time1));
+
+		if (globals.debugMode) {
+			fprintf(stderr, "t1: %d, t2: %d, t3: %d, diff: %d, delay: %d\n", 
+					time1, time2, time3, (time2 - time1), 
+					FRAMETIME_MS - (time2 - time1));
+		}
 	}
 
 }
@@ -340,4 +346,17 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDeintrelaceMode
 	  
 }
 
+/*
+ * Class:     datasoul_render_SDLDisplay
+ * Method:    setDebugMode
+ * Signature: (I)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDebugMode
+  (JNIEnv *env, jobject obj, jint mode){
+
+#ifdef VIDEO4LINUX
+	globals.debugMode = mode;
+#endif
+
+}
 
