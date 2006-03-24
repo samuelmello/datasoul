@@ -7,12 +7,14 @@
 package datasoul.datashow;
 
 import datasoul.render.ContentManager;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author  Administrador
  */
-public class PreviewPanel extends javax.swing.JPanel {
+public class PreviewPanel extends javax.swing.JPanel implements ListSelectionListener {
 
     private DatashowPanel objectManager;    
     /**
@@ -20,6 +22,7 @@ public class PreviewPanel extends javax.swing.JPanel {
      */
     public PreviewPanel() {
         initComponents();
+        serviceItemTable1.addTableListener(this);
     }
 
     public DatashowPanel getObjectManager() {
@@ -32,6 +35,13 @@ public class PreviewPanel extends javax.swing.JPanel {
 
     public void previewItem(ServiceItem serviceItem){
         this.serviceItemTable1.setServiceItem(serviceItem);
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTemplatePreview(serviceItem.getTemplate());
+        cm.setTitlePreview(serviceItem.getTitle());
+        cm.setSlidePreview("");
+        cm.setNextSlidePreview("");
+        cm.updatePreview();
+        
     }
     
     /** This method is called from within the constructor to
@@ -90,6 +100,13 @@ public class PreviewPanel extends javax.swing.JPanel {
         cm.updateLive();
         
     }//GEN-LAST:event_btnGoLiveActionPerformed
+
+    public void valueChanged(ListSelectionEvent e) {
+        ContentManager cm = ContentManager.getInstance();
+        cm.setSlidePreview( serviceItemTable1.getSlideText() );
+        cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
+        cm.updatePreview();
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

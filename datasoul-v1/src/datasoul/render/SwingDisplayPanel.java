@@ -6,23 +6,28 @@
 
 package datasoul.render;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
  *
  * @author  root
  */
-public class SwingDisplayPanel extends javax.swing.JPanel {
+public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf {
     
+    private BufferedImage img;
+    private SwingContentRender contentRender;
+
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {
         initComponents();
+        contentRender = new SwingContentRender(this);
     }
     
-    public void setImgRef(BufferedImage img) {
-        this.imgRef = img;
-    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -44,21 +49,59 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private BufferedImage imgRef;
-
     @Override
     public void paint (Graphics g){
         super.paint (g);
         
-        if (imgRef != null){
-            g.drawImage(imgRef, 0,0, this.getWidth(), this.getHeight(), null);
+        if (img != null){
+            g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
         }else{
             System.out.println("Is null!");
         }
     }
     
+    public synchronized void updateImg(Paintable p){
+
+        if (img == null)
+            return;
+        
+        Graphics2D g = img.createGraphics();
+        
+        // Clear it first
+        Composite oldComp = g.getComposite();
+        try{
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+            g.fillRect(0, 0, img.getWidth(), img.getHeight());
+        }finally{
+            g.setComposite(oldComp);
+        }
+        
+        // paint it
+        p.paint(g);
+        
+        // update the screen
+        this.repaint();
+        
+    }
+    
+    public SwingContentRender getContentRender(){
+        return contentRender;
+    }
+    
+    
+    
+    public void initDisplay(int width, int height){
+        this.setSize(width, height);
+        img = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
+        Graphics g = img.getGraphics();
+        g.setColor(Color.ORANGE);
+        g.fillRect(0, 0, width, height);
+        this.setVisible(true);
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
     
 }

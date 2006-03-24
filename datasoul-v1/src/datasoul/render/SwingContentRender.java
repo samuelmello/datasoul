@@ -17,10 +17,10 @@ import datasoul.templates.DisplayTemplate;
  */
 public class SwingContentRender extends ContentRender {
     
-    private SwingDisplay display;
+    private SwingDisplayPanel display;
     
     /** Creates a new instance of SwingContentRender */
-    public SwingContentRender(SwingDisplay display) {
+    public SwingContentRender(SwingDisplayPanel display) {
         this.display = display;
     }
 

@@ -19,16 +19,12 @@ import java.awt.image.BufferedImage;
  */
 public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
     
-    private SwingContentRender contentRender;
-    private BufferedImage img;
-    
 
     /**
      * Creates new form SwingDisplay
      */
     public SwingDisplay() {
         initComponents();
-        contentRender = new SwingContentRender(this);
         
     }
     
@@ -71,47 +67,16 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    public SwingContentRender getContentRender(){
-        return contentRender;
-    }
-    
-    
-    public void updateImg(Paintable p){
-
-        Graphics2D g = img.createGraphics();
-        
-        // Clear it first
-        Composite oldComp = g.getComposite();
-        try{
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        }finally{
-            g.setComposite(oldComp);
-        }
-        
-        // paint it
-        p.paint(g);
-        
-        // update the screen
-        swingDisplayPanel1.repaint();
-        this.repaint();
-        
-    }
-    
-    
-    public void initDisplay(int width, int height){
+    public void initDisplay(int width, int height) {
         this.setSize(width, height);
-        img = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics g = img.getGraphics();
-        g.setColor(Color.ORANGE);
-        g.fillRect(0, 0, width, height);
-        swingDisplayPanel1.setImgRef(img);
+        swingDisplayPanel1.initDisplay(width, height);
         this.setVisible(true);
     }
 
-    
-    
+    public ContentRender getContentRender() {
+        return swingDisplayPanel1.getContentRender();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.render.SwingDisplayPanel swingDisplayPanel1;
     // End of variables declaration//GEN-END:variables

@@ -1,7 +1,7 @@
 /*
  * ConfigForm.java
  *
- * Created on 22 de Março de 2006, 21:22
+ * Created on 22 de Marco de 2006, 21:22
  */
 
 package datasoul;
@@ -85,7 +85,7 @@ public class ConfigForm extends javax.swing.JFrame {
     }
     private void setComponentValue(String string, Component component){
         if(component instanceof JCheckBox){
-            if(string.compareToIgnoreCase("TRUE")==0){
+            if(string != null && string.compareToIgnoreCase("TRUE")==0){
                 ((JCheckBox)component).setSelected(true);
             }else{
                 ((JCheckBox)component).setSelected(false);

@@ -31,7 +31,8 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         btnTimerOff.setSelected(true);
         pnlTimerStart.setVisible(false);
         pnlTimerTotal.setVisible(false);
-        
+        previewDisplayPanel1.initDisplay( 640, 480 );
+        ContentManager.getInstance().registerPreviewPanel( previewDisplayPanel1.getContentRender() );
     }
 
     public DatashowPanel getObjectManager() {
@@ -83,6 +84,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         btnTimerOff = new javax.swing.JToggleButton();
         jLabel9 = new javax.swing.JLabel();
         btnApplyTimer = new javax.swing.JButton();
+        pnlPreview = new javax.swing.JPanel();
+        previewDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         tabAuxiliar.setTabPlacement(javax.swing.JTabbedPane.BOTTOM);
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
@@ -95,7 +99,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         );
         panelMessageLayout.setVerticalGroup(
             panelMessageLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 248, Short.MAX_VALUE)
+            .add(0, 162, Short.MAX_VALUE)
         );
         tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MESSAGE"), panelMessage);
 
@@ -256,7 +260,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                         .add(19, 19, 19)
                         .add(jButton2))
                     .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         tabAuxiliar.addTab("Display", PanelDisplay);
 
@@ -275,6 +279,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         jLabel6.setText(":");
 
+        edtTimerStartSec.setColumns(2);
         edtTimerStartSec.setText("00");
         edtTimerStartSec.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -443,9 +448,49 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                 .add(panelClockLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(pnlTimerStart, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(pnlTimerTotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CLOCK"), panelClock);
+
+        previewDisplayPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        previewDisplayPanel1.setPreferredSize(new java.awt.Dimension(160, 120));
+        org.jdesktop.layout.GroupLayout previewDisplayPanel1Layout = new org.jdesktop.layout.GroupLayout(previewDisplayPanel1);
+        previewDisplayPanel1.setLayout(previewDisplayPanel1Layout);
+        previewDisplayPanel1Layout.setHorizontalGroup(
+            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 156, Short.MAX_VALUE)
+        );
+        previewDisplayPanel1Layout.setVerticalGroup(
+            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 116, Short.MAX_VALUE)
+        );
+
+        jLabel10.setText("Preview");
+
+        org.jdesktop.layout.GroupLayout pnlPreviewLayout = new org.jdesktop.layout.GroupLayout(pnlPreview);
+        pnlPreview.setLayout(pnlPreviewLayout);
+        pnlPreviewLayout.setHorizontalGroup(
+            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewLayout.createSequentialGroup()
+                .add(pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlPreviewLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(pnlPreviewLayout.createSequentialGroup()
+                        .add(65, 65, 65)
+                        .add(jLabel10)))
+                .addContainerGap(589, Short.MAX_VALUE))
+        );
+        pnlPreviewLayout.setVerticalGroup(
+            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel10)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        tabAuxiliar.addTab("Preview", pnlPreview);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -455,7 +500,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -686,6 +731,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -697,8 +743,10 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel panelClock;
     private javax.swing.JPanel panelMessage;
+    private javax.swing.JPanel pnlPreview;
     private javax.swing.JPanel pnlTimerStart;
     private javax.swing.JPanel pnlTimerTotal;
+    private datasoul.render.SwingDisplayPanel previewDisplayPanel1;
     private javax.swing.JTabbedPane tabAuxiliar;
     // End of variables declaration//GEN-END:variables
     

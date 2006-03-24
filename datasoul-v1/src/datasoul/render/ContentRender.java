@@ -33,6 +33,10 @@ public abstract class ContentRender {
     private String timer;
     private boolean timerChanged;
     
+    private boolean monitor;
+    
+    
+    
     /** Creates a new instance of ContentRender */
     public ContentRender() {
     }
@@ -93,12 +97,20 @@ public abstract class ContentRender {
         this.templateChanged = true;
     }
 
+    public boolean isMonitor(){
+        return this.monitor;
+    }
+    
+    public void setMonitor(boolean b){
+        this.monitor = b;
+    }
+    
     /**
      * Update the screen only if needed. 
      * That is, if the changes were only in content that isn't 
      * being shown, no update is done.
      */
-    public void update(){
+    public synchronized void update(){
         
         try {
             DisplayTemplate templ = TemplateManager.getDisplayTemplate(template);

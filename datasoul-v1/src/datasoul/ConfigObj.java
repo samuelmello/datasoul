@@ -1,7 +1,7 @@
 /*
  * ConfigObj.java
  *
- * Created on 22 de Março de 2006, 21:29
+ * Created on 22 de Marco de 2006, 21:29
  *
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.

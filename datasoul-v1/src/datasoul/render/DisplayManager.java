@@ -31,6 +31,8 @@ public class DisplayManager {
         
         if (monitorDisplay == null){
             monitorDisplay = new SwingDisplay();
+            monitorDisplay.getContentRender().setMonitor(true);
+            monitorDisplay.getContentRender().setTemplate("monitor");
             monitorDisplay.initDisplay(640, 480);
         }
         return monitorDisplay;
