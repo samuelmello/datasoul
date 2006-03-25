@@ -25,10 +25,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
     public TemplatePanel templates = new TemplatePanel();
+    public ConfigPanel config = new ConfigPanel();
     
     org.jdesktop.layout.GroupLayout songsLayout;
     org.jdesktop.layout.GroupLayout datashowLayout;
     org.jdesktop.layout.GroupLayout templatesLayout;
+    org.jdesktop.layout.GroupLayout configLayout;
     
     
     /**
@@ -85,6 +87,21 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .add(templates, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
+        // Initialize config layout
+        configLayout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        configLayout.setHorizontalGroup(
+            configLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(config, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .add(toolBarMain)
+        );
+        configLayout.setVerticalGroup(
+            configLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, configLayout.createSequentialGroup()
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(config, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+        );
+        
 
         showPanel("datashow");
         
@@ -96,6 +113,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         songs.setVisible(false);
         datashow.setVisible(false);
         templates.setVisible(false);
+        config.setVisible(false);
         
         if (panel.equals("datashow")){
             datashow.setVisible(true);
@@ -109,6 +127,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             templates.setVisible(true);
             getContentPane().setLayout(templatesLayout);
             templates.validate();
+        }else if (panel.equals("config")){
+            config.setVisible(true);
+            getContentPane().setLayout(configLayout);
+            config.validate();
         }
         
     }
@@ -215,8 +237,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        ConfigForm configForm = new ConfigForm();
-        configForm.setVisible(true);
+
+        showPanel("config");
+
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed

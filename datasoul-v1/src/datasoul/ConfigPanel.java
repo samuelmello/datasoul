@@ -21,14 +21,14 @@ import javax.swing.SpringLayout;
  *
  * @author  Administrador
  */
-public class ConfigForm extends javax.swing.JFrame {
+public class ConfigPanel extends javax.swing.JPanel {
 
     private ConfigObj configObj;
     private ArrayList<Component> components;
     
     
     /** Creates new form ConfigForm */
-    public ConfigForm() {
+    public ConfigPanel() {
         initComponents();
         
         components = new ArrayList<Component>();
@@ -181,9 +181,8 @@ public class ConfigForm extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         btnApply = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Config");
         tabConfig.setFont(new java.awt.Font("Arial", 1, 11));
+        tabConfig.setMinimumSize(new java.awt.Dimension(0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel1.setText("Use main output:");
 
@@ -281,39 +280,35 @@ public class ConfigForm extends javax.swing.JFrame {
                                         .add(jLabel3))
                                     .add(32, 32, 32)
                                     .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                        .add(mainOutput)
-                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, panelGeneralLayout.createSequentialGroup()
+                                        .add(panelGeneralLayout.createSequentialGroup()
                                             .add(mainOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
                                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                             .add(jLabel12)
-                                            .add(20, 20, 20)))
-                                    .add(5, 5, 5))
+                                            .add(13, 13, 13))
+                                        .add(mainOutput)))
                                 .add(panelGeneralLayout.createSequentialGroup()
                                     .add(jLabel6)
                                     .add(54, 54, 54)
                                     .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(jLabel16)
-                                    .add(12, 12, 12)))
+                                    .add(jLabel16)))
+                            .add(jLabel2)
                             .add(panelGeneralLayout.createSequentialGroup()
                                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel2)
+                                    .add(jLabel4)
+                                    .add(jLabel5))
+                                .add(15, 15, 15)
+                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(panelGeneralLayout.createSequentialGroup()
-                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(jLabel4)
-                                            .add(jLabel5))
-                                        .add(15, 15, 15)
-                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(panelGeneralLayout.createSequentialGroup()
-                                                .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(jLabel14))
-                                            .add(monitorOutput)
-                                            .add(panelGeneralLayout.createSequentialGroup()
-                                                .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                                .add(jLabel18)))))
-                                .add(12, 12, 12)))
+                                        .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel14))
+                                    .add(monitorOutput)
+                                    .add(panelGeneralLayout.createSequentialGroup()
+                                        .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel18)))))
+                        .add(12, 12, 12)
                         .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                 .add(panelGeneralLayout.createSequentialGroup()
@@ -400,7 +395,7 @@ public class ConfigForm extends javax.swing.JFrame {
                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
                     .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(79, 79, 79))
+                .add(101, 101, 101))
         );
         tabConfig.addTab("General", panelGeneral);
 
@@ -451,7 +446,7 @@ public class ConfigForm extends javax.swing.JFrame {
                 .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(videoDeintrelaceLabel)
                     .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(256, Short.MAX_VALUE))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
         tabConfig.addTab("Video", panelVideo);
 
@@ -469,37 +464,35 @@ public class ConfigForm extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap(319, Short.MAX_VALUE)
-                .add(btnApply)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnCancel)
-                .addContainerGap())
-            .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(tabConfig, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 439, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(btnApply)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnCancel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                .add(10, 10, 10))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .add(tabConfig)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .add(18, 18, 18)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnCancel)
                     .add(btnApply))
                 .addContainerGap())
         );
-        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.dispose();
+        this.refreshScreenValues();
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
@@ -513,7 +506,7 @@ public class ConfigForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConfigForm().setVisible(true);
+                new ConfigPanel().setVisible(true);
             }
         });
     }
@@ -547,7 +540,6 @@ public class ConfigForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox monitorOutput;
     private javax.swing.JTextField monitorOutputPositionLeft;
     private javax.swing.JTextField monitorOutputPositionTop;
-    private javax.swing.JComboBox monitorOutputSize;
     private javax.swing.JTextField monitorOutputSizeHeight;
     private javax.swing.JTextField monitorOutputSizeWidth;
     private javax.swing.JPanel panelGeneral;
