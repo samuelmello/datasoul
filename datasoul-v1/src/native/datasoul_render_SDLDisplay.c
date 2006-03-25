@@ -22,7 +22,8 @@
 
 typedef struct {
 	SDL_Surface *screen;
-	SDL_Surface *overlay;
+	SDL_Surface *overlay[2];
+	int overlayActive;
 	SDL_Surface *background;
 	int black;
 	int clear;
@@ -78,12 +79,12 @@ int displayThread (void *arg){
 				}
 
 				if (! globals.clear){
-					SDL_BlitSurface(globals.overlay, NULL, globals.screen, NULL);
+					SDL_BlitSurface(globals.overlay[globals.overlayActive], NULL, globals.screen, NULL);
 				}
 			}
 			time3 = SDL_GetTicks();
 			SDL_Flip(globals.screen);
-			globals.needRefresh = 0;
+			//globals.needRefresh = 0;
 
 		}
 		time2 = SDL_GetTicks();
@@ -154,7 +155,8 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
         surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32,
                         rmask, gmask, bmask, amask);
 
-        globals.overlay = SDL_DisplayFormatAlpha(surface);
+        globals.overlay[0] = SDL_DisplayFormatAlpha(surface);
+        globals.overlay[1] = SDL_DisplayFormatAlpha(surface);
         globals.background = SDL_DisplayFormatAlpha(surface);
 	
 	SDL_FreeSurface(surface);
@@ -170,7 +172,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
 	pthread_attr_init(&attr);
 	pthread_attr_setschedpolicy(&attr, SCHED_RR);
         struct sched_param param;
-	param.__sched_priority = sched_get_priority_min(SCHED_RR);
+	param.__sched_priority = sched_get_priority_max(SCHED_RR);
 	pthread_attr_setschedparam(&attr, &param);
 	pthread_create(&globals.displayThread, &attr, &displayThread, NULL);
 
@@ -251,7 +253,14 @@ void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
 JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_displayOverlay
   (JNIEnv *env, jobject obj, jobject bytebuf){
 
-	setImageOnSurface(env, globals.overlay, bytebuf);
+	  int x;
+	  if ( globals.overlayActive == 0){
+		  x = 1;
+	  }else{
+		  x = 0;
+	  }
+	setImageOnSurface(env, globals.overlay[x], bytebuf);
+	globals.overlayActive = x;
 	globals.needRefresh = 1;
 }
 

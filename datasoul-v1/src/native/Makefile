@@ -1,5 +1,5 @@
 JDK_HOME=/home/ess/jdk1.5.0_06
-CFLAGS=-g
+CFLAGS=-O4
 DATASOUL_CLASSES=../../build/classes
 
 libdatasoulsdl.so: datasoul_render_SDLDisplay.h datasoul_render_SDLDisplay.c
