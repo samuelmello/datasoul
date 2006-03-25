@@ -7,13 +7,13 @@
 
 #ifdef VIDEO4LINUX
 #define USE_PTHREAD
+#include "linux/SDL_bgrab-1.0.0/SDL_bgrab.h"
+#endif
+
+#ifdef USE_PTHREAD
 #include <pthread.h>
 #include <sched.h>
 #endif
-
-#ifdef VIDEO4LINUX
-#include "linux/SDL_bgrab-1.0.0/SDL_bgrab.h"
-#endif 
 
 #define FRAMETIME_MS 30
 
@@ -29,6 +29,7 @@ typedef struct {
 	int needRefresh;
 	int stopDisplay;
 	int bgMode;
+	int debugMode;
 
 #ifdef USE_PTHREAD
 	pthread_t displayThread;
@@ -41,7 +42,6 @@ typedef struct {
 	int deintrelaceMode;
 	int inputSrc;
 	int inputMode;
-	int debugMode;
 #endif
 } globals_t;
 
@@ -354,9 +354,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDeintrelaceMode
 JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDebugMode
   (JNIEnv *env, jobject obj, jint mode){
 
-#ifdef VIDEO4LINUX
 	globals.debugMode = mode;
-#endif
 
 }
 
