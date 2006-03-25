@@ -6,10 +6,15 @@
 
 package datasoul.datashow;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -96,6 +101,12 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         textText.setColumns(20);
         textText.setRows(5);
+        textText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textTextKeyPressed(evt);
+            }
+        });
+
         jScrollPane1.setViewportView(textText);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -135,6 +146,10 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void textTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTextKeyPressed
+        highlightlyric(this.textText);
+    }//GEN-LAST:event_textTextKeyPressed
+
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
         actualizeValues();
         
@@ -173,5 +188,44 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitle1;
     private javax.swing.JTextArea textText;
     // End of variables declaration//GEN-END:variables
+
+    public void highlightlyric(JTextComponent textComp){
+        removeHighlights(textComp);
+        highlight(textComp,"\n==\n",Color.ORANGE);
+        highlight(textComp,"\n--\n",Color.PINK);
+    }
+    // Creates highlights around all occurrences of pattern in textComp
+    public void highlight(JTextComponent textComp, String pattern, Color color) {
+        Highlighter.HighlightPainter highlightPainter = new MyHighlightPainter(color);
+    
+        try {
+            Highlighter hilite = textComp.getHighlighter();
+            javax.swing.text.Document doc = textComp.getDocument();
+            String text = doc.getText(0, doc.getLength());
+            int pos = 0;
+
+            // Search for pattern
+            while ((pos = text.indexOf(pattern, pos)) >= 0) {
+                // Create highlighter using private painter and apply around pattern
+                hilite.addHighlight(pos, pos+pattern.length(), highlightPainter);
+                pos += pattern.length();
+            }
+        } catch (BadLocationException e) {
+
+        }
+    }
+    
+    // Removes only our private highlights
+    public void removeHighlights(JTextComponent textComp) {
+        Highlighter hilite = textComp.getHighlighter();
+        hilite.removeAllHighlights();
+    }
+    
+   // A private subclass of the default highlight painter
+    class MyHighlightPainter extends DefaultHighlighter.DefaultHighlightPainter {
+        public MyHighlightPainter(Color color) {
+            super(color);
+        }
+    }
     
 }

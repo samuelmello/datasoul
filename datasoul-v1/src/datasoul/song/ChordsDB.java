@@ -82,6 +82,13 @@ public class ChordsDB extends ListTable{
         }
         return null;
     }
+
+    public ArrayList<String> getChordsName(){
+        ArrayList<String> al = new ArrayList<String>();
+        for(Object obj:objectList)
+            al.add(((Chord)obj).getName());
+        return al;
+    }
     
      public Node writeObject() throws Exception{
 

@@ -10,6 +10,7 @@ import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -17,8 +18,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+import javax.swing.text.JTextComponent;
 import javax.swing.text.Keymap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -80,6 +86,10 @@ public class SongEditorForm extends javax.swing.JFrame {
         newSong = false;
         
         this.center();        
+
+        highlightchord(this.textChordsSimplified);
+        highlightchord(this.textChordsCompleted);
+        highlightlyric(this.textLyrics);
     }
 
     /**
@@ -97,6 +107,10 @@ public class SongEditorForm extends javax.swing.JFrame {
         newSong = false;
         
         this.center();        
+        
+        highlightchord(this.textChordsSimplified);
+        highlightchord(this.textChordsCompleted);
+        highlightlyric(this.textLyrics);
     }
     
     public SongEditorForm() {
@@ -109,6 +123,10 @@ public class SongEditorForm extends javax.swing.JFrame {
         newSong = true;
         
         this.center();
+        
+        highlightchord(this.textChordsSimplified);
+        highlightchord(this.textChordsCompleted);
+        highlightlyric(this.textLyrics);
     }
 
     public void center(){
@@ -173,17 +191,41 @@ public class SongEditorForm extends javax.swing.JFrame {
         labelAuthor.setFocusable(false);
 
         tabSong.setFont(new java.awt.Font("Arial", 1, 11));
+        tabSong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textChordsCompleteKeyPressed(evt);
+            }
+        });
+
         textLyrics.setFont(new java.awt.Font("Courier New", 0, 12));
+        textLyrics.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textLyricsKeyPressed(evt);
+            }
+        });
+
         scroolLyric.setViewportView(textLyrics);
 
         tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LYRICS"), scroolLyric);
 
         textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 12));
+        textChordsCompleted.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textChordsCompleteKeyPressed(evt);
+            }
+        });
+
         scroolChordsComplete.setViewportView(textChordsCompleted);
 
         tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORDS_COMPLETE"), scroolChordsComplete);
 
         textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 12));
+        textChordsSimplified.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textChordsSimplifiedKeyPressed(evt);
+            }
+        });
+
         scroolChordsSimplified.setViewportView(textChordsSimplified);
 
         tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Simplified"), scroolChordsSimplified);
@@ -247,6 +289,18 @@ public class SongEditorForm extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textChordsSimplifiedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textChordsSimplifiedKeyPressed
+        highlightchord(this.textChordsSimplified);
+    }//GEN-LAST:event_textChordsSimplifiedKeyPressed
+
+    private void textChordsCompleteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textChordsCompleteKeyPressed
+        highlightchord(this.textChordsCompleted);
+    }//GEN-LAST:event_textChordsCompleteKeyPressed
+
+    private void textLyricsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textLyricsKeyPressed
+        highlightlyric(this.textLyrics);
+    }//GEN-LAST:event_textLyricsKeyPressed
 
     private void fieldNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNameKeyTyped
         if(evt.getKeyCode()==16)
@@ -341,5 +395,54 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JTextPane textLyrics;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
+    
+
+    public void highlightlyric(JTextComponent textComp){
+        removeHighlights(textComp);
+        highlight(textComp,"\n==\n",Color.ORANGE);
+        highlight(textComp,"\n--\n",Color.PINK);
+    }
+
+    public void highlightchord(JTextComponent textComp){
+        removeHighlights(textComp);
+        for(String chord:ChordsDB.getInstance().getChordsName()){
+            highlight(textComp,chord,Color.decode("0xddddff"));
+        }
+    }
+    
+    // Creates highlights around all occurrences of pattern in textComp
+    public void highlight(JTextComponent textComp, String pattern, Color color) {
+        Highlighter.HighlightPainter highlightPainter = new MyHighlightPainter(color);
+    
+        try {
+            Highlighter hilite = textComp.getHighlighter();
+            javax.swing.text.Document doc = textComp.getDocument();
+            String text = doc.getText(0, doc.getLength());
+            int pos = 0;
+
+            // Search for pattern
+            while ((pos = text.indexOf(pattern, pos)) >= 0) {
+                // Create highlighter using private painter and apply around pattern
+                hilite.addHighlight(pos, pos+pattern.length(), highlightPainter);
+                pos += pattern.length();
+            }
+        } catch (BadLocationException e) {
+
+        }
+    }
+    
+    // Removes only our private highlights
+    public void removeHighlights(JTextComponent textComp) {
+        Highlighter hilite = textComp.getHighlighter();
+        hilite.removeAllHighlights();
+    }
+    
+
+    // A private subclass of the default highlight painter
+    class MyHighlightPainter extends DefaultHighlighter.DefaultHighlightPainter {
+        public MyHighlightPainter(Color color) {
+            super(color);
+        }
+    }
     
 }

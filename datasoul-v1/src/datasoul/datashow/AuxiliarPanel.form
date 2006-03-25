@@ -53,7 +53,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="162" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="161" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -101,10 +101,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbDebugMode" pref="134" max="32767" attributes="0"/>
-                          <Component id="cbDeintrelaceMode" pref="134" max="32767" attributes="1"/>
-                          <Component id="cbInputSrc" alignment="0" pref="134" max="32767" attributes="1"/>
-                          <Component id="cbInputMode" alignment="0" pref="134" max="32767" attributes="1"/>
+                          <Component id="cbDebugMode" pref="214" max="32767" attributes="0"/>
+                          <Component id="cbDeintrelaceMode" pref="214" max="32767" attributes="1"/>
+                          <Component id="cbInputSrc" alignment="0" pref="214" max="32767" attributes="1"/>
+                          <Component id="cbInputMode" alignment="0" pref="214" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
                   </Group>
@@ -159,7 +159,7 @@
                               <Component id="imgBackground" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -334,14 +334,14 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="jPanel3" alignment="0" min="0" pref="355" max="32767" attributes="1"/>
+                          <Component id="jPanel3" alignment="0" min="0" max="32767" attributes="1"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="pnlTimerStart" min="-2" max="-2" attributes="1"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pnlTimerTotal" min="-2" max="-2" attributes="1"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="394" max="32767" attributes="0"/>
+                      <EmptySpace pref="396" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -355,7 +355,7 @@
                           <Component id="pnlTimerStart" min="-2" max="-2" attributes="0"/>
                           <Component id="pnlTimerTotal" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -522,7 +522,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="63" max="32767" attributes="0"/>
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnTimerOff" min="-2" max="-2" attributes="1"/>
@@ -617,7 +617,7 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="589" max="32767" attributes="0"/>
+                      <EmptySpace pref="591" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
