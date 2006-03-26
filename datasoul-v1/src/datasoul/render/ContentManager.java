@@ -9,6 +9,7 @@
 
 package datasoul.render;
 
+import datasoul.ConfigObj;
 import java.util.ArrayList;
 
 /**
@@ -27,12 +28,18 @@ public class ContentManager {
     private ContentManager() {
         previewRenderList = new ArrayList<ContentRender>();
         liveRenderList = new ArrayList<ContentRender>();
-        liveRenderList.add( DisplayManager.getMonitorDisplay().getContentRender() );
-        liveRenderList.add( DisplayManager.getMainDisplay().getContentRender() );
+
+        if ( ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
+            liveRenderList.add( DisplayManager.getMonitorDisplay().getContentRender() );
+        }
+        
+        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
+            liveRenderList.add( DisplayManager.getMainDisplay().getContentRender() );
+        }
     }
     
     static public ContentManager getInstance(){
-        if (instance == null){
+        if (instance == null ){
             instance = new ContentManager();
         }
         return instance;

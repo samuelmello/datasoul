@@ -95,7 +95,7 @@ int displayThread (void *arg){
 		}
 
 		if (globals.debugMode) {
-			fprintf(stderr, "t1: %d, t2: %d, t3: %d, diff: %d, delay: %d\n", 
+			fprintf(stderr, "Processing: %d ms, Sleeping: %d ms\n", 
 					time1, time2, time3, (time2 - time1), 
 					FRAMETIME_MS - (time2 - time1));
 		}
@@ -110,7 +110,7 @@ int displayThread (void *arg){
  * Signature: ()V
  */
 JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
-(JNIEnv *env, jobject obj, jint width, jint height){
+(JNIEnv *env, jobject obj, jint width, jint height, jint top, jint left){
 
 
         SDL_Surface *surface;
@@ -118,6 +118,19 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
         Uint32 rmask, gmask, bmask, amask;
         SDL_Rect rect;
 
+	char envopt[256];
+
+
+	if (width <= 0){
+		width = 640;
+	}
+	if (height <= 0){
+		height = 480;
+	}
+		
+	sprintf(envopt, "SDL_VIDEO_WINDOW_POS=%d,%d", left, top);
+	putenv(envopt);
+	
         if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
         {
                 return ;
@@ -262,6 +275,11 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_displayOverlay
 	setImageOnSurface(env, globals.overlay[x], bytebuf);
 	globals.overlayActive = x;
 	globals.needRefresh = 1;
+
+	if (globals.debugMode > 0){
+		fprintf(stdout, "Received overlay image!\n");
+	}
+	
 }
 
 /*

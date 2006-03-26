@@ -54,7 +54,7 @@ public class SDLDisplay implements DisplayItf {
         return contentRender;
     }
     
-    public void initDisplay (final int width, final int height){
+    public void initDisplay (final int width, final int height, final int top, final int left){
         
         overlay = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         overlayBuf = ByteBuffer.allocateDirect(width * height * 4);
@@ -64,7 +64,7 @@ public class SDLDisplay implements DisplayItf {
         
         Thread t = new Thread(){
             public void run(){
-                init(width, height);
+                init(width, height, top, left);
             }
         };
         
@@ -85,7 +85,7 @@ public class SDLDisplay implements DisplayItf {
         cleanup();
     }
             
-    private native void init(int width, int height);
+    private native void init(int width, int height, int top, int left);
     private native void cleanup();
     private native void displayOverlay(ByteBuffer bb);
     private native void nativeSetBackground(ByteBuffer bb);
@@ -100,7 +100,6 @@ public class SDLDisplay implements DisplayItf {
 
     public void paintOverlay(Paintable p){
         
-        long time = System.currentTimeMillis();
         if (p == null) return;
 
         Graphics2D g = overlay.createGraphics();
@@ -122,7 +121,6 @@ public class SDLDisplay implements DisplayItf {
         overlayBuf.flip();
         this.displayOverlay(overlayBuf);
         overlayBuf.clear();
-        System.out.println("Time: "+(time-System.currentTimeMillis()));
         
     }
 

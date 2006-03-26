@@ -14,6 +14,6 @@ package datasoul.render;
  * @author root
  */
 public interface DisplayItf {
-    public void initDisplay (int width, int height);
+    public void initDisplay (int width, int height, int top, int left);
     public ContentRender getContentRender();
 }

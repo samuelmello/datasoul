@@ -90,7 +90,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
     
     
     
-    public void initDisplay(int width, int height){
+    public void initDisplay(int width, int height, int top, int left){
         this.setSize(width, height);
         img = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g = img.getGraphics();

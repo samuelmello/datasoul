@@ -1,4 +1,4 @@
-JDK_HOME=/home/ess/jdk1.5.0_06
+JDK_HOME=/usr/java/jdk1.6.0
 CFLAGS=-O4
 DATASOUL_CLASSES=../../build/classes
 

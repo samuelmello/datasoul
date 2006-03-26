@@ -67,9 +67,10 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void initDisplay(int width, int height) {
+    public void initDisplay(int width, int height, int top, int left) {
         this.setSize(width, height);
-        swingDisplayPanel1.initDisplay(width, height);
+        this.setLocation(top, left);
+        swingDisplayPanel1.initDisplay(width, height, 0, 0);
         this.setVisible(true);
     }
 
