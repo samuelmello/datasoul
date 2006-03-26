@@ -116,9 +116,6 @@ public class ImageTemplateItem extends TemplateItem {
             return str;
     }
     
-    private String stringAlign4chars(String str){
-        return ("0000".substring(0,4-str.length()))+str;
-    }    
     public void setImageInStr(String strImage) {
 
         String str="";
