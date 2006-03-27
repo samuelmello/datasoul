@@ -25,6 +25,8 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         this.center();
         
         this.songsSearchPanel.usingInAddSongItemPanel();
+        
+        this.songsSearchPanel.setObjectManager(this);
     }
 
     public void center(){
@@ -44,10 +46,13 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         btnClose = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         songsSearchPanel = new datasoul.song.SongsSearchPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textSong = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Song");
         setAlwaysOnTop(true);
+        setResizable(false);
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,26 +67,37 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
             }
         });
 
+        jScrollPane1.setViewportView(textSong);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                .add(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 61, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                    .add(btnClose))
-                .add(org.jdesktop.layout.GroupLayout.LEADING, songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 233, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(layout.createSequentialGroup()
+                        .add(8, 8, 8)
+                        .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 61, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnClose)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 378, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnClose)
-                    .add(btnAdd))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 378, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(btnClose)
+                            .add(btnAdd)))
+                    .add(layout.createSequentialGroup()
+                        .add(11, 11, 11)
+                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pack();
@@ -99,11 +115,19 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         this.repaint();
     }
     
+    public void viewSong(Song song) {
+        String text = "Title: "+song.getSongName()+"\n";
+        text = text + "Author: " +song.getSongAuthor()+"\n-------------------------------------------------\n";
+        text = text + song.getLyrics();
+        this.textSong.setText(text);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClose;
+    private javax.swing.JScrollPane jScrollPane1;
     private datasoul.song.SongsSearchPanel songsSearchPanel;
+    private javax.swing.JTextPane textSong;
     // End of variables declaration//GEN-END:variables
     
 }

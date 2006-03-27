@@ -143,11 +143,14 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     .add(labelField))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
-                    .add(comboField, 0, 258, Short.MAX_VALUE))
+                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                    .add(comboField, 0, 277, Short.MAX_VALUE))
                 .addContainerGap())
-            .add(scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -193,10 +196,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             if (om != null){
                 om.getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
             }
-        }else{
+        }else if(objectManager instanceof SongsPanel){
             SongsPanel om = (SongsPanel)objectManager;     
             if (om != null){
                 om.getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+            }
+        }else if(objectManager instanceof AddSongForm){
+            AddSongForm om = (AddSongForm)objectManager;     
+            if (om != null){
+                om.viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
             }
         }
     }    

@@ -42,13 +42,17 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="fieldString" pref="258" max="32767" attributes="0"/>
-                  <Component id="comboField" alignment="1" pref="258" max="32767" attributes="0"/>
+                  <Component id="fieldString" pref="277" max="32767" attributes="0"/>
+                  <Component id="comboField" alignment="1" pref="277" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="scroolSongList" alignment="0" pref="334" max="32767" attributes="0"/>
           <Component id="toolBar" alignment="0" pref="334" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="scroolSongList" pref="314" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
