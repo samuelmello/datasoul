@@ -7,6 +7,7 @@
 package datasoul.datashow;
 
 import datasoul.*;
+import datasoul.templates.TemplateComboBox;
 import datasoul.templates.TemplateManager;
 import datasoul.util.*;
 import datasoul.datashow.*;
@@ -47,13 +48,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
        tableServiceList.setModel(serviceListTable);
 
         //initTemplateCombo
-        JComboBox comboBox = new JComboBox(); 
-        comboBox.addItem("Default"); 
-        TemplateManager manager = TemplateManager.getInstance();
-        manager.refreshAvailableTemplates();
-        for(int i=0; i<manager.getRowCount(); i++){
-            comboBox.addItem((String)manager.getValueAt(i,0)); 
-        }
+        TemplateComboBox comboBox = new TemplateComboBox(); 
         this.tableServiceList.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboBox));          
         
         this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(colorRenderer);

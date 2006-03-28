@@ -6,6 +6,7 @@
 
 package datasoul;
 
+import datasoul.templates.TemplateComboBox;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -51,7 +52,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         registerComponent(monitorOutputSizeWidth,"MonitorOutputSizeWidth");
         registerComponent(templateMonitor,"TemplateMonitor");
         registerComponent(templateText,"TemplateText");
-
+        
         registerComponent(videoInput,"VideoInput");
         videoInput.removeAllItems();
         videoInput.addItem("Tuner");
@@ -150,9 +151,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         monitorOutput = new javax.swing.JCheckBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        templateMonitor = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
-        templateText = new javax.swing.JComboBox();
         mainOutputPositionLeft = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         mainOutputPositionTop = new javax.swing.JTextField();
@@ -171,6 +170,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         clockMode = new javax.swing.JComboBox();
+        templateMonitor = new datasoul.templates.TemplateComboBox();
+        templateText = new datasoul.templates.TemplateComboBox();
         panelVideo = new javax.swing.JPanel();
         videoInputLabel = new javax.swing.JLabel();
         videoInput = new javax.swing.JComboBox();
@@ -212,12 +213,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel7.setText("Template to monitor output:");
 
-        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jLabel8.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel8.setText("Template default to text:");
-
-        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         mainOutputPositionLeft.setText("jTextField1");
 
@@ -338,11 +335,11 @@ public class ConfigPanel extends javax.swing.JPanel {
                             .add(jLabel8)
                             .add(jLabel9))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(clockMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(templateText, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(templateMonitor, 0, 83, Short.MAX_VALUE))
-                        .addContainerGap(182, Short.MAX_VALUE))))
+                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(templateText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(188, 188, 188))))
         );
         panelGeneralLayout.setVerticalGroup(
             panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -395,7 +392,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
                     .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(101, 101, 101))
+                .add(109, 109, 109))
         );
         tabConfig.addTab("General", panelGeneral);
 
@@ -545,8 +542,8 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelVideo;
     private javax.swing.JTabbedPane tabConfig;
-    private javax.swing.JComboBox templateMonitor;
-    private javax.swing.JComboBox templateText;
+    private datasoul.templates.TemplateComboBox templateMonitor;
+    private datasoul.templates.TemplateComboBox templateText;
     private javax.swing.JComboBox videoDeintrelace;
     private javax.swing.JLabel videoDeintrelaceLabel;
     private javax.swing.JComboBox videoInput;
