@@ -74,7 +74,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         btnApply = new javax.swing.JButton();
         btnClose1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        textLine = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         btnBreak = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -125,16 +129,52 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
         toolBar.add(jSeparator1);
 
-        btnBreak.setText("Break slides in X lines");
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setMaximumSize(new java.awt.Dimension(100, 250));
+        jPanel1.setPreferredSize(new java.awt.Dimension(210, 250));
+        textLine.setText("2");
+
+        jLabel1.setText("Break slide in");
+
+        btnBreak.setText("break");
         btnBreak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBreak(evt);
+                btnBreakActionPerformed(evt);
             }
         });
 
-        toolBar.add(btnBreak);
+        jLabel2.setText("lines");
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnBreak)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(3, 3, 3)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2)
+                    .add(btnBreak)
+                    .add(jLabel1))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        toolBar.add(jPanel1);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator2.setMinimumSize(new java.awt.Dimension(100, 100));
         toolBar.add(jSeparator2);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -143,18 +183,18 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
-                    .add(labelTitle1))
-                .addContainerGap())
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(labelTitle)
                 .addContainerGap(666, Short.MAX_VALUE))
             .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 700, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                .addContainerGap())
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+                    .add(labelTitle1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -173,15 +213,15 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(labelTitle1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 497, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(48, 48, 48))
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBreak(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreak
+    private void btnBreakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakActionPerformed
         int lines = 0;
-        String str = JOptionPane.showInputDialog(this,"In how many lines do you want to break the slides?","Break slides",JOptionPane.QUESTION_MESSAGE);
+        String str = this.textLine.getText();
         try{
             lines = Integer.parseInt(str);
         }catch (Exception e){
@@ -226,7 +266,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         sb.append(inStr.substring(inStr.length()-2,inStr.length()));
         this.textText.setText(sb.toString());
         highlightlyric(this.textText);        
-    }//GEN-LAST:event_btnBreak
+    }//GEN-LAST:event_btnBreakActionPerformed
 
     private void btnClose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClose1MouseClicked
         this.dispose();
@@ -264,13 +304,18 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
     private javax.swing.JButton btnBreak;
+    private javax.swing.JButton btnBreakfd;
     private javax.swing.JButton btnClose1;
     private javax.swing.JTextField fieldTitle;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;
+    private javax.swing.JTextField textLine;
     private javax.swing.JTextArea textText;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables

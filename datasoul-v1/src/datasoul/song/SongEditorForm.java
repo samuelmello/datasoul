@@ -175,7 +175,11 @@ public class SongEditorForm extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        textLine = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         btnBreak = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -260,14 +264,49 @@ public class SongEditorForm extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
         toolBar.add(jSeparator1);
 
-        btnBreak.setText("Break slides in X lines");
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setMaximumSize(new java.awt.Dimension(100, 250));
+        jPanel1.setPreferredSize(new java.awt.Dimension(210, 250));
+        textLine.setText("2");
+
+        jLabel1.setText("Break slide in");
+
+        btnBreak.setText("break");
         btnBreak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBreak(evt);
+                btnBreakActionPerformed(evt);
             }
         });
 
-        toolBar.add(btnBreak);
+        jLabel2.setText("lines");
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel2)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnBreak)
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(3, 3, 3)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2)
+                    .add(btnBreak)
+                    .add(jLabel1))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        toolBar.add(jPanel1);
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         toolBar.add(jSeparator2);
@@ -313,16 +352,16 @@ public class SongEditorForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBreak(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreak
+    private void btnBreakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakActionPerformed
         int lines = 0;
-        String str = JOptionPane.showInputDialog(this,"In how many lines do you want to break the slides?","Break slides",JOptionPane.QUESTION_MESSAGE);
+        String str = this.textLine.getText();
         try{
             lines = Integer.parseInt(str);
         }catch (Exception e){
             JOptionPane.showMessageDialog(this,"Please in the next time digit a number!");
             return;
         }
-        
+       
         String inStr = this.textLyrics.getText();
         StringBuffer sb = new StringBuffer();
         inStr = inStr.replace("==\r\n","");
@@ -361,7 +400,7 @@ public class SongEditorForm extends javax.swing.JFrame {
          
         this.textLyrics.setText(sb.toString());
         highlightlyric(this.textLyrics);        
-    }//GEN-LAST:event_btnBreak
+    }//GEN-LAST:event_btnBreakActionPerformed
 
     private void textChordsSimplifiedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textChordsSimplifiedKeyPressed
         highlightchord(this.textChordsSimplified);
@@ -458,6 +497,9 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelAuthor;
@@ -468,6 +510,7 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabSong;
     private javax.swing.JTextPane textChordsCompleted;
     private javax.swing.JTextPane textChordsSimplified;
+    private javax.swing.JTextField textLine;
     private javax.swing.JTextPane textLyrics;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
