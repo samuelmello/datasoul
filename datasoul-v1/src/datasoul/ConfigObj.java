@@ -49,8 +49,9 @@ public class ConfigObj extends SerializableObject {
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "config.xml";
-        
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+        + "config" + System.getProperty("file.separator") + "datasoul.config";
+
         File configFile = new File(path);
 
         Document dom=null;
@@ -83,7 +84,8 @@ public class ConfigObj extends SerializableObject {
     
     public void save(){
         try{
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "config.xml";
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+            + "config" + System.getProperty("file.separator") + "datasoul.config";
 
             Node node = this.writeObject();
             Document doc = node.getOwnerDocument();

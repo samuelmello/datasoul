@@ -84,7 +84,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private void loadSongTemplate(){
         songTemplate = new SongTemplate();
         
-        File songTemplateFile = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "songTemplate.st");
+        String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") 
+        + "config"+ System.getProperty("file.separator") + "datasoul.songtemplate";
+
+        File songTemplateFile = new File(filepath);
         
         Document dom=null;
         Node node = null;
@@ -720,6 +723,25 @@ public class SongViewerPanel extends javax.swing.JPanel {
     
     private void btnExportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExportMouseClicked
         JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
+                      public boolean accept(File f) { 
+                          if (f.isDirectory()) { 
+                              return true; 
+                          } 
+                          String name = f.getName(); 
+                          if (name.endsWith(".rtf")) { 
+                              return true; 
+                          } 
+                          return false; 
+                      } 
+   
+                      public String getDescription() { 
+                          return ".rtf"; 
+                      } 
+                  });
+        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "songs");
+        fc.setCurrentDirectory(dir);
+        fc.setDialogTitle("Select the file to export");
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             try {
 

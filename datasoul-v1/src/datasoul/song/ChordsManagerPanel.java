@@ -216,24 +216,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_tableChordsListKeyPressed
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        try{
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "chordsDB.xml";
-
-            Node node = chordsDB.writeObject();
-            Document doc = node.getOwnerDocument();
-            doc.appendChild( node);                        // Add Root to Document
-            FileOutputStream fos = new FileOutputStream(path);
-            org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
-            OutputFormat outFormat = new OutputFormat();
-            outFormat.setIndenting(true);
-            outFormat.setEncoding("ISO-8859-1");
-            xs.setOutputFormat(outFormat);
-            xs.setOutputByteStream(fos);
-            xs.serialize(doc);
-
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
-        }
+        chordsDB.getInstance().save();
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked

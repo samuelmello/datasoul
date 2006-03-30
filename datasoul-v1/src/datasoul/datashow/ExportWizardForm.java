@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
@@ -132,6 +133,25 @@ public class ExportWizardForm extends javax.swing.JFrame {
     private void btnExportServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportServiceListActionPerformed
         this.dispose();
         JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
+                      public boolean accept(File f) { 
+                          if (f.isDirectory()) { 
+                              return true; 
+                          } 
+                          String name = f.getName(); 
+                          if (name.endsWith(".rtf")) { 
+                              return true; 
+                          } 
+                          return false; 
+                      } 
+   
+                      public String getDescription() { 
+                          return ".rtf"; 
+                      } 
+                  });
+        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        fc.setCurrentDirectory(dir);
+        fc.setDialogTitle("Select the file to export");
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             try {
                 StyleContext sc = new StyleContext();
@@ -176,6 +196,25 @@ public class ExportWizardForm extends javax.swing.JFrame {
     private void btnExportSongsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportSongsActionPerformed
         this.dispose();
         JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
+                      public boolean accept(File f) { 
+                          if (f.isDirectory()) { 
+                              return true; 
+                          } 
+                          String name = f.getName(); 
+                          if (name.endsWith(".rtf")) { 
+                              return true; 
+                          } 
+                          return false; 
+                      } 
+   
+                      public String getDescription() { 
+                          return ".rtf"; 
+                      } 
+                  });
+        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "songs");
+        fc.setCurrentDirectory(dir);
+        fc.setDialogTitle("Select the file to export");
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             try {
                 ByteArrayOutputStream osOut = new ByteArrayOutputStream();    

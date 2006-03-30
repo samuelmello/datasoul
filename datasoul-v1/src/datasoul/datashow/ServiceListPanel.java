@@ -283,6 +283,24 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     
     private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
         JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
+                      public boolean accept(File f) { 
+                          if (f.isDirectory()) { 
+                              return true; 
+                          } 
+                          String name = f.getName(); 
+                          if (name.endsWith(".servicelist")) { 
+                              return true; 
+                          } 
+                          return false; 
+                      } 
+   
+                      public String getDescription() { 
+                          return ".servicelist"; 
+                      } 
+                  });
+        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        fc.setCurrentDirectory(dir);
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             fileName = fc.getSelectedFile().getPath();
 
@@ -319,6 +337,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_btnOpenMouseClicked
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        if(!fileName.contains(".servicelist"))
+            fileName = fileName + ".servicelist";
+
         if(fileName.equals("")){
             btnSaveAsMouseClicked(evt);
             return;
@@ -329,6 +350,25 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
     private void btnSaveAsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAsMouseClicked
         JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
+                      public boolean accept(File f) { 
+                          if (f.isDirectory()) { 
+                              return true; 
+                          } 
+                          String name = f.getName(); 
+                          if (name.endsWith(".servicelist")) { 
+                              return true; 
+                          } 
+                          return false; 
+                      } 
+   
+                      public String getDescription() { 
+                          return ".servicelist"; 
+                      } 
+                  });
+        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        fc.setCurrentDirectory(dir);
+        fc.setDialogTitle("Select the file to save.");
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             fileName = fc.getSelectedFile().getPath();
 

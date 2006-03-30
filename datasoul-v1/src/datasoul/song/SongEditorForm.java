@@ -473,9 +473,9 @@ public class SongEditorForm extends javax.swing.JFrame {
         }
         
         if(newSong){
-            ServiceListTable.getInstance().addItem(song);
+            AllSongsListTable.getInstance().addItem(song);
             newSong = false;
-            ServiceListTable.getInstance().sortByName();            
+            AllSongsListTable.getInstance().sortByName();            
         }
     }
     

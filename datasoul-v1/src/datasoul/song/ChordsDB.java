@@ -13,6 +13,7 @@ import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.SerializableObject;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import org.apache.xml.serialize.OutputFormat;
+import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -33,7 +36,8 @@ public class ChordsDB extends ListTable{
     private static ChordsDB instance;
     /** Creates a new instance of ChordsDB */
     private ChordsDB() {
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "chordsDB.xml";
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+        + "config"+System.getProperty("file.separator")+"datasoul.chordsdb";
         
         File chordsFile = new File(path);
 
@@ -88,6 +92,28 @@ public class ChordsDB extends ListTable{
         for(Object obj:objectList)
             al.add(((Chord)obj).getName());
         return al;
+    }
+    
+    public void save(){
+        try{
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+            + "config"+System.getProperty("file.separator")+"datasoul.chordsdb";
+
+            Node node = this.writeObject();
+            Document doc = node.getOwnerDocument();
+            doc.appendChild( node);                        // Add Root to Document
+            FileOutputStream fos = new FileOutputStream(path);
+            XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
+            OutputFormat outFormat = new OutputFormat();
+            outFormat.setIndenting(true);
+            outFormat.setEncoding("ISO-8859-1");
+            xs.setOutputFormat(outFormat);
+            xs.setOutputByteStream(fos);
+            xs.serialize(doc);
+
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
+        }        
     }
     
      public Node writeObject() throws Exception{

@@ -99,7 +99,8 @@ public class SongFormatFrame extends javax.swing.JFrame {
     private void btnApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyMouseClicked
         svp.refresh();
         try {
-            String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") + "songTemplate.st";
+            String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") 
+            + "config"+ System.getProperty("file.separator") + "datasoul.songtemplate";
 
             this.songTemplate.save(filepath);
         } catch (Exception ex) {
