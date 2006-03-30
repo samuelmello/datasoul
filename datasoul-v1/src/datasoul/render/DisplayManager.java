@@ -22,7 +22,7 @@ public class DisplayManager {
     
     static public SDLDisplay getMainDisplay(){
 
-        if (mainDisplay == null && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
+        if (mainDisplay == null ){
             mainDisplay = new SDLDisplay();
             
             int width, height, top, left;
@@ -54,7 +54,7 @@ public class DisplayManager {
     
     static public DisplayItf getMonitorDisplay(){
         
-        if (monitorDisplay == null && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
+        if (monitorDisplay == null  ){
             monitorDisplay = new SwingDisplay();
 
             int width, height, top, left;

@@ -22,7 +22,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -455,14 +455,24 @@
             <Component class="datasoul.templates.TemplateComboBox" name="templateMonitor">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="4">
+                    <StringItem index="0" value="Teste1"/>
+                    <StringItem index="1" value="monitor"/>
+                    <StringItem index="2" value="Template1"/>
+                    <StringItem index="3" value="BigClock"/>
+                  </StringArray>
                 </Property>
               </Properties>
             </Component>
             <Component class="datasoul.templates.TemplateComboBox" name="templateText">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="4">
+                    <StringItem index="0" value="Teste1"/>
+                    <StringItem index="1" value="monitor"/>
+                    <StringItem index="2" value="Template1"/>
+                    <StringItem index="3" value="BigClock"/>
+                  </StringArray>
                 </Property>
               </Properties>
             </Component>
@@ -480,20 +490,22 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="videoInputLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="videoModeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="videoDeintrelaceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="videoDebugModeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="videoDeintrelace" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="videoMode" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="videoInput" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="videoDebugMode" alignment="0" max="32767" attributes="1"/>
+                          <Component id="videoInput" alignment="0" pref="137" max="32767" attributes="1"/>
+                          <Component id="videoMode" alignment="0" max="32767" attributes="1"/>
+                          <Component id="videoDeintrelace" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace pref="241" max="32767" attributes="0"/>
+                      <EmptySpace pref="139" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -507,15 +519,20 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="videoMode" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="videoModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="videoMode" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="videoDeintrelaceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="videoDeintrelace" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="278" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="videoDebugMode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="videoDebugModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="244" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -540,6 +557,9 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="videoInputActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="videoModeLabel">
               <Properties>
@@ -560,13 +580,16 @@
                   </StringArray>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="videoModeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="videoDeintrelaceLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Arial" size="11" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Video deintrelace"/>
+                <Property name="text" type="java.lang.String" value="Video deintrelace:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="videoDeintrelace">
@@ -579,6 +602,26 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="videoDeintrelaceActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="videoDebugMode">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="videoDebugModeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Debug Mode:"/>
               </Properties>
             </Component>
           </SubComponents>

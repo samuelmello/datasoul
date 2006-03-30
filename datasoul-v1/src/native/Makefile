@@ -4,7 +4,7 @@ DATASOUL_CLASSES=../../build/classes
 
 libdatasoulsdl.so: datasoul_render_SDLDisplay.h datasoul_render_SDLDisplay.c
 	gcc ${CFLAGS} -I${JDK_HOME}/include -I${JDK_HOME}/include/linux\
-	  -DUSE_PTHREAD\
+	  -DVIDEO4LINUX \
   	  -shared datasoul_render_SDLDisplay.c -o libdatasoulsdl.so\
 	  -lSDL -lSDL_bgrab -fPIC
 

@@ -9,6 +9,7 @@
 
 package datasoul;
 
+import datasoul.render.DisplayManager;
 import datasoul.util.SerializableObject;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -44,6 +45,7 @@ public class ConfigObj extends SerializableObject {
     private String videoMode;
     private String videoDeintrelace;
     private String clockMode;    
+    private String videoDebugMode;
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -67,6 +69,7 @@ public class ConfigObj extends SerializableObject {
 
         }catch(Exception e) {
             JOptionPane.showMessageDialog(null,"Error, the file is not well formed\n"+e.getMessage(),"DataSoul Error",0);    
+            e.printStackTrace();
             return;
         }        
 
@@ -74,6 +77,7 @@ public class ConfigObj extends SerializableObject {
             this.readObject(node);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            e.printStackTrace();
         }
     }
     
@@ -95,10 +99,11 @@ public class ConfigObj extends SerializableObject {
 
         } catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            e.printStackTrace();
         }
     }
     
-    public static ConfigObj getInstance(){
+    public static synchronized ConfigObj getInstance(){
         if(instance==null){
             instance = new ConfigObj();
         }
@@ -122,6 +127,7 @@ public class ConfigObj extends SerializableObject {
         properties.add("VideoMode");
         properties.add("VideoDeintrelace");
         properties.add("ClockMode");        
+        properties.add("VideoDebugMode");
     }
     
     public ArrayList<String> getProperties(){
@@ -229,7 +235,21 @@ public class ConfigObj extends SerializableObject {
     }
 
     public void setVideoInput(String videoInput) {
+
         this.videoInput = videoInput;
+        if ( this.getMainOutput().equals("TRUE") ){
+            int index = 1;
+            if (videoInput.equals("Tuner")){
+                index = 0;
+            }else if (videoInput.equals("S-Video")){
+                index = 1;
+            }else if (videoInput.equals("Composite")){
+                index = 2;
+            }
+            DisplayManager.getMainDisplay().setInputSrc(index);
+        }
+        
+        
     }
 
     public String getVideoMode() {
@@ -237,7 +257,20 @@ public class ConfigObj extends SerializableObject {
     }
 
     public void setVideoMode(String videoMode) {
+        
         this.videoMode = videoMode;
+        if ( this.getMainOutput().equals("TRUE") ){
+            int index = 1;
+            if (videoMode.equals("PAL")){
+                index = 0;
+            }else if (videoMode.equals("NTSC")){
+                index = 1;
+            }else if (videoMode.equals("SECAM")){
+                index = 2;
+            }
+            DisplayManager.getMainDisplay().setInputMode(index);
+        }
+        
     }
 
     public String getVideoDeintrelace() {
@@ -246,6 +279,20 @@ public class ConfigObj extends SerializableObject {
 
     public void setVideoDeintrelace(String videoDeintrelace) {
         this.videoDeintrelace = videoDeintrelace;
+        if ( this.getMainOutput().equals("TRUE") ){
+            int index = 1;
+            if (videoDeintrelace.equals("None")){
+                index = 0;
+            }else if (videoDeintrelace.equals("Blend")){
+                index = 1;
+            }else if (videoDeintrelace.equals("Smart Blend")){
+                index = 2;
+            }else if (videoDeintrelace.equals("Smooth Blend")){
+                index = 3;
+            }
+            DisplayManager.getMainDisplay().setDeintrelaceMode( index );
+        }        
+        
     }
 
     public String getClockMode() {
@@ -255,5 +302,21 @@ public class ConfigObj extends SerializableObject {
     public void setClockMode(String clockMode) {
         this.clockMode = clockMode;
     }
+    
+    public String getVideoDebugMode() {
+        return this.videoDebugMode;
+    }
+
+    public void setVideoDebugMode(String videoDebugMode) {
+        this.videoDebugMode = videoDebugMode;
+        if (this.getMainOutput().equals("TRUE")){
+            if (videoDebugMode.equalsIgnoreCase("Yes")){
+                DisplayManager.getMainDisplay().setDebugMode(1);
+            }else{
+                DisplayManager.getMainDisplay().setDebugMode(0);
+            }
+        }
+    }
+
     
 }

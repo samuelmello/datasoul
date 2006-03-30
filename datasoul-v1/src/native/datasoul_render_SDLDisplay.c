@@ -84,7 +84,7 @@ int displayThread (void *arg){
 			}
 			time3 = SDL_GetTicks();
 			SDL_Flip(globals.screen);
-			//globals.needRefresh = 0;
+			globals.needRefresh = 0;
 
 		}
 		time2 = SDL_GetTicks();

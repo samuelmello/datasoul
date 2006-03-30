@@ -645,34 +645,22 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        ContentManager cm = ContentManager.getInstance();
-        cm.setTemplateLive("monitor");
-        cm.setTitleLive("FooTitulo");
-        cm.setSlideLive("Texto do Slide");
-        cm.setNextSlideLive("Texto do proximo Slide");
-        cm.updateLive();
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void cbDeintrelaceModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDeintrelaceModeActionPerformed
-        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setDeintrelaceMode( cbDeintrelaceMode.getSelectedIndex() );
-        }
+
     }//GEN-LAST:event_cbDeintrelaceModeActionPerformed
 
     private void cbInputModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputModeActionPerformed
-        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setInputMode( cbInputMode.getSelectedIndex() );
-        }
+
     }//GEN-LAST:event_cbInputModeActionPerformed
 
     private void cbInputSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputSrcActionPerformed
-        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setInputSrc( cbInputSrc.getSelectedIndex() );
-        }
+
     }//GEN-LAST:event_cbInputSrcActionPerformed
 
     private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
+
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
             DisplayManager.getMainDisplay().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
         }
