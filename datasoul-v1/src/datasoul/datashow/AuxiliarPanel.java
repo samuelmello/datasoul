@@ -73,16 +73,8 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         btnBlack = new javax.swing.JToggleButton();
         btnClear = new javax.swing.JToggleButton();
         cbBackgroundMode = new javax.swing.JComboBox();
-        cbInputSrc = new javax.swing.JComboBox();
-        cbDeintrelaceMode = new javax.swing.JComboBox();
-        cbInputMode = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        cbDebugMode = new javax.swing.JComboBox();
         panelClock = new javax.swing.JPanel();
         pnlTimerStart = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -163,48 +155,12 @@ public class AuxiliarPanel extends javax.swing.JPanel {
             }
         });
 
-        cbInputSrc.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Tuner", "Composite", "S-Video" }));
-        cbInputSrc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbInputSrcActionPerformed(evt);
-            }
-        });
-
-        cbDeintrelaceMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "None", "Blend", "Smart Blend", "Smooth Blend" }));
-        cbDeintrelaceMode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbDeintrelaceModeActionPerformed(evt);
-            }
-        });
-
-        cbInputMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PAL", "NTSC", "SECAM" }));
-        cbInputMode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbInputModeActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Background:");
-
-        jLabel2.setText("Input Source:");
-
-        jLabel3.setText("Input Mode:");
-
-        jLabel4.setText("Deintrelace:");
 
         jButton2.setText("Start Feedback");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Debug:");
-
-        cbDebugMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "No", "Yes" }));
-        cbDebugMode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbDebugModeActionPerformed(evt);
             }
         });
 
@@ -226,19 +182,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                     .add(btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel2)
-                    .add(jLabel3)
-                    .add(jLabel4)
-                    .add(jLabel11))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(cbDebugMode, 0, 134, Short.MAX_VALUE)
-                    .add(cbDeintrelaceMode, 0, 134, Short.MAX_VALUE)
-                    .add(cbInputSrc, 0, 134, Short.MAX_VALUE)
-                    .add(cbInputMode, 0, 134, Short.MAX_VALUE))
-                .add(88, 88, 88))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         PanelDisplayLayout.setVerticalGroup(
             PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -257,26 +201,8 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                         .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(cbBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel1)))
-                    .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, PanelDisplayLayout.createSequentialGroup()
-                            .add(9, 9, 9)
-                            .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jLabel2)
-                                .add(cbInputSrc, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jLabel3)
-                                .add(cbInputMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                            .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jLabel4)
-                                .add(cbDeintrelaceMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(PanelDisplayLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                                .add(jLabel11)
-                                .add(cbDebugMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .add(imgBackground, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         tabAuxiliar.addTab("Display", PanelDisplay);
 
@@ -520,14 +446,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbDebugModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDebugModeActionPerformed
-        
-        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setDebugMode( cbDebugMode.getSelectedIndex() );
-        }
-        
-    }//GEN-LAST:event_cbDebugModeActionPerformed
-
     private void btnApplyTimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyTimerActionPerformed
 
         int min, sec, minTot, secTot;
@@ -647,18 +565,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void cbDeintrelaceModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDeintrelaceModeActionPerformed
-
-    }//GEN-LAST:event_cbDeintrelaceModeActionPerformed
-
-    private void cbInputModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputModeActionPerformed
-
-    }//GEN-LAST:event_cbInputModeActionPerformed
-
-    private void cbInputSrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbInputSrcActionPerformed
-
-    }//GEN-LAST:event_cbInputSrcActionPerformed
-
     private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
@@ -729,10 +635,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton btnTimerForward;
     private javax.swing.JToggleButton btnTimerOff;
     private javax.swing.JComboBox cbBackgroundMode;
-    private javax.swing.JComboBox cbDebugMode;
-    private javax.swing.JComboBox cbDeintrelaceMode;
-    private javax.swing.JComboBox cbInputMode;
-    private javax.swing.JComboBox cbInputSrc;
     private javax.swing.JTextField edtTimerStartMin;
     private javax.swing.JTextField edtTimerStartSec;
     private javax.swing.JTextField edtTimerTotalMin;
@@ -741,10 +643,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
