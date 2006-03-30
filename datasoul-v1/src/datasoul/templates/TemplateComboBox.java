@@ -40,9 +40,13 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
     }
     
     private void populateList(){
+        Object[]  objs = this.getSelectedObjects();
         this.removeAllItems();
         for(int i=0; i<model.getRowCount(); i++){
             this.addItem(model.getValueAt(i,0));
+        }
+        for(Object obj:objs){
+            this.setSelectedItem(obj);
         }
     }
 }

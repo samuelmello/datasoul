@@ -53,7 +53,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="162" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="161" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -78,16 +78,18 @@
                               <Component id="btnBlack" alignment="0" max="32767" attributes="1"/>
                           </Group>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="templateMonitor" max="32767" attributes="1"/>
                           <Component id="jButton2" max="32767" attributes="1"/>
                           <Component id="cbBackgroundMode" alignment="1" max="32767" attributes="1"/>
                           <Component id="btnChangeBackground" alignment="0" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="imgBackground" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="327" max="32767" attributes="0"/>
+                      <EmptySpace pref="351" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -110,6 +112,11 @@
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="cbBackgroundMode" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="templateMonitor" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="imgBackground" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -186,6 +193,18 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
               </Events>
             </Component>
+            <Component class="datasoul.templates.TemplateComboBox" name="templateMonitor">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monitor template:"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="panelClock">
@@ -212,7 +231,7 @@
                               <Component id="pnlTimerTotal" min="-2" max="-2" attributes="1"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="342" max="32767" attributes="0"/>
+                      <EmptySpace pref="396" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -226,7 +245,7 @@
                           <Component id="pnlTimerStart" min="-2" max="-2" attributes="0"/>
                           <Component id="pnlTimerTotal" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="50" max="32767" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -488,7 +507,7 @@
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="589" max="32767" attributes="0"/>
+                      <EmptySpace pref="591" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
