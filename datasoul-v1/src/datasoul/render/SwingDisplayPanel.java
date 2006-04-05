@@ -60,11 +60,8 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
         }
     }
     
-    public synchronized void updateImg(Paintable p){
+    public void clear(){
 
-        if (img == null)
-            return;
-        
         Graphics2D g = img.createGraphics();
         
         // Clear it first
@@ -76,9 +73,21 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
             g.setComposite(oldComp);
         }
         
+    }
+    
+    public synchronized void updateImg(Paintable p){
+
+        if (img == null)
+            return;
+        
+        Graphics2D g = img.createGraphics();
+        
         // paint it
         p.paint(g);
         
+    }
+    
+    public void flip(){
         // update the screen
         this.repaint();
         

@@ -97,25 +97,31 @@ public class SDLDisplay implements DisplayItf {
     public native void setDeintrelaceMode(int mode);
     public native void setDebugMode (int mode);
     
+    public void clear(){
+
+        Graphics2D g = overlay.createGraphics();
+
+        Composite oldComp = g.getComposite();
+        g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+        g.fillRect(0, 0, overlay.getWidth(), overlay.getHeight());
+        g.setComposite(oldComp);
+        
+    }
 
     public void paintOverlay(Paintable p){
         
         if (p == null) return;
 
         Graphics2D g = overlay.createGraphics();
-
-        // Clear it first
-        Composite oldComp = g.getComposite();
-        try{
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, overlay.getWidth(), overlay.getHeight());
-        }finally{
-            g.setComposite(oldComp);
-        }
         
         // paint it
         p.paint(g);
         
+        
+    }
+
+    public void flip(){
+
         // send it to the native display
         overlayBuf.put( ((DataBufferByte)overlay.getRaster().getDataBuffer()).getData() ) ;
         overlayBuf.flip();
@@ -123,8 +129,8 @@ public class SDLDisplay implements DisplayItf {
         overlayBuf.clear();
         
     }
-
-
+    
+    
     public void paintBackground(BufferedImage img){
         
         if (img == null) return;

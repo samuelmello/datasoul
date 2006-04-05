@@ -33,6 +33,12 @@ public abstract class ContentRender {
     private boolean clockChanged;
     private String timer;
     private boolean timerChanged;
+    private String alert;
+    private boolean alertChanged;
+    private String alertTemplate;
+    private boolean alertTemplateChanged;
+    private boolean alertActive;
+    private boolean alertActiveChanged;
     
     private boolean monitor;
     
@@ -47,6 +53,9 @@ public abstract class ContentRender {
     }
 
     public abstract void paint (DisplayTemplate d);
+    public abstract void clear ();
+    public abstract void flip ();
+    
     
     public String getTitle() {
         return title;
@@ -93,6 +102,15 @@ public abstract class ContentRender {
         this.timerChanged = true;
     }
     
+    public String getAlert(){
+        return this.timer;
+    }
+    
+    public void setAlert(String alert){
+        this.alert = alert;
+        this.alertChanged = true;
+    }
+    
     public String getTemplate(){
         return template;
     }
@@ -102,6 +120,20 @@ public abstract class ContentRender {
         this.templateChanged = true;
     }
 
+    public String getAlertTemplate(){
+        return alertTemplate;
+    }
+    
+    public void setAlertTemplate(String template){
+        this.alertTemplate = template;
+        this.alertTemplateChanged = true;
+    }
+
+    public void setAlertActive(boolean active){
+        this.alertActive = active;
+        this.alertActiveChanged = true;
+    }
+    
     public boolean isMonitor(){
         return this.monitor;
     }
@@ -123,82 +155,172 @@ public abstract class ContentRender {
         
         try {
             DisplayTemplate templ = TemplateManager.getDisplayTemplate(template);
-            
-            if (templ == null)
-                return;
+            DisplayTemplate alertTempl = null;
+            if (alertActive){
+                alertTempl = TemplateManager.getDisplayTemplate(alertTemplate);
+                if (alertTempl == null)
+                    alertActive = false;
+            }
+
+            //if (templ == null && alertTempl == null)
+            //    return;
             
             boolean needUpdate = false;
-            String content;
             
-            for (TemplateItem t : templ.getItems() ){
-                
-                if (t instanceof TextTemplateItem) {
-                    
-                    content = ((TextTemplateItem)t).getContent();
-                    
-                    if ( titleChanged && content.equals(TextTemplateItem.CONTENT_TITLE)) {
-                        needUpdate = true;
-                        break;
-                    }
-                    if ( slideChanged && content.equals(TextTemplateItem.CONTENT_SLIDE)) {
-                        needUpdate = true;
-                        break;
-                    }
-                    if ( nextSlideChanged && content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
-                        needUpdate = true;
-                        break;
-                    }
-                    if ( clockChanged && content.equals(TextTemplateItem.CONTENT_CLOCK)) {
-                        needUpdate = true;
-                        break;
-                    }
-                    if ( timerChanged && content.equals(TextTemplateItem.CONTENT_TIMER)) {
-                        needUpdate = true;
-                        break;
-                    }
-                }// if is TextTemplateItem
-                
-            }// for need update
+            needUpdate = alertActiveChanged || templateChanged;
+            
+            String content;
+            if (needUpdate == false && templ != null){
+                for (TemplateItem t : templ.getItems() ){
+                    if (t instanceof TextTemplateItem) {
+                        content = ((TextTemplateItem)t).getContent();
+                        if ( titleChanged && content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( slideChanged && content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( nextSlideChanged && content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( clockChanged && content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( timerChanged && content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( alertChanged && content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                            needUpdate = true;
+                            break;
+                        }
+                    }// if is TextTemplateItem
+                }// for need update
+            }// if template not null
+            
+            if (needUpdate == false && alertActive){
+                for (TemplateItem t : alertTempl.getItems() ){
+                    if (t instanceof TextTemplateItem) {
+                        content = ((TextTemplateItem)t).getContent();
+                        if ( titleChanged && content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( slideChanged && content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( nextSlideChanged && content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( clockChanged && content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( timerChanged && content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( alertChanged && content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                            needUpdate = true;
+                            break;
+                        }
+                    }// if is TextTemplateItem
+                }// for need update
+            }
             
             
             if (needUpdate){
                 
                 // Set the text
-                for (TemplateItem t : templ.getItems() ){
+                if (templ != null){
+                    for (TemplateItem t : templ.getItems() ){
+                        if (t instanceof TextTemplateItem) {
+                            content = ((TextTemplateItem)t).getContent();
+                            if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                                ((TextTemplateItem)t).setText(title);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                                ((TextTemplateItem)t).setText(slide);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                                ((TextTemplateItem)t).setText(nextSlide);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                                ((TextTemplateItem)t).setText(clock);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                                ((TextTemplateItem)t).setText(timer);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                                ((TextTemplateItem)t).setText(alert);
+                                continue;
+                            }
+                        }// is texttempalteitem
+                    }// for templateItem
+                }
+                
+                if (alertActive){
+                    for (TemplateItem t : alertTempl.getItems() ){
+                        if (t instanceof TextTemplateItem) {
+                            content = ((TextTemplateItem)t).getContent();
+                            if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                                ((TextTemplateItem)t).setText(title);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                                ((TextTemplateItem)t).setText(slide);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                                ((TextTemplateItem)t).setText(nextSlide);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                                ((TextTemplateItem)t).setText(clock);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                                ((TextTemplateItem)t).setText(timer);
+                                continue;
+                            }
+                            if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                                ((TextTemplateItem)t).setText(alert);
+                                continue;
+                            }
+                        }// is texttempalteitem
+                    }// for
+                }// if alert active
+                
 
-                    if (t instanceof TextTemplateItem) {
-                    
-                        content = ((TextTemplateItem)t).getContent();
-                        
-                        if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
-                            ((TextTemplateItem)t).setText(title);
-                            continue;
-                        }
-                        if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
-                            ((TextTemplateItem)t).setText(slide);
-                            continue;
-                        }
-                        if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
-                            ((TextTemplateItem)t).setText(nextSlide);
-                            continue;
-                        }
-                        if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
-                            ((TextTemplateItem)t).setText(clock);
-                            continue;
-                        }
-                        if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
-                            ((TextTemplateItem)t).setText(timer);
-                            continue;
-                        }
-                        
-                    }// is texttempalteitem
-                    
-                }// for templateItem
-                
                 // here we have the template ready for painting
-                paint(templ);
+                clear();
                 
-                templ.cleanUp();
+                if (templ != null){
+                    paint(templ);
+                }
+                if (alertActive){
+                    paint(alertTempl);
+                }
+                
+                flip();
+                
+                if (templ != null){
+                    templ.cleanUp();
+                }
+                if (alertActive){
+                    alertTempl.cleanUp();
+                }
                 
                 // everything has been updated
                 templateChanged = false;
@@ -207,7 +329,8 @@ public abstract class ContentRender {
                 nextSlideChanged = false;
                 clockChanged = false;
                 timerChanged = false;
-                
+                alertChanged = false;
+                alertActiveChanged = false;
                 
             }// if need update
             

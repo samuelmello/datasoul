@@ -80,6 +80,7 @@ int displayThread (void *arg){
 
 				if (! globals.clear){
 					SDL_BlitSurface(globals.overlay[globals.overlayActive], NULL, globals.screen, NULL);
+
 				}
 			}
 			time3 = SDL_GetTicks();
@@ -87,18 +88,19 @@ int displayThread (void *arg){
 			globals.needRefresh = 0;
 
 		}
-		time2 = SDL_GetTicks();
 		
+		time2 = SDL_GetTicks();
 		// Sleep until the next screen refresh
 		if ( (time2 - time1) < FRAMETIME_MS ){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
 
-		if (globals.debugMode) {
-			fprintf(stderr, "Processing: %d ms, Sleeping: %d ms\n", 
-					time1, time2, time3, (time2 - time1), 
-					FRAMETIME_MS - (time2 - time1));
-		}
+//		if (globals.debugMode) {
+			fprintf(stderr, "Processing: %d ms, Sleeping: %d ms (%d, %d, %d)\n", 
+					(time2 - time1), 
+					FRAMETIME_MS - (time2 - time1),
+					time1, time2, time3);
+//		}
 	}
 
 }
@@ -276,11 +278,12 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_displayOverlay
 	globals.overlayActive = x;
 	globals.needRefresh = 1;
 
-	if (globals.debugMode > 0){
+	//if (globals.debugMode > 0){
 		fprintf(stdout, "Received overlay image!\n");
-	}
+	//}
 	
 }
+
 
 /*
  * Class:     datasoul_render_SDLDisplay
@@ -384,4 +387,6 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDebugMode
 	globals.debugMode = mode;
 
 }
+
+
 

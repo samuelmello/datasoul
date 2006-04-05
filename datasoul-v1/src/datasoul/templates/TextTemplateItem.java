@@ -43,6 +43,7 @@ public class TextTemplateItem extends TemplateItem {
     private String alingment;
     private String vertAlign;
     private String textWidth;
+    private String textWeight;
     private String underline;
     private String content;
     
@@ -64,6 +65,7 @@ public class TextTemplateItem extends TemplateItem {
         properties.add("Alignment");
         properties.add("VerticalAlignment");
         properties.add("TextWidth");
+        properties.add("TextWeight");
         properties.add("Underline");
 
     }
@@ -72,6 +74,7 @@ public class TextTemplateItem extends TemplateItem {
     private static JComboBox cbContent;
     private static JComboBox cbVerticalAlignment;
     private static JComboBox cbTextWidth;
+    private static JComboBox cbTextWeight;
     private static JComboBox cbUnderline;
     private static JComboBox cbFontName;
     
@@ -81,6 +84,7 @@ public class TextTemplateItem extends TemplateItem {
     public static final String CONTENT_CLOCK = "Clock";
     public static final String CONTENT_TIMER = "Timer";
     public static final String CONTENT_STATIC = "Static";
+    public static final String CONTENT_ALERT = "Alert";
     public static final String DEFAULT_TEXT = "TextItem";
 
     public TextTemplateItem () {
@@ -95,6 +99,7 @@ public class TextTemplateItem extends TemplateItem {
         this.setAlignment("Left");
         this.setVerticalAlignment("Top");
         this.setTextWidth("Regular");
+        this.setTextWeight("Regular");
         this.setUnderline("Off");
         this.setFontName("Serif");
         this.setFontColor(Color.BLACK);
@@ -108,6 +113,7 @@ public class TextTemplateItem extends TemplateItem {
             cbContent.addItem(CONTENT_TITLE);
             cbContent.addItem(CONTENT_CLOCK);
             cbContent.addItem(CONTENT_TIMER);
+            cbContent.addItem(CONTENT_ALERT);
         }
         registerEditorComboBox("Content", cbContent);
         
@@ -130,13 +136,26 @@ public class TextTemplateItem extends TemplateItem {
         if (cbTextWidth == null){
             cbTextWidth = new JComboBox();
             cbTextWidth.addItem("Condensed");
-            cbTextWidth.addItem("SemiCondensed");
+            cbTextWidth.addItem("Semi Condensed");
             cbTextWidth.addItem("Regular");
-            cbTextWidth.addItem("SemiExtended");
+            cbTextWidth.addItem("Semi Extended");
             cbTextWidth.addItem("Extended");
         }
         registerEditorComboBox("TextWidth", cbTextWidth);
 
+        if (cbTextWeight == null){
+            cbTextWeight = new JComboBox();
+            cbTextWeight.addItem("Regular");
+            cbTextWeight.addItem("Extra Light");
+            cbTextWeight.addItem("Light");
+            cbTextWeight.addItem("Semi Bold");
+            cbTextWeight.addItem("Medium");
+            cbTextWeight.addItem("Bold");
+            cbTextWeight.addItem("Extra Bold");
+        }
+        registerEditorComboBox("TextWeight", cbTextWeight);
+        
+        
         if (cbUnderline == null){
             cbUnderline = new JComboBox();
             cbUnderline.addItem("Off");
@@ -293,15 +312,35 @@ getFullWord: {
             // do nothing
         } else if ( textWidth.equals("Condensed")) {
             atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_CONDENSED);
-        } else if ( textWidth.equals("SemiCondensed")) {
+        } else if ( textWidth.equals("Semi Condensed")) {
             atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_CONDENSED);
         } else if ( textWidth.equals("Regular")) {
             atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_REGULAR);
-        } else if ( textWidth.equals("SemiExtended")) {
+        } else if ( textWidth.equals("Semi Extended")) {
             atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_EXTENDED);
         } else if ( textWidth.equals("Extended")) {
             atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_EXTENDED);
         }
+
+        
+        if ( textWeight == null) {
+            // do nothing
+        } else if ( textWeight.equals("Extra Light")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_EXTRA_LIGHT);
+        } else if ( textWeight.equals("Light")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_LIGHT);
+        } else if ( textWeight.equals("Semi Bold")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
+        } else if ( textWeight.equals("Medium")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_MEDIUM);
+        } else if ( textWeight.equals("Bold")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+        } else if ( textWeight.equals("Extra Bold")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_EXTRABOLD);
+        } else if ( textWeight.equals("Regular")) {
+            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_REGULAR);
+        }
+
         
         if ( underline == null ) {
             // do nothing
@@ -440,7 +479,18 @@ getFullWord: {
 
     }
     
+    public String getTextWeight(){
+        return this.textWeight;
+    }
+
+    protected void firePropChanged(String prop) {
+    }
     
+    public void setTextWeight(String weight){
+        this.textWeight = weight;
+        updateAttributes();
+        firePropChanged("TextWeight");
+    }
             
     private Color stringToColor(String strColor){
         

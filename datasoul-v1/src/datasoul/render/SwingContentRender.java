@@ -30,6 +30,14 @@ public class SwingContentRender extends ContentRender {
     public void paint(DisplayTemplate d) {
         display.updateImg(d);
     }
+
+    public void clear() {
+        display.clear();
+    }
+
+    public void flip() {
+        display.flip();
+    }
     
 
     

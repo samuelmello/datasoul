@@ -27,5 +27,13 @@ public class SDLContentRender extends ContentRender {
     public void paint(DisplayTemplate d) {
         display.paintOverlay(d);
     }
+
+    public void clear() {
+        display.clear();
+    }
+
+    public void flip() {
+        display.flip();
+    }
     
 }

@@ -83,14 +83,19 @@ public class ContentManager {
         }
     }
 
+    public void setTemplateMonitorLive(String template){
+        for (ContentRender r : liveRenderList){
+            if (r.isMonitor() == true){
+                r.setTemplate(template);
+            }
+        }
+    }
+    
+    
     public void updateLive(){
         for (ContentRender r : liveRenderList){
             r.update();
         }
-    }
-
-    public void registerPreviewPanel(ContentRender r){
-        previewRenderList.add(r);
     }
 
     public void setTitlePreview(String title){
@@ -134,5 +139,22 @@ public class ContentManager {
             r.update();
         }
     }
+
+    public void registerLiveRender(ContentRender r){
+        liveRenderList.add(r);
+    }
     
+    public void unregisterLiveRender(ContentRender r){
+        liveRenderList.remove(r);
+    }
+    
+    public void setAlertText(String t){
+        for (ContentRender r : liveRenderList){
+            r.setAlert(t);
+        }
+    }
+    
+    public void registerPreviewPanel(ContentRender r){
+        previewRenderList.add(r);
+    }
 }

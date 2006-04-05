@@ -9,6 +9,7 @@
 
 package datasoul;
 
+import datasoul.render.ContentManager;
 import datasoul.render.DisplayManager;
 import datasoul.util.SerializableObject;
 import java.io.File;
@@ -244,9 +245,9 @@ public class ConfigObj extends SerializableObject {
             if (videoInput.equals("Tuner")){
                 index = 0;
             }else if (videoInput.equals("S-Video")){
-                index = 1;
+                index = 3;
             }else if (videoInput.equals("Composite")){
-                index = 2;
+                index = 1;
             }
             DisplayManager.getMainDisplay().setInputSrc(index);
         }

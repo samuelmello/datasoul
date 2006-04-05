@@ -266,15 +266,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         try{
 //            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             
         }catch(Exception e){
             
         }
 
         //start splashscreen
-        SplashScreen splashScreen = new SplashScreen("/datasoul/icons/splashScreen.gif");
-        splashScreen.splashShow();
+        //SplashScreen splashScreen = new SplashScreen("/datasoul/icons/splashScreen.gif");
+        //splashScreen.splashShow();
 
         AllSongsListTable.getInstance();
         ChordsDB.getInstance();
@@ -282,7 +282,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         TimerManager.getInstance();
 
         //stop splashscreen
-        splashScreen.splashHide();        
+        //splashScreen.splashHide();        
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
