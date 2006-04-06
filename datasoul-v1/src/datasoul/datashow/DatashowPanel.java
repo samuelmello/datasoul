@@ -49,24 +49,28 @@ public ServiceListPanel getServiceListPanel(){
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        split4 = new javax.swing.JSplitPane();
-        jSplitPane1 = new javax.swing.JSplitPane();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jSplitPane3 = new javax.swing.JSplitPane();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        serviceList = new datasoul.datashow.ServiceListPanel();
+        auxiliar = new datasoul.datashow.AuxiliarPanel();
         tabOperation = new javax.swing.JTabbedPane();
         panelOperation = new javax.swing.JPanel();
         split3 = new javax.swing.JSplitPane();
         preview = new datasoul.datashow.PreviewPanel();
         live = new datasoul.datashow.LivePanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        serviceList = new datasoul.datashow.ServiceListPanel();
-        auxiliar = new datasoul.datashow.AuxiliarPanel();
 
-        split4.setBorder(null);
-        split4.setDividerLocation(400);
-        split4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        split4.setMinimumSize(new java.awt.Dimension(10, 10));
-        split4.setOneTouchExpandable(true);
-        jSplitPane1.setBorder(null);
-        jSplitPane1.setDividerLocation(200);
+        jSplitPane3.setDividerLocation(300);
+        jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 11));
+        jTabbedPane1.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
+
+        jSplitPane3.setBottomComponent(jTabbedPane1);
+
+        jSplitPane3.setLeftComponent(auxiliar);
+
+        jSplitPane2.setLeftComponent(jSplitPane3);
+
         tabOperation.setFont(new java.awt.Font("Arial", 1, 11));
         panelOperation.setFont(new java.awt.Font("Arial", 1, 11));
         split3.setDividerLocation(300);
@@ -80,48 +84,39 @@ public ServiceListPanel getServiceListPanel(){
         panelOperation.setLayout(panelOperationLayout);
         panelOperationLayout.setHorizontalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1201, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
         );
         tabOperation.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPERATION"), panelOperation);
 
-        jSplitPane1.setRightComponent(tabOperation);
-
-        jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 11));
-        jTabbedPane1.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
-
-        jSplitPane1.setLeftComponent(jTabbedPane1);
-
-        split4.setLeftComponent(jSplitPane1);
-
-        split4.setRightComponent(auxiliar);
+        jSplitPane2.setRightComponent(tabOperation);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
+            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AuxiliarPanel auxiliar;
-    private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JSplitPane jSplitPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private datasoul.datashow.LivePanel live;
     private javax.swing.JPanel panelOperation;
     private datasoul.datashow.PreviewPanel preview;
     private datasoul.datashow.ServiceListPanel serviceList;
     private javax.swing.JSplitPane split3;
-    private javax.swing.JSplitPane split4;
     private javax.swing.JTabbedPane tabOperation;
     // End of variables declaration//GEN-END:variables
     

@@ -90,6 +90,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         tableServiceList = new datasoul.util.DnDTable();
 
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/open.gif")));
         btnOpen.setAlignmentY(0.0F);
         btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
