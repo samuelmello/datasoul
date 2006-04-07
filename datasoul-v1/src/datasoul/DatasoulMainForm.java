@@ -114,23 +114,31 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         datashow.setVisible(false);
         templates.setVisible(false);
         config.setVisible(false);
+        btnDatashow.setEnabled(true);
+        btnSongs.setEnabled(true);
+        btnTemplates.setEnabled(true);
+        btnConfig.setEnabled(true);
         
         if (panel.equals("datashow")){
             datashow.setVisible(true);
             getContentPane().setLayout(datashowLayout);
             datashow.validate();
+            btnDatashow.setEnabled(false);
         }else if (panel.equals("songs")){
             songs.setVisible(true);
             getContentPane().setLayout(songsLayout);
             songs.validate();
+            btnSongs.setEnabled(false);
         }else if (panel.equals("templates")){
             templates.setVisible(true);
             getContentPane().setLayout(templatesLayout);
             templates.validate();
+            btnTemplates.setEnabled(false);
         }else if (panel.equals("config")){
             config.setVisible(true);
             getContentPane().setLayout(configLayout);
             config.validate();
+            btnConfig.setEnabled(false);
         }
         
     }
