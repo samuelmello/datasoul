@@ -43,13 +43,13 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         }catch(Exception e){
             height = 480;
         }
-/*        
+        
         previewDisplayPanel1.initDisplay( width, height, 0, 0 );
         
         ContentManager.getInstance().registerPreviewPanel( previewDisplayPanel1.getContentRender() );
 
         templateMonitor.setSelectedItem(ConfigObj.getInstance().getTemplateMonitor());
- */
+ 
     }
 
     public DatashowPanel getObjectManager() {

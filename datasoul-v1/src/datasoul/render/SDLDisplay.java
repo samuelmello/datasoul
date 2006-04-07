@@ -29,7 +29,10 @@ public class SDLDisplay implements DisplayItf {
             System.load("/home/samuelm/cvs/datasoul-v1/src/native/libdatasoulsdl.so");
         }
         if (System.getProperty("os.name").contains("Windows")){
-            System.load("D:/Meus Documentos/Utils/nativedll/Debug/nativedll.dll");
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+            + "native"+System.getProperty("file.separator");
+    
+            System.load(path+"nativedll.dll");
         }
         
     }
@@ -60,20 +63,24 @@ public class SDLDisplay implements DisplayItf {
         overlayBuf = ByteBuffer.allocateDirect(width * height * 4);
         background = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         backgroundBuf = ByteBuffer.allocateDirect(width * height * 4);
-        
-        
-        Thread t = new Thread(){
-            public void run(){
-                init(width, height, top, left);
+
+        if (System.getProperty("os.name").equals("Linux")){
+            Thread t = new Thread(){
+                public void run(){
+                    init(width, height, top, left);
+                }
+            };
+
+            t.setPriority(Thread.MAX_PRIORITY);
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
             }
-        };
-        
-        t.setPriority(Thread.MAX_PRIORITY);
-        t.start();
-        try {
-            t.join();
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
+        }
+        if (System.getProperty("os.name").contains("Windows")){
+            init(width, height, top, left);        
         }
         
         paintBackgroundColor(Color.ORANGE);

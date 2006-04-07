@@ -60,14 +60,15 @@ public ServiceListPanel getServiceListPanel(){
         preview = new datasoul.datashow.PreviewPanel();
         live = new datasoul.datashow.LivePanel();
 
-        jSplitPane3.setDividerLocation(300);
+        jSplitPane2.setDividerLocation(250);
+        jSplitPane3.setDividerLocation(400);
         jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 11));
         jTabbedPane1.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
 
-        jSplitPane3.setBottomComponent(jTabbedPane1);
+        jSplitPane3.setTopComponent(jTabbedPane1);
 
-        jSplitPane3.setLeftComponent(auxiliar);
+        jSplitPane3.setRightComponent(auxiliar);
 
         jSplitPane2.setLeftComponent(jSplitPane3);
 
@@ -84,7 +85,7 @@ public ServiceListPanel getServiceListPanel(){
         panelOperation.setLayout(panelOperationLayout);
         panelOperationLayout.setHorizontalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -98,7 +99,7 @@ public ServiceListPanel getServiceListPanel(){
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
