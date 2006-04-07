@@ -34,12 +34,18 @@ public class TextServiceItem extends ServiceItem {
         
         this.text = text.trim();
         
-        String slidesStr[] = text.trim().split("\n\n");
+        String slidesStr[];
+        if(text.contains("\r\n")){
+            slidesStr = text.trim().split("\r\n==\r\n");
+        }else{
+            slidesStr = text.trim().split("\n==\n");
+        }
         slides.clear();
         TextServiceItemRenderer j;
         for (int i=0; i<slidesStr.length; i++){
             j = new TextServiceItemRenderer();
-            j.setText(slidesStr[i]);
+            String str = slidesStr[i].replace("\n\n","\n \n").replace("\r\n\r\n","\r\n \r\n");
+            j.setText(str);
             slides.add(j);
         }
     }

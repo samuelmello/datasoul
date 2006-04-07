@@ -71,9 +71,11 @@ public class Song extends TextServiceItem{
 
         String slidesStr[] ;
         if(lyrics.contains("\r\n")){
-            slidesStr = lyrics.split("\r\n\r\n");
+            String str = lyrics.replace("\r\n\r\n","\r\n \r\n");
+            slidesStr = str.split("\r\n==\r\n");
         }else{
-            slidesStr = lyrics.split("\n\n");
+            String str = lyrics.replace("\n\n","\n \n");
+            slidesStr = str.split("\n==\n");
         }
         slides.clear();
         TextServiceItemRenderer j;
