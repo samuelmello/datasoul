@@ -24,7 +24,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
 
         this.center();
         
-        this.songsSearchPanel.usingInAddSongItemPanel();
+        this.songsSearchPanel.usingInAddSongItemPanel(this);
         
         this.songsSearchPanel.setObjectManager(this);
     }
@@ -43,8 +43,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        btnClose = new javax.swing.JButton();
-        btnAdd = new javax.swing.JButton();
+        jSplitPane1 = new javax.swing.JSplitPane();
         songsSearchPanel = new datasoul.song.SongsSearchPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textSong = new javax.swing.JTextPane();
@@ -53,63 +52,25 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         setTitle("Add Song");
         setAlwaysOnTop(true);
         setResizable(false);
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
-        btnAdd.setText("Add");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
+        jSplitPane1.setDividerLocation(250);
+        jSplitPane1.setLeftComponent(songsSearchPanel);
 
         jScrollPane1.setViewportView(textSong);
+
+        jSplitPane1.setRightComponent(jScrollPane1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 233, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(layout.createSequentialGroup()
-                        .add(8, 8, 8)
-                        .add(btnAdd, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 61, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnClose)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                .addContainerGap())
+            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(songsSearchPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 378, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(btnClose)
-                            .add(btnAdd)))
-                    .add(layout.createSequentialGroup()
-                        .add(11, 11, 11)
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)))
-                .addContainerGap())
+            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        this.songsSearchPanel.addItem(evt);
-    }//GEN-LAST:event_btnAddActionPerformed
 
     public void tableChanged(TableModelEvent e) {
         this.repaint();
@@ -123,9 +84,8 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnClose;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSplitPane jSplitPane1;
     private datasoul.song.SongsSearchPanel songsSearchPanel;
     private javax.swing.JTextPane textSong;
     // End of variables declaration//GEN-END:variables

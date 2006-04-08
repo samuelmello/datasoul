@@ -26,7 +26,6 @@ public class SongsPanel extends javax.swing.JPanel {
         chordsManagerPanel1.setObjectManager(this);
         serviceList.setObjectManager(this);
         songViewer.setObjectManager(this);
-        songsList.setObjectManager(this);
         songsSearch.setObjectManager(this);
     }
 
@@ -38,9 +37,6 @@ public class SongsPanel extends javax.swing.JPanel {
     }
     public SongViewerPanel getSongViewerPanel(){
         return songViewer;
-    }
-    public SongsListPanel getSongsListPanel(){
-        return songsList;
     }
     public SongsSearchPanel getSongsSearchPanel(){
         return songsSearch;
@@ -60,7 +56,6 @@ public class SongsPanel extends javax.swing.JPanel {
         split2 = new javax.swing.JSplitPane();
         panelList = new javax.swing.JPanel();
         tabList = new javax.swing.JTabbedPane();
-        songsList = new datasoul.song.SongsListPanel();
         songsSearch = new datasoul.song.SongsSearchPanel();
         chordsManagerPanel1 = new datasoul.song.ChordsManagerPanel();
         tabPraise = new javax.swing.JTabbedPane();
@@ -87,7 +82,7 @@ public class SongsPanel extends javax.swing.JPanel {
         split1.setRightComponent(panelSongViewer);
 
         split2.setBorder(null);
-        split2.setDividerLocation(275);
+        split2.setDividerLocation(350);
         split2.setDividerSize(10);
         split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split2.setMinimumSize(new java.awt.Dimension(10, 10));
@@ -95,9 +90,6 @@ public class SongsPanel extends javax.swing.JPanel {
         panelList.setAlignmentX(0.0F);
         panelList.setAlignmentY(0.0F);
         tabList.setFont(new java.awt.Font("Arial", 1, 11));
-        songsList.setMinimumSize(new java.awt.Dimension(10, 10));
-        tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONGS_LIST"), songsList);
-
         tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONGS_SEARCH"), songsSearch);
 
         tabList.addTab("Chords Manager", chordsManagerPanel1);
@@ -110,7 +102,7 @@ public class SongsPanel extends javax.swing.JPanel {
         );
         panelListLayout.setVerticalGroup(
             panelListLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+            .add(tabList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
         );
         split2.setLeftComponent(panelList);
 
@@ -132,7 +124,7 @@ public class SongsPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(split1)
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -144,7 +136,6 @@ public class SongsPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelSongViewer;
     private datasoul.datashow.ServiceListPanel serviceList;
     private datasoul.song.SongViewerPanel songViewer;
-    private datasoul.song.SongsListPanel songsList;
     private datasoul.song.SongsSearchPanel songsSearch;
     private javax.swing.JSplitPane split1;
     private javax.swing.JSplitPane split2;
