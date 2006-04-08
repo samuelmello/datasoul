@@ -12,9 +12,12 @@ package datasoul.datashow;
 import datasoul.util.SerializableObject;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
@@ -31,7 +34,8 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
      * Contain the slide itens
      */
     protected ArrayList<ServiceItemRenderer> slides;
-    
+    protected LinkedList<TableModelListener> tableModelListeners;
+    protected TableCellEditor cellEditor;
     protected String title;
     protected String template;
     
@@ -39,6 +43,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     /** Creates a new instance of ServiceItem */
     public ServiceItem() {
         slides = new ArrayList<ServiceItemRenderer>();
+        tableModelListeners = new LinkedList<TableModelListener>();
         this.title = "";
         this.template = "Default";
         this.slides = new ArrayList<ServiceItemRenderer>();
@@ -121,9 +126,11 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     }
 
     public void addTableModelListener(TableModelListener l) {
+        tableModelListeners.add(l);
     }
 
     public void removeTableModelListener(TableModelListener l) {
+        tableModelListeners.remove(l);
     }
 
     
@@ -135,7 +142,9 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         jTable.setModel(this);
         jTable.getColumn(NUMBER_LABEL).setMaxWidth(30);
         jTable.getColumn(ITEM_LABEL).setCellRenderer(this);
+        jTable.getColumn(ITEM_LABEL).setCellEditor(cellEditor);
         jTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        fireTableChanged();
     }
     
     public void updateHeights(JTable jTable){
@@ -154,6 +163,13 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     public void setZoom (int f){
         for (ServiceItemRenderer r : slides){
             r.setZoom(f);
+        }
+    }
+
+    protected void fireTableChanged(){
+        TableModelEvent e = new TableModelEvent(this);
+        for (TableModelListener l : tableModelListeners){
+            l.tableChanged(e);
         }
     }
     

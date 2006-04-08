@@ -9,7 +9,12 @@
 
 package datasoul.datashow;
 
-import javax.swing.JTextArea;
+import java.awt.Component;
+import java.awt.event.MouseEvent;
+import java.util.EventObject;
+import javax.swing.AbstractCellEditor;
+import javax.swing.JTable;
+import javax.swing.table.TableCellEditor;
 
 /**
  *
@@ -23,6 +28,7 @@ public class TextServiceItem extends ServiceItem {
     public TextServiceItem() {
         super();
         this.text = "";
+        cellEditor = new TextAreaCellEditor();
     }
     
     protected void registerProperties() {
@@ -64,5 +70,37 @@ public class TextServiceItem extends ServiceItem {
         }
         
     }
+    
+    @Override 
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        if (columnIndex == 1){
+            return true;
+        }else{
+            return false;
+        }
+            
+    }
+
+    public class TextAreaCellEditor extends AbstractCellEditor implements TableCellEditor {
+        
+        public Object getCellEditorValue() {
+            return null;
+        }
+
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            TextServiceItemRenderer r = (TextServiceItemRenderer) slides.get(row);
+            return r.getComponent(false);
+        }
+    
+    public boolean isCellEditable(EventObject anEvent) { 
+	    if (anEvent instanceof MouseEvent) { 
+		return ((MouseEvent)anEvent).getClickCount() >= 2;
+	    }
+	    return true;
+	
+    }        
+        
+    }
+    
     
 }
