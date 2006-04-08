@@ -192,7 +192,9 @@ public class AddWizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddSongActionPerformed
 
     private void btnImportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportItemActionPerformed
-// TODO add your handling code here:
+        ImportServiceItemForm isif = new ImportServiceItemForm();
+        isif.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_btnImportItemActionPerformed
 
     private void btnAddVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVideoActionPerformed

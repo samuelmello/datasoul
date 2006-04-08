@@ -51,8 +51,10 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         TemplateComboBox comboBox = new TemplateComboBox(); 
         this.tableServiceList.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboBox));          
         
-        this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(colorRenderer);
-        this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(colorRenderer);        
+        ServiceListColorRender cr = new ServiceListColorRender();
+        
+        this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(cr);
+        this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(cr);        
     }
 
     
@@ -372,9 +374,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         fc.setDialogTitle("Select the file to save.");
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             fileName = fc.getSelectedFile().getPath();
-
+            if(!fileName.contains(".servicelist"))
+                 fileName = fileName + ".servicelist";            
             saveFile();
         }
+
     }//GEN-LAST:event_btnSaveAsMouseClicked
 
     private void saveFile(){
@@ -437,21 +441,5 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private datasoul.util.DnDTable tableServiceList;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
-
-     DefaultTableCellRenderer colorRenderer = new DefaultTableCellRenderer() { 
-        public void setValue(Object value) { 
-            if (value instanceof Song) { 
-                setBackground(Color.decode("0xfffff5")); 
-//                setForeground(c.getTextColor()); 
-                setText(value.toString()); 
-            } else if (value instanceof TextServiceItem) { 
-                setBackground(Color.decode("0xf5f5ff")); 
-//                setForeground(c.getTextColor()); 
-                setText(value.toString()); 
-            } else { 
-                super.setValue(value); 
-            } 
-        } 
-     };        
     
 }
