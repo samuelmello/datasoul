@@ -45,6 +45,7 @@
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Events>
         <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="jScrollPane1ComponentResized"/>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jScrollPane1PropertyChange"/>
       </Events>
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>

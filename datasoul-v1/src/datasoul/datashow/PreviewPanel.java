@@ -99,6 +99,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         cm.setNextSlideLive("");
         cm.updateLive();
         
+        previewItem.fireTableChanged();
+        
     }//GEN-LAST:event_btnGoLiveActionPerformed
 
     public void valueChanged(ListSelectionEvent e) {

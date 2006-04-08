@@ -81,9 +81,11 @@ public class TextServiceItem extends ServiceItem {
             
     }
 
+    
     public class TextAreaCellEditor extends AbstractCellEditor implements TableCellEditor {
         
         public Object getCellEditorValue() {
+            fireTableChanged();
             return null;
         }
 
@@ -91,14 +93,13 @@ public class TextServiceItem extends ServiceItem {
             TextServiceItemRenderer r = (TextServiceItemRenderer) slides.get(row);
             return r.getComponent(false);
         }
-    
-    public boolean isCellEditable(EventObject anEvent) { 
-	    if (anEvent instanceof MouseEvent) { 
-		return ((MouseEvent)anEvent).getClickCount() >= 2;
-	    }
-	    return true;
-	
-    }        
+        
+        public boolean isCellEditable(EventObject anEvent) {
+            if (anEvent instanceof MouseEvent) {
+                return ((MouseEvent)anEvent).getClickCount() >= 2;
+            }
+            return true;
+        }        
         
     }
     

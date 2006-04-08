@@ -170,7 +170,11 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         TableModelEvent e = new TableModelEvent(this);
         for (TableModelListener l : tableModelListeners){
             l.tableChanged(e);
+            if ( l instanceof JTable){
+                this.updateHeights((JTable) l);
+            }
         }
+
     }
     
 }

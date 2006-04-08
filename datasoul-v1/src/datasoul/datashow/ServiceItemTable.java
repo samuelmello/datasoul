@@ -48,6 +48,11 @@ public class ServiceItemTable extends javax.swing.JPanel {
                 jScrollPane1ComponentResized(evt);
             }
         });
+        jScrollPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jScrollPane1PropertyChange(evt);
+            }
+        });
 
         displayTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +109,10 @@ public class ServiceItemTable extends javax.swing.JPanel {
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
+
+    }//GEN-LAST:event_jScrollPane1PropertyChange
 
     private void jSliderZoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderZoomStateChanged
         int newSize = jSliderZoom.getValue();
