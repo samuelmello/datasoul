@@ -106,7 +106,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         labelField.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FIELD"));
 
-        toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        toolBar.setBorder(null);
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/new.gif")));
         btnNew.setAlignmentY(0.0F);
         btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
