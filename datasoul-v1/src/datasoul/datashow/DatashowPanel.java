@@ -7,9 +7,11 @@
 package datasoul.datashow;
 
 import datasoul.*;
+import datasoul.render.ContentManager;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import java.awt.Dimension;
 
 /**
  *
@@ -27,8 +29,26 @@ public class DatashowPanel extends javax.swing.JPanel {
         serviceList.setObjectManager(this);
         preview.setObjectManager(this);
             
+        initPreview();
     }
 
+    private void initPreview(){
+        int width, height;
+        try{
+            width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
+        }catch(Exception e){
+            width = 640;
+        }
+        try{
+            height = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeHeight());
+        }catch(Exception e){
+            height = 480;
+        }
+        
+        previewDisplayPanel1.initDisplay( width, height, 0, 0 );
+        
+        ContentManager.getInstance().registerPreviewPanel( previewDisplayPanel1.getContentRender() );
+    }
 public AuxiliarPanel getAuxiliarPanel(){
     return auxiliar;
 }
@@ -57,8 +77,12 @@ public ServiceListPanel getServiceListPanel(){
         tabOperation = new javax.swing.JTabbedPane();
         panelOperation = new javax.swing.JPanel();
         split3 = new javax.swing.JSplitPane();
-        preview = new datasoul.datashow.PreviewPanel();
         live = new datasoul.datashow.LivePanel();
+        jSplitPane1 = new javax.swing.JSplitPane();
+        preview = new datasoul.datashow.PreviewPanel();
+        pnlPreview = new javax.swing.JPanel();
+        previewDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         jSplitPane2.setDividerLocation(250);
         jSplitPane3.setDividerLocation(400);
@@ -74,18 +98,65 @@ public ServiceListPanel getServiceListPanel(){
 
         tabOperation.setFont(new java.awt.Font("Arial", 1, 11));
         panelOperation.setFont(new java.awt.Font("Arial", 1, 11));
-        split3.setDividerLocation(300);
-        preview.setMinimumSize(new java.awt.Dimension(10, 10));
-        split3.setLeftComponent(preview);
-
+        split3.setDividerLocation(310);
         live.setMinimumSize(new java.awt.Dimension(10, 10));
         split3.setRightComponent(live);
+
+        jSplitPane1.setDividerLocation(450);
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        preview.setMinimumSize(new java.awt.Dimension(10, 10));
+        jSplitPane1.setTopComponent(preview);
+
+        previewDisplayPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        previewDisplayPanel1.setPreferredSize(new java.awt.Dimension(160, 120));
+        previewDisplayPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                previewDisplayPanel1previewDisplayResized(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout previewDisplayPanel1Layout = new org.jdesktop.layout.GroupLayout(previewDisplayPanel1);
+        previewDisplayPanel1.setLayout(previewDisplayPanel1Layout);
+        previewDisplayPanel1Layout.setHorizontalGroup(
+            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 283, Short.MAX_VALUE)
+        );
+        previewDisplayPanel1Layout.setVerticalGroup(
+            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 142, Short.MAX_VALUE)
+        );
+
+        jLabel10.setText("Preview");
+
+        org.jdesktop.layout.GroupLayout pnlPreviewLayout = new org.jdesktop.layout.GroupLayout(pnlPreview);
+        pnlPreview.setLayout(pnlPreviewLayout);
+        pnlPreviewLayout.setHorizontalGroup(
+            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .add(jLabel10))
+                .addContainerGap())
+        );
+        pnlPreviewLayout.setVerticalGroup(
+            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel10)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 146, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        jSplitPane1.setRightComponent(pnlPreview);
+
+        split3.setLeftComponent(jSplitPane1);
 
         org.jdesktop.layout.GroupLayout panelOperationLayout = new org.jdesktop.layout.GroupLayout(panelOperation);
         panelOperation.setLayout(panelOperationLayout);
         panelOperationLayout.setHorizontalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 532, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -99,23 +170,35 @@ public ServiceListPanel getServiceListPanel(){
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 793, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void previewDisplayPanel1previewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_previewDisplayPanel1previewDisplayResized
+        Dimension dim= previewDisplayPanel1.getSize();
+        int width = dim.width;
+        int height = width*3/4;
+        dim.setSize(width,height);
+        previewDisplayPanel1.setSize(dim);
+    }//GEN-LAST:event_previewDisplayPanel1previewDisplayResized
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AuxiliarPanel auxiliar;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private datasoul.datashow.LivePanel live;
     private javax.swing.JPanel panelOperation;
+    private javax.swing.JPanel pnlPreview;
     private datasoul.datashow.PreviewPanel preview;
+    private datasoul.render.SwingDisplayPanel previewDisplayPanel1;
     private datasoul.datashow.ServiceListPanel serviceList;
     private javax.swing.JSplitPane split3;
     private javax.swing.JTabbedPane tabOperation;
