@@ -330,22 +330,6 @@ public class TemplatePanel extends javax.swing.JPanel {
 
     private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
-                      public boolean accept(File f) { 
-                          if (f.isDirectory()) { 
-                              return true; 
-                          } 
-                          String name = f.getName(); 
-                          if (name.endsWith(".template")) { 
-                              return true; 
-                          } 
-                          return false; 
-                      } 
-   
-                      public String getDescription() { 
-                          return ".template"; 
-                      } 
-                  });
         File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "templates");
         fc.setCurrentDirectory(dir);
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
