@@ -313,7 +313,9 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
         // clean up
         for (TemplateItem t : items ){
             if (t instanceof TextTemplateItem) {
-                ((TextTemplateItem)t).setText(TextTemplateItem.DEFAULT_TEXT);
+                if (! ((TextTemplateItem)t).getContent().equals(TextTemplateItem.CONTENT_STATIC) ){
+                    ((TextTemplateItem)t).setText(TextTemplateItem.DEFAULT_TEXT);
+                }
             }                
         }
         
