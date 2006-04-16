@@ -85,6 +85,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar1.setFloatable(false);
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/open.gif")));
+        btnLoad.setText("Load");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -94,6 +95,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar1.add(btnLoad);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/new.gif")));
+        btnNew.setText("New");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -103,6 +105,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar1.add(btnNew);
 
         btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
+        btnDeleteTemplate.setText("Delete");
         btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteTemplateActionPerformed(evt);

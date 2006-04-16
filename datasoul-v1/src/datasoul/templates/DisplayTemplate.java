@@ -31,8 +31,6 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
     
     ArrayList<TemplateItem> items;
     
-    DisplayTemplateTableModel model;
-    
     static int defaultItemNameCount = 1;
     
     private String name;
@@ -41,8 +39,7 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
     public DisplayTemplate() {
         super();
         items = new ArrayList<TemplateItem>();
-        model = new DisplayTemplateTableModel();
-        
+
         // try to find a Name
         String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
         int i = 0;
@@ -83,7 +80,6 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
         
         super();
         items = new ArrayList<TemplateItem>();
-        model = new DisplayTemplateTableModel();
         
         String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
         String filename = path + System.getProperty("file.separator") + name + ".template";
@@ -109,10 +105,6 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
     @Override
             protected void registerProperties(){
         properties.add("Name");
-    }
-    
-    public DisplayTemplateTableModel getModel(){
-        return model;
     }
     
     public String getName(){
@@ -150,12 +142,10 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
         }
         
         items.add(t);
-        model.fireTableDataChanged();
     }
     
     public void removeItem(TemplateItem t){
         items.remove(t);
-        model.fireTableDataChanged();
     }
     
     public void paint(Graphics2D g){
@@ -188,39 +178,6 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
                 break;
             }
         }
-    }
-    
-    
-    public class DisplayTemplateTableModel extends DefaultTableModel {
-        
-        public int getRowCount() {
-            return items.size();
-        }
-        
-        public int getColumnCount() {
-            return 1;
-        }
-        
-        public String getColumnName(int columnIndex) {
-            return "Item";
-        }
-        
-        public Class<?> getColumnClass(int columnIndex) {
-            return String.class;
-        }
-        
-        public boolean isCellEditable(int rowIndex, int columnIndex) {
-            return false;
-        }
-        
-        public Object getValueAt(int rowIndex, int columnIndex) {
-            return items.get( items.size()-1 - rowIndex).getName();
-        }
-        
-        public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        }
-        
-        
     }
     
     @Override

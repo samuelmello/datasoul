@@ -483,9 +483,6 @@ getFullWord: {
         return this.textWeight;
     }
 
-    protected void firePropChanged(String prop) {
-    }
-    
     public void setTextWeight(String weight){
         this.textWeight = weight;
         updateAttributes();

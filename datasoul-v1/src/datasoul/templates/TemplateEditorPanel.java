@@ -190,7 +190,6 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     // End of variables declaration//GEN-END:variables
     public void tableChanged(TableModelEvent e) {
         this.repaint();
-        template.getModel().fireTableDataChanged();
     }
     
     
@@ -210,7 +209,6 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     public void moveUpSelectedItem(){
         if (selectedItem != null){
             template.moveUp(selectedItem);
-            template.getModel().fireTableDataChanged();
             this.repaint();
         }
     }
@@ -218,7 +216,6 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     public void moveDownSelectedItem(){
         if (selectedItem != null){
             template.moveDown(selectedItem);
-            template.getModel().fireTableDataChanged();
             this.repaint();
         }
     }
