@@ -59,7 +59,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
         if (img != null && bgImg != null){
             if (isBlack){
                 g.setColor(Color.BLACK);
-                g.drawRect(0, 0, this.getWidth(), this.getHeight());
+                g.fillRect(0, 0, this.getWidth(), this.getHeight());
             }else{
                 g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
                 if (!isClear){
