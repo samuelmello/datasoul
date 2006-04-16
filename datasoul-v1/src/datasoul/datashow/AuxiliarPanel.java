@@ -9,6 +9,7 @@ package datasoul.datashow;
 import datasoul.ConfigObj;
 import datasoul.datashow.Alert;
 import datasoul.render.ContentManager;
+import datasoul.render.DisplayItf;
 import datasoul.render.DisplayManager;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -694,9 +695,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
             if( btnClear.isSelected() ){
-                DisplayManager.getMainDisplay().clear(1);
+                DisplayManager.getMainDisplay().clear( DisplayItf.CLEAR_MODE_ON );
             }else{
-                DisplayManager.getMainDisplay().clear(0);
+                DisplayManager.getMainDisplay().clear( DisplayItf.CLEAR_MODE_OFF );
             }
         }
         
@@ -707,9 +708,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
            if( btnBlack.isSelected() ){
-               DisplayManager.getMainDisplay().black(1);
+               DisplayManager.getMainDisplay().black( DisplayItf.BLACK_MODE_ON );
            }else{
-               DisplayManager.getMainDisplay().black(0);
+               DisplayManager.getMainDisplay().black( DisplayItf.BLACK_MODE_OFF );
            }
         }
     }//GEN-LAST:event_btnBlackActionPerformed

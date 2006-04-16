@@ -17,13 +17,20 @@ import datasoul.ConfigObj;
  */
 public class DisplayManager {
     
-    static private SDLDisplay mainDisplay;
+    static private DisplayItf mainDisplay;
     static private DisplayItf monitorDisplay;
+    static private String mainDisplayEngine = "SwingDisplay";
+    static private String monitorDisplayEngine = "SwingDisplay";
     
-    static public SDLDisplay getMainDisplay(){
+    static public DisplayItf getMainDisplay(){
 
         if (mainDisplay == null ){
-            mainDisplay = new SDLDisplay();
+            try{
+                mainDisplay = (DisplayItf) Class.forName( "datasoul.render." + mainDisplayEngine ).newInstance();
+            }catch(Exception e){
+                e.printStackTrace();
+                mainDisplay = new SwingDisplay();
+            }
             
             int width, height, top, left;
             try{
@@ -55,8 +62,14 @@ public class DisplayManager {
     static public DisplayItf getMonitorDisplay(){
         
         if (monitorDisplay == null  ){
-            monitorDisplay = new SwingDisplay();
 
+            try{
+                monitorDisplay = (DisplayItf) Class.forName( "datasoul.render." + monitorDisplayEngine ).newInstance();
+            }catch(Exception e){
+                e.printStackTrace();
+                monitorDisplay = new SwingDisplay();
+            }
+            
             int width, height, top, left;
             try{
                 width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
@@ -84,6 +97,14 @@ public class DisplayManager {
             monitorDisplay.initDisplay(width, height, top, left);
         }
         return monitorDisplay;
+    }
+
+    static public void setMainDisplayEngine(String engine){
+        mainDisplayEngine = engine;
+    }
+    
+    static public void setMonitorDisplayEngine(String engine) {
+        monitorDisplayEngine = engine;
     }
     
 }

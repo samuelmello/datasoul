@@ -9,7 +9,7 @@
 
 package datasoul;
 
-import datasoul.render.ContentManager;
+import datasoul.render.DisplayItf;
 import datasoul.render.DisplayManager;
 import datasoul.util.SerializableObject;
 import java.io.File;
@@ -47,6 +47,9 @@ public class ConfigObj extends SerializableObject {
     private String videoDeintrelace;
     private String clockMode;    
     private String videoDebugMode;
+    private String mainDisplayEngine;
+    private String monitorDisplayEngine;
+    
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -114,6 +117,8 @@ public class ConfigObj extends SerializableObject {
     }
 
     protected void registerProperties() {
+        properties.add("MainDisplayEngine");
+        properties.add("MonitorDisplayEngine");
         properties.add("MainOutput");
         properties.add("MainOutputPositionLeft");
         properties.add("MainOutputPositionTop");
@@ -314,12 +319,28 @@ public class ConfigObj extends SerializableObject {
         this.videoDebugMode = videoDebugMode;
         if (this.getMainOutput().equals("TRUE")){
             if (videoDebugMode.equalsIgnoreCase("Yes")){
-                DisplayManager.getMainDisplay().setDebugMode(1);
+                DisplayManager.getMainDisplay().setDebugMode( DisplayItf.DEBUG_MODE_ON );
             }else{
-                DisplayManager.getMainDisplay().setDebugMode(0);
+                DisplayManager.getMainDisplay().setDebugMode( DisplayItf.DEBUG_MODE_OFF );
             }
         }
     }
 
+    public String getMainDisplayEngine(){
+        return this.mainDisplayEngine;
+    }
     
+    public void setMainDisplayEngine(String engine){
+        this.mainDisplayEngine = engine;
+        DisplayManager.setMainDisplayEngine(engine);
+    }
+    
+    public String getMonitorDisplayEngine(){
+        return this.monitorDisplayEngine;
+    }
+    
+    public void setMonitorDisplayEngine(String engine){
+        this.monitorDisplayEngine = engine;
+        DisplayManager.setMonitorDisplayEngine(engine);
+    }
 }

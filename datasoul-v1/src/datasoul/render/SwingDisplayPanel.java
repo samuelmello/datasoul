@@ -20,7 +20,10 @@ import java.awt.image.BufferedImage;
 public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf {
     
     private BufferedImage img;
+    private BufferedImage bgImg;
     private SwingContentRender contentRender;
+    private boolean isClear;
+    private boolean isBlack;
 
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {
@@ -53,8 +56,16 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
     public void paint (Graphics g){
         super.paint (g);
         
-        if (img != null){
-            g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+        if (img != null && bgImg != null){
+            if (isBlack){
+                g.setColor(Color.BLACK);
+                g.drawRect(0, 0, this.getWidth(), this.getHeight());
+            }else{
+                g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
+                if (!isClear){
+                    g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+                }
+            }
         }else{
             System.out.println("Is null!");
         }
@@ -102,6 +113,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
     public void initDisplay(int width, int height, int top, int left){
         this.setSize(width, height);
         img = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
+        bgImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics g = img.getGraphics();
         g.setColor(Color.ORANGE);
         g.fillRect(0, 0, width, height);
@@ -111,6 +123,45 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
+
+    public void setInputSrc(int src) {
+    }
+
+    public void setInputMode(int mode) {
+    }
+
+    public void setDeintrelaceMode(int mode) {
+    }
+
+    public void setDebugMode(int mode) {
+    }
+
+    public void setBackgroundMode(int mode) {
+    }
+
+    public void clear(int mode) {
+        if (mode == DisplayItf.CLEAR_MODE_ON){
+            isClear = true;
+        }else{
+            isClear = false;
+        }
+        this.repaint();
+    }
+
+    public void black(int mode) {
+        if (mode == DisplayItf.BLACK_MODE_ON){
+            isBlack = true;
+        }else{
+            isBlack = false;
+        }
+        this.repaint();
+    }
+
+    public void paintBackground(BufferedImage newimg) {
+        Graphics2D g = bgImg.createGraphics();
+        g.drawImage(newimg, 0, 0, this.getWidth(), this.getHeight(), null);
+        this.repaint();
+    }
 
     
 }

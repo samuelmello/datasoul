@@ -284,6 +284,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         //SplashScreen splashScreen = new SplashScreen("/datasoul/icons/splashScreen.gif");
         //splashScreen.splashShow();
 
+        ConfigObj.getInstance();
         AllSongsListTable.getInstance();
         ChordsDB.getInstance();
         ContentManager.getInstance();

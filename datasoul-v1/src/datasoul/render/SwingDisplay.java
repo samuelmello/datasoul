@@ -78,6 +78,38 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         return swingDisplayPanel1.getContentRender();
     }
 
+    public void setInputSrc(int src) {
+        swingDisplayPanel1.setInputSrc(src);
+    }
+
+    public void setInputMode(int mode) {
+        swingDisplayPanel1.setInputMode(mode);
+    }
+
+    public void setDeintrelaceMode(int mode) {
+        swingDisplayPanel1.setDeintrelaceMode(mode);
+    }
+
+    public void setDebugMode(int mode) {
+        swingDisplayPanel1.setDebugMode(mode);
+    }
+
+    public void setBackgroundMode(int mode) {
+        swingDisplayPanel1.setBackgroundMode(mode);
+    }
+
+    public void clear(int mode) {
+        swingDisplayPanel1.clear(mode);
+    }
+
+    public void black(int mode) {
+        swingDisplayPanel1.black(mode);
+    }
+
+    public void paintBackground(BufferedImage img) {
+        swingDisplayPanel1.paintBackground(img);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.render.SwingDisplayPanel swingDisplayPanel1;
     // End of variables declaration//GEN-END:variables
