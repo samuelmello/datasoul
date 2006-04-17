@@ -236,91 +236,100 @@ public abstract class ContentRender {
             
             
             if (needUpdate){
+
+                // Start cleaning it
+                clear();
                 
                 // Set the text
                 if (templ != null){
-                    for (TemplateItem t : templ.getItems() ){
-                        if (t instanceof TextTemplateItem) {
-                            content = ((TextTemplateItem)t).getContent();
-                            if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
-                                ((TextTemplateItem)t).setText(title);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
-                                ((TextTemplateItem)t).setText(slide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
-                                ((TextTemplateItem)t).setText(nextSlide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
-                                ((TextTemplateItem)t).setText(clock);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
-                                ((TextTemplateItem)t).setText(timer);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
-                                ((TextTemplateItem)t).setText(alert);
-                                continue;
-                            }
-                        }// is texttempalteitem
-                    }// for templateItem
+                    
+                    synchronized(templ){
+
+                        for (TemplateItem t : templ.getItems() ){
+                            if (t instanceof TextTemplateItem) {
+                                content = ((TextTemplateItem)t).getContent();
+                                if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                                    ((TextTemplateItem)t).setText(title);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                                    ((TextTemplateItem)t).setText(slide);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                                    ((TextTemplateItem)t).setText(nextSlide);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                                    ((TextTemplateItem)t).setText(clock);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                                    ((TextTemplateItem)t).setText(timer);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                                    ((TextTemplateItem)t).setText(alert);
+                                    continue;
+                                }
+                            }// is texttempalteitem
+                        }// for templateItem
+
+                        // paint it!
+                        paint(templ);
+                        
+                        // revert it to default values before exiting sync block
+                        templ.cleanUp();
+                        
+                    }// sync
+                    
                 }
                 
                 if (alertActive){
-                    for (TemplateItem t : alertTempl.getItems() ){
-                        if (t instanceof TextTemplateItem) {
-                            content = ((TextTemplateItem)t).getContent();
-                            if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
-                                ((TextTemplateItem)t).setText(title);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
-                                ((TextTemplateItem)t).setText(slide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
-                                ((TextTemplateItem)t).setText(nextSlide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
-                                ((TextTemplateItem)t).setText(clock);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
-                                ((TextTemplateItem)t).setText(timer);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
-                                ((TextTemplateItem)t).setText(alert);
-                                continue;
-                            }
-                        }// is texttempalteitem
-                    }// for
+                  
+                    synchronized(alertTempl){
+                        
+                        for (TemplateItem t : alertTempl.getItems() ){
+                            if (t instanceof TextTemplateItem) {
+                                content = ((TextTemplateItem)t).getContent();
+                                if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                                    ((TextTemplateItem)t).setText(title);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                                    ((TextTemplateItem)t).setText(slide);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                                    ((TextTemplateItem)t).setText(nextSlide);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                                    ((TextTemplateItem)t).setText(clock);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                                    ((TextTemplateItem)t).setText(timer);
+                                    continue;
+                                }
+                                if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                                    ((TextTemplateItem)t).setText(alert);
+                                    continue;
+                                }
+                            }// is texttempalteitem
+                        }// for
+                        
+                        // paint it
+                        paint(alertTempl);
+                        
+                        // revert it to default values before exiting sync block
+                        alertTempl.cleanUp();
+                    
+                    }// sync
                 }// if alert active
                 
-
-                // here we have the template ready for painting
-                clear();
-                
-                if (templ != null){
-                    paint(templ);
-                }
-                if (alertActive){
-                    paint(alertTempl);
-                }
-                
+                // Ok, show it!
                 flip();
-                
-                if (templ != null){
-                    templ.cleanUp();
-                }
-                if (alertActive){
-                    alertTempl.cleanUp();
-                }
                 
                 // everything has been updated
                 templateChanged = false;

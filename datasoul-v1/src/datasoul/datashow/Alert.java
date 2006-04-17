@@ -72,8 +72,8 @@ public class Alert extends Thread {
             DisplayManager.getMainDisplay().getContentRender().setAlertActive(true);
         }
         if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().getContentRender().setAlertTemplate(getMonitorTemplate());
-            DisplayManager.getMainDisplay().getContentRender().setAlertActive(true);
+            DisplayManager.getMonitorDisplay().getContentRender().setAlertTemplate(getMonitorTemplate());
+            DisplayManager.getMonitorDisplay().getContentRender().setAlertActive(true);
         }
         cm.setAlertText(text);
         cm.updateLive();
