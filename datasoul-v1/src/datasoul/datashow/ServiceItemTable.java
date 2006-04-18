@@ -187,5 +187,16 @@ public class ServiceItemTable extends javax.swing.JPanel {
         return ((TextServiceItem)item).getSlideText(selectedRow+1);
     }
     
+    public int getSlideIndex(){
+        return displayTable.getSelectedRow();
+    }
+
+    public void setSlideIndex(int x){
+        displayTable.changeSelection(x, 1, false, false);
+    }
+
+    public int getSlideCount(){
+        return displayTable.getRowCount();
+    }
     
 }
