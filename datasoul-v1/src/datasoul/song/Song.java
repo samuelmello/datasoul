@@ -72,10 +72,12 @@ public class Song extends TextServiceItem{
         String slidesStr[] ;
         if(lyrics.contains("\r\n")){
             String str = lyrics.replace("\r\n\r\n","\r\n \r\n");
-            slidesStr = str.split("\r\n==\r\n");
+            str = str.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
+            slidesStr = str.split("\r\n"+TextServiceItem.SLIDE_BREAK+"\r\n");
         }else{
             String str = lyrics.replace("\n\n","\n \n");
-            slidesStr = str.split("\n==\n");
+            str = str.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
+            slidesStr = str.split("\n"+TextServiceItem.SLIDE_BREAK+"\n");
         }
         slides.clear();
         TextServiceItemRenderer j;

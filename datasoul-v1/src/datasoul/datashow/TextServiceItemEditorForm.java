@@ -231,25 +231,23 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         
         String inStr = this.textText.getText();
         StringBuffer sb = new StringBuffer();
-        inStr = inStr.replace("==\r\n","");
-        inStr = inStr.replace("--\r\n","\n\n");
-        inStr = inStr.replace("==\n","");
-        inStr = inStr.replace("--\n","\n\n");
+        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\r\n","");
+        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\r\n","\n\n");
+        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\n","");
+        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\n","\n\n");
         String str2;
         int count = 0;
         for(int i=0; i< inStr.length()-2;i++){
             str = inStr.substring(i,i+1);
             str2 = inStr.substring(i,i+2);
             if(str2.equals("\n\r")){
-                sb.append("--\n");
-                sb.append("==\n");
+                sb.append(TextServiceItem.CHORUS_MARK+"\n");
                 count =0;
                 i=i+2;
                 continue;
             }
             if(str2.equals("\n\n")){
-                sb.append("\n--\n");
-                sb.append("==\n");
+                sb.append("\n"+TextServiceItem.CHORUS_MARK+"\n");
                 count =0;
                 i=i+2;
                 continue;
@@ -259,7 +257,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             }
             sb.append(str);
             if(count==lines){
-                sb.append("==\n");
+                sb.append(TextServiceItem.SLIDE_BREAK+"\n");
                 count =0;
             }
         }
@@ -322,8 +320,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
     public void highlightlyric(JTextComponent textComp){
         removeHighlights(textComp);
-        highlight(textComp,"\n==\n",Color.ORANGE);
-        highlight(textComp,"\n--\n",Color.PINK);
+        highlight(textComp,"\n"+TextServiceItem.SLIDE_BREAK+"\n",Color.ORANGE);
+        highlight(textComp,"\n"+TextServiceItem.CHORUS_MARK+"\n",Color.PINK);
     }
     // Creates highlights around all occurrences of pattern in textComp
     public void highlight(JTextComponent textComp, String pattern, Color color) {

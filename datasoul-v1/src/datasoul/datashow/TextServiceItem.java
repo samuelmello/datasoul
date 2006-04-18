@@ -23,6 +23,8 @@ import javax.swing.table.TableCellEditor;
 public class TextServiceItem extends ServiceItem {
     
     private String text;
+    public final static String SLIDE_BREAK = "==";
+    public final static String CHORUS_MARK = "===";
     
     /** Creates a new instance of TextServiceItem */
     public TextServiceItem() {
@@ -42,9 +44,11 @@ public class TextServiceItem extends ServiceItem {
         
         String slidesStr[];
         if(text.contains("\r\n")){
-            slidesStr = text.trim().split("\r\n==\r\n");
+            text = text.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
+            slidesStr = text.trim().split("\r\n"+TextServiceItem.SLIDE_BREAK+"\r\n");
         }else{
-            slidesStr = text.trim().split("\n==\n");
+            text = text.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
+            slidesStr = text.trim().split("\n"+TextServiceItem.SLIDE_BREAK+"\n");
         }
         slides.clear();
         TextServiceItemRenderer j;
