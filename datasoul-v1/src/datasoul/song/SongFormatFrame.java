@@ -60,6 +60,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableProperties);
 
         btnApply.setText("Apply");
+        btnApply.setToolTipText("Apply the changes to song view");
         btnApply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnApplyMouseClicked(evt);
@@ -67,6 +68,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         });
 
         btnClose.setText("Close");
+        btnClose.setToolTipText("Close window");
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCloseMouseClicked(evt);

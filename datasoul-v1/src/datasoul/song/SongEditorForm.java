@@ -239,6 +239,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
         btnSave.setText("Save");
+        btnSave.setToolTipText("Save song");
         btnSave.setMaximumSize(new java.awt.Dimension(60, 32));
         btnSave.setMinimumSize(new java.awt.Dimension(60, 32));
         btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -251,6 +252,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
         btnClose.setText("Close");
+        btnClose.setToolTipText("Close song");
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnCloseMouseClicked(evt);
@@ -272,6 +274,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jLabel1.setText("Break slide in");
 
         btnBreak.setText("break");
+        btnBreak.setToolTipText("Break slides in each X lines");
         btnBreak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBreakActionPerformed(evt);

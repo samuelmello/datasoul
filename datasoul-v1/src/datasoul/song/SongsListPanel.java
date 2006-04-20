@@ -66,6 +66,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
 
         toolBar.setBorder(null);
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/new.gif")));
+        btnNew.setToolTipText("Create a new song ...");
         btnNew.setAlignmentY(0.0F);
         btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -76,6 +77,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
         toolBar.add(btnNew);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
+        btnEdit.setToolTipText("Edit song ...");
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setName("btnEdit");
         btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -87,6 +89,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
         toolBar.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
+        btnDelete.setToolTipText("Delete song");
         btnDelete.setAlignmentY(0.0F);
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -97,6 +100,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
         toolBar.add(btnDelete);
 
         btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addToList.gif")));
+        btnAddToList.setToolTipText("Add song to Service List");
         btnAddToList.setAlignmentY(0.0F);
         btnAddToList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

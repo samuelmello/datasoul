@@ -45,6 +45,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/datasoul/icons/new.gif"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Create a new chord ..."/>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -63,6 +64,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/datasoul/icons/delete.gif"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Delete selected chord"/>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -133,6 +135,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/datasoul/icons/edit.gif"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Edit selected chord ..."/>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="name" type="java.lang.String" value="btnEdit"/>
@@ -146,6 +149,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/datasoul/icons/save.gif"/>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value="Save chords to file"/>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>

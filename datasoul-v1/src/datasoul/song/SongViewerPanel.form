@@ -120,6 +120,7 @@
               <Image iconType="3" name="/datasoul/icons/print.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="print"/>
+            <Property name="toolTipText" type="java.lang.String" value="Print song ..."/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnPrintMouseClicked"/>
@@ -131,6 +132,7 @@
               <Image iconType="3" name="/datasoul/icons/generatePraiseDoc.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Export"/>
+            <Property name="toolTipText" type="java.lang.String" value="Export song ..."/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExportMouseClicked"/>
@@ -142,6 +144,7 @@
               <Image iconType="3" name="/datasoul/icons/format.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Format"/>
+            <Property name="toolTipText" type="java.lang.String" value="Format song view ..."/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[80, 32]"/>
             </Property>
@@ -176,6 +179,7 @@
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Select the key to song"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[25, 18]"/>
             </Property>
@@ -212,6 +216,7 @@
                 <StringItem index="3" value="Item 4"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Select the version to be view"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboVersionActionPerformed"/>

@@ -164,7 +164,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
         btnDatashow.setFont(new java.awt.Font("Arial", 1, 11));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
-        btnDatashow.setText("Datashow");
+        btnDatashow.setText("Projector");
+        btnDatashow.setToolTipText("Projector operation view");
         btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDatashowMouseClicked(evt);
@@ -176,6 +177,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnSongs.setFont(new java.awt.Font("Arial", 1, 11));
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songs.gif")));
         btnSongs.setText("Songs");
+        btnSongs.setToolTipText("Song manipulation view");
         btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSongsMouseClicked(evt);
@@ -187,6 +189,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnTemplates.setFont(new java.awt.Font("Arial", 1, 11));
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/template.gif")));
         btnTemplates.setText("Templates");
+        btnTemplates.setToolTipText("template view");
         btnTemplates.setMaximumSize(new java.awt.Dimension(88, 44));
         btnTemplates.setMinimumSize(new java.awt.Dimension(88, 44));
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +203,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnConfig.setFont(new java.awt.Font("Arial", 1, 11));
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/config.gif")));
         btnConfig.setText("Config");
+        btnConfig.setToolTipText("Configuration view");
         btnConfig.setMaximumSize(new java.awt.Dimension(88, 44));
         btnConfig.setMinimumSize(new java.awt.Dimension(88, 44));
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -213,6 +217,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnClose.setFont(new java.awt.Font("Arial", 1, 11));
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/close.gif")));
         btnClose.setText("Close");
+        btnClose.setToolTipText("Close the program");
         btnClose.setMaximumSize(new java.awt.Dimension(88, 44));
         btnClose.setMinimumSize(new java.awt.Dimension(88, 44));
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +311,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private javax.swing.JButton btnDatashow;
     private javax.swing.JButton btnSongs;
     private javax.swing.JButton btnTemplates;
-    private javax.swing.JButton btnTemplates1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables

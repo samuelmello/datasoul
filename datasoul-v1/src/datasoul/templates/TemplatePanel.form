@@ -85,7 +85,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jScrollPane1" pref="193" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="191" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
@@ -127,6 +127,7 @@
                               <Image iconType="3" name="/datasoul/icons/open.gif"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Load"/>
+                            <Property name="toolTipText" type="java.lang.String" value="Load selected template"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoadActionPerformed"/>
@@ -138,6 +139,7 @@
                               <Image iconType="3" name="/datasoul/icons/new.gif"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="New"/>
+                            <Property name="toolTipText" type="java.lang.String" value="Create a new template"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
@@ -149,6 +151,7 @@
                               <Image iconType="3" name="/datasoul/icons/delete.gif"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Delete"/>
+                            <Property name="toolTipText" type="java.lang.String" value="Delete selected template"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteTemplateActionPerformed"/>
@@ -246,7 +249,7 @@
                                       <Component id="lblTemplateName" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jToolBar2" max="32767" attributes="0"/>
+                                  <Component id="jToolBar2" pref="536" max="32767" attributes="0"/>
                               </Group>
                               <Component id="templateEditorPanel1" alignment="0" min="-2" pref="649" max="-2" attributes="1"/>
                           </Group>
@@ -315,7 +318,8 @@
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/datasoul/icons/save.gif"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Save"/>
+                        <Property name="text" type="java.lang.String" value="Save template"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Save template"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
@@ -327,6 +331,7 @@
                           <Image iconType="3" name="/datasoul/icons/text.gif"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add Text"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Add a text"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddTextActionPerformed"/>
@@ -338,6 +343,7 @@
                           <Image iconType="3" name="/datasoul/icons/image.gif"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Add Image"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Add an image ..."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddImageActionPerformed"/>
@@ -349,6 +355,7 @@
                           <Image iconType="3" name="/datasoul/icons/delete.gif"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Delete"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Delete item"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteItemActionPerformed"/>
@@ -360,6 +367,7 @@
                           <Image iconType="3" name="/datasoul/icons/up.gif"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Move Up"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Move the item to the upper layer"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoveUpActionPerformed"/>
@@ -371,6 +379,7 @@
                           <Image iconType="3" name="/datasoul/icons/down.gif"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Move Down"/>
+                        <Property name="toolTipText" type="java.lang.String" value="Move the item to the lowest layer"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMoveDownActionPerformed"/>

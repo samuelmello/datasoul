@@ -41,7 +41,7 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnAddVideo = new javax.swing.JButton();
         btnImportItem = new javax.swing.JButton();
         btnAddSong = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Wizard");
@@ -50,6 +50,7 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnAddText.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddText.gif")));
         btnAddText.setText("Add Text");
+        btnAddText.setToolTipText("Add a text to service list ...");
         btnAddText.setBorderPainted(false);
         btnAddText.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddText.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -66,6 +67,7 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnAddImages.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddImages.gif")));
         btnAddImages.setText("Add Images");
+        btnAddImages.setToolTipText("Add images sequence to service list ...");
         btnAddImages.setBorderPainted(false);
         btnAddImages.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddImages.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -82,6 +84,7 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnAddVideo.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddVideo.gif")));
         btnAddVideo.setText("Add Video");
+        btnAddVideo.setToolTipText("Add a video to service list ...");
         btnAddVideo.setBorderPainted(false);
         btnAddVideo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddVideo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -98,6 +101,7 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnImportItem.setFont(new java.awt.Font("Arial", 1, 11));
         btnImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/ImportItem.gif")));
         btnImportItem.setText("Import Item");
+        btnImportItem.setToolTipText("Import an item from a service list to actual service list ...");
         btnImportItem.setBorderPainted(false);
         btnImportItem.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnImportItem.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -114,6 +118,7 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnAddSong.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddSong.gif")));
         btnAddSong.setText("Add Song");
+        btnAddSong.setToolTipText("Add a song to service list ...");
         btnAddSong.setBorderPainted(false);
         btnAddSong.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddSong.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -126,17 +131,18 @@ public class AddWizardForm extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancel.setFont(new java.awt.Font("Arial", 1, 11));
-        btnCancel.setText("Cancel");
-        btnCancel.setBorderPainted(false);
-        btnCancel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnCancel.setIconTextGap(14);
-        btnCancel.setMaximumSize(new java.awt.Dimension(150, 150));
-        btnCancel.setMinimumSize(new java.awt.Dimension(150, 150));
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setBackground(new java.awt.Color(255, 255, 255));
+        btnClose.setFont(new java.awt.Font("Arial", 1, 11));
+        btnClose.setText("Close");
+        btnClose.setToolTipText("Close window");
+        btnClose.setBorderPainted(false);
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.setIconTextGap(14);
+        btnClose.setMaximumSize(new java.awt.Dimension(150, 150));
+        btnClose.setMinimumSize(new java.awt.Dimension(150, 150));
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -158,7 +164,7 @@ public class AddWizardForm extends javax.swing.JFrame {
                     .add(layout.createSequentialGroup()
                         .add(btnImportItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,15 +181,15 @@ public class AddWizardForm extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnImportItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSongActionPerformed
         AddSongForm asf = new AddSongForm();
@@ -216,7 +222,7 @@ public class AddWizardForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAddSong;
     private javax.swing.JButton btnAddText;
     private javax.swing.JButton btnAddVideo;
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnImportItem;
     // End of variables declaration//GEN-END:variables
     

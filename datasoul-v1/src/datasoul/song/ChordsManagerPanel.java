@@ -106,6 +106,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/new.gif")));
+        btnNew.setToolTipText("Create a new chord ...");
         btnNew.setAlignmentY(0.0F);
         btnNew.setBorder(null);
         btnNew.setContentAreaFilled(false);
@@ -117,6 +118,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         });
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
+        btnDelete.setToolTipText("Delete selected chord");
         btnDelete.setAlignmentY(0.0F);
         btnDelete.setBorder(null);
         btnDelete.setContentAreaFilled(false);
@@ -159,6 +161,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         split1.setRightComponent(scroolChordShapesPanel);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
+        btnEdit.setToolTipText("Edit selected chord ...");
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setContentAreaFilled(false);
         btnEdit.setName("btnEdit");
@@ -169,6 +172,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         });
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
+        btnSave.setToolTipText("Save chords to file");
         btnSave.setAlignmentY(0.0F);
         btnSave.setBorder(null);
         btnSave.setContentAreaFilled(false);
@@ -183,7 +187,7 @@ public class ChordsManagerPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .add(btnSave, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnNew, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)

@@ -106,6 +106,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(textText);
 
         btnApply.setText("Apply");
+        btnApply.setToolTipText("Apply text changes");
         btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyActionPerformed(evt);
@@ -116,6 +117,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         btnClose1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
         btnClose1.setText("Close");
+        btnClose1.setToolTipText("Close window");
         btnClose1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnClose1MouseClicked(evt);
@@ -137,6 +139,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jLabel1.setText("Break slide in");
 
         btnBreak.setText("break");
+        btnBreak.setToolTipText("Break slides in each X lines");
         btnBreak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBreakActionPerformed(evt);
@@ -302,7 +305,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
     private javax.swing.JButton btnBreak;
-    private javax.swing.JButton btnBreakfd;
     private javax.swing.JButton btnClose1;
     private javax.swing.JTextField fieldTitle;
     private javax.swing.JLabel jLabel1;

@@ -82,6 +82,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        chordShapePanel1.setToolTipText("Select the notes clicking");
         org.jdesktop.layout.GroupLayout chordShapePanel1Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel1);
         chordShapePanel1.setLayout(chordShapePanel1Layout);
         chordShapePanel1Layout.setHorizontalGroup(
@@ -93,6 +94,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
+        chordShapePanel2.setToolTipText("Select the notes clicking");
         org.jdesktop.layout.GroupLayout chordShapePanel2Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel2);
         chordShapePanel2.setLayout(chordShapePanel2Layout);
         chordShapePanel2Layout.setHorizontalGroup(
@@ -104,6 +106,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
+        chordShapePanel3.setToolTipText("Select the notes clicking");
         org.jdesktop.layout.GroupLayout chordShapePanel3Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel3);
         chordShapePanel3.setLayout(chordShapePanel3Layout);
         chordShapePanel3Layout.setHorizontalGroup(
@@ -115,6 +118,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
+        chordShapePanel4.setToolTipText("Select the notes clicking");
         org.jdesktop.layout.GroupLayout chordShapePanel4Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel4);
         chordShapePanel4.setLayout(chordShapePanel4Layout);
         chordShapePanel4Layout.setHorizontalGroup(
@@ -126,6 +130,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
+        chordShapePanel5.setToolTipText("Select the notes clicking");
         org.jdesktop.layout.GroupLayout chordShapePanel5Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel5);
         chordShapePanel5.setLayout(chordShapePanel5Layout);
         chordShapePanel5Layout.setHorizontalGroup(
@@ -137,6 +142,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
+        chordShapePanel6.setToolTipText("Select the notes clicking");
         org.jdesktop.layout.GroupLayout chordShapePanel6Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel6);
         chordShapePanel6.setLayout(chordShapePanel6Layout);
         chordShapePanel6Layout.setHorizontalGroup(
@@ -152,6 +158,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
         jLabel1.setText("Chord:");
 
         btnApply.setText("Apply");
+        btnApply.setToolTipText("Apply chord changes");
         btnApply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnApplyMouseClicked(evt);
@@ -159,6 +166,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
         });
 
         btnCancel.setText("Cancel");
+        btnCancel.setToolTipText("Cancel and close the window");
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelMouseClicked(evt);

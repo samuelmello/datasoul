@@ -40,6 +40,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/new.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Create a new song ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -51,6 +52,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/edit.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Edit song ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
             <Property name="name" type="java.lang.String" value="btnEdit"/>
           </Properties>
@@ -63,6 +65,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/delete.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Delete song"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -74,6 +77,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/addToList.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Add song to Service List"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>

@@ -94,6 +94,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/open.gif")));
+        btnOpen.setToolTipText("Load service list ...");
         btnOpen.setAlignmentY(0.0F);
         btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -104,6 +105,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnOpen);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
+        btnSave.setToolTipText("Save service list");
         btnSave.setAlignmentY(0.0F);
         btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -114,6 +116,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/saveAs.gif")));
+        btnSaveAs.setToolTipText("Save service list as... ");
         btnSaveAs.setAlignmentY(0.0F);
         btnSaveAs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -131,6 +134,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(jSeparator1);
 
         btnExportWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportWizard.gif")));
+        btnExportWizard.setToolTipText("Export wizard ...");
         btnExportWizard.setAlignmentY(0.0F);
         btnExportWizard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,6 +152,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(jSeparator2);
 
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
+        btnAddWizard.setToolTipText("Add wizard ...");
         btnAddWizard.setAlignmentY(0.0F);
         btnAddWizard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,6 +163,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnAddWizard);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
+        btnEdit.setToolTipText("Edit selected item ...");
         btnEdit.setAlignmentY(0.0F);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,6 +174,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnEdit);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.gif")));
+        btnUp.setToolTipText("Change item order to upper position");
         btnUp.setAlignmentY(0.0F);
         btnUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -178,6 +185,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnUp);
 
         btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.gif")));
+        btnDown.setToolTipText("Change item order to lower position");
         btnDown.setAlignmentY(0.0F);
         btnDown.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -188,6 +196,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnDown);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/remove.gif")));
+        btnRemove.setToolTipText("Delete item");
         btnRemove.setAlignmentY(0.0F);
         btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

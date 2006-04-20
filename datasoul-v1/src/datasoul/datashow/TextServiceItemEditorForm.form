@@ -111,6 +111,7 @@
         <Component class="javax.swing.JButton" name="btnApply">
           <Properties>
             <Property name="text" type="java.lang.String" value="Apply"/>
+            <Property name="toolTipText" type="java.lang.String" value="Apply text changes"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnApplyActionPerformed"/>
@@ -122,6 +123,7 @@
               <Image iconType="3" name="/datasoul/icons/delete.gif"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Close"/>
+            <Property name="toolTipText" type="java.lang.String" value="Close window"/>
           </Properties>
           <Events>
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnClose1MouseClicked"/>
@@ -198,6 +200,7 @@
             <Component class="javax.swing.JButton" name="btnBreak">
               <Properties>
                 <Property name="text" type="java.lang.String" value="break"/>
+                <Property name="toolTipText" type="java.lang.String" value="Break slides in each X lines"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBreakActionPerformed"/>

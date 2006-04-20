@@ -515,6 +515,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.setFloatable(false);
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print.gif")));
         btnPrint.setText("print");
+        btnPrint.setToolTipText("Print song ...");
         btnPrint.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPrintMouseClicked(evt);
@@ -525,6 +526,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/generatePraiseDoc.gif")));
         btnExport.setText("Export");
+        btnExport.setToolTipText("Export song ...");
         btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExportMouseClicked(evt);
@@ -535,6 +537,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/format.gif")));
         btnFormat.setText("Format");
+        btnFormat.setToolTipText("Format song view ...");
         btnFormat.setMaximumSize(new java.awt.Dimension(80, 32));
         btnFormat.setMinimumSize(new java.awt.Dimension(72, 32));
         btnFormat.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -553,6 +556,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.add(labelKey);
 
         comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboKey.setToolTipText("Select the key to song");
         comboKey.setMinimumSize(new java.awt.Dimension(25, 18));
         comboKey.setPreferredSize(new java.awt.Dimension(25, 22));
         comboKey.addActionListener(new java.awt.event.ActionListener() {
@@ -571,6 +575,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.add(labelVersion);
 
         comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboVersion.setToolTipText("Select the version to be view");
         comboVersion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboVersionActionPerformed(evt);

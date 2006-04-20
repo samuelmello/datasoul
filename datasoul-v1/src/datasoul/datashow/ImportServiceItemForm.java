@@ -76,6 +76,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addToList.gif")));
         btnImport.setText("Import");
+        btnImport.setToolTipText("Import selected item to actual service list");
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);
@@ -84,7 +85,10 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/open.gif")));
         btnOpen.setText("Open");
-        btnOpen.setAlignmentY(0.0F);
+        btnOpen.setToolTipText("Open service list ...");
+        btnOpen.setMaximumSize(new java.awt.Dimension(89, 29));
+        btnOpen.setMinimumSize(new java.awt.Dimension(89, 29));
+        btnOpen.setPreferredSize(new java.awt.Dimension(89, 29));
         btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnOpenMouseClicked(evt);
@@ -93,6 +97,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
         btnClose.setText("Close");
+        btnClose.setToolTipText("Close window");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -107,12 +112,12 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(btnOpen)
+                        .add(btnOpen, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnImport)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClose))
-                    .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                    .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,7 +127,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .add(13, 13, 13)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnOpen)
+                    .add(btnOpen, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnImport)
                     .add(btnClose))
                 .addContainerGap())

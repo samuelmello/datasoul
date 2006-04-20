@@ -48,7 +48,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
     private void initComponents() {
         btnExportSongs = new javax.swing.JButton();
         btnExportServiceList = new javax.swing.JButton();
-        btnCancel = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Export Wizard");
@@ -58,12 +58,14 @@ public class ExportWizardForm extends javax.swing.JFrame {
         btnExportSongs.setFont(new java.awt.Font("Arial", 1, 11));
         btnExportSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportSongsChords.gif")));
         btnExportSongs.setText("Export Songs Chords");
+        btnExportSongs.setToolTipText("Export song lyrics and chords to rtf file ...");
         btnExportSongs.setBorderPainted(false);
         btnExportSongs.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnExportSongs.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnExportSongs.setIconTextGap(14);
         btnExportSongs.setMaximumSize(new java.awt.Dimension(150, 150));
         btnExportSongs.setMinimumSize(new java.awt.Dimension(150, 150));
+        btnExportSongs.setPreferredSize(new java.awt.Dimension(163, 73));
         btnExportSongs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExportSongsActionPerformed(evt);
@@ -74,6 +76,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
         btnExportServiceList.setFont(new java.awt.Font("Arial", 1, 11));
         btnExportServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportServiceList.gif")));
         btnExportServiceList.setText("Export Service List");
+        btnExportServiceList.setToolTipText("Export service list to rtf file ...");
         btnExportServiceList.setBorderPainted(false);
         btnExportServiceList.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnExportServiceList.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -86,17 +89,18 @@ public class ExportWizardForm extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancel.setFont(new java.awt.Font("Arial", 1, 11));
-        btnCancel.setText("Cancel");
-        btnCancel.setBorderPainted(false);
-        btnCancel.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCancel.setIconTextGap(14);
-        btnCancel.setMaximumSize(new java.awt.Dimension(150, 150));
-        btnCancel.setMinimumSize(new java.awt.Dimension(150, 150));
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setBackground(new java.awt.Color(255, 255, 255));
+        btnClose.setFont(new java.awt.Font("Arial", 1, 11));
+        btnClose.setText("Close");
+        btnClose.setToolTipText("Close the window");
+        btnClose.setBorderPainted(false);
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnClose.setIconTextGap(14);
+        btnClose.setMaximumSize(new java.awt.Dimension(150, 150));
+        btnClose.setMinimumSize(new java.awt.Dimension(150, 150));
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -106,10 +110,10 @@ public class ExportWizardForm extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(btnExportSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnExportServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 380, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnClose, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnExportServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, btnExportSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -120,15 +124,15 @@ public class ExportWizardForm extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnExportServiceList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnExportServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportServiceListActionPerformed
         this.dispose();
@@ -241,7 +245,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnExportServiceList;
     private javax.swing.JButton btnExportSongs;
     // End of variables declaration//GEN-END:variables

@@ -45,6 +45,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/open.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Load service list ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -56,6 +57,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/save.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Save service list"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -67,6 +69,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/saveAs.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Save service list as... "/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -89,6 +92,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/exportWizard.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Export wizard ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -111,6 +115,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/addWizard.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Add wizard ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -122,6 +127,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/edit.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Edit selected item ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -133,6 +139,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/up.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Change item order to upper position"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -144,6 +151,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/down.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Change item order to lower position"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>
@@ -155,6 +163,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/remove.gif"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Delete item"/>
             <Property name="alignmentY" type="float" value="0.0"/>
           </Properties>
           <Events>

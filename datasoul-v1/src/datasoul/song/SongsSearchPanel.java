@@ -108,6 +108,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.setBorder(null);
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/new.gif")));
+        btnNew.setToolTipText("Create a new song ...");
         btnNew.setAlignmentY(0.0F);
         btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -118,6 +119,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnNew);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
+        btnEdit.setToolTipText("Edit song ...");
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setName("btnEdit");
         btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -129,6 +131,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
+        btnDelete.setToolTipText("Delete song");
         btnDelete.setAlignmentY(0.0F);
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,6 +142,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnDelete);
 
         btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addToList.gif")));
+        btnAddToList.setToolTipText("Add song to the service list");
         btnAddToList.setAlignmentY(0.0F);
         btnAddToList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,6 +154,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
         btnClose.setText("Close");
+        btnClose.setToolTipText("Close window");
         btnClose.setAlignmentY(0.0F);
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

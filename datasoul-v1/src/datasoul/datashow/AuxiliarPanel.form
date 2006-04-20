@@ -53,24 +53,24 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="btnBlack" min="-2" max="-2" attributes="1"/>
-                              <EmptySpace pref="26" max="32767" attributes="0"/>
+                              <EmptySpace pref="15" max="32767" attributes="0"/>
                               <Component id="btnClear" min="-2" max="-2" attributes="1"/>
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="116" max="32767" attributes="0"/>
+                              <EmptySpace pref="144" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="templateMonitor" pref="159" max="32767" attributes="1"/>
+                              <Component id="templateMonitor" pref="129" max="32767" attributes="1"/>
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="150" max="32767" attributes="0"/>
+                              <EmptySpace pref="169" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="cbBackgroundMode" pref="159" max="32767" attributes="3"/>
+                              <Component id="cbBackgroundMode" pref="129" max="32767" attributes="3"/>
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -78,7 +78,7 @@
                               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="imgBackground" pref="190" max="32767" attributes="1"/>
+                              <Component id="imgBackground" max="32767" attributes="1"/>
                               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -105,7 +105,7 @@
                       <Component id="btnChangeBackground" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="imgBackground" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="19" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -114,6 +114,7 @@
             <Component class="javax.swing.JButton" name="btnChangeBackground">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Change Background"/>
+                <Property name="toolTipText" type="java.lang.String" value="Change main window background"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChangeBackgroundActionPerformed"/>
@@ -124,7 +125,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="186" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="156" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -137,6 +138,7 @@
             <Component class="javax.swing.JToggleButton" name="btnBlack">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Black"/>
+                <Property name="toolTipText" type="java.lang.String" value="Makes the main window black"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBlackActionPerformed"/>
@@ -145,6 +147,7 @@
             <Component class="javax.swing.JToggleButton" name="btnClear">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clear"/>
+                <Property name="toolTipText" type="java.lang.String" value="Clear the main window"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
@@ -172,12 +175,7 @@
             <Component class="datasoul.templates.TemplateComboBox" name="templateMonitor">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Teste1"/>
-                    <StringItem index="1" value="monitor"/>
-                    <StringItem index="2" value="Template1"/>
-                    <StringItem index="3" value="BigClock"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -212,8 +210,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jScrollPane1" alignment="0" pref="219" max="32767" attributes="2"/>
-                                      <Component id="jPanel1" alignment="0" min="0" pref="219" max="32767" attributes="2"/>
+                                      <Component id="jScrollPane1" alignment="0" pref="221" max="32767" attributes="2"/>
+                                      <Component id="jPanel1" alignment="0" min="0" pref="221" max="32767" attributes="2"/>
                                       <Component id="jPanel2" alignment="0" max="32767" attributes="2"/>
                                   </Group>
                               </Group>
@@ -221,7 +219,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btnShowAlert" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="125" max="32767" attributes="0"/>
+                              <EmptySpace pref="144" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -233,7 +231,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="42" max="32767" attributes="2"/>
+                      <Component id="jScrollPane1" pref="48" max="32767" attributes="2"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="2"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -280,6 +278,7 @@
             <Component class="javax.swing.JButton" name="btnShowAlert">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Show Alert"/>
+                <Property name="toolTipText" type="java.lang.String" value="Show alert"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowAlertActionPerformed"/>
@@ -303,7 +302,7 @@
                               <Component id="cbShowOnMain" min="-2" max="-2" attributes="1"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="107" max="32767" attributes="0"/>
+                                  <EmptySpace pref="130" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="cbShowOnMonitor" max="32767" attributes="1"/>
@@ -344,7 +343,7 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="52" max="32767" attributes="0"/>
+                          <EmptySpace pref="54" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="cbMainTemplate" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -421,7 +420,7 @@
                           <Component id="spnAlertTime" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <EmptySpace pref="75" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -483,7 +482,7 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="pnlTimerTotal" min="-2" max="-2" attributes="1"/>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace pref="88" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -498,7 +497,7 @@
                       <Component id="pnlTimerStart" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="pnlTimerTotal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="109" max="32767" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -525,7 +524,7 @@
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="edtTimerStartSec" min="-2" pref="41" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="11" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -680,7 +679,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <EmptySpace pref="71" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
