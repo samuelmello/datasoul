@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <jni.h> 
 #include <SDL/SDL.h>
 #include <SDL/SDL_thread.h>
@@ -54,7 +55,7 @@ void* displayThread (void *arg){
 int displayThread (void *arg){
 #endif
 	
-	Uint32 time1, time2, time3;
+	Uint32 time1, time2, time3 = 0;
 	
 	while (globals.stopDisplay == 0){
 		time1 = SDL_GetTicks();
@@ -103,6 +104,12 @@ int displayThread (void *arg){
 //		}
 	}
 
+#ifdef USE_PTHREAD
+	return NULL;
+#else
+	return 0;
+#endif
+
 }
 
 
@@ -118,7 +125,6 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
         SDL_Surface *surface;
 
         Uint32 rmask, gmask, bmask, amask;
-        SDL_Rect rect;
 
 	char envopt[256];
 

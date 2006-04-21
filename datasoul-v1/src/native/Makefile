@@ -1,6 +1,8 @@
 JDK_HOME=/usr/java/jdk1.6.0
-CFLAGS=-O4
+CFLAGS=-O4 -Wall
 DATASOUL_CLASSES=../../build/classes
+
+all: libdatasoulsdl.so SDLSocketDisplay.bin
 
 libdatasoulsdl.so: datasoul_render_SDLDisplay.h datasoul_render_SDLDisplay.c
 	gcc ${CFLAGS} -I${JDK_HOME}/include -I${JDK_HOME}/include/linux\
@@ -11,5 +13,11 @@ libdatasoulsdl.so: datasoul_render_SDLDisplay.h datasoul_render_SDLDisplay.c
 datasoul_render_SDLDisplay.h:
 	${JDK_HOME}/bin/javah -classpath ${DATASOUL_CLASSES} datasoul.render.SDLDisplay
 
+SDLSocketDisplay.bin: SDLSocketDisplay.c
+	gcc ${CFLAGS} \
+	  -DVIDEO4LINUX \
+  	  SDLSocketDisplay.c -o SDLSocketDisplay.bin\
+	  -lSDL -lSDL_bgrab -fPIC
+
 clean:
-	rm -f datasoul_render_SDLDisplay.h libdatasoulsdl.so
+	rm -f datasoul_render_SDLDisplay.h libdatasoulsdl.so SDLSocketDisplay.bin
