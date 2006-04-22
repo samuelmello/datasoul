@@ -31,4 +31,6 @@ public interface ServiceItemRenderer {
     
     public void setZoom(int f);
     
+    public boolean getShowMark();
+    
 }

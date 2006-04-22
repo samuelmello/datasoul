@@ -40,23 +40,25 @@ public class TextServiceItem extends ServiceItem {
              
     public void setText(String text){
         
-        this.text = text.trim();
+        this.text = text.trim().replace("\r\n", "\n");
         
-        String slidesStr[];
-        if(text.contains("\r\n")){
-            text = text.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
-            slidesStr = text.trim().split("\r\n"+TextServiceItem.SLIDE_BREAK+"\r\n");
-        }else{
-            text = text.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
-            slidesStr = text.trim().split("\n"+TextServiceItem.SLIDE_BREAK+"\n");
-        }
+        String chorus[];
+        chorus = this.text.trim().split("\n"+TextServiceItem.CHORUS_MARK+"\n");
+        
         slides.clear();
-        TextServiceItemRenderer j;
-        for (int i=0; i<slidesStr.length; i++){
-            j = new TextServiceItemRenderer();
-            String str = slidesStr[i].replace("\n\n","\n \n").replace("\r\n\r\n","\r\n \r\n");
-            j.setText(str);
-            slides.add(j);
+        for (int k=0; k<chorus.length; k++){
+
+            String slidesStr[] = chorus[k].split("\n"+TextServiceItem.SLIDE_BREAK+"\n");
+            TextServiceItemRenderer j;
+            for (int i=0; i<slidesStr.length; i++){
+                j = new TextServiceItemRenderer();
+                String str = slidesStr[i].replace("\n\n","\n \n");
+                j.setText(str);
+                if (i==0){
+                    j.setMark(true);
+                }
+                slides.add(j);
+            }
         }
     }
     

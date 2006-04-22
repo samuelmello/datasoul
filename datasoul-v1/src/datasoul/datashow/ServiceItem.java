@@ -113,9 +113,13 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (slides != null){
-            if (columnIndex==0)
-                return Integer.toString(rowIndex+1);
-            else
+            if (columnIndex==0){
+                String text = Integer.toString(rowIndex+1);
+                if (slides.get(rowIndex).getShowMark()){
+                    text = text + " *";
+                }
+                return text;
+            }else
                 return slides.get(rowIndex);
         }else{
             return null;

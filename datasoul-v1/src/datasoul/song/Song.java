@@ -64,28 +64,10 @@ public class Song extends TextServiceItem{
     public void setSongAuthor(String songAuthor){
         this.songAuthor = songAuthor;
     }
+    
     public void setLyrics(String lyrics){
-        lyrics = lyrics.trim();
-        
-        this.lyrics = lyrics;
-
-        String slidesStr[] ;
-        if(lyrics.contains("\r\n")){
-            String str = lyrics.replace("\r\n\r\n","\r\n \r\n");
-            str = str.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
-            slidesStr = str.split("\r\n"+TextServiceItem.SLIDE_BREAK+"\r\n");
-        }else{
-            String str = lyrics.replace("\n\n","\n \n");
-            str = str.replace(TextServiceItem.CHORUS_MARK,TextServiceItem.SLIDE_BREAK);
-            slidesStr = str.split("\n"+TextServiceItem.SLIDE_BREAK+"\n");
-        }
-        slides.clear();
-        TextServiceItemRenderer j;
-        for (int i=0; i<slidesStr.length; i++){
-            j = new TextServiceItemRenderer();
-            j.setText(slidesStr[i]);
-            slides.add(j);
-        }        
+        this.lyrics = lyrics.trim().replace("\r\n", "\n");
+        this.setText(lyrics);
     }
     
     public void setChordsComplete(String chordsComplete){

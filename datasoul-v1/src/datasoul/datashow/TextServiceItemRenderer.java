@@ -22,6 +22,8 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     private JTextArea area;
     private float defaultFontSize;
     
+    private boolean showMark;
+    
     /** Creates a new instance of TextServiceItemRenderer */
     public TextServiceItemRenderer() {
         area = new JTextArea();
@@ -82,6 +84,14 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
                 
         }
         
+    }
+
+    public boolean getShowMark() {
+        return this.showMark;
+    }
+    
+    public void setMark(boolean showMark){
+        this.showMark = showMark;
     }
     
 }
