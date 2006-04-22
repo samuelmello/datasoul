@@ -367,10 +367,10 @@ public class SongEditorForm extends javax.swing.JFrame {
        
         String inStr = this.textLyrics.getText();
         StringBuffer sb = new StringBuffer();
-        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\r\n","");
-        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\r\n","\n\n");
-        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\n","");
-        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\n","\n\n");
+        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\r\n","\n\n");
+        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\r\n","");
+        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\n","\n\n");
+        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\n","");
         String str2;
         int count = 0;
         for(int i=0; i< inStr.length()-2;i++){
