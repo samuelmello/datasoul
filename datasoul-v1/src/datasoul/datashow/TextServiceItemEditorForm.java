@@ -131,9 +131,9 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
         toolBar.add(jSeparator1);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setMaximumSize(new java.awt.Dimension(100, 250));
-        jPanel1.setPreferredSize(new java.awt.Dimension(210, 250));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.setMaximumSize(new java.awt.Dimension(150, 250));
+        jPanel1.setPreferredSize(new java.awt.Dimension(250, 250));
         textLine.setText("2");
 
         jLabel1.setText("Break slide in");
@@ -161,7 +161,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnBreak)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
