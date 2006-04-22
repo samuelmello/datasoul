@@ -412,7 +412,8 @@ public class SongEditorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_textChordsCompleteKeyPressed
 
     private void textLyricsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textLyricsKeyPressed
-        highlightlyric(this.textLyrics);
+        if(evt.isConsumed()||evt.getKeyCode()==10)
+            highlightlyric(this.textLyrics);
     }//GEN-LAST:event_textLyricsKeyPressed
 
     private void fieldNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNameKeyTyped

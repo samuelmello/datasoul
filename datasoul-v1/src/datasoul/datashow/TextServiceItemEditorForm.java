@@ -274,7 +274,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClose1MouseClicked
 
     private void textTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTextKeyPressed
-        highlightlyric(this.textText);
+        if(evt.isConsumed()||evt.getKeyCode()==10)
+            highlightlyric(this.textText);
     }//GEN-LAST:event_textTextKeyPressed
 
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
