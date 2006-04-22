@@ -133,6 +133,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.setMaximumSize(new java.awt.Dimension(150, 250));
+        jPanel1.setOpaque(false);
         jPanel1.setPreferredSize(new java.awt.Dimension(250, 250));
         textLine.setText("2");
 
