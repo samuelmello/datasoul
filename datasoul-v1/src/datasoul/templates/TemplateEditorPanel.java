@@ -52,7 +52,10 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         Graphics2D g2 =  (Graphics2D) g;
         
         if (template != null){
-            template.paint(g2);
+            synchronized(template){
+                template.cleanUp();
+                template.paint(g2);
+            }
         }
         
         // if this item is selected, draw a blue border

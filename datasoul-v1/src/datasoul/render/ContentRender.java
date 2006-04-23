@@ -278,9 +278,6 @@ public abstract class ContentRender {
                         // paint it!
                         paint(templ);
                         
-                        // revert it to default values before exiting sync block
-                        templ.cleanUp();
-                        
                     }// sync
                     
                 }
@@ -322,9 +319,6 @@ public abstract class ContentRender {
                         // paint it
                         paint(alertTempl);
                         
-                        // revert it to default values before exiting sync block
-                        alertTempl.cleanUp();
-                    
                     }// sync
                 }// if alert active
                 
