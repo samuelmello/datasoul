@@ -288,7 +288,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         }
 
         if(isNewItem){
-            ServiceListTable.getInstance().addItem(this.textServiceItem);
+            ServiceListTable.getActiveInstance().addItem(this.textServiceItem);
             isNewItem = false;
         }
     }//GEN-LAST:event_btnApplyActionPerformed

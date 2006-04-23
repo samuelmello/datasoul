@@ -137,7 +137,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         for(int item:tableServiceList.getSelectedRows())
-            ServiceListTable.getInstance().addItem(tableServiceList.getModel().getValueAt(item,0));        
+            ServiceListTable.getActiveInstance().addItem(tableServiceList.getModel().getValueAt(item,0));        
     }//GEN-LAST:event_btnImportActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -188,7 +188,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
             }
             
-            slt = ServiceListTable.getInstance();
+            slt = new ServiceListTable();
             try {
                 slt.readObject(node);
             } catch (Exception e) {

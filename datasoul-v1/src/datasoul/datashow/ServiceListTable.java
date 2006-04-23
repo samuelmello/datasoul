@@ -33,10 +33,10 @@ public class ServiceListTable extends ListTable{
     static ServiceListTable instance;
     
     /** Creates a new instance of ServiceListTable */
-    private ServiceListTable() {
+    public ServiceListTable() {
     }
     
-    public static ServiceListTable getInstance(){
+    public static ServiceListTable getActiveInstance(){
         if(instance==null){
             instance = new ServiceListTable();
         }

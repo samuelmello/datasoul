@@ -174,8 +174,8 @@ public class ExportWizardForm extends javax.swing.JFrame {
                 doc.insertString(doc.getLength(),"Service List \n\n",nameStyle);
                 StyleConstants.setFontSize(nameStyle,12);
                 
-                for(int i=0;i<ServiceListTable.getInstance().getRowCount();i++){
-                    doc.insertString(doc.getLength(),i+") "+ServiceListTable.getInstance().getValueAt(i,0).toString()+"\n",nameStyle);                    
+                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
+                    doc.insertString(doc.getLength(),i+") "+ServiceListTable.getActiveInstance().getValueAt(i,0).toString()+"\n",nameStyle);                    
                 }
 
                 ByteArrayOutputStream osOut = new ByteArrayOutputStream();
@@ -222,9 +222,9 @@ public class ExportWizardForm extends javax.swing.JFrame {
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             try {
                 ByteArrayOutputStream osOut = new ByteArrayOutputStream();    
-                for(int i=0;i<ServiceListTable.getInstance().getRowCount();i++){
-                    if(ServiceListTable.getInstance().getValueAt(i,0) instanceof Song){
-                        Song song = (Song)ServiceListTable.getInstance().getValueAt(i,0);
+                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
+                    if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
+                        Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
                         SongViewerPanel svp = new SongViewerPanel();
                         svp.viewSong(song);
                         osOut = svp.exportRTFSong(osOut);

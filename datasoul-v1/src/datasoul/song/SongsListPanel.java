@@ -152,7 +152,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
 
     private void btnAddToListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddToListMouseClicked
         for(int item:tableSongList.getSelectedRows())
-            ServiceListTable.getInstance().addItem(tableSongList.getModel().getValueAt(item,0));        
+            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(item,0));        
     }//GEN-LAST:event_btnAddToListMouseClicked
 
     private void tableSongListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSongListMouseClicked

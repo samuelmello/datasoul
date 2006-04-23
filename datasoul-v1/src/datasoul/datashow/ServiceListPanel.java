@@ -41,7 +41,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     public ServiceListPanel() {
         initComponents();
        
-       ServiceListTable serviceListTable = ServiceListTable.getInstance();
+       ServiceListTable serviceListTable = ServiceListTable.getActiveInstance();
        
        serviceListTable.addTableModelListener(this);        
         
@@ -337,7 +337,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
             }        
 
-            slt = ServiceListTable.getInstance();
+            slt = ServiceListTable.getActiveInstance();
             try {
                 slt.readObject(node);
             } catch (Exception e) {
