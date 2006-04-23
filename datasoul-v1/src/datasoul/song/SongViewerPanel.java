@@ -159,8 +159,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         specialWords.add("(9x)");        
         
         comboVersion.removeAllItems();
-        comboVersion.addItem("Complete");
-        comboVersion.addItem("Simplified");
+        comboVersion.addItem("Lyrics");
+        comboVersion.addItem("Chords Complete");
+        comboVersion.addItem("Chords Simplified");
         comboVersion.setSelectedIndex(0);
         
         chordsName = new ArrayList<String>();
@@ -242,11 +243,14 @@ public class SongViewerPanel extends javax.swing.JPanel {
         
         javax.swing.text.Document doc = jep.getDocument();
 
-        if(comboVersion.getSelectedItem().equals("Complete")){
+        if(comboVersion.getSelectedItem().equals("Chords Complete")){
             strSong = song.getChordsComplete();
-        }else{
+        }else if(comboVersion.getSelectedItem().equals("Chords Simplified")){
             strSong = song.getChordsSimplified();
+        }else{
+            strSong = song.getLyrics().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
         }
+        
         sr = new StringReader(strSong);
         buff = new BufferedReader(sr);
         
