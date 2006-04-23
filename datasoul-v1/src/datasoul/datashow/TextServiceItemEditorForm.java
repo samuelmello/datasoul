@@ -105,8 +105,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(textText);
 
-        btnApply.setText("Apply");
-        btnApply.setToolTipText("Apply text changes");
+        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
+        btnApply.setText("Save");
+        btnApply.setToolTipText("Save text changes");
+        btnApply.setMaximumSize(new java.awt.Dimension(60, 32));
+        btnApply.setMinimumSize(new java.awt.Dimension(60, 32));
         btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyActionPerformed(evt);
@@ -126,6 +129,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         toolBar.add(btnClose1);
 
+        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setMaximumSize(new java.awt.Dimension(100, 100));
         jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
@@ -141,6 +145,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         btnBreak.setText("break");
         btnBreak.setToolTipText("Break slides in each X lines");
+        btnBreak.setContentAreaFilled(false);
         btnBreak.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBreakActionPerformed(evt);
@@ -154,29 +159,29 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(4, 4, 4)
                 .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(4, 4, 4)
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(3, 3, 3)
                 .add(btnBreak)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(3, 3, 3)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel1)
                     .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2)
-                    .add(btnBreak)
-                    .add(jLabel1))
+                    .add(btnBreak))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         toolBar.add(jPanel1);
 
+        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator2.setMinimumSize(new java.awt.Dimension(100, 100));
         toolBar.add(jSeparator2);
@@ -188,8 +193,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(labelTitle)
-                .addContainerGap(666, Short.MAX_VALUE))
-            .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 700, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(668, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
@@ -200,24 +204,20 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
                     .add(labelTitle1))
                 .addContainerGap())
+            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap(49, Short.MAX_VALUE)
-                        .add(labelTitle)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
-                    .add(layout.createSequentialGroup()
-                        .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(27, 27, 27)))
+                .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(labelTitle)
+                .add(0, 0, 0)
                 .add(fieldTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(labelTitle1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pack();

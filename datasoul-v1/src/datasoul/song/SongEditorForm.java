@@ -261,6 +261,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         toolBar.add(btnClose);
 
+        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator1.setMaximumSize(new java.awt.Dimension(100, 100));
         jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
@@ -291,13 +292,13 @@ public class SongEditorForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(1, 1, 1)
                 .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(3, 3, 3)
                 .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(3, 3, 3)
                 .add(btnBreak, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -312,6 +313,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         );
         toolBar.add(jPanel1);
 
+        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         toolBar.add(jSeparator2);
 
