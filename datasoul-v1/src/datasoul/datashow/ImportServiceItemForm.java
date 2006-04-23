@@ -62,15 +62,20 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         tableServiceList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "", "", ""
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tableServiceList.setCellSelectionEnabled(true);
         scroolServiceList.setViewportView(tableServiceList);
 
@@ -117,7 +122,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                         .add(btnImport)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClose))
-                    .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                    .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -199,17 +204,6 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
             setColorRender();
         }
     }//GEN-LAST:event_btnOpenMouseClicked
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ImportServiceItemForm().setVisible(true);
-            }
-        });
-    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;

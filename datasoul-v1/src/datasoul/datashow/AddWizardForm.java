@@ -38,14 +38,12 @@ public class AddWizardForm extends javax.swing.JFrame {
     private void initComponents() {
         btnAddText = new javax.swing.JButton();
         btnAddImages = new javax.swing.JButton();
-        btnAddVideo = new javax.swing.JButton();
         btnImportItem = new javax.swing.JButton();
         btnAddSong = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Wizard");
-        setAlwaysOnTop(true);
         btnAddText.setBackground(new java.awt.Color(255, 255, 255));
         btnAddText.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddText.gif")));
@@ -77,23 +75,6 @@ public class AddWizardForm extends javax.swing.JFrame {
         btnAddImages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImagesActionPerformed(evt);
-            }
-        });
-
-        btnAddVideo.setBackground(new java.awt.Color(255, 255, 255));
-        btnAddVideo.setFont(new java.awt.Font("Arial", 1, 11));
-        btnAddVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddVideo.gif")));
-        btnAddVideo.setText("Add Video");
-        btnAddVideo.setToolTipText("Add a video to service list ...");
-        btnAddVideo.setBorderPainted(false);
-        btnAddVideo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnAddVideo.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnAddVideo.setIconTextGap(14);
-        btnAddVideo.setMaximumSize(new java.awt.Dimension(150, 150));
-        btnAddVideo.setMinimumSize(new java.awt.Dimension(150, 150));
-        btnAddVideo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddVideoActionPerformed(evt);
             }
         });
 
@@ -131,11 +112,9 @@ public class AddWizardForm extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setBackground(new java.awt.Color(255, 255, 255));
         btnClose.setFont(new java.awt.Font("Arial", 1, 11));
         btnClose.setText("Close");
         btnClose.setToolTipText("Close window");
-        btnClose.setBorderPainted(false);
         btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClose.setIconTextGap(14);
         btnClose.setMaximumSize(new java.awt.Dimension(150, 150));
@@ -153,18 +132,15 @@ public class AddWizardForm extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(btnAddImages, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(btnAddSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(btnAddVideo, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                            .add(btnAddText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
-                    .add(layout.createSequentialGroup()
-                        .add(btnImportItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 206, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(btnAddText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
+                            .add(btnImportItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 92, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -177,12 +153,10 @@ public class AddWizardForm extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnAddImages, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnAddVideo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnImportItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(btnImportItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 86, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(19, 19, 19)
+                .add(btnClose, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,10 +177,6 @@ public class AddWizardForm extends javax.swing.JFrame {
         this.dispose();        
     }//GEN-LAST:event_btnImportItemActionPerformed
 
-    private void btnAddVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddVideoActionPerformed
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnAddVideoActionPerformed
-
     private void btnAddImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImagesActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_btnAddImagesActionPerformed
@@ -221,7 +191,6 @@ public class AddWizardForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAddImages;
     private javax.swing.JButton btnAddSong;
     private javax.swing.JButton btnAddText;
-    private javax.swing.JButton btnAddVideo;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnImportItem;
     // End of variables declaration//GEN-END:variables
