@@ -35,6 +35,7 @@ import javax.swing.JComboBox;
 public class TextTemplateItem extends TemplateItem {
     
     private String text;
+    private String formatedString;
     private String fontName;
     private float fontSize;
     private float fontOutline;
@@ -182,7 +183,7 @@ public class TextTemplateItem extends TemplateItem {
 
     public void draw(Graphics2D g) {
         
-         if (text == null || text.length() == 0){
+         if (formatedString == null || formatedString.length() == 0){
              return;
          }
         
@@ -208,12 +209,12 @@ getFullWord: {
              lbm = new LineBreakMeasurer(aci, frc);
              fontReduction += 1f;
              drawPosY = 0;
-             while (lbm.getPosition() < getText().length() ) {
+             while (lbm.getPosition() < formatedString.length() ) {
                  //TextLayout layout = lbm.nextLayout(this.getWidth());
                  
-                 limit = lbm.getPosition() + getText().substring( lbm.getPosition() ).indexOf('\n')+1;
+                 limit = lbm.getPosition() + formatedString.substring( lbm.getPosition() ).indexOf('\n')+1;
                  if (limit <= lbm.getPosition()){
-                     limit = getText().length();
+                     limit = formatedString.length();
                  }
                  TextLayout layout = lbm.nextLayout(this.getWidth(), limit, true);
                  
@@ -227,7 +228,7 @@ getFullWord: {
              }
 }
 
-         }while ( (lbm.getPosition() < getText().length()) || ( drawPosY > this.getHeight() && fontReduction < getFontSize()));
+         }while ( (lbm.getPosition() < formatedString.length()) || ( drawPosY > this.getHeight() && fontReduction < getFontSize()));
         
          // do the paiting
          aci = this.atribStr.getIterator();
@@ -248,11 +249,11 @@ getFullWord: {
              g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
              g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
              g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha()) );
-             while (lbm.getPosition() < getText().length() ) {
+             while (lbm.getPosition() < formatedString.length() ) {
 
-                 limit = lbm.getPosition() + getText().substring( lbm.getPosition() ).indexOf('\n')+1;
+                 limit = lbm.getPosition() + formatedString.substring( lbm.getPosition() ).indexOf('\n')+1;
                  if (limit <= lbm.getPosition()){
-                     limit = getText().length();
+                     limit = formatedString.length();
                  }
                  TextLayout layout = lbm.nextLayout(this.getWidth(), limit, true);
 
@@ -298,9 +299,19 @@ getFullWord: {
         if (text == null || text.length() == 0) {
             return;
         }
+
+        // The string contain something to be displayed in italic?
         
-        
-        atribStr = new AttributedString(text);
+        if (text.contains("[") && text.contains("]")) {
+            int a = text.indexOf("[");
+            int b = text.lastIndexOf("]");
+            formatedString = text.substring(0, a) + text.substring(a+1, b) + text.substring(b+1);
+            atribStr = new AttributedString(formatedString);
+            atribStr.addAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE, a, b-1);
+        }else{
+            formatedString = text;
+            atribStr = new AttributedString(formatedString);
+        }        
         
         
         if (fontName != null){
