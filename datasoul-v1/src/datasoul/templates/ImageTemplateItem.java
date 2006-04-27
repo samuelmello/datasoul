@@ -9,32 +9,17 @@
 
 package datasoul.templates;
 
-import com.sun.image.codec.jpeg.ImageFormatException;
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageDecoder;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import com.sun.imageio.plugins.png.PNGImageReader;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-import java.awt.image.Raster;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.ImageInputStream;
-import javax.swing.ImageIcon;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
+import javax.swing.JComboBox;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 /**
  *
@@ -45,6 +30,22 @@ public class ImageTemplateItem extends TemplateItem {
     BufferedImage img;
     private String imageInStr;
     private String filename;
+    private String stretch;
+    private String alingment;
+    private String vertAlign;
+    
+    private static JComboBox cbStrecth;
+    private static JComboBox cbAlignment;
+    private static JComboBox cbVerticalAlignment;
+    
+    public static final String ALIGN_LEFT = "Left";
+    public static final String ALIGN_CENTER = "Center";
+    public static final String ALIGN_RIGHT = "Right";
+
+    public static final String VALIGN_TOP = "Top";
+    public static final String VALIGN_MIDDLE = "Middle";
+    public static final String VALIGN_BOTTOM = "Bottom";
+    
     
     public ImageTemplateItem() {
         super();
@@ -54,6 +55,35 @@ public class ImageTemplateItem extends TemplateItem {
     public ImageTemplateItem(String filename) {
         super();
         this.loadImage(filename);       
+        
+        this.setStretch("Yes");
+        this.setAlignment(ALIGN_CENTER);
+        this.setVerticalAlignment(VALIGN_MIDDLE);
+        
+        if (cbAlignment == null){
+            cbAlignment = new JComboBox();
+            cbAlignment.addItem(ALIGN_LEFT);
+            cbAlignment.addItem(ALIGN_CENTER);
+            cbAlignment.addItem(ALIGN_RIGHT);
+        }
+        registerEditorComboBox("Alignment", cbAlignment);
+        
+        if (cbVerticalAlignment == null) {
+            cbVerticalAlignment = new JComboBox();
+            cbVerticalAlignment.addItem(VALIGN_TOP);
+            cbVerticalAlignment.addItem(VALIGN_MIDDLE);
+            cbVerticalAlignment.addItem(VALIGN_BOTTOM);
+        }
+        registerEditorComboBox("VerticalAlignment", cbVerticalAlignment);
+
+        if (cbStrecth == null){
+            cbStrecth = new JComboBox();
+            cbStrecth.addItem("Yes");
+            cbStrecth.addItem("No");
+        }
+        registerEditorComboBox("Stretch", cbStrecth);
+        
+        
     }
 
     private void loadImage(String filename){
@@ -74,15 +104,54 @@ public class ImageTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
+        properties.add("Alignment");
+        properties.add("VerticalAlignment");
+        properties.add("Stretch");
     }
     
     @Override
     public void draw(Graphics2D g) {
         
+        int x, y, w, h;
         Composite oldComp = g.getComposite();
         try{
             g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha()) );
-            g.drawImage(img, this.getLeft(), this.getTop(), this.getWidth(), this.getHeight(), null );
+            
+            if (stretch.equals("Yes")){
+                x = this.getLeft();
+                y = this.getTop();
+                w = this.getWidth();
+                h = this.getHeight();
+            }else{
+                float ratio_w = (float) this.getWidth() / (float) img.getWidth();
+                float ratio_h = (float) this.getHeight() / (float) img.getHeight();
+                if (ratio_w < ratio_h){
+                    w = (int) (img.getWidth() * ratio_w);
+                    h = (int) (img.getHeight() * ratio_w);
+                }else{
+                    w = (int) (img.getWidth() * ratio_h);
+                    h = (int) (img.getHeight() * ratio_h);
+                }
+                
+                if (alingment.equals(ALIGN_LEFT)){
+                    x = this.getLeft();
+                }else if (alingment.equals(ALIGN_RIGHT)){
+                    x = this.getLeft() + ( this.getWidth() - w);
+                }else{
+                    x = this.getLeft() + ( this.getWidth() - w) / 2;
+                }
+                
+                if (vertAlign.equals(VALIGN_TOP)){
+                    y = this.getTop();
+                }else if (vertAlign.equals(VALIGN_BOTTOM)){
+                    y = this.getTop() + ( this.getHeight() - h );
+                }else{
+                    y = this.getTop() + ( this.getHeight() - h ) / 2;
+                }
+
+            }
+            
+            g.drawImage(img, x, y, w, h, null );
         }finally{
             g.setComposite(oldComp);
         }
@@ -157,5 +226,40 @@ public class ImageTemplateItem extends TemplateItem {
         
         return;
      }
+     
+     public String getStretch (){
+         return stretch;
+     }
+     
+     public void setStretch(String stretch){
+         this.stretch = stretch;
+         firePropChanged("Stretch");
+     }
+
+    public String getAlignment(){
+        return this.alingment;
+    }
     
+    public void setAlignment(String alignment){
+        if ( alignment.equals(ALIGN_LEFT) || alignment.equals(ALIGN_CENTER) || alignment.equals(ALIGN_RIGHT)){
+            this.alingment = alignment;
+            firePropChanged("Alignment");
+        }else{
+            System.out.println("Align: "+alignment);
+        }
+    }
+    
+    public String getVerticalAlignment(){
+        return this.vertAlign;
+    }
+    
+    public void setVerticalAlignment(String vertAlign){
+        if ( vertAlign.equals(VALIGN_TOP) || vertAlign.equals(VALIGN_MIDDLE) || vertAlign.equals(VALIGN_BOTTOM)){
+            this.vertAlign = vertAlign;
+            firePropChanged("VerticalAlignment");
+        }
+    }
+
+     
+     
 }
