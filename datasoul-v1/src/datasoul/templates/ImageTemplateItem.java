@@ -49,17 +49,9 @@ public class ImageTemplateItem extends TemplateItem {
     
     public ImageTemplateItem() {
         super();
-    }
-    
-    /** Creates a new instance of ImageTemplateItem */
-    public ImageTemplateItem(String filename) {
-        super();
-        this.loadImage(filename);       
-        
         this.setStretch("Yes");
         this.setAlignment(ALIGN_CENTER);
         this.setVerticalAlignment(VALIGN_MIDDLE);
-        
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
             cbAlignment.addItem(ALIGN_LEFT);
@@ -82,8 +74,12 @@ public class ImageTemplateItem extends TemplateItem {
             cbStrecth.addItem("No");
         }
         registerEditorComboBox("Stretch", cbStrecth);
-        
-        
+    }
+    
+    /** Creates a new instance of ImageTemplateItem */
+    public ImageTemplateItem(String filename) {
+        this();
+        this.loadImage(filename);       
     }
 
     private void loadImage(String filename){
@@ -107,6 +103,7 @@ public class ImageTemplateItem extends TemplateItem {
         properties.add("Alignment");
         properties.add("VerticalAlignment");
         properties.add("Stretch");
+
     }
     
     @Override
