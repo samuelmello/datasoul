@@ -9,7 +9,6 @@
 
 package datasoul.templates;
 
-import datasoul.render.Paintable;
 import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.io.File;
@@ -27,7 +26,7 @@ import org.w3c.dom.NodeList;
  *
  * @author samuelm
  */
-public class DisplayTemplate extends AttributedObject implements Paintable {
+public class DisplayTemplate extends AttributedObject {
     
     ArrayList<TemplateItem> items;
     
@@ -148,10 +147,18 @@ public class DisplayTemplate extends AttributedObject implements Paintable {
         items.remove(t);
     }
     
-    public void paint(Graphics2D g){
+    /**
+     * Paint the template in the given Graphics2D g.
+     * The 'time' parameter is used for transiction effects. The value range
+     * is 0 to 1, where 0 is hidden and 1 is shown.
+     * 
+     * @param g The graphic to paint to
+     * @param time valid values are between 0 (hidden) and 1 (shown). 
+     */
+    public synchronized void paint(Graphics2D g, float time){
         
         for (TemplateItem t : items){
-            t.draw( g );
+            t.draw( g, time );
         }
         
     }

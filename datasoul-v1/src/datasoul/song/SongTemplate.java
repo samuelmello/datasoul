@@ -290,7 +290,7 @@ public class SongTemplate extends TemplateItem{
         this.setLyricsFontSize(Integer.parseInt(fontSize));
     }
     
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, float time) {
     }
 
     private Color stringToColor(String strColor){

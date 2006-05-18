@@ -181,7 +181,8 @@ public class TextTemplateItem extends TemplateItem {
         
     }
 
-    public void draw(Graphics2D g) {
+    @Override
+    public void draw(Graphics2D g, float time) {
         
          if (formatedString == null || formatedString.length() == 0){
              return;
@@ -248,7 +249,7 @@ getFullWord: {
              g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
              g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
              g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-             g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha()) );
+             g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha() * time ) );
              while (lbm.getPosition() < formatedString.length() ) {
 
                  limit = lbm.getPosition() + formatedString.substring( lbm.getPosition() ).indexOf('\n')+1;
@@ -374,7 +375,11 @@ getFullWord: {
     }
 
     public void setText(String text) {
-        this.text = text;
+        if (text.equals("")){
+            this.text = " ";
+        }else{
+            this.text = text;
+        }
         updateAttributes();
         firePropChanged("Text");
     }

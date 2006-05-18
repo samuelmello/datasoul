@@ -9,7 +9,6 @@ package datasoul.datashow;
 import datasoul.ConfigObj;
 import datasoul.datashow.Alert;
 import datasoul.render.ContentManager;
-import datasoul.render.DisplayItf;
 import datasoul.render.DisplayManager;
 import java.awt.Dimension;
 import java.io.IOException;
@@ -566,7 +565,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         
         if (templateMonitor.getSelectedItem() != null){
             ContentManager.getInstance().setTemplateMonitorLive( templateMonitor.getSelectedItem().toString() );
-            ContentManager.getInstance().updateLive();
+            ContentManager.getInstance().slideChange(0);
         }
         
     }//GEN-LAST:event_templateMonitorActionPerformed
@@ -714,9 +713,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
             if( btnClear.isSelected() ){
-                DisplayManager.getMainDisplay().clear( DisplayItf.CLEAR_MODE_ON );
+                DisplayManager.getMainDisplay().setClear( 1 );
             }else{
-                DisplayManager.getMainDisplay().clear( DisplayItf.CLEAR_MODE_OFF );
+                DisplayManager.getMainDisplay().setClear( 0 );
             }
         }
         
@@ -727,9 +726,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
            if( btnBlack.isSelected() ){
-               DisplayManager.getMainDisplay().black( DisplayItf.BLACK_MODE_ON );
+               DisplayManager.getMainDisplay().setBlack( 1 );
            }else{
-               DisplayManager.getMainDisplay().black( DisplayItf.BLACK_MODE_OFF );
+               DisplayManager.getMainDisplay().setBlack( 0 );
            }
         }
     }//GEN-LAST:event_btnBlackActionPerformed

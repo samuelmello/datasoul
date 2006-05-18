@@ -9,8 +9,8 @@
 
 package datasoul;
 
-import datasoul.render.DisplayItf;
 import datasoul.render.DisplayManager;
+import datasoul.render.SDLContentRender;
 import datasoul.util.SerializableObject;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,7 +49,7 @@ public class ConfigObj extends SerializableObject {
     private String videoDebugMode;
     private String mainDisplayEngine;
     private String monitorDisplayEngine;
-    
+    private int slideTransitionTime;
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -136,6 +136,7 @@ public class ConfigObj extends SerializableObject {
         properties.add("VideoDeintrelace");
         properties.add("ClockMode");        
         properties.add("VideoDebugMode");
+        properties.add("SlideTransitionTime");
     }
     
     public ArrayList<String> getProperties(){
@@ -254,7 +255,9 @@ public class ConfigObj extends SerializableObject {
             }else if (videoInput.equals("Composite")){
                 index = 1;
             }
-            DisplayManager.getMainDisplay().setInputSrc(index);
+            if ( DisplayManager.getMainDisplay() instanceof SDLContentRender ){
+                ((SDLContentRender)DisplayManager.getMainDisplay()).setInputSrc(index);
+            }
         }
         
         
@@ -276,7 +279,9 @@ public class ConfigObj extends SerializableObject {
             }else if (videoMode.equals("SECAM")){
                 index = 2;
             }
-            DisplayManager.getMainDisplay().setInputMode(index);
+            if ( DisplayManager.getMainDisplay() instanceof SDLContentRender ){
+                ((SDLContentRender)DisplayManager.getMainDisplay()).setInputMode(index);
+            }
         }
         
     }
@@ -298,7 +303,9 @@ public class ConfigObj extends SerializableObject {
             }else if (videoDeintrelace.equals("Smooth Blend")){
                 index = 3;
             }
-            DisplayManager.getMainDisplay().setDeintrelaceMode( index );
+            if ( DisplayManager.getMainDisplay() instanceof SDLContentRender ){
+                ((SDLContentRender)DisplayManager.getMainDisplay()).setDeintrelaceMode( index );
+            }
         }        
         
     }
@@ -319,9 +326,9 @@ public class ConfigObj extends SerializableObject {
         this.videoDebugMode = videoDebugMode;
         if (this.getMainOutput().equals("TRUE")){
             if (videoDebugMode.equalsIgnoreCase("Yes")){
-                DisplayManager.getMainDisplay().setDebugMode( DisplayItf.DEBUG_MODE_ON );
+                DisplayManager.getMainDisplay().setDebugMode( 1 );
             }else{
-                DisplayManager.getMainDisplay().setDebugMode( DisplayItf.DEBUG_MODE_OFF );
+                DisplayManager.getMainDisplay().setDebugMode( 0 );
             }
         }
     }
@@ -342,5 +349,23 @@ public class ConfigObj extends SerializableObject {
     public void setMonitorDisplayEngine(String engine){
         this.monitorDisplayEngine = engine;
         DisplayManager.setMonitorDisplayEngine(engine);
+    }
+
+    public int getSlideTransitionTime() {
+        return slideTransitionTime;
+    }
+
+    public void setSlideTransitionTime(String slideTransitionTime) {
+        int x = -1;
+        try{
+            x = Integer.parseInt(slideTransitionTime);
+        }catch(Exception e){
+            // do nothing
+        }
+        if (x >= 0){
+            this.slideTransitionTime = x;
+        }else{
+            this.slideTransitionTime = 0;
+        }
     }
 }

@@ -47,6 +47,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         registerComponent(monitorOutputSizeWidth,"MonitorOutputSizeWidth");
         registerComponent(templateMonitor,"TemplateMonitor");
         registerComponent(templateText,"TemplateText");
+        registerComponent(slideTransitionTime,"SlideTransitionTime");
         
         registerComponent(videoInput,"VideoInput");
         videoInput.removeAllItems();
@@ -81,13 +82,13 @@ public class ConfigPanel extends javax.swing.JPanel {
         
         registerComponent( mainDisplayEngine, "MainDisplayEngine" );
         mainDisplayEngine.removeAllItems();
-        mainDisplayEngine.addItem("SDLDisplay");
-        mainDisplayEngine.addItem("SwingDisplay");
+        mainDisplayEngine.addItem("SDLContentRender");
+        mainDisplayEngine.addItem("SwingContentRender");
 
         registerComponent( monitorDisplayEngine, "MonitorDisplayEngine" );
         monitorDisplayEngine.removeAllItems();
-        monitorDisplayEngine.addItem("SDLDisplay");
-        monitorDisplayEngine.addItem("SwingDisplay");
+        monitorDisplayEngine.addItem("SDLContentRender");
+        monitorDisplayEngine.addItem("SwingContentRender");
         
     }
     
@@ -127,7 +128,8 @@ public class ConfigPanel extends javax.swing.JPanel {
     private void refreshScreenValues(){
         for(Component component:components){
             try {
-                setComponentValue((String)configObj.getClass().getMethod("get"+component.getName()).invoke(configObj),component);            
+                Object o = configObj.getClass().getMethod("get"+component.getName()).invoke(configObj);
+                setComponentValue( o.toString(), component);            
             } catch (Exception ex) {
                 ex.printStackTrace();
             }            
@@ -196,6 +198,9 @@ public class ConfigPanel extends javax.swing.JPanel {
         mainDisplayEngine = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         monitorDisplayEngine = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
+        slideTransitionTime = new javax.swing.JTextField();
+        jLabel21 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
         btnApply = new javax.swing.JButton();
 
@@ -354,9 +359,9 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Teste1", "monitor", "Template1", "BigClock" }));
+        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "Musicas40Dias", "Template1" }));
 
-        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Teste1", "monitor", "Template1", "BigClock" }));
+        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "Musicas40Dias", "Template1" }));
 
         jLabel10.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel10.setText("Main output engine:");
@@ -368,6 +373,12 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         monitorDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel20.setText("Slide Transition Time:");
+
+        slideTransitionTime.setText("jTextField1");
+
+        jLabel21.setText("ms");
+
         org.jdesktop.layout.GroupLayout panelGeneralLayout = new org.jdesktop.layout.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
         panelGeneralLayout.setHorizontalGroup(
@@ -375,10 +386,6 @@ public class ConfigPanel extends javax.swing.JPanel {
             .add(panelGeneralLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(panelGeneralLayout.createSequentialGroup()
-                        .add(jLabel9)
-                        .add(98, 98, 98)
-                        .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel5)
                     .add(panelGeneralLayout.createSequentialGroup()
                         .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -390,25 +397,38 @@ public class ConfigPanel extends javax.swing.JPanel {
                             .add(jLabel11)
                             .add(jLabel10)
                             .add(jLabel2)
-                            .add(jLabel1))
+                            .add(jLabel1)
+                            .add(jLabel9)
+                            .add(jLabel20))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(monitorDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(monitorOutput)
                             .add(mainDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(mainOutput)
+                            .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(panelGeneralLayout.createSequentialGroup()
-                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .add(mainOutputPositionLeft, 0, 0, Short.MAX_VALUE))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel16)
-                                    .add(jLabel12)
-                                    .add(jLabel18)
-                                    .add(jLabel14))
-                                .add(37, 37, 37)
+                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, panelGeneralLayout.createSequentialGroup()
+                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                            .add(slideTransitionTime)
+                                            .add(org.jdesktop.layout.GroupLayout.LEADING, clockMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .add(org.jdesktop.layout.GroupLayout.LEADING, templateText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(jLabel21))
+                                    .add(org.jdesktop.layout.GroupLayout.LEADING, panelGeneralLayout.createSequentialGroup()
+                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                            .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                            .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                            .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                            .add(mainOutputPositionLeft, 0, 0, Short.MAX_VALUE))
+                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                            .add(jLabel16)
+                                            .add(jLabel12)
+                                            .add(jLabel14)
+                                            .add(jLabel18))))
+                                .add(53, 53, 53)
                                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(panelGeneralLayout.createSequentialGroup()
                                         .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -423,11 +443,8 @@ public class ConfigPanel extends javax.swing.JPanel {
                                         .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                             .add(jLabel15)
                                             .add(jLabel17)
-                                            .add(jLabel19)))))
-                            .add(mainOutput)
-                            .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(templateText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(206, Short.MAX_VALUE))
+                                            .add(jLabel19))))))))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         panelGeneralLayout.setVerticalGroup(
             panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -489,7 +506,12 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
                     .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(55, 55, 55))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel20)
+                    .add(slideTransitionTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel21))
+                .add(13, 13, 13))
         );
         tabConfig.addTab("General", panelGeneral);
 
@@ -585,6 +607,8 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -606,6 +630,7 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JTextField monitorOutputSizeWidth;
     private javax.swing.JPanel panelGeneral;
     private javax.swing.JPanel panelVideo;
+    private javax.swing.JTextField slideTransitionTime;
     private javax.swing.JTabbedPane tabConfig;
     private datasoul.templates.TemplateComboBox templateMonitor;
     private datasoul.templates.TemplateComboBox templateText;

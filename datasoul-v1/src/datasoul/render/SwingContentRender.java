@@ -10,6 +10,7 @@
 package datasoul.render;
 
 import datasoul.templates.DisplayTemplate;
+import java.awt.image.BufferedImage;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -18,19 +19,23 @@ import java.util.concurrent.Semaphore;
  */
 public class SwingContentRender extends ContentRender {
     
-    private SwingDisplayPanel display;
+    private SwingDisplay display;
     private DisplayTemplate updateTemplate;
     
     /** Creates a new instance of SwingContentRender */
-    public SwingContentRender(SwingDisplayPanel display) {
+    public SwingContentRender() {
         super();
-        this.display = display;
+        display = new SwingDisplay();
     }
 
-    public void paint(DisplayTemplate d) {
-        display.updateImg(d);
+    public void paint(DisplayTemplate d, float time) {
+        display.paint(d, time);
     }
 
+    public void paint(BufferedImage img, float alpha){
+        display.paint(img, alpha);
+    }
+    
     public void clear() {
         display.clear();
     }
@@ -38,6 +43,32 @@ public class SwingContentRender extends ContentRender {
     public void flip() {
         display.flip();
     }
+
+    public void setDebugMode(int i) {
+        display.setDebugMode(i);
+    }
+
+    public void setBackgroundMode(int i) {
+        display.setBackgroundMode(i);
+    }
+
+    public void paintBackground(BufferedImage bufferedImage) {
+        display.paintBackground(bufferedImage);
+    }
+
+    public void setClear(int i) {
+        display.setClear(i);
+    }
+
+    public void setBlack(int i) {
+        display.setBlack(i);
+    }
+
+    public void initDisplay(int width, int height, int top, int left) {
+        super.initDisplay(width, height, top, left);
+        display.initDisplay(width, height, top, left);
+    }
+
     
 
     

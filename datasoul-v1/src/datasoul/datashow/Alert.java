@@ -68,15 +68,15 @@ public class Alert extends Thread {
         // show
         ContentManager cm = ContentManager.getInstance();
         if (showOnMain && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().getContentRender().setAlertTemplate(getMainTemplate());
-            DisplayManager.getMainDisplay().getContentRender().setAlertActive(true);
+            DisplayManager.getMainDisplay().setAlertTemplate(getMainTemplate());
+            DisplayManager.getMainDisplay().setAlertActive(true);
         }
         if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
-            DisplayManager.getMonitorDisplay().getContentRender().setAlertTemplate(getMonitorTemplate());
-            DisplayManager.getMonitorDisplay().getContentRender().setAlertActive(true);
+            DisplayManager.getMonitorDisplay().setAlertTemplate(getMonitorTemplate());
+            DisplayManager.getMonitorDisplay().setAlertActive(true);
         }
         cm.setAlertText(text);
-        cm.updateLive();
+        cm.alertShow(2000);
         
         
         // wait
@@ -88,12 +88,12 @@ public class Alert extends Thread {
 
         // hide
         if (showOnMain && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().getContentRender().setAlertActive(false);
+            DisplayManager.getMainDisplay().setAlertActive(false);
         }
         if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
-            DisplayManager.getMonitorDisplay().getContentRender().setAlertActive(false);
+            DisplayManager.getMonitorDisplay().setAlertActive(false);
         }
-        cm.updateLive();
+        cm.alertHide(2000);
         
         
     }

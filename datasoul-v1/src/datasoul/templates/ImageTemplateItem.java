@@ -107,12 +107,12 @@ public class ImageTemplateItem extends TemplateItem {
     }
     
     @Override
-    public void draw(Graphics2D g) {
+    public void draw(Graphics2D g, float time) {
         
         int x, y, w, h;
         Composite oldComp = g.getComposite();
         try{
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha()) );
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha() * time ) );
             
             if (stretch.equals("Yes")){
                 x = this.getLeft();

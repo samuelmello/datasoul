@@ -56,7 +56,7 @@ public abstract class TemplateItem extends AttributedObject {
         
     }
     
-    public abstract void draw(Graphics2D g);
+    public abstract void draw(Graphics2D g, float time);
 
     public int getTop() {
         return top;

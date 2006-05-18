@@ -6,6 +6,7 @@
 
 package datasoul.render;
 
+import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
@@ -17,18 +18,16 @@ import java.awt.image.BufferedImage;
  *
  * @author  root
  */
-public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf {
+public class SwingDisplayPanel extends javax.swing.JPanel {
     
     private BufferedImage img;
     private BufferedImage bgImg;
-    private SwingContentRender contentRender;
     private boolean isClear;
     private boolean isBlack;
 
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {
         initComponents();
-        contentRender = new SwingContentRender(this);
     }
     
 
@@ -53,61 +52,51 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public void paint (Graphics g){
+    public synchronized void paint (Graphics g){
+
         super.paint (g);
         
-        if (img != null && bgImg != null){
-            if (isBlack){
-                g.setColor(Color.BLACK);
-                g.fillRect(0, 0, this.getWidth(), this.getHeight());
-            }else{
-                g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
-                if (!isClear){
-                    g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+        synchronized(img){
+
+            if (img != null && bgImg != null){
+                if (isBlack){
+                    g.setColor(Color.BLACK);
+                    g.fillRect(0, 0, this.getWidth(), this.getHeight());
+                }else{
+                    g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
+                    if (!isClear){
+                        g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+                    }
                 }
+            }else{
+                System.out.println("Is null!");
             }
-        }else{
-            System.out.println("Is null!");
         }
     }
     
-    public void clear(){
+    public synchronized void clear(){
 
-        Graphics2D g = img.createGraphics();
-        
-        // Clear it first
-        Composite oldComp = g.getComposite();
-        try{
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, img.getWidth(), img.getHeight());
-        }finally{
-            g.setComposite(oldComp);
+        synchronized(img){
+            Graphics2D g = img.createGraphics();
+
+            // Clear it first
+            Composite oldComp = g.getComposite();
+            try{
+                g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+                g.fillRect(0, 0, img.getWidth(), img.getHeight());
+            }finally{
+                g.setComposite(oldComp);
+            }
         }
-        
     }
     
-    public synchronized void updateImg(Paintable p){
-
-        if (img == null)
-            return;
-        
-        Graphics2D g = img.createGraphics();
-        
-        // paint it
-        p.paint(g);
-        
-    }
-    
-    public void flip(){
+    public synchronized void flip(){
         // update the screen
-        this.repaint();
+        synchronized(img){
+            this.repaint();
+        }
         
     }
-    
-    public SwingContentRender getContentRender(){
-        return contentRender;
-    }
-    
     
     
     public void initDisplay(int width, int height, int top, int left){
@@ -124,35 +113,21 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    public void setInputSrc(int src) {
-    }
 
-    public void setInputMode(int mode) {
-    }
-
-    public void setDeintrelaceMode(int mode) {
-    }
-
-    public void setDebugMode(int mode) {
-    }
-
-    public void setBackgroundMode(int mode) {
-    }
-
-    public void clear(int mode) {
-        if (mode == DisplayItf.CLEAR_MODE_ON){
-            isClear = true;
-        }else{
+    public void setClear(int mode) {
+        if (mode == 0){
             isClear = false;
+        }else{
+            isClear = true;
         }
         this.repaint();
     }
 
-    public void black(int mode) {
-        if (mode == DisplayItf.BLACK_MODE_ON){
-            isBlack = true;
-        }else{
+    public void setBlack(int mode) {
+        if (mode == 0){
             isBlack = false;
+        }else{
+            isBlack = true;
         }
         this.repaint();
     }
@@ -161,6 +136,36 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements DisplayItf 
         Graphics2D g = bgImg.createGraphics();
         g.drawImage(newimg, 0, 0, this.getWidth(), this.getHeight(), null);
         this.repaint();
+    }
+
+    synchronized void  paint(DisplayTemplate d, float time) {
+        
+        if (img == null)
+            return;
+
+        synchronized(img){
+
+            Graphics2D g = img.createGraphics();
+
+            // paint it
+            d.paint(g, time);
+        }
+    }
+    
+    synchronized void paint(BufferedImage img, float alpha){
+        synchronized(this.img){
+            Graphics2D g = this.img.createGraphics();
+            Composite oldComp = g.getComposite();
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha) );
+            g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
+            g.setComposite(oldComp);
+        }
+    }
+
+    void setDebugMode(int mode) {
+    }
+
+    void setBackgroundMode(int mode) {
     }
 
     

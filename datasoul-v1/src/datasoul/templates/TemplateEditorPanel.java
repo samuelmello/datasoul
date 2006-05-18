@@ -53,8 +53,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         
         if (template != null){
             synchronized(template){
-                template.cleanUp();
-                template.paint(g2);
+                template.paint(g2, 1);
             }
         }
         

@@ -30,11 +30,11 @@ public class ContentManager {
         liveRenderList = new ArrayList<ContentRender>();
 
         if ( ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
-            liveRenderList.add( DisplayManager.getMonitorDisplay().getContentRender() );
+            liveRenderList.add( DisplayManager.getMonitorDisplay() );
         }
         
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            liveRenderList.add( DisplayManager.getMainDisplay().getContentRender() );
+            liveRenderList.add( DisplayManager.getMainDisplay() );
         }
     }
     
@@ -48,6 +48,12 @@ public class ContentManager {
     public void setTitleLive(String title){
         for (ContentRender r : liveRenderList){
             r.setTitle(title);
+        }
+    }
+    
+    public void saveTransitionImage(){
+        for (ContentRender r : liveRenderList){
+            r.saveTransitionImage();
         }
     }
     
@@ -91,12 +97,37 @@ public class ContentManager {
         }
     }
     
-    
-    public void updateLive(){
+    public void slideShow (int transictionTime){
         for (ContentRender r : liveRenderList){
-            r.update();
+            r.slideShow(transictionTime);
         }
     }
+    
+    public void slideChange (int transictionTime){
+        for (ContentRender r : liveRenderList){
+            r.slideChange(transictionTime);
+        }
+    }
+    
+    public void slideHide (int transictionTime){
+        for (ContentRender r : liveRenderList){
+            r.slideHide(transictionTime);
+        }
+    }
+
+    public void alertShow (int transictionTime){
+        for (ContentRender r : liveRenderList){
+            r.alertShow(transictionTime);
+        }
+    }
+    
+    public void alertHide (int transictionTime){
+        for (ContentRender r : liveRenderList){
+            r.alertHide(transictionTime);
+        }
+    }
+
+        
 
     public void setTitlePreview(String title){
         for (ContentRender r : previewRenderList){
@@ -136,7 +167,7 @@ public class ContentManager {
     
     public void updatePreview(){
         for (ContentRender r : previewRenderList){
-            r.update();
+            r.slideShow(0);
         }
     }
 
@@ -157,4 +188,6 @@ public class ContentManager {
     public void registerPreviewPanel(ContentRender r){
         previewRenderList.add(r);
     }
+    
+    
 }

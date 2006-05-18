@@ -6,6 +6,7 @@
 
 package datasoul.render;
 
+import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
@@ -17,7 +18,7 @@ import java.awt.image.BufferedImage;
  *
  * @author  root
  */
-public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
+public class SwingDisplay extends javax.swing.JFrame {
     
 
     /**
@@ -74,22 +75,6 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         this.setVisible(true);
     }
 
-    public ContentRender getContentRender() {
-        return swingDisplayPanel1.getContentRender();
-    }
-
-    public void setInputSrc(int src) {
-        swingDisplayPanel1.setInputSrc(src);
-    }
-
-    public void setInputMode(int mode) {
-        swingDisplayPanel1.setInputMode(mode);
-    }
-
-    public void setDeintrelaceMode(int mode) {
-        swingDisplayPanel1.setDeintrelaceMode(mode);
-    }
-
     public void setDebugMode(int mode) {
         swingDisplayPanel1.setDebugMode(mode);
     }
@@ -98,18 +83,34 @@ public class SwingDisplay extends javax.swing.JFrame implements DisplayItf {
         swingDisplayPanel1.setBackgroundMode(mode);
     }
 
-    public void clear(int mode) {
-        swingDisplayPanel1.clear(mode);
+    public void setClear(int mode) {
+        swingDisplayPanel1.setClear(mode);
     }
 
-    public void black(int mode) {
-        swingDisplayPanel1.black(mode);
+    public void setBlack(int mode) {
+        swingDisplayPanel1.setBlack(mode);
     }
 
     public void paintBackground(BufferedImage img) {
         swingDisplayPanel1.paintBackground(img);
     }
 
+    void flip() {
+        swingDisplayPanel1.flip();
+    }
+
+    void clear(){
+        swingDisplayPanel1.clear();
+    }
+
+    void paint(DisplayTemplate d, float time) {
+        swingDisplayPanel1.paint(d, time);
+    }
+
+    void paint(BufferedImage img, float alpha) {
+        swingDisplayPanel1.paint(img, alpha);
+    }
+            
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.render.SwingDisplayPanel swingDisplayPanel1;
     // End of variables declaration//GEN-END:variables

@@ -17,19 +17,19 @@ import datasoul.ConfigObj;
  */
 public class DisplayManager {
     
-    static private DisplayItf mainDisplay;
-    static private DisplayItf monitorDisplay;
+    static private ContentRender mainDisplay;
+    static private ContentRender monitorDisplay;
     static private String mainDisplayEngine = "SwingDisplay";
     static private String monitorDisplayEngine = "SwingDisplay";
     
-    static public DisplayItf getMainDisplay(){
+    static public ContentRender getMainDisplay(){
 
         if (mainDisplay == null ){
             try{
-                mainDisplay = (DisplayItf) Class.forName( "datasoul.render." + mainDisplayEngine ).newInstance();
+                mainDisplay = (ContentRender) Class.forName( "datasoul.render." + mainDisplayEngine ).newInstance();
             }catch(Exception e){
                 e.printStackTrace();
-                mainDisplay = new SwingDisplay();
+                mainDisplay = new SwingContentRender();
             }
             
             int width, height, top, left;
@@ -59,15 +59,15 @@ public class DisplayManager {
         return mainDisplay;
     }
     
-    static public DisplayItf getMonitorDisplay(){
+    static public ContentRender getMonitorDisplay(){
         
         if (monitorDisplay == null  ){
 
             try{
-                monitorDisplay = (DisplayItf) Class.forName( "datasoul.render." + monitorDisplayEngine ).newInstance();
+                monitorDisplay = (ContentRender) Class.forName( "datasoul.render." + monitorDisplayEngine ).newInstance();
             }catch(Exception e){
                 e.printStackTrace();
-                monitorDisplay = new SwingDisplay();
+                monitorDisplay = new SwingContentRender();
             }
             
             int width, height, top, left;
@@ -92,8 +92,8 @@ public class DisplayManager {
                 left = 0;
             }
 
-            monitorDisplay.getContentRender().setMonitor(true);
-            monitorDisplay.getContentRender().setTemplate("monitor");
+            monitorDisplay.setMonitor(true);
+            monitorDisplay.setTemplate("monitor");
             monitorDisplay.initDisplay(width, height, top, left);
         }
         return monitorDisplay;

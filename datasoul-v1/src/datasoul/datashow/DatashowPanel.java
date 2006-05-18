@@ -8,6 +8,7 @@ package datasoul.datashow;
 
 import datasoul.*;
 import datasoul.render.ContentManager;
+import datasoul.render.SwingPanelContentRender;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
@@ -47,7 +48,8 @@ public class DatashowPanel extends javax.swing.JPanel {
         
         previewDisplayPanel1.initDisplay( width, height, 0, 0 );
         
-        ContentManager.getInstance().registerPreviewPanel( previewDisplayPanel1.getContentRender() );
+        ContentManager.getInstance().registerPreviewPanel( new SwingPanelContentRender(previewDisplayPanel1) );
+        
     }
 public AuxiliarPanel getAuxiliarPanel(){
     return auxiliar;

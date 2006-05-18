@@ -1,4 +1,5 @@
 package datasoul.datashow;
+import datasoul.ConfigObj;
 import datasoul.render.ContentManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -37,7 +38,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.setTitleLive(serviceItem.getTitle());
         cm.setSlideLive("");
         cm.setNextSlideLive("");
-        cm.updateLive();
+        cm.slideShow( 1000 );
     }
     
     /** This method is called from within the constructor to
@@ -112,9 +113,10 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     public void valueChanged(ListSelectionEvent e) {
 
         ContentManager cm = ContentManager.getInstance();
+        cm.saveTransitionImage();
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
-        cm.updateLive();
+        cm.slideChange(ConfigObj.getInstance().getSlideTransitionTime());
         
     }
     

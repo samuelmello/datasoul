@@ -148,7 +148,7 @@ public class TimerManager extends Thread {
             }
             
             // ok, changes done
-            cm.updateLive();
+            //cm.slideChange(-1);
         
             // go sleep!
             t2 = System.currentTimeMillis();
