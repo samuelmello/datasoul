@@ -78,8 +78,8 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" alignment="1" pref="201" max="32767" attributes="0"/>
-                          <Component id="jToolBar1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" pref="245" max="32767" attributes="0"/>
+                          <Component id="jToolBar1" alignment="0" pref="245" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -318,18 +318,19 @@
                                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                                  <EmptySpace pref="54" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="btnAddText" alignment="0" pref="103" max="32767" attributes="2"/>
-                              <Component id="btnAddImage" alignment="0" pref="103" max="32767" attributes="2"/>
-                              <Component id="btnSave" alignment="0" pref="103" max="32767" attributes="2"/>
+                              <Component id="btnAddText" alignment="0" pref="112" max="32767" attributes="2"/>
+                              <Component id="btnAddImage" alignment="0" pref="112" max="32767" attributes="2"/>
+                              <Component id="btnSave" alignment="0" pref="112" max="32767" attributes="2"/>
+                              <Component id="btnTimerProgress" alignment="0" pref="112" max="32767" attributes="0"/>
+                              <Component id="btnDeleteItem" alignment="0" pref="112" max="32767" attributes="2"/>
+                              <Component id="btnMoveDown" alignment="0" pref="112" max="32767" attributes="2"/>
+                              <Component id="btnMoveUp" alignment="0" pref="112" max="32767" attributes="2"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
-                              <Component id="btnMoveUp" alignment="0" pref="103" max="32767" attributes="2"/>
-                              <Component id="btnMoveDown" alignment="0" pref="103" max="32767" attributes="2"/>
-                              <Component id="btnDeleteItem" alignment="0" pref="103" max="32767" attributes="2"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
@@ -344,7 +345,9 @@
                                   <Component id="btnAddText" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnAddImage" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnTimerProgress" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnMoveUp" min="-2" max="-2" attributes="0"/>
@@ -352,7 +355,7 @@
                                   <Component id="btnMoveDown" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="btnDeleteItem" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="210" max="32767" attributes="0"/>
+                                  <EmptySpace pref="180" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -453,6 +456,14 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Selected Item"/>
                           </Properties>
+                        </Component>
+                        <Component class="javax.swing.JButton" name="btnTimerProgress">
+                          <Properties>
+                            <Property name="text" type="java.lang.String" value="Timer Bar"/>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTimerProgressActionPerformed"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>

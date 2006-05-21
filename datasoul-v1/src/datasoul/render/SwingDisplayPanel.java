@@ -55,10 +55,10 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     public synchronized void paint (Graphics g){
 
         super.paint (g);
-        
-        synchronized(img){
 
-            if (img != null && bgImg != null){
+        
+        if (img != null && bgImg != null){
+            synchronized(img){
                 if (isBlack){
                     g.setColor(Color.BLACK);
                     g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -68,9 +68,9 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
                         g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
                     }
                 }
-            }else{
-                System.out.println("Is null!");
             }
+        }else{
+            System.out.println("Is null!");
         }
     }
     

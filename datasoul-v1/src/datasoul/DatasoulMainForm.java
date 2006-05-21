@@ -202,7 +202,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnConfig.setFont(new java.awt.Font("Arial", 1, 11));
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/config.gif")));
-        btnConfig.setText("Config");
+        btnConfig.setText("Configuration");
         btnConfig.setToolTipText("Configuration view");
         btnConfig.setMaximumSize(new java.awt.Dimension(88, 44));
         btnConfig.setMinimumSize(new java.awt.Dimension(88, 44));

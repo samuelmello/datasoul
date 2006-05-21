@@ -188,6 +188,17 @@ public class ContentManager {
     public void registerPreviewPanel(ContentRender r){
         previewRenderList.add(r);
     }
+
+    public void setTimerProgress(float f){
+        for (ContentRender r : liveRenderList){
+            r.setTimerProgress(f);
+        }
+    }
     
+    public void setShowTimer(boolean b){
+        for (ContentRender r : liveRenderList){
+            r.setShowTimer(b);
+        }
+    }
     
 }

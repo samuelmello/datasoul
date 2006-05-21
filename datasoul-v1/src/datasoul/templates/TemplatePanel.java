@@ -66,6 +66,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         btnAddImage = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        btnTimerProgress = new javax.swing.JButton();
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
@@ -125,8 +126,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         panelTemplates.setLayout(panelTemplatesLayout);
         panelTemplatesLayout.setHorizontalGroup(
             panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
         );
         panelTemplatesLayout.setVerticalGroup(
             panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -241,6 +242,13 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jLabel4.setText("Selected Item");
 
+        btnTimerProgress.setText("Timer Bar");
+        btnTimerProgress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimerProgressActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -249,16 +257,17 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel2)
                     .add(jLabel3))
-                .addContainerGap(45, Short.MAX_VALUE))
-            .add(btnAddText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-            .add(btnAddImage, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-            .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                .addContainerGap(54, Short.MAX_VALUE))
+            .add(btnAddText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .add(btnAddImage, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .add(btnTimerProgress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .add(btnMoveDown, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+            .add(btnMoveUp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel4)
                 .addContainerGap())
-            .add(btnMoveUp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-            .add(btnMoveDown, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-            .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -272,7 +281,9 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .add(btnAddText)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnAddImage)
-                .add(19, 19, 19)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnTimerProgress)
+                .add(18, 18, 18)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnMoveUp)
@@ -280,7 +291,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .add(btnMoveDown)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addContainerGap(180, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout panelTemplateEditorLayout = new org.jdesktop.layout.GroupLayout(panelTemplateEditor);
@@ -328,6 +339,11 @@ public class TemplatePanel extends javax.swing.JPanel {
             .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTimerProgressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimerProgressActionPerformed
+        TimerProgressbarTemplateItem timer = new TimerProgressbarTemplateItem();
+        templateEditorPanel1.addItem(timer);
+    }//GEN-LAST:event_btnTimerProgressActionPerformed
 
     private void btnDeleteTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTemplateActionPerformed
 
@@ -417,6 +433,7 @@ public class TemplatePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnMoveUp;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnTimerProgress;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

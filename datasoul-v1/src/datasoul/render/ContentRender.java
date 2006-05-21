@@ -13,6 +13,7 @@ import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateItem;
 import datasoul.templates.TemplateManager;
 import datasoul.templates.TextTemplateItem;
+import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
@@ -43,6 +44,9 @@ public abstract class ContentRender {
     private boolean alertTemplateChanged;
     private boolean alertActive;
     private boolean alertActiveChanged;
+    private boolean showTimer;
+    private float timerProgress;
+    
     
     private boolean monitor;
     
@@ -120,6 +124,16 @@ public abstract class ContentRender {
     public void setTimer(String timer) {
         this.timer = timer;
         this.timerChanged = true;
+    }
+    
+    public void setShowTimer(boolean show){
+        this.showTimer = show;
+        this.timerChanged = true;
+    }
+    
+    public void setTimerProgress(float f){
+        this.timerProgress = f;
+        this.timerChanged  = true;
     }
     
     public String getAlert(){
@@ -261,6 +275,9 @@ public abstract class ContentRender {
                             needUpdate = true;
                             break;
                         }
+                    }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
+                        needUpdate = true;
+                        break;
                     }// if is TextTemplateItem
                 }// for need update
             }// if template not null
@@ -293,6 +310,9 @@ public abstract class ContentRender {
                             needUpdate = true;
                             break;
                         }
+                    }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
+                        needUpdate = true;
+                        break;
                     }// if is TextTemplateItem
                 }// for need update
             }
@@ -330,6 +350,10 @@ public abstract class ContentRender {
                                 ((TextTemplateItem)t).setText(alert);
                                 continue;
                             }
+                        }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
+                            ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
+                            ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
+                            continue;
                         }// is texttempalteitem
                     }// for templateItem
                     
@@ -378,6 +402,10 @@ public abstract class ContentRender {
                                 ((TextTemplateItem)t).setText(alert);
                                 continue;
                             }
+                        }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
+                            ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
+                            ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
+                            continue;
                         }// is texttempalteitem
                     }// for
                     
@@ -391,8 +419,6 @@ public abstract class ContentRender {
                     }
                     
                     paintAlert = true;
-                    
-                    System.out.println("Alert Level = "+paintAlertLevel+" alertTransition="+alertTransition+" alertTransTimerTotal="+alertTransTimerTotal);
                     
                 }// if alert active
                 
@@ -409,7 +435,7 @@ public abstract class ContentRender {
                     
                     if (paintSlide){
                         paint(template, paintSlideLevel);
-                        System.out.println("Slide Level = "+paintSlideLevel);
+                        //System.out.println("Slide Level = "+paintSlideLevel);
                     }
                     
                     if (paintAlert){
@@ -457,7 +483,6 @@ public abstract class ContentRender {
 
             template.paint(g, 1.0f);
 
-            System.out.println(">>>> saved");
         }
     }
     
@@ -503,7 +528,7 @@ public abstract class ContentRender {
                         if (sleepTime > 0){
                             Thread.sleep( sleepTime );
                         }
-                        System.out.println("Slide Timer ="+slideTransTimer+", alert Timer="+alertTransTimer+" ("+ sleepTime +")");
+                        //System.out.println("Slide Timer ="+slideTransTimer+", alert Timer="+alertTransTimer+" ("+ sleepTime +")");
                         
                         t3 = System.currentTimeMillis();
                         

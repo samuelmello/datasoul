@@ -29,6 +29,7 @@ public class TimerManager extends Thread {
     public static final int TIMER_DIRECTION_OFF = 0;
     public static final int TIMER_DIRECTION_FORWARD = 1;
     public static final int TIMER_DIRECTION_BACKWARD = 2;
+    public static final int TIMER_DIRECTION_BACKWARD_OVERDUE = 3;
     
     private SimpleDateFormat sdformat;
     private SimpleDateFormat sdformatTimer;
@@ -83,10 +84,19 @@ public class TimerManager extends Thread {
         this.timerForwardCounter = initial;
         this.timerDirection = TIMER_DIRECTION_FORWARD;
     }
+
+    private void setTimerBackwardOverdue(long initial){
+        this.timerForwardCounter = initial;
+        this.timerDirection = TIMER_DIRECTION_BACKWARD_OVERDUE;
+    }
     
     public void setTimerBackward(long initial, long total){
         this.timerBackwardCounter = initial;
-        this.timerBackwardTotal = total;
+        if (total > 0){
+            this.timerBackwardTotal = total;
+        }else{
+            this.timerBackwardTotal = 1;
+        }
         this.timerDirection = TIMER_DIRECTION_BACKWARD;
     }
     
@@ -132,23 +142,33 @@ public class TimerManager extends Thread {
             // update the clock
             cm.setClockLive( sdformat.format(new Date()) );
             
-            
-            if (timerDirection == TIMER_DIRECTION_FORWARD){
+
+            // update the timer
+            if (timerDirection == TIMER_DIRECTION_FORWARD || timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
                 timerForwardCounter += 1000;
                 cm.setTimerLive( formatTimer( timerForwardCounter ));
+                if (timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
+                    cm.setShowTimer( true );
+                }else{
+                    cm.setShowTimer( false );
+                }
             }else if (timerDirection == TIMER_DIRECTION_BACKWARD){
                 timerBackwardCounter += 1000;
-                if ( timerBackwardTotal - timerBackwardCounter < 0 ){
-                    setTimerForward(0);
+                if ( timerBackwardTotal - timerBackwardCounter <= 0 ){
+                    setTimerBackwardOverdue(0);
                 }else{
                     cm.setTimerLive( formatTimer(timerBackwardTotal - timerBackwardCounter ));
                 }
+                cm.setTimerProgress( (float) timerBackwardCounter / (float) timerBackwardTotal );
+                cm.setShowTimer(true);
+                
             }else if (timerDirection == TIMER_DIRECTION_OFF){
                 cm.setTimerLive("");
+                cm.setShowTimer(false);
             }
             
             // ok, changes done
-            //cm.slideChange(-1);
+            cm.slideChange(-1);
         
             // go sleep!
             t2 = System.currentTimeMillis();

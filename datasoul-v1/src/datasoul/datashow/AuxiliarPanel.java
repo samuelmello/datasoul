@@ -565,7 +565,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         
         if (templateMonitor.getSelectedItem() != null){
             ContentManager.getInstance().setTemplateMonitorLive( templateMonitor.getSelectedItem().toString() );
-            ContentManager.getInstance().slideChange(0);
+            ContentManager.getInstance().slideChange(-1);
         }
         
     }//GEN-LAST:event_templateMonitorActionPerformed
