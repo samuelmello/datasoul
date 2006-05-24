@@ -579,17 +579,6 @@ public class ConfigPanel extends javax.swing.JPanel {
         configObj.save();
     }//GEN-LAST:event_btnApplyActionPerformed
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConfigPanel().setVisible(true);
-            }
-        });
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
     private javax.swing.JButton btnCancel;
