@@ -246,13 +246,13 @@ public class ConfigObj extends SerializableObject {
     public void setVideoInput(String videoInput) {
 
         this.videoInput = videoInput;
-        if ( this.getMainOutput().equals("TRUE") ){
+        if ( this.getMainOutput().equalsIgnoreCase("TRUE") ){
             int index = 1;
-            if (videoInput.equals("Tuner")){
+            if (videoInput.equalsIgnoreCase("Tuner")){
                 index = 0;
-            }else if (videoInput.equals("S-Video")){
+            }else if (videoInput.equalsIgnoreCase("S-Video")){
                 index = 3;
-            }else if (videoInput.equals("Composite")){
+            }else if (videoInput.equalsIgnoreCase("Composite")){
                 index = 1;
             }
             if ( ContentManager.getMainDisplay() instanceof SDLContentRender ){
@@ -270,13 +270,13 @@ public class ConfigObj extends SerializableObject {
     public void setVideoMode(String videoMode) {
         
         this.videoMode = videoMode;
-        if ( this.getMainOutput().equals("TRUE") ){
+        if ( this.getMainOutput().equalsIgnoreCase("TRUE") ){
             int index = 1;
-            if (videoMode.equals("PAL")){
+            if (videoMode.equalsIgnoreCase("PAL")){
                 index = 0;
-            }else if (videoMode.equals("NTSC")){
+            }else if (videoMode.equalsIgnoreCase("NTSC")){
                 index = 1;
-            }else if (videoMode.equals("SECAM")){
+            }else if (videoMode.equalsIgnoreCase("SECAM")){
                 index = 2;
             }
             if ( ContentManager.getMainDisplay() instanceof SDLContentRender ){
@@ -292,15 +292,15 @@ public class ConfigObj extends SerializableObject {
 
     public void setVideoDeintrelace(String videoDeintrelace) {
         this.videoDeintrelace = videoDeintrelace;
-        if ( this.getMainOutput().equals("TRUE") ){
+        if ( this.getMainOutput().equalsIgnoreCase("TRUE") ){
             int index = 1;
-            if (videoDeintrelace.equals("None")){
+            if (videoDeintrelace.equalsIgnoreCase("None")){
                 index = 0;
-            }else if (videoDeintrelace.equals("Blend")){
+            }else if (videoDeintrelace.equalsIgnoreCase("Blend")){
                 index = 1;
-            }else if (videoDeintrelace.equals("Smart Blend")){
+            }else if (videoDeintrelace.equalsIgnoreCase("Smart Blend")){
                 index = 2;
-            }else if (videoDeintrelace.equals("Smooth Blend")){
+            }else if (videoDeintrelace.equalsIgnoreCase("Smooth Blend")){
                 index = 3;
             }
             if ( ContentManager.getMainDisplay() instanceof SDLContentRender ){
@@ -324,7 +324,7 @@ public class ConfigObj extends SerializableObject {
 
     public void setVideoDebugMode(String videoDebugMode) {
         this.videoDebugMode = videoDebugMode;
-        if (this.getMainOutput().equals("TRUE")){
+        if (this.getMainOutput().equalsIgnoreCase("TRUE")){
             if (videoDebugMode.equalsIgnoreCase("Yes")){
                 ContentManager.getMainDisplay().setDebugMode( 1 );
             }else{

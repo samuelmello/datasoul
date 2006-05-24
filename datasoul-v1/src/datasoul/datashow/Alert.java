@@ -67,11 +67,11 @@ public class Alert extends Thread {
         
         // show
         ContentManager cm = ContentManager.getInstance();
-        if (showOnMain && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
+        if (showOnMain && ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
             ContentManager.getMainDisplay().setAlertTemplate(getMainTemplate());
             ContentManager.getMainDisplay().setAlertActive(true);
         }
-        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
+        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
             ContentManager.getMonitorDisplay().setAlertTemplate(getMonitorTemplate());
             ContentManager.getMonitorDisplay().setAlertActive(true);
         }
