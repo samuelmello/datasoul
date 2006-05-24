@@ -110,6 +110,10 @@ public class SwingDisplay extends javax.swing.JFrame {
     void paint(BufferedImage img, float alpha) {
         swingDisplayPanel1.paint(img, alpha);
     }
+
+    void setWindowTitle(String title) {
+        this.setTitle(title);
+    }
             
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.render.SwingDisplayPanel swingDisplayPanel1;

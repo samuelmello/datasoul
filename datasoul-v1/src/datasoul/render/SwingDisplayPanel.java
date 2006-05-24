@@ -56,7 +56,6 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
 
         super.paint (g);
 
-        
         if (img != null && bgImg != null){
             synchronized(img){
                 if (isBlack){
@@ -93,7 +92,8 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     public synchronized void flip(){
         // update the screen
         synchronized(img){
-            this.repaint();
+            //this.repaint();
+            this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
         }
         
     }

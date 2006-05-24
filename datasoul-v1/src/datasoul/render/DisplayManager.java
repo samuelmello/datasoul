@@ -55,6 +55,7 @@ public class DisplayManager {
             }
             
             mainDisplay.initDisplay(width, height, top, left);
+            mainDisplay.setWindowTitle("Datasoul - Main Display");
         }
         return mainDisplay;
     }
@@ -95,6 +96,7 @@ public class DisplayManager {
             monitorDisplay.setMonitor(true);
             monitorDisplay.setTemplate("monitor");
             monitorDisplay.initDisplay(width, height, top, left);
+            monitorDisplay.setWindowTitle("Datasoul - Monitor Display");
         }
         return monitorDisplay;
     }

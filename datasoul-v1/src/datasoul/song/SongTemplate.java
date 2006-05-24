@@ -293,31 +293,6 @@ public class SongTemplate extends TemplateItem{
     public void draw(Graphics2D g, float time) {
     }
 
-    private Color stringToColor(String strColor){
-        
-        try{
-            
-            String[] str = strColor.split("");
-            
-            // the split("") produces a first empty element on the array.
-            // we desconsider it an use from 1 to 6.
-            if (str.length != 7){
-                throw new IllegalArgumentException("Invalid Color: "+strColor);
-            }
-            
-            
-            int r = Integer.parseInt(str[1]+str[2], 16);
-            int g = Integer.parseInt(str[3]+str[4], 16);
-            int b = Integer.parseInt(str[5]+str[6], 16);
-            
-            return new Color(r,g,b);
-            
-        }catch(Exception e){
-            throw new IllegalArgumentException("Invalid Color: "+strColor);
-        }
-        
-    }
-
     public void save(String filename) throws Exception {
         Node node = this.writeObject();
         Document doc = node.getOwnerDocument();

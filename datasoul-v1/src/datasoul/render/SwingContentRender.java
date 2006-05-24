@@ -69,6 +69,10 @@ public class SwingContentRender extends ContentRender {
         display.initDisplay(width, height, top, left);
     }
 
+    public void setWindowTitle(String title) {
+        display.setWindowTitle(title);
+    }
+
     
 
     

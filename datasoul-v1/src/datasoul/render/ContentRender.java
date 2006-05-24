@@ -79,6 +79,7 @@ public abstract class ContentRender {
     public abstract void paint(BufferedImage img, float alpha);
     public abstract void clear();
     public abstract void flip();
+    public abstract void setWindowTitle(String title);
     
     
     public String getTitle() {

@@ -167,7 +167,7 @@ public class ContentManager {
     
     public void updatePreview(){
         for (ContentRender r : previewRenderList){
-            r.slideShow(0);
+            r.slideShow(-1);
         }
     }
 
