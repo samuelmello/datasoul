@@ -11,7 +11,7 @@ package datasoul.datashow;
 
 import datasoul.ConfigObj;
 import datasoul.render.ContentManager;
-import datasoul.render.DisplayManager;
+import datasoul.render.ContentManager;
 
 /**
  *
@@ -68,12 +68,12 @@ public class Alert extends Thread {
         // show
         ContentManager cm = ContentManager.getInstance();
         if (showOnMain && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setAlertTemplate(getMainTemplate());
-            DisplayManager.getMainDisplay().setAlertActive(true);
+            ContentManager.getMainDisplay().setAlertTemplate(getMainTemplate());
+            ContentManager.getMainDisplay().setAlertActive(true);
         }
         if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
-            DisplayManager.getMonitorDisplay().setAlertTemplate(getMonitorTemplate());
-            DisplayManager.getMonitorDisplay().setAlertActive(true);
+            ContentManager.getMonitorDisplay().setAlertTemplate(getMonitorTemplate());
+            ContentManager.getMonitorDisplay().setAlertActive(true);
         }
         cm.setAlertText(text);
         cm.alertShow(2000);
@@ -88,10 +88,10 @@ public class Alert extends Thread {
 
         // hide
         if (showOnMain && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setAlertActive(false);
+            ContentManager.getMainDisplay().setAlertActive(false);
         }
         if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
-            DisplayManager.getMonitorDisplay().setAlertActive(false);
+            ContentManager.getMonitorDisplay().setAlertActive(false);
         }
         cm.alertHide(2000);
         

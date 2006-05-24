@@ -6,7 +6,6 @@
 
 package datasoul;
 
-import datasoul.render.DisplayManager;
 import java.awt.Component;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;

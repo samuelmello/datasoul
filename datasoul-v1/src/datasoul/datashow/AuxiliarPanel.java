@@ -7,10 +7,7 @@
 package datasoul.datashow;
 
 import datasoul.ConfigObj;
-import datasoul.datashow.Alert;
 import datasoul.render.ContentManager;
-import datasoul.render.DisplayManager;
-import java.awt.Dimension;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -701,7 +698,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-            DisplayManager.getMainDisplay().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
+            ContentManager.getMainDisplay().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
         }
         
     }//GEN-LAST:event_cbBackgroundModeItemStateChanged
@@ -713,9 +710,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
             if( btnClear.isSelected() ){
-                DisplayManager.getMainDisplay().setClear( 1 );
+                ContentManager.getMainDisplay().setClear( 1 );
             }else{
-                DisplayManager.getMainDisplay().setClear( 0 );
+                ContentManager.getMainDisplay().setClear( 0 );
             }
         }
         
@@ -726,9 +723,9 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
            if( btnBlack.isSelected() ){
-               DisplayManager.getMainDisplay().setBlack( 1 );
+               ContentManager.getMainDisplay().setBlack( 1 );
            }else{
-               DisplayManager.getMainDisplay().setBlack( 0 );
+               ContentManager.getMainDisplay().setBlack( 0 );
            }
         }
     }//GEN-LAST:event_btnBlackActionPerformed
@@ -747,7 +744,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
                 String filename = fc.getSelectedFile().getAbsolutePath();
                 imgBackground.setImage(filename);
                 if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-                    DisplayManager.getMainDisplay().paintBackground( imgBackground.getImage() );
+                    ContentManager.getMainDisplay().paintBackground( imgBackground.getImage() );
                 }
             }
         }catch(IOException e){
