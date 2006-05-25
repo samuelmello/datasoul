@@ -363,7 +363,7 @@ public abstract class ContentRender {
                     if (slideTransTimerTotal > 0)
                         paintSlideLevel = (float) slideTransTimer / (float) slideTransTimerTotal;
                     else
-                        paintSlideLevel = 1;
+                        paintSlideLevel = 0;
                     
                     if (slideTransition != TRANSITION_HIDE){
                         paintSlideLevel = 1 - paintSlideLevel;
@@ -413,7 +413,7 @@ public abstract class ContentRender {
                     if (alertTransTimerTotal > 0)
                         paintAlertLevel = (float) alertTransTimer / (float) alertTransTimerTotal;
                     else
-                        paintAlertLevel = 1;
+                        paintAlertLevel = 0;
                     
                     if (alertTransition != TRANSITION_HIDE){
                         paintAlertLevel = 1 - paintAlertLevel;
@@ -436,7 +436,6 @@ public abstract class ContentRender {
                     
                     if (paintSlide){
                         paint(template, paintSlideLevel);
-                        //System.out.println("Slide Level = "+paintSlideLevel);
                     }
                     
                     if (paintAlert){

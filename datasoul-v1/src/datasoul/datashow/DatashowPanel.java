@@ -46,9 +46,10 @@ public class DatashowPanel extends javax.swing.JPanel {
             height = 480;
         }
         
-        previewDisplayPanel1.initDisplay( width, height, 0, 0 );
+        SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);
+        contentRender.initDisplay( width, height, 0, 0 );
         
-        ContentManager.getInstance().registerPreviewPanel( new SwingPanelContentRender(previewDisplayPanel1) );
+        ContentManager.getInstance().registerPreviewPanel( contentRender );
         
     }
 public AuxiliarPanel getAuxiliarPanel(){

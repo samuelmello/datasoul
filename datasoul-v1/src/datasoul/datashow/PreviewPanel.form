@@ -17,7 +17,7 @@
               <Component id="btnGoLive" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="serviceItemTable1" alignment="0" pref="427" max="32767" attributes="0"/>
+          <Component id="serviceItemTable1" alignment="0" pref="443" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
