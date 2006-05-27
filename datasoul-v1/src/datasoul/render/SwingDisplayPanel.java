@@ -52,7 +52,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     @Override
-    public synchronized void paint (Graphics g){
+    public void paint (Graphics g){
 
         super.paint (g);
 
@@ -73,7 +73,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
     
-    public synchronized void clear(){
+    public void clear(){
 
         synchronized(img){
             Graphics2D g = img.createGraphics();
@@ -89,7 +89,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
     
-    public synchronized void flip(){
+    public void flip(){
         // update the screen
         synchronized(img){
             //this.repaint();
@@ -138,7 +138,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         this.repaint();
     }
 
-    synchronized void  paint(DisplayTemplate d, float time) {
+    void paint(DisplayTemplate d, float time) {
         
         if (img == null)
             return;
@@ -152,7 +152,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
     
-    synchronized void paint(BufferedImage img, float alpha){
+    void paint(BufferedImage img, float alpha){
         synchronized(this.img){
             Graphics2D g = this.img.createGraphics();
             Composite oldComp = g.getComposite();
