@@ -24,8 +24,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         initComponents();
         
         templateMonitor.setSelectedItem(ConfigObj.getInstance().getTemplateMonitor());
-        jSliderShowHideSpeed.setValue( ConfigObj.getInstance().getSlideShowHideTime() );
-        jSliderSlideChangeSpeed.setValue( ConfigObj.getInstance().getSlideTransitionTime() );
+        jSliderShowHideSpeed.setValue( ConfigObj.getInstance().getSlideShowHideTime() / 100 );
+        jSliderSlideChangeSpeed.setValue( ConfigObj.getInstance().getSlideTransitionTime() / 100 );
         cbMonitorFollowMain.setSelected( ConfigObj.getInstance().getMonitorFollowMainControls() );
         updateMonitorControls();
  
