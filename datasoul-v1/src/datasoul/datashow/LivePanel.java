@@ -38,7 +38,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.setTitleLive(serviceItem.getTitle());
         cm.setSlideLive("");
         cm.setNextSlideLive("");
-        cm.slideShow( 1000 );
+        //cm.slideShow( 1000 );
     }
     
     /** This method is called from within the constructor to

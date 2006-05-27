@@ -97,11 +97,13 @@ public class ContentManager {
         }
     }
     
+    /*
     public void slideShow (int transictionTime){
         for (ContentRender r : liveRenderList){
             r.slideShow(transictionTime);
         }
     }
+     */
     
     public void slideChange (int transictionTime){
         for (ContentRender r : liveRenderList){
@@ -109,11 +111,13 @@ public class ContentManager {
         }
     }
     
+    /*
     public void slideHide (int transictionTime){
         for (ContentRender r : liveRenderList){
             r.slideHide(transictionTime);
         }
     }
+     */
 
     public void alertShow (int transictionTime){
         for (ContentRender r : liveRenderList){

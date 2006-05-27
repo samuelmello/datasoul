@@ -98,7 +98,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         cm.setTitleLive( previewItem.getTitle() );
         cm.setSlideLive("");
         cm.setNextSlideLive("");
-        cm.slideShow(2000);
+        //cm.slideShow(2000);
         
         previewItem.fireTableChanged();
         

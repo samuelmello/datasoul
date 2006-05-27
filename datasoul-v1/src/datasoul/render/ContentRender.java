@@ -73,6 +73,9 @@ public abstract class ContentRender {
         updSemaphore = new Semaphore(0);
         updThread = new UpdateThread();
         updThread.start();
+        slideTransition = TRANSITION_HIDE;
+        slideTransTimerTotal = 1;
+        slideTransTimer = 0;
     }
     
     public abstract void paint(DisplayTemplate d, float time);
@@ -187,6 +190,7 @@ public abstract class ContentRender {
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
         }
+        System.out.println("Show: "+transictionTime);
         update();
     }
     
@@ -195,6 +199,7 @@ public abstract class ContentRender {
         if (transictionTime >= 0){
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
+            System.out.println("Change: "+transictionTime);
         }
         update();
     }
@@ -205,6 +210,7 @@ public abstract class ContentRender {
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
         }
+        System.out.println("Hide: "+transictionTime);
         update();
     }
     

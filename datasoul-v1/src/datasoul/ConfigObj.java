@@ -50,6 +50,8 @@ public class ConfigObj extends SerializableObject {
     private String mainDisplayEngine;
     private String monitorDisplayEngine;
     private int slideTransitionTime;
+    private int slideShowHideTime;
+    private boolean monitorFollowMainControls;
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -137,6 +139,8 @@ public class ConfigObj extends SerializableObject {
         properties.add("ClockMode");        
         properties.add("VideoDebugMode");
         properties.add("SlideTransitionTime");
+        properties.add("SlideShowHideTime");
+        properties.add("MonitorFollowMainControls");
     }
     
     public ArrayList<String> getProperties(){
@@ -362,10 +366,52 @@ public class ConfigObj extends SerializableObject {
         }catch(Exception e){
             // do nothing
         }
-        if (x >= 0){
-            this.slideTransitionTime = x;
+        setSlideTransitionTime(x);
+    }
+    
+    public void setSlideTransitionTime(int slideTransitionTime) {
+        if (slideTransitionTime >= 0){
+            this.slideTransitionTime = slideTransitionTime;
         }else{
             this.slideTransitionTime = 0;
+        }
+    }
+
+    public int getSlideShowHideTime() {
+        return slideShowHideTime;
+    }
+
+    public void setSlideShowHideTime(String slideShowHideTime) {
+        int x = -1;
+        try{
+            x = Integer.parseInt(slideShowHideTime);
+        }catch(Exception e){
+            // do nothing
+        }
+        setSlideShowHideTime(x);
+    }
+    
+    public void setSlideShowHideTime(int slideShowHideTime) {
+        if (slideShowHideTime >= 0){
+            this.slideShowHideTime = slideShowHideTime;
+        }else{
+            this.slideShowHideTime = 0;
+        }
+    }
+    
+    public boolean getMonitorFollowMainControls(){
+        return monitorFollowMainControls;
+    }
+    
+    public void setMonitorFollowMainControls(boolean b){
+        monitorFollowMainControls = b;
+    }
+    
+    public void setMonitorFollowMainControls(String str){
+        try{
+            setMonitorFollowMainControls( Boolean.parseBoolean(str) );
+        }catch(Exception e){
+            // ignore exception
         }
     }
 }
