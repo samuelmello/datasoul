@@ -145,6 +145,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
         lblTemplate.setText( item.getTemplate() );
+        setSlideIndex(0);
     }
 
     public ServiceItem getServiceItem(){
@@ -159,7 +160,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         
         int selectedRow = displayTable.getSelectedRow();
         if (selectedRow == -1) {
-            return "";
+            selectedRow = 0;
         }
 
         if (! (item instanceof TextServiceItem)){
@@ -173,7 +174,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         
         int selectedRow = displayTable.getSelectedRow();
         if (selectedRow == -1) {
-            return "";
+            selectedRow = 0;
         }
         
         if (selectedRow+1 >= displayTable.getRowCount()){

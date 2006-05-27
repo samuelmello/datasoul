@@ -34,14 +34,14 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     }
 
     public void previewItem(ServiceItem serviceItem){
-        this.serviceItemTable1.setServiceItem(serviceItem);
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplatePreview(serviceItem.getTemplate());
         cm.setTitlePreview(serviceItem.getTitle());
-        cm.setSlidePreview("");
-        cm.setNextSlidePreview("");
+        serviceItemTable1.setServiceItem(serviceItem);
+        cm.setSlidePreview( serviceItemTable1.getSlideText() );
+        cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
         cm.updatePreview();
-        
+         
     }
     
     /** This method is called from within the constructor to

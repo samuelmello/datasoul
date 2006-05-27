@@ -489,7 +489,9 @@ public abstract class ContentRender {
                 g.setComposite(oldComp);
             }
 
-            template.paint(g, 1.0f);
+            if (template != null){
+                template.paint(g, 1.0f);
+            }   
 
         }
     }
