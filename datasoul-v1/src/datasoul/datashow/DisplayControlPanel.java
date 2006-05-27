@@ -252,15 +252,19 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         int time = ConfigObj.getInstance().getSlideShowHideTime();
         
-        ContentManager.getMonitorDisplay().slideShow( time );
+        if ( ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+            ContentManager.getMonitorDisplay().slideShow( time );
+        }
         
     }//GEN-LAST:event_btnMonitorShowActionPerformed
 
     private void btnMonitorHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorHideActionPerformed
 
         int time = ConfigObj.getInstance().getSlideShowHideTime();
-        
-        ContentManager.getMonitorDisplay().slideHide( time );
+
+        if ( ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+            ContentManager.getMonitorDisplay().slideHide( time );
+        }
         
     }//GEN-LAST:event_btnMonitorHideActionPerformed
 
@@ -271,7 +275,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         ContentManager.getMainDisplay().slideShow( time );
         
         if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            ContentManager.getMonitorDisplay().slideShow( time );
+            btnMonitorShowActionPerformed(evt);
         }
 
     }//GEN-LAST:event_btnMainShowActionPerformed
@@ -283,7 +287,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         ContentManager.getMainDisplay().slideHide( time );
         
         if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            ContentManager.getMonitorDisplay().slideHide( time );
+            btnMonitorHideActionPerformed(evt);
         }
         
     }//GEN-LAST:event_btnMainHideActionPerformed

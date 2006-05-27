@@ -190,6 +190,7 @@ public class ContentManager {
     }
     
     public void registerPreviewPanel(ContentRender r){
+        r.slideShow(1);
         previewRenderList.add(r);
     }
 

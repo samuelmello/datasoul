@@ -43,9 +43,9 @@ public abstract class ContentRender {
     private DisplayTemplate alertTemplate;
     private boolean alertTemplateChanged;
     private boolean alertActive;
-    private boolean alertActiveChanged;
     private boolean showTimer;
     private float timerProgress;
+    private boolean showHideNeedUpdate;
     
     
     private boolean monitor;
@@ -172,7 +172,7 @@ public abstract class ContentRender {
     
     public void setAlertActive(boolean active){
         this.alertActive = active;
-        this.alertActiveChanged = true;
+        this.showHideNeedUpdate = true;
     }
     
     public boolean isMonitor(){
@@ -189,17 +189,18 @@ public abstract class ContentRender {
         if (transictionTime >= 0){
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
+            showHideNeedUpdate = true;
         }
-        System.out.println("Show: "+transictionTime);
+        //System.out.println("Show: "+transictionTime);
         update();
     }
     
     public void slideChange(int transictionTime){
-        slideTransition = TRANSITION_CHANGE;
-        if (transictionTime >= 0){
+        if (transictionTime >= 0 && slideTransition != TRANSITION_HIDE){
+            slideTransition = TRANSITION_CHANGE;
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
-            System.out.println("Change: "+transictionTime);
+            //System.out.println("Change: "+transictionTime);
         }
         update();
     }
@@ -209,8 +210,9 @@ public abstract class ContentRender {
         if (transictionTime >= 0){
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
+            showHideNeedUpdate = true;
         }
-        System.out.println("Hide: "+transictionTime);
+        //System.out.println("Hide: "+transictionTime);
         update();
     }
     
@@ -251,7 +253,7 @@ public abstract class ContentRender {
             boolean paintAlert = false;
             float paintSlideLevel = 0, paintAlertLevel = 0;
             
-            needUpdate = alertActiveChanged || templateChanged;
+            needUpdate = showHideNeedUpdate || templateChanged;
             
             String content;
             if (needUpdate == false && template != null){
@@ -376,7 +378,7 @@ public abstract class ContentRender {
                     }
                     
                     paintSlide = true;
-                    
+                    //System.out.println(" Paint Slide = true, level = "+paintSlideLevel);
                     
                 }
                 
@@ -460,7 +462,7 @@ public abstract class ContentRender {
                     clockChanged = false;
                     timerChanged = false;
                     alertChanged = false;
-                    alertActiveChanged = false;
+                    showHideNeedUpdate = false;
                 }
                 
             }// if need update
@@ -534,7 +536,7 @@ public abstract class ContentRender {
                         if (sleepTime > 0){
                             Thread.sleep( sleepTime );
                         }
-                        //System.out.println("Slide Timer ="+slideTransTimer+", alert Timer="+alertTransTimer+" ("+ sleepTime +")");
+                        //System.out.println("Slide Timer ="+slideTransTimer+", alert Timer="+alertTransTimer+" trans = "+slideTransition);
                         
                         t3 = System.currentTimeMillis();
                         
@@ -546,7 +548,6 @@ public abstract class ContentRender {
                         
                         if (alertTransTimer < 0)
                             alertTransTimer = 0;
-                        
                         
                     }
                     
