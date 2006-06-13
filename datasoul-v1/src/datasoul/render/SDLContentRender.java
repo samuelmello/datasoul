@@ -43,9 +43,6 @@ public class SDLContentRender extends ContentRender {
         
     }
     
-    public static final int BACKGROUND_MODE_STATIC = 0;
-    public static final int BACKGROUND_MODE_LIVE = 1;
-    
     private BufferedImage overlay;
     private ByteBuffer overlayBuf;
     private BufferedImage background;
@@ -118,21 +115,25 @@ public class SDLContentRender extends ContentRender {
     }
 
     public void paintOverlay(DisplayTemplate d, float time){
-        
+
         if (d == null) return;
 
         Graphics2D g = overlay.createGraphics();
+
+        Composite oldComp = g.getComposite();
+        g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, time) );
         
         // paint it
         d.paint(g, time);
-        
+
+        g.setComposite(oldComp);
     }
 
     public void paint(BufferedImage img, float alpha){
         Graphics2D g = overlay.createGraphics();
         Composite oldComp = g.getComposite();
         g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha) );
-        g.drawImage(img, width, height, 0, 0, null);
+        g.drawImage(img, 0, 0, width, height, null);
         g.setComposite(oldComp);
     }
     

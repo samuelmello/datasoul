@@ -286,9 +286,9 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_displayOverlay
 	globals.overlayActive = x;
 	globals.needRefresh = 1;
 
-	//if (globals.debugMode > 0){
+	if (globals.debugMode > 0){
 		fprintf(stdout, "Received overlay image!\n");
-	//}
+	}
 	
 }
 
