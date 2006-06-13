@@ -2,22 +2,22 @@ JDK_HOME=/usr/java/jdk1.6.0
 CFLAGS=-O4 -Wall
 DATASOUL_CLASSES=../../build/classes
 
-all: libdatasoulsdl.so SDLSocketDisplay.bin
+all: libdatasoulsdl.so #SDLSocketDisplay.bin
 
-libdatasoulsdl.so: datasoul_render_SDLDisplay.h datasoul_render_SDLDisplay.c
+libdatasoulsdl.so: datasoul_render_SDLContentRender.h datasoul_render_SDLContentRender.c
 	gcc ${CFLAGS} -I${JDK_HOME}/include -I${JDK_HOME}/include/linux\
 	  -DVIDEO4LINUX \
-  	  -shared datasoul_render_SDLDisplay.c -o libdatasoulsdl.so\
+  	  -shared datasoul_render_SDLContentRender.c -o libdatasoulsdl.so\
 	  -lSDL -lSDL_bgrab -fPIC
 
-datasoul_render_SDLDisplay.h:
-	${JDK_HOME}/bin/javah -classpath ${DATASOUL_CLASSES} datasoul.render.SDLDisplay
+datasoul_render_SDLContentRender.h:
+	${JDK_HOME}/bin/javah -classpath ${DATASOUL_CLASSES} datasoul.render.SDLContentRender
 
-SDLSocketDisplay.bin: SDLSocketDisplay.c
-	gcc ${CFLAGS} \
-	  -DVIDEO4LINUX \
-  	  SDLSocketDisplay.c -o SDLSocketDisplay.bin\
-	  -lSDL -lSDL_bgrab -fPIC
+#SDLSocketDisplay.bin: SDLSocketDisplay.c
+#	gcc ${CFLAGS} \
+#	  -DVIDEO4LINUX \
+#  	  SDLSocketDisplay.c -o SDLSocketDisplay.bin\
+#	  -lSDL -lSDL_bgrab -fPIC
 
 clean:
-	rm -f datasoul_render_SDLDisplay.h libdatasoulsdl.so SDLSocketDisplay.bin
+	rm -f datasoul_render_SDLContentRender.h libdatasoulsdl.so SDLSocketDisplay.bin

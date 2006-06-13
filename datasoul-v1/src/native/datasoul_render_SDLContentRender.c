@@ -4,7 +4,7 @@
 #include <jni.h> 
 #include <SDL/SDL.h>
 #include <SDL/SDL_thread.h>
-#include "datasoul_render_SDLDisplay.h"
+#include "datasoul_render_SDLContentRender.h"
 
 #ifdef VIDEO4LINUX
 #define USE_PTHREAD
@@ -96,12 +96,12 @@ int displayThread (void *arg){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
 
-//		if (globals.debugMode) {
+		if (globals.debugMode) {
 			fprintf(stderr, "Processing: %d ms, Sleeping: %d ms (%d, %d, %d)\n", 
 					(time2 - time1), 
 					FRAMETIME_MS - (time2 - time1),
 					time1, time2, time3);
-//		}
+		}
 	}
 
 #ifdef USE_PTHREAD
@@ -113,12 +113,13 @@ int displayThread (void *arg){
 }
 
 
+
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    init
- * Signature: ()V
+ * Signature: (IIII)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
 (JNIEnv *env, jobject obj, jint width, jint height, jint top, jint left){
 
 
@@ -209,12 +210,14 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_init
 #endif
 }
 
+
+
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    cleanup
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_cleanup
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_cleanup
   (JNIEnv *env, jobject obj){
 
 	  int x;
@@ -233,7 +236,6 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_cleanup
 #endif
 	  
 }
-
 
 void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
 
@@ -267,11 +269,11 @@ void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
 }
 
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    displayOverlay
  * Signature: (Ljava/nio/ByteBuffer;)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_displayOverlay
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_displayOverlay
   (JNIEnv *env, jobject obj, jobject bytebuf){
 
 	  int x;
@@ -290,60 +292,59 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_displayOverlay
 	
 }
 
-
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    nativeSetBackground
  * Signature: (Ljava/nio/ByteBuffer;)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_nativeSetBackground
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_nativeSetBackground
   (JNIEnv *env, jobject obj, jobject bytebuf){
 
 	setImageOnSurface(env, globals.background, bytebuf);
 	globals.needRefresh = 1;
 
 }
- 
 
 /*
- * Class:     datasoul_render_SDLDisplay
- * Method:    black
+ * Class:     datasoul_render_SDLContentRender
+ * Method:    setBlack
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_black
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setBlack
   (JNIEnv *env, jobject obj, jint active){
 	  globals.black = active;
 	  globals.needRefresh = 1;
 }
 
 /*
- * Class:     datasoul_render_SDLDisplay
- * Method:    clear
+ * Class:     datasoul_render_SDLContentRender
+ * Method:    setClear
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_clear
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setClear
   (JNIEnv *env, jobject obj, jint active){
 	  globals.clear = active;
 	  globals.needRefresh = 1;
 }
 
+
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    setBackgroundMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setBackgroundMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setBackgroundMode
   (JNIEnv *env, jobject obj, jint mode){
 	  globals.bgMode = mode;
 	  globals.needRefresh = 1;
 }
 
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    setInputSrc
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setInputSrc
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setInputSrc
   (JNIEnv *env, jobject obj, jint src){
 
 #ifdef VIDEO4LINUX
@@ -354,11 +355,11 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setInputSrc
 }
 
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    setInputMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setInputMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setInputMode
   (JNIEnv *env, jobject obj, jint mode){
 
 #ifdef VIDEO4LINUX
@@ -369,11 +370,11 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setInputMode
 }
 
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    setDeintrelaceMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDeintrelaceMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setDeintrelaceMode
   (JNIEnv *env, jobject obj, jint mode){
 
 #ifdef VIDEO4LINUX
@@ -383,14 +384,34 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDeintrelaceMode
 }
 
 /*
- * Class:     datasoul_render_SDLDisplay
+ * Class:     datasoul_render_SDLContentRender
  * Method:    setDebugMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLDisplay_setDebugMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setDebugMode
   (JNIEnv *env, jobject obj, jint mode){
 
 	globals.debugMode = mode;
+
+}
+
+/*
+ * Class:     datasoul_render_SDLContentRender
+ * Method:    setWindowTitle
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setWindowTitle
+	(JNIEnv *env, jobject obj, jstring title){
+
+     const char *str;
+     str = (*env)->GetStringUTFChars(env, title, NULL);
+     if (str == NULL) {
+         return; /* OutOfMemoryError already thrown */
+     }
+
+     SDL_WM_SetCaption(str, NULL);	
+
+     (*env)->ReleaseStringUTFChars(env, title, str);
 
 }
 

@@ -176,8 +176,7 @@ public class SDLContentRender extends ContentRender {
     }
 
     @Override
-    public void setWindowTitle(String title) {
-    }
+    public native void setWindowTitle(String title);
 
     
          
