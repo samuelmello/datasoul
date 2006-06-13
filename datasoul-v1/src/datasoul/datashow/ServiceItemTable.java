@@ -141,7 +141,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
     
     public void setServiceItem(ServiceItem item){
         this.item = item;
-        item.registerJTable(displayTable);
+        item.registerJTable(displayTable); 
         item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
         lblTemplate.setText( item.getTemplate() );
