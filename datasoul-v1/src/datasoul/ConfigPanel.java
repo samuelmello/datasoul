@@ -82,6 +82,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         mainDisplayEngine.removeAllItems();
         mainDisplayEngine.addItem("SDLContentRender");
         mainDisplayEngine.addItem("SwingContentRender");
+        mainDisplayEngine.addItem("RemoteContentRender");
 
         registerComponent( monitorDisplayEngine, "MonitorDisplayEngine" );
         monitorDisplayEngine.removeAllItems();
