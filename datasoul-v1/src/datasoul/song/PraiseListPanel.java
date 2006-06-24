@@ -30,7 +30,7 @@ public class PraiseListPanel extends javax.swing.JPanel  implements javax.swing.
         
        //so para teste
        Song song = new Song();
-       song.setSongName("Opa");
+       song.setTitle("Opa");
        songListTable.addItem(song);
        
        songListTable.addTableModelListener(this);        

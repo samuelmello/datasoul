@@ -77,9 +77,9 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     }
     
     public void viewSong(Song song) {
-        String text = "Title: "+song.getSongName()+"\n";
+        String text = "Title: "+song.getTitle()+"\n";
         text = text + "Author: " +song.getSongAuthor()+"\n-------------------------------------------------\n";
-        text = text + song.getLyrics();
+        text = text + song.getText();
         this.textSong.setText(text);
     }
     

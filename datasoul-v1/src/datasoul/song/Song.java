@@ -30,15 +30,13 @@ import org.w3c.dom.Node;
  */
 public class Song extends TextServiceItem{
   
-    private String songName="";
     private String songAuthor="";
-    private String lyrics="";
     private String chordsComplete="";
     private String chordsSimplified="";
     private String obs="";
 
     private String filePath="";        
-    private String view="SongName";
+    private String view="Title";
     
     /** Creates a new instance of Song */
     public Song() {
@@ -48,26 +46,15 @@ public class Song extends TextServiceItem{
     @Override
     protected void registerProperties() {
         super.registerProperties();
-        properties.add("SongName");
         properties.add("SongAuthor");
-        properties.add("Lyrics");
         properties.add("ChordsComplete");
         properties.add("ChordsSimplified");
         properties.add("Obs");
 
     }
 
-    public void setSongName(String songName){
-        this.songName = songName;
-        this.setTitle(songName);
-    }
     public void setSongAuthor(String songAuthor){
         this.songAuthor = songAuthor;
-    }
-    
-    public void setLyrics(String lyrics){
-        this.lyrics = lyrics.trim().replace("\r\n", "\n");
-        this.setText(lyrics);
     }
     
     public void setChordsComplete(String chordsComplete){
@@ -80,16 +67,8 @@ public class Song extends TextServiceItem{
         this.obs = obs;
     }
 
-    public String getSongName(){
-        return this.songName;
-    }
-    
     public String getSongAuthor(){
         return this.songAuthor;
-    }
-    
-    public String getLyrics(){
-        return this.lyrics;
     }
     
     public String getChordsComplete(){
@@ -105,8 +84,7 @@ public class Song extends TextServiceItem{
     }
 
     public String getFileName(){
-        
-        return this.getSongName();
+        return this.getTitle();
     }
     public void setFilePath(String file){
         this.filePath = file;
@@ -130,7 +108,7 @@ public class Song extends TextServiceItem{
     }
     
     public String toString(){
-        String ret=this.songName;
+        String ret=this.getTitle();
         try {
             ret = (String)this.getClass().getMethod("get"+this.view).invoke(this);  
         } catch (Exception ex) {

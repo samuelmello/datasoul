@@ -68,14 +68,16 @@ public class SongEditorForm extends javax.swing.JFrame {
                 node = dom.getElementsByTagName("Song").item(0);
                 
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nFile: "+file.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);    
+            e.printStackTrace();
         }        
 
         song = new Song();
         try {
             song.readObject(node);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nFile: "+file.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);    
+            e.printStackTrace();
         }
 
         this.setTitle(song.getFileName());
@@ -137,17 +139,17 @@ public class SongEditorForm extends javax.swing.JFrame {
     
     
     private void fillGuiValues(){
-        fieldName.setText(song.getSongName());
+        fieldName.setText(song.getTitle());
         fieldAuthor.setText(song.getSongAuthor());
-        textLyrics.setText(song.getLyrics());
+        textLyrics.setText(song.getText());
         textChordsCompleted.setText(song.getChordsComplete());
         textChordsSimplified.setText(song.getChordsSimplified());
     }
 
     private void actualizeValues(){
-        song.setSongName(fieldName.getText());
+        song.setTitle(fieldName.getText());
         song.setSongAuthor(fieldAuthor.getText());
-        song.setLyrics(textLyrics.getText());
+        song.setText(textLyrics.getText());
         song.setChordsComplete(textChordsCompleted.getText());
         song.setChordsSimplified(textChordsSimplified.getText());
     }

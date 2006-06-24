@@ -108,7 +108,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 songTemplate.readObject(node);
                
             }catch(Exception e) {
-                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
+                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nFile: "+songTemplateFile.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);
             }
         }
     }
@@ -248,7 +248,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         }else if(comboVersion.getSelectedItem().equals("Chords Simplified")){
             strSong = song.getChordsSimplified();
         }else{
-            strSong = song.getLyrics().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
+            strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
         }
         
         sr = new StringReader(strSong);
@@ -258,7 +258,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
             doc.remove(0,doc.getLength());
         }
 
-        doc.insertString(doc.getLength(),song.getSongName()+"\n",nameStyle);
+        doc.insertString(doc.getLength(),song.getTitle()+"\n",nameStyle);
         doc.insertString(doc.getLength(),song.getSongAuthor()+"\n\n\n",authorStyle);
 
         line = buff.readLine();

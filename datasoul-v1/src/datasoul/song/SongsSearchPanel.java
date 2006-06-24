@@ -47,9 +47,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         comboField.removeAllItems();
         comboField.addItem("All");
         comboField.addItem("FileName");
-        comboField.addItem("SongName");
+        comboField.addItem("Title");
         comboField.addItem("SongAuthor");
-        comboField.addItem("Lyrics");
+        comboField.addItem("Text");
         comboField.setSelectedIndex(0);
         
         allSongsListTable = AllSongsListTable.getInstance();
@@ -323,7 +323,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,"Error in searching.\nErro:"+ex.getMessage(),"DataSoul Error",0);    
+                JOptionPane.showMessageDialog(this,"Error in searching.\nError: "+ex.getMessage(),"DataSoul Error",0);    
+                ex.printStackTrace();
             }
         }
         foundSongTable.addTableModelListener(this);        

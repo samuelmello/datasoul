@@ -75,7 +75,7 @@ public class ConfigObj extends SerializableObject {
                 node = dom.getElementsByTagName("ConfigObj").item(0);
 
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Error, the file is not well formed\n"+e.getMessage(),"DataSoul Error",0);    
+            JOptionPane.showMessageDialog(null,"Error parsing config file\n"+e.getMessage(),"DataSoul Error",0);    
             e.printStackTrace();
             return;
         }        
@@ -83,7 +83,7 @@ public class ConfigObj extends SerializableObject {
         try {
             this.readObject(node);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            JOptionPane.showMessageDialog(null,"Error parsing config file\nError: "+e.getMessage(),"DataSoul Error",0);    
             e.printStackTrace();
         }
     }
