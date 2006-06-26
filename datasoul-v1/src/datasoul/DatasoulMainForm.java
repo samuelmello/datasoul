@@ -13,6 +13,9 @@ import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.templates.TemplatePanel;
 import datasoul.datashow.TimerManager;
+import java.awt.AWTEvent;
+import java.awt.Toolkit;
+import java.awt.event.AWTEventListener;
 import javax.swing.UIManager;
 
 /**
@@ -20,7 +23,6 @@ import javax.swing.UIManager;
  * @author  Administrador
  */
 public class DatasoulMainForm extends javax.swing.JFrame {
-
     
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
@@ -31,7 +33,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     org.jdesktop.layout.GroupLayout datashowLayout;
     org.jdesktop.layout.GroupLayout templatesLayout;
     org.jdesktop.layout.GroupLayout configLayout;
-    
+
     
     /**
      * Creates new form DatasoulMainForm
@@ -104,7 +106,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
 
         showPanel("datashow");
-        
+
     }
     
     
@@ -297,6 +299,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         //stop splashscreen
         //splashScreen.splashHide();        
+
+        Toolkit.getDefaultToolkit().addAWTEventListener( new KeyListner(), AWTEvent.KEY_EVENT_MASK);        
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
