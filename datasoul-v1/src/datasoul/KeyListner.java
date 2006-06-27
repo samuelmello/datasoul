@@ -23,7 +23,7 @@ public class KeyListner implements AWTEventListener{
     }
 
     public void eventDispatched(AWTEvent event) {
-        //System.out.println("opa"+System.currentTimeMillis());
+        System.out.println("opa"+System.currentTimeMillis());
     }
     
 }
