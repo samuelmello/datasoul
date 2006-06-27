@@ -102,8 +102,9 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     @Override
-            protected void registerProperties(){
+    protected void registerProperties(){
         properties.add("Name");
+        registerDisplayString("Name", "Template Name");
     }
     
     public String getName(){

@@ -54,13 +54,21 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("ColorGoAhead");
+        registerDisplayString("ColorGoAhead", "Color Go Ahead");
         properties.add("ColorFinish");
+        registerDisplayString("ColorFinish", "Color Finish");
         properties.add("ColorStop");
+        registerDisplayString("ColorStop", "Color Stop");
         properties.add("ColorRemainingTime");
+        registerDisplayString("ColorRemainingTime", "Color Remaining Time");
         properties.add("AlphaRemainingTime");
+        registerDisplayString("AlphaRemainingTime", "Alpha Remaining Time");
         properties.add("AlphaUsedTime");
+        registerDisplayString("AlphaUsedTime", "Alpha Used Time");
         properties.add("Position");
+        registerDisplayString("Position", "Position");
         properties.add("ShowTimer");
+        registerDisplayString("ShowTimer", "Show Timer");
     }
 
     public void draw(Graphics2D g, float time) {

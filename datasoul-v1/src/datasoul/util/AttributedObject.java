@@ -33,6 +33,11 @@ import javax.swing.table.TableModel;
 public abstract class AttributedObject extends SerializableObject implements TableModel {
     
     protected HashMap<String, Component> propEditors;
+
+    static private HashMap<Class, HashMap<String, String>> displayNamesTable = new HashMap<Class, HashMap<String, String>>();
+
+    private HashMap<String, String> displayNames;
+    
     protected MyTableCellEditor tableCellEditor;
     
     private ArrayList<javax.swing.event.TableModelListener> listeners;
@@ -40,8 +45,6 @@ public abstract class AttributedObject extends SerializableObject implements Tab
     /** Creates a new instance of AttributedObject */
     public AttributedObject() {
         
-        propEditors = new HashMap<String, Component>();
-
         propEditors = new HashMap<String, Component>();
         
         listeners = new ArrayList<javax.swing.event.TableModelListener>();
@@ -86,15 +89,41 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         return (columnIndex==1);
     }
 
+
+    protected HashMap<String, String> getDisplayNames(){
+        if (displayNames == null){
+            
+            if ( displayNamesTable.containsKey(this.getClass()) ){
+                displayNames = displayNamesTable.get(this.getClass());
+            }else{
+                displayNames = new HashMap<String, String>();
+                displayNamesTable.put(this.getClass(), displayNames);
+            }
+            
+        }
+        return displayNames;
+
+    }
+    
+    public void registerDisplayString(String prop, String displayStr){
+        getDisplayNames().put(prop, displayStr);
+    }
+    
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (columnIndex == 0){
-            return properties.get(rowIndex);
+            
+            if (getDisplayNames().containsKey( properties.get(rowIndex) )){
+                return getDisplayNames().get( properties.get(rowIndex) );
+            }else{
+                return properties.get(rowIndex);
+            }
+            
         }else{
             try{
                 return this.getClass().getMethod("get"+properties.get(rowIndex)).invoke(this);
             }catch(Exception e){
                 e.printStackTrace();
-                return "Deu erro";
+                return "";
             }
         }
         

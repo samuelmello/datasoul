@@ -101,8 +101,11 @@ public class ImageTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("Alignment");
+        registerDisplayString("Alignment", "Alignment");
         properties.add("VerticalAlignment");
+        registerDisplayString("VerticalAlignment", "Vertical Alignment");
         properties.add("Stretch");
+        registerDisplayString("Stretch", "Stretch");
 
     }
     

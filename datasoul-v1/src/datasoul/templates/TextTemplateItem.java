@@ -57,17 +57,29 @@ public class TextTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("Content");
+        registerDisplayString("Content", "Content");
         properties.add("Text");
+        registerDisplayString("Text", "Text");
         properties.add("FontName");
+        registerDisplayString("FontName", "Font Name");
         properties.add("FontSize");
+        registerDisplayString("FontSize", "Font Size");
         properties.add("FontOutline");
+        registerDisplayString("FontOutline", "Font Outline");
         properties.add("FontColor");
+        registerDisplayString("FontColor", "Font Color");
         properties.add("OutlineColor");
+        registerDisplayString("OutlineColor", "Outline Color");
         properties.add("Alignment");
+        registerDisplayString("Alignment", "Alignment");
         properties.add("VerticalAlignment");
+        registerDisplayString("VerticalAlignment", "Vertical Alignment");
         properties.add("TextWidth");
+        registerDisplayString("TextWidth", "Text Width");
         properties.add("TextWeight");
+        registerDisplayString("TextWeight", "Text Weight");
         properties.add("Underline");
+        registerDisplayString("Underline", "Underline");
 
     }
 

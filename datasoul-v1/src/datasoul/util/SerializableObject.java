@@ -30,6 +30,7 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     protected ArrayList<String> properties;
     static public DataFlavor serializableObjectFlavor = new DataFlavor(datasoul.util.SerializableObject.class,"serializableObjectFlavor");;
     
+    // we hold just one properties array instance for each class
     static private HashMap<Class, ArrayList<String>> propertiesTable = new HashMap<Class, ArrayList<String>>();
     
     protected abstract void registerProperties();
@@ -37,6 +38,8 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     /** Creates a new instance of SerializableObject */
     public SerializableObject() {
         
+        // if this is the first object of this class, we register the static 
+        // array of properties
         if ( propertiesTable.containsKey(this.getClass()) ){
             properties = propertiesTable.get(this.getClass());
         }else{

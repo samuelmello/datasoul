@@ -40,6 +40,11 @@ public class SongTemplate extends TemplateItem{
     private int lyricsFontSize;    
     private String chordShapeSize;    
 
+    private static JComboBox cb1;
+    private static JComboBox cb2;
+    private static JComboBox cb3;
+    private static JComboBox cb4;
+    
     
     /**
      * Creates a new instance of SongTemplate
@@ -71,22 +76,22 @@ public class SongTemplate extends TemplateItem{
 
         registerEditorComboBox("ChordShapeSize", cbChordSize);
                 
-        JComboBox cb1 = new JComboBox();
+        cb1 = new JComboBox();
         cb1 = new JComboBox();
         for ( int i = 0; i < fontList.length; i++ )
           cb1.addItem( fontList[i] );
 
-        JComboBox cb2 = new JComboBox();
+        cb2 = new JComboBox();
         cb2 = new JComboBox();
         for ( int i = 0; i < fontList.length; i++ )
           cb2.addItem( fontList[i] );
 
-        JComboBox cb3 = new JComboBox();
+        cb3 = new JComboBox();
         cb3 = new JComboBox();
         for ( int i = 0; i < fontList.length; i++ )
           cb3.addItem( fontList[i] );
 
-        JComboBox cb4 = new JComboBox();
+        cb4 = new JComboBox();
         cb4 = new JComboBox();
         for ( int i = 0; i < fontList.length; i++ )
           cb4.addItem( fontList[i] );
@@ -105,18 +110,31 @@ public class SongTemplate extends TemplateItem{
     protected void registerProperties() {
 //        super.registerProperties();
         properties.add("TitleFontName");
+        registerDisplayString("TitleFontName", "Title Font Name");
         properties.add("TitleFontColor");
+        registerDisplayString("TitleFontColor", "Title Font Color");
         properties.add("TitleFontSize");        
+        registerDisplayString("TitleFontSize", "Title Font Size");
         properties.add("AuthorFontName");
+        registerDisplayString("AuthorFontName", "Author Font Name");
         properties.add("AuthorFontColor");
+        registerDisplayString("AuthorFontColor", "Author Font Color");
         properties.add("AuthorFontSize");
+        registerDisplayString("AuthorFontSize", "Author Font Size");
         properties.add("ChordsFontName");
+        registerDisplayString("ChordsFontName", "Chords Font Name");
         properties.add("ChordsFontColor");
+        registerDisplayString("ChordsFontColor", "Chords Font Color");
         properties.add("ChordsFontSize");
+        registerDisplayString("ChordsFontSize", "Chords Font Size");
         properties.add("LyricsFontName");
+        registerDisplayString("LyricsFontName", "Lyrics Font Name");
         properties.add("LyricsFontColor");
+        registerDisplayString("LyricsFontColor", "Lyrics Font Color");
         properties.add("LyricsFontSize");
+        registerDisplayString("LyricsFontSize", "Lyrics Font Size");
         properties.add("ChordShapeSize");
+        registerDisplayString("ChordShapeSize", "Chord Shape Size");
     }
 
     public String getTitleFontName() {
