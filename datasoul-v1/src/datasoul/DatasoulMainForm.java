@@ -106,7 +106,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
 
         showPanel("datashow");
-
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
     }
     
     
@@ -137,10 +137,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             templates.validate();
             btnTemplates.setEnabled(false);
         }else if (panel.equals("config")){
-            config.setVisible(true);
-            getContentPane().setLayout(configLayout);
-            config.validate();
-            btnConfig.setEnabled(false);
         }
         
     }
@@ -253,24 +249,28 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
 
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_CONFIG);        
         showPanel("config");
 
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
 
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_TEMPLATES);        
         showPanel("templates");
         
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
     private void btnSongsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSongsMouseClicked
     
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SONGS);        
         showPanel("songs");
   
     }//GEN-LAST:event_btnSongsMouseClicked
 
     private void btnDatashowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatashowMouseClicked
         
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
         showPanel("datashow");
         
     }//GEN-LAST:event_btnDatashowMouseClicked

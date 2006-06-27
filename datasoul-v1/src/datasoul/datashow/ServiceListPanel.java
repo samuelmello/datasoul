@@ -33,7 +33,6 @@ import org.w3c.dom.Node;
  */
 public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
-    private Object objectManager;    
     private String fileName="";
     /**
      * Creates new form ServiceListPanel
@@ -282,14 +281,16 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_tableServiceListMouseClicked
 
     private void showItem(){
-        if(objectManager instanceof DatashowPanel){
-            DatashowPanel om = (DatashowPanel)objectManager;
-            om.getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
-        }else{
-            SongsPanel om = (SongsPanel)objectManager;            
+        
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+            if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
+        }
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
             ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
             if(item instanceof Song)
-                om.getSongViewerPanel().viewSong((Song)item);
+                if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                    ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
         }
     }
     
@@ -410,14 +411,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         }
     }
 
-    public Object getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(Object objectManager) {
-        this.objectManager = objectManager;
-    }
-      
     private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
         tableServiceList.removeItem();
     }//GEN-LAST:event_btnRemoveMouseClicked

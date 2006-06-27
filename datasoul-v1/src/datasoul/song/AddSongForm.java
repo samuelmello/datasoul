@@ -6,6 +6,7 @@
 
 package datasoul.song;
 
+import datasoul.ObjectManager;
 import datasoul.datashow.ServiceListTable;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -18,6 +19,7 @@ import javax.swing.event.TableModelEvent;
  */
 public class AddSongForm extends javax.swing.JFrame  implements javax.swing.event.TableModelListener{
     
+    private int oldView;
     /** Creates new form AddSongForm */
     public AddSongForm() {
         initComponents();
@@ -26,7 +28,11 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         
         this.songsSearchPanel.usingInAddSongItemPanel(this);
         
-        this.songsSearchPanel.setObjectManager(this);
+        ObjectManager.getInstance().setAddSongForm(this);
+        
+        this.oldView = ObjectManager.getInstance().getViewActive();
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_ADD_SONGS);
+        
     }
 
     public void center(){
@@ -52,6 +58,12 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         setTitle("Add Song");
         setAlwaysOnTop(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                onWindowClosed(evt);
+            }
+        });
+
         jSplitPane1.setDividerLocation(250);
         jSplitPane1.setLeftComponent(songsSearchPanel);
 
@@ -71,6 +83,11 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void onWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_onWindowClosed
+        ObjectManager.getInstance().setViewActive(this.oldView);
+        ObjectManager.getInstance().setAddSongForm(null);
+    }//GEN-LAST:event_onWindowClosed
 
     public void tableChanged(TableModelEvent e) {
         this.repaint();

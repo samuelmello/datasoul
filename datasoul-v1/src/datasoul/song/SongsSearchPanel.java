@@ -33,7 +33,6 @@ import org.w3c.dom.Node;
  */
 public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
-    private Object objectManager;    
     private AllSongsListTable allSongsListTable;
     private JFrame frameParent;
     /**
@@ -278,21 +277,17 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_tableSongListKeyPressed
 
     private void showItem(){
-        if(objectManager instanceof DatashowPanel){
-            DatashowPanel om = (DatashowPanel)objectManager;
-            if (om != null){
-                om.getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-            }
-        }else if(objectManager instanceof SongsPanel){
-            SongsPanel om = (SongsPanel)objectManager;     
-            if (om != null){
-                om.getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-            }
-        }else if(objectManager instanceof AddSongForm){
-            AddSongForm om = (AddSongForm)objectManager;     
-            if (om != null){
-                om.viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-            }
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+            if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+        }
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+            if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+        }
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_ADD_SONGS){        
+            if(ObjectManager.getInstance().getAddSongForm()!=null)
+                ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
         }
     }    
     
@@ -336,15 +331,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     public void tableChanged(TableModelEvent e) {
         this.repaint();
     }
-
-    public Object getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(Object objectManager) {
-        this.objectManager = objectManager;
-    }
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -29,8 +29,6 @@ import org.w3c.dom.Node;
  */
 public class SongsListPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
-    private Object objectManager;    
-
     /**
      * Creates new form SongsListPanel
      */
@@ -164,12 +162,13 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
     }//GEN-LAST:event_tableSongListKeyPressed
 
     private void showItem(){
-        if(objectManager instanceof DatashowPanel){
-            DatashowPanel om = (DatashowPanel)objectManager;
-            om.getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
-        }else{
-            SongsPanel om = (SongsPanel)objectManager;            
-            om.getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+            if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+        }
+        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+            if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
         }
     }
     
@@ -202,14 +201,7 @@ public class SongsListPanel extends javax.swing.JPanel implements javax.swing.ev
         this.repaint();
     }
 
-    public Object getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(Object objectManager) {
-        this.objectManager = objectManager;
-    }
-    
+   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToList;

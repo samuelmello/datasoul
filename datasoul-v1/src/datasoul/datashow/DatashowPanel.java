@@ -26,9 +26,10 @@ public class DatashowPanel extends javax.swing.JPanel {
     public DatashowPanel() {
         initComponents();
         
-        auxiliar.setObjectManager(this);
-        serviceList.setObjectManager(this);
-        preview.setObjectManager(this);
+        ObjectManager.getInstance().setAuxiliarPanel(auxiliar);
+        ObjectManager.getInstance().setServiceListPanel(serviceList);
+        ObjectManager.getInstance().setPreviewPanel(preview);
+        ObjectManager.getInstance().setLivePanel(live);
             
         initPreview();
     }
@@ -52,18 +53,6 @@ public class DatashowPanel extends javax.swing.JPanel {
         ContentManager.getInstance().registerPreviewPanel( contentRender );
         
     }
-public AuxiliarPanel getAuxiliarPanel(){
-    return auxiliar;
-}
-public LivePanel getLivePanel(){
-    return live;
-}
-public PreviewPanel getPreviewPanel(){
-    return preview;
-}
-public ServiceListPanel getServiceListPanel(){
-    return serviceList;
-}
     
     /** This method is called from within the constructor to
      * initialize the form.

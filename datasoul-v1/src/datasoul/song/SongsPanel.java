@@ -23,25 +23,12 @@ public class SongsPanel extends javax.swing.JPanel {
     public SongsPanel() {
         initComponents();
         
-        chordsManagerPanel1.setObjectManager(this);
-        serviceList.setObjectManager(this);
-        songViewer.setObjectManager(this);
-        songsSearch.setObjectManager(this);
+        ObjectManager.getInstance().setChordsManagerPanel(chordsManagerPanel1);
+        ObjectManager.getInstance().setServiceListPanel(serviceList);
+        ObjectManager.getInstance().setSongViewerPanel(songViewer);
+        ObjectManager.getInstance().setSongsSearchPanel(songsSearch);
     }
 
-    public ChordsManagerPanel getChordsManagerPanel(){
-        return chordsManagerPanel1;
-    }
-    public ServiceListPanel getPraiseListPanel(){
-        return serviceList;
-    }
-    public SongViewerPanel getSongViewerPanel(){
-        return songViewer;
-    }
-    public SongsSearchPanel getSongsSearchPanel(){
-        return songsSearch;
-    }
-    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

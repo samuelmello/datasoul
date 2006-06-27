@@ -18,8 +18,6 @@ import javax.swing.event.TableModelEvent;
  */
 public class PraiseListPanel extends javax.swing.JPanel  implements javax.swing.event.TableModelListener {
 
-    private SongsPanel objectManager;
-    
     /**
      * Creates new form PraiseListPanel
      */
@@ -162,7 +160,7 @@ public class PraiseListPanel extends javax.swing.JPanel  implements javax.swing.
     }//GEN-LAST:event_tablePraiseListKeyPressed
 
     private void showItem(){
-        objectManager.getSongViewerPanel().viewSong((Song)tablePraiseList.getModel().getValueAt(tablePraiseList.getSelectedRow(),0));
+        ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tablePraiseList.getModel().getValueAt(tablePraiseList.getSelectedRow(),0));
     }
     
     private void btnUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpMouseClicked
@@ -181,14 +179,6 @@ public class PraiseListPanel extends javax.swing.JPanel  implements javax.swing.
         this.repaint();
     }
 
-    public SongsPanel getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(SongsPanel objectManager) {
-        this.objectManager = objectManager;
-    }
-    
     public void addItem(Object object){
         ((ListTable)tablePraiseList.getModel()).addItem(object);
     }

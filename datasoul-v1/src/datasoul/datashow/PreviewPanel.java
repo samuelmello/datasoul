@@ -6,6 +6,7 @@
 
 package datasoul.datashow;
 
+import datasoul.ObjectManager;
 import datasoul.render.ContentManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -16,21 +17,12 @@ import javax.swing.event.ListSelectionListener;
  */
 public class PreviewPanel extends javax.swing.JPanel implements ListSelectionListener {
 
-    private DatashowPanel objectManager;    
     /**
      * Creates new form PreviewPanel
      */
     public PreviewPanel() {
         initComponents();
         serviceItemTable1.addTableListener(this);
-    }
-
-    public DatashowPanel getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(DatashowPanel objectManager) {
-        this.objectManager = objectManager;
     }
 
     public void previewItem(ServiceItem serviceItem){
@@ -89,9 +81,9 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
-        ServiceItem previewItem = this.getObjectManager().getPreviewPanel().serviceItemTable1.getServiceItem();
+        ServiceItem previewItem = ObjectManager.getInstance().getPreviewPanel().serviceItemTable1.getServiceItem();
         
-        this.getObjectManager().getLivePanel().showItem(previewItem);
+        ObjectManager.getInstance().getLivePanel().showItem(previewItem);
         
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplateLive( previewItem.getTemplate() );
