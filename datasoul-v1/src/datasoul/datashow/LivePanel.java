@@ -10,7 +10,6 @@ import javax.swing.event.ListSelectionListener;
  */
 public class LivePanel extends javax.swing.JPanel implements ListSelectionListener {
 
-    private DatashowPanel objectManager;
     private AutomaticChanger automaticChanger;
     
     
@@ -23,14 +22,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         automaticChanger = new AutomaticChanger();
     }
 
-    public DatashowPanel getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(DatashowPanel objectManager) {
-        this.objectManager = objectManager;
-    }
-
     public void showItem(ServiceItem serviceItem){
         this.serviceItemTable1.setServiceItem(serviceItem);
         ContentManager cm = ContentManager.getInstance();
@@ -40,7 +31,17 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.setNextSlideLive("");
         //cm.slideShow( 1000 );
     }
-    
+
+    public void goNextMarkedSlide(){
+        int actualSlide = this.serviceItemTable1.getSlideIndex();
+        int nextMarkedSlide = this.serviceItemTable1.getServiceItem().getNextMarkedSlide(actualSlide);
+        this.serviceItemTable1.setSlideIndex(nextMarkedSlide);
+    }
+    public void goLastMarkedSlide(){
+        int actualSlide = this.serviceItemTable1.getSlideIndex();
+        int lastMarkedSlide = this.serviceItemTable1.getServiceItem().getLastMarkedSlide(actualSlide);
+        this.serviceItemTable1.setSlideIndex(lastMarkedSlide);
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

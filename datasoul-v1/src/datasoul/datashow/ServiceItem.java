@@ -126,6 +126,28 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         }
     }
 
+    public int getNextMarkedSlide(int actualSlide){
+        for(int i=actualSlide;i<this.getRowCount();i++){
+            if(getValueAt(i,0)!=null){
+                if(getValueAt(i,0).toString().contains("*")){
+                    return i;
+                }
+            }
+        }
+        return actualSlide;
+    }
+    
+    public int getLastMarkedSlide(int actualSlide){
+        for(int i=actualSlide;i>=0;i--){
+            if(getValueAt(i,0)!=null){
+                if(getValueAt(i,0).toString().contains("*")){
+                    return i;
+                }
+            }
+        }
+        return actualSlide;
+    }
+    
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
     }
 

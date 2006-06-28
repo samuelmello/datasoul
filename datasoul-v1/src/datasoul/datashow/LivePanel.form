@@ -22,7 +22,7 @@
               <Component id="spnTimer" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="137" max="32767" attributes="0"/>
+              <EmptySpace pref="171" max="32767" attributes="0"/>
           </Group>
           <Component id="serviceItemTable1" alignment="1" pref="355" max="32767" attributes="0"/>
       </Group>
