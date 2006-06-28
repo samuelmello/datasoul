@@ -24,11 +24,11 @@ import datasoul.song.SongsSearchPanel;
  */
 public class ObjectManager {
     
-    public static int VIEW_PROJECTOR = 0;
-    public static int VIEW_SONGS = 1;
-    public static int VIEW_TEMPLATES = 2;
-    public static int VIEW_CONFIG = 3;
-    public static int VIEW_ADD_SONGS = 4;    
+    public static final int VIEW_PROJECTOR = 0;
+    public static final int VIEW_SONGS = 1;
+    public static final int VIEW_TEMPLATES = 2;
+    public static final int VIEW_CONFIG = 3;
+    public static final int VIEW_ADD_SONGS = 4;    
 
     private static ObjectManager instance;
     
@@ -44,6 +44,8 @@ public class ObjectManager {
     private int viewActive;
     
     private AddSongForm addSongForm;
+    
+    private DatasoulMainForm datasoulMainForm;
     
     /** Creates a new instance of ObjectManager */
     private ObjectManager() {
@@ -124,5 +126,13 @@ public class ObjectManager {
     }
     public void setAddSongForm(AddSongForm addSongForm) {
         this.addSongForm = addSongForm;
+    }
+
+    public DatasoulMainForm getDatasoulMainForm() {
+        return datasoulMainForm;
+    }
+
+    public void setDatasoulMainForm(DatasoulMainForm datasoulMainForm) {
+        this.datasoulMainForm = datasoulMainForm;
     }
 }

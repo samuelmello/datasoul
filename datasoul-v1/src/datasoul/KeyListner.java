@@ -56,25 +56,43 @@ public class KeyListner implements KeyListener, AWTEventListener{
                     break;
                 case KeyEvent.VK_UP: 
                     ObjectManager.getInstance().getLivePanel().goLastMarkedSlide();
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
                     break;
                 case KeyEvent.VK_DOWN:     
                     ObjectManager.getInstance().getLivePanel().goNextMarkedSlide();
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
                     break;
             }
         }
         switch(e.getKeyCode()){ 
             case KeyEvent.VK_F1: 
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                break;
             case KeyEvent.VK_F2:
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
+                break;
             case KeyEvent.VK_F3: 
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
+                break;
             case KeyEvent.VK_F4: 
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
+                break;
             case KeyEvent.VK_F5: 
+                break;
             case KeyEvent.VK_F6: 
+                break;
             case KeyEvent.VK_F7: 
+                break;                
             case KeyEvent.VK_F8: 
+                break;                
             case KeyEvent.VK_F9: 
+                break;                
             case KeyEvent.VK_F10: 
+                break;                
             case KeyEvent.VK_F11: 
+                break;                
             case KeyEvent.VK_F12:     
+                break;                
         }
     }
 }

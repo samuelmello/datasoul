@@ -42,6 +42,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         initComponents();
 
+        ObjectManager.getInstance().setDatasoulMainForm(this);
+        
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datasoul.gif")).getImage());
         
         // Initialize datashow Layout
@@ -105,12 +107,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
         
 
-        showPanel("datashow");
+        showPanel(ObjectManager.VIEW_PROJECTOR);
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
     }
     
     
-    private void showPanel(String panel){
+    public void showPanel(int panel){
         
         songs.setVisible(false);
         datashow.setVisible(false);
@@ -121,22 +123,31 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnTemplates.setEnabled(true);
         btnConfig.setEnabled(true);
         
-        if (panel.equals("datashow")){
-            datashow.setVisible(true);
-            getContentPane().setLayout(datashowLayout);
-            datashow.validate();
-            btnDatashow.setEnabled(false);
-        }else if (panel.equals("songs")){
-            songs.setVisible(true);
-            getContentPane().setLayout(songsLayout);
-            songs.validate();
-            btnSongs.setEnabled(false);
-        }else if (panel.equals("templates")){
-            templates.setVisible(true);
-            getContentPane().setLayout(templatesLayout);
-            templates.validate();
-            btnTemplates.setEnabled(false);
-        }else if (panel.equals("config")){
+        switch (panel) {
+            case ObjectManager.VIEW_PROJECTOR:
+                datashow.setVisible(true);
+                getContentPane().setLayout(datashowLayout);
+                datashow.validate();
+                btnDatashow.setEnabled(false);
+                break;
+            case ObjectManager.VIEW_SONGS:
+                songs.setVisible(true);
+                getContentPane().setLayout(songsLayout);
+                songs.validate();
+                btnSongs.setEnabled(false);
+                break;        
+            case ObjectManager.VIEW_TEMPLATES:
+                templates.setVisible(true);
+                getContentPane().setLayout(templatesLayout);
+                templates.validate();
+                btnTemplates.setEnabled(false);
+                break;
+            case ObjectManager.VIEW_CONFIG:
+                config.setVisible(true);
+                getContentPane().setLayout(configLayout);
+                config.validate();
+                btnConfig.setEnabled(false);
+                break;
         }
         
     }
@@ -250,28 +261,28 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
 
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_CONFIG);        
-        showPanel("config");
+        showPanel(ObjectManager.VIEW_CONFIG);
 
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
 
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_TEMPLATES);        
-        showPanel("templates");
+        showPanel(ObjectManager.VIEW_TEMPLATES);
         
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
     private void btnSongsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSongsMouseClicked
     
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SONGS);        
-        showPanel("songs");
+        showPanel(ObjectManager.VIEW_SONGS);
   
     }//GEN-LAST:event_btnSongsMouseClicked
 
     private void btnDatashowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatashowMouseClicked
         
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
-        showPanel("datashow");
+        showPanel(ObjectManager.VIEW_PROJECTOR);
         
     }//GEN-LAST:event_btnDatashowMouseClicked
     
