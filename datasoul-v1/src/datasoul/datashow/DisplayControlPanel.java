@@ -8,6 +8,7 @@ package datasoul.datashow;
 
 import datasoul.ConfigObj;
 import datasoul.render.ContentManager;
+import java.awt.Event;
 import java.util.Hashtable;
 import javax.swing.JLabel;
 
@@ -16,6 +17,9 @@ import javax.swing.JLabel;
  * @author  samuelm
  */
 public class DisplayControlPanel extends javax.swing.JPanel {
+    
+    private boolean isMainOnBlack = false;
+    private boolean isMainOnClean = false;
     
     /**
      * Creates new form DisplayControlPanel
@@ -39,7 +43,62 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         
     }
+
     
+    public void mainDisplayBlack(){
+        if ( ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
+            if( !isMainOnBlack ){
+                ContentManager.getMainDisplay().setBlack( 1 );
+                isMainOnBlack = true;
+                btnMainBlack.setSelected(true);
+            }else{
+                ContentManager.getMainDisplay().setBlack( 0 );
+                isMainOnBlack = false;
+                btnMainBlack.setSelected(false);
+            }
+        }
+
+        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+            btnMonitorBlack.setSelected( btnMainBlack.isSelected() );
+            btnMonitorBlackActionPerformed(null);
+        }
+    }
+    public void mainDisplayClean(){
+        if ( ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
+            if( !isMainOnClean ){
+                ContentManager.getMainDisplay().setClear( 1 );
+                isMainOnClean = true;
+                btnMainClear.setSelected(true);
+            }else{
+                ContentManager.getMainDisplay().setClear( 0 );
+                isMainOnClean = false;
+                btnMainClear.setSelected(false);
+            }
+        }
+        
+        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+            btnMonitorClear.setSelected( btnMainClear.isSelected() );
+            btnMonitorClearActionPerformed(null);
+        }
+    }
+    public void mainDisplayShow(){
+        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        
+        ContentManager.getMainDisplay().slideShow( time );
+        
+        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+            btnMonitorShowActionPerformed(null);
+        }
+    }
+    public void mainDisplayHide(){
+        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        
+        ContentManager.getMainDisplay().slideHide( time );
+        
+        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+            btnMonitorHideActionPerformed(null);
+        }
+    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -270,26 +329,12 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
     private void btnMainShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainShowActionPerformed
 
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
-        
-        ContentManager.getMainDisplay().slideShow( time );
-        
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            btnMonitorShowActionPerformed(evt);
-        }
-
+        this.mainDisplayShow();
     }//GEN-LAST:event_btnMainShowActionPerformed
 
     private void btnMainHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainHideActionPerformed
 
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
-        
-        ContentManager.getMainDisplay().slideHide( time );
-        
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            btnMonitorHideActionPerformed(evt);
-        }
-        
+        this.mainDisplayHide();
     }//GEN-LAST:event_btnMainHideActionPerformed
 
     private void cbMonitorFollowMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorFollowMainActionPerformed
@@ -352,36 +397,12 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
     private void btnMainClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainClearActionPerformed
 
-        if ( ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
-            if( btnMainClear.isSelected() ){
-                ContentManager.getMainDisplay().setClear( 1 );
-            }else{
-                ContentManager.getMainDisplay().setClear( 0 );
-            }
-        }
-        
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            btnMonitorClear.setSelected( btnMainClear.isSelected() );
-            btnMonitorClearActionPerformed(evt);
-        }
-        
+        this.mainDisplayClean();
     }//GEN-LAST:event_btnMainClearActionPerformed
 
     private void btnMainBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainBlackActionPerformed
 
-        if ( ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
-            if( btnMainBlack.isSelected() ){
-                ContentManager.getMainDisplay().setBlack( 1 );
-            }else{
-                ContentManager.getMainDisplay().setBlack( 0 );
-            }
-        }
-
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            btnMonitorBlack.setSelected( btnMainBlack.isSelected() );
-            btnMonitorBlackActionPerformed(evt);
-        }
-        
+        this.mainDisplayBlack();
     }//GEN-LAST:event_btnMainBlackActionPerformed
     
     

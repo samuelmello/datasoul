@@ -82,16 +82,22 @@ public class KeyListner implements KeyListener, AWTEventListener{
             case KeyEvent.VK_F6: 
                 break;
             case KeyEvent.VK_F7: 
+                //relogio
                 break;                
             case KeyEvent.VK_F8: 
+                //avisos
                 break;                
             case KeyEvent.VK_F9: 
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayShow();
                 break;                
             case KeyEvent.VK_F10: 
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayHide();
                 break;                
             case KeyEvent.VK_F11: 
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayClean();
                 break;                
             case KeyEvent.VK_F12:     
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayBlack();
                 break;                
         }
     }

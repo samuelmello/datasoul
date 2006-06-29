@@ -32,6 +32,10 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         
     }
 
+    public DisplayControlPanel getDisplayControlPanel(){
+        return this.displayControlPanel1;
+    }
+    
     public DatashowPanel getObjectManager() {
         return objectManager;
     }
