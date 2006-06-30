@@ -30,50 +30,61 @@ public class ImageTemplateItem extends TemplateItem {
     BufferedImage img;
     private String imageInStr;
     private String filename;
-    private String stretch;
-    private String alingment;
-    private String vertAlign;
+    private int stretch;
+    private int alingment;
+    private int vertAlign;
     
     private static JComboBox cbStrecth;
     private static JComboBox cbAlignment;
     private static JComboBox cbVerticalAlignment;
     
-    public static final String ALIGN_LEFT = "Left";
-    public static final String ALIGN_CENTER = "Center";
-    public static final String ALIGN_RIGHT = "Right";
+    
+    
+    public static final int ALIGN_LEFT = 0; //"Left";
+    public static final int ALIGN_CENTER = 1;//"Center";
+    public static final int ALIGN_RIGHT = 2; //"Right";
+    public static final String[] ALIGN_TABLE = {"Left", "Center", "Right"};
 
-    public static final String VALIGN_TOP = "Top";
-    public static final String VALIGN_MIDDLE = "Middle";
-    public static final String VALIGN_BOTTOM = "Bottom";
+    public static final int VALIGN_TOP = 0; //"Top";
+    public static final int VALIGN_MIDDLE = 1; //"Middle";
+    public static final int VALIGN_BOTTOM = 2; //"Bottom";
+    public static final String[] VALIGN_TABLE = {"Top", "Middle", "Bottom"};
+    
+    public static final int STRETCH_NO = 0;
+    public static final int STRETCH_YES = 1;
+    public static final String[] STRETCH_TABLE = {"No", "Yes"};
     
     
     public ImageTemplateItem() {
         super();
-        this.setStretch("Yes");
-        this.setAlignment(ALIGN_CENTER);
-        this.setVerticalAlignment(VALIGN_MIDDLE);
+        int i;
+        this.setStretchIdx(STRETCH_YES);
+        this.setAlignmentIdx(ALIGN_CENTER);
+        this.setVerticalAlignmentIdx(VALIGN_MIDDLE);
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
-            cbAlignment.addItem(ALIGN_LEFT);
-            cbAlignment.addItem(ALIGN_CENTER);
-            cbAlignment.addItem(ALIGN_RIGHT);
+            for (i=0; i<ALIGN_TABLE.length; i++){
+                cbAlignment.addItem(ALIGN_TABLE[i]);
+            }
         }
-        registerEditorComboBox("Alignment", cbAlignment);
+        registerEditorComboBox("int.Alignment", cbAlignment);
         
         if (cbVerticalAlignment == null) {
             cbVerticalAlignment = new JComboBox();
-            cbVerticalAlignment.addItem(VALIGN_TOP);
-            cbVerticalAlignment.addItem(VALIGN_MIDDLE);
-            cbVerticalAlignment.addItem(VALIGN_BOTTOM);
+            for (i=0; i<VALIGN_TABLE.length; i++){
+                cbVerticalAlignment.addItem(VALIGN_TABLE[i]);
+            }
+
         }
-        registerEditorComboBox("VerticalAlignment", cbVerticalAlignment);
+        registerEditorComboBox("int.VerticalAlignment", cbVerticalAlignment);
 
         if (cbStrecth == null){
             cbStrecth = new JComboBox();
-            cbStrecth.addItem("Yes");
-            cbStrecth.addItem("No");
+            for (i=0; i<STRETCH_TABLE.length; i++){
+                cbStrecth.addItem(STRETCH_TABLE[i]);
+            }
         }
-        registerEditorComboBox("Stretch", cbStrecth);
+        registerEditorComboBox("int.Stretch", cbStrecth);
     }
     
     /** Creates a new instance of ImageTemplateItem */
@@ -100,12 +111,12 @@ public class ImageTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
-        properties.add("Alignment");
-        registerDisplayString("Alignment", "Alignment");
-        properties.add("VerticalAlignment");
-        registerDisplayString("VerticalAlignment", "Vertical Alignment");
-        properties.add("Stretch");
-        registerDisplayString("Stretch", "Stretch");
+        properties.add("int.Alignment");
+        registerDisplayString("int.Alignment", "Alignment");
+        properties.add("int.VerticalAlignment");
+        registerDisplayString("int.VerticalAlignment", "Vertical Alignment");
+        properties.add("int.Stretch");
+        registerDisplayString("int.Stretch", "Stretch");
 
     }
     
@@ -117,7 +128,7 @@ public class ImageTemplateItem extends TemplateItem {
         try{
             g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, this.getAlpha() * time ) );
             
-            if (stretch.equals("Yes")){
+            if (stretch == STRETCH_YES){
                 x = this.getLeft();
                 y = this.getTop();
                 w = this.getWidth();
@@ -133,17 +144,17 @@ public class ImageTemplateItem extends TemplateItem {
                     h = (int) (img.getHeight() * ratio_h);
                 }
                 
-                if (alingment.equals(ALIGN_LEFT)){
+                if (alingment == ALIGN_LEFT){
                     x = this.getLeft();
-                }else if (alingment.equals(ALIGN_RIGHT)){
+                }else if (alingment == ALIGN_RIGHT){
                     x = this.getLeft() + ( this.getWidth() - w);
                 }else{
                     x = this.getLeft() + ( this.getWidth() - w) / 2;
                 }
                 
-                if (vertAlign.equals(VALIGN_TOP)){
+                if (vertAlign == VALIGN_TOP){
                     y = this.getTop();
-                }else if (vertAlign.equals(VALIGN_BOTTOM)){
+                }else if (vertAlign == VALIGN_BOTTOM){
                     y = this.getTop() + ( this.getHeight() - h );
                 }else{
                     y = this.getTop() + ( this.getHeight() - h ) / 2;
@@ -227,39 +238,83 @@ public class ImageTemplateItem extends TemplateItem {
         return;
      }
      
-     public String getStretch (){
+     public int getStretchIdx (){
          return stretch;
      }
      
+     public String getStretch (){
+         return STRETCH_TABLE[stretch];
+     }
+     
+     
      public void setStretch(String stretch){
+        for (int j=0; j<STRETCH_TABLE.length; j++){
+            if (stretch.equalsIgnoreCase(STRETCH_TABLE[j])){
+                setStretchIdx(j);
+            }
+        }
+     }
+     
+     public void setStretchIdx(String stretch){
+         setStretchIdx(Integer.parseInt(stretch));
+     }
+     
+     public void setStretchIdx(int stretch){
          this.stretch = stretch;
-         firePropChanged("Stretch");
+         firePropChanged("int.Stretch");
      }
 
+     
     public String getAlignment(){
+        return ALIGN_TABLE[this.alingment];
+    }
+
+    public int getAlignmentIdx(){
         return this.alingment;
+    }
+
+    public void setAlignmentIdx(String s){
+        setAlignmentIdx(Integer.parseInt(s));
+    }
+    
+    public void setAlignmentIdx(int a){
+        this.alingment = a;
+        firePropChanged("int.Alignment");
     }
     
     public void setAlignment(String alignment){
-        if ( alignment.equals(ALIGN_LEFT) || alignment.equals(ALIGN_CENTER) || alignment.equals(ALIGN_RIGHT)){
-            this.alingment = alignment;
-            firePropChanged("Alignment");
-        }else{
-            System.out.println("Align: "+alignment);
+        
+        for (int j=0; j<ALIGN_TABLE.length; j++){
+            if (alignment.equalsIgnoreCase(ALIGN_TABLE[j])){
+                setAlignmentIdx(j);
+            }
         }
+        
     }
     
     public String getVerticalAlignment(){
+        return VALIGN_TABLE[this.vertAlign];
+    }
+
+    public int getVerticalAlignmentIdx(){
         return this.vertAlign;
     }
     
     public void setVerticalAlignment(String vertAlign){
-        if ( vertAlign.equals(VALIGN_TOP) || vertAlign.equals(VALIGN_MIDDLE) || vertAlign.equals(VALIGN_BOTTOM)){
-            this.vertAlign = vertAlign;
-            firePropChanged("VerticalAlignment");
+        for (int j=0; j<ALIGN_TABLE.length; j++){
+            if (vertAlign.equalsIgnoreCase(VALIGN_TABLE[j])){
+                setVerticalAlignmentIdx(j);
+            }
         }
     }
-
+    
+    public void setVerticalAlignmentIdx(int x){
+        this.vertAlign = x;
+        firePropChanged("int.VerticalAlignment");
+    }
      
+    public void setVerticalAlignmentIdx(String x){
+        setVerticalAlignmentIdx(Integer.parseInt(x));
+    }
      
 }

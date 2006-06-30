@@ -230,6 +230,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             template.save();
         }catch(Exception e) {
             JOptionPane.showMessageDialog(this,"Unable to save template:\n"+e.getMessage(),"DataSoul Error",0);    
+            e.printStackTrace();
         }        
     }
     

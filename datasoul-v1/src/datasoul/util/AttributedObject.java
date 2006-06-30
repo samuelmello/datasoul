@@ -66,7 +66,11 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         if (columnIndex != 1) return;
         
         try{
-            this.getClass().getMethod("set"+properties.get(rowIndex), String.class).invoke(this, aValue);
+            String prop = properties.get(rowIndex);
+            if (prop.startsWith("int.")){
+                prop = prop.substring(4);
+            }
+            this.getClass().getMethod("set"+prop, String.class).invoke(this, aValue);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -120,7 +124,13 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             
         }else{
             try{
-                return this.getClass().getMethod("get"+properties.get(rowIndex)).invoke(this);
+                
+                String prop = properties.get(rowIndex);
+                if (prop.startsWith("int.")){
+                    prop = prop.substring(4);
+                }
+                
+                return this.getClass().getMethod("get"+prop).invoke(this);
             }catch(Exception e){
                 e.printStackTrace();
                 return "";
