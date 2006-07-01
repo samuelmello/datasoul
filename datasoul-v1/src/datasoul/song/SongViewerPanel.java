@@ -434,9 +434,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
             Chord chord = chordsDB.getChordByName(chordsName.get(i));
             if(chord!=null){
                 int shapeSize = 1;
-                if(songTemplate.getChordShapeSize().equals("Small")){
+                if(songTemplate.getChordShapeSizeIdx() == SongTemplate.CHORDSIZE_SMALL){
                     shapeSize = 3;
-                }else if(songTemplate.getChordShapeSize().equals("Medium")){
+                }else if(songTemplate.getChordShapeSizeIdx() == SongTemplate.CHORDSIZE_MEDIUM){
                     shapeSize = 2;
                 }
                 ChordShapePanel csp = new ChordShapePanel(shapeSize, chord.getName(),chord.getShape());
@@ -693,9 +693,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
                     Chord chord = chordsDB.getChordByName(chordsName.get(i));
                     if(chord!=null){
                         int shapeSize = 1;
-                        if(songTemplate.getChordShapeSize().equals("Small")){
+                        if(songTemplate.getChordShapeSizeIdx() == SongTemplate.CHORDSIZE_SMALL){
                             shapeSize = 3;
-                        }else if(songTemplate.getChordShapeSize().equals("Medium")){
+                        }else if(songTemplate.getChordShapeSizeIdx() == SongTemplate.CHORDSIZE_MEDIUM){
                             shapeSize = 2;
                         }
                         ChordShapePanel csp = new ChordShapePanel(shapeSize, chord.getName(),chord.getShape());

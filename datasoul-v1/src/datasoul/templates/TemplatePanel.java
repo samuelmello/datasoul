@@ -357,7 +357,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,"Unable to save template:\n"+e.getMessage(),"DataSoul Error",0);    
+                        JOptionPane.showMessageDialog(this,"Unable to delete template:\n"+e.getMessage(),"DataSoul Error",0);    
                         e.printStackTrace();
                     }// try
                 }//if confirm
