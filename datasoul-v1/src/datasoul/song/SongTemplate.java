@@ -38,12 +38,17 @@ public class SongTemplate extends TemplateItem{
     private String lyricsFontName;    
     private Color lyricsFontColor;    
     private int lyricsFontSize;    
-    private String chordShapeSize;    
+    private int chordShapeSize;    
 
     private static JComboBox cb1;
     private static JComboBox cb2;
     private static JComboBox cb3;
     private static JComboBox cb4;
+
+    public static final int CHORDSIZE_BIG = 0;
+    public static final int CHORDSIZE_MEDIUM = 1;
+    public static final int CHORDSIZE_SMALL = 2;
+    public static final String[] CHORDSIZE_TABLE = {"Big", "Medium", "Small"};
     
     
     /**
@@ -70,11 +75,11 @@ public class SongTemplate extends TemplateItem{
 
         JComboBox cbChordSize = new JComboBox();
         cbChordSize = new JComboBox();
-        cbChordSize.addItem("Big");
-        cbChordSize.addItem("Medium");
-        cbChordSize.addItem("Small");
+        for (int i = 0; i < CHORDSIZE_TABLE.length; i++){
+            cbChordSize.addItem(CHORDSIZE_TABLE[i]);
+        }
 
-        registerEditorComboBox("ChordShapeSize", cbChordSize);
+        registerEditorComboBox("int.ChordShapeSize", cbChordSize);
                 
         cb1 = new JComboBox();
         cb1 = new JComboBox();
@@ -133,8 +138,8 @@ public class SongTemplate extends TemplateItem{
         registerDisplayString("LyricsFontColor", "Lyrics Font Color");
         properties.add("LyricsFontSize");
         registerDisplayString("LyricsFontSize", "Lyrics Font Size");
-        properties.add("ChordShapeSize");
-        registerDisplayString("ChordShapeSize", "Chord Shape Size");
+        properties.add("int.ChordShapeSize");
+        registerDisplayString("int.ChordShapeSize", "Chord Shape Size");
     }
 
     public String getTitleFontName() {
@@ -176,13 +181,30 @@ public class SongTemplate extends TemplateItem{
     }
 
     public String getChordShapeSize() {
+        return CHORDSIZE_TABLE[chordShapeSize];
+    }
+
+    public int getChordShapeSizeIdx() {
         return chordShapeSize;
     }
 
-    public void setChordShapeSize(String chordShapeSize) {
-        this.chordShapeSize = chordShapeSize;
-        firePropChanged("chordShapeSize");
+    public void setChordShapeSizeIdx(String chordShapeSize) {
+        setChordShapeSizeIdx(Integer.parseInt(chordShapeSize));
     }
+    
+    public void setChordShapeSizeIdx(int chordShapeSize) {
+        this.chordShapeSize = chordShapeSize;
+        firePropChanged("int.ChordShapeSize");
+    }
+    
+    public void setChordShapeSize(String str){
+        for (int j=0; j<CHORDSIZE_TABLE.length; j++){
+            if (str.equalsIgnoreCase(CHORDSIZE_TABLE[j])){
+                setChordShapeSizeIdx(j);
+            }
+        }
+    }    
+    
     
     public String getTitleFontColor() {
         Color color = titleFontColor;

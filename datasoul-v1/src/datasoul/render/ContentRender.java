@@ -255,32 +255,32 @@ public abstract class ContentRender {
             
             needUpdate = showHideNeedUpdate || templateChanged;
             
-            String content;
+            int content;
             if (needUpdate == false && template != null){
                 for (TemplateItem t : template.getItems() ){
                     if (t instanceof TextTemplateItem) {
-                        content = ((TextTemplateItem)t).getContent();
-                        if ( titleChanged && content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                        content = ((TextTemplateItem)t).getContentIdx();
+                        if ( titleChanged && content == TextTemplateItem.CONTENT_TITLE) {
                             needUpdate = true;
                             break;
                         }
-                        if ( slideChanged && content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                        if ( slideChanged && content == TextTemplateItem.CONTENT_SLIDE) {
                             needUpdate = true;
                             break;
                         }
-                        if ( nextSlideChanged && content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                        if ( nextSlideChanged && content == TextTemplateItem.CONTENT_NEXTSLIDE) {
                             needUpdate = true;
                             break;
                         }
-                        if ( clockChanged && content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                        if ( clockChanged && content == TextTemplateItem.CONTENT_CLOCK) {
                             needUpdate = true;
                             break;
                         }
-                        if ( timerChanged && content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                        if ( timerChanged && content == TextTemplateItem.CONTENT_TIMER) {
                             needUpdate = true;
                             break;
                         }
-                        if ( alertChanged && content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                        if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
                             needUpdate = true;
                             break;
                         }
@@ -294,28 +294,28 @@ public abstract class ContentRender {
             if (needUpdate == false && alertActive){
                 for (TemplateItem t : alertTemplate.getItems() ){
                     if (t instanceof TextTemplateItem) {
-                        content = ((TextTemplateItem)t).getContent();
-                        if ( titleChanged && content.equals(TextTemplateItem.CONTENT_TITLE)) {
+                        content = ((TextTemplateItem)t).getContentIdx();
+                        if ( titleChanged && content == TextTemplateItem.CONTENT_TITLE) {
                             needUpdate = true;
                             break;
                         }
-                        if ( slideChanged && content.equals(TextTemplateItem.CONTENT_SLIDE)) {
+                        if ( slideChanged && content == TextTemplateItem.CONTENT_SLIDE) {
                             needUpdate = true;
                             break;
                         }
-                        if ( nextSlideChanged && content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
+                        if ( nextSlideChanged && content == TextTemplateItem.CONTENT_NEXTSLIDE) {
                             needUpdate = true;
                             break;
                         }
-                        if ( clockChanged && content.equals(TextTemplateItem.CONTENT_CLOCK)) {
+                        if ( clockChanged && content == TextTemplateItem.CONTENT_CLOCK) {
                             needUpdate = true;
                             break;
                         }
-                        if ( timerChanged && content.equals(TextTemplateItem.CONTENT_TIMER)) {
+                        if ( timerChanged && content == TextTemplateItem.CONTENT_TIMER) {
                             needUpdate = true;
                             break;
                         }
-                        if ( alertChanged && content.equals(TextTemplateItem.CONTENT_ALERT)) {
+                        if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
                             needUpdate = true;
                             break;
                         }
@@ -334,31 +334,36 @@ public abstract class ContentRender {
                     
                     for (TemplateItem t : template.getItems() ){
                         if (t instanceof TextTemplateItem) {
-                            content = ((TextTemplateItem)t).getContent();
-                            if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
-                                ((TextTemplateItem)t).setText(title);
-                                continue;
+                            content = ((TextTemplateItem)t).getContentIdx();
+                            
+                            switch(content){
+                                
+                                case TextTemplateItem.CONTENT_TITLE:
+                                    ((TextTemplateItem)t).setText(title);
+                                    break;
+                            
+                                case TextTemplateItem.CONTENT_SLIDE:
+                                    ((TextTemplateItem)t).setText(slide);
+                                    break;
+                                    
+                                case TextTemplateItem.CONTENT_NEXTSLIDE:
+                                    ((TextTemplateItem)t).setText(nextSlide);
+                                    break;
+                            
+                                case TextTemplateItem.CONTENT_CLOCK:
+                                    ((TextTemplateItem)t).setText(clock);
+                                    break;
+                            
+                                case TextTemplateItem.CONTENT_TIMER:
+                                    ((TextTemplateItem)t).setText(timer);
+                                    break;
+                            
+                                case TextTemplateItem.CONTENT_ALERT:
+                                    ((TextTemplateItem)t).setText(alert);
+                                    break;
+                            
                             }
-                            if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
-                                ((TextTemplateItem)t).setText(slide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
-                                ((TextTemplateItem)t).setText(nextSlide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
-                                ((TextTemplateItem)t).setText(clock);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
-                                ((TextTemplateItem)t).setText(timer);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
-                                ((TextTemplateItem)t).setText(alert);
-                                continue;
-                            }
+                            
                         }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                             ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
                             ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
@@ -386,30 +391,26 @@ public abstract class ContentRender {
                     
                     for (TemplateItem t : alertTemplate.getItems() ){
                         if (t instanceof TextTemplateItem) {
-                            content = ((TextTemplateItem)t).getContent();
-                            if ( content.equals(TextTemplateItem.CONTENT_TITLE)) {
-                                ((TextTemplateItem)t).setText(title);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_SLIDE)) {
-                                ((TextTemplateItem)t).setText(slide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_NEXTSLIDE)) {
-                                ((TextTemplateItem)t).setText(nextSlide);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_CLOCK)) {
-                                ((TextTemplateItem)t).setText(clock);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_TIMER)) {
-                                ((TextTemplateItem)t).setText(timer);
-                                continue;
-                            }
-                            if ( content.equals(TextTemplateItem.CONTENT_ALERT)) {
-                                ((TextTemplateItem)t).setText(alert);
-                                continue;
+                            content = ((TextTemplateItem)t).getContentIdx();
+                            switch(content){
+                                case TextTemplateItem.CONTENT_TITLE:
+                                    ((TextTemplateItem)t).setText(title);
+                                    break;
+                                case TextTemplateItem.CONTENT_SLIDE:
+                                    ((TextTemplateItem)t).setText(slide);
+                                    break;
+                                case TextTemplateItem.CONTENT_NEXTSLIDE:
+                                    ((TextTemplateItem)t).setText(nextSlide);
+                                    break;
+                                case TextTemplateItem.CONTENT_CLOCK:
+                                    ((TextTemplateItem)t).setText(clock);
+                                    break;
+                                case TextTemplateItem.CONTENT_TIMER:
+                                    ((TextTemplateItem)t).setText(timer);
+                                    break;
+                                case TextTemplateItem.CONTENT_ALERT:
+                                    ((TextTemplateItem)t).setText(alert);
+                                    break;
                             }
                         }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                             ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);

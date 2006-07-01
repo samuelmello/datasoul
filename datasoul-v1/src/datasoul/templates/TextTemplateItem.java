@@ -41,12 +41,12 @@ public class TextTemplateItem extends TemplateItem {
     private float fontOutline;
     private Color fontColor;
     private Color outlineColor;
-    private String alingment;
-    private String vertAlign;
-    private String textWidth;
-    private String textWeight;
-    private String underline;
-    private String content;
+    private int alingment;
+    private int vertAlign;
+    private int textWidth;
+    private int textWeight;
+    private int underline;
+    private int content;
     
         
     private AttributedString atribStr;
@@ -56,8 +56,8 @@ public class TextTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
-        properties.add("Content");
-        registerDisplayString("Content", "Content");
+        properties.add("int.Content");
+        registerDisplayString("int.Content", "Content");
         properties.add("Text");
         registerDisplayString("Text", "Text");
         properties.add("FontName");
@@ -70,16 +70,16 @@ public class TextTemplateItem extends TemplateItem {
         registerDisplayString("FontColor", "Font Color");
         properties.add("OutlineColor");
         registerDisplayString("OutlineColor", "Outline Color");
-        properties.add("Alignment");
-        registerDisplayString("Alignment", "Alignment");
-        properties.add("VerticalAlignment");
-        registerDisplayString("VerticalAlignment", "Vertical Alignment");
-        properties.add("TextWidth");
-        registerDisplayString("TextWidth", "Text Width");
-        properties.add("TextWeight");
-        registerDisplayString("TextWeight", "Text Weight");
-        properties.add("Underline");
-        registerDisplayString("Underline", "Underline");
+        properties.add("int.Alignment");
+        registerDisplayString("int.Alignment", "Alignment");
+        properties.add("int.VerticalAlignment");
+        registerDisplayString("int.VerticalAlignment", "Vertical Alignment");
+        properties.add("int.TextWidth");
+        registerDisplayString("int.TextWidth", "Text Width");
+        properties.add("int.TextWeight");
+        registerDisplayString("int.TextWeight", "Text Weight");
+        properties.add("int.Underline");
+        registerDisplayString("int.Underline", "Underline");
 
     }
 
@@ -91,98 +91,122 @@ public class TextTemplateItem extends TemplateItem {
     private static JComboBox cbUnderline;
     private static JComboBox cbFontName;
     
-    public static final String CONTENT_TITLE = "Title";
-    public static final String CONTENT_SLIDE = "Slide";
-    public static final String CONTENT_NEXTSLIDE = "Next Slide";
-    public static final String CONTENT_CLOCK = "Clock";
-    public static final String CONTENT_TIMER = "Timer";
-    public static final String CONTENT_STATIC = "Static";
-    public static final String CONTENT_ALERT = "Alert";
+    public static final int CONTENT_TITLE = 0;// "Title";
+    public static final int CONTENT_SLIDE = 1;// "Slide";
+    public static final int CONTENT_NEXTSLIDE = 2; //"Next Slide";
+    public static final int CONTENT_CLOCK = 3;//"Clock";
+    public static final int CONTENT_TIMER = 4;//"Timer";
+    public static final int CONTENT_STATIC = 5;//"Static";
+    public static final int CONTENT_ALERT = 6;//"Alert";
+    public static final String[] CONTENT_TABLE = {"Title", "Slide", "Next Slide", "Clock", "Timer", "Static", "Alert"};
+    
+    public static final int ALIGN_LEFT = 0; //"Left";
+    public static final int ALIGN_CENTER = 1;//"Center";
+    public static final int ALIGN_RIGHT = 2; //"Right";
+    public static final String[] ALIGN_TABLE = {"Left", "Center", "Right"};
+
+    public static final int VALIGN_TOP = 0; //"Top";
+    public static final int VALIGN_MIDDLE = 1; //"Middle";
+    public static final int VALIGN_BOTTOM = 2; //"Bottom";
+    public static final String[] VALIGN_TABLE = {"Top", "Middle", "Bottom"};
+
+    public static final int TEXTWIDTH_CONDENSED = 0;
+    public static final int TEXTWIDTH_SEMICONDENSED = 1;
+    public static final int TEXTWIDTH_REGULAR = 2;
+    public static final int TEXTWIDTH_SEMIEXTENDED = 3;
+    public static final int TEXTWIDTH_EXTENDED = 4;
+    public static final String[] TEXTWIDTH_TABLE = {"Condensed", "Semi Condensed", "Regular", "Semi Extended", "Extended"};
+    
+    public static final int TEXTWEIGHT_REGULAR = 0;
+    public static final int TEXTWEIGHT_EXTRALIGHT = 1;
+    public static final int TEXTWEIGHT_LIGHT = 2;
+    public static final int TEXTWEIGHT_SEMIBOLD = 3;
+    public static final int TEXTWEIGHT_MEDIUM = 4;
+    public static final int TEXTWEIGHT_BOLD = 5;
+    public static final int TEXTWEIGHT_EXTRABOLD = 6;
+    public static final String[] TEXTWEIGHT_TABLE = {"Regular", "Extra Light", "Light", "Semi Bold", "Medium", "Bold", "Extra Bold"};
+
+    public static final int UNDERLINE_OFF = 0;
+    public static final int UNDERLINE_SIMPLE = 1;
+    public static final int UNDERLINE_TWOPIXEL = 2;
+    public static final int UNDERLINE_DOTTED = 3;
+    public static final int UNDERLINE_DASHED = 4;
+    public static final String[] UNDERLINE_TABLE = {"Off", "Simple", "TwoPixel", "Dotted", "Dashed"};
+    
+    
     public static final String DEFAULT_TEXT = "TextItem";
 
     public TextTemplateItem () {
         
         super();
         
+        int i;
+        
         this.setWidth(100);
         this.setHeight(100);
-        this.setContent("Static");
+        this.setContentIdx(CONTENT_STATIC);
         this.setText(DEFAULT_TEXT);
         this.setFontSize(16f);
-        this.setAlignment("Left");
-        this.setVerticalAlignment("Top");
-        this.setTextWidth("Regular");
-        this.setTextWeight("Regular");
-        this.setUnderline("Off");
+        this.setAlignmentIdx(ALIGN_LEFT);
+        this.setVerticalAlignmentIdx(VALIGN_TOP);
+        this.setTextWidthIdx(TEXTWIDTH_REGULAR);
+        this.setTextWeightIdx(TEXTWEIGHT_REGULAR);
+        this.setUnderlineIdx(UNDERLINE_OFF);
         this.setFontName("Serif");
         this.setFontColor(Color.BLACK);
         this.setOutlineColor(Color.BLACK);
 
         if (cbContent == null){
             cbContent = new JComboBox();
-            cbContent.addItem(CONTENT_STATIC);
-            cbContent.addItem(CONTENT_SLIDE);
-            cbContent.addItem(CONTENT_NEXTSLIDE);
-            cbContent.addItem(CONTENT_TITLE);
-            cbContent.addItem(CONTENT_CLOCK);
-            cbContent.addItem(CONTENT_TIMER);
-            cbContent.addItem(CONTENT_ALERT);
+            for (i=0; i<CONTENT_TABLE.length; i++)
+                cbContent.addItem(CONTENT_TABLE[i]);
         }
-        registerEditorComboBox("Content", cbContent);
+        registerEditorComboBox("int.Content", cbContent);
         
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
-            cbAlignment.addItem("Left");
-            cbAlignment.addItem("Center");
-            cbAlignment.addItem("Right");
+            for (i=0; i<ALIGN_TABLE.length; i++){
+                cbAlignment.addItem(ALIGN_TABLE[i]);
+            }
         }
-        registerEditorComboBox("Alignment", cbAlignment);
+        registerEditorComboBox("int.Alignment", cbAlignment);
         
         if (cbVerticalAlignment == null) {
             cbVerticalAlignment = new JComboBox();
-            cbVerticalAlignment.addItem("Top");
-            cbVerticalAlignment.addItem("Middle");
-            cbVerticalAlignment.addItem("Bottom");
+            for (i=0; i<VALIGN_TABLE.length; i++){
+                cbVerticalAlignment.addItem(VALIGN_TABLE[i]);
+            }
+
         }
-        registerEditorComboBox("VerticalAlignment", cbVerticalAlignment);
+        registerEditorComboBox("int.VerticalAlignment", cbVerticalAlignment);
         
         if (cbTextWidth == null){
             cbTextWidth = new JComboBox();
-            cbTextWidth.addItem("Condensed");
-            cbTextWidth.addItem("Semi Condensed");
-            cbTextWidth.addItem("Regular");
-            cbTextWidth.addItem("Semi Extended");
-            cbTextWidth.addItem("Extended");
+            for (i=0; i<TEXTWIDTH_TABLE.length; i++){
+                cbTextWidth.addItem(TEXTWIDTH_TABLE[i]);
+            }
         }
-        registerEditorComboBox("TextWidth", cbTextWidth);
+        registerEditorComboBox("int.TextWidth", cbTextWidth);
 
         if (cbTextWeight == null){
             cbTextWeight = new JComboBox();
-            cbTextWeight.addItem("Regular");
-            cbTextWeight.addItem("Extra Light");
-            cbTextWeight.addItem("Light");
-            cbTextWeight.addItem("Semi Bold");
-            cbTextWeight.addItem("Medium");
-            cbTextWeight.addItem("Bold");
-            cbTextWeight.addItem("Extra Bold");
+            for (i=0; i<TEXTWEIGHT_TABLE.length; i++)
+                cbTextWeight.addItem(TEXTWEIGHT_TABLE[i]);
         }
-        registerEditorComboBox("TextWeight", cbTextWeight);
+        registerEditorComboBox("int.TextWeight", cbTextWeight);
         
         
         if (cbUnderline == null){
             cbUnderline = new JComboBox();
-            cbUnderline.addItem("Off");
-            cbUnderline.addItem("Simple");
-            cbUnderline.addItem("TwoPixel");
-            cbUnderline.addItem("Dotted");
-            cbUnderline.addItem("Dashed");
+            for (i=0; i<UNDERLINE_TABLE.length; i++)
+                cbUnderline.addItem(UNDERLINE_TABLE[i]);
         }
-        registerEditorComboBox("Underline", cbUnderline);
+        registerEditorComboBox("int.Underline", cbUnderline);
         
         if (cbFontName == null){
             String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
             cbFontName = new JComboBox();
-            for ( int i = 0; i < fontList.length; i++ )
+            for ( i = 0; i < fontList.length; i++ )
               cbFontName.addItem( fontList[i] );
         }
         registerEditorComboBox("FontName", cbFontName);
@@ -246,9 +270,9 @@ getFullWord: {
          // do the paiting
          aci = this.atribStr.getIterator();
          lbm.setPosition(0);
-         if ( vertAlign.equals("Middle") ){
+         if ( vertAlign == VALIGN_MIDDLE ){
              drawPosY = (this.getHeight() - drawPosY) / 2;
-         } else if (vertAlign.equals("Bottom")){
+         } else if (vertAlign == VALIGN_BOTTOM){
              drawPosY = this.getHeight() - drawPosY;
          } else {
              drawPosY = 0;
@@ -275,10 +299,10 @@ getFullWord: {
                  // default alignment = Left
                  float drawPosX = this.getLeft();
                  
-                 if (getAlignment().equals("Right"))
+                 if ( alingment == ALIGN_RIGHT)
                      drawPosX = this.getLeft() + ( this.getWidth() - layout.getAdvance() ) ;
                  
-                 if (getAlignment().equals("Center"))
+                 if ( alingment == ALIGN_CENTER)
                      drawPosX = this.getLeft() + ( this.getWidth() - layout.getAdvance() )/2 ;
                  
                  // draw the text
@@ -332,52 +356,66 @@ getFullWord: {
         }
         atribStr.addAttribute(TextAttribute.SIZE, this.getFontSize());
         
-        if ( textWidth == null) {
-            // do nothing
-        } else if ( textWidth.equals("Condensed")) {
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_CONDENSED);
-        } else if ( textWidth.equals("Semi Condensed")) {
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_CONDENSED);
-        } else if ( textWidth.equals("Regular")) {
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_REGULAR);
-        } else if ( textWidth.equals("Semi Extended")) {
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_EXTENDED);
-        } else if ( textWidth.equals("Extended")) {
-            atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_EXTENDED);
+        switch (textWidth){
+            
+            case TEXTWIDTH_CONDENSED:
+                atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_CONDENSED);
+                break;
+                
+            case TEXTWIDTH_SEMICONDENSED:
+                atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_CONDENSED);
+                break;
+            
+            case TEXTWIDTH_REGULAR:
+                atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_REGULAR);
+                break;
+            
+            case TEXTWIDTH_SEMIEXTENDED:
+                atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_SEMI_EXTENDED);
+                break;
+            
+            case TEXTWIDTH_EXTENDED:
+                atribStr.addAttribute(TextAttribute.WIDTH, TextAttribute.WIDTH_EXTENDED);
+                break;
         }
 
-        
-        if ( textWeight == null) {
-            // do nothing
-        } else if ( textWeight.equals("Extra Light")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_EXTRA_LIGHT);
-        } else if ( textWeight.equals("Light")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_LIGHT);
-        } else if ( textWeight.equals("Semi Bold")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
-        } else if ( textWeight.equals("Medium")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_MEDIUM);
-        } else if ( textWeight.equals("Bold")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
-        } else if ( textWeight.equals("Extra Bold")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_EXTRABOLD);
-        } else if ( textWeight.equals("Regular")) {
-            atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_REGULAR);
+        switch (textWeight){
+            case TEXTWEIGHT_EXTRALIGHT:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_EXTRA_LIGHT);
+                break;
+            case TEXTWEIGHT_LIGHT:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_LIGHT);
+                break;
+            case TEXTWEIGHT_SEMIBOLD:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_DEMIBOLD);
+                break;
+            case TEXTWEIGHT_MEDIUM:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_MEDIUM);
+                break;
+            case TEXTWEIGHT_BOLD:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_BOLD);
+                break;
+            case TEXTWEIGHT_EXTRABOLD:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_EXTRABOLD);
+                break;
+            case TEXTWEIGHT_REGULAR:
+                atribStr.addAttribute(TextAttribute.WEIGHT, TextAttribute.WEIGHT_REGULAR);
+                break;
         }
-
         
-        if ( underline == null ) {
-            // do nothing
-        } else if ( underline.equals("Off")) {
-            //atribStr.addAttribute(TextAttribute.UNDERLINE, null);
-        } else if ( underline.equals("Simple")) {
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_ONE_PIXEL);
-        } else if ( underline.equals("Dotted")) {
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DOTTED);
-        } else if ( underline.equals("TwoPixel")) {
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_TWO_PIXEL);
-        } else if ( underline.equals("Dashed")) {
-            atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DASHED);
+        switch(underline){
+            case UNDERLINE_SIMPLE:
+                atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_ONE_PIXEL);
+                break;
+            case UNDERLINE_TWOPIXEL:
+                atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_TWO_PIXEL);
+                break;
+            case UNDERLINE_DOTTED:
+                atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DOTTED);
+                break;
+            case UNDERLINE_DASHED:
+                atribStr.addAttribute(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_LOW_DASHED);
+                break;
         }
 
     }
@@ -471,72 +509,159 @@ getFullWord: {
     }
     
     public String getAlignment(){
+        return ALIGN_TABLE[this.alingment];
+    }
+
+    public int getAlignmentIdx(){
         return this.alingment;
+    }
+
+    public void setAlignmentIdx(String s){
+        setAlignmentIdx(Integer.parseInt(s));
+    }
+    
+    public void setAlignmentIdx(int a){
+        this.alingment = a;
+        firePropChanged("int.Alignment");
     }
     
     public void setAlignment(String alignment){
-        if ( alignment.equals("Left") || alignment.equals("Right") || alignment.equals("Center")){
-            this.alingment = alignment;
-            firePropChanged("Alignment");
-        }else{
-            System.out.println("Align: "+alignment);
+        
+        for (int j=0; j<ALIGN_TABLE.length; j++){
+            if (alignment.equalsIgnoreCase(ALIGN_TABLE[j])){
+                setAlignmentIdx(j);
+            }
         }
+        
     }
     
     public String getVerticalAlignment(){
+        return VALIGN_TABLE[this.vertAlign];
+    }
+
+    public int getVerticalAlignmentIdx(){
         return this.vertAlign;
     }
     
     public void setVerticalAlignment(String vertAlign){
-        if ( vertAlign.equals("Top") || vertAlign.equals("Middle") || vertAlign.equals("Bottom")){
-            this.vertAlign = vertAlign;
-            firePropChanged("VerticalAlignment");
+        for (int j=0; j<ALIGN_TABLE.length; j++){
+            if (vertAlign.equalsIgnoreCase(VALIGN_TABLE[j])){
+                setVerticalAlignmentIdx(j);
+            }
         }
+    }
+    
+    public void setVerticalAlignmentIdx(int x){
+        this.vertAlign = x;
+        firePropChanged("int.VerticalAlignment");
+    }
+     
+    public void setVerticalAlignmentIdx(String x){
+        setVerticalAlignmentIdx(Integer.parseInt(x));
     }
 
     
-    public String getTextWidth(){
+    public int getTextWidthIdx(){
         return this.textWidth;
     }
     
-    public void setTextWidth(String width){
-        
+    public String getTextWidth(){
+        return TEXTWIDTH_TABLE[this.textWidth];
+    }
+
+    public void setTextWidthIdx(int width){
         this.textWidth = width;
         updateAttributes();
-        firePropChanged("TextWidth");
-
+        firePropChanged("int.TextWidth");
     }
+    
+    public void setTextWidthIdx(String width){
+        setTextWidthIdx(Integer.parseInt(width));
+    }
+    
+    public void setTextWidth(String str){
+        for (int i=0; i<TEXTWIDTH_TABLE.length; i++){
+            if (str.equalsIgnoreCase(TEXTWIDTH_TABLE[i])){
+                setTextWidthIdx(i);
+            }
+        }
+    }
+    
     
     public String getTextWeight(){
+        return TEXTWEIGHT_TABLE[this.textWeight];
+    }
+
+    public int getTextWeightIdx(){
         return this.textWeight;
     }
+    
+    public void setTextWeightIdx(String weight){
+        setTextWeightIdx(Integer.parseInt(weight));
+    }
 
-    public void setTextWeight(String weight){
+    public void setTextWeightIdx(int weight){
         this.textWeight = weight;
         updateAttributes();
-        firePropChanged("TextWeight");
+        firePropChanged("int.TextWeight");
     }
             
-
-    public String getUnderline(){
-        return this.underline;
-                
+    public void setTextWeight(String str){
+        for (int j=0; j<TEXTWEIGHT_TABLE.length; j++){
+            if (str.equalsIgnoreCase(TEXTWEIGHT_TABLE[j])){
+                setTextWeightIdx(j);
+            }
+        }
     }
     
-    public void setUnderline(String under){
+    public String getUnderline(){
+        return UNDERLINE_TABLE[this.underline];
+    }
 
+    public int getUnderlineIdx(){
+        return this.underline;
+    }
+    
+    public void setUnderlineIdx(String under){
+        setUnderlineIdx(Integer.parseInt(under));
+    }
+
+    public void setUnderlineIdx(int under){
         this.underline = under;
         updateAttributes();
-        firePropChanged("Underline");
-            
+        firePropChanged("int.Underline");
     }
     
+    public void setUnderline(String str){
+        for (int j=0; j<UNDERLINE_TABLE.length; j++){
+            if (str.equalsIgnoreCase(UNDERLINE_TABLE[j])){
+                setUnderlineIdx(j);
+            }
+        }
+    }    
+    
+    public int getContentIdx(){
+        return content;
+    }
+    
+    public void setContentIdx(String content){
+        setContentIdx(Integer.parseInt(content));
+    }
+    
+    public void setContentIdx(int content){
+        this.content = content;
+        firePropChanged("int.Content");
+    }
     
     public String getContent(){
-        return this.content;
+        return CONTENT_TABLE[this.content];
     }
     
     public void setContent(String content){
-        this.content = content;
+        for (int j=0; j<CONTENT_TABLE.length; j++){
+            if (content.equalsIgnoreCase(CONTENT_TABLE[j])){
+                setContentIdx(j);
+            }
+        }
     }
 }
