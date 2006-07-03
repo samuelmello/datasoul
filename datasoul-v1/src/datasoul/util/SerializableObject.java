@@ -13,6 +13,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.xml.parsers.DocumentBuilder;
@@ -88,7 +89,7 @@ public abstract class SerializableObject  implements Transferable, SerializableI
         return nodeOut.cloneNode(true);
      }
      
-     public void readObject(Node nodeIn) throws Exception {
+     public void readObject(Node nodeIn)  {
 
         NodeList nodeList= nodeIn.getChildNodes();
         String paramName;
@@ -102,8 +103,19 @@ public abstract class SerializableObject  implements Transferable, SerializableI
                 if (prop.startsWith("int.")){
                     prop = prop.substring(4)+"Idx";
                 }
-
-                this.getClass().getMethod("set"+prop, String.class).invoke(this, paramValue);
+                try {
+                    this.getClass().getMethod("set"+prop, String.class).invoke(this, paramValue);
+                } catch (IllegalArgumentException ex) {
+                    //print error
+                } catch (SecurityException ex) {
+                    //print error
+                } catch (IllegalAccessException ex) {
+                    //print error
+                } catch (NoSuchMethodException ex) {
+                    //print error
+                } catch (InvocationTargetException ex) {
+                    //print error
+                }
                 
             }
         }
