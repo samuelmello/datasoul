@@ -56,6 +56,11 @@ public class Song extends TextServiceItem{
     public void setSongAuthor(String songAuthor){
         this.songAuthor = songAuthor;
     }
+
+    //just to backward compatibility
+    public void setLyrics(String lyrics){
+        this.setText(lyrics);
+    }
     
     public void setChordsComplete(String chordsComplete){
         this.chordsComplete = chordsComplete;
