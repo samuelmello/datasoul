@@ -98,7 +98,8 @@ public class TextTemplateItem extends TemplateItem {
     public static final int CONTENT_TIMER = 4;//"Timer";
     public static final int CONTENT_STATIC = 5;//"Static";
     public static final int CONTENT_ALERT = 6;//"Alert";
-    public static final String[] CONTENT_TABLE = {"Title", "Slide", "Next Slide", "Clock", "Timer", "Static", "Alert"};
+    public static final int CONTENT_SONGAUTHOR = 7;//"Author";    
+    public static final String[] CONTENT_TABLE = {"Title", "Slide", "Next Slide", "Clock", "Timer", "Static", "Alert","Song Author"};
     
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";

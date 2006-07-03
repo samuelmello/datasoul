@@ -80,6 +80,12 @@ public class ContentManager {
             r.setTimer(timer);
         }
     }
+
+    public void setSongAuthorLive(String songAuthor){
+        for (ContentRender r : liveRenderList){
+            r.setSongAuthor(songAuthor);
+        }
+    }
     
     public void setTemplateLive(String template){
         for (ContentRender r : liveRenderList){
@@ -147,6 +153,12 @@ public class ContentManager {
         }
     }
 
+    public void setSongAuthorPreview(String songAuthor){
+        for (ContentRender r : previewRenderList){
+            r.setSongAuthor(songAuthor);
+        }
+    }
+    
     public void setTemplatePreview(String t){
         for (ContentRender r : previewRenderList){
             r.setTemplate(t);

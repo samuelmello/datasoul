@@ -40,6 +40,8 @@ public abstract class ContentRender {
     private boolean timerChanged;
     private String alert;
     private boolean alertChanged;
+    private String songAuthor;
+    private boolean songAuthorChanged;
     private DisplayTemplate alertTemplate;
     private boolean alertTemplateChanged;
     private boolean alertActive;
@@ -92,6 +94,15 @@ public abstract class ContentRender {
     public void setTitle(String title) {
         this.title = title;
         this.titleChanged = true;
+    }
+
+    public String getSongAuthor() {
+        return songAuthor;
+    }
+    
+    public void setSongAuthor(String songAuthor) {
+        this.songAuthor = songAuthor;
+        this.songAuthorChanged = true;
     }
     
     public String getSlide() {
@@ -284,6 +295,10 @@ public abstract class ContentRender {
                             needUpdate = true;
                             break;
                         }
+                        if ( songAuthorChanged && content == TextTemplateItem.CONTENT_SONGAUTHOR) {
+                            needUpdate = true;
+                            break;
+                        }
                     }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                         needUpdate = true;
                         break;
@@ -316,6 +331,10 @@ public abstract class ContentRender {
                             break;
                         }
                         if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
+                            needUpdate = true;
+                            break;
+                        }
+                        if ( songAuthorChanged && content == TextTemplateItem.CONTENT_SONGAUTHOR) {
                             needUpdate = true;
                             break;
                         }
@@ -360,6 +379,9 @@ public abstract class ContentRender {
                             
                                 case TextTemplateItem.CONTENT_ALERT:
                                     ((TextTemplateItem)t).setText(alert);
+                                    break;
+                                case TextTemplateItem.CONTENT_SONGAUTHOR:
+                                    ((TextTemplateItem)t).setText(songAuthor);
                                     break;
                             
                             }
@@ -410,6 +432,9 @@ public abstract class ContentRender {
                                     break;
                                 case TextTemplateItem.CONTENT_ALERT:
                                     ((TextTemplateItem)t).setText(alert);
+                                    break;
+                                case TextTemplateItem.CONTENT_SONGAUTHOR:
+                                    ((TextTemplateItem)t).setText(songAuthor);
                                     break;
                             }
                         }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
@@ -463,6 +488,7 @@ public abstract class ContentRender {
                     clockChanged = false;
                     timerChanged = false;
                     alertChanged = false;
+                    songAuthorChanged = false;
                     showHideNeedUpdate = false;
                 }
                 

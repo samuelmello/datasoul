@@ -8,6 +8,7 @@ package datasoul.datashow;
 
 import datasoul.ObjectManager;
 import datasoul.render.ContentManager;
+import datasoul.song.Song;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -88,6 +89,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplateLive( previewItem.getTemplate() );
         cm.setTitleLive( previewItem.getTitle() );
+        if(previewItem instanceof Song)
+            cm.setSongAuthorPreview( ((Song)previewItem).getSongAuthor() );
         cm.setSlideLive("");
         cm.setNextSlideLive("");
         //cm.slideShow(2000);
