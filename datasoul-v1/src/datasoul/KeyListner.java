@@ -78,14 +78,20 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
                 break;
             case KeyEvent.VK_F5: 
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_DISPLAY);
                 break;
             case KeyEvent.VK_F6: 
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_ALARM);
                 break;
             case KeyEvent.VK_F7: 
-                //relogio
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_CLOCK);
                 break;                
             case KeyEvent.VK_F8: 
-                //avisos
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_BACKGROUND);
                 break;                
             case KeyEvent.VK_F9: 
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayShow();

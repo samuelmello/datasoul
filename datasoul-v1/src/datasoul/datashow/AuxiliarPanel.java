@@ -7,6 +7,7 @@
 package datasoul.datashow;
 
 import datasoul.ConfigObj;
+import datasoul.ObjectManager;
 import datasoul.render.ContentManager;
 import java.io.IOException;
 import java.util.Hashtable;
@@ -22,27 +23,37 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
     private DatashowPanel objectManager;
     
+    public static final int TAB_DISPLAY = 0;
+    public static final int TAB_ALARM = 1;
+    public static final int TAB_CLOCK = 2;
+    public static final int TAB_BACKGROUND = 3;
     /**
      * Creates new form AuxiliarPanel
      */
     public AuxiliarPanel() {
         initComponents();
-        
-        
-        
+
+        ObjectManager.getInstance().setAuxiliarPanel(this);
     }
 
     public DisplayControlPanel getDisplayControlPanel(){
         return this.displayControlPanel1;
     }
     
-    public DatashowPanel getObjectManager() {
-        return objectManager;
+    public void setVisibleTab(int tab) {
+        switch(tab){
+            case TAB_DISPLAY:
+                break;
+            case TAB_ALARM:
+                break;
+            case TAB_CLOCK:
+                break;
+            case TAB_BACKGROUND:
+                break;
+        }
+        this.tabAuxiliar.setSelectedIndex(tab);
     }
 
-    public void setObjectManager(DatashowPanel objectManager) {
-        this.objectManager = objectManager;
-    }
     
     /** This method is called from within the constructor to
      * initialize the form.
