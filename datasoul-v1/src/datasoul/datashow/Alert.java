@@ -67,11 +67,11 @@ public class Alert extends Thread {
         
         // show
         ContentManager cm = ContentManager.getInstance();
-        if (showOnMain && ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
+        if (showOnMain && ConfigObj.getInstance().getMainOutput() ){
             ContentManager.getMainDisplay().setAlertTemplate(getMainTemplate());
             ContentManager.getMainDisplay().setAlertActive(true);
         }
-        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput() ){
             ContentManager.getMonitorDisplay().setAlertTemplate(getMonitorTemplate());
             ContentManager.getMonitorDisplay().setAlertActive(true);
         }
@@ -87,10 +87,10 @@ public class Alert extends Thread {
         }
 
         // hide
-        if (showOnMain && ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
+        if (showOnMain && ConfigObj.getInstance().getMainOutput() ){
             ContentManager.getMainDisplay().setAlertActive(false);
         }
-        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
+        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput() ){
             ContentManager.getMonitorDisplay().setAlertActive(false);
         }
         cm.alertHide(2000);

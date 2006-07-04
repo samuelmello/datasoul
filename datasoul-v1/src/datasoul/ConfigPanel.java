@@ -34,12 +34,12 @@ public class ConfigPanel extends javax.swing.JPanel {
     }
 
     private void registerComponents(){
-        registerComponent(mainOutput,"MainOutput");
+        registerComponent(mainOutput,"MainOutputIdx");
         registerComponent(mainOutputPositionLeft,"MainOutputPositionLeft");
         registerComponent(mainOutputPositionTop,"MainOutputPositionTop");
         registerComponent(mainOutputSizeHeight,"MainOutputSizeHeight");
         registerComponent(mainOutputSizeWidth,"MainOutputSizeWidth");
-        registerComponent(monitorOutput,"MonitorOutput");
+        registerComponent(monitorOutput,"MonitorOutputIdx");
         registerComponent(monitorOutputPositionLeft,"MonitorOutputPositionLeft");
         registerComponent(monitorOutputPositionTop,"MonitorOutputPositionTop");
         registerComponent(monitorOutputSizeHeight,"MonitorOutputSizeHeight");
@@ -49,34 +49,29 @@ public class ConfigPanel extends javax.swing.JPanel {
         
         registerComponent(videoInput,"VideoInput");
         videoInput.removeAllItems();
-        videoInput.addItem("Tuner");
-        videoInput.addItem("S-Video");
-        videoInput.addItem("Composite");
+        for (int i=0; i<ConfigObj.VIDEOINPUT_TABLE.length; i++){
+            videoInput.addItem(ConfigObj.VIDEOINPUT_TABLE[i]);
+        }
         
         registerComponent(videoDeintrelace,"VideoDeintrelace");
         videoDeintrelace.removeAllItems();        
-        videoDeintrelace.addItem("None");
-        videoDeintrelace.addItem("Blend");
-        videoDeintrelace.addItem("Smart blend");
-        videoDeintrelace.addItem("Smooth blend");
+        for (int i=0; i<ConfigObj.VIDEODEINTRELACE_TABLE.length; i++){
+            videoDeintrelace.addItem(ConfigObj.VIDEODEINTRELACE_TABLE[i]);
+        }
         
         registerComponent(videoMode,"VideoMode");
         videoMode.removeAllItems();
-        videoMode.addItem("PAL");
-        videoMode.addItem("NTSC");
-        videoMode.addItem("SECAM");
-
+        for (int i=0; i<ConfigObj.VIDEOMODE_TABLE.length; i++){
+            videoMode.addItem(ConfigObj.VIDEOMODE_TABLE[i]);
+        }
+        
         registerComponent(clockMode,"ClockMode");
         clockMode.removeAllItems();
-        clockMode.addItem("24 Hours with Seconds");
-        clockMode.addItem("24 Hours without Seconds");
-        clockMode.addItem("AM/PM with Seconds");
-        clockMode.addItem("AM/PM without Seconds");
+        for (int i=0; i<ConfigObj.CLOCKMODE_TABLE.length; i++){
+            clockMode.addItem(ConfigObj.CLOCKMODE_TABLE[i]);
+        }
         
-        registerComponent(videoDebugMode, "VideoDebugMode");
-        videoDebugMode.removeAllItems();
-        videoDebugMode.addItem("Off");
-        videoDebugMode.addItem("On");
+        registerComponent(videoDebugMode, "VideoDebugModeIdx");
         
         registerComponent( mainDisplayEngine, "MainDisplayEngine" );
         mainDisplayEngine.removeAllItems();
@@ -95,9 +90,10 @@ public class ConfigPanel extends javax.swing.JPanel {
         components.add(component);
         component.setName(string);
     }
+    
     private void setComponentValue(String string, Component component){
         if(component instanceof JCheckBox){
-            if(string != null && string.compareToIgnoreCase("TRUE")==0){
+            if(string != null && string.compareToIgnoreCase("1")==0){
                 ((JCheckBox)component).setSelected(true);
             }else{
                 ((JCheckBox)component).setSelected(false);
@@ -112,9 +108,9 @@ public class ConfigPanel extends javax.swing.JPanel {
     private String getComponentValue(Component component){
         if(component instanceof JCheckBox){
             if(((JCheckBox)component).isSelected()){
-                return "TRUE";
+                return "1";
             }else{
-                return "FALSE";
+                return "0";
             }
         }else if(component instanceof JComboBox){
             return (String)((JComboBox)component).getSelectedItem();
@@ -153,15 +149,6 @@ public class ConfigPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         tabConfig = new javax.swing.JTabbedPane();
-        panelVideo = new javax.swing.JPanel();
-        videoInputLabel = new javax.swing.JLabel();
-        videoInput = new javax.swing.JComboBox();
-        videoModeLabel = new javax.swing.JLabel();
-        videoMode = new javax.swing.JComboBox();
-        videoDeintrelaceLabel = new javax.swing.JLabel();
-        videoDeintrelace = new javax.swing.JComboBox();
-        videoDebugMode = new javax.swing.JComboBox();
-        videoDebugModeLabel = new javax.swing.JLabel();
         panelGeneral = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -197,170 +184,85 @@ public class ConfigPanel extends javax.swing.JPanel {
         mainDisplayEngine = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         monitorDisplayEngine = new javax.swing.JComboBox();
-        btnCancel = new javax.swing.JButton();
+        panelVideo = new javax.swing.JPanel();
+        videoInputLabel = new javax.swing.JLabel();
+        videoInput = new javax.swing.JComboBox();
+        videoModeLabel = new javax.swing.JLabel();
+        videoMode = new javax.swing.JComboBox();
+        videoDeintrelaceLabel = new javax.swing.JLabel();
+        videoDeintrelace = new javax.swing.JComboBox();
+        videoDebugModeLabel = new javax.swing.JLabel();
+        videoDebugMode = new javax.swing.JCheckBox();
+        jLabel20 = new javax.swing.JLabel();
         btnApply = new javax.swing.JButton();
 
-        tabConfig.setFont(new java.awt.Font("Arial", 1, 11));
         tabConfig.setMinimumSize(new java.awt.Dimension(0, 0));
-        videoInputLabel.setFont(new java.awt.Font("Arial", 1, 11));
-        videoInputLabel.setText("Video input:");
-
-        videoInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        videoInput.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                videoInputActionPerformed(evt);
-            }
-        });
-
-        videoModeLabel.setFont(new java.awt.Font("Arial", 1, 11));
-        videoModeLabel.setText("Video mode:");
-
-        videoMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        videoMode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                videoModeActionPerformed(evt);
-            }
-        });
-
-        videoDeintrelaceLabel.setFont(new java.awt.Font("Arial", 1, 11));
-        videoDeintrelaceLabel.setText("Video deintrelace:");
-
-        videoDeintrelace.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        videoDeintrelace.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                videoDeintrelaceActionPerformed(evt);
-            }
-        });
-
-        videoDebugMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        videoDebugModeLabel.setText("Debug Mode:");
-
-        org.jdesktop.layout.GroupLayout panelVideoLayout = new org.jdesktop.layout.GroupLayout(panelVideo);
-        panelVideo.setLayout(panelVideoLayout);
-        panelVideoLayout.setHorizontalGroup(
-            panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelVideoLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(videoInputLabel)
-                    .add(videoModeLabel)
-                    .add(videoDeintrelaceLabel)
-                    .add(videoDebugModeLabel))
-                .add(46, 46, 46)
-                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, videoDebugMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, videoInput, 0, 137, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, videoMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, videoDeintrelace, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(331, Short.MAX_VALUE))
-        );
-        panelVideoLayout.setVerticalGroup(
-            panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelVideoLayout.createSequentialGroup()
-                .add(25, 25, 25)
-                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(videoInputLabel)
-                    .add(videoInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(videoModeLabel)
-                    .add(videoMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(videoDeintrelaceLabel)
-                    .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(videoDebugMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(videoDebugModeLabel))
-                .addContainerGap(244, Short.MAX_VALUE))
-        );
-        tabConfig.addTab("Video", panelVideo);
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel1.setText("Use main output:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel2.setText("Use monitor output:");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel3.setText("Main output position:");
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel4.setText("Monitor output position:");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel5.setText("Monitor output size:");
 
-        mainOutput.setFont(new java.awt.Font("Arial", 1, 11));
         mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         mainOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        monitorOutput.setFont(new java.awt.Font("Arial", 1, 11));
         monitorOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         monitorOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel6.setText("Main output size:");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel7.setText("Template to monitor output:");
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel8.setText("Template default to text:");
 
         mainOutputPositionLeft.setText("jTextField1");
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel12.setText("left");
 
         mainOutputPositionTop.setText("jTextField1");
 
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel13.setText("top");
 
         monitorOutputPositionTop.setText("jTextField1");
 
-        jLabel14.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel14.setText("left");
 
         monitorOutputPositionLeft.setText("jTextField1");
 
-        jLabel15.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel15.setText("top");
 
         mainOutputSizeWidth.setText("jTextField1");
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel16.setText("width");
 
         mainOutputSizeHeight.setText("jTextField1");
 
-        jLabel17.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel17.setText("height");
 
         monitorOutputSizeWidth.setText("jTextField1");
 
         monitorOutputSizeHeight.setText("jTextField1");
 
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel18.setText("width");
 
-        jLabel19.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel19.setText("height");
 
-        jLabel9.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel9.setText("Clock mode:");
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel10.setFont(new java.awt.Font("Arial", 1, 11));
+        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "Musicas40Dias", "Template1" }));
+
+        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "Musicas40Dias", "Template1" }));
+
         jLabel10.setText("Main output engine:");
 
         mainDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel11.setText("Monitor output engine:");
 
         monitorDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -391,24 +293,18 @@ public class ConfigPanel extends javax.swing.JPanel {
                             .add(monitorOutput)
                             .add(mainDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(mainOutput)
-                            .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(panelGeneralLayout.createSequentialGroup()
-                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, clockMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, templateText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, Short.MAX_VALUE))
-                                    .add(org.jdesktop.layout.GroupLayout.LEADING, panelGeneralLayout.createSequentialGroup()
-                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                            .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                            .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                            .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                            .add(mainOutputPositionLeft, 0, 0, Short.MAX_VALUE))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(jLabel16)
-                                            .add(jLabel12)
-                                            .add(jLabel14)
-                                            .add(jLabel18))))
+                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                    .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                    .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                    .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                                    .add(mainOutputPositionLeft, 0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(jLabel16)
+                                    .add(jLabel12)
+                                    .add(jLabel14)
+                                    .add(jLabel18))
                                 .add(61, 61, 61)
                                 .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(panelGeneralLayout.createSequentialGroup()
@@ -424,8 +320,12 @@ public class ConfigPanel extends javax.swing.JPanel {
                                         .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                             .add(jLabel15)
                                             .add(jLabel17)
-                                            .add(jLabel19))))))))
-                .addContainerGap(178, Short.MAX_VALUE))
+                                            .add(jLabel19)))))
+                            .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, clockMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, templateText, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)))))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         panelGeneralLayout.setVerticalGroup(
             panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -491,12 +391,88 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
         tabConfig.addTab("General", panelGeneral);
 
-        btnCancel.setText("Cancel");
-        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+        videoInputLabel.setText("Video input:");
+
+        videoInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        videoInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelActionPerformed(evt);
+                videoInputActionPerformed(evt);
             }
         });
+
+        videoModeLabel.setText("Video mode:");
+
+        videoMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        videoMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                videoModeActionPerformed(evt);
+            }
+        });
+
+        videoDeintrelaceLabel.setText("Video deintrelace:");
+
+        videoDeintrelace.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        videoDeintrelace.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                videoDeintrelaceActionPerformed(evt);
+            }
+        });
+
+        videoDebugModeLabel.setText("Debug Mode:");
+
+        videoDebugMode.setText("Debug enabled");
+        videoDebugMode.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        videoDebugMode.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel20.setText("* this option depends on your hardware configuration");
+
+        org.jdesktop.layout.GroupLayout panelVideoLayout = new org.jdesktop.layout.GroupLayout(panelVideo);
+        panelVideo.setLayout(panelVideoLayout);
+        panelVideoLayout.setHorizontalGroup(
+            panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelVideoLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(videoInputLabel)
+                    .add(videoModeLabel)
+                    .add(videoDeintrelaceLabel)
+                    .add(videoDebugModeLabel))
+                .add(46, 46, 46)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(panelVideoLayout.createSequentialGroup()
+                        .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, videoInput, 0, 137, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, videoMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, videoDeintrelace, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel20))
+                    .add(videoDebugMode))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        panelVideoLayout.setVerticalGroup(
+            panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(panelVideoLayout.createSequentialGroup()
+                .add(25, 25, 25)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoInputLabel)
+                    .add(videoInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoModeLabel)
+                    .add(videoMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel20))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoDeintrelaceLabel)
+                    .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(videoDebugModeLabel)
+                    .add(videoDebugMode))
+                .addContainerGap(252, Short.MAX_VALUE))
+        );
+        tabConfig.addTab("SDL/Video4Linux", panelVideo);
 
         btnApply.setText("Apply and Save Defaults");
         btnApply.addActionListener(new java.awt.event.ActionListener() {
@@ -512,14 +488,9 @@ public class ConfigPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(btnApply)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnCancel)
-                        .add(12, 12, 12))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
-                        .addContainerGap())))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnApply)
+                    .add(tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -527,9 +498,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnCancel)
-                    .add(btnApply))
+                .add(btnApply)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -547,10 +516,6 @@ public class ConfigPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_videoInputActionPerformed
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.refreshScreenValues();
-    }//GEN-LAST:event_btnCancelActionPerformed
-
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
         refreshObjectValues();
         configObj.save();
@@ -558,7 +523,6 @@ public class ConfigPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
-    private javax.swing.JButton btnCancel;
     private javax.swing.JComboBox clockMode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -572,6 +536,7 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -596,7 +561,7 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JTabbedPane tabConfig;
     private datasoul.templates.TemplateComboBox templateMonitor;
     private datasoul.templates.TemplateComboBox templateText;
-    private javax.swing.JComboBox videoDebugMode;
+    private javax.swing.JCheckBox videoDebugMode;
     private javax.swing.JLabel videoDebugModeLabel;
     private javax.swing.JComboBox videoDeintrelace;
     private javax.swing.JLabel videoDeintrelaceLabel;

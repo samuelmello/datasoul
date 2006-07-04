@@ -149,7 +149,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     
     private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
 
-        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
+        if ( ConfigObj.getInstance().getMainOutput() ){
             ContentManager.getMainDisplay().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
         }
         

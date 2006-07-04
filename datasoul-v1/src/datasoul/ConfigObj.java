@@ -30,28 +30,52 @@ public class ConfigObj extends SerializableObject {
     
     static ConfigObj instance;
     
-    private String mainOutput;
+    private boolean mainOutput;
     private String mainOutputPositionLeft;
     private String mainOutputPositionTop;
     private String mainOutputSizeWidth;
     private String mainOutputSizeHeight;
-    private String monitorOutput;
+    private boolean monitorOutput;
     private String monitorOutputPositionLeft;
     private String monitorOutputPositionTop;
     private String monitorOutputSizeWidth;
     private String monitorOutputSizeHeight;
     private String templateMonitor;
     private String templateText;
-    private String videoInput;
-    private String videoMode;
-    private String videoDeintrelace;
-    private String clockMode;    
-    private String videoDebugMode;
+    private int videoInput;
+    private int videoMode;
+    private int videoDeintrelace;
+    private int clockMode;    
+    private boolean videoDebugMode;
     private String mainDisplayEngine;
     private String monitorDisplayEngine;
     private int slideTransitionTime;
     private int slideShowHideTime;
     private boolean monitorFollowMainControls;
+    
+    
+    public static final int CLOCKMODE_24_SEC = 0;
+    public static final int CLOCKMODE_24_NOSEC = 1;
+    public static final int CLOCKMODE_12_SEC = 2;
+    public static final int CLOCKMODE_12_NOSEC = 3;
+    public static final String[] CLOCKMODE_TABLE = {"24 Hours with Seconds", "24 Hours without Seconds", "AM/PM with Seconds", "AM/PM without Seconds"};
+
+    public static final int VIDEODEINTRELACE_NONE = 0;
+    public static final int VIDEODEINTRELACE_BLEND = 1;
+    public static final int VIDEODEINTRELACE_SMARTBLEND = 2;
+    public static final int VIDEODEINTRELACE_SMOOTHBLEND = 3;
+    public static final String[] VIDEODEINTRELACE_TABLE = {"None", "Blend", "Smart blend", "Smooth blend"};
+
+    public static final int VIDEOMODE_PAL = 0;
+    public static final int VIDEOMODE_NTSC = 1;
+    public static final int VIDEOMODE_SECAM = 2;
+    public static final String[] VIDEOMODE_TABLE = {"PAL", "NTSC", "SECAM"};
+
+    public static final int VIDEOINPUT_TUNER = 0;
+    public static final int VIDEOINPUT_COMPOSITE = 1;
+    public static final int VIDEOINPUT_COMPSVIDEO = 2;
+    public static final int VIDEOINPUT_SVIDEO = 3;
+    public static final String[] VIDEOINPUT_TABLE = {"Tuner", "Composite", "Composite2/S-Video", "S-Video"};
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -106,7 +130,7 @@ public class ConfigObj extends SerializableObject {
             xs.serialize(doc);
 
         } catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            JOptionPane.showMessageDialog(null,"Error writing file.\nError:"+e.getMessage(),"DataSoul Error",0);    
             e.printStackTrace();
         }
     }
@@ -121,40 +145,56 @@ public class ConfigObj extends SerializableObject {
     protected void registerProperties() {
         properties.add("MainDisplayEngine");
         properties.add("MonitorDisplayEngine");
-        properties.add("MainOutput");
+        properties.add("int.MainOutput");
         properties.add("MainOutputPositionLeft");
         properties.add("MainOutputPositionTop");
         properties.add("MainOutputSizeWidth");
         properties.add("MainOutputSizeHeight");
-        properties.add("MonitorOutput");
+        properties.add("int.MonitorOutput");
         properties.add("MonitorOutputPositionLeft");
         properties.add("MonitorOutputPositionTop");
         properties.add("MonitorOutputSizeWidth");
         properties.add("MonitorOutputSizeHeight");
         properties.add("TemplateMonitor");
         properties.add("TemplateText");
-        properties.add("VideoInput");
-        properties.add("VideoMode");
-        properties.add("VideoDeintrelace");
-        properties.add("ClockMode");        
-        properties.add("VideoDebugMode");
+        properties.add("int.VideoInput");
+        properties.add("int.VideoMode");
+        properties.add("int.VideoDeintrelace");
+        properties.add("int.ClockMode");        
+        properties.add("int.VideoDebugMode");
         properties.add("SlideTransitionTime");
         properties.add("SlideShowHideTime");
-        properties.add("MonitorFollowMainControls");
+        properties.add("int.MonitorFollowMainControls");
     }
     
     public ArrayList<String> getProperties(){
         return properties;
     }
 
-    public String getMainOutput() {
+    public boolean getMainOutput() {
         return mainOutput;
     }
 
-    public void setMainOutput(String mainOutput) {
+    public String getMainOutputIdx() {
+        if (mainOutput==false){
+            return "0";
+        }else{
+            return "1";
+        }
+    }
+
+    public void setMainOutput(boolean mainOutput) {
         this.mainOutput = mainOutput;
     }
 
+    public void setMainOutputIdx(String mainOutput) {
+        if (mainOutput.equals("0")){
+            this.mainOutput = false;
+        }else{
+            this.mainOutput = true;
+        }
+    }
+    
     public String getMainOutputPositionLeft() {
         return mainOutputPositionLeft;
     }
@@ -187,12 +227,28 @@ public class ConfigObj extends SerializableObject {
         this.mainOutputSizeHeight = mainOutputSizeHeight;
     }
 
-    public String getMonitorOutput() {
+    public boolean getMonitorOutput() {
         return monitorOutput;
     }
 
-    public void setMonitorOutput(String monitorOutput) {
+    public String getMonitorOutputIdx() {
+        if (monitorOutput==false){
+            return "0";
+        }else{
+            return "1";
+        }
+    }
+
+    public void setMonitorOutput(boolean monitorOutput) {
         this.monitorOutput = monitorOutput;
+    }
+
+    public void setMonitorOutputIdx(String monitorOutput) {
+        if (monitorOutput.equals("0")){
+            this.monitorOutput = false;
+        }else{
+            this.monitorOutput = true;
+        }
     }
 
     public String getMonitorOutputPositionLeft() {
@@ -244,92 +300,137 @@ public class ConfigObj extends SerializableObject {
     }
 
     public String getVideoInput() {
+        return VIDEOINPUT_TABLE[videoInput];
+    }
+    
+    public int getVideoInputIdx() {
         return videoInput;
     }
 
-    public void setVideoInput(String videoInput) {
+    public void setVideoInputIdx(String videoInput) {
+        setVideoInputIdx(Integer.parseInt(videoInput));
+    }
+    
+    public void setVideoInputIdx(int videoInput) {
 
         this.videoInput = videoInput;
-        if ( this.getMainOutput().equalsIgnoreCase("TRUE") ){
-            int index = 1;
-            if (videoInput.equalsIgnoreCase("Tuner")){
-                index = 0;
-            }else if (videoInput.equalsIgnoreCase("S-Video")){
-                index = 3;
-            }else if (videoInput.equalsIgnoreCase("Composite")){
-                index = 1;
-            }
-            if ( ContentManager.getMainDisplay() instanceof SDLContentRender ){
-                ((SDLContentRender)ContentManager.getMainDisplay()).setInputSrc(index);
-            }
+        if ( this.getMainOutput() && ContentManager.getMainDisplay() instanceof SDLContentRender ){
+            ((SDLContentRender)ContentManager.getMainDisplay()).setInputSrc(videoInput);
         }
         
-        
     }
+    
+    public void setVideoInput(String str){
+        for (int i=0; i<VIDEOINPUT_TABLE.length; i++){
+            if (str.equalsIgnoreCase(VIDEOINPUT_TABLE[i]))
+                setVideoInputIdx(i);
+        }
+    }
+    
+    
 
     public String getVideoMode() {
+        return VIDEOMODE_TABLE[videoMode];
+    }
+
+    public int getVideoModeIdx() {
         return videoMode;
     }
-
-    public void setVideoMode(String videoMode) {
-        
+    
+    public void setVideoModeIdx(String videoMode) {
+        setVideoModeIdx(Integer.parseInt(videoMode));
+    }
+    
+    public void setVideoModeIdx(int videoMode) {
         this.videoMode = videoMode;
-        if ( this.getMainOutput().equalsIgnoreCase("TRUE") ){
-            int index = 1;
-            if (videoMode.equalsIgnoreCase("PAL")){
-                index = 0;
-            }else if (videoMode.equalsIgnoreCase("NTSC")){
-                index = 1;
-            }else if (videoMode.equalsIgnoreCase("SECAM")){
-                index = 2;
-            }
-            if ( ContentManager.getMainDisplay() instanceof SDLContentRender ){
-                ((SDLContentRender)ContentManager.getMainDisplay()).setInputMode(index);
-            }
+        if ( this.getMainOutput() &&  ContentManager.getMainDisplay() instanceof SDLContentRender ){
+            ((SDLContentRender)ContentManager.getMainDisplay()).setInputMode(videoMode);
         }
-        
     }
 
+    public void setVideoMode(String str){
+        for (int i=0; i<VIDEOMODE_TABLE.length; i++){
+            if (str.equalsIgnoreCase(VIDEOMODE_TABLE[i]))
+                setVideoModeIdx(i);
+        }
+    }
+    
+    
     public String getVideoDeintrelace() {
+        return VIDEODEINTRELACE_TABLE[videoDeintrelace];
+    }
+
+    public int getVideoDeintrelaceIdx() {
         return videoDeintrelace;
     }
 
-    public void setVideoDeintrelace(String videoDeintrelace) {
+    public void setVideoDeintrelaceIdx(String videoDeintrelace) {
+        setVideoDeintrelaceIdx(Integer.parseInt(videoDeintrelace));
+    }
+    
+    public void setVideoDeintrelaceIdx(int videoDeintrelace) {
         this.videoDeintrelace = videoDeintrelace;
-        if ( this.getMainOutput().equalsIgnoreCase("TRUE") ){
-            int index = 1;
-            if (videoDeintrelace.equalsIgnoreCase("None")){
-                index = 0;
-            }else if (videoDeintrelace.equalsIgnoreCase("Blend")){
-                index = 1;
-            }else if (videoDeintrelace.equalsIgnoreCase("Smart Blend")){
-                index = 2;
-            }else if (videoDeintrelace.equalsIgnoreCase("Smooth Blend")){
-                index = 3;
-            }
-            if ( ContentManager.getMainDisplay() instanceof SDLContentRender ){
-                ((SDLContentRender)ContentManager.getMainDisplay()).setDeintrelaceMode( index );
-            }
+        if ( this.getMainOutput() && ContentManager.getMainDisplay() instanceof SDLContentRender ){
+            ((SDLContentRender)ContentManager.getMainDisplay()).setDeintrelaceMode( videoDeintrelace );
         }        
         
     }
 
-    public String getClockMode() {
+    public void setVideoDeintrelace(String str){
+        for (int i=0; i<VIDEODEINTRELACE_TABLE.length; i++){
+            if (str.equalsIgnoreCase(VIDEODEINTRELACE_TABLE[i]))
+                setVideoDeintrelaceIdx(i);
+        }
+    }
+    
+    
+    public int getClockModeIdx() {
         return clockMode;
     }
 
-    public void setClockMode(String clockMode) {
-        this.clockMode = clockMode;
+    public String getClockMode() {
+        return CLOCKMODE_TABLE[clockMode];
     }
     
-    public String getVideoDebugMode() {
+    public void setClockModeIdx(String clockMode) {
+        setClockModeIdx(Integer.parseInt(clockMode));
+    }
+    
+    public void setClockModeIdx(int clockMode) {
+        this.clockMode = clockMode;
+    }
+
+    public void setClockMode(String cm){
+        for (int i=0; i<CLOCKMODE_TABLE.length; i++){
+            if (cm.equalsIgnoreCase(CLOCKMODE_TABLE[i]))
+                setClockModeIdx(i);
+        }
+    }
+    
+    public boolean getVideoDebugMode() {
         return this.videoDebugMode;
     }
 
+    public String getVideoDebugModeIdx() {
+        if (videoDebugMode==false){
+            return "0";
+        }else{
+            return "1";
+        }
+    }
+    
     public void setVideoDebugMode(String videoDebugMode) {
+        setVideoDebugModeIdx(videoDebugMode);
+    }
+
+    public void setVideoDebugModeIdx(String videoDebugMode) {
+        setVideoDebugMode(videoDebugMode.equals("1"));
+    }
+        
+    public void setVideoDebugMode(boolean videoDebugMode) {
         this.videoDebugMode = videoDebugMode;
-        if (this.getMainOutput().equalsIgnoreCase("TRUE")){
-            if (videoDebugMode.equalsIgnoreCase("Yes")){
+        if (this.getMainOutput()){
+            if (videoDebugMode){
                 ContentManager.getMainDisplay().setDebugMode( 1 );
             }else{
                 ContentManager.getMainDisplay().setDebugMode( 0 );
@@ -402,16 +503,21 @@ public class ConfigObj extends SerializableObject {
     public boolean getMonitorFollowMainControls(){
         return monitorFollowMainControls;
     }
+
+    public String getMonitorFollowMainControlsIdx(){
+        if (monitorFollowMainControls==false){
+            return "0";
+        }else{
+            return "1";
+        }
+    }
     
     public void setMonitorFollowMainControls(boolean b){
         monitorFollowMainControls = b;
     }
     
-    public void setMonitorFollowMainControls(String str){
-        try{
-            setMonitorFollowMainControls( Boolean.parseBoolean(str) );
-        }catch(Exception e){
-            // ignore exception
-        }
+    public void setMonitorFollowMainControlsIdx(String str){
+        setMonitorFollowMainControls( str.equals("1") );
     }
+    
 }

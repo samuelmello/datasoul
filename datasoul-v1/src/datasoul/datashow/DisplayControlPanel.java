@@ -46,7 +46,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
     
     public void mainDisplayBlack(){
-        if ( ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
+        if ( ConfigObj.getInstance().getMainOutput() ){
             if( !isMainOnBlack ){
                 ContentManager.getMainDisplay().setBlack( 1 );
                 isMainOnBlack = true;
@@ -64,7 +64,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         }
     }
     public void mainDisplayClean(){
-        if ( ConfigObj.getInstance().getMainOutput().equalsIgnoreCase("TRUE") ){
+        if ( ConfigObj.getInstance().getMainOutput() ){
             if( !isMainOnClean ){
                 ContentManager.getMainDisplay().setClear( 1 );
                 isMainOnClean = true;
@@ -311,7 +311,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         int time = ConfigObj.getInstance().getSlideShowHideTime();
         
-        if ( ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
             ContentManager.getMonitorDisplay().slideShow( time );
         }
         
@@ -321,7 +321,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         int time = ConfigObj.getInstance().getSlideShowHideTime();
 
-        if ( ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
             ContentManager.getMonitorDisplay().slideHide( time );
         }
         
@@ -367,7 +367,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jSliderShowHideSpeedStateChanged
 
     private void btnMonitorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorBlackActionPerformed
-        if ( ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
             if( btnMonitorBlack.isSelected() ){
                 ContentManager.getMonitorDisplay().setBlack( 1 );
             }else{
@@ -377,7 +377,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMonitorBlackActionPerformed
 
     private void btnMonitorClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorClearActionPerformed
-        if ( ConfigObj.getInstance().getMonitorOutput().equalsIgnoreCase("TRUE") ){
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
             if( btnMonitorClear.isSelected() ){
                 ContentManager.getMonitorDisplay().setClear( 1 );
             }else{

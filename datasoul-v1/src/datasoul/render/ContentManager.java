@@ -29,11 +29,11 @@ public class ContentManager {
         previewRenderList = new ArrayList<ContentRender>();
         liveRenderList = new ArrayList<ContentRender>();
 
-        if ( ConfigObj.getInstance().getMonitorOutput().equals("TRUE") ){
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
             liveRenderList.add( ContentManager.getMonitorDisplay() );
         }
         
-        if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
+        if ( ConfigObj.getInstance().getMainOutput() ){
             liveRenderList.add( ContentManager.getMainDisplay() );
         }
     }
