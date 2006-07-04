@@ -89,7 +89,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
     
-    public void flip(){
+    public synchronized void flip(){
         // update the screen
         this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
     }
