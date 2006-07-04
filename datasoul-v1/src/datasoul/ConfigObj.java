@@ -145,26 +145,26 @@ public class ConfigObj extends SerializableObject {
     protected void registerProperties() {
         properties.add("MainDisplayEngine");
         properties.add("MonitorDisplayEngine");
-        properties.add("int.MainOutput");
+        properties.add("MainOutputIdx");
         properties.add("MainOutputPositionLeft");
         properties.add("MainOutputPositionTop");
         properties.add("MainOutputSizeWidth");
         properties.add("MainOutputSizeHeight");
-        properties.add("int.MonitorOutput");
+        properties.add("MonitorOutputIdx");
         properties.add("MonitorOutputPositionLeft");
         properties.add("MonitorOutputPositionTop");
         properties.add("MonitorOutputSizeWidth");
         properties.add("MonitorOutputSizeHeight");
         properties.add("TemplateMonitor");
         properties.add("TemplateText");
-        properties.add("int.VideoInput");
-        properties.add("int.VideoMode");
-        properties.add("int.VideoDeintrelace");
-        properties.add("int.ClockMode");        
-        properties.add("int.VideoDebugMode");
+        properties.add("VideoInputIdx");
+        properties.add("VideoModeIdx");
+        properties.add("VideoDeintrelaceIdx");
+        properties.add("ClockModeIdx");        
+        properties.add("VideoDebugModeIdx");
         properties.add("SlideTransitionTime");
         properties.add("SlideShowHideTime");
-        properties.add("int.MonitorFollowMainControls");
+        properties.add("MonitorFollowMainControlsIdx");
     }
     
     public ArrayList<String> getProperties(){

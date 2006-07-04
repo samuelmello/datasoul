@@ -79,7 +79,7 @@ public class SongTemplate extends TemplateItem{
             cbChordSize.addItem(CHORDSIZE_TABLE[i]);
         }
 
-        registerEditorComboBox("int.ChordShapeSize", cbChordSize);
+        registerEditorComboBox("ChordShapeSizeIdx", cbChordSize);
                 
         cb1 = new JComboBox();
         cb1 = new JComboBox();
@@ -138,8 +138,8 @@ public class SongTemplate extends TemplateItem{
         registerDisplayString("LyricsFontColor", "Lyrics Font Color");
         properties.add("LyricsFontSize");
         registerDisplayString("LyricsFontSize", "Lyrics Font Size");
-        properties.add("int.ChordShapeSize");
-        registerDisplayString("int.ChordShapeSize", "Chord Shape Size");
+        properties.add("ChordShapeSizeIdx");
+        registerDisplayString("ChordShapeSizeIdx", "Chord Shape Size");
     }
 
     public String getTitleFontName() {
@@ -194,7 +194,7 @@ public class SongTemplate extends TemplateItem{
     
     public void setChordShapeSizeIdx(int chordShapeSize) {
         this.chordShapeSize = chordShapeSize;
-        firePropChanged("int.ChordShapeSize");
+        firePropChanged("ChordShapeSizeIdx");
     }
     
     public void setChordShapeSize(String str){

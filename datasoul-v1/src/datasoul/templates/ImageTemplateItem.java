@@ -67,7 +67,7 @@ public class ImageTemplateItem extends TemplateItem {
                 cbAlignment.addItem(ALIGN_TABLE[i]);
             }
         }
-        registerEditorComboBox("int.Alignment", cbAlignment);
+        registerEditorComboBox("AlignmentIdx", cbAlignment);
         
         if (cbVerticalAlignment == null) {
             cbVerticalAlignment = new JComboBox();
@@ -76,7 +76,7 @@ public class ImageTemplateItem extends TemplateItem {
             }
 
         }
-        registerEditorComboBox("int.VerticalAlignment", cbVerticalAlignment);
+        registerEditorComboBox("VerticalAlignmentIdx", cbVerticalAlignment);
 
         if (cbStrecth == null){
             cbStrecth = new JComboBox();
@@ -84,7 +84,7 @@ public class ImageTemplateItem extends TemplateItem {
                 cbStrecth.addItem(STRETCH_TABLE[i]);
             }
         }
-        registerEditorComboBox("int.Stretch", cbStrecth);
+        registerEditorComboBox("StretchIdx", cbStrecth);
     }
     
     /** Creates a new instance of ImageTemplateItem */
@@ -111,12 +111,12 @@ public class ImageTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
-        properties.add("int.Alignment");
-        registerDisplayString("int.Alignment", "Alignment");
-        properties.add("int.VerticalAlignment");
-        registerDisplayString("int.VerticalAlignment", "Vertical Alignment");
-        properties.add("int.Stretch");
-        registerDisplayString("int.Stretch", "Stretch");
+        properties.add("AlignmentIdx");
+        registerDisplayString("AlignmentIdx", "Alignment");
+        properties.add("VerticalAlignmentIdx");
+        registerDisplayString("VerticalAlignmentIdx", "Vertical Alignment");
+        properties.add("StretchIdx");
+        registerDisplayString("StretchIdx", "Stretch");
 
     }
     
@@ -261,7 +261,7 @@ public class ImageTemplateItem extends TemplateItem {
      
      public void setStretchIdx(int stretch){
          this.stretch = stretch;
-         firePropChanged("int.Stretch");
+         firePropChanged("StretchIdx");
      }
 
      
@@ -279,7 +279,7 @@ public class ImageTemplateItem extends TemplateItem {
     
     public void setAlignmentIdx(int a){
         this.alingment = a;
-        firePropChanged("int.Alignment");
+        firePropChanged("AlignmentIdx");
     }
     
     public void setAlignment(String alignment){
@@ -310,7 +310,7 @@ public class ImageTemplateItem extends TemplateItem {
     
     public void setVerticalAlignmentIdx(int x){
         this.vertAlign = x;
-        firePropChanged("int.VerticalAlignment");
+        firePropChanged("VerticalAlignmentIdx");
     }
      
     public void setVerticalAlignmentIdx(String x){

@@ -56,8 +56,8 @@ public class TextTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
-        properties.add("int.Content");
-        registerDisplayString("int.Content", "Content");
+        properties.add("ContentIdx");
+        registerDisplayString("ContentIdx", "Content");
         properties.add("Text");
         registerDisplayString("Text", "Text");
         properties.add("FontName");
@@ -70,16 +70,16 @@ public class TextTemplateItem extends TemplateItem {
         registerDisplayString("FontColor", "Font Color");
         properties.add("OutlineColor");
         registerDisplayString("OutlineColor", "Outline Color");
-        properties.add("int.Alignment");
-        registerDisplayString("int.Alignment", "Alignment");
-        properties.add("int.VerticalAlignment");
-        registerDisplayString("int.VerticalAlignment", "Vertical Alignment");
-        properties.add("int.TextWidth");
-        registerDisplayString("int.TextWidth", "Text Width");
-        properties.add("int.TextWeight");
-        registerDisplayString("int.TextWeight", "Text Weight");
-        properties.add("int.Underline");
-        registerDisplayString("int.Underline", "Underline");
+        properties.add("AlignmentIdx");
+        registerDisplayString("AlignmentIdx", "Alignment");
+        properties.add("VerticalAlignmentIdx");
+        registerDisplayString("VerticalAlignmentIdx", "Vertical Alignment");
+        properties.add("TextWidthIdx");
+        registerDisplayString("TextWidthIdx", "Text Width");
+        properties.add("TextWeightIdx");
+        registerDisplayString("TextWeightIdx", "Text Weight");
+        properties.add("UnderlineIdx");
+        registerDisplayString("UnderlineIdx", "Underline");
 
     }
 
@@ -162,7 +162,7 @@ public class TextTemplateItem extends TemplateItem {
             for (i=0; i<CONTENT_TABLE.length; i++)
                 cbContent.addItem(CONTENT_TABLE[i]);
         }
-        registerEditorComboBox("int.Content", cbContent);
+        registerEditorComboBox("ContentIdx", cbContent);
         
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
@@ -170,7 +170,7 @@ public class TextTemplateItem extends TemplateItem {
                 cbAlignment.addItem(ALIGN_TABLE[i]);
             }
         }
-        registerEditorComboBox("int.Alignment", cbAlignment);
+        registerEditorComboBox("AlignmentIdx", cbAlignment);
         
         if (cbVerticalAlignment == null) {
             cbVerticalAlignment = new JComboBox();
@@ -179,7 +179,7 @@ public class TextTemplateItem extends TemplateItem {
             }
 
         }
-        registerEditorComboBox("int.VerticalAlignment", cbVerticalAlignment);
+        registerEditorComboBox("VerticalAlignmentIdx", cbVerticalAlignment);
         
         if (cbTextWidth == null){
             cbTextWidth = new JComboBox();
@@ -187,14 +187,14 @@ public class TextTemplateItem extends TemplateItem {
                 cbTextWidth.addItem(TEXTWIDTH_TABLE[i]);
             }
         }
-        registerEditorComboBox("int.TextWidth", cbTextWidth);
+        registerEditorComboBox("TextWidthIdx", cbTextWidth);
 
         if (cbTextWeight == null){
             cbTextWeight = new JComboBox();
             for (i=0; i<TEXTWEIGHT_TABLE.length; i++)
                 cbTextWeight.addItem(TEXTWEIGHT_TABLE[i]);
         }
-        registerEditorComboBox("int.TextWeight", cbTextWeight);
+        registerEditorComboBox("TextWeightIdx", cbTextWeight);
         
         
         if (cbUnderline == null){
@@ -202,7 +202,7 @@ public class TextTemplateItem extends TemplateItem {
             for (i=0; i<UNDERLINE_TABLE.length; i++)
                 cbUnderline.addItem(UNDERLINE_TABLE[i]);
         }
-        registerEditorComboBox("int.Underline", cbUnderline);
+        registerEditorComboBox("UnderlineIdx", cbUnderline);
         
         if (cbFontName == null){
             String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
@@ -523,7 +523,7 @@ getFullWord: {
     
     public void setAlignmentIdx(int a){
         this.alingment = a;
-        firePropChanged("int.Alignment");
+        firePropChanged("AlignmentIdx");
     }
     
     public void setAlignment(String alignment){
@@ -554,7 +554,7 @@ getFullWord: {
     
     public void setVerticalAlignmentIdx(int x){
         this.vertAlign = x;
-        firePropChanged("int.VerticalAlignment");
+        firePropChanged("VerticalAlignmentIdx");
     }
      
     public void setVerticalAlignmentIdx(String x){
@@ -573,7 +573,7 @@ getFullWord: {
     public void setTextWidthIdx(int width){
         this.textWidth = width;
         updateAttributes();
-        firePropChanged("int.TextWidth");
+        firePropChanged("TextWidthIdx");
     }
     
     public void setTextWidthIdx(String width){
@@ -604,7 +604,7 @@ getFullWord: {
     public void setTextWeightIdx(int weight){
         this.textWeight = weight;
         updateAttributes();
-        firePropChanged("int.TextWeight");
+        firePropChanged("TextWeightIdx");
     }
             
     public void setTextWeight(String str){
@@ -630,7 +630,7 @@ getFullWord: {
     public void setUnderlineIdx(int under){
         this.underline = under;
         updateAttributes();
-        firePropChanged("int.Underline");
+        firePropChanged("UnderlineIdx");
     }
     
     public void setUnderline(String str){
@@ -651,7 +651,7 @@ getFullWord: {
     
     public void setContentIdx(int content){
         this.content = content;
-        firePropChanged("int.Content");
+        firePropChanged("ContentIdx");
     }
     
     public String getContent(){

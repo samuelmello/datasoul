@@ -68,17 +68,7 @@ public abstract class SerializableObject  implements Transferable, SerializableI
          for(int i=0;i<properties.size();i++){
             paramName = properties.get(i);
             
-            String prop = paramName;
-            
-            // i18n-ed properties are saved as "int.Property"
-            // the object shall implement a method getPropertyIdx that 
-            // return an integer that represent that property, independant 
-            // of language used.
-            if (prop.startsWith("int.")){
-                prop = prop.substring(4)+"Idx";
-            }
-            
-            paramValue = this.getClass().getMethod("get"+prop).invoke(this);         
+            paramValue = this.getClass().getMethod("get"+paramName).invoke(this);         
             node = doc.createElement(paramName);
             if (paramValue != null){
                 node.setTextContent(paramValue.toString());
@@ -99,13 +89,9 @@ public abstract class SerializableObject  implements Transferable, SerializableI
             if(nodeList.item(i).getNodeType() == Node.ELEMENT_NODE ){
                 paramName = nodeList.item(i).getNodeName(); 
                 paramValue = nodeList.item(i).getTextContent();
-                prop = paramName;
-                if (prop.startsWith("int.")){
-                    prop = prop.substring(4)+"Idx";
-                }
                 
                 try {
-                    this.getClass().getMethod("set"+prop, String.class).invoke(this, paramValue);
+                    this.getClass().getMethod("set"+paramName, String.class).invoke(this, paramValue);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

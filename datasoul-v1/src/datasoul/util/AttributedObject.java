@@ -67,8 +67,8 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         
         try{
             String prop = properties.get(rowIndex);
-            if (prop.startsWith("int.")){
-                prop = prop.substring(4);
+            if (prop.endsWith("Idx")){
+                prop = prop.substring(0, prop.length() - 3);
             }
             this.getClass().getMethod("set"+prop, String.class).invoke(this, aValue);
         }catch(Exception e){
@@ -126,8 +126,8 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             try{
                 
                 String prop = properties.get(rowIndex);
-                if (prop.startsWith("int.")){
-                    prop = prop.substring(4);
+                if (prop.endsWith("Idx")){
+                    prop = prop.substring(0, prop.length() - 3);
                 }
                 
                 return this.getClass().getMethod("get"+prop).invoke(this);
