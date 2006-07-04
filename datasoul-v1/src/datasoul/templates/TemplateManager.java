@@ -96,7 +96,7 @@ public class TemplateManager implements TableModel {
             int size = files.length;
             
             for(int i=0; i<size;i++){
-                if(files[i].contains(".template")){
+                if(files[i].endsWith(".template")){
                     availableTemplates.add( files[i].substring(0, files[i].indexOf(".template"))) ;
                 }
             }
