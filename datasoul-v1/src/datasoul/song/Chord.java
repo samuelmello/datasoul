@@ -108,7 +108,7 @@ public class Chord implements SerializableItf{
          return this.getName();
      }
      
-     public void readObject(Node nodeIn) throws Exception{
+     public void readObject(Node nodeIn) {
 
         NodeList nodeList= nodeIn.getChildNodes();
         Node node;

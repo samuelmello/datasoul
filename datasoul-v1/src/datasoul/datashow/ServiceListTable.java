@@ -102,7 +102,7 @@ public class ServiceListTable extends ListTable{
         return nodeOut.cloneNode(true);
      }
      
-     public void readObject(Node nodeIn) throws Exception{
+     public void readObject(Node nodeIn) {
         this.objectList.clear();
          
         NodeList nodeList= nodeIn.getChildNodes();

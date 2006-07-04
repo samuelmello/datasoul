@@ -227,7 +227,7 @@ public class ImageTemplateItem extends TemplateItem {
         return node;
      }
      
-     public void readObject(Node nodeIn) throws Exception {
+     public void readObject(Node nodeIn) {
 
         properties.add("ImageInStr");
               

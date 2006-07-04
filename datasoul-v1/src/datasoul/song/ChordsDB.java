@@ -137,7 +137,7 @@ public class ChordsDB extends ListTable{
         return nodeOut.cloneNode(true);
      }
      
-     public void readObject(Node nodeIn) throws Exception{
+     public void readObject(Node nodeIn) {
 
         NodeList nodeList= nodeIn.getChildNodes();
         String paramName;

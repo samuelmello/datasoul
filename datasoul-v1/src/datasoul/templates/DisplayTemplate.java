@@ -210,7 +210,7 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     @Override
-            public void readObject(Node nodeIn) throws Exception {
+            public void readObject(Node nodeIn) {
         
         // read the properties
         super.readObject(nodeIn);
@@ -230,10 +230,15 @@ public class DisplayTemplate extends AttributedObject {
                         // Determine the type for the TemplateItem
                         String className = templateItemsNodes.item(j).getNodeName();
                         className = this.getClass().getPackage().getName() + "." + className;
+                        Class cl;
+                        Object ti = null;
                         
-                        // Create the Object
-                        Class cl = Class.forName(className);
-                        Object ti = cl.newInstance();
+                        try {
+                            cl = Class.forName(className);
+                            ti = cl.newInstance();
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                         
                         // set the properties
                         if (ti instanceof TemplateItem){

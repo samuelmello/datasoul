@@ -103,18 +103,11 @@ public abstract class SerializableObject  implements Transferable, SerializableI
                 if (prop.startsWith("int.")){
                     prop = prop.substring(4)+"Idx";
                 }
+                
                 try {
                     this.getClass().getMethod("set"+prop, String.class).invoke(this, paramValue);
-                } catch (IllegalArgumentException ex) {
-                    //print error
-                } catch (SecurityException ex) {
-                    //print error
-                } catch (IllegalAccessException ex) {
-                    //print error
-                } catch (NoSuchMethodException ex) {
-                    //print error
-                } catch (InvocationTargetException ex) {
-                    //print error
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
                 
             }
