@@ -69,7 +69,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="split3" alignment="0" pref="521" max="32767" attributes="0"/>
+                      <Component id="split3" alignment="0" pref="678" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -103,14 +103,14 @@
                       <Layout>
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pnlPreviewBox" alignment="0" min="0" max="32767" attributes="1"/>
+                              <Component id="pnlPreviewBox" alignment="0" min="0" pref="349" max="32767" attributes="1"/>
                               <Component id="preview" alignment="0" pref="349" max="32767" attributes="1"/>
                           </Group>
                         </DimensionLayout>
                         <DimensionLayout dim="1">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="preview" pref="339" max="32767" attributes="0"/>
+                                  <Component id="preview" pref="496" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="pnlPreviewBox" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -130,13 +130,10 @@
                                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="cbPreviewSize" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                                           </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="previewDisplayPanel1" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace pref="177" max="32767" attributes="3"/>
-                                          </Group>
+                                          <Component id="previewDisplayPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <EmptySpace pref="145" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -232,16 +229,16 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="auxiliar" alignment="0" pref="309" max="32767" attributes="0"/>
-                  <Component id="jTabbedPane1" alignment="0" pref="309" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="0" pref="315" max="32767" attributes="0"/>
+                  <Component id="auxiliar" alignment="1" pref="315" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jTabbedPane1" pref="226" max="32767" attributes="0"/>
+                      <Component id="jTabbedPane1" pref="130" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="auxiliar" min="-2" pref="472" max="-2" attributes="0"/>
+                      <Component id="auxiliar" min="-2" pref="412" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
