@@ -26,6 +26,7 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
     public ServiceListColorRender() {
     }
 
+    /* Commented until have difference for selected item
     public void setValue(Object value) { 
         if (value instanceof Song) { 
             setBackground(Color.decode("0xfffff5")); 
@@ -39,5 +40,5 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
             super.setValue(value); 
         } 
     } 
-    
+    */
 }
