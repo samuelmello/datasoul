@@ -13,6 +13,8 @@ import java.awt.Composite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -24,10 +26,12 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     private BufferedImage bgImg;
     private boolean isClear;
     private boolean isBlack;
+    private UpdateThread updTh;
 
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {
         initComponents();
+        updTh = new UpdateThread();
     }
     
 
@@ -89,9 +93,14 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
     
-    public synchronized void flip(){
-        // update the screen
-        this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
+    public void flip(){
+        try {
+            // update the screen
+            //this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
+            SwingUtilities.invokeAndWait(updTh);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+       }
     }
     
     
@@ -164,5 +173,11 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     void setBackgroundMode(int mode) {
     }
 
+    private class UpdateThread extends Thread {
+        public void run(){
+            paintImmediately(0, 0, getWidth(), getHeight());
+        }
+    }
+    
     
 }

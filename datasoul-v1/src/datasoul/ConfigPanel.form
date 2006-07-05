@@ -368,7 +368,7 @@
             <Component class="datasoul.templates.TemplateComboBox" name="templateMonitor">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="9">
+                  <StringArray count="7">
                     <StringItem index="0" value="monitor"/>
                     <StringItem index="1" value="Template1"/>
                     <StringItem index="2" value="BigClock"/>
@@ -376,8 +376,6 @@
                     <StringItem index="4" value="Biblia40dias"/>
                     <StringItem index="5" value="Musicas40Dias"/>
                     <StringItem index="6" value="Avisos40Dias"/>
-                    <StringItem index="7" value="Musicas40Dias"/>
-                    <StringItem index="8" value="Template1"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -385,7 +383,7 @@
             <Component class="datasoul.templates.TemplateComboBox" name="templateText">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="9">
+                  <StringArray count="7">
                     <StringItem index="0" value="monitor"/>
                     <StringItem index="1" value="Template1"/>
                     <StringItem index="2" value="BigClock"/>
@@ -393,8 +391,6 @@
                     <StringItem index="4" value="Biblia40dias"/>
                     <StringItem index="5" value="Musicas40Dias"/>
                     <StringItem index="6" value="Avisos40Dias"/>
-                    <StringItem index="7" value="Musicas40Dias"/>
-                    <StringItem index="8" value="Template1"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -438,8 +434,8 @@
         <Container class="javax.swing.JPanel" name="panelVideo">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="SDL/Video4Linux">
-                <Property name="tabTitle" type="java.lang.String" value="SDL/Video4Linux"/>
+              <JTabbedPaneConstraints tabName="Video4Linux">
+                <Property name="tabTitle" type="java.lang.String" value="Video4Linux"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -450,7 +446,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="videoInputLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="videoInputLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="videoModeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="videoDeintrelaceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="videoDebugModeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -458,24 +454,32 @@
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="videoInput" alignment="0" pref="137" max="32767" attributes="1"/>
-                                  <Component id="videoMode" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="videoDeintrelace" alignment="0" max="32767" attributes="1"/>
-                              </Group>
+                              <Component id="videoDebugMode" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="videoDebugMode" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="videoDeintrelace" min="-2" max="-2" attributes="1"/>
+                                  <EmptySpace pref="390" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="videoInput" alignment="0" pref="68" max="32767" attributes="1"/>
+                                      <Component id="videoMode" alignment="1" max="32767" attributes="1"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="118" pref="118" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="videoInputLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="videoInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -493,10 +497,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="videoDebugModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="videoDebugMode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="videoDebugModeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="252" max="32767" attributes="0"/>
+                      <EmptySpace pref="265" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -586,6 +590,95 @@
                   <Font name="Dialog" size="10" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="* this option depends on your hardware configuration"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel1">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Remote Renderer">
+                <Property name="tabTitle" type="java.lang.String" value="Remote Renderer"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel23" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel24" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="1">
+                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="398" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="275" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Main Output Host:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jTextField1"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel22">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Main Output Port:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel23">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monitor Ouput Host:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel24">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Monitor Ouput Port:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextField2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jTextField2"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -194,6 +194,13 @@ public class ConfigPanel extends javax.swing.JPanel {
         videoDebugModeLabel = new javax.swing.JLabel();
         videoDebugMode = new javax.swing.JCheckBox();
         jLabel20 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
         btnApply = new javax.swing.JButton();
 
         tabConfig.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -255,9 +262,9 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "Musicas40Dias", "Template1" }));
+        templateMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias" }));
 
-        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "Musicas40Dias", "Template1" }));
+        templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "BigClock", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias" }));
 
         jLabel10.setText("Main output engine:");
 
@@ -441,19 +448,24 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(46, 46, 46)
                 .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(panelVideoLayout.createSequentialGroup()
-                        .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, videoInput, 0, 137, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, videoMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, videoDeintrelace, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel20))
-                    .add(videoDebugMode))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .add(videoDebugMode)
+                        .addContainerGap())
+                    .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(panelVideoLayout.createSequentialGroup()
+                            .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .addContainerGap(390, Short.MAX_VALUE))
+                        .add(org.jdesktop.layout.GroupLayout.TRAILING, panelVideoLayout.createSequentialGroup()
+                            .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, videoInput, 0, 68, Short.MAX_VALUE)
+                                .add(videoMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(jLabel20)
+                            .add(118, 118, 118)))))
         );
         panelVideoLayout.setVerticalGroup(
             panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(panelVideoLayout.createSequentialGroup()
-                .add(25, 25, 25)
+                .addContainerGap()
                 .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(videoInputLabel)
                     .add(videoInput, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -468,11 +480,62 @@ public class ConfigPanel extends javax.swing.JPanel {
                     .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(videoDebugModeLabel)
-                    .add(videoDebugMode))
-                .addContainerGap(252, Short.MAX_VALUE))
+                    .add(videoDebugMode)
+                    .add(videoDebugModeLabel))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
-        tabConfig.addTab("SDL/Video4Linux", panelVideo);
+        tabConfig.addTab("Video4Linux", panelVideo);
+
+        jLabel21.setText("Main Output Host:");
+
+        jTextField1.setText("jTextField1");
+
+        jLabel22.setText("Main Output Port:");
+
+        jLabel23.setText("Monitor Ouput Host:");
+
+        jLabel24.setText("Monitor Ouput Port:");
+
+        jTextField2.setText("jTextField2");
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel23)
+                    .add(jLabel24)
+                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                            .add(jLabel22)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
+                            .add(jLabel21)
+                            .add(33, 33, 33)
+                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(398, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel21)
+                    .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel22)
+                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(15, 15, 15)
+                .add(jLabel23)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel24)
+                .addContainerGap(275, Short.MAX_VALUE))
+        );
+        tabConfig.addTab("Remote Renderer", jPanel1);
 
         btnApply.setText("Apply and Save Defaults");
         btnApply.addActionListener(new java.awt.event.ActionListener() {
@@ -537,6 +600,10 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -544,6 +611,9 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JComboBox mainDisplayEngine;
     private javax.swing.JCheckBox mainOutput;
     private javax.swing.JTextField mainOutputPositionLeft;
