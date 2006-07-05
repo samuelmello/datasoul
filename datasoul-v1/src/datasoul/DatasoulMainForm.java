@@ -122,7 +122,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnSongs.setEnabled(true);
         btnTemplates.setEnabled(true);
         btnConfig.setEnabled(true);
-        
+
         switch (panel) {
             case ObjectManager.VIEW_PROJECTOR:
                 datashow.setVisible(true);

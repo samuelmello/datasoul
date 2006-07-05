@@ -9,6 +9,7 @@
 
 package datasoul;
 
+import datasoul.datashow.AuxiliarPanel;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
@@ -55,43 +56,52 @@ public class KeyListner implements KeyListener, AWTEventListener{
                     ctrlPressed = false;
                     break;
                 case KeyEvent.VK_UP: 
+                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
                     ObjectManager.getInstance().getLivePanel().goLastMarkedSlide();
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
                     break;
                 case KeyEvent.VK_DOWN:     
+                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
                     ObjectManager.getInstance().getLivePanel().goNextMarkedSlide();
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
+                    break;
+                case KeyEvent.VK_1:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                    break;
+                case KeyEvent.VK_2:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
+                    break;
+                case KeyEvent.VK_3:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
+                    break;
+                case KeyEvent.VK_4:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
                     break;
             }
         }
+
         switch(e.getKeyCode()){ 
             case KeyEvent.VK_F1: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
                 break;
             case KeyEvent.VK_F2:
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
                 break;
             case KeyEvent.VK_F3: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
                 break;
             case KeyEvent.VK_F4: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
                 break;
             case KeyEvent.VK_F5: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_DISPLAY);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_DISPLAY);
                 break;
             case KeyEvent.VK_F6: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_ALARM);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
                 break;
             case KeyEvent.VK_F7: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_CLOCK);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
                 break;                
             case KeyEvent.VK_F8: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(ObjectManager.getInstance().getAuxiliarPanel().TAB_BACKGROUND);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_BACKGROUND);
                 break;                
             case KeyEvent.VK_F9: 
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayShow();
