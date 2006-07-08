@@ -25,7 +25,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="toolBarMain" min="-2" pref="60" max="-2" attributes="1"/>
-              <EmptySpace pref="696" max="32767" attributes="0"/>
+              <EmptySpace pref="588" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
