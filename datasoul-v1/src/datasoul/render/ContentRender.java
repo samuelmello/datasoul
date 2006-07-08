@@ -502,7 +502,7 @@ public abstract class ContentRender {
     }
     
     
-    public synchronized void saveTransitionImage(){
+    public void saveTransitionImage(){
 
         synchronized(transitionImage){
             Graphics2D g = transitionImage.createGraphics();

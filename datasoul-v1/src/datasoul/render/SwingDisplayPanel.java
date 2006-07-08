@@ -97,6 +97,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         try {
             // update the screen
             //this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
+            //SwingUtilities.invokeLater(updTh);
             SwingUtilities.invokeAndWait(updTh);
         } catch (Exception ex) {
             ex.printStackTrace();
