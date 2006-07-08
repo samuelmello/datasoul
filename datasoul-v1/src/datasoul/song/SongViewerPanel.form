@@ -119,7 +119,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/print.gif"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="print"/>
+            <Property name="text" type="java.lang.String" value="Print"/>
             <Property name="toolTipText" type="java.lang.String" value="Print song ..."/>
           </Properties>
           <Events>
@@ -163,10 +163,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelKey">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Key"/>
+            <Property name="text" type="java.lang.String" value="Key "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboKey">
@@ -198,12 +195,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labelVersion">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial" size="11" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="datasoul/internationalize.properties" key="VERSION" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-            </Property>
+            <Property name="text" type="java.lang.String" value="Version "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboVersion">

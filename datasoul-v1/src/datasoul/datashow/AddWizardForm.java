@@ -45,7 +45,6 @@ public class AddWizardForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Wizard");
         btnAddText.setBackground(new java.awt.Color(255, 255, 255));
-        btnAddText.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddText.gif")));
         btnAddText.setText("Add Text");
         btnAddText.setToolTipText("Add a text to service list ...");
@@ -62,11 +61,11 @@ public class AddWizardForm extends javax.swing.JFrame {
         });
 
         btnAddImages.setBackground(new java.awt.Color(255, 255, 255));
-        btnAddImages.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddImages.gif")));
         btnAddImages.setText("Add Images");
         btnAddImages.setToolTipText("Add images sequence to service list ...");
         btnAddImages.setBorderPainted(false);
+        btnAddImages.setEnabled(false);
         btnAddImages.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnAddImages.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnAddImages.setIconTextGap(14);
@@ -79,7 +78,6 @@ public class AddWizardForm extends javax.swing.JFrame {
         });
 
         btnImportItem.setBackground(new java.awt.Color(255, 255, 255));
-        btnImportItem.setFont(new java.awt.Font("Arial", 1, 11));
         btnImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/ImportItem.gif")));
         btnImportItem.setText("Import Item");
         btnImportItem.setToolTipText("Import an item from a service list to actual service list ...");
@@ -96,7 +94,6 @@ public class AddWizardForm extends javax.swing.JFrame {
         });
 
         btnAddSong.setBackground(new java.awt.Color(255, 255, 255));
-        btnAddSong.setFont(new java.awt.Font("Arial", 1, 11));
         btnAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/AddSong.gif")));
         btnAddSong.setText("Add Song");
         btnAddSong.setToolTipText("Add a song to service list ...");
@@ -112,7 +109,6 @@ public class AddWizardForm extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setFont(new java.awt.Font("Arial", 1, 11));
         btnClose.setText("Close");
         btnClose.setToolTipText("Close window");
         btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

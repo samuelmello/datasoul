@@ -154,7 +154,6 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel1.setText("Chord:");
 
         btnApply.setText("Apply");

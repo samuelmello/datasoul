@@ -171,7 +171,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         setTitle("DataSoul");
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
-        btnDatashow.setFont(new java.awt.Font("Arial", 1, 11));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
         btnDatashow.setText("Projector");
         btnDatashow.setToolTipText("Projector operation view");
@@ -183,7 +182,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnDatashow);
 
-        btnSongs.setFont(new java.awt.Font("Arial", 1, 11));
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songs.gif")));
         btnSongs.setText("Songs");
         btnSongs.setToolTipText("Song manipulation view");
@@ -195,7 +193,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnSongs);
 
-        btnTemplates.setFont(new java.awt.Font("Arial", 1, 11));
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/template.gif")));
         btnTemplates.setText("Templates");
         btnTemplates.setToolTipText("template view");
@@ -209,7 +206,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnTemplates);
 
-        btnConfig.setFont(new java.awt.Font("Arial", 1, 11));
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/config.gif")));
         btnConfig.setText("Configuration");
         btnConfig.setToolTipText("Configuration view");
@@ -223,7 +219,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnConfig);
 
-        btnClose.setFont(new java.awt.Font("Arial", 1, 11));
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/close.gif")));
         btnClose.setText("Close");
         btnClose.setToolTipText("Close the program");

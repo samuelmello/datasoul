@@ -50,9 +50,7 @@ public class SongsPanel extends javax.swing.JPanel {
 
         split1.setBorder(null);
         split1.setDividerLocation(250);
-        split1.setDividerSize(10);
         tabSongViewer.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        tabSongViewer.setFont(new java.awt.Font("Arial", 1, 11));
         songViewer.setMinimumSize(new java.awt.Dimension(10, 10));
         tabSongViewer.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG_VIEWER"), songViewer);
 
@@ -70,13 +68,11 @@ public class SongsPanel extends javax.swing.JPanel {
 
         split2.setBorder(null);
         split2.setDividerLocation(350);
-        split2.setDividerSize(10);
         split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split2.setMinimumSize(new java.awt.Dimension(10, 10));
         split2.setOneTouchExpandable(true);
         panelList.setAlignmentX(0.0F);
         panelList.setAlignmentY(0.0F);
-        tabList.setFont(new java.awt.Font("Arial", 1, 11));
         tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONGS_SEARCH"), songsSearch);
 
         tabList.addTab("Chords Manager", chordsManagerPanel1);
@@ -93,7 +89,6 @@ public class SongsPanel extends javax.swing.JPanel {
         );
         split2.setLeftComponent(panelList);
 
-        tabPraise.setFont(new java.awt.Font("Arial", 1, 11));
         tabPraise.addTab("Service List", serviceList);
 
         split2.setRightComponent(tabPraise);

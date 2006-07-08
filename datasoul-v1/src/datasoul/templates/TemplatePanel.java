@@ -73,8 +73,6 @@ public class TemplatePanel extends javax.swing.JPanel {
         jSplitPane2.setBorder(null);
         jSplitPane2.setDividerLocation(250);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        tabTemplates.setFont(new java.awt.Font("Arial", 1, 11));
-        panelTemplates.setFont(new java.awt.Font("Arial", 1, 11));
         jTableTemplates.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -132,7 +130,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         panelTemplatesLayout.setVerticalGroup(
             panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, panelTemplatesLayout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -140,8 +138,6 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jSplitPane2.setLeftComponent(tabTemplates);
 
-        tabProperties.setFont(new java.awt.Font("Arial", 1, 11));
-        jScrollPane2.setFont(new java.awt.Font("Arial", 1, 11));
         jTableProperties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -161,9 +157,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jSplitPane2);
 
-        tabTemplateEditor.setFont(new java.awt.Font("Arial", 1, 11));
         panelTemplateEditor.setAutoscrolls(true);
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 11));
         jLabel1.setText("Template:");
 
         lblTemplateName.setText("jLabel2");

@@ -23,9 +23,6 @@
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tabAuxiliar">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Arial" size="11" style="1"/>
-        </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[32767, 250]"/>
         </Property>

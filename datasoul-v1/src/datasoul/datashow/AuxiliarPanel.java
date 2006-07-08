@@ -71,7 +71,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         cbBackgroundMode = new javax.swing.JComboBox();
         btnChangeBackground = new javax.swing.JButton();
 
-        tabAuxiliar.setFont(new java.awt.Font("Arial", 1, 11));
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(0, 0));
         tabAuxiliar.addTab("Display", displayControlPanel1);

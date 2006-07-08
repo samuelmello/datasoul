@@ -55,7 +55,6 @@ public class ExportWizardForm extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         btnExportSongs.setBackground(new java.awt.Color(255, 255, 255));
-        btnExportSongs.setFont(new java.awt.Font("Arial", 1, 11));
         btnExportSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportSongsChords.gif")));
         btnExportSongs.setText("Export Songs Chords");
         btnExportSongs.setToolTipText("Export song lyrics and chords to rtf file ...");
@@ -73,7 +72,6 @@ public class ExportWizardForm extends javax.swing.JFrame {
         });
 
         btnExportServiceList.setBackground(new java.awt.Color(255, 255, 255));
-        btnExportServiceList.setFont(new java.awt.Font("Arial", 1, 11));
         btnExportServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportServiceList.gif")));
         btnExportServiceList.setText("Export Service List");
         btnExportServiceList.setToolTipText("Export service list to rtf file ...");
@@ -90,7 +88,6 @@ public class ExportWizardForm extends javax.swing.JFrame {
         });
 
         btnClose.setBackground(new java.awt.Color(255, 255, 255));
-        btnClose.setFont(new java.awt.Font("Arial", 1, 11));
         btnClose.setText("Close");
         btnClose.setToolTipText("Close the window");
         btnClose.setBorderPainted(false);

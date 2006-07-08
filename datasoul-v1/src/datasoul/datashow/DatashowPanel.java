@@ -84,8 +84,6 @@ public class DatashowPanel extends javax.swing.JPanel {
         });
 
         jSplitPane2.setDividerLocation(310);
-        tabOperation.setFont(new java.awt.Font("Arial", 1, 11));
-        panelOperation.setFont(new java.awt.Font("Arial", 1, 11));
         split3.setDividerLocation(350);
         live.setMinimumSize(new java.awt.Dimension(10, 10));
         split3.setRightComponent(live);
@@ -157,7 +155,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -171,7 +169,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         );
         panelOperationLayout.setVerticalGroup(
             panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
         tabOperation.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPERATION"), panelOperation);
 
@@ -180,7 +178,6 @@ public class DatashowPanel extends javax.swing.JPanel {
         auxiliar.setMaximumSize(new java.awt.Dimension(315, 460));
         auxiliar.setMinimumSize(new java.awt.Dimension(315, 460));
 
-        jTabbedPane1.setFont(new java.awt.Font("Dialog", 1, 11));
         serviceList.setMinimumSize(new java.awt.Dimension(30, 200));
         jTabbedPane1.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
 
@@ -188,8 +185,8 @@ public class DatashowPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, auxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+            .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, auxiliar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 309, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

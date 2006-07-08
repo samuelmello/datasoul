@@ -56,7 +56,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             }
         });
 
-        labelPreview.setFont(new java.awt.Font("Arial", 3, 11));
+        labelPreview.setFont(new java.awt.Font("Dialog", 3, 10));
         labelPreview.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PREVIEW"));
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -65,7 +65,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(labelPreview)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 141, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 137, Short.MAX_VALUE)
                 .add(btnGoLive)
                 .addContainerGap())
             .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)

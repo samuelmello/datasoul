@@ -518,7 +518,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar1.setFloatable(false);
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print.gif")));
-        btnPrint.setText("print");
+        btnPrint.setText("Print");
         btnPrint.setToolTipText("Print song ...");
         btnPrint.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -555,8 +555,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.add(jSeparator2);
 
-        labelKey.setFont(new java.awt.Font("Arial", 1, 11));
-        labelKey.setText("Key");
+        labelKey.setText("Key ");
         jToolBar1.add(labelKey);
 
         comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -574,8 +573,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.add(jSeparator1);
 
-        labelVersion.setFont(new java.awt.Font("Arial", 1, 11));
-        labelVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSION"));
+        labelVersion.setText("Version ");
         jToolBar1.add(labelVersion);
 
         comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));

@@ -191,15 +191,12 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
 
-        labelName.setFont(new java.awt.Font("Arial", 1, 11));
         labelName.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NAME"));
         labelName.setFocusable(false);
 
-        labelAuthor.setFont(new java.awt.Font("Arial", 1, 11));
         labelAuthor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AUTHOR"));
         labelAuthor.setFocusable(false);
 
-        tabSong.setFont(new java.awt.Font("Arial", 1, 11));
         tabSong.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 textChordsCompleteKeyPressed(evt);
@@ -333,7 +330,7 @@ public class SongEditorForm extends javax.swing.JFrame {
                     .add(layout.createSequentialGroup()
                         .add(labelAuthor)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)))
+                        .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)))
                 .addContainerGap())
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
