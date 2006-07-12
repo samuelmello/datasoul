@@ -32,13 +32,16 @@ public class SDLContentRender extends ContentRender {
     static {
         // depois a gente arruma isso
         if (System.getProperty("os.name").equals("Linux")){
-            System.load("/home/samuelm/cvs/datasoul-v1/src/native/libdatasoulsdl.so");
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator");
+            //+ "native"+System.getProperty("file.separator");
+    
+            System.load(path+"libdatasoulsdl.so");
         }
         if (System.getProperty("os.name").contains("Windows")){
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-            + "native"+System.getProperty("file.separator");
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator");
+            //+ "native"+System.getProperty("file.separator");
     
-            System.load(path+"nativedll.dll");
+            System.load(path+"libdatasoulsdl.dll");
         }
         
     }
