@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
  */
 public class ImageTemplateItem extends TemplateItem {
     
-    BufferedImage img;
+    private BufferedImage img;
     private String imageInStr;
     private String filename;
     private int stretch;
@@ -93,7 +93,7 @@ public class ImageTemplateItem extends TemplateItem {
         this.loadImage(filename);       
     }
 
-    private void loadImage(String filename){
+    public void loadImage(String filename){
         if (filename != null){
             this.filename = filename;
             try {
@@ -107,6 +107,14 @@ public class ImageTemplateItem extends TemplateItem {
         }
     }
     
+    public void setImage(BufferedImage img){
+        this.img = img;
+    }
+    
+    public BufferedImage getImage(){
+        return img;
+    }
+
     
     @Override
     protected void registerProperties(){
@@ -122,6 +130,9 @@ public class ImageTemplateItem extends TemplateItem {
     
     @Override
     public void draw(Graphics2D g, float time) {
+        
+        if (img==null)
+            return;
         
         int x, y, w, h;
         Composite oldComp = g.getComposite();

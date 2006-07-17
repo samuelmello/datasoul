@@ -26,19 +26,29 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
     public ServiceListColorRender() {
     }
 
-    /* Commented until have difference for selected item
-    public void setValue(Object value) { 
-        if (value instanceof Song) { 
-            setBackground(Color.decode("0xfffff5")); 
-//                setForeground(c.getTextColor()); 
-            setText(value.toString()); 
-        } else if (value instanceof TextServiceItem) { 
-            setBackground(Color.decode("0xf5f5ff")); 
-//                setForeground(c.getTextColor()); 
-            setText(value.toString()); 
-        } else { 
-            super.setValue(value); 
-        } 
-    } 
-    */
+    public Component getTableCellRendererComponent(JTable table, Object value,
+                          boolean isSelected, boolean hasFocus, int row, int column) {
+
+        if(isSelected){
+            setBackground(Color.decode("0xb8cfe5"));
+            setText(value.toString());
+            return this;
+        }
+
+        if (value instanceof Song) {
+            setBackground(Color.decode("0xfffff5"));
+//                setForeground(c.getTextColor());
+            setText(value.toString());
+        } else if (value instanceof TextServiceItem) {
+            setBackground(Color.decode("0xf5f5ff"));
+//                setForeground(c.getTextColor());  
+            setText(value.toString());
+        } else {
+            super.setValue(value);
+        }
+
+        return this;
+    }
+    
+    
 }

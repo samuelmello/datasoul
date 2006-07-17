@@ -43,7 +43,7 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     public Component getComponent(boolean selected) {
 
         if (selected){
-            area.setBackground( Color.YELLOW );
+            area.setBackground( Color.decode("0xc8ddf2") );
         }else{
             area.setBackground( Color.WHITE );
         }

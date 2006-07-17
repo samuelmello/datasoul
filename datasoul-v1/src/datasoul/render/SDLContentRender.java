@@ -153,7 +153,7 @@ public class SDLContentRender extends ContentRender {
     
     public void paintBackground(BufferedImage img){
         
-        if (img == null) return;
+        if (img == null || background == null) return;
 
         // we need to convert it to ensure that its on the correct format and dimensions
         Graphics2D g = background.createGraphics();

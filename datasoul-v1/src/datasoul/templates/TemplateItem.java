@@ -150,7 +150,7 @@ public abstract class TemplateItem extends AttributedObject {
     }
 
     protected Color stringToColor(String strColor){
-        
+        /*
         try{
             
             String[] str = strColor.split("");
@@ -170,7 +170,8 @@ public abstract class TemplateItem extends AttributedObject {
             
         }catch(Exception e){
             throw new IllegalArgumentException("Invalid Color: "+strColor);
-        }
+        }*/
+        return Color.decode("0x"+strColor);
         
     }
 

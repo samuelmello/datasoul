@@ -166,7 +166,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         templateEditorPanel1.setLayout(templateEditorPanel1Layout);
         templateEditorPanel1Layout.setHorizontalGroup(
             templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 645, Short.MAX_VALUE)
+            .add(0, 636, Short.MAX_VALUE)
         );
         templateEditorPanel1Layout.setVerticalGroup(
             templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -296,7 +296,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(panelTemplateEditorLayout.createSequentialGroup()
-                        .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 649, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel1)

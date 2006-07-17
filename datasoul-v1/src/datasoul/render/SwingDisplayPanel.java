@@ -109,9 +109,6 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         this.setSize(width, height);
         img = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         bgImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
-        Graphics g = img.getGraphics();
-        g.setColor(Color.ORANGE);
-        g.fillRect(0, 0, width, height);
         this.setVisible(true);
     }
     
@@ -139,9 +136,11 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     }
 
     public void paintBackground(BufferedImage newimg) {
-        Graphics2D g = bgImg.createGraphics();
-        g.drawImage(newimg, 0, 0, this.getWidth(), this.getHeight(), null);
-        this.repaint();
+        if (newimg != null && bgImg != null){
+            Graphics2D g = bgImg.createGraphics();
+            g.drawImage(newimg, 0, 0, this.getWidth(), this.getHeight(), null);
+            this.repaint();
+        }
     }
 
     void paint(DisplayTemplate d, float time) {

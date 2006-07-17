@@ -66,10 +66,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         displayControlPanel1 = new datasoul.datashow.DisplayControlPanel();
         alertControlPanel1 = new datasoul.datashow.AlertControlPanel();
         timerControlPanel1 = new datasoul.datashow.TimerControlPanel();
-        panelBackground = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        cbBackgroundMode = new javax.swing.JComboBox();
-        btnChangeBackground = new javax.swing.JButton();
+        backgroundPanel1 = new datasoul.datashow.BackgroundPanel();
 
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(0, 0));
@@ -79,53 +76,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
         tabAuxiliar.addTab("Timer", timerControlPanel1);
 
-        jLabel1.setText("Background:");
-
-        cbBackgroundMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Static", "Live" }));
-        cbBackgroundMode.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbBackgroundModeItemStateChanged(evt);
-            }
-        });
-        cbBackgroundMode.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbBackgroundModeActionPerformed(evt);
-            }
-        });
-
-        btnChangeBackground.setText("Background Image");
-        btnChangeBackground.setToolTipText("Change main window background");
-        btnChangeBackground.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChangeBackgroundActionPerformed(evt);
-            }
-        });
-
-        org.jdesktop.layout.GroupLayout panelBackgroundLayout = new org.jdesktop.layout.GroupLayout(panelBackground);
-        panelBackground.setLayout(panelBackgroundLayout);
-        panelBackgroundLayout.setHorizontalGroup(
-            panelBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelBackgroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(panelBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel1)
-                    .add(panelBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, cbBackgroundMode, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(org.jdesktop.layout.GroupLayout.LEADING, btnChangeBackground, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(145, Short.MAX_VALUE))
-        );
-        panelBackgroundLayout.setVerticalGroup(
-            panelBackgroundLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelBackgroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(399, 399, 399)
-                .add(btnChangeBackground)
-                .add(100, 100, 100))
-        );
-        tabAuxiliar.addTab("Background", panelBackground);
+        tabAuxiliar.addTab("Background", backgroundPanel1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -145,50 +96,12 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_templateMonitorActionPerformed
 
     
-    
-    private void cbBackgroundModeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbBackgroundModeItemStateChanged
-
-        if ( ConfigObj.getInstance().getMainOutput() ){
-            ContentManager.getMainDisplay().setBackgroundMode( cbBackgroundMode.getSelectedIndex() ); 
-        }
         
-    }//GEN-LAST:event_cbBackgroundModeItemStateChanged
-
-    private void cbBackgroundModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBackgroundModeActionPerformed
-    }//GEN-LAST:event_cbBackgroundModeActionPerformed
-
-    private void btnChangeBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeBackgroundActionPerformed
-        
-        JFileChooser fc = new JFileChooser();
-        fc.setDialogType(JFileChooser.OPEN_DIALOG);
-        fc.setMultiSelectionEnabled(false);
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fc.setControlButtonsAreShown(true);
-        fc.setDialogTitle("Select Image");
-        
-        /*
-        try{
-            if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
-                String filename = fc.getSelectedFile().getAbsolutePath();
-                imgBackground.setImage(filename);
-                if ( ConfigObj.getInstance().getMainOutput().equals("TRUE") ){
-                    ContentManager.getMainDisplay().paintBackground( imgBackground.getImage() );
-                }
-            }
-        }catch(IOException e){
-            JOptionPane.showMessageDialog(this,"Unable to load Background:\n"+e.getMessage(),"DataSoul Error",0);                
-        }
-        */
-    }//GEN-LAST:event_btnChangeBackgroundActionPerformed
-    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AlertControlPanel alertControlPanel1;
-    private javax.swing.JButton btnChangeBackground;
-    private javax.swing.JComboBox cbBackgroundMode;
+    private datasoul.datashow.BackgroundPanel backgroundPanel1;
     private datasoul.datashow.DisplayControlPanel displayControlPanel1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel panelBackground;
     private javax.swing.JTabbedPane tabAuxiliar;
     private datasoul.datashow.TimerControlPanel timerControlPanel1;
     // End of variables declaration//GEN-END:variables
