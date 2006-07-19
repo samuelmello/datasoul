@@ -16,7 +16,7 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblTemplate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="78" max="32767" attributes="1"/>
+              <EmptySpace pref="100" max="32767" attributes="1"/>
               <Component id="jSliderZoom" min="-2" pref="110" max="-2" attributes="0"/>
           </Group>
           <Component id="jScrollPane1" alignment="0" pref="306" max="32767" attributes="0"/>
