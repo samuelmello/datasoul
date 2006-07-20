@@ -33,4 +33,11 @@ public interface ServiceItemRenderer {
     
     public boolean getShowMark();
     
+    /**
+     * A mark to logically divide the slides.
+     * For example can be use to divide the lyrics 
+     * in chorus
+     */ 
+    public boolean getMark();
+    
 }

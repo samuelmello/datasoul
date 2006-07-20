@@ -93,5 +93,9 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     public void setMark(boolean showMark){
         this.showMark = showMark;
     }
+
+    public boolean getMark() {
+        return showMark;
+    }
     
 }

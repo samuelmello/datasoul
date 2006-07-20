@@ -35,13 +35,31 @@ public class LiveTableKeyListner implements KeyListener{
     }
 
     public void keyPressed(KeyEvent e) {
+        
         if( ((e.getKeyCode()>=KeyEvent.VK_0)&&(e.getKeyCode()<=KeyEvent.VK_9) )||
             ((e.getKeyCode()>=KeyEvent.VK_NUMPAD0)&&(e.getKeyCode()<=KeyEvent.VK_NUMPAD9) )||
             (e.getKeyCode()== KeyEvent.VK_ENTER) ){
             if(time-System.currentTimeMillis()<MAX_TIME_BETWEEN_KEY){
                 time=System.currentTimeMillis();
                 if(e.getKeyCode()== KeyEvent.VK_ENTER){
-                    serviceItemTable.setSlideIndex(Integer.parseInt(numStrBuffer.toString())-1);
+                    int num = 0;
+                    // ignore if there is any garbage on the buffer
+                    try{
+                        num = Integer.parseInt(numStrBuffer.toString());
+                    }catch(NumberFormatException e1){
+                        numStrBuffer.delete(0,numStrBuffer.length());
+                        e.consume();
+                        return;
+                    }
+                    
+                    // ignore if trying to go to an inexistent slide
+                    if (num-1 >= 0 && num-1 < serviceItemTable.getSlideCount()){
+                        
+                        // everything ok, we can jump to the slide
+                        serviceItemTable.setSlideIndex(num-1);
+                    }
+                    
+                    // clear the buffer
                     numStrBuffer.delete(0,numStrBuffer.length());
                 }else{
                     numStrBuffer.append(e.getKeyChar());

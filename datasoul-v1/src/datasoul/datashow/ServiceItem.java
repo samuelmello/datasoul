@@ -128,10 +128,8 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     public int getNextMarkedSlide(int actualSlide){
         for(int i=actualSlide;i<this.getRowCount();i++){
-            if(getValueAt(i,0)!=null){
-                if(getValueAt(i,0).toString().contains("*")){
-                    return i;
-                }
+            if (slides.get(i).getMark()){
+                return i;
             }
         }
         return actualSlide;
@@ -139,10 +137,8 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     
     public int getLastMarkedSlide(int actualSlide){
         for(int i=actualSlide;i>=0;i--){
-            if(getValueAt(i,0)!=null){
-                if(getValueAt(i,0).toString().contains("*")){
-                    return i;
-                }
+            if(slides.get(i).getMark()){
+                return i;
             }
         }
         return actualSlide;
