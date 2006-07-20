@@ -30,7 +30,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         ServiceItem empty = new ServiceItem();
         setServiceItem(empty);
         
-        this.displayTable.addKeyListener(new liveTableKeyListner(this));
+        this.displayTable.addKeyListener(new LiveTableKeyListner(this));
     }
     
     /** This method is called from within the constructor to

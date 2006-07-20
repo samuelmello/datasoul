@@ -1,5 +1,5 @@
 /*
- * liveTableKeyListner.java
+ * LiveTableKeyListner.java
  *
  * Created on 18 de Julho de 2006, 22:27
  *
@@ -16,15 +16,17 @@ import java.awt.event.KeyListener;
  *
  * @author Administrador
  */
-public class liveTableKeyListner implements KeyListener{
+public class LiveTableKeyListner implements KeyListener{
     
     private long time=0;
     private StringBuffer numStrBuffer;
     private static final int MAX_TIME_BETWEEN_KEY=1000;
     private ServiceItemTable serviceItemTable;
 
-    /** Creates a new instance of liveTableKeyListner */
-    public liveTableKeyListner(ServiceItemTable serviceItemTable) {
+    /**
+     * Creates a new instance of LiveTableKeyListner
+     */
+    public LiveTableKeyListner(ServiceItemTable serviceItemTable) {
         this.serviceItemTable = serviceItemTable;
         numStrBuffer = new StringBuffer();
     }
