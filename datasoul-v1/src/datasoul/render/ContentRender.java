@@ -532,7 +532,7 @@ public abstract class ContentRender {
         this.height = height;
         this.top = top;
         this.left = left;
-        transitionImage = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
+        transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
     }
     
     

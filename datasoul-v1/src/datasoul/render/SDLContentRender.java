@@ -47,6 +47,7 @@ public class SDLContentRender extends ContentRender {
     }
     
     private BufferedImage overlay;
+    private BufferedImage overlayTemplateSize;
     private ByteBuffer overlayBuf;
     private BufferedImage background;
     private ByteBuffer backgroundBuf;
@@ -61,6 +62,7 @@ public class SDLContentRender extends ContentRender {
 
         super.initDisplay(width, height, top, left);
         
+        overlayTemplateSize = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         overlay = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         overlayBuf = ByteBuffer.allocateDirect(width * height * 4);
         background = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
@@ -121,22 +123,47 @@ public class SDLContentRender extends ContentRender {
 
         if (d == null) return;
 
-        Graphics2D g = overlay.createGraphics();
-
-        Composite oldComp = g.getComposite();
-        g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, time) );
+        Composite oldComp;
+        Graphics2D g;
         
-        // paint it
-        d.paint(g, time);
+        // can we paint directly into overlay or we need to resize the image?
+        if ( width == DisplayTemplate.TEMPLATE_WIDTH && height == DisplayTemplate.TEMPLATE_HEIGHT ){
+        
+            g = overlay.createGraphics();
 
-        g.setComposite(oldComp);
+            oldComp = g.getComposite();
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, time) );
+
+            // paint it
+            d.paint(g, time);
+
+            g.setComposite(oldComp);
+        
+        }else{
+
+            // clear the resize image
+            g = overlayTemplateSize.createGraphics();
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+            g.fillRect(0, 0, overlayTemplateSize.getWidth(), overlayTemplateSize.getHeight());
+            
+            // paint it on resize image
+            d.paint(g, time);
+            
+            // now paint resizing it on the overlay buffer
+            g = overlay.createGraphics();
+            oldComp = g.getComposite();
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, time) );
+            g.drawImage( overlayTemplateSize, 0, 0, overlay.getWidth(), overlay.getHeight(), null);
+            g.setComposite(oldComp);
+            
+        }
     }
 
     public void paint(BufferedImage img, float alpha){
         Graphics2D g = overlay.createGraphics();
         Composite oldComp = g.getComposite();
         g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha) );
-        g.drawImage(img, 0, 0, width, height, null);
+        g.drawImage(img, 0, 0, overlay.getWidth(), overlay.getHeight(), null);
         g.setComposite(oldComp);
     }
     
