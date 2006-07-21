@@ -30,7 +30,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         ServiceItem empty = new ServiceItem();
         setServiceItem(empty);
         
-        this.displayTable.addKeyListener(new LiveTableKeyListner(this));
+        this.displayTable.addKeyListener(new ServiceItemTableKeyListner(this));
     }
     
     /** This method is called from within the constructor to
@@ -202,5 +202,17 @@ public class ServiceItemTable extends javax.swing.JPanel {
     public int getSlideCount(){
         return displayTable.getRowCount();
     }
+    
+    public void goNextMarkedSlide(){
+        int actualSlide = getSlideIndex();
+        int nextMarkedSlide = getServiceItem().getNextMarkedSlide(actualSlide);
+        this.setSlideIndex(nextMarkedSlide);
+    }
+    public void goPreviousMarkedSlide(){
+        int actualSlide = getSlideIndex();
+        int previousMarkedSlide = getServiceItem().getPreviousMarkedSlide(actualSlide);
+        setSlideIndex(previousMarkedSlide);
+    }
+    
     
 }

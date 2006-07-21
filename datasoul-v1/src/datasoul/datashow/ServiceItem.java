@@ -135,7 +135,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         return actualSlide;
     }
     
-    public int getLastMarkedSlide(int actualSlide){
+    public int getPreviousMarkedSlide(int actualSlide){
         for(int i=actualSlide-1;i>=0;i--){
             if(slides.get(i).getMark()){
                 return i;

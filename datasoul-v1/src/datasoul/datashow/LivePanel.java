@@ -35,16 +35,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         //cm.slideShow( 1000 );
     }
 
-    public void goNextMarkedSlide(){
-        int actualSlide = this.serviceItemTable1.getSlideIndex();
-        int nextMarkedSlide = this.serviceItemTable1.getServiceItem().getNextMarkedSlide(actualSlide);
-        this.serviceItemTable1.setSlideIndex(nextMarkedSlide);
-    }
-    public void goLastMarkedSlide(){
-        int actualSlide = this.serviceItemTable1.getSlideIndex();
-        int lastMarkedSlide = this.serviceItemTable1.getServiceItem().getLastMarkedSlide(actualSlide);
-        this.serviceItemTable1.setSlideIndex(lastMarkedSlide);
-    }
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

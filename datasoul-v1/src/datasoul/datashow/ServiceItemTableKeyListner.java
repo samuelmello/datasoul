@@ -1,5 +1,5 @@
 /*
- * LiveTableKeyListner.java
+ * ServiceItemTableKeyListner.java
  *
  * Created on 18 de Julho de 2006, 22:27
  *
@@ -17,7 +17,7 @@ import java.awt.event.KeyListener;
  *
  * @author Administrador
  */
-public class LiveTableKeyListner implements KeyListener{
+public class ServiceItemTableKeyListner implements KeyListener{
     
     private long time=0;
     private StringBuffer numStrBuffer;
@@ -26,9 +26,9 @@ public class LiveTableKeyListner implements KeyListener{
     private boolean ctrlPressed;
 
     /**
-     * Creates a new instance of LiveTableKeyListner
+     * Creates a new instance of ServiceItemTableKeyListner
      */
-    public LiveTableKeyListner(ServiceItemTable serviceItemTable) {
+    public ServiceItemTableKeyListner(ServiceItemTable serviceItemTable) {
         this.serviceItemTable = serviceItemTable;
         numStrBuffer = new StringBuffer();
     }
@@ -48,13 +48,11 @@ public class LiveTableKeyListner implements KeyListener{
         if (ctrlPressed){
             switch(e.getKeyCode()){
                 case KeyEvent.VK_UP: 
-                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
-                    ObjectManager.getInstance().getLivePanel().goLastMarkedSlide();
+                    serviceItemTable.goPreviousMarkedSlide();
                     e.consume();
                     break;
                 case KeyEvent.VK_DOWN:     
-                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
-                    ObjectManager.getInstance().getLivePanel().goNextMarkedSlide();
+                    serviceItemTable.goNextMarkedSlide();
                     e.consume();
                     break;
             }
