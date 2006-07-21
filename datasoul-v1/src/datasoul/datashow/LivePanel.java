@@ -23,6 +23,10 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         automaticChanger = new AutomaticChanger();
     }
 
+    public void setFocusInTable(){
+        serviceItemTable1.setFocusInTable();
+    }
+    
     public void showItem(ServiceItem serviceItem){
         this.serviceItemTable1.setServiceItem(serviceItem);
         ContentManager cm = ContentManager.getInstance();

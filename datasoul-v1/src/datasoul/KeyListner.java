@@ -78,6 +78,8 @@ public class KeyListner implements KeyListener, AWTEventListener{
             case KeyEvent.VK_F3: 
                 break;
             case KeyEvent.VK_F4: 
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
             case KeyEvent.VK_F5: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);

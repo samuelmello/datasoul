@@ -32,6 +32,10 @@ public class ServiceItemTable extends javax.swing.JPanel {
         
         this.displayTable.addKeyListener(new ServiceItemTableKeyListner(this));
     }
+
+    public void setFocusInTable(){
+        this.displayTable.requestFocus();
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
