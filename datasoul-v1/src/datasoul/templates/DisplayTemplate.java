@@ -28,6 +28,9 @@ import org.w3c.dom.NodeList;
  */
 public class DisplayTemplate extends AttributedObject {
     
+    public final static int TEMPLATE_WIDTH = 640;
+    public final static int TEMPLATE_HEIGHT = 480;
+    
     ArrayList<TemplateItem> items;
     
     static int defaultItemNameCount = 1;

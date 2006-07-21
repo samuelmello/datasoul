@@ -157,7 +157,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-        return slides.get(row).getComponent(isSelected);
+        return slides.get(row).getComponent(isSelected, hasFocus);
     }
     
     public void registerJTable(JTable jTable){

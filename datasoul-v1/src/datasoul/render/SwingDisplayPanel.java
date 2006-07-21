@@ -107,7 +107,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     
     public void initDisplay(int width, int height, int top, int left){
         this.setSize(width, height);
-        img = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
+        img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         bgImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         this.setVisible(true);
     }

@@ -21,7 +21,7 @@ public interface ServiceItemRenderer {
     
     public int getHeight();
     
-    public Component getComponent(boolean selected);
+    public Component getComponent(boolean selected, boolean hasFocus);
     
     public static final int ZOOM_TINY = 1;
     public static final int ZOOM_SMALL = 2;

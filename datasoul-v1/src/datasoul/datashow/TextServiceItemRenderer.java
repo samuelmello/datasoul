@@ -40,10 +40,14 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
         return area.getPreferredSize().height;
     }
     
-    public Component getComponent(boolean selected) {
+    public Component getComponent(boolean selected, boolean hasFocus) {
 
         if (selected){
-            area.setBackground( Color.decode("0xc8ddf2") );
+            if (hasFocus){
+                area.setBackground( Color.decode("0xccccff") );
+            }else{
+                area.setBackground( Color.decode("0xc8ddf2") );
+            }
         }else{
             area.setBackground( Color.WHITE );
         }
