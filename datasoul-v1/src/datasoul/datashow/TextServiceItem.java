@@ -104,7 +104,7 @@ public class TextServiceItem extends ServiceItem {
             if (anEvent instanceof MouseEvent) {
                 return ((MouseEvent)anEvent).getClickCount() >= 2;
             }
-            return true;
+            return false;
         }        
         
     }

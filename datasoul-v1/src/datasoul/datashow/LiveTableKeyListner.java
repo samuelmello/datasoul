@@ -9,6 +9,7 @@
 
 package datasoul.datashow;
 
+import datasoul.ObjectManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -22,6 +23,7 @@ public class LiveTableKeyListner implements KeyListener{
     private StringBuffer numStrBuffer;
     private static final int MAX_TIME_BETWEEN_KEY=1000;
     private ServiceItemTable serviceItemTable;
+    private boolean ctrlPressed;
 
     /**
      * Creates a new instance of LiveTableKeyListner
@@ -34,8 +36,31 @@ public class LiveTableKeyListner implements KeyListener{
     public void keyTyped(KeyEvent e) {
     }
 
+    
+    
     public void keyPressed(KeyEvent e) {
+
+        if (e.getKeyCode() == KeyEvent.VK_CONTROL){
+            ctrlPressed = true;
+            return;
+        }
         
+        if (ctrlPressed){
+            switch(e.getKeyCode()){
+                case KeyEvent.VK_UP: 
+                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
+                    ObjectManager.getInstance().getLivePanel().goLastMarkedSlide();
+                    e.consume();
+                    break;
+                case KeyEvent.VK_DOWN:     
+                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
+                    ObjectManager.getInstance().getLivePanel().goNextMarkedSlide();
+                    e.consume();
+                    break;
+            }
+        }
+        
+        // user is typing a number to jump to
         if( ((e.getKeyCode()>=KeyEvent.VK_0)&&(e.getKeyCode()<=KeyEvent.VK_9) )||
             ((e.getKeyCode()>=KeyEvent.VK_NUMPAD0)&&(e.getKeyCode()<=KeyEvent.VK_NUMPAD9) )||
             (e.getKeyCode()== KeyEvent.VK_ENTER) ){
@@ -73,6 +98,10 @@ public class LiveTableKeyListner implements KeyListener{
     }
 
     public void keyReleased(KeyEvent e) {
+        if (e.getKeyCode() == KeyEvent.VK_CONTROL){
+            ctrlPressed = false;
+            return;
+        }
     }
     
 }

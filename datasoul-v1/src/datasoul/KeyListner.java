@@ -55,16 +55,6 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 case KeyEvent.VK_CONTROL:
                     ctrlPressed = false;
                     break;
-                case KeyEvent.VK_UP: 
-                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
-                    e.consume();
-                    ObjectManager.getInstance().getLivePanel().goLastMarkedSlide();
-                    break;
-                case KeyEvent.VK_DOWN:     
-                    //ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);                    
-                    e.consume();
-                    ObjectManager.getInstance().getLivePanel().goNextMarkedSlide();
-                    break;
                 case KeyEvent.VK_1:     
                     ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
                     break;
