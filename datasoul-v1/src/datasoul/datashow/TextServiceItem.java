@@ -97,7 +97,7 @@ public class TextServiceItem extends ServiceItem {
 
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             TextServiceItemRenderer r = (TextServiceItemRenderer) slides.get(row);
-            return r.getComponent(false);
+            return r.getComponent(false, true);
         }
         
         public boolean isCellEditable(EventObject anEvent) {
