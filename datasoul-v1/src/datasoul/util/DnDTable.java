@@ -9,6 +9,7 @@
 
 package datasoul.util;
 
+import datasoul.song.SongListTable;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;
@@ -24,6 +25,7 @@ import java.awt.dnd.DropTargetEvent;
 import java.io.IOException;
 import java.util.TooManyListenersException;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -110,8 +112,14 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     }
 
     public void dragGestureRecognized(DragGestureEvent dge) {
-
-        SerializableObject obj = (SerializableObject)((ListTable)this.getModel()).getValueAt(this.getSelectedRows()[0],0);        
+        int column=0;
+        
+        TableModel tm = this.getModel();
+        if(tm instanceof SongListTable){
+            column = ((SongListTable)tm).getSongColumn();
+        }
+        
+        SerializableObject obj = (SerializableObject)((ListTable)this.getModel()).getValueAt(this.getSelectedRows()[0],column);        
 
         dge.startDrag(DragSource.DefaultCopyNoDrop, (Transferable)obj, this);
 

@@ -20,8 +20,11 @@ import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
 import javax.swing.plaf.basic.BasicDirectoryModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -35,6 +38,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private AllSongsListTable allSongsListTable;
     private JFrame frameParent;
+    private int songColumn;
     /**
      * Creates new form SongsSearchPanel
      */
@@ -56,6 +60,13 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         tableSongList.setModel(allSongsListTable);
 
         this.btnClose.setVisible(false);
+        
+        songColumn = allSongsListTable.getSongColumn();
+
+        TableColumn col1 = tableSongList.getColumnModel().getColumn(0);
+        col1.setMaxWidth(30);
+        col1.setMinWidth(30);
+        tableSongList.setShowVerticalLines(false);
     }
     
     /** This method is called from within the constructor to
@@ -234,12 +245,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_btnNewMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-        SongEditorForm songEditor = new SongEditorForm((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+        SongEditorForm songEditor = new SongEditorForm((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         songEditor.setVisible(true);
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnDeletebtnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletebtnRemoveMouseClicked
-        Song song = (Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0);
+        Song song = (Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn);
         String filePath = song.getFilePath();
         
         File file = new File(filePath);
@@ -253,7 +264,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private void btnAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToListActionPerformed
         for(int item:tableSongList.getSelectedRows())
-            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(item,0));        
+            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(item,songColumn));        
     }//GEN-LAST:event_btnAddToListActionPerformed
 
     public void usingInAddSongItemPanel(JFrame frameParent){
@@ -277,17 +288,18 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_tableSongListKeyPressed
 
     private void showItem(){
+        
         if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
             if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         }
         if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
             if(ObjectManager.getInstance().getSongViewerPanel()!=null)
-                ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+                ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         }
         if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_ADD_SONGS){        
             if(ObjectManager.getInstance().getAddSongForm()!=null)
-                ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),0));
+                ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         }
     }    
     
@@ -298,7 +310,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         for(int i=0; i<allSongsListTable.getRowCount();i++){
             try {
                 if(fieldString.getText().length()==0){
-                    foundSongTable.addItem(allSongsListTable.getValueAt(i,0));
+                    foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                 }else{
                     String searchStr;
                     if(String.valueOf(evt.getKeyChar()).equals("\b")){
@@ -308,13 +320,13 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }
                     if(comboField.getSelectedItem().toString().equals("All")){
                         for(int j=1; j<comboField.getItemCount();j++){
-                            if(((Song)allSongsListTable.getValueAt(i,0)).containsStringInField(comboField.getItemAt(j).toString(),searchStr)){
-                                foundSongTable.addItem(allSongsListTable.getValueAt(i,0));
+                            if(((Song)allSongsListTable.getValueAt(i,songColumn)).containsStringInField(comboField.getItemAt(j).toString(),searchStr)){
+                                foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                                 break;
                             }                        
                         }
-                    }else if(((Song)allSongsListTable.getValueAt(i,0)).containsStringInField(comboField.getSelectedItem().toString(),searchStr)){
-                        foundSongTable.addItem(allSongsListTable.getValueAt(i,0));
+                    }else if(((Song)allSongsListTable.getValueAt(i,songColumn)).containsStringInField(comboField.getSelectedItem().toString(),searchStr)){
+                        foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                     }
                 }
             } catch (Exception ex) {
