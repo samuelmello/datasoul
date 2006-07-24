@@ -63,10 +63,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         
         songColumn = allSongsListTable.getSongColumn();
 
+        tableSongList.setShowVerticalLines(false);
+        
         TableColumn col1 = tableSongList.getColumnModel().getColumn(0);
         col1.setMaxWidth(30);
         col1.setMinWidth(30);
-        tableSongList.setShowVerticalLines(false);
+//        tableSongList.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     }
     
     /** This method is called from within the constructor to
@@ -338,6 +340,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         tableSongList.setModel(foundSongTable);
 
+        TableColumn col1 = tableSongList.getColumnModel().getColumn(0);
+        col1.setMaxWidth(30);
+        col1.setMinWidth(30);
+       
     }//GEN-LAST:event_fieldStringKeyPressed
 
     public void tableChanged(TableModelEvent e) {
