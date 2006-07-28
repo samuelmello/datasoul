@@ -12,9 +12,12 @@ package datasoul.templates;
 import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -85,7 +88,7 @@ public class DisplayTemplate extends AttributedObject {
         
         String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
         String filename = path + System.getProperty("file.separator") + name + ".template";
-        
+
         Document dom=null;
         Node node=null;
         
@@ -93,12 +96,31 @@ public class DisplayTemplate extends AttributedObject {
         
         //Using factory get an instance of document builder
         DocumentBuilder db = dbf.newDocumentBuilder();
+
+        // Open the file
+        FileInputStream fis = new FileInputStream(filename);
+        
+        GZIPInputStream zis = null;
+        try{
+            zis = new GZIPInputStream(fis);
+        }catch(IOException e){
+            zis = null;
+        }
         
         //parse using builder to get DOM representation of the XML file
-        dom = db.parse(filename);
+        if (zis != null){
+            // file in GZIP format
+            dom = db.parse(zis);
+        }else{
+            // uncompressed file
+            dom = db.parse(filename);
+        }
         
         //node = dom.getDocumentElement().getChildNodes().item(0);
         node = dom.getElementsByTagName("DisplayTemplate").item(0);
+
+        // Close the input stream
+        fis.close();
         
         this.readObject(node);
         
@@ -271,14 +293,19 @@ public class DisplayTemplate extends AttributedObject {
         Node node = this.writeObject();
         Document doc = node.getOwnerDocument();
         doc.appendChild( node);                        // Add Root to Document
+        
         FileOutputStream fos = new FileOutputStream( filename );
+        GZIPOutputStream zos = new GZIPOutputStream(fos);
+        
         org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
         OutputFormat outFormat = new OutputFormat();
         outFormat.setIndenting(true);
         outFormat.setEncoding("ISO-8859-1");
         xs.setOutputFormat(outFormat);
-        xs.setOutputByteStream(fos);
+        xs.setOutputByteStream(zos);
         xs.serialize(doc);
+        
+        zos.close();
     }
     
 
