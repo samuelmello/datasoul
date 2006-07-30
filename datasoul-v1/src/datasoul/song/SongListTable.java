@@ -79,8 +79,8 @@ public class SongListTable extends ListTable{
         }
     }
     
-    
-    public Class getColumnClass(int column) {
+    @Override
+    public Class<?> getColumnClass(int column) {
         if(column==0){
             return ImageIcon.class;
         }else{

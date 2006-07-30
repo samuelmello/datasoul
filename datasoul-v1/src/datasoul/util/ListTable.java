@@ -53,7 +53,7 @@ public class ListTable extends SerializableObject implements TableModel {
         return "FileName";
     }
 
-    public Class<Object> getColumnClass(int columnIndex) {
+    public Class<?> getColumnClass(int columnIndex) {
         return Object.class;
     }
 
