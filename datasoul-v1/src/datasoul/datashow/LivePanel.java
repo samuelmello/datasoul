@@ -52,8 +52,11 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         spnTimer = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
 
+        setDoubleBuffered(false);
         labelLive.setFont(new java.awt.Font("Dialog", 3, 10));
         labelLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
+
+        serviceItemTable1.setDoubleBuffered(false);
 
         cbAutoChange.setText("Change every");
         cbAutoChange.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -72,7 +75,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(labelLive)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addContainerGap(402, Short.MAX_VALUE))
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(cbAutoChange)
@@ -80,8 +83,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel1)
-                .addContainerGap(171, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addContainerGap(205, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

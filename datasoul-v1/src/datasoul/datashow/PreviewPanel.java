@@ -48,6 +48,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         labelPreview = new javax.swing.JLabel();
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
 
+        setDoubleBuffered(false);
         btnGoLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GO_LIVE"));
         btnGoLive.setToolTipText("Send slides to live");
         btnGoLive.addActionListener(new java.awt.event.ActionListener() {
@@ -65,7 +66,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(labelPreview)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 137, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 144, Short.MAX_VALUE)
                 .add(btnGoLive)
                 .addContainerGap())
             .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)

@@ -37,6 +37,9 @@
   </Layout>
   <SubComponents>
     <Container class="datasoul.render.SwingDisplayPanel" name="swingDisplayPanel1">
+      <Properties>
+        <Property name="doubleBuffered" type="boolean" value="false"/>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">

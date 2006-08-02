@@ -29,6 +29,8 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
         area = new JTextArea();
         area.setLineWrap(true);
         area.setWrapStyleWord(true);
+        area.setOpaque(true);
+        area.setDoubleBuffered(false);
         defaultFontSize = area.getFont().getSize2D();
     }
     

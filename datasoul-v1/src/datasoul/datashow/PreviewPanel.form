@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="doubleBuffered" type="boolean" value="false"/>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
@@ -13,7 +16,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" max="-2" attributes="0">
               <Component id="labelPreview" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="137" max="32767" attributes="0"/>
+              <EmptySpace pref="144" max="32767" attributes="0"/>
               <Component id="btnGoLive" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>

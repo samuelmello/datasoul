@@ -44,6 +44,7 @@ public class SwingDisplay extends javax.swing.JFrame {
         setFocusCycleRoot(false);
         setResizable(false);
         setUndecorated(true);
+        swingDisplayPanel1.setDoubleBuffered(false);
         org.jdesktop.layout.GroupLayout swingDisplayPanel1Layout = new org.jdesktop.layout.GroupLayout(swingDisplayPanel1);
         swingDisplayPanel1.setLayout(swingDisplayPanel1Layout);
         swingDisplayPanel1Layout.setHorizontalGroup(
