@@ -49,6 +49,18 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
         registerColorChooser("ColorStop");
         registerColorChooser("ColorRemainingTime");
     }
+
+    public void assign(TimerProgressbarTemplateItem from){
+        super.assign(from);
+        this.setColorGoAhead(from.getColorGoAhead());
+        this.setColorFinish(from.getColorFinish());
+        this.setColorStop(from.getColorStop());
+        this.setColorRemainingTime(from.getColorRemainingTime());
+        this.setAlphaRemainingTime(from.getAlphaRemainingTime());
+        this.setAlphaUsedTime(from.getAlphaUsedTime());
+        this.setPosition(from.getPosition());
+        this.setShowTimer(from.getShowTimer());
+    }
     
     @Override
     protected void registerProperties(){

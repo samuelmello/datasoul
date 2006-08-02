@@ -61,6 +61,7 @@ public class ImageTemplateItem extends TemplateItem {
         this.setStretchIdx(STRETCH_YES);
         this.setAlignmentIdx(ALIGN_CENTER);
         this.setVerticalAlignmentIdx(VALIGN_MIDDLE);
+        
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
             for (i=0; i<ALIGN_TABLE.length; i++){
@@ -87,6 +88,20 @@ public class ImageTemplateItem extends TemplateItem {
         registerEditorComboBox("StretchIdx", cbStrecth);
     }
     
+    public void assign(ImageTemplateItem from){
+        super.assign(from);
+        this.setStretchIdx(from.getStretchIdx());
+        this.setAlignmentIdx(from.getAlignmentIdx());
+        this.setVerticalAlignmentIdx(from.getVerticalAlignmentIdx());
+        
+        // ok, here we are getting just a reference for the image.
+        // this will cause the assignment to do not really clone the object
+        // but the images are not expected to change in runtime, so it should
+        // be faster and save some memory
+        this.setImage(from.getImage());
+    }
+    
+    
     /** Creates a new instance of ImageTemplateItem */
     public ImageTemplateItem(String filename) {
         this();
@@ -97,7 +112,6 @@ public class ImageTemplateItem extends TemplateItem {
         if (filename != null){
             this.filename = filename;
             try {
-
                 img = ImageIO.read( new File(filename) );
                 this.setWidth( img.getWidth() );
                 this.setHeight( img.getHeight() );

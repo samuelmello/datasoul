@@ -183,6 +183,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         // objects in the constructor. So, we allocate the first template here
         if (template == null){
             template = new DisplayTemplate();
+            template.setName(DisplayTemplate.findUnusedName());
         }
         prop.setModel(template);
     }
@@ -268,6 +269,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             // Create a new one
             selectedItem = null;
             template = new DisplayTemplate();
+            template.setName(DisplayTemplate.findUnusedName());
             propTable.setModel(template);
             this.repaint();
             

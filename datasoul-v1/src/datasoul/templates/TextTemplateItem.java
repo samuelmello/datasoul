@@ -214,9 +214,23 @@ public class TextTemplateItem extends TemplateItem {
         
         registerColorChooser("FontColor");
         registerColorChooser("OutlineColor");
-        
-        
     }
+    
+    public void assign(TextTemplateItem from){
+        super.assign(from);
+        this.setContentIdx(from.getContentIdx());
+        this.setText(from.getText());
+        this.setFontSize(from.getFontSize());
+        this.setAlignmentIdx(from.getAlignmentIdx());
+        this.setVerticalAlignmentIdx(from.getVerticalAlignmentIdx());
+        this.setTextWidthIdx(from.getTextWidthIdx());
+        this.setTextWeightIdx(from.getTextWeightIdx());
+        this.setUnderlineIdx(from.getUnderlineIdx());
+        this.setFontName(from.getFontName());
+        this.setFontColor(from.getFontColor());
+        this.setOutlineColor(from.getOutlineColor());
+    }
+    
 
     @Override
     public void draw(Graphics2D g, float time) {

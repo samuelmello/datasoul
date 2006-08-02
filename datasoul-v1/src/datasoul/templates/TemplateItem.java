@@ -57,6 +57,20 @@ public abstract class TemplateItem extends AttributedObject {
         
     }
     
+    
+    /**
+     * Should be overriden by child classes
+     */
+    public void assign(TemplateItem from){
+        this.setName(from.getName());
+        this.setTop(from.getTop());
+        this.setLeft(from.getLeft());
+        this.setWidth(from.getWidth());
+        this.setHeight(from.getHeight());
+        this.setAlpha(from.getAlpha());
+    }
+    
+    
     public abstract void draw(Graphics2D g, float time);
 
     public int getTop() {

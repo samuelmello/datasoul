@@ -16,6 +16,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import javax.xml.parsers.DocumentBuilder;
@@ -38,22 +39,41 @@ public class DisplayTemplate extends AttributedObject {
     
     static int defaultItemNameCount = 1;
     
+    static TreeMap<String, DisplayTemplate> templateCache = new TreeMap<String, DisplayTemplate>();
+    
     private String name;
     
-    /** Creates a new instance of DisplayTemplate */
+    /** Creates an empty DisplayTemplate */
     public DisplayTemplate() {
         super();
         items = new ArrayList<TemplateItem>();
+    }
 
+    /**
+     * Loads an existing DisplayTemplate
+     */
+    public DisplayTemplate(String name) throws Exception  {
+        this();
+        
+        if (templateCache.containsKey(name)){
+            this.assign(templateCache.get(name));
+        }else{
+            this.loadFromFile(name);
+            templateCache.put(name, this);
+        }
+        
+    }
+    
+    
+    public static String findUnusedName(){
+        
         // try to find a Name
         String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
         int i = 0;
         File file = new File(path);
         String[] files = file.list();
         
-        boolean found = false;
-        
-        while (found == false){
+        while (true){
             
             boolean exists = false;
             String tmp = "Untitled"+i;
@@ -65,26 +85,39 @@ public class DisplayTemplate extends AttributedObject {
             }
             
             if (exists == false){
-                this.setName(tmp);
-                found = true;
+                return tmp;
             }else{
                 i++;
             }
 
         }
         
-
-        
-
     }
     
-    /**
-     * Loads an existing DisplayTemplate
-     */
-    public DisplayTemplate(String name) throws Exception {
+    
+    public void assign(DisplayTemplate from){
         
-        super();
-        items = new ArrayList<TemplateItem>();
+        this.setName(from.getName());
+        this.items.clear();
+        for (TemplateItem t : from.getItems()){
+            
+            Class itemClass = t.getClass();
+            try {
+                TemplateItem newItem = (TemplateItem) itemClass.newInstance();
+                Class[] formalParams = { itemClass  };
+                Object[] actualParams = { t };
+                itemClass.getMethod("assign", formalParams).invoke(newItem, actualParams);
+                this.items.add(newItem);
+                
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            
+        }
+        
+    }
+    
+    private void loadFromFile(String name) throws Exception{
         
         String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
         String filename = path + System.getProperty("file.separator") + name + ".template";
@@ -125,6 +158,7 @@ public class DisplayTemplate extends AttributedObject {
         this.readObject(node);
         
     }
+    
     
     @Override
     protected void registerProperties(){
