@@ -6,6 +6,7 @@
 
 package datasoul.templates;
 
+import datasoul.ObjectManager;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -363,14 +364,20 @@ public class TemplatePanel extends javax.swing.JPanel {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
 
-        if ( jTableTemplates.getSelectedRowCount() == 1){
-            Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
-            if (x instanceof String){
-                String str = (String) x;
-                templateEditorPanel1.open( str );
-                lblTemplateName.setText( str );
+        try{
+            ObjectManager.getInstance().setBusyCursor();
+            if ( jTableTemplates.getSelectedRowCount() == 1){
+                Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
+                if (x instanceof String){
+                    String str = (String) x;
+                    templateEditorPanel1.open( str );
+                    lblTemplateName.setText( str );
+                }
             }
+        }finally{
+            ObjectManager.getInstance().setDefaultCursor();
         }
+
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
@@ -379,9 +386,16 @@ public class TemplatePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        templateEditorPanel1.save();
-        TemplateManager.getInstance().refreshAvailableTemplates();
-        lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
+
+        try{
+            ObjectManager.getInstance().setBusyCursor();
+            templateEditorPanel1.save();
+            TemplateManager.getInstance().refreshAvailableTemplates();
+            lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
+        }finally{
+            ObjectManager.getInstance().setDefaultCursor();
+        }
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteItemActionPerformed

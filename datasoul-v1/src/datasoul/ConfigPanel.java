@@ -590,8 +590,16 @@ public class ConfigPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_videoInputActionPerformed
 
     private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
-        refreshObjectValues();
-        configObj.save();
+
+        try{
+            ObjectManager.getInstance().setBusyCursor();
+            refreshObjectValues();
+            configObj.save();
+        }finally{
+            ObjectManager.getInstance().setDefaultCursor();
+        }
+        
+            
     }//GEN-LAST:event_btnApplyActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

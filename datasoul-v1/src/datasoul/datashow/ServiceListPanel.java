@@ -283,15 +283,20 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
     private void showItem(){
         
-        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
-            if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
-        }
-        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
-            ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
-            if(item instanceof Song)
-                if(ObjectManager.getInstance().getSongViewerPanel()!=null)
-                    ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+        try{
+            ObjectManager.getInstance().setBusyCursor();
+            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+                if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                    ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
+            }
+            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+                ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+                if(item instanceof Song)
+                    if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                        ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+            }
+        }finally{
+            ObjectManager.getInstance().setDefaultCursor();
         }
     }
     

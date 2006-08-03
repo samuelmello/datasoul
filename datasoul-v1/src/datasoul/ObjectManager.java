@@ -17,6 +17,7 @@ import datasoul.song.AddSongForm;
 import datasoul.song.ChordsManagerPanel;
 import datasoul.song.SongViewerPanel;
 import datasoul.song.SongsSearchPanel;
+import java.awt.Cursor;
 
 /**
  *
@@ -132,6 +133,14 @@ public class ObjectManager {
         return datasoulMainForm;
     }
 
+    public void setBusyCursor(){
+        datasoulMainForm.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
+    }
+    
+    public void setDefaultCursor(){
+        datasoulMainForm.setCursor(Cursor.getDefaultCursor());
+    }
+    
     public void setDatasoulMainForm(DatasoulMainForm datasoulMainForm) {
         this.datasoulMainForm = datasoulMainForm;
     }
