@@ -81,24 +81,55 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             btnMonitorClearActionPerformed(null);
         }
     }
+    
     public void mainDisplayShow(){
         int time = ConfigObj.getInstance().getSlideShowHideTime();
         
         ContentManager.getMainDisplay().slideShow( time );
         
+        btnShow.setSelected(true);
+        btnHide.setSelected(false);
+        
         if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            btnMonitorShowActionPerformed(null);
+            monitorDisplayShow();
         }
     }
+    
     public void mainDisplayHide(){
         int time = ConfigObj.getInstance().getSlideShowHideTime();
         
         ContentManager.getMainDisplay().slideHide( time );
+
+        btnShow.setSelected(false);
+        btnHide.setSelected(true);
         
         if (ConfigObj.getInstance().getMonitorFollowMainControls()){
-            btnMonitorHideActionPerformed(null);
+            monitorDisplayHide();
         }
     }
+    
+    public void monitorDisplayShow(){
+        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        
+        btnMonitorShow.setSelected(true);
+        btnMonitorHide.setSelected(false);
+        
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
+            ContentManager.getMonitorDisplay().slideShow( time );
+        }
+    }
+    
+    public void monitorDisplayHide(){
+        int time = ConfigObj.getInstance().getSlideShowHideTime();
+
+        btnMonitorShow.setSelected(false);
+        btnMonitorHide.setSelected(true);
+
+        if ( ConfigObj.getInstance().getMonitorOutput() ){
+            ContentManager.getMonitorDisplay().slideHide( time );
+        }
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -107,8 +138,6 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jLabel10 = new javax.swing.JLabel();
-        btnMainHide = new javax.swing.JButton();
-        btnMainShow = new javax.swing.JButton();
         btnMainBlack = new javax.swing.JToggleButton();
         btnMainClear = new javax.swing.JToggleButton();
         jLabel15 = new javax.swing.JLabel();
@@ -120,27 +149,15 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btnMonitorClear = new javax.swing.JToggleButton();
         btnMonitorBlack = new javax.swing.JToggleButton();
-        btnMonitorHide = new javax.swing.JButton();
-        btnMonitorShow = new javax.swing.JButton();
+        btnMonitorHide = new javax.swing.JToggleButton();
+        btnMonitorShow = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
         cbMonitorFollowMain = new javax.swing.JCheckBox();
+        btnHide = new javax.swing.JToggleButton();
+        btnShow = new javax.swing.JToggleButton();
 
         setAutoscrolls(true);
         jLabel10.setText("Main Output:");
-
-        btnMainHide.setText("Hide");
-        btnMainHide.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMainHideActionPerformed(evt);
-            }
-        });
-
-        btnMainShow.setText("Show");
-        btnMainShow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMainShowActionPerformed(evt);
-            }
-        });
 
         btnMainBlack.setText("Black");
         btnMainBlack.setToolTipText("Makes the main window black");
@@ -214,6 +231,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.add(btnMonitorBlack);
 
+        btnMonitorHide.setSelected(true);
         btnMonitorHide.setText("Hide");
         btnMonitorHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,6 +261,21 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHide.setSelected(true);
+        btnHide.setText("Hide");
+        btnHide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHideActionPerformed(evt);
+            }
+        });
+
+        btnShow.setText("Show");
+        btnShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -251,25 +284,25 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jLabel10)
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(btnMainHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
-                            .add(btnMainClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(btnMainShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .add(btnMainBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)))
                     .add(jLabel15)
                     .add(jLabel16)
-                    .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                    .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .add(jLabel2)
-                    .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                    .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                        .add(templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
                     .add(cbMonitorFollowMain)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnMainClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(btnShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                            .add(btnMainBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -283,9 +316,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                     .add(btnMainBlack, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 35, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(btnMainShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(btnMainHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
-                .add(14, 14, 14)
+                    .add(btnShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(btnHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel15)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 54, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -303,39 +336,33 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .add(cbMonitorFollowMain)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(29, 29, 29))
+                .add(37, 37, 37))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMonitorShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorShowActionPerformed
-
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
-        
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().slideShow( time );
+        if (btnMonitorShow.isSelected()){
+            this.monitorDisplayShow();
         }
-        
     }//GEN-LAST:event_btnMonitorShowActionPerformed
 
     private void btnMonitorHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorHideActionPerformed
-
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
-
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().slideHide( time );
+        if (btnMonitorHide.isSelected()){
+            this.monitorDisplayHide();
         }
-        
     }//GEN-LAST:event_btnMonitorHideActionPerformed
 
-    private void btnMainShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainShowActionPerformed
+    private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
+        if (btnShow.isSelected()){
+            this.mainDisplayShow();
+        }
+    }//GEN-LAST:event_btnShowActionPerformed
 
-        this.mainDisplayShow();
-    }//GEN-LAST:event_btnMainShowActionPerformed
-
-    private void btnMainHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainHideActionPerformed
-
-        this.mainDisplayHide();
-    }//GEN-LAST:event_btnMainHideActionPerformed
+    private void btnHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHideActionPerformed
+        if (btnHide.isSelected()){
+            this.mainDisplayHide();
+        }
+    }//GEN-LAST:event_btnHideActionPerformed
 
     private void cbMonitorFollowMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorFollowMainActionPerformed
 
@@ -407,14 +434,14 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnHide;
     private javax.swing.JToggleButton btnMainBlack;
     private javax.swing.JToggleButton btnMainClear;
-    private javax.swing.JButton btnMainHide;
-    private javax.swing.JButton btnMainShow;
     private javax.swing.JToggleButton btnMonitorBlack;
     private javax.swing.JToggleButton btnMonitorClear;
-    private javax.swing.JButton btnMonitorHide;
-    private javax.swing.JButton btnMonitorShow;
+    private javax.swing.JToggleButton btnMonitorHide;
+    private javax.swing.JToggleButton btnMonitorShow;
+    private javax.swing.JToggleButton btnShow;
     private javax.swing.JCheckBox cbMonitorFollowMain;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

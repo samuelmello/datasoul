@@ -14,33 +14,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="btnMainHide" pref="147" max="32767" attributes="1"/>
-                          <Component id="btnMainClear" alignment="1" pref="147" max="32767" attributes="1"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnMainShow" pref="149" max="32767" attributes="1"/>
-                          <Component id="btnMainBlack" alignment="0" pref="149" max="32767" attributes="1"/>
-                      </Group>
-                  </Group>
                   <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSliderSlideChangeSpeed" alignment="0" pref="302" max="32767" attributes="0"/>
+                  <Component id="jSliderSlideChangeSpeed" alignment="0" pref="281" max="32767" attributes="0"/>
                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jSliderShowHideSpeed" alignment="0" pref="302" max="32767" attributes="0"/>
+                  <Component id="jSliderShowHideSpeed" alignment="0" pref="281" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="templateMonitor" pref="229" max="32767" attributes="0"/>
+                      <Component id="templateMonitor" pref="208" max="32767" attributes="0"/>
                   </Group>
                   <Component id="cbMonitorFollowMain" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" pref="302" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnHide" alignment="0" pref="137" max="32767" attributes="0"/>
+                          <Component id="btnMainClear" alignment="0" pref="137" max="32767" attributes="1"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnShow" pref="138" max="32767" attributes="0"/>
+                          <Component id="btnMainBlack" alignment="0" pref="138" max="32767" attributes="1"/>
+                      </Group>
+                  </Group>
+                  <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -58,10 +58,10 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnMainShow" max="32767" attributes="1"/>
-                  <Component id="btnMainHide" alignment="0" pref="33" max="32767" attributes="1"/>
+                  <Component id="btnShow" max="32767" attributes="1"/>
+                  <Component id="btnHide" alignment="0" pref="33" max="32767" attributes="1"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jSliderShowHideSpeed" min="-2" pref="54" max="-2" attributes="0"/>
@@ -80,7 +80,7 @@
               <Component id="cbMonitorFollowMain" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,22 +90,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Main Output:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnMainHide">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Hide"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMainHideActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnMainShow">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Show"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMainShowActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnMainBlack">
       <Properties>
@@ -195,15 +179,16 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMonitorBlackActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnMonitorHide">
+        <Component class="javax.swing.JToggleButton" name="btnMonitorHide">
           <Properties>
+            <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Hide"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMonitorHideActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnMonitorShow">
+        <Component class="javax.swing.JToggleButton" name="btnMonitorShow">
           <Properties>
             <Property name="text" type="java.lang.String" value="Show"/>
           </Properties>
@@ -232,6 +217,23 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMonitorFollowMainActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="btnHide">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Hide"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHideActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JToggleButton" name="btnShow">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Show"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
