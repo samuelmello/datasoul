@@ -28,15 +28,18 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
     
     public void showItem(ServiceItem serviceItem){
-        this.serviceItemTable1.setServiceItem(serviceItem);
+
         ContentManager cm = ContentManager.getInstance();
+        cm.saveTransitionImage();
         cm.setTemplateLive(serviceItem.getTemplate());
         cm.setTitleLive(serviceItem.getTitle());
         if(serviceItem instanceof Song)
             cm.setSongAuthorLive( ((Song)serviceItem).getSongAuthor() );
-        cm.setSlideLive("");
-        cm.setNextSlideLive("");
-        //cm.slideShow( 1000 );
+        this.serviceItemTable1.setServiceItem(serviceItem);
+        cm.setSlideLive( serviceItemTable1.getSlideText() );
+        cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
+        cm.slideChange(ConfigObj.getInstance().getSlideTransitionTime());
+        
     }
 
     /** This method is called from within the constructor to

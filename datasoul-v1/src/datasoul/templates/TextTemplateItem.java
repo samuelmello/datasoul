@@ -439,7 +439,7 @@ getFullWord: {
         return text;
     }
 
-    public void setText(String text) {
+    public synchronized void setText(String text) {
         if (text == null || text.equals("")){
             this.text = " ";
         }else{
