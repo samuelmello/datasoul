@@ -76,6 +76,10 @@ public class SwingDisplay extends javax.swing.JFrame {
         this.setVisible(true);
     }
 
+    public void shutdown(){
+        this.setVisible(false);
+    }
+    
     public void setDebugMode(int mode) {
         swingDisplayPanel1.setDebugMode(mode);
     }

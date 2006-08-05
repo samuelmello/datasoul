@@ -65,6 +65,10 @@ public class SwingPanelContentRender extends ContentRender {
         super.initDisplay(width, height, top, left);
         p.initDisplay(width, height, top, left);
     }
+    
+    public void shutdown(){
+        p.shutdown();
+    }
 
     public void setWindowTitle(String title) {
     }

@@ -535,7 +535,7 @@ public abstract class ContentRender {
         transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
     }
     
-    
+    public abstract void shutdown();
     
     public abstract void setDebugMode(int i);
     

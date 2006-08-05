@@ -113,6 +113,9 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         this.setVisible(true);
     }
     
+    public void shutdown(){
+        this.setVisible(false);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

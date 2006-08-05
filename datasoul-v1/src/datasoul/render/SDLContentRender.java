@@ -107,6 +107,7 @@ public class SDLContentRender extends ContentRender {
     public native void setInputMode(int mode);
     public native void setDeintrelaceMode(int mode);
     public native void setDebugMode (int mode);
+    public native void shutdown();
     
     public void clear(){
 

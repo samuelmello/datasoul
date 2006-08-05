@@ -151,6 +151,15 @@ public class RemoteContentRender extends ContentRender {
         }
     }
 
+    public void shutdown(){
+        try{
+            output.writeInt(RemoteContentRenderConstants.CMD_SHUTDOWN);
+            output.flush();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
     public void initDisplay(int width, int height, int top, int left) {
         super.initDisplay(width, height, top, left);
         templateImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);

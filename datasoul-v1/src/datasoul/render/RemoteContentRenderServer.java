@@ -41,21 +41,31 @@ public class RemoteContentRenderServer {
         
         //int port = Integer.parseInt(args[1]);
         int port = 12345;
+        ServerSocket serv;
         try {
-            ServerSocket serv = new ServerSocket(port);
-            System.out.println("Server listening...");
-            sock = serv.accept();
-            System.out.println("Connected!");
-            sock.setTcpNoDelay(true);
-            input = new ObjectInputStream(sock.getInputStream());
-
-            receiveMessages();
-        
-        
+            serv = new ServerSocket(port);
         } catch (IOException ex) {
             ex.printStackTrace();
+            return;
         }
         
+        while (true){
+            try {
+                
+                System.out.println("Server listening...");
+                sock = serv.accept();
+                System.out.println("Connected!");
+                sock.setTcpNoDelay(true);
+                input = new ObjectInputStream(sock.getInputStream());
+
+                receiveMessages();
+
+                cr.shutdown();
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
 
         
     }
@@ -72,7 +82,7 @@ public class RemoteContentRenderServer {
                 
             } catch (EOFException e){
                 System.out.println("Disconnected!");
-                System.exit(0);
+                return;
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -118,11 +128,19 @@ public class RemoteContentRenderServer {
                 case RemoteContentRenderConstants.CMD_INIT:
                     initDisplay();
                     break;
+                    
+                case RemoteContentRenderConstants.CMD_SHUTDOWN:
+                    shutdown();
+                    break;
             
             }
             
         }
 
+    }
+    
+    private static void shutdown() {
+        cr.shutdown();
     }
     
     private static void initDisplay() throws IOException {
