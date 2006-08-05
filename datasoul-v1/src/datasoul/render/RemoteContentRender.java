@@ -129,6 +129,13 @@ public class RemoteContentRender extends ContentRender {
     }
 
     public void paintBackground(BufferedImage bufferedImage) {
+        try{
+            output.writeInt(RemoteContentRenderConstants.CMD_PAINTBG);
+            ImageIO.write(bufferedImage, "png", output);
+            output.flush();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void setClear(int i) {

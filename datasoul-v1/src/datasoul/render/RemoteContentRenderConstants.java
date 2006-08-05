@@ -27,5 +27,4 @@ public interface RemoteContentRenderConstants {
     static public final int CMD_INIT            = 0x0A;
     static public final int CMD_SHUTDOWN        = 0x0B;
             
-            
 }

@@ -24,7 +24,7 @@ import javax.imageio.ImageIO;
 public class RemoteContentRenderServer {
     
     private static Socket sock;
-    private static SwingContentRender cr;
+    private static ContentRender cr;
     private static ObjectInputStream input;
     
     /**
@@ -37,7 +37,7 @@ public class RemoteContentRenderServer {
     
     public static void main(String[] args){
         
-        cr = new SwingContentRender();
+        cr = new SDLContentRender();
         
         //int port = Integer.parseInt(args[1]);
         int port = 12345;
@@ -188,7 +188,9 @@ public class RemoteContentRenderServer {
         cr.setBackgroundMode(i);
     }
 
-    private static void paintBackground() {
+    private static void paintBackground() throws IOException {
+        BufferedImage img = ImageIO.read(input);
+        cr.paintBackground(img);
     }
 
     private static void setClear() throws IOException {
