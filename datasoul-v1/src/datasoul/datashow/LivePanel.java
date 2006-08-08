@@ -13,6 +13,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
     private AutomaticChanger automaticChanger;
     
+    private int lastSelectedIndex;
     
     /**
      * Creates new form LivePanel
@@ -116,6 +117,16 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
     public void valueChanged(ListSelectionEvent e) {
 
+        // when changing slides with mouse, two events are generated for
+        // the same change, one for pressing and other for releasing the mouse button
+        // this check avoids processing twice, what makes the transiction effect broken
+        if ( serviceItemTable1.getSlideIndex() == lastSelectedIndex || serviceItemTable1.getSlideIndex() < 0){
+            return;
+        }else{
+            lastSelectedIndex = serviceItemTable1.getSlideIndex();
+        }
+        
+        
         ContentManager cm = ContentManager.getInstance();
         cm.saveTransitionImage();
         cm.setSlideLive( serviceItemTable1.getSlideText() );
