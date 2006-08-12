@@ -80,6 +80,11 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private Vector<String> notes = new Vector<String>();
 
     private static ArrayList<String> specialWords = new ArrayList<String>();    
+
+    public static String VIEW_LYRICS = "Lyrics";
+    public static String VIEW_CHORDS_COMPLETE = "Chords Complete";
+    public static String VIEW_CHORDS_SIMPLIFIED = "Chords Simplified";
+    
     
     private void loadSongTemplate(){
         songTemplate = new SongTemplate();
@@ -159,9 +164,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         specialWords.add("(9x)");        
         
         comboVersion.removeAllItems();
-        comboVersion.addItem("Lyrics");
-        comboVersion.addItem("Chords Complete");
-        comboVersion.addItem("Chords Simplified");
+        comboVersion.addItem(this.VIEW_LYRICS);
+        comboVersion.addItem(this.VIEW_CHORDS_COMPLETE);
+        comboVersion.addItem(this.VIEW_CHORDS_SIMPLIFIED);
         comboVersion.setSelectedIndex(0);
         
         chordsName = new ArrayList<String>();
@@ -207,6 +212,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         }
     }
     
+    public void setView(String item){
+        comboVersion.setSelectedItem(item);
+    }
+    
     public void viewSong(Song song){
         keyOrig="";
         keyActual="";
@@ -243,9 +252,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         
         javax.swing.text.Document doc = jep.getDocument();
 
-        if(comboVersion.getSelectedItem().equals("Chords Complete")){
+        if(comboVersion.getSelectedItem().equals(this.VIEW_CHORDS_COMPLETE)){
             strSong = song.getChordsComplete();
-        }else if(comboVersion.getSelectedItem().equals("Chords Simplified")){
+        }else if(comboVersion.getSelectedItem().equals(this.VIEW_CHORDS_SIMPLIFIED)){
             strSong = song.getChordsSimplified();
         }else{
             strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");

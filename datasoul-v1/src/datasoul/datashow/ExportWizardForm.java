@@ -223,6 +223,7 @@ public class ExportWizardForm extends javax.swing.JFrame {
                     if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
                         Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
                         SongViewerPanel svp = new SongViewerPanel();
+                        svp.setView(svp.VIEW_CHORDS_COMPLETE);
                         svp.viewSong(song);
                         osOut = svp.exportRTFSong(osOut);
                     }
