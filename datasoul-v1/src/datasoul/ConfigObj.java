@@ -11,6 +11,7 @@ package datasoul;
 
 import datasoul.render.ContentManager;
 import datasoul.render.SDLContentRender;
+import datasoul.templates.TemplateManager;
 import datasoul.util.SerializableObject;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -59,6 +60,9 @@ public class ConfigObj extends SerializableObject {
     private boolean monitorFollowMainControls;
     private BufferedImage mainBackgroundImg;
     private BufferedImage monitorBackgroundImg;
+    private String monitorTemplateFilter;
+    private String alertTemplateFilter;
+    private String generalTemplateFilter;
     
     
     public static final int CLOCKMODE_24_SEC = 0;
@@ -174,6 +178,9 @@ public class ConfigObj extends SerializableObject {
         properties.add("MonitorFollowMainControlsIdx");
         properties.add("MainBackgroundImgStr");
         properties.add("MonitorBackgroundImgStr");
+        properties.add("MonitorTemplateFilter");
+        properties.add("AlertTemplateFilter");
+        properties.add("GeneralTemplateFilter");
     }
     
     public ArrayList<String> getProperties(){
@@ -631,4 +638,46 @@ public class ConfigObj extends SerializableObject {
             ContentManager.getMonitorDisplay().paintBackground(img);
         }
     }
+
+    public void setMonitorTemplateFilter(String monitorTemplateFilter){
+        this.monitorTemplateFilter = monitorTemplateFilter;
+        TemplateManager.getInstance().tableModelChanged();
+    }
+
+    public String getMonitorTemplateFilter(){
+        if (monitorTemplateFilter == null){
+            return "";
+        }else{
+            return monitorTemplateFilter;
+        }
+    }
+    
+    public void setAlertTemplateFilter(String alertTemplateFilter){
+        this.alertTemplateFilter = alertTemplateFilter;
+        TemplateManager.getInstance().tableModelChanged();
+    }
+    
+    public String getAlertTemplateFilter(){
+        if (alertTemplateFilter == null){
+            return "";
+        }else{
+            return alertTemplateFilter;
+        }
+    }
+
+    public void setGeneralTemplateFilter(String generalTemplateFilter){
+        this.generalTemplateFilter = generalTemplateFilter;
+        TemplateManager.getInstance().tableModelChanged();
+    }
+    
+    public String getGeneralTemplateFilter(){
+        if (generalTemplateFilter == null){
+            return "";
+        }else{
+            return generalTemplateFilter;
+        }
+    }
+    
+    
+
 }

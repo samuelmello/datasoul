@@ -48,6 +48,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         //initTemplateCombo
         TemplateComboBox comboBox = new TemplateComboBox(); 
+        comboBox.setFilterType(TemplateComboBox.FILTER_GENERAL);
         this.tableServiceList.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(comboBox));          
         
         ServiceListColorRender cr = new ServiceListColorRender();

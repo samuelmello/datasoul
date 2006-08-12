@@ -75,7 +75,7 @@ public class TemplateManager implements TableModel {
         this.listeners.add(l);
     }
     
-    private void tableModelChanged(){
+    public void tableModelChanged(){
         TableModelEvent tme = new TableModelEvent(this);
         for(int i=0;i<this.listeners.size();i++){
             this.listeners.get(i).tableChanged(tme);            

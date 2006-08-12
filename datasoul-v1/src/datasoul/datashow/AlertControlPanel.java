@@ -6,6 +6,8 @@
 
 package datasoul.datashow;
 
+import datasoul.templates.TemplateComboBox;
+
 /**
  *
  * @author  samuelm
@@ -15,6 +17,8 @@ public class AlertControlPanel extends javax.swing.JPanel {
     /** Creates new form AlertControlPanel */
     public AlertControlPanel() {
         initComponents();
+        cbMainTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
+        cbMonitorTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
     }
     
     /** This method is called from within the constructor to

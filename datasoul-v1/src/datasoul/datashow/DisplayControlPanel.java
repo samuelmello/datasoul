@@ -8,6 +8,7 @@ package datasoul.datashow;
 
 import datasoul.ConfigObj;
 import datasoul.render.ContentManager;
+import datasoul.templates.TemplateComboBox;
 import java.awt.Event;
 import java.util.Hashtable;
 import javax.swing.JLabel;
@@ -41,6 +42,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSliderShowHideSpeed.setLabelTable(labels);
         jSliderSlideChangeSpeed.setLabelTable(labels);
 
+        templateMonitor.setFilterType(TemplateComboBox.FILTER_MONITOR);
+        
         
     }
 
