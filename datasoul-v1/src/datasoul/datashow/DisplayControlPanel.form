@@ -94,7 +94,7 @@
     <Component class="javax.swing.JToggleButton" name="btnMainBlack">
       <Properties>
         <Property name="text" type="java.lang.String" value="Black"/>
-        <Property name="toolTipText" type="java.lang.String" value="Makes the main window black"/>
+        <Property name="toolTipText" type="java.lang.String" value="Makes the main output black (F12)"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMainBlackActionPerformed"/>
@@ -103,7 +103,7 @@
     <Component class="javax.swing.JToggleButton" name="btnMainClear">
       <Properties>
         <Property name="text" type="java.lang.String" value="Clear"/>
-        <Property name="toolTipText" type="java.lang.String" value="Clear the main window"/>
+        <Property name="toolTipText" type="java.lang.String" value="Clear the main output (F11)"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMainClearActionPerformed"/>
@@ -223,6 +223,7 @@
       <Properties>
         <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="Hide"/>
+        <Property name="toolTipText" type="java.lang.String" value="Hide the main output content (F9)"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHideActionPerformed"/>
@@ -231,6 +232,7 @@
     <Component class="javax.swing.JToggleButton" name="btnShow">
       <Properties>
         <Property name="text" type="java.lang.String" value="Show"/>
+        <Property name="toolTipText" type="java.lang.String" value="Show the main output content (F10)"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowActionPerformed"/>

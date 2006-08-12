@@ -98,10 +98,10 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_BACKGROUND);
                 break;                
             case KeyEvent.VK_F9: 
-                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayShow();
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayHide();
                 break;                
             case KeyEvent.VK_F10: 
-                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayHide();
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayShow();
                 break;                
             case KeyEvent.VK_F11: 
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayClean();

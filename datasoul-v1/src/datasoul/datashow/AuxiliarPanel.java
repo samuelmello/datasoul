@@ -68,6 +68,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         timerControlPanel1 = new datasoul.datashow.TimerControlPanel();
         backgroundPanel1 = new datasoul.datashow.BackgroundPanel();
 
+        tabAuxiliar.setToolTipText("");
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(0, 0));
         tabAuxiliar.addTab("Display", displayControlPanel1);

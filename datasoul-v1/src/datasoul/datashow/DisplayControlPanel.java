@@ -49,16 +49,19 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
     
     public void mainDisplayBlack(){
-        if ( ConfigObj.getInstance().getMainOutput() ){
-            if( !isMainOnBlack ){
+        
+        if( !isMainOnBlack ){
+            if ( ConfigObj.getInstance().getMainOutput() ){
                 ContentManager.getMainDisplay().setBlack( 1 );
-                isMainOnBlack = true;
-                btnMainBlack.setSelected(true);
-            }else{
-                ContentManager.getMainDisplay().setBlack( 0 );
-                isMainOnBlack = false;
-                btnMainBlack.setSelected(false);
             }
+            isMainOnBlack = true;
+            btnMainBlack.setSelected(true);
+        }else{
+            if ( ConfigObj.getInstance().getMainOutput() ){
+                ContentManager.getMainDisplay().setBlack( 0 );
+            }
+            isMainOnBlack = false;
+            btnMainBlack.setSelected(false);
         }
 
         if (ConfigObj.getInstance().getMonitorFollowMainControls()){
@@ -67,16 +70,19 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         }
     }
     public void mainDisplayClean(){
-        if ( ConfigObj.getInstance().getMainOutput() ){
-            if( !isMainOnClean ){
+        
+        if( !isMainOnClean ){
+            if ( ConfigObj.getInstance().getMainOutput() ){
                 ContentManager.getMainDisplay().setClear( 1 );
-                isMainOnClean = true;
-                btnMainClear.setSelected(true);
-            }else{
-                ContentManager.getMainDisplay().setClear( 0 );
-                isMainOnClean = false;
-                btnMainClear.setSelected(false);
             }
+            isMainOnClean = true;
+            btnMainClear.setSelected(true);
+        }else{
+            if ( ConfigObj.getInstance().getMainOutput() ){
+                ContentManager.getMainDisplay().setClear( 0 );
+            }
+            isMainOnClean = false;
+            btnMainClear.setSelected(false);
         }
         
         if (ConfigObj.getInstance().getMonitorFollowMainControls()){
@@ -87,8 +93,10 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     
     public void mainDisplayShow(){
         int time = ConfigObj.getInstance().getSlideShowHideTime();
-        
-        ContentManager.getMainDisplay().slideShow( time );
+
+        if (ConfigObj.getInstance().getMainOutput()){
+            ContentManager.getMainDisplay().slideShow( time );
+        }
         
         btnShow.setSelected(true);
         btnHide.setSelected(false);
@@ -101,7 +109,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     public void mainDisplayHide(){
         int time = ConfigObj.getInstance().getSlideShowHideTime();
         
-        ContentManager.getMainDisplay().slideHide( time );
+        if (ConfigObj.getInstance().getMainOutput()){
+            ContentManager.getMainDisplay().slideHide( time );
+        }
 
         btnShow.setSelected(false);
         btnHide.setSelected(true);
@@ -163,7 +173,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jLabel10.setText("Main Output:");
 
         btnMainBlack.setText("Black");
-        btnMainBlack.setToolTipText("Makes the main window black");
+        btnMainBlack.setToolTipText("Makes the main output black (F12)");
         btnMainBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainBlackActionPerformed(evt);
@@ -171,7 +181,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
 
         btnMainClear.setText("Clear");
-        btnMainClear.setToolTipText("Clear the main window");
+        btnMainClear.setToolTipText("Clear the main output (F11)");
         btnMainClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainClearActionPerformed(evt);
@@ -266,6 +276,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         btnHide.setSelected(true);
         btnHide.setText("Hide");
+        btnHide.setToolTipText("Hide the main output content (F9)");
         btnHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHideActionPerformed(evt);
@@ -273,6 +284,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
 
         btnShow.setText("Show");
+        btnShow.setToolTipText("Show the main output content (F10)");
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowActionPerformed(evt);
