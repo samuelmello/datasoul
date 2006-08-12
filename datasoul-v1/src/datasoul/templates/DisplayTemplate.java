@@ -340,6 +340,8 @@ public class DisplayTemplate extends AttributedObject {
         xs.serialize(doc);
         
         zos.close();
+        
+        templateCache.put(name, this);
     }
     
 
@@ -353,6 +355,10 @@ public class DisplayTemplate extends AttributedObject {
             }                
         }
         
+    }
+    
+    public static void deleteTemplate(String name){
+        templateCache.remove(name);
     }
     
 }

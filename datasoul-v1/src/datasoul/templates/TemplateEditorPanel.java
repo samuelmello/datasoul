@@ -238,7 +238,22 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     public void open(String templatename){
         try{
             selectedItem = null;
-            template = TemplateManager.getDisplayTemplate(templatename);
+            
+            /*
+             * Yes, we really need to call the construtor twice.
+             * As the constructor uses a templateCache for storing templates loaded form disk,
+             * a reference to the first instance of any loaded template will be helded in the 
+             * cache to be used as master to be copied to subsequent instances.
+             * This is ok and provides good performance for presentation, but when editing 
+             * templates we need to ensure that the instance being edited is not the same 
+             * that is on the cache. Otherwise, the changes done while editing would take effect
+             * before saving, what is not desired.
+             * So, we call the construtor twice just to ensure that the instance we are editing 
+             * is not the same that is on cache. If the tempalte was already loaded, the overhead
+             * should not be so much, as there is no disk activity here.
+             */
+            template = new DisplayTemplate(templatename);
+            template = new DisplayTemplate(templatename);
            
             for (TemplateItem t : template.getItems()){
                 t.addTableModelListener(this);

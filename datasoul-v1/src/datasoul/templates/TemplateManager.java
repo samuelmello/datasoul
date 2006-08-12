@@ -22,7 +22,6 @@ import javax.swing.table.TableModel;
 public class TemplateManager implements TableModel {
     
     private static ArrayList<String> availableTemplates = new ArrayList<String>();
-    private static HashMap<String, DisplayTemplate> loadedTemplates = new HashMap<String, DisplayTemplate>();
     private static TemplateManager instance = null;
     private ArrayList<javax.swing.event.TableModelListener> listeners;
    
@@ -107,29 +106,12 @@ public class TemplateManager implements TableModel {
     }
     
     
-    public static DisplayTemplate getDisplayTemplate(String templateName) throws Exception{
-
-        if (templateName == null)
-            return null;
-        
-        if (loadedTemplates.containsKey(templateName)){
-            return loadedTemplates.get(templateName);
-        }else{
-            
-            DisplayTemplate t = new DisplayTemplate(templateName);
-            loadedTemplates.put(templateName, t);
-            return t;
-            
-        }
-        
-    }
-    
     public void deleteTemplate(String templateName) throws Exception {
 
         String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
         File f = new File(path + System.getProperty("file.separator") + templateName + ".template");
         f.delete();
-        loadedTemplates.remove(templateName);
+        DisplayTemplate.deleteTemplate(templateName);
         refreshAvailableTemplates();
         
     }
