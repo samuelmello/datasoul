@@ -22,10 +22,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cbAutoChange" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="spnTimer" min="-2" pref="36" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="spnTimer" min="-2" pref="53" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="205" max="32767" attributes="0"/>
+              <EmptySpace pref="196" max="32767" attributes="0"/>
           </Group>
           <Component id="serviceItemTable1" alignment="1" pref="423" max="32767" attributes="0"/>
       </Group>
@@ -58,9 +58,6 @@
       </Properties>
     </Component>
     <Component class="datasoul.datashow.ServiceItemTable" name="serviceItemTable1">
-      <Properties>
-        <Property name="doubleBuffered" type="boolean" value="false"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="cbAutoChange">
       <Properties>
@@ -79,6 +76,11 @@
       </Events>
     </Component>
     <Component class="javax.swing.JSpinner" name="spnTimer">
+      <Properties>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new SpinnerNumberModel(1, 1, 9999, 1)" type="code"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

@@ -2,6 +2,7 @@ package datasoul.datashow;
 import datasoul.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -60,8 +61,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         labelLive.setFont(new java.awt.Font("Dialog", 3, 10));
         labelLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
 
-        serviceItemTable1.setDoubleBuffered(false);
-
         cbAutoChange.setText("Change every");
         cbAutoChange.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbAutoChange.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -70,6 +69,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 cbAutoChangeActionPerformed(evt);
             }
         });
+
+        spnTimer.setModel(new SpinnerNumberModel(1, 1, 9999, 1));
 
         jLabel1.setText("seconds");
 
@@ -84,10 +85,10 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 .addContainerGap()
                 .add(cbAutoChange)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 53, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(4, 4, 4)
                 .add(jLabel1)
-                .addContainerGap(205, Short.MAX_VALUE))
+                .addContainerGap(196, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(

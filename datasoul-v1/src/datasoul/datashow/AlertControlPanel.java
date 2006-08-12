@@ -7,6 +7,7 @@
 package datasoul.datashow;
 
 import datasoul.templates.TemplateComboBox;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -62,6 +63,8 @@ public class AlertControlPanel extends javax.swing.JPanel {
 
         jLabel13.setText("Duration:");
 
+        spnAlertTime.setModel(new SpinnerNumberModel(1, 1, 999, 1));
+
         jLabel14.setText("seconds");
 
         btnShowAlert.setText("Show Alert");
@@ -94,8 +97,8 @@ public class AlertControlPanel extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .add(jLabel13)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(3, 3, 3)
                         .add(jLabel14))
                     .add(btnShowAlert))
                 .addContainerGap())
@@ -146,19 +149,13 @@ public class AlertControlPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnShowAlert;
     private datasoul.templates.TemplateComboBox cbMainTemplate;
     private datasoul.templates.TemplateComboBox cbMonitorTemplate;
-    private javax.swing.JCheckBox cbShowOnMain;
     private javax.swing.JCheckBox cbShowOnMain1;
-    private javax.swing.JCheckBox cbShowOnMonitor;
     private javax.swing.JCheckBox cbShowOnMonitor1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spnAlertTime;
     private javax.swing.JTextArea txtAlert;
