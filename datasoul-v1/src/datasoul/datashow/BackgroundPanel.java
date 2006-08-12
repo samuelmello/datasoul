@@ -8,9 +8,13 @@ package datasoul.datashow;
 
 import datasoul.ConfigObj;
 import datasoul.render.ContentManager;
+import datasoul.templates.DisplayTemplate;
 import datasoul.templates.ImageTemplateItem;
+import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
 
 /**
@@ -53,10 +57,12 @@ public class BackgroundPanel extends javax.swing.JPanel {
         cbMainBackgroundMode = new javax.swing.JComboBox();
         btnChangeMain = new javax.swing.JButton();
         imageDisplayMain = new datasoul.util.ImageDisplay();
+        btnColorMain = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cbMonitorBackgroundMode = new javax.swing.JComboBox();
         btnChangeMonitor = new javax.swing.JButton();
         imageDisplayMonitor = new datasoul.util.ImageDisplay();
+        btnMonitorColor = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
         cbMainBackgroundMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Static", "Live" }));
@@ -71,7 +77,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             }
         });
 
-        btnChangeMain.setText("Change");
+        btnChangeMain.setText("Image");
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMainActionPerformed(evt);
@@ -82,12 +88,19 @@ public class BackgroundPanel extends javax.swing.JPanel {
         imageDisplayMain.setLayout(imageDisplayMainLayout);
         imageDisplayMainLayout.setHorizontalGroup(
             imageDisplayMainLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 245, Short.MAX_VALUE)
+            .add(0, 278, Short.MAX_VALUE)
         );
         imageDisplayMainLayout.setVerticalGroup(
             imageDisplayMainLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 110, Short.MAX_VALUE)
         );
+
+        btnColorMain.setText("Color");
+        btnColorMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnColorMainActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -97,10 +110,12 @@ public class BackgroundPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, imageDisplayMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel1Layout.createSequentialGroup()
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1Layout.createSequentialGroup()
                         .add(cbMainBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
-                        .add(btnChangeMain)))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnChangeMain)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnColorMain)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,10 +123,11 @@ public class BackgroundPanel extends javax.swing.JPanel {
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cbMainBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnChangeMain))
+                    .add(btnChangeMain)
+                    .add(btnColorMain))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imageDisplayMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
@@ -127,7 +143,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             }
         });
 
-        btnChangeMonitor.setText("Change");
+        btnChangeMonitor.setText("Image");
         btnChangeMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMonitorActionPerformed(evt);
@@ -138,12 +154,19 @@ public class BackgroundPanel extends javax.swing.JPanel {
         imageDisplayMonitor.setLayout(imageDisplayMonitorLayout);
         imageDisplayMonitorLayout.setHorizontalGroup(
             imageDisplayMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 245, Short.MAX_VALUE)
+            .add(0, 278, Short.MAX_VALUE)
         );
         imageDisplayMonitorLayout.setVerticalGroup(
             imageDisplayMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(0, 111, Short.MAX_VALUE)
         );
+
+        btnMonitorColor.setText("Color");
+        btnMonitorColor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMonitorColorActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -153,10 +176,12 @@ public class BackgroundPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, imageDisplayMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel3Layout.createSequentialGroup()
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3Layout.createSequentialGroup()
                         .add(cbMonitorBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 97, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
-                        .add(btnChangeMonitor)))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnChangeMonitor)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnMonitorColor)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -164,7 +189,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cbMonitorBackgroundMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnChangeMonitor))
+                    .add(btnChangeMonitor)
+                    .add(btnMonitorColor))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(imageDisplayMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -188,9 +214,39 @@ public class BackgroundPanel extends javax.swing.JPanel {
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMonitorColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorColorActionPerformed
+
+        JColorChooser cc = new JColorChooser();
+        Color color =  cc.showDialog(this, "Choose color", Color.BLACK);
+        if (color != null){ // color is null if the user choose cancel.
+            BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+            Graphics2D g = img.createGraphics();
+            g.setColor(color);
+            g.fillRect(0, 0, DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
+            imageDisplayMonitor.getImageTemplateItem().setImage(img);
+            ConfigObj.getInstance().setMonitorBackgroundImg(img);
+        }
+        
+    }//GEN-LAST:event_btnMonitorColorActionPerformed
+
+    private void btnColorMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorMainActionPerformed
+
+        JColorChooser cc = new JColorChooser();
+        Color color =  cc.showDialog(this, "Choose color", Color.BLACK);
+        if (color != null){ // color is null if the user choose cancel.
+            BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+            Graphics2D g = img.createGraphics();
+            g.setColor(color);
+            g.fillRect(0, 0, DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
+            imageDisplayMain.getImageTemplateItem().setImage(img);
+            ConfigObj.getInstance().setMainBackgroundImg(img);
+        }
+        
+    }//GEN-LAST:event_btnColorMainActionPerformed
 
     private void btnChangeMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMonitorActionPerformed
 
@@ -271,6 +327,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangeMain;
     private javax.swing.JButton btnChangeMonitor;
+    private javax.swing.JButton btnColorMain;
+    private javax.swing.JButton btnMonitorColor;
     private javax.swing.JComboBox cbMainBackgroundMode;
     private javax.swing.JComboBox cbMonitorBackgroundMode;
     private datasoul.util.ImageDisplay imageDisplayMain;
