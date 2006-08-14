@@ -11,9 +11,11 @@ package datasoul.util;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultCellEditor;
@@ -23,7 +25,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
 /**
@@ -34,11 +38,15 @@ public abstract class AttributedObject extends SerializableObject implements Tab
     
     protected HashMap<String, Component> propEditors;
 
+    protected ArrayList<String> colorEditors;
+
     static private HashMap<Class, HashMap<String, String>> displayNamesTable = new HashMap<Class, HashMap<String, String>>();
 
     private HashMap<String, String> displayNames;
     
     protected MyTableCellEditor tableCellEditor;
+    
+    protected ColorTableCellRenderer colorTableCellRenderer;
     
     private ArrayList<javax.swing.event.TableModelListener> listeners;
     
@@ -49,6 +57,8 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         
         listeners = new ArrayList<javax.swing.event.TableModelListener>();
         tableCellEditor = new MyTableCellEditor(new JTextField());
+        colorTableCellRenderer = new ColorTableCellRenderer();
+        colorEditors = new ArrayList<String>();
         
     }
 
@@ -85,8 +95,12 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         }
     }
 
-    public Class<Object> getColumnClass(int columnIndex) {
-        return Object.class;
+    public Class<?> getColumnClass(int columnIndex) {
+        if (columnIndex==0){
+            return Object.class;
+        }else{
+            return AttributedObject.class;
+        }
     }
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -167,7 +181,25 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             }            
         }
     }
-    
+
+    private class ColorTableCellRenderer extends DefaultTableCellRenderer {
+        
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+
+            String prop = properties.get(row);
+
+            if ( colorEditors.contains( prop ) && propEditors.containsKey( prop ) ){
+                Component c = propEditors.get( properties.get(row) );
+                return c;
+            }else{
+                return super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
+            }
+        }
+
+        
+        
+    }
 
     private class MyTableCellEditor extends DefaultCellEditor {
         
@@ -178,8 +210,10 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column){
             
-            if (  propEditors.containsKey( properties.get(row) ) ){
-                super.getTableCellEditorComponent (table, value, isSelected, row, column);
+            String prop = properties.get(row);
+            
+            if ( propEditors.containsKey( prop ) ){
+                //super.getTableCellEditorComponent (table, value, isSelected, row, column);
                 Component c = propEditors.get( properties.get(row) );
                 return c;
             }else{
@@ -206,12 +240,15 @@ public abstract class AttributedObject extends SerializableObject implements Tab
     }
     
     protected void registerColorChooser(String property){
-        propEditors.put(property, new JColorTextField());
+        propEditors.put(property, new JColorTextField(property));
+        colorEditors.add(property);
     }
     
     public TableCellEditor getTableCellEditor(){
         return this.tableCellEditor;
     }
+    
+    
     
     protected class JComboBoxWrapper implements ActionListener, Serializable {
 
@@ -235,8 +272,13 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         
         boolean edited = false;
         
-        public JColorTextField() {
+        String property;
+        
+        public JColorTextField(String property) {
             super();
+            
+            this.property = property;
+            
             this.addFocusListener(new java.awt.event.FocusAdapter() {
                 
                 public void focusGained(java.awt.event.FocusEvent evt) {
@@ -269,6 +311,22 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             });
             
         }
+        
+        @Override
+        public void paint (Graphics g){
+            
+            String value = "0xFFFFFF";
+            
+            try {
+                value = "0x" +  AttributedObject.this.getClass().getMethod("get"+property).invoke(AttributedObject.this).toString();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            
+            g.setColor( Color.decode(value) );
+            
+            g.fillRect(0, 0, this.getWidth(), this.getHeight());
+        }
 
         
     }
@@ -277,6 +335,10 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
     public ArrayList<TableModelListener> getListeners() {
         return listeners;
+    }
+    
+    public TableCellRenderer getColorTableCellRenderer(){
+        return colorTableCellRenderer;
     }
     
 }

@@ -6,6 +6,7 @@
 
 package datasoul.templates;
 
+import datasoul.util.AttributedObject;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -94,6 +95,14 @@ public class TemplateEditorPanel extends javax.swing.JPanel
                 formMouseDragged(evt);
             }
         });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 formMouseClicked(evt);
@@ -110,13 +119,19 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 660, Short.MAX_VALUE)
+            .add(0, 636, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 509, Short.MAX_VALUE)
+            .add(0, 476, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+    }//GEN-LAST:event_formKeyPressed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+    }//GEN-LAST:event_formKeyTyped
     
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         if ((selectedItem != null) && (dragBegin!=null)){
@@ -156,6 +171,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             if (t.containsPoint(p)){
                 selectedItem = t;
                 propTable.setDefaultEditor(Object.class, t.getTableCellEditor() );
+                propTable.setDefaultRenderer(AttributedObject.class, t.getColorTableCellRenderer() );
                 propTable.setModel(t);
                 break;
             }
