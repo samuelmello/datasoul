@@ -168,7 +168,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DataSoul - Alpha 60803");
+        setTitle("DataSoul - Alpha 60814");
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
@@ -238,13 +238,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 931, Short.MAX_VALUE)
+            .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 996, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(588, Short.MAX_VALUE))
+                .addContainerGap(647, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
