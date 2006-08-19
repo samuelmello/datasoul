@@ -359,6 +359,20 @@ public abstract class ContentRender {
                     }// if is TextTemplateItem
                 }// for need update
             }
+
+        // everything has been updated
+        if (slideTransTimer == 0 && alertTransTimer == 0){
+            templateChanged = false;
+            titleChanged = false;
+            slideChanged = false;
+            nextSlideChanged = false;
+            clockChanged = false;
+            timerChanged = false;
+            alertChanged = false;
+            songAuthorChanged = false;
+            showHideNeedUpdate = false;
+        }
+            
             
         return needUpdate;    
            
@@ -411,24 +425,11 @@ public abstract class ContentRender {
                 paint(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
             }
 
-            //System.out.println("AlertActive="+alertActive+" paintSlideLevel="+paintSlideLevel+" paintAlertLevel="+paintAlertLevel);
+            //System.out.println(this+" AlertActive="+alertActive+" paintSlideLevel="+paintSlideLevel+" paintAlertLevel="+paintAlertLevel);
             
             flip();
         }
 
-        // everything has been updated
-        if (slideTransTimer == 0 && alertTransTimer == 0){
-            templateChanged = false;
-            titleChanged = false;
-            slideChanged = false;
-            nextSlideChanged = false;
-            clockChanged = false;
-            timerChanged = false;
-            alertChanged = false;
-            songAuthorChanged = false;
-            showHideNeedUpdate = false;
-        }
-        
     }
     
     
@@ -482,7 +483,15 @@ public abstract class ContentRender {
             long t1, t2, t3, sleepTime;
             while (true){
                 try{
+                    if(monitor){
+                        System.out.println("monitor aguardando");
+                    }
                     updSemaphore.acquire();
+                    if(monitor){
+                        System.out.println("chegou");
+                    }
+
+                    
                     while ( slideTransTimer > 0 || alertTransTimer > 0){
                         t1 = System.currentTimeMillis();
                         
@@ -511,12 +520,12 @@ public abstract class ContentRender {
                         
                     }
                     
-                    if (updateDisplayValues()){
-                        updateScreen();
-                    }
+                    updateDisplayValues();
+                    updateScreen();
                     
                 }catch(Exception e){
                     // ignore
+                    e.printStackTrace();
                 }
             }
         }

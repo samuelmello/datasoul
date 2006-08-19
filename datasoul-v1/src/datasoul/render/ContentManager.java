@@ -167,7 +167,7 @@ public class ContentManager {
     
     public void updatePreview(){
         for (ContentRender r : previewRenderList){
-            r.slideChange(0);
+            r.slideShow(0);
         }
     }
 
@@ -186,8 +186,10 @@ public class ContentManager {
     }
     
     public void registerPreviewPanel(ContentRender r){
-        r.slideShow(1);
-        previewRenderList.add(r);
+        if (!previewRenderList.contains(r)){
+            r.slideShow(1);
+            previewRenderList.add(r);
+        }
     }
 
     public void setTimerProgress(float f){
