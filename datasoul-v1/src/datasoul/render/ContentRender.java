@@ -409,11 +409,21 @@ public abstract class ContentRender {
             clear();
 
             if (slideTransition == TRANSITION_CHANGE){
-                synchronized(transitionImage){
-                    paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                }
-                synchronized(templateImage){
-                    paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                
+                if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES){
+                    synchronized(transitionImage){
+                        paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                    }
+                    synchronized(templateImage){
+                        paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                    }
+                }else{
+                    synchronized(transitionImage){
+                        paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
+                    }
+                    synchronized(templateImage){
+                        paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
+                    }
                 }
             }else{
                 synchronized(templateImage){

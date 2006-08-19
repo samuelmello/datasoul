@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
+import javax.swing.JComboBox;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -43,10 +44,25 @@ public class DisplayTemplate extends AttributedObject {
     
     private String name;
     
+    private int transitionKeepBG;
+    public static final int KEEP_BG_YES = 0;
+    public static final int KEEP_BG_NO = 1;
+    public static final String[] KEEP_BG_TABLE = {"Yes", "No"};
+    private static JComboBox cbKeepBG;
+    
     /** Creates an empty DisplayTemplate */
     public DisplayTemplate() {
         super();
         items = new ArrayList<TemplateItem>();
+        
+        this.setTransitionKeepBGIdx(KEEP_BG_YES);
+        
+        if (cbKeepBG == null){
+            cbKeepBG = new JComboBox();
+            for (int i=0; i<KEEP_BG_TABLE.length; i++)
+                cbKeepBG.addItem(KEEP_BG_TABLE[i]);
+        }
+        registerEditorComboBox("TransitionKeepBGIdx", cbKeepBG);
     }
 
     /**
@@ -98,6 +114,7 @@ public class DisplayTemplate extends AttributedObject {
     public void assign(DisplayTemplate from){
         
         this.setName(from.getName());
+        this.setTransitionKeepBG(from.getTransitionKeepBG());
         this.items.clear();
         for (TemplateItem t : from.getItems()){
             
@@ -164,6 +181,8 @@ public class DisplayTemplate extends AttributedObject {
     protected void registerProperties(){
         properties.add("Name");
         registerDisplayString("Name", "Template Name");
+        properties.add("TransitionKeepBGIdx");
+        registerDisplayString("TransitionKeepBGIdx", "Transition Keep Background");
     }
     
     public String getName(){
@@ -359,6 +378,32 @@ public class DisplayTemplate extends AttributedObject {
     
     public static void deleteTemplate(String name){
         templateCache.remove(name);
+    }
+
+    public void setTransitionKeepBGIdx(int i){
+        this.transitionKeepBG = i;
+        firePropChanged("TransitionKeepBGIdx");
+    }
+
+    public void setTransitionKeepBGIdx(String i){
+        setTransitionKeepBGIdx(Integer.parseInt(i));
+    }
+    
+    public void setTransitionKeepBG(String str){
+        for (int i=0; i<KEEP_BG_TABLE.length; i++){
+            if (str.equalsIgnoreCase(KEEP_BG_TABLE[i])){
+                setTransitionKeepBGIdx(i);
+            }
+        }
+    }
+    
+    
+    public int getTransitionKeepBGIdx(){
+        return transitionKeepBG;
+    }
+
+    public String getTransitionKeepBG(){
+        return KEEP_BG_TABLE[transitionKeepBG];
     }
     
 }

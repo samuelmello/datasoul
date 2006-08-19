@@ -183,6 +183,8 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         }
         
         if (selectedItem == null && propTable != null){
+            propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
+            propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
             propTable.setModel(template);
         }
         
@@ -201,6 +203,8 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             template = new DisplayTemplate();
             template.setName(DisplayTemplate.findUnusedName());
         }
+        propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
+        propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
         prop.setModel(template);
     }
     
