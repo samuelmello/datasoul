@@ -10,8 +10,8 @@
 package datasoul.render;
 
 import datasoul.templates.DisplayTemplate;
+import java.awt.Composite;
 import java.awt.image.BufferedImage;
-import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -28,12 +28,14 @@ public class SwingContentRender extends ContentRender {
         display = new SwingDisplay();
     }
 
+    /*
     public void paint(DisplayTemplate d, float time) {
         display.paint(d, time);
     }
+     */
 
-    public void paint(BufferedImage img, float alpha){
-        display.paint(img, alpha);
+    public void paint(BufferedImage img, Composite rule){
+        display.paint(img, rule);
     }
     
     public void clear() {

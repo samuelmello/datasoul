@@ -24,10 +24,12 @@ import java.nio.ByteBuffer;
  */
 public class SDLContentRender extends ContentRender {
     
+    /*
     @Override
     public void paint(DisplayTemplate d, float time) {
         paintOverlay(d, time);
     }
+     */
 
     static {
         // depois a gente arruma isso
@@ -120,6 +122,7 @@ public class SDLContentRender extends ContentRender {
         
     }
 
+    /*
     public void paintOverlay(DisplayTemplate d, float time){
 
         if (d == null) return;
@@ -160,12 +163,13 @@ public class SDLContentRender extends ContentRender {
         }
     }
 
-    public void paint(BufferedImage img, float alpha){
+     */
+    
+    @Override
+    public void paint(BufferedImage img, Composite rule){
         Graphics2D g = overlay.createGraphics();
-        Composite oldComp = g.getComposite();
-        g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha) );
+        g.setComposite( rule );
         g.drawImage(img, 0, 0, overlay.getWidth(), overlay.getHeight(), null);
-        g.setComposite(oldComp);
     }
     
     public void flip(){

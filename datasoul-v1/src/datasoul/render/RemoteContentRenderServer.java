@@ -9,6 +9,7 @@
 
 package datasoul.render;
 
+import java.awt.Composite;
 import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.IOException;
@@ -153,10 +154,14 @@ public class RemoteContentRenderServer {
     }
 
     private static void paint() throws IOException {
-        
-        float alpha = input.readFloat();
+        Composite rule = null;
+        try {
+            rule = (Composite) input.readObject();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         BufferedImage img = ImageIO.read(input);
-        cr.paint(img, alpha);
+        cr.paint(img, rule);
         
     }
 

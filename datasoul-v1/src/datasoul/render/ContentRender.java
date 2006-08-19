@@ -69,6 +69,8 @@ public abstract class ContentRender {
     
     protected int width, height, left, top;
     protected BufferedImage transitionImage;
+    private BufferedImage templateImage;
+    private BufferedImage alertImage;
     
     /** Creates a new instance of ContentRender */
     public ContentRender() {
@@ -80,12 +82,10 @@ public abstract class ContentRender {
         slideTransTimer = 0;
     }
     
-    public abstract void paint(DisplayTemplate d, float time);
-    public abstract void paint(BufferedImage img, float alpha);
+    public abstract void paint(BufferedImage img, Composite rule);
     public abstract void clear();
     public abstract void flip();
     public abstract void setWindowTitle(String title);
-    
     
     public String getTitle() {
         return title;
@@ -201,8 +201,9 @@ public abstract class ContentRender {
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
             showHideNeedUpdate = true;
+            updateDisplayValues();
+            saveImage(templateImage, template, 1.0f);   
         }
-        //System.out.println("Show: "+transictionTime);
         update();
     }
     
@@ -211,7 +212,8 @@ public abstract class ContentRender {
             slideTransition = TRANSITION_CHANGE;
             slideTransTimer = transictionTime;
             slideTransTimerTotal = transictionTime;
-            //System.out.println("Change: "+transictionTime);
+            updateDisplayValues();
+            saveImage(templateImage, template, 1.0f);   
         }
         update();
     }
@@ -223,7 +225,6 @@ public abstract class ContentRender {
             slideTransTimerTotal = transictionTime;
             showHideNeedUpdate = true;
         }
-        //System.out.println("Hide: "+transictionTime);
         update();
     }
     
@@ -232,6 +233,8 @@ public abstract class ContentRender {
         if (transictionTime >= 0){
             alertTransTimer = transictionTime;
             alertTransTimerTotal = transictionTime;
+            updateDisplayValues();
+            saveImage(alertImage, alertTemplate, 1.0f);
         }
         update();
     }
@@ -254,273 +257,198 @@ public abstract class ContentRender {
      * Update the screen only if needed.
      * That is, if the changes were only in content that isn't
      * being shown, no update is done.
+     *
+     * returns if a screen refresh is needed
      */
-    public synchronized void updateDisplay(){
+    public boolean updateDisplayValues(){
         
-        try {
-            
             boolean needUpdate = false;
-            boolean paintSlide = false;
-            boolean paintAlert = false;
-            float paintSlideLevel = 0, paintAlertLevel = 0;
             
             needUpdate = showHideNeedUpdate || templateChanged;
             
             int content;
-            if (needUpdate == false && template != null){
+            if (template != null){
                 for (TemplateItem t : template.getItems() ){
                     if (t instanceof TextTemplateItem) {
                         content = ((TextTemplateItem)t).getContentIdx();
                         if ( titleChanged && content == TextTemplateItem.CONTENT_TITLE) {
+                            ((TextTemplateItem)t).setText(title);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( slideChanged && content == TextTemplateItem.CONTENT_SLIDE) {
+                            ((TextTemplateItem)t).setText(slide);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( nextSlideChanged && content == TextTemplateItem.CONTENT_NEXTSLIDE) {
+                            ((TextTemplateItem)t).setText(nextSlide);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( clockChanged && content == TextTemplateItem.CONTENT_CLOCK) {
+                            ((TextTemplateItem)t).setText(clock);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( timerChanged && content == TextTemplateItem.CONTENT_TIMER) {
+                            ((TextTemplateItem)t).setText(timer);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
+                            ((TextTemplateItem)t).setText(alert);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( songAuthorChanged && content == TextTemplateItem.CONTENT_SONGAUTHOR) {
+                            ((TextTemplateItem)t).setText(songAuthor);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                     }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                         needUpdate = true;
-                        break;
+                        continue;
                     }// if is TextTemplateItem
                 }// for need update
             }// if template not null
             
-            if (needUpdate == false && alertActive){
+            if (alertActive){
                 for (TemplateItem t : alertTemplate.getItems() ){
                     if (t instanceof TextTemplateItem) {
                         content = ((TextTemplateItem)t).getContentIdx();
                         if ( titleChanged && content == TextTemplateItem.CONTENT_TITLE) {
+                            ((TextTemplateItem)t).setText(title);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( slideChanged && content == TextTemplateItem.CONTENT_SLIDE) {
+                            ((TextTemplateItem)t).setText(slide);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( nextSlideChanged && content == TextTemplateItem.CONTENT_NEXTSLIDE) {
+                            ((TextTemplateItem)t).setText(nextSlide);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( clockChanged && content == TextTemplateItem.CONTENT_CLOCK) {
+                            ((TextTemplateItem)t).setText(clock);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( timerChanged && content == TextTemplateItem.CONTENT_TIMER) {
+                            ((TextTemplateItem)t).setText(timer);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
+                            ((TextTemplateItem)t).setText(alert);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                         if ( songAuthorChanged && content == TextTemplateItem.CONTENT_SONGAUTHOR) {
+                            ((TextTemplateItem)t).setText(songAuthor);
                             needUpdate = true;
-                            break;
+                            continue;
                         }
                     }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
-                        needUpdate = true;
-                        break;
+                        ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
+                        ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
+                        continue;
                     }// if is TextTemplateItem
                 }// for need update
             }
             
-            
-            if (needUpdate){
-                
-                // Set the text
-                if (template != null){
-                    
-                    for (TemplateItem t : template.getItems() ){
-                        if (t instanceof TextTemplateItem) {
-                            content = ((TextTemplateItem)t).getContentIdx();
-                            
-                            switch(content){
-                                
-                                case TextTemplateItem.CONTENT_TITLE:
-                                    ((TextTemplateItem)t).setText(title);
-                                    break;
-                            
-                                case TextTemplateItem.CONTENT_SLIDE:
-                                    ((TextTemplateItem)t).setText(slide);
-                                    break;
-                                    
-                                case TextTemplateItem.CONTENT_NEXTSLIDE:
-                                    ((TextTemplateItem)t).setText(nextSlide);
-                                    break;
-                            
-                                case TextTemplateItem.CONTENT_CLOCK:
-                                    ((TextTemplateItem)t).setText(clock);
-                                    break;
-                            
-                                case TextTemplateItem.CONTENT_TIMER:
-                                    ((TextTemplateItem)t).setText(timer);
-                                    break;
-                            
-                                case TextTemplateItem.CONTENT_ALERT:
-                                    ((TextTemplateItem)t).setText(alert);
-                                    break;
-                                case TextTemplateItem.CONTENT_SONGAUTHOR:
-                                    ((TextTemplateItem)t).setText(songAuthor);
-                                    break;
-                            
-                            }
-                            
-                        }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
-                            ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
-                            ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
-                            continue;
-                        }// is texttempalteitem
-                    }// for templateItem
-                    
-                    
-                    // paint it!
-                    if (slideTransTimerTotal > 0)
-                        paintSlideLevel = (float) slideTransTimer / (float) slideTransTimerTotal;
-                    else
-                        paintSlideLevel = 0;
-                    
-                    if (slideTransition != TRANSITION_HIDE){
-                        paintSlideLevel = 1 - paintSlideLevel;
-                    }
-                    
-                    paintSlide = true;
-                    //System.out.println(" Paint Slide = true, level = "+paintSlideLevel);
-                    
-                }
-                
-                if (alertActive || alertTransTimer > 0){
-                    
-                    for (TemplateItem t : alertTemplate.getItems() ){
-                        if (t instanceof TextTemplateItem) {
-                            content = ((TextTemplateItem)t).getContentIdx();
-                            switch(content){
-                                case TextTemplateItem.CONTENT_TITLE:
-                                    ((TextTemplateItem)t).setText(title);
-                                    break;
-                                case TextTemplateItem.CONTENT_SLIDE:
-                                    ((TextTemplateItem)t).setText(slide);
-                                    break;
-                                case TextTemplateItem.CONTENT_NEXTSLIDE:
-                                    ((TextTemplateItem)t).setText(nextSlide);
-                                    break;
-                                case TextTemplateItem.CONTENT_CLOCK:
-                                    ((TextTemplateItem)t).setText(clock);
-                                    break;
-                                case TextTemplateItem.CONTENT_TIMER:
-                                    ((TextTemplateItem)t).setText(timer);
-                                    break;
-                                case TextTemplateItem.CONTENT_ALERT:
-                                    ((TextTemplateItem)t).setText(alert);
-                                    break;
-                                case TextTemplateItem.CONTENT_SONGAUTHOR:
-                                    ((TextTemplateItem)t).setText(songAuthor);
-                                    break;
-                            }
-                        }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
-                            ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
-                            ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
-                            continue;
-                        }// is texttempalteitem
-                    }// for
-                    
-                    if (alertTransTimerTotal > 0)
-                        paintAlertLevel = (float) alertTransTimer / (float) alertTransTimerTotal;
-                    else
-                        paintAlertLevel = 0;
-                    
-                    if (alertTransition != TRANSITION_HIDE){
-                        paintAlertLevel = 1 - paintAlertLevel;
-                    }
-                    
-                    paintAlert = true;
-                    
-                }// if alert active
-                
-                
-                // ok, show it
-                synchronized(this){
-                    clear();
+        return needUpdate;    
+           
+    }
+    
+    
+    private void updateScreen(){
+        
+        float paintSlideLevel;
+        float paintAlertLevel;
+        
+        // Determine the levels:
+        if (alertTransTimerTotal > 0)
+            paintAlertLevel = (float) alertTransTimer / (float) alertTransTimerTotal;
+        else
+            paintAlertLevel = 0;
 
-                    if (paintSlide && slideTransition == TRANSITION_CHANGE){
-                        synchronized(transitionImage){
-                            paint(transitionImage, 1 - paintSlideLevel);
-                        }
-                    }
-                    
-                    if (paintSlide){
-                        paint(template, paintSlideLevel);
-                    }
-                    
-                    if (paintAlert){
-                        paint(alertTemplate, paintAlertLevel);
-                    }
-                    
-                    flip();
+        if (alertTransition != TRANSITION_HIDE){
+            paintAlertLevel = 1 - paintAlertLevel;
+        }
+        
+        if (slideTransTimerTotal > 0)
+            paintSlideLevel = (float) slideTransTimer / (float) slideTransTimerTotal;
+        else
+            paintSlideLevel = 0;
+
+        if (slideTransition != TRANSITION_HIDE){
+            paintSlideLevel = 1 - paintSlideLevel;
+        }
+        
+        
+        //paint it
+        synchronized(this){
+            clear();
+
+            if (slideTransition == TRANSITION_CHANGE){
+                synchronized(transitionImage){
+                    paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
                 }
-                
-                // everything has been updated
-                if (slideTransTimer == 0 && alertTransTimer == 0){
-                    templateChanged = false;
-                    titleChanged = false;
-                    slideChanged = false;
-                    nextSlideChanged = false;
-                    clockChanged = false;
-                    timerChanged = false;
-                    alertChanged = false;
-                    songAuthorChanged = false;
-                    showHideNeedUpdate = false;
+                synchronized(templateImage){
+                    paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
                 }
-                
-            }// if need update
+            }else{
+                synchronized(templateImage){
+                    paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
+                }
+            }
+
+            if (paintAlertLevel > 0){
+                paint(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
+            }
+
+            //System.out.println("AlertActive="+alertActive+" paintSlideLevel="+paintSlideLevel+" paintAlertLevel="+paintAlertLevel);
             
-            
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            flip();
+        }
+
+        // everything has been updated
+        if (slideTransTimer == 0 && alertTransTimer == 0){
+            templateChanged = false;
+            titleChanged = false;
+            slideChanged = false;
+            nextSlideChanged = false;
+            clockChanged = false;
+            timerChanged = false;
+            alertChanged = false;
+            songAuthorChanged = false;
+            showHideNeedUpdate = false;
         }
         
     }
     
     
-    public void saveTransitionImage(){
 
-        synchronized(transitionImage){
-            Graphics2D g = transitionImage.createGraphics();
+    private void saveImage(BufferedImage dst, DisplayTemplate tpl, float alpha){
+        synchronized(dst){
+            Graphics2D g = dst.createGraphics();
 
             // Clear it first
-            Composite oldComp = g.getComposite();
-            try{
-                g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-                g.fillRect(0, 0, transitionImage.getWidth(), transitionImage.getHeight());
-            }finally{
-                g.setComposite(oldComp);
-            }
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+            g.fillRect(0, 0, dst.getWidth(), dst.getHeight());
 
-            if (template != null){
-                template.paint(g, 1.0f);
+            if (tpl != null){
+                tpl.paint(g, alpha);
             }   
-
         }
+    }
+    
+    public void saveTransitionImage(){
+        saveImage(transitionImage, template, 1.0f);
     }
     
     
@@ -533,6 +461,8 @@ public abstract class ContentRender {
         this.top = top;
         this.left = left;
         transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
     }
     
     public abstract void shutdown();
@@ -556,7 +486,9 @@ public abstract class ContentRender {
                     while ( slideTransTimer > 0 || alertTransTimer > 0){
                         t1 = System.currentTimeMillis();
                         
-                        updateDisplay();
+                        if (updateDisplayValues()){
+                            updateScreen();
+                        }
                         
                         t2 = System.currentTimeMillis();
                         
@@ -565,7 +497,6 @@ public abstract class ContentRender {
                         if (sleepTime > 0){
                             Thread.sleep( sleepTime );
                         }
-                        //System.out.println("Slide Timer ="+slideTransTimer+", alert Timer="+alertTransTimer+" trans = "+slideTransition);
                         
                         t3 = System.currentTimeMillis();
                         
@@ -580,7 +511,9 @@ public abstract class ContentRender {
                         
                     }
                     
-                    updateDisplay();
+                    if (updateDisplayValues()){
+                        updateScreen();
+                    }
                     
                 }catch(Exception e){
                     // ignore

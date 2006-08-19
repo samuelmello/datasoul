@@ -147,27 +147,11 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
 
-    void paint(DisplayTemplate d, float time) {
-        
-        if (img == null)
-            return;
-
-        synchronized(img){
-
-            Graphics2D g = img.createGraphics();
-
-            // paint it
-            d.paint(g, time);
-        }
-    }
-    
-    void paint(BufferedImage img, float alpha){
+    void paint(BufferedImage img, Composite rule){
         synchronized(this.img){
             Graphics2D g = this.img.createGraphics();
-            Composite oldComp = g.getComposite();
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha) );
+            g.setComposite( rule );
             g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
-            g.setComposite(oldComp);
         }
     }
 

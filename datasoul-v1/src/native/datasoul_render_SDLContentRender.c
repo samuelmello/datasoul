@@ -416,4 +416,13 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setWindowTitle
 }
 
 
+/*
+ * Class:     datasoul_render_SDLContentRender
+ * Method:    shutdown
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_shutdown
+  (JNIEnv *env, jobject obj){
+	SDL_Quit();
+}
 

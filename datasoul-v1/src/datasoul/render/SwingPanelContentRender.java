@@ -9,7 +9,7 @@
 
 package datasoul.render;
 
-import datasoul.templates.DisplayTemplate;
+import java.awt.Composite;
 import java.awt.image.BufferedImage;
 
 /**
@@ -25,12 +25,9 @@ public class SwingPanelContentRender extends ContentRender {
         this.p = p;
     }
 
-    public void paint(DisplayTemplate d, float time) {
-        p.paint(d, time);
-    }
-
-    public void paint (BufferedImage img, float alpha){
-        p.paint(img, alpha);
+    @Override
+    public void paint (BufferedImage img, Composite rule){
+        p.paint(img, rule);
     }
     
     public void clear() {

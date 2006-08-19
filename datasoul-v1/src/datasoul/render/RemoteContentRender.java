@@ -11,6 +11,7 @@ package datasoul.render;
 
 import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
+import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -40,6 +41,7 @@ public class RemoteContentRender extends ContentRender {
         output = new ObjectOutputStream(sock.getOutputStream());
     }
 
+    /*
     public void paint(DisplayTemplate d, float time) {
 
         // paint the template to a temporary bitmap and send the
@@ -55,7 +57,7 @@ public class RemoteContentRender extends ContentRender {
         
             Graphics2D g = templateImg.createGraphics();
             g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, transitionImage.getWidth(), transitionImage.getHeight());
+            g.fillRect(0, 0, templateImg.getWidth(), templateImg.getHeight());
 
             if (d != null){
                 d.paint(g, time);
@@ -65,12 +67,14 @@ public class RemoteContentRender extends ContentRender {
             
         }
     }
+     */
 
-    public void paint(BufferedImage img, float alpha) {
+    @Override
+    public void paint(BufferedImage img, Composite rule) {
         
         try{
             output.writeInt(RemoteContentRenderConstants.CMD_PAINT);
-            output.writeFloat(alpha);
+            output.writeObject(rule);
             ImageIO.write(img, "png", output);
             output.flush();
         }catch(IOException e){
