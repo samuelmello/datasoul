@@ -32,7 +32,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     public void showItem(ServiceItem serviceItem){
 
         ContentManager cm = ContentManager.getInstance();
-        cm.saveTransitionImage();
+        //cm.saveTransitionImage();
         cm.setTemplateLive(serviceItem.getTemplate());
         cm.setTitleLive(serviceItem.getTitle());
         if(serviceItem instanceof Song)
@@ -40,6 +40,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         this.serviceItemTable1.setServiceItem(serviceItem);
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
+        cm.saveTransitionImage();
         cm.slideChange(ConfigObj.getInstance().getSlideTransitionTime());
         
     }
