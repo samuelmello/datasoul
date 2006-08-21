@@ -40,7 +40,13 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         this.serviceItemTable1.setServiceItem(serviceItem);
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
+        
+        // save the transition image just before changing the slide to avoid
+        // problem when changing to a item that uses a template with different
+        // alpha. This will cause a cut to the first slide, without any transition,
+        // but at least is not buggy
         cm.saveTransitionImage();
+        
         cm.slideChange(ConfigObj.getInstance().getSlideTransitionTime());
         
     }

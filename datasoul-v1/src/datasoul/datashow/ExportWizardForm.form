@@ -23,11 +23,11 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="btnClose" alignment="0" max="32767" attributes="1"/>
-                  <Component id="btnExportServiceList" alignment="0" max="32767" attributes="1"/>
-                  <Component id="btnExportSongs" alignment="0" pref="230" max="32767" attributes="1"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btnClose" alignment="0" pref="250" max="32767" attributes="1"/>
+                  <Component id="btnExportServiceList" alignment="0" pref="250" max="32767" attributes="1"/>
+                  <Component id="btnExportSongs" alignment="0" pref="250" max="32767" attributes="2"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
