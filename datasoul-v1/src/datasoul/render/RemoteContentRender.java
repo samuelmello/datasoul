@@ -41,34 +41,6 @@ public class RemoteContentRender extends ContentRender {
         output = new ObjectOutputStream(sock.getOutputStream());
     }
 
-    /*
-    public void paint(DisplayTemplate d, float time) {
-
-        // paint the template to a temporary bitmap and send the
-        // bitmap to the server. This simplify the process in two ways:
-        //   1) The display template does not need to be serializable
-        //   2) If the server is running live video, this helps to 
-        //      keep server's load predictable, as the template complexity 
-        //      is abstracted here
-        // This can not be the more optimized solution in terms of performance, 
-        // but is better due to predictability.
-        
-        if (templateImg != null){
-        
-            Graphics2D g = templateImg.createGraphics();
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, templateImg.getWidth(), templateImg.getHeight());
-
-            if (d != null){
-                d.paint(g, time);
-            }   
-            
-            paint (templateImg, 1.0f);
-            
-        }
-    }
-     */
-
     @Override
     public void paint(BufferedImage img, Composite rule) {
         

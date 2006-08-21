@@ -24,13 +24,6 @@ import java.nio.ByteBuffer;
  */
 public class SDLContentRender extends ContentRender {
     
-    /*
-    @Override
-    public void paint(DisplayTemplate d, float time) {
-        paintOverlay(d, time);
-    }
-     */
-
     static {
         // depois a gente arruma isso
         if (System.getProperty("os.name").equals("Linux")){
@@ -122,48 +115,6 @@ public class SDLContentRender extends ContentRender {
         
     }
 
-    /*
-    public void paintOverlay(DisplayTemplate d, float time){
-
-        if (d == null) return;
-
-        Composite oldComp;
-        Graphics2D g;
-        
-        // can we paint directly into overlay or we need to resize the image?
-        if ( width == DisplayTemplate.TEMPLATE_WIDTH && height == DisplayTemplate.TEMPLATE_HEIGHT ){
-        
-            g = overlay.createGraphics();
-
-            oldComp = g.getComposite();
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, time) );
-
-            // paint it
-            d.paint(g, time);
-
-            g.setComposite(oldComp);
-        
-        }else{
-
-            // clear the resize image
-            g = overlayTemplateSize.createGraphics();
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, overlayTemplateSize.getWidth(), overlayTemplateSize.getHeight());
-            
-            // paint it on resize image
-            d.paint(g, time);
-            
-            // now paint resizing it on the overlay buffer
-            g = overlay.createGraphics();
-            oldComp = g.getComposite();
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.SRC_OVER, time) );
-            g.drawImage( overlayTemplateSize, 0, 0, overlay.getWidth(), overlay.getHeight(), null);
-            g.setComposite(oldComp);
-            
-        }
-    }
-
-     */
     
     @Override
     public void paint(BufferedImage img, Composite rule){
@@ -214,7 +165,5 @@ public class SDLContentRender extends ContentRender {
     @Override
     public native void setWindowTitle(String title);
 
-    
-         
     
 }

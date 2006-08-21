@@ -28,12 +28,6 @@ public class SwingContentRender extends ContentRender {
         display = new SwingDisplay();
     }
 
-    /*
-    public void paint(DisplayTemplate d, float time) {
-        display.paint(d, time);
-    }
-     */
-
     public void paint(BufferedImage img, Composite rule){
         display.paint(img, rule);
     }
