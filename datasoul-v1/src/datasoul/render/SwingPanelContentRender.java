@@ -9,7 +9,7 @@
 
 package datasoul.render;
 
-import java.awt.Composite;
+import java.awt.AlphaComposite;
 import java.awt.image.BufferedImage;
 
 /**
@@ -26,7 +26,7 @@ public class SwingPanelContentRender extends ContentRender {
     }
 
     @Override
-    public void paint (BufferedImage img, Composite rule){
+    public void paint (BufferedImage img, AlphaComposite rule){
         p.paint(img, rule);
     }
     

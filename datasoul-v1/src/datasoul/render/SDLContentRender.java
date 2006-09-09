@@ -117,7 +117,7 @@ public class SDLContentRender extends ContentRender {
 
     
     @Override
-    public void paint(BufferedImage img, Composite rule){
+    public void paint(BufferedImage img, AlphaComposite rule){
         Graphics2D g = overlay.createGraphics();
         g.setComposite( rule );
         g.drawImage(img, 0, 0, overlay.getWidth(), overlay.getHeight(), null);

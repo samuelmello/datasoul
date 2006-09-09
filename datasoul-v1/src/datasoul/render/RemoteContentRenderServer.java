@@ -9,7 +9,7 @@
 
 package datasoul.render;
 
-import java.awt.Composite;
+import java.awt.AlphaComposite;
 import java.awt.image.BufferedImage;
 import java.io.EOFException;
 import java.io.IOException;
@@ -154,13 +154,27 @@ public class RemoteContentRenderServer {
     }
 
     private static void paint() throws IOException {
-        Composite rule = null;
+        AlphaComposite rule = null;
+        int ruleCode;
+        float ruleAlpha;
+        
         try {
-            rule = (Composite) input.readObject();
+            ruleCode = input.readInt();
+            ruleAlpha = input.readFloat();
+            rule = AlphaComposite.getInstance(ruleCode, ruleAlpha);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        
+        long t1, t2;
+        
+        t1 = System.currentTimeMillis();
         BufferedImage img = ImageIO.read(input);
+        t2 = System.currentTimeMillis();
+        
+        System.out.println("Read: "+(t2-t1));
+        
+        
         cr.paint(img, rule);
         
     }

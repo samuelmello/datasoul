@@ -11,11 +11,9 @@ package datasoul.render;
 
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateItem;
-import datasoul.templates.TemplateManager;
 import datasoul.templates.TextTemplateItem;
 import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
-import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.Semaphore;
@@ -82,7 +80,7 @@ public abstract class ContentRender {
         slideTransTimer = 0;
     }
     
-    public abstract void paint(BufferedImage img, Composite rule);
+    public abstract void paint(BufferedImage img, AlphaComposite rule);
     public abstract void clear();
     public abstract void flip();
     public abstract void setWindowTitle(String title);

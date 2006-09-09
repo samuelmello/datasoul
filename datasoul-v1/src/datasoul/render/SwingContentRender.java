@@ -10,7 +10,7 @@
 package datasoul.render;
 
 import datasoul.templates.DisplayTemplate;
-import java.awt.Composite;
+import java.awt.AlphaComposite;
 import java.awt.image.BufferedImage;
 
 /**
@@ -28,7 +28,7 @@ public class SwingContentRender extends ContentRender {
         display = new SwingDisplay();
     }
 
-    public void paint(BufferedImage img, Composite rule){
+    public void paint(BufferedImage img, AlphaComposite rule){
         display.paint(img, rule);
     }
     

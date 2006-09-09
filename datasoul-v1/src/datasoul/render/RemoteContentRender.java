@@ -42,13 +42,20 @@ public class RemoteContentRender extends ContentRender {
     }
 
     @Override
-    public void paint(BufferedImage img, Composite rule) {
-        
+    public void paint(BufferedImage img, AlphaComposite rule) {
         try{
             output.writeInt(RemoteContentRenderConstants.CMD_PAINT);
-            output.writeObject(rule);
+            output.writeInt(rule.getRule());
+            output.writeFloat(rule.getAlpha());
+
+            long t1, t2;
+            t1 = System.currentTimeMillis();
             ImageIO.write(img, "png", output);
             output.flush();
+            t2 = System.currentTimeMillis();
+            
+            System.out.println("Send: "+(t2-t1));
+            
         }catch(IOException e){
             e.printStackTrace();
         }

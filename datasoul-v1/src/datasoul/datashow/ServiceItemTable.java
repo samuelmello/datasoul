@@ -9,13 +9,14 @@ package datasoul.datashow;
 import java.awt.event.KeyListener;
 import java.util.Hashtable;
 import javax.swing.JLabel;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author  samuelm
  */
-public class ServiceItemTable extends javax.swing.JPanel {
+public class ServiceItemTable extends javax.swing.JPanel implements ListSelectionListener {
     
     ServiceItem item;
     
@@ -31,6 +32,7 @@ public class ServiceItemTable extends javax.swing.JPanel {
         setServiceItem(empty);
         
         this.displayTable.addKeyListener(new ServiceItemTableKeyListner(this));
+        addTableListener(this);
     }
 
     public void setFocusInTable(){
@@ -217,6 +219,21 @@ public class ServiceItemTable extends javax.swing.JPanel {
         int actualSlide = getSlideIndex();
         int previousMarkedSlide = getServiceItem().getPreviousMarkedSlide(actualSlide);
         setSlideIndex(previousMarkedSlide);
+    }
+
+    public void valueChanged(ListSelectionEvent e) {
+        if ( displayTable.getSelectedRow() + 2 > e.getLastIndex() ){
+            int x = displayTable.getSelectedRow() + 2;
+            if ( x < displayTable.getRowCount() ) {
+                displayTable.scrollRectToVisible( displayTable.getCellRect(x, 0, true) );
+            }
+        }
+        if ( displayTable.getSelectedRow() - 2 < e.getFirstIndex() ){
+            int x = displayTable.getSelectedRow() - 2;
+            if ( x > 0 ) {
+                displayTable.scrollRectToVisible( displayTable.getCellRect(x, 0, true) );
+            }
+        }
     }
     
     

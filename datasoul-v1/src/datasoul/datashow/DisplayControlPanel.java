@@ -358,25 +358,34 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     private void btnMonitorShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorShowActionPerformed
         if (btnMonitorShow.isSelected()){
             this.monitorDisplayShow();
+        }else{
+            btnMonitorShow.setSelected(true);
         }
     }//GEN-LAST:event_btnMonitorShowActionPerformed
 
     private void btnMonitorHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorHideActionPerformed
         if (btnMonitorHide.isSelected()){
             this.monitorDisplayHide();
+        }else{
+            btnMonitorHide.setSelected(true);
         }
     }//GEN-LAST:event_btnMonitorHideActionPerformed
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         if (btnShow.isSelected()){
             this.mainDisplayShow();
+        }else{
+            btnShow.setSelected(true);
         }
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHideActionPerformed
         if (btnHide.isSelected()){
             this.mainDisplayHide();
+        }else{
+            btnHide.setSelected(true);
         }
+        
     }//GEN-LAST:event_btnHideActionPerformed
 
     private void cbMonitorFollowMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorFollowMainActionPerformed
