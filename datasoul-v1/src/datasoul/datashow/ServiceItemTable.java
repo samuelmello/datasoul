@@ -241,9 +241,6 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         // ensure that the actual slide is being shown
         displayTable.scrollRectToVisible( displayTable.getCellRect(x, 0, true) );
         
-        
-    
-    
     }
     
     

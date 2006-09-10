@@ -7,9 +7,14 @@
 package datasoul;
 
 import java.awt.Component;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 /**
@@ -26,11 +31,14 @@ public class ConfigPanel extends javax.swing.JPanel {
     public ConfigPanel() {
         initComponents();
         
+        initDevicePopupMenu();
+
         components = new ArrayList<Component>();
         registerComponents();
         
         configObj = ConfigObj.getInstance();
         refreshScreenValues();
+        
     }
 
     private void registerComponents(){
@@ -86,6 +94,70 @@ public class ConfigPanel extends javax.swing.JPanel {
         monitorDisplayEngine.addItem("SDLContentRender");
         monitorDisplayEngine.addItem("SwingContentRender");
         
+    }
+
+    private void initDevicePopupMenu(){
+        GraphicsDevice gd[];
+        gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+
+        for (int i=0; i<gd.length; i++){
+            
+            GraphicsConfiguration gc = gd[i].getDefaultConfiguration();
+
+            Rectangle r = gc.getBounds();
+            
+            JMenuItemDevice jmi1 = new JMenuItemDevice(gd[i].getIDstring(), (int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight(), JMenuItemDevice.TARGET_MAIN);
+            jPpMenuMain.add(jmi1);
+
+            JMenuItemDevice jmi2 = new JMenuItemDevice(gd[i].getIDstring(), (int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight(), JMenuItemDevice.TARGET_MONITOR);
+            jPpMenuMonitor.add(jmi2);
+
+        }
+        
+    }
+    
+    private class JMenuItemDevice extends JMenuItem {
+
+        private int width, height, x, y;
+        
+        private int target;
+        public static final int TARGET_MAIN = 0;
+        public static final int TARGET_MONITOR = 1;
+        public JMenuItemDevice(String deviceId, int x, int y, int width, int height, int target ){
+            super("Display:"+" \""+deviceId+"\" ("+width+"x"+height+" @ "+x+","+y+")");
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
+            this.target = target;
+
+            this.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    action();
+                }
+            });
+        
+        }
+        
+        public void action(){
+            
+            if (target == TARGET_MAIN){
+                
+                mainOutputPositionLeft.setText( Integer.toString(x) );
+                mainOutputPositionTop.setText( Integer.toString(y) );
+                mainOutputSizeWidth.setText( Integer.toString(width) );
+                mainOutputSizeHeight.setText( Integer.toString(height) );
+                
+            }else if (target == TARGET_MONITOR){
+
+                monitorOutputPositionLeft.setText( Integer.toString(x) );
+                monitorOutputPositionTop.setText( Integer.toString(y) );
+                monitorOutputSizeWidth.setText( Integer.toString(width) );
+                monitorOutputSizeHeight.setText( Integer.toString(height) );
+                
+            }
+            
+        }
     }
     
     private void registerComponent(Component component, String string){
@@ -151,36 +223,44 @@ public class ConfigPanel extends javax.swing.JPanel {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        jPpMenuMain = new javax.swing.JPopupMenu();
+        jPpMenuMonitor = new javax.swing.JPopupMenu();
         tabConfig = new javax.swing.JTabbedPane();
         panelGeneral = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        mainOutput = new javax.swing.JCheckBox();
         monitorOutput = new javax.swing.JCheckBox();
-        jLabel6 = new javax.swing.JLabel();
-        mainOutputPositionLeft = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        mainOutputPositionTop = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        monitorOutputPositionTop = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        monitorDisplayEngine = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
         monitorOutputPositionLeft = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        monitorOutputPositionTop = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        monitorOutputSizeHeight = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        monitorOutputSizeWidth = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        btnSelectDeviceMonitor = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
         mainOutputSizeWidth = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         mainOutputSizeHeight = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
-        monitorOutputSizeWidth = new javax.swing.JTextField();
-        monitorOutputSizeHeight = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        mainOutputPositionTop = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        mainOutputPositionLeft = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         mainDisplayEngine = new javax.swing.JComboBox();
-        jLabel11 = new javax.swing.JLabel();
-        monitorDisplayEngine = new javax.swing.JComboBox();
+        mainOutput = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        btnSelectDeviceMain = new javax.swing.JButton();
         panelVideo = new javax.swing.JPanel();
         videoDebugModeLabel = new javax.swing.JLabel();
         videoDebugMode = new javax.swing.JCheckBox();
@@ -216,39 +296,116 @@ public class ConfigPanel extends javax.swing.JPanel {
         btnApply = new javax.swing.JButton();
 
         tabConfig.setMinimumSize(new java.awt.Dimension(0, 0));
-        jLabel1.setText("Use main output:");
-
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
         jLabel2.setText("Use monitor output:");
-
-        jLabel3.setText("Main output position:");
-
-        jLabel4.setText("Monitor output position:");
-
-        jLabel5.setText("Monitor output size:");
-
-        mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        mainOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         monitorOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         monitorOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel6.setText("Main output size:");
+        jLabel11.setText("Display Engine:");
 
-        mainOutputPositionLeft.setText("jTextField1");
+        monitorDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel12.setText("left");
-
-        mainOutputPositionTop.setText("jTextField1");
-
-        jLabel13.setText("top");
-
-        monitorOutputPositionTop.setText("jTextField1");
-
-        jLabel14.setText("left");
+        jLabel4.setText("Position:");
 
         monitorOutputPositionLeft.setText("jTextField1");
 
+        jLabel14.setText("left");
+
+        monitorOutputPositionTop.setText("jTextField1");
+
         jLabel15.setText("top");
+
+        jLabel19.setText("height");
+
+        monitorOutputSizeHeight.setText("jTextField1");
+
+        jLabel18.setText("width");
+
+        monitorOutputSizeWidth.setText("jTextField1");
+
+        jLabel5.setText("Size:");
+
+        jLabel29.setText("Output Device:");
+
+        btnSelectDeviceMonitor.setText("Select");
+        btnSelectDeviceMonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectDeviceMonitorActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel29)
+                    .add(jLabel11)
+                    .add(jLabel2))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(btnSelectDeviceMonitor)
+                    .add(monitorDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(monitorOutput)
+                    .add(jPanel4Layout.createSequentialGroup()
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel4)
+                            .add(jLabel5))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel14)
+                            .add(jLabel18))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(monitorOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel19)
+                            .add(jLabel15))))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel2)
+                    .add(monitorOutput))
+                .add(11, 11, 11)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel11)
+                    .add(monitorDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(15, 15, 15)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel29)
+                    .add(btnSelectDeviceMonitor))
+                .add(15, 15, 15)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel4)
+                    .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel14)
+                    .add(monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel15))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel5)
+                    .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel18)
+                    .add(monitorOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel19))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
+        jLabel6.setText("Size:");
 
         mainOutputSizeWidth.setText("jTextField1");
 
@@ -258,124 +415,124 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         jLabel17.setText("height");
 
-        monitorOutputSizeWidth.setText("jTextField1");
+        jLabel13.setText("top");
 
-        monitorOutputSizeHeight.setText("jTextField1");
+        mainOutputPositionTop.setText("jTextField1");
 
-        jLabel18.setText("width");
+        jLabel12.setText("left");
 
-        jLabel19.setText("height");
+        mainOutputPositionLeft.setText("jTextField1");
 
-        jLabel10.setText("Main output engine:");
+        jLabel3.setText("Position:");
+
+        jLabel10.setText("Display Engine:");
 
         mainDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel11.setText("Monitor output engine:");
+        mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        mainOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        monitorDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel1.setText("Use main output:");
+
+        jLabel28.setText("Output Device:");
+
+        btnSelectDeviceMain.setText("Select");
+        btnSelectDeviceMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectDeviceMainActionPerformed(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel10)
+                    .add(jLabel1)
+                    .add(jLabel28))
+                .add(36, 36, 36)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(mainDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(mainOutput)
+                    .add(btnSelectDeviceMain)
+                    .add(jPanel5Layout.createSequentialGroup()
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel3)
+                            .add(jLabel6))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(mainOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel16)
+                            .add(jLabel12))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(mainOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(4, 4, 4)
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel17)
+                            .add(jLabel13))))
+                .add(226, 226, 226))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel1)
+                    .add(mainOutput))
+                .add(15, 15, 15)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel10)
+                    .add(mainDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(15, 15, 15)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel28)
+                    .add(btnSelectDeviceMain))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel3)
+                    .add(jPanel5Layout.createSequentialGroup()
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(mainOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel12)
+                            .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel13))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel16)
+                            .add(mainOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel17)
+                            .add(jLabel6))))
+                .addContainerGap())
+        );
 
         org.jdesktop.layout.GroupLayout panelGeneralLayout = new org.jdesktop.layout.GroupLayout(panelGeneral);
         panelGeneral.setLayout(panelGeneralLayout);
         panelGeneralLayout.setHorizontalGroup(
             panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelGeneralLayout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, panelGeneralLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel5)
-                    .add(panelGeneralLayout.createSequentialGroup()
-                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(jLabel3)
-                            .add(jLabel6)
-                            .add(jLabel4)
-                            .add(jLabel11)
-                            .add(jLabel10)
-                            .add(jLabel2)
-                            .add(jLabel1))
-                        .add(36, 36, 36)
-                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(monitorDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(monitorOutput)
-                            .add(mainDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(mainOutput)
-                            .add(panelGeneralLayout.createSequentialGroup()
-                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                                    .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
-                                    .add(mainOutputPositionLeft, 0, 0, Short.MAX_VALUE))
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel16)
-                                    .add(jLabel12)
-                                    .add(jLabel14)
-                                    .add(jLabel18))
-                                .add(61, 61, 61)
-                                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(panelGeneralLayout.createSequentialGroup()
-                                        .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(jLabel13))
-                                    .add(panelGeneralLayout.createSequentialGroup()
-                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                            .add(monitorOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(mainOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(jLabel15)
-                                            .add(jLabel17)
-                                            .add(jLabel19))))))))
-                .addContainerGap(147, Short.MAX_VALUE))
+                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelGeneralLayout.setVerticalGroup(
             panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(panelGeneralLayout.createSequentialGroup()
-                .add(23, 23, 23)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(mainOutput)
-                    .add(jLabel1))
+                .addContainerGap()
+                .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel10)
-                    .add(mainDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel3)
-                    .add(mainOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel13)
-                    .add(jLabel12)
-                    .add(mainOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(panelGeneralLayout.createSequentialGroup()
-                        .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(mainOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel17)
-                            .add(jLabel6)
-                            .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel16))
-                        .add(18, 18, 18)
-                        .add(jLabel2))
-                    .add(monitorOutput))
-                .add(11, 11, 11)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel11)
-                    .add(monitorDisplayEngine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel4)
-                    .add(jLabel15)
-                    .add(monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(monitorOutputPositionLeft, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel14))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelGeneralLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel5)
-                    .add(jLabel19)
-                    .add(monitorOutputSizeHeight, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(monitorOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel18))
-                .add(154, 154, 154))
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(88, 88, 88))
         );
         tabConfig.addTab("General", panelGeneral);
 
@@ -450,7 +607,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(videoDeintrelace, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(videoDeintrelaceLabel))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         org.jdesktop.layout.GroupLayout panelVideoLayout = new org.jdesktop.layout.GroupLayout(panelVideo);
@@ -477,7 +634,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(panelVideoLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(videoDebugModeLabel)
                     .add(videoDebugMode))
-                .addContainerGap(229, Short.MAX_VALUE))
+                .addContainerGap(270, Short.MAX_VALUE))
         );
         tabConfig.addTab("SDL Renderer", panelVideo);
 
@@ -536,7 +693,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel24)
                     .add(jTextField4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         tabConfig.addTab("Remote Renderer", jPanel1);
 
@@ -620,7 +777,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                     .add(txtGeneralTemplateFilter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel27)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         tabConfig.addTab("Templates", jPanel2);
 
@@ -635,23 +792,31 @@ public class ConfigPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnApply)
-                    .add(tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+                    .add(btnApply))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(tabConfig, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(tabConfig, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 454, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(btnApply)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSelectDeviceMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectDeviceMonitorActionPerformed
+        jPpMenuMonitor.show(btnSelectDeviceMonitor, btnSelectDeviceMonitor.getWidth(), 0);
+    }//GEN-LAST:event_btnSelectDeviceMonitorActionPerformed
+
+    private void btnSelectDeviceMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectDeviceMainActionPerformed
+         jPpMenuMain.show(btnSelectDeviceMain, btnSelectDeviceMain.getWidth(), 0);
+    }//GEN-LAST:event_btnSelectDeviceMainActionPerformed
 
     private void videoDeintrelaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_videoDeintrelaceActionPerformed
 
@@ -681,6 +846,8 @@ public class ConfigPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
+    private javax.swing.JButton btnSelectDeviceMain;
+    private javax.swing.JButton btnSelectDeviceMonitor;
     private javax.swing.JComboBox clockMode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -702,6 +869,8 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -712,6 +881,10 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPopupMenu jPpMenuMain;
+    private javax.swing.JPopupMenu jPpMenuMonitor;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
