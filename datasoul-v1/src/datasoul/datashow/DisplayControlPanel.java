@@ -12,7 +12,7 @@ import datasoul.templates.TemplateComboBox;
 import java.awt.Event;
 import java.util.Hashtable;
 import javax.swing.JLabel;
-
+  
 /**
  *
  * @author  samuelm
@@ -43,6 +43,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSliderSlideChangeSpeed.setLabelTable(labels);
 
         templateMonitor.setFilterType(TemplateComboBox.FILTER_MONITOR);
+        
+        pnlSpeed.setVisible( jSpeedCb.isSelected() );
+        pnlMonitor.setVisible( jMonitorCb.isSelected() );
         
         
     }
@@ -153,21 +156,24 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         btnMainBlack = new javax.swing.JToggleButton();
         btnMainClear = new javax.swing.JToggleButton();
+        btnHide = new javax.swing.JToggleButton();
+        btnShow = new javax.swing.JToggleButton();
+        pnlSpeed = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jSliderShowHideSpeed = new javax.swing.JSlider();
-        jSliderSlideChangeSpeed = new javax.swing.JSlider();
         jLabel16 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jSliderSlideChangeSpeed = new javax.swing.JSlider();
+        pnlMonitor = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         templateMonitor = new datasoul.templates.TemplateComboBox();
         jPanel1 = new javax.swing.JPanel();
         btnMonitorClear = new javax.swing.JToggleButton();
         btnMonitorBlack = new javax.swing.JToggleButton();
         btnMonitorHide = new javax.swing.JToggleButton();
         btnMonitorShow = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
         cbMonitorFollowMain = new javax.swing.JCheckBox();
-        btnHide = new javax.swing.JToggleButton();
-        btnShow = new javax.swing.JToggleButton();
+        jMonitorCb = new javax.swing.JCheckBox();
+        jSpeedCb = new javax.swing.JCheckBox();
 
         setAutoscrolls(true);
         jLabel10.setText("Main Output:");
@@ -188,6 +194,23 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnHide.setSelected(true);
+        btnHide.setText("Hide");
+        btnHide.setToolTipText("Hide the main output content (F9)");
+        btnHide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHideActionPerformed(evt);
+            }
+        });
+
+        btnShow.setText("Show");
+        btnShow.setToolTipText("Show the main output content (F10)");
+        btnShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowActionPerformed(evt);
+            }
+        });
+
         jLabel15.setText("Show/Hide Speed:");
 
         jSliderShowHideSpeed.setMajorTickSpacing(5);
@@ -202,6 +225,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel16.setText("Slide Change Transition Speed:");
+
         jSliderSlideChangeSpeed.setMajorTickSpacing(5);
         jSliderSlideChangeSpeed.setMaximum(30);
         jSliderSlideChangeSpeed.setMinorTickSpacing(1);
@@ -214,9 +239,35 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setText("Slide Change Transition Speed:");
+        org.jdesktop.layout.GroupLayout pnlSpeedLayout = new org.jdesktop.layout.GroupLayout(pnlSpeed);
+        pnlSpeed.setLayout(pnlSpeedLayout);
+        pnlSpeedLayout.setHorizontalGroup(
+            pnlSpeedLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+            .add(pnlSpeedLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel15)
+                .addContainerGap(160, Short.MAX_VALUE))
+            .add(pnlSpeedLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel16)
+                .addContainerGap(80, Short.MAX_VALUE))
+            .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+        );
+        pnlSpeedLayout.setVerticalGroup(
+            pnlSpeedLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlSpeedLayout.createSequentialGroup()
+                .add(jLabel15)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel16)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        jLabel2.setText("Monitor:");
+        jLabel1.setText("Template:");
 
         templateMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,8 +314,6 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.add(btnMonitorShow);
 
-        jLabel1.setText("Template:");
-
         cbMonitorFollowMain.setText("Monitor follows Main Output controls");
         cbMonitorFollowMain.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbMonitorFollowMain.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -274,20 +323,50 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        btnHide.setSelected(true);
-        btnHide.setText("Hide");
-        btnHide.setToolTipText("Hide the main output content (F9)");
-        btnHide.addActionListener(new java.awt.event.ActionListener() {
+        org.jdesktop.layout.GroupLayout pnlMonitorLayout = new org.jdesktop.layout.GroupLayout(pnlMonitor);
+        pnlMonitor.setLayout(pnlMonitorLayout);
+        pnlMonitorLayout.setHorizontalGroup(
+            pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlMonitorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .addContainerGap())
+            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+            .add(pnlMonitorLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(cbMonitorFollowMain)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        pnlMonitorLayout.setVerticalGroup(
+            pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlMonitorLayout.createSequentialGroup()
+                .add(cbMonitorFollowMain)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jMonitorCb.setText("Show Monitor Controls");
+        jMonitorCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jMonitorCb.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jMonitorCb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHideActionPerformed(evt);
+                jMonitorCbActionPerformed(evt);
             }
         });
 
-        btnShow.setText("Show");
-        btnShow.setToolTipText("Show the main output content (F10)");
-        btnShow.addActionListener(new java.awt.event.ActionListener() {
+        jSpeedCb.setText("Show Speed Controls");
+        jSpeedCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        jSpeedCb.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        jSpeedCb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowActionPerformed(evt);
+                jSpeedCbActionPerformed(evt);
             }
         });
 
@@ -298,26 +377,19 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jLabel10)
-                    .add(jLabel15)
-                    .add(jLabel16)
-                    .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                    .add(jLabel2)
-                    .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-                    .add(cbMonitorFollowMain)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnMainClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, btnMainClear, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(btnShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .add(btnMainBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(btnShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .add(btnMainBlack, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))
+                    .add(jMonitorCb)
+                    .add(jSpeedCb))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -332,28 +404,26 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(btnShow, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(btnHide, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                    .add(btnHide, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel15)
+                .add(jMonitorCb)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jSliderShowHideSpeed, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 54, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(pnlMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(15, 15, 15)
+                .add(jSpeedCb)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel16)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(templateMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbMonitorFollowMain)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(37, 37, 37))
+                .add(pnlSpeed, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jSpeedCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSpeedCbActionPerformed
+        pnlSpeed.setVisible( jSpeedCb.isSelected() );
+    }//GEN-LAST:event_jSpeedCbActionPerformed
+
+    private void jMonitorCbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMonitorCbActionPerformed
+        pnlMonitor.setVisible( jMonitorCb.isSelected() );
+    }//GEN-LAST:event_jMonitorCbActionPerformed
 
     private void btnMonitorShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorShowActionPerformed
         if (btnMonitorShow.isSelected()){
@@ -471,10 +541,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JCheckBox jMonitorCb;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSlider jSliderShowHideSpeed;
     private javax.swing.JSlider jSliderSlideChangeSpeed;
+    private javax.swing.JCheckBox jSpeedCb;
+    private javax.swing.JPanel pnlMonitor;
+    private javax.swing.JPanel pnlSpeed;
     private datasoul.templates.TemplateComboBox templateMonitor;
     // End of variables declaration//GEN-END:variables
     
