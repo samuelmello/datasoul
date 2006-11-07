@@ -7,6 +7,7 @@
 package datasoul.datashow;
 
 import datasoul.song.Song;
+import datasoul.song.SongExportPanel;
 import datasoul.song.SongViewerPanel;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -195,50 +196,9 @@ public class ExportWizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExportServiceListActionPerformed
 
     private void btnExportSongsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportSongsActionPerformed
+        SongExportPanel sep = new SongExportPanel();
+        sep.setVisible(true);
         this.dispose();
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
-                      public boolean accept(File f) { 
-                          if (f.isDirectory()) { 
-                              return true; 
-                          } 
-                          String name = f.getName(); 
-                          if (name.endsWith(".rtf")) { 
-                              return true; 
-                          } 
-                          return false; 
-                      } 
-   
-                      public String getDescription() { 
-                          return ".rtf"; 
-                      } 
-                  });
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "songs");
-        fc.setCurrentDirectory(dir);
-        fc.setDialogTitle("Select the file to export");
-        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            try {
-                ByteArrayOutputStream osOut = new ByteArrayOutputStream();    
-                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
-                    if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
-                        Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
-                        SongViewerPanel svp = new SongViewerPanel();
-                        svp.setView(svp.VIEW_CHORDS_COMPLETE);
-                        svp.viewSong(song);
-                        osOut = svp.exportRTFSong(osOut);
-                    }
-                }
-                
-                String filePath = fc.getSelectedFile().getPath();
-                if(!filePath.contains(".rtf"))
-                    filePath = filePath + ".rtf";
-                FileOutputStream fos = new FileOutputStream(filePath);
-                fos.write(osOut.toByteArray());
-                fos.close();
-
-            } catch (Exception ex) {
-            }
-        }
     }//GEN-LAST:event_btnExportSongsActionPerformed
     
     
