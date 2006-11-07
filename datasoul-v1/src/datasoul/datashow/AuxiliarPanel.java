@@ -6,7 +6,7 @@
 
 package datasoul.datashow;
 
-import datasoul.ConfigObj;
+import datasoul.config.ConfigObj;
 import datasoul.ObjectManager;
 import datasoul.render.ContentManager;
 import java.io.IOException;

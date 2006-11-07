@@ -6,10 +6,10 @@
 
 package datasoul.datashow;
 
-import datasoul.ConfigObj;
+import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.templates.TemplateComboBox;
-import java.awt.Event;
 import java.util.Hashtable;
 import javax.swing.JLabel;
   
@@ -28,10 +28,10 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     public DisplayControlPanel() {
         initComponents();
         
-        templateMonitor.setSelectedItem(ConfigObj.getInstance().getTemplateMonitor());
-        jSliderShowHideSpeed.setValue( ConfigObj.getInstance().getSlideShowHideTime() / 100 );
-        jSliderSlideChangeSpeed.setValue( ConfigObj.getInstance().getSlideTransitionTime() / 100 );
-        cbMonitorFollowMain.setSelected( ConfigObj.getInstance().getMonitorFollowMainControls() );
+        templateMonitor.setSelectedItem(DisplayControlConfig.getInstance().getTemplateMonitor());
+        jSliderShowHideSpeed.setValue( DisplayControlConfig.getInstance().getSlideShowHideTime() / 100 );
+        jSliderSlideChangeSpeed.setValue( DisplayControlConfig.getInstance().getSlideTransitionTime() / 100 );
+        cbMonitorFollowMain.setSelected( DisplayControlConfig.getInstance().getMonitorFollowMainControls() );
         updateMonitorControls();
  
         Hashtable<Integer, JLabel> labels = new Hashtable<Integer, JLabel>();
@@ -67,7 +67,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             btnMainBlack.setSelected(false);
         }
 
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+        if (DisplayControlConfig.getInstance().getMonitorFollowMainControls()){
             btnMonitorBlack.setSelected( btnMainBlack.isSelected() );
             btnMonitorBlackActionPerformed(null);
         }
@@ -88,14 +88,14 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             btnMainClear.setSelected(false);
         }
         
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+        if (DisplayControlConfig.getInstance().getMonitorFollowMainControls()){
             btnMonitorClear.setSelected( btnMainClear.isSelected() );
             btnMonitorClearActionPerformed(null);
         }
     }
     
     public void mainDisplayShow(){
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
 
         if (ConfigObj.getInstance().getMainOutput()){
             ContentManager.getMainDisplay().slideShow( time );
@@ -104,13 +104,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnShow.setSelected(true);
         btnHide.setSelected(false);
         
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+        if (DisplayControlConfig.getInstance().getMonitorFollowMainControls()){
             monitorDisplayShow();
         }
     }
     
     public void mainDisplayHide(){
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
         
         if (ConfigObj.getInstance().getMainOutput()){
             ContentManager.getMainDisplay().slideHide( time );
@@ -119,13 +119,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnShow.setSelected(false);
         btnHide.setSelected(true);
         
-        if (ConfigObj.getInstance().getMonitorFollowMainControls()){
+        if (DisplayControlConfig.getInstance().getMonitorFollowMainControls()){
             monitorDisplayHide();
         }
     }
     
     public void monitorDisplayShow(){
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
         
         btnMonitorShow.setSelected(true);
         btnMonitorHide.setSelected(false);
@@ -136,7 +136,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }
     
     public void monitorDisplayHide(){
-        int time = ConfigObj.getInstance().getSlideShowHideTime();
+        int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
 
         btnMonitorShow.setSelected(false);
         btnMonitorHide.setSelected(true);
@@ -460,14 +460,14 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
     private void cbMonitorFollowMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorFollowMainActionPerformed
 
-        ConfigObj.getInstance().setMonitorFollowMainControls( cbMonitorFollowMain.isSelected() );
+        DisplayControlConfig.getInstance().setMonitorFollowMainControls( cbMonitorFollowMain.isSelected() );
         updateMonitorControls();
         
     }//GEN-LAST:event_cbMonitorFollowMainActionPerformed
 
     private void updateMonitorControls(){
         
-        boolean b = ! ConfigObj.getInstance().getMonitorFollowMainControls();
+        boolean b = ! DisplayControlConfig.getInstance().getMonitorFollowMainControls();
         btnMonitorBlack.setEnabled(b);
         btnMonitorClear.setEnabled(b);
         btnMonitorHide.setEnabled(b);
@@ -477,13 +477,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     
     private void jSliderSlideChangeSpeedStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderSlideChangeSpeedStateChanged
 
-        ConfigObj.getInstance().setSlideTransitionTime( jSliderSlideChangeSpeed.getValue() * 100 );
+        DisplayControlConfig.getInstance().setSlideTransitionTime( jSliderSlideChangeSpeed.getValue() * 100 );
         
     }//GEN-LAST:event_jSliderSlideChangeSpeedStateChanged
 
     private void jSliderShowHideSpeedStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderShowHideSpeedStateChanged
         
-        ConfigObj.getInstance().setSlideShowHideTime( jSliderShowHideSpeed.getValue() * 100 );
+        DisplayControlConfig.getInstance().setSlideShowHideTime( jSliderShowHideSpeed.getValue() * 100 );
         
     }//GEN-LAST:event_jSliderShowHideSpeedStateChanged
 

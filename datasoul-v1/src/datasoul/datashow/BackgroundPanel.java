@@ -6,7 +6,8 @@
 
 package datasoul.datashow;
 
-import datasoul.ConfigObj;
+import datasoul.config.BackgroundConfig;
+import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.ImageTemplateItem;
@@ -28,8 +29,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
         
         initComponents();
 
-        BufferedImage img1 = ConfigObj.getInstance().getMainBackgroundImg();
-        BufferedImage img2 = ConfigObj.getInstance().getMonitorBackgroundImg();
+        BufferedImage img1 = BackgroundConfig.getInstance().getMainBackgroundImg();
+        BufferedImage img2 = BackgroundConfig.getInstance().getMonitorBackgroundImg();
         
         imageDisplayMain.getImageTemplateItem().setStretchIdx(ImageTemplateItem.STRETCH_NO);
         imageDisplayMain.getImageTemplateItem().setAlignmentIdx(ImageTemplateItem.ALIGN_CENTER);
@@ -228,7 +229,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             g.setColor(color);
             g.fillRect(0, 0, DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
             imageDisplayMonitor.getImageTemplateItem().setImage(img);
-            ConfigObj.getInstance().setMonitorBackgroundImg(img);
+            BackgroundConfig.getInstance().setMonitorBackgroundImg(img);
         }
         
     }//GEN-LAST:event_btnMonitorColorActionPerformed
@@ -243,7 +244,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             g.setColor(color);
             g.fillRect(0, 0, DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
             imageDisplayMain.getImageTemplateItem().setImage(img);
-            ConfigObj.getInstance().setMainBackgroundImg(img);
+            BackgroundConfig.getInstance().setMainBackgroundImg(img);
         }
         
     }//GEN-LAST:event_btnColorMainActionPerformed
@@ -261,7 +262,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             imageDisplayMonitor.getImageTemplateItem().loadImage(filename);
-            ConfigObj.getInstance().setMonitorBackgroundImg( imageDisplayMonitor.getImageTemplateItem().getImage() );
+            BackgroundConfig.getInstance().setMonitorBackgroundImg( imageDisplayMonitor.getImageTemplateItem().getImage() );
             imageDisplayMonitor.updateSize();
             imageDisplayMonitor.repaint();
         }        
@@ -281,7 +282,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             imageDisplayMain.getImageTemplateItem().loadImage(filename);
-            ConfigObj.getInstance().setMainBackgroundImg( imageDisplayMain.getImageTemplateItem().getImage() );
+            BackgroundConfig.getInstance().setMainBackgroundImg( imageDisplayMain.getImageTemplateItem().getImage() );
             imageDisplayMain.updateSize();
             imageDisplayMain.repaint();
         }        

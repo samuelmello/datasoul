@@ -1,5 +1,5 @@
 package datasoul.datashow;
-import datasoul.ConfigObj;
+import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
 import javax.swing.SpinnerNumberModel;
@@ -47,7 +47,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         // but at least is not buggy
         cm.saveTransitionImage();
         
-        cm.slideChange(ConfigObj.getInstance().getSlideTransitionTime());
+        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
         
     }
 
@@ -139,7 +139,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.saveTransitionImage();
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
-        cm.slideChange(ConfigObj.getInstance().getSlideTransitionTime());
+        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
         
     }
     

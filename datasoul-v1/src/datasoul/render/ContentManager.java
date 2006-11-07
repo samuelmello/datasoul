@@ -9,7 +9,7 @@
 
 package datasoul.render;
 
-import datasoul.ConfigObj;
+import datasoul.config.ConfigObj;
 import java.util.ArrayList;
 
 /**

@@ -9,7 +9,7 @@
 
 package datasoul.templates;
 
-import datasoul.ConfigObj;
+import datasoul.config.ConfigObj;
 import javax.swing.JComboBox;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;

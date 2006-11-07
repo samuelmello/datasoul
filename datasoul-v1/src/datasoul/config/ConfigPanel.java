@@ -4,8 +4,9 @@
  * Created on 22 de Marco de 2006, 21:22
  */
 
-package datasoul;
+package datasoul.config;
 
+import datasoul.*;
 import java.awt.Component;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;

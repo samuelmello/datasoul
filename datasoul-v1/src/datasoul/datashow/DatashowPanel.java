@@ -7,6 +7,7 @@
 package datasoul.datashow;
 
 import datasoul.*;
+import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.render.SwingPanelContentRender;
 import datasoul.util.*;

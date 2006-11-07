@@ -6,6 +6,8 @@
 
 package datasoul;
 
+import datasoul.config.ConfigObj;
+import datasoul.config.ConfigPanel;
 import datasoul.datashow.DatashowPanel;
 import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;

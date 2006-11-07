@@ -7,7 +7,7 @@
  * and open the template in the editor.
  */
 
-package datasoul;
+package datasoul.config;
 
 import datasoul.render.ContentManager;
 import datasoul.render.SDLContentRender;
@@ -46,8 +46,6 @@ public class ConfigObj extends SerializableObject {
     private String monitorOutputPositionTop;
     private String monitorOutputSizeWidth;
     private String monitorOutputSizeHeight;
-    private String templateMonitor;
-    private String templateText;
     private int videoInput;
     private int videoMode;
     private int videoDeintrelace;
@@ -55,14 +53,10 @@ public class ConfigObj extends SerializableObject {
     private boolean videoDebugMode;
     private String mainDisplayEngine;
     private String monitorDisplayEngine;
-    private int slideTransitionTime;
-    private int slideShowHideTime;
-    private boolean monitorFollowMainControls;
-    private BufferedImage mainBackgroundImg;
-    private BufferedImage monitorBackgroundImg;
     private String monitorTemplateFilter;
     private String alertTemplateFilter;
     private String generalTemplateFilter;
+    private String templateText;
     
     
     public static final int CLOCKMODE_24_SEC = 0;
@@ -166,18 +160,12 @@ public class ConfigObj extends SerializableObject {
         properties.add("MonitorOutputPositionTop");
         properties.add("MonitorOutputSizeWidth");
         properties.add("MonitorOutputSizeHeight");
-        properties.add("TemplateMonitor");
         properties.add("TemplateText");
         properties.add("VideoInputIdx");
         properties.add("VideoModeIdx");
         properties.add("VideoDeintrelaceIdx");
         properties.add("ClockModeIdx");        
         properties.add("VideoDebugModeIdx");
-        properties.add("SlideTransitionTime");
-        properties.add("SlideShowHideTime");
-        properties.add("MonitorFollowMainControlsIdx");
-        properties.add("MainBackgroundImgStr");
-        properties.add("MonitorBackgroundImgStr");
         properties.add("MonitorTemplateFilter");
         properties.add("AlertTemplateFilter");
         properties.add("GeneralTemplateFilter");
@@ -297,22 +285,6 @@ public class ConfigObj extends SerializableObject {
 
     public void setMonitorOutputSizeHeight(String monitorOutputSizeHeight) {
         this.monitorOutputSizeHeight = monitorOutputSizeHeight;
-    }
-
-    public String getTemplateMonitor() {
-        return templateMonitor;
-    }
-
-    public void setTemplateMonitor(String templateMonitor) {
-        this.templateMonitor = templateMonitor;
-    }
-
-    public String getTemplateText() {
-        return templateText;
-    }
-
-    public void setTemplateText(String templateText) {
-        this.templateText = templateText;
     }
 
     public String getVideoInput() {
@@ -472,172 +444,7 @@ public class ConfigObj extends SerializableObject {
         ContentManager.setMonitorDisplayEngine(engine);
     }
 
-    public int getSlideTransitionTime() {
-        return slideTransitionTime;
-    }
-
-    public void setSlideTransitionTime(String slideTransitionTime) {
-        int x = -1;
-        try{
-            x = Integer.parseInt(slideTransitionTime);
-        }catch(Exception e){
-            // do nothing
-        }
-        setSlideTransitionTime(x);
-    }
     
-    public void setSlideTransitionTime(int slideTransitionTime) {
-        if (slideTransitionTime >= 0){
-            this.slideTransitionTime = slideTransitionTime;
-        }else{
-            this.slideTransitionTime = 0;
-        }
-    }
-
-    public int getSlideShowHideTime() {
-        return slideShowHideTime;
-    }
-
-    public void setSlideShowHideTime(String slideShowHideTime) {
-        int x = -1;
-        try{
-            x = Integer.parseInt(slideShowHideTime);
-        }catch(Exception e){
-            // do nothing
-        }
-        setSlideShowHideTime(x);
-    }
-    
-    public void setSlideShowHideTime(int slideShowHideTime) {
-        if (slideShowHideTime >= 0){
-            this.slideShowHideTime = slideShowHideTime;
-        }else{
-            this.slideShowHideTime = 0;
-        }
-    }
-    
-    public boolean getMonitorFollowMainControls(){
-        return monitorFollowMainControls;
-    }
-
-    public String getMonitorFollowMainControlsIdx(){
-        if (monitorFollowMainControls==false){
-            return "0";
-        }else{
-            return "1";
-        }
-    }
-    
-    public void setMonitorFollowMainControls(boolean b){
-        monitorFollowMainControls = b;
-    }
-    
-    public void setMonitorFollowMainControlsIdx(String str){
-        setMonitorFollowMainControls( str.equals("1") );
-    }
-
-    public String getMainBackgroundImgStr(){
-        return getImgStr(this.mainBackgroundImg);
-    }    
-    
-    public String getMonitorBackgroundImgStr(){
-        return getImgStr(this.monitorBackgroundImg);
-    }    
-    
-    private String getImgStr(BufferedImage img){
-        
-        if (img == null)
-            return "";
-        
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ImageIO.write( img, "png", baos);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
-        byte[] ba = baos.toByteArray();
-
-        int len=ba.length,j;
-        StringBuffer sb=new StringBuffer(len*2);
-        for (j=0;j<len;j++) {
-            String sByte=Integer.toHexString((int)(ba[j] & 0xFF));
-            sb.append(stringAlign2chars(sByte));
-        }
-        return sb.toString();
-    }
-
-    private String stringAlign2chars(String str){
-        if (str.length()!=2)
-            return '0'+str;
-        else
-            return str;
-    }
-    
-    public void setMainBackgroundImgStr(String strImage){
-        setImgStr( 0, strImage );
-    }
-    
-    public void setMonitorBackgroundImgStr(String strImage){
-        setImgStr( 1, strImage );
-    }
-
-    /**
-     * @param idx possible values: 0 for Main, 1 for monitor
-     */
-    private void setImgStr(int idx, String strImage){
-
-        if (strImage.equals("")){
-            if (idx == 0){
-                this.mainBackgroundImg = null;
-            }else if (idx == 1){
-                this.monitorBackgroundImg = null;
-            }
-            return;
-        }
-        
-        String str="";
-        int intAux=0;
-        byte[] bytes = new byte[strImage.length()/2];
-        for(int i=0; i< strImage.length()-1;i=i+2){
-            str = strImage.substring(i,i+2);
-            intAux = Integer.parseInt(str,16);
-            bytes[i/2]=(byte)intAux;
-        }
-        
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        try {
-            if (idx == 0){
-                setMainBackgroundImg( ImageIO.read(bais) );
-            }else if (idx == 1){
-                setMonitorBackgroundImg( ImageIO.read(bais) );
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    public BufferedImage getMainBackgroundImg(){
-        return mainBackgroundImg;
-    }
-    
-    public void setMainBackgroundImg(BufferedImage img){
-        this.mainBackgroundImg = img;
-        if ( this.getMainOutput() ){
-            ContentManager.getMainDisplay().paintBackground(img);
-        }
-    }
-
-    public BufferedImage getMonitorBackgroundImg(){
-        return monitorBackgroundImg;
-    }
-    
-    public void setMonitorBackgroundImg(BufferedImage img){
-        this.monitorBackgroundImg = img;
-        if ( this.getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().paintBackground(img);
-        }
-    }
 
     public void setMonitorTemplateFilter(String monitorTemplateFilter){
         this.monitorTemplateFilter = monitorTemplateFilter;
@@ -677,7 +484,13 @@ public class ConfigObj extends SerializableObject {
             return generalTemplateFilter;
         }
     }
-    
-    
+
+    public String getTemplateText(){
+        return templateText;
+    }
+
+    public void setTemplateText(String templateText){
+        this.templateText = templateText;
+    }
 
 }
