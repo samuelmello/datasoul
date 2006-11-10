@@ -15,19 +15,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane2" alignment="1" pref="1002" max="32767" attributes="0"/>
+          <Component id="jSplitPane2" alignment="1" pref="1046" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane2" pref="481" max="32767" attributes="0"/>
+          <Component id="jSplitPane2" alignment="0" pref="485" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Container class="javax.swing.JSplitPane" name="jSplitPane2">
       <Properties>
-        <Property name="dividerLocation" type="int" value="310"/>
+        <Property name="dividerLocation" type="int" value="320"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
@@ -73,7 +73,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="preview" pref="297" max="32767" attributes="0"/>
+                          <Component id="preview" pref="301" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="pnlPreviewBox" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -188,12 +188,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSplitPane1" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
+                  <Component id="jSplitPane1" alignment="0" pref="319" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSplitPane1" alignment="0" min="-2" pref="890" max="-2" attributes="0"/>
+                  <Component id="jSplitPane1" alignment="0" pref="483" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

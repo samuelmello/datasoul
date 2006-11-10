@@ -89,10 +89,10 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 .addContainerGap()
                 .add(cbAutoChange)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 53, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(4, 4, 4)
+                .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel1)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
