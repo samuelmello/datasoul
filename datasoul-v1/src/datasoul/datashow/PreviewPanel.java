@@ -46,11 +46,17 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        btnGoLive = new javax.swing.JButton();
-        labelPreview = new javax.swing.JLabel();
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
+        jToolBar1 = new javax.swing.JToolBar();
+        labelLive = new javax.swing.JLabel();
+        btnGoLive = new javax.swing.JButton();
 
         setDoubleBuffered(false);
+
+        jToolBar1.setFloatable(false);
+        labelLive.setText("Preview");
+        jToolBar1.add(labelLive);
+
         btnGoLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GO_LIVE"));
         btnGoLive.setToolTipText("Send slides to live");
         btnGoLive.addActionListener(new java.awt.event.ActionListener() {
@@ -59,28 +65,24 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             }
         });
 
-        labelPreview.setFont(new java.awt.Font("Dialog", 3, 10));
-        labelPreview.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PREVIEW"));
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(labelPreview)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 144, Short.MAX_VALUE)
-                .add(btnGoLive)
-                .addContainerGap())
-            .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnGoLive))
+            .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(labelPreview)
-                    .add(btnGoLive))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .add(btnGoLive, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,7 +108,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLive;
-    private javax.swing.JLabel labelPreview;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel labelLive;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables
     

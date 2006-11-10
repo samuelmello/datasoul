@@ -63,8 +63,6 @@ public class DatashowPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jSplitPane2 = new javax.swing.JSplitPane();
-        tabOperation = new javax.swing.JTabbedPane();
-        panelOperation = new javax.swing.JPanel();
         split3 = new javax.swing.JSplitPane();
         live = new datasoul.datashow.LivePanel();
         pnlPreview = new javax.swing.JPanel();
@@ -74,9 +72,9 @@ public class DatashowPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         preview = new datasoul.datashow.PreviewPanel();
         jPanel2 = new javax.swing.JPanel();
-        auxiliar = new datasoul.datashow.AuxiliarPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jSplitPane1 = new javax.swing.JSplitPane();
         serviceList = new datasoul.datashow.ServiceListPanel();
+        auxiliar = new datasoul.datashow.AuxiliarPanel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -156,45 +154,29 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         split3.setTopComponent(pnlPreview);
 
-        org.jdesktop.layout.GroupLayout panelOperationLayout = new org.jdesktop.layout.GroupLayout(panelOperation);
-        panelOperation.setLayout(panelOperationLayout);
-        panelOperationLayout.setHorizontalGroup(
-            panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
-        );
-        panelOperationLayout.setVerticalGroup(
-            panelOperationLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
-        );
-        tabOperation.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPERATION"), panelOperation);
+        jSplitPane2.setRightComponent(split3);
 
-        jSplitPane2.setRightComponent(tabOperation);
+        jSplitPane1.setDividerLocation(250);
+        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane1.setLeftComponent(serviceList);
 
-        auxiliar.setMaximumSize(new java.awt.Dimension(315, 460));
-        auxiliar.setMinimumSize(new java.awt.Dimension(315, 460));
-
-        serviceList.setMinimumSize(new java.awt.Dimension(30, 200));
-        jTabbedPane1.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE_LIST"), serviceList);
+        jSplitPane1.setRightComponent(auxiliar);
 
         org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, auxiliar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 309, Short.MAX_VALUE)
+            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 309, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel2Layout.createSequentialGroup()
-                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 130, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(auxiliar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 412, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 890, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
         jSplitPane2.setLeftComponent(jPanel2);
 
@@ -202,11 +184,11 @@ public class DatashowPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1086, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
+            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -275,17 +257,15 @@ public class DatashowPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox cbPreviewSize;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private datasoul.datashow.LivePanel live;
-    private javax.swing.JPanel panelOperation;
     private javax.swing.JPanel pnlPreview;
     private javax.swing.JPanel pnlPreviewBox;
     private datasoul.datashow.PreviewPanel preview;
     private datasoul.render.SwingDisplayPanel previewDisplayPanel1;
     private datasoul.datashow.ServiceListPanel serviceList;
     private javax.swing.JSplitPane split3;
-    private javax.swing.JTabbedPane tabOperation;
     // End of variables declaration//GEN-END:variables
     
 }

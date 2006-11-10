@@ -171,6 +171,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DataSoul - Alpha 60910");
+        toolBarMain.setFloatable(false);
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
@@ -246,7 +247,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(647, Short.MAX_VALUE))
+                .addContainerGap(577, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -76,83 +76,96 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
+        ppmFile = new javax.swing.JPopupMenu();
+        actOpen = new javax.swing.JMenuItem();
+        actSave = new javax.swing.JMenuItem();
+        actSaveAs = new javax.swing.JMenuItem();
+        actExport = new javax.swing.JMenuItem();
+        ppmAddItem = new javax.swing.JPopupMenu();
+        actAddSong = new javax.swing.JMenuItem();
+        actAddText = new javax.swing.JMenuItem();
+        actImportItem = new javax.swing.JMenuItem();
         toolBar = new javax.swing.JToolBar();
-        btnOpen = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        btnSaveAs = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        btnExportWizard = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
         btnAddWizard = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
         btnDown = new javax.swing.JButton();
-        btnRemove = new javax.swing.JButton();
         scroolServiceList = new javax.swing.JScrollPane();
         tableServiceList = new datasoul.util.DnDTable();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel1 = new javax.swing.JLabel();
+        btnFile = new javax.swing.JButton();
+
+        actOpen.setText("Open");
+        actOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actOpenActionPerformed(evt);
+            }
+        });
+
+        ppmFile.add(actOpen);
+
+        actSave.setText("Save");
+        actSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actSaveActionPerformed(evt);
+            }
+        });
+
+        ppmFile.add(actSave);
+
+        actSaveAs.setText("Save as");
+        actSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actSaveAsActionPerformed(evt);
+            }
+        });
+
+        ppmFile.add(actSaveAs);
+
+        actExport.setText("Export");
+        actExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actExportActionPerformed(evt);
+            }
+        });
+
+        ppmFile.add(actExport);
+
+        actAddSong.setText("Add Song");
+        actAddSong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddSongActionPerformed(evt);
+            }
+        });
+
+        ppmAddItem.add(actAddSong);
+
+        actAddText.setText("Add Text");
+        actAddText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddTextActionPerformed(evt);
+            }
+        });
+
+        ppmAddItem.add(actAddText);
+
+        actImportItem.setText("Import Item");
+        actImportItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actImportItemActionPerformed(evt);
+            }
+        });
+
+        ppmAddItem.add(actImportItem);
 
         setDoubleBuffered(false);
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
-        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/open.gif")));
-        btnOpen.setToolTipText("Load service list ...");
-        btnOpen.setAlignmentY(0.0F);
-        btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOpenMouseClicked(evt);
-            }
-        });
-
-        toolBar.add(btnOpen);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
-        btnSave.setToolTipText("Save service list");
-        btnSave.setAlignmentY(0.0F);
-        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSaveMouseClicked(evt);
-            }
-        });
-
-        toolBar.add(btnSave);
-
-        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/saveAs.gif")));
-        btnSaveAs.setToolTipText("Save service list as... ");
-        btnSaveAs.setAlignmentY(0.0F);
-        btnSaveAs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSaveAsMouseClicked(evt);
-            }
-        });
-
-        toolBar.add(btnSaveAs);
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setAlignmentX(0.0F);
-        jSeparator1.setAlignmentY(0.0F);
-        jSeparator1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jSeparator1.setMaximumSize(new java.awt.Dimension(5, 32767));
-        toolBar.add(jSeparator1);
-
-        btnExportWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exportWizard.gif")));
-        btnExportWizard.setToolTipText("Export wizard ...");
-        btnExportWizard.setAlignmentY(0.0F);
-        btnExportWizard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportWizardActionPerformed(evt);
-            }
-        });
-
-        toolBar.add(btnExportWizard);
-
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator2.setAlignmentX(0.0F);
-        jSeparator2.setAlignmentY(0.0F);
-        jSeparator2.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jSeparator2.setMaximumSize(new java.awt.Dimension(5, 32767));
-        toolBar.add(jSeparator2);
-
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
+        btnAddWizard.setText("Add Item");
         btnAddWizard.setToolTipText("Add wizard ...");
         btnAddWizard.setAlignmentY(0.0F);
         btnAddWizard.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +175,20 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
 
         toolBar.add(btnAddWizard);
+
+        toolBar.add(jSeparator1);
+
+        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/remove.gif")));
+        btnRemove.setText("Delete");
+        btnRemove.setToolTipText("Delete item");
+        btnRemove.setAlignmentY(0.0F);
+        btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRemoveMouseClicked(evt);
+            }
+        });
+
+        toolBar.add(btnRemove);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
         btnEdit.setToolTipText("Edit selected item ...");
@@ -196,17 +223,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(btnDown);
 
-        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/remove.gif")));
-        btnRemove.setToolTipText("Delete item");
-        btnRemove.setAlignmentY(0.0F);
-        btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnRemoveMouseClicked(evt);
-            }
-        });
-
-        toolBar.add(btnRemove);
-
         tableServiceList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -232,76 +248,108 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         scroolServiceList.setViewportView(tableServiceList);
 
+        jToolBar1.setFloatable(false);
+        jLabel1.setText("Service List");
+        jToolBar1.add(jLabel1);
+
+        btnFile.setText("File");
+        btnFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFileActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(btnFile))
+            .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .add(btnFile))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        
-        if (tableServiceList.getSelectedRow() == -1){
+    private void actImportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportItemActionPerformed
+        ImportServiceItemForm isif = new ImportServiceItemForm();
+        isif.setVisible(true);
+    }//GEN-LAST:event_actImportItemActionPerformed
+
+    private void actAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddTextActionPerformed
+        TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
+        tsief.setVisible(true);
+    }//GEN-LAST:event_actAddTextActionPerformed
+
+    private void actAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddSongActionPerformed
+        AddSongForm asf = new AddSongForm();
+        asf.setVisible(true);
+    }//GEN-LAST:event_actAddSongActionPerformed
+
+    private void actExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actExportActionPerformed
+        ExportWizardForm exportWizardForm = new ExportWizardForm();
+        exportWizardForm.setVisible(true);
+    }//GEN-LAST:event_actExportActionPerformed
+
+    private void actSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveAsActionPerformed
+        JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
+                      public boolean accept(File f) { 
+                          if (f.isDirectory()) { 
+                              return true; 
+                          } 
+                          String name = f.getName(); 
+                          if (name.endsWith(".servicelist")) { 
+                              return true; 
+                          } 
+                          return false; 
+                      } 
+   
+                      public String getDescription() { 
+                          return ".servicelist"; 
+                      } 
+                  });
+        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        fc.setCurrentDirectory(dir);
+        fc.setDialogTitle("Select the file to save.");
+        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
+            fileName = fc.getSelectedFile().getPath();
+            if(!fileName.contains(".servicelist"))
+                 fileName = fileName + ".servicelist";            
+            saveFile();
+        }
+
+    }//GEN-LAST:event_actSaveAsActionPerformed
+
+    private void actSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveActionPerformed
+        if(!fileName.contains(".servicelist"))
+            fileName = fileName + ".servicelist";
+
+        if(fileName.equals("")){
+            actSaveAsActionPerformed(evt);
             return;
         }
         
-        ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
-        if(item instanceof Song){
-            SongEditorForm sef = new SongEditorForm((Song)item);
-            sef.setVisible(true);
-        }else if(item instanceof TextServiceItem){
-            TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
-            tsief.setVisible(true);
-        }
-    }//GEN-LAST:event_btnEditActionPerformed
+        saveFile();
+    }//GEN-LAST:event_actSaveActionPerformed
 
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        AddWizardForm awf = new AddWizardForm();
-        awf.setVisible(true);
-    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
+        ppmFile.show(btnFile, 0 /*btnFile.getWidth()-ppmFile.getWidth()*/, btnFile.getHeight());
+    }//GEN-LAST:event_btnFileActionPerformed
 
-    private void btnExportWizardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportWizardActionPerformed
-        ExportWizardForm exportWizardForm = new ExportWizardForm();
-        exportWizardForm.setVisible(true);
-    }//GEN-LAST:event_btnExportWizardActionPerformed
-
-    private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
-        showItem();
-    }//GEN-LAST:event_tableServiceListKeyPressed
-
-    private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
-        showItem();
-    }//GEN-LAST:event_tableServiceListMouseClicked
-
-    private void showItem(){
-        
-        try{
-            ObjectManager.getInstance().setBusyCursor();
-            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
-                if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                    ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
-            }
-            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
-                ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
-                if(item instanceof Song)
-                    if(ObjectManager.getInstance().getSongViewerPanel()!=null)
-                        ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
-            }
-        }finally{
-            ObjectManager.getInstance().setDefaultCursor();
-        }
-    }
-    
-    private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
+    private void actOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actOpenActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
                       public boolean accept(File f) { 
@@ -354,50 +402,55 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
          
             tableServiceList.setModel(slt);
         }
-    }//GEN-LAST:event_btnOpenMouseClicked
+    }//GEN-LAST:event_actOpenActionPerformed
 
-    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        if(!fileName.contains(".servicelist"))
-            fileName = fileName + ".servicelist";
-
-        if(fileName.equals("")){
-            btnSaveAsMouseClicked(evt);
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        
+        if (tableServiceList.getSelectedRow() == -1){
             return;
         }
         
-        saveFile();
-    }//GEN-LAST:event_btnSaveMouseClicked
-
-    private void btnSaveAsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveAsMouseClicked
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
-                      public boolean accept(File f) { 
-                          if (f.isDirectory()) { 
-                              return true; 
-                          } 
-                          String name = f.getName(); 
-                          if (name.endsWith(".servicelist")) { 
-                              return true; 
-                          } 
-                          return false; 
-                      } 
-   
-                      public String getDescription() { 
-                          return ".servicelist"; 
-                      } 
-                  });
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
-        fc.setCurrentDirectory(dir);
-        fc.setDialogTitle("Select the file to save.");
-        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            fileName = fc.getSelectedFile().getPath();
-            if(!fileName.contains(".servicelist"))
-                 fileName = fileName + ".servicelist";            
-            saveFile();
+        ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+        if(item instanceof Song){
+            SongEditorForm sef = new SongEditorForm((Song)item);
+            sef.setVisible(true);
+        }else if(item instanceof TextServiceItem){
+            TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
+            tsief.setVisible(true);
         }
+    }//GEN-LAST:event_btnEditActionPerformed
 
-    }//GEN-LAST:event_btnSaveAsMouseClicked
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        ppmAddItem.show(btnAddWizard, 0, btnAddWizard.getHeight());
+    }//GEN-LAST:event_btnAddActionPerformed
 
+    private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
+        showItem();
+    }//GEN-LAST:event_tableServiceListKeyPressed
+
+    private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
+        showItem();
+    }//GEN-LAST:event_tableServiceListMouseClicked
+
+    private void showItem(){
+        
+        try{
+            ObjectManager.getInstance().setBusyCursor();
+            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+                if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                    ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
+            }
+            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+                ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+                if(item instanceof Song)
+                    if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                        ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+            }
+        }finally{
+            ObjectManager.getInstance().setDefaultCursor();
+        }
+    }
+    
     private void saveFile(){
         try{
             ServiceListTable slt = (ServiceListTable)tableServiceList.getModel();
@@ -435,17 +488,24 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actAddSong;
+    private javax.swing.JMenuItem actAddText;
+    private javax.swing.JMenuItem actExport;
+    private javax.swing.JMenuItem actImportItem;
+    private javax.swing.JMenuItem actOpen;
+    private javax.swing.JMenuItem actSave;
+    private javax.swing.JMenuItem actSaveAs;
     private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnExportWizard;
-    private javax.swing.JButton btnOpen;
+    private javax.swing.JButton btnFile;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JPopupMenu ppmAddItem;
+    private javax.swing.JPopupMenu ppmFile;
     private javax.swing.JScrollPane scroolServiceList;
     private datasoul.util.DnDTable tableServiceList;
     private javax.swing.JToolBar toolBar;

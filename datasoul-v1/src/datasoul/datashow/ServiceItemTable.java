@@ -23,11 +23,13 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     /** Creates new form ServiceItemTable */
     public ServiceItemTable() {
         initComponents();
+        /*
         Hashtable<Integer, JLabel> labels = new Hashtable<Integer, JLabel>();
         labels.put( 1, new JLabel("Small") );
         labels.put( 5, new JLabel("Large") );
         jSliderZoom.setLabelTable(labels);
-
+        */
+        
         ServiceItem empty = new ServiceItem();
         setServiceItem(empty);
         
@@ -48,7 +50,6 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
-        jSliderZoom = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         lblTemplate = new javax.swing.JLabel();
 
@@ -77,17 +78,6 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         ));
         jScrollPane1.setViewportView(displayTable);
 
-        jSliderZoom.setMaximum(5);
-        jSliderZoom.setMinimum(1);
-        jSliderZoom.setPaintLabels(true);
-        jSliderZoom.setSnapToTicks(true);
-        jSliderZoom.setValue(3);
-        jSliderZoom.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSliderZoomStateChanged(evt);
-            }
-        });
-
         jLabel1.setText("Template:");
 
         lblTemplate.setText("(none)");
@@ -96,26 +86,22 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(lblTemplate)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 100, Short.MAX_VALUE)
-                .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 110, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(210, Short.MAX_VALUE))
             .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jSliderZoom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(lblTemplate)
-                            .add(jLabel1))))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(lblTemplate)
+                    .add(jLabel1))
+                .add(16, 16, 16)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -123,15 +109,6 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
 
     }//GEN-LAST:event_jScrollPane1PropertyChange
-
-    private void jSliderZoomStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderZoomStateChanged
-        int newSize = jSliderZoom.getValue();
-        if (item != null){
-            item.setZoom( jSliderZoom.getValue() );
-            item.updateHeights(displayTable);
-        }
-        
-    }//GEN-LAST:event_jSliderZoomStateChanged
 
     private void jScrollPane1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentResized
         if (item != null){
@@ -145,14 +122,13 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     private javax.swing.JTable displayTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSlider jSliderZoom;
     private javax.swing.JLabel lblTemplate;
     // End of variables declaration//GEN-END:variables
     
     public void setServiceItem(ServiceItem item){
         this.item = item;
         item.registerJTable(displayTable); 
-        item.setZoom( jSliderZoom.getValue() );
+        //item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
         lblTemplate.setText( item.getTemplate() );
         setSlideIndex(0);
