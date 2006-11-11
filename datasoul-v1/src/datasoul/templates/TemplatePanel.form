@@ -124,19 +124,19 @@
                                   <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="49" max="32767" attributes="0"/>
+                              <EmptySpace pref="56" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="btnAddText" alignment="0" pref="107" max="32767" attributes="2"/>
-                          <Component id="btnAddImage" alignment="0" pref="107" max="32767" attributes="2"/>
-                          <Component id="btnSave" alignment="0" pref="107" max="32767" attributes="2"/>
-                          <Component id="btnTimerProgress" alignment="0" pref="107" max="32767" attributes="0"/>
-                          <Component id="btnDeleteItem" alignment="0" pref="107" max="32767" attributes="2"/>
-                          <Component id="btnMoveDown" alignment="0" pref="107" max="32767" attributes="2"/>
+                          <Component id="btnAddText" alignment="0" pref="114" max="32767" attributes="2"/>
+                          <Component id="btnAddImage" alignment="0" pref="114" max="32767" attributes="2"/>
+                          <Component id="btnSave" alignment="0" pref="114" max="32767" attributes="2"/>
+                          <Component id="btnTimerProgress" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnDeleteItem" alignment="0" pref="114" max="32767" attributes="2"/>
+                          <Component id="btnMoveDown" alignment="0" pref="114" max="32767" attributes="2"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
-                          <Component id="btnMoveUp" alignment="0" max="32767" attributes="2"/>
+                          <Component id="btnMoveUp" alignment="0" pref="114" max="32767" attributes="2"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -182,7 +182,7 @@
                     <Component class="javax.swing.JButton" name="btnAddText">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/text.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/fonts.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Text"/>
                         <Property name="toolTipText" type="java.lang.String" value="Add a text"/>
@@ -194,7 +194,7 @@
                     <Component class="javax.swing.JButton" name="btnDeleteItem">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/delete.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/editdelete.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                         <Property name="toolTipText" type="java.lang.String" value="Delete item"/>
@@ -215,7 +215,7 @@
                     <Component class="javax.swing.JButton" name="btnMoveUp">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/up.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/up.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="To Front"/>
                         <Property name="toolTipText" type="java.lang.String" value="Move the item to the upper layer"/>
@@ -227,7 +227,7 @@
                     <Component class="javax.swing.JButton" name="btnMoveDown">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/down.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/down.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="To Back"/>
                         <Property name="toolTipText" type="java.lang.String" value="Move the item to the lowest layer"/>
@@ -249,7 +249,7 @@
                     <Component class="javax.swing.JButton" name="btnAddImage">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/image.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/looknfeel_1.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Image"/>
                         <Property name="toolTipText" type="java.lang.String" value="Add an image ..."/>
@@ -265,6 +265,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnTimerProgress">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/datasoul/icons/kalarm.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Timer Bar"/>
                       </Properties>
                       <Events>
@@ -324,7 +327,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="26" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="188" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
@@ -363,7 +366,7 @@
                     <Component class="javax.swing.JButton" name="btnLoad">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/open.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/fileopen.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Load"/>
                         <Property name="toolTipText" type="java.lang.String" value="Load selected template"/>
@@ -375,7 +378,7 @@
                     <Component class="javax.swing.JButton" name="btnNew">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/new.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/filenew.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="New"/>
                         <Property name="toolTipText" type="java.lang.String" value="Create a new template"/>
@@ -387,7 +390,7 @@
                     <Component class="javax.swing.JButton" name="btnDeleteTemplate">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/delete.gif"/>
+                          <Image iconType="3" name="/datasoul/icons/edittrash.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Delete"/>
                         <Property name="toolTipText" type="java.lang.String" value="Delete selected template"/>
@@ -407,6 +410,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/datasoul/icons/images.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Templates"/>
                       </Properties>
                     </Component>
@@ -433,7 +439,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jToolBar3" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="442" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="280" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -469,6 +475,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
+                        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                          <Image iconType="3" name="/datasoul/icons/info.png"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Properties"/>
                       </Properties>
                     </Component>

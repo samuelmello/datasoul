@@ -98,6 +98,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1 = new javax.swing.JLabel();
         btnFile = new javax.swing.JButton();
 
+        actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png")));
         actOpen.setText("Open");
         actOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +108,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmFile.add(actOpen);
 
+        actSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
         actSave.setText("Save");
         actSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,6 +118,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmFile.add(actSave);
 
+        actSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png")));
         actSaveAs.setText("Save as");
         actSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +137,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmFile.add(actExport);
 
+        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png")));
         actAddSong.setText("Add Song");
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +147,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmAddItem.add(actAddSong);
 
+        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png")));
         actAddText.setText("Add Text");
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +157,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmAddItem.add(actAddText);
 
+        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png")));
         actImportItem.setText("Import Item");
         actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +170,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         setDoubleBuffered(false);
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
-        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/addWizard.gif")));
+        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png")));
         btnAddWizard.setText("Add Item");
         btnAddWizard.setToolTipText("Add wizard ...");
         btnAddWizard.setAlignmentY(0.0F);
@@ -178,10 +184,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(jSeparator1);
 
-        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/remove.gif")));
+        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
         btnRemove.setText("Delete");
         btnRemove.setToolTipText("Delete item");
         btnRemove.setAlignmentY(0.0F);
+        btnRemove.setFocusPainted(false);
         btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRemoveMouseClicked(evt);
@@ -190,7 +197,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(btnRemove);
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.gif")));
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png")));
         btnEdit.setToolTipText("Edit selected item ...");
         btnEdit.setAlignmentY(0.0F);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -201,7 +208,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(btnEdit);
 
-        btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.gif")));
+        btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png")));
         btnUp.setToolTipText("Change item order to upper position");
         btnUp.setAlignmentY(0.0F);
         btnUp.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,7 +219,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(btnUp);
 
-        btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.gif")));
+        btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png")));
         btnDown.setToolTipText("Change item order to lower position");
         btnDown.setAlignmentY(0.0F);
         btnDown.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -249,6 +256,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         scroolServiceList.setViewportView(tableServiceList);
 
         jToolBar1.setFloatable(false);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png")));
         jLabel1.setText("Service List");
         jToolBar1.add(jLabel1);
 
@@ -273,11 +281,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnFile))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(btnFile)
+                    .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .add(13, 13, 13)
+                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -421,7 +429,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        ppmAddItem.show(btnAddWizard, 0, btnAddWizard.getHeight());
+        ppmAddItem.show(this.btnAddWizard, 0, btnAddWizard.getHeight());
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed

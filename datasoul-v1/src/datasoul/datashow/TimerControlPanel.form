@@ -59,7 +59,7 @@
               <Component id="pnlTimerTotal" min="-2" max="-2" attributes="1"/>
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="btnApplyTimer" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="167" max="32767" attributes="0"/>
+              <EmptySpace pref="163" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,6 +152,9 @@
     </Container>
     <Component class="javax.swing.JToggleButton" name="btnTimerOff">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/player_stop.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Off"/>
       </Properties>
       <Events>
@@ -160,6 +163,9 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnTimerForward">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/player_fwd.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Forward"/>
       </Properties>
       <Events>
@@ -168,6 +174,9 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnTimerBackward">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/player_rew.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Backward"/>
       </Properties>
       <Events>
@@ -176,6 +185,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnApplyTimer">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/apply.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Apply"/>
       </Properties>
       <Events>

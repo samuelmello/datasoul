@@ -100,6 +100,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
 
         pnlTimerTotal.add(edtTimerTotalSec);
 
+        btnTimerOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_stop.png")));
         btnTimerOff.setText("Off");
         btnTimerOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +108,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnTimerForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_fwd.png")));
         btnTimerForward.setText("Forward");
         btnTimerForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +116,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnTimerBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_rew.png")));
         btnTimerBackward.setText("Backward");
         btnTimerBackward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +124,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnApplyTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
         btnApplyTimer.setText("Apply");
         btnApplyTimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,7 +174,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
                 .add(pnlTimerTotal, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(16, 16, 16)
                 .add(btnApplyTimer)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

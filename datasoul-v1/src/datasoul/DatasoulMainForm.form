@@ -52,6 +52,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Projector"/>
             <Property name="toolTipText" type="java.lang.String" value="Projector operation view"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDatashowMouseClicked"/>
@@ -60,10 +61,11 @@
         <Component class="javax.swing.JButton" name="btnSongs">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/songs.gif"/>
+              <Image iconType="3" name="/datasoul/icons/music1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Songs"/>
             <Property name="toolTipText" type="java.lang.String" value="Song manipulation view"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSongsMouseClicked"/>
@@ -72,10 +74,11 @@
         <Component class="javax.swing.JButton" name="btnTemplates">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/template.gif"/>
+              <Image iconType="3" name="/datasoul/icons/looknfeel.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Templates"/>
             <Property name="toolTipText" type="java.lang.String" value="template view"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[88, 44]"/>
             </Property>
@@ -90,10 +93,11 @@
         <Component class="javax.swing.JButton" name="btnConfig">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/config.gif"/>
+              <Image iconType="3" name="/datasoul/icons/package_settings.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Configuration"/>
             <Property name="toolTipText" type="java.lang.String" value="Configuration view"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[88, 44]"/>
             </Property>
@@ -112,6 +116,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Close"/>
             <Property name="toolTipText" type="java.lang.String" value="Close the program"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[88, 44]"/>
             </Property>

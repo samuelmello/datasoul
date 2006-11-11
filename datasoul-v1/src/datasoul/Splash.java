@@ -31,7 +31,8 @@ public class Splash extends javax.swing.JFrame {
     private void initComponents() {
         lblStatus = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Starting Datasoul");
         setMinimumSize(new java.awt.Dimension(400, 300));
         setResizable(false);
         setUndecorated(true);

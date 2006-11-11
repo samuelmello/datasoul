@@ -6,6 +6,9 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="actOpen">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/fileopen.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Open"/>
           </Properties>
           <Events>
@@ -14,6 +17,9 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="actSave">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/filesave.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Save"/>
           </Properties>
           <Events>
@@ -22,6 +28,9 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="actSaveAs">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/filesaveas.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Save as"/>
           </Properties>
           <Events>
@@ -42,6 +51,9 @@
       <SubComponents>
         <MenuItem class="javax.swing.JMenuItem" name="actAddSong">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/playsound.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Add Song"/>
           </Properties>
           <Events>
@@ -50,6 +62,9 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="actAddText">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/kwrite.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Add Text"/>
           </Properties>
           <Events>
@@ -58,6 +73,9 @@
         </MenuItem>
         <MenuItem class="javax.swing.JMenuItem" name="actImportItem">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/document.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Import Item"/>
           </Properties>
           <Events>
@@ -93,12 +111,12 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="1"/>
-                  <Component id="btnFile" alignment="0" min="-2" max="-2" attributes="1"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnFile" min="-2" max="-2" attributes="1"/>
+                  <Component id="jToolBar1" alignment="0" pref="25" max="32767" attributes="1"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="scroolServiceList" pref="224" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+              <Component id="scroolServiceList" pref="217" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="toolBar" min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -123,7 +141,7 @@
         <Component class="javax.swing.JButton" name="btnAddWizard">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/addWizard.gif"/>
+              <Image iconType="3" name="/datasoul/icons/window_new.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add Item"/>
             <Property name="toolTipText" type="java.lang.String" value="Add wizard ..."/>
@@ -138,11 +156,12 @@
         <Component class="javax.swing.JButton" name="btnRemove">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/remove.gif"/>
+              <Image iconType="3" name="/datasoul/icons/editdelete.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete"/>
             <Property name="toolTipText" type="java.lang.String" value="Delete item"/>
             <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRemoveMouseClicked"/>
@@ -151,7 +170,7 @@
         <Component class="javax.swing.JButton" name="btnEdit">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/edit.gif"/>
+              <Image iconType="3" name="/datasoul/icons/edit.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Edit selected item ..."/>
             <Property name="alignmentY" type="float" value="0.0"/>
@@ -163,7 +182,7 @@
         <Component class="javax.swing.JButton" name="btnUp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/up.gif"/>
+              <Image iconType="3" name="/datasoul/icons/up.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Change item order to upper position"/>
             <Property name="alignmentY" type="float" value="0.0"/>
@@ -175,7 +194,7 @@
         <Component class="javax.swing.JButton" name="btnDown">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/down.gif"/>
+              <Image iconType="3" name="/datasoul/icons/down.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Change item order to lower position"/>
             <Property name="alignmentY" type="float" value="0.0"/>
@@ -221,6 +240,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/klipper_dock.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Service List"/>
           </Properties>
         </Component>

@@ -67,6 +67,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
 
         jLabel14.setText("seconds");
 
+        btnShowAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png")));
         btnShowAlert.setText("Show Alert");
         btnShowAlert.setToolTipText("Show alert");
         btnShowAlert.addActionListener(new java.awt.event.ActionListener() {

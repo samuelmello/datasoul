@@ -179,6 +179,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datashow.gif")));
         btnDatashow.setText("Projector");
         btnDatashow.setToolTipText("Projector operation view");
+        btnDatashow.setFocusPainted(false);
         btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDatashowMouseClicked(evt);
@@ -187,9 +188,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnDatashow);
 
-        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songs.gif")));
+        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/music1.png")));
         btnSongs.setText("Songs");
         btnSongs.setToolTipText("Song manipulation view");
+        btnSongs.setFocusPainted(false);
         btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSongsMouseClicked(evt);
@@ -198,9 +200,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnSongs);
 
-        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/template.gif")));
+        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel.png")));
         btnTemplates.setText("Templates");
         btnTemplates.setToolTipText("template view");
+        btnTemplates.setFocusPainted(false);
         btnTemplates.setMaximumSize(new java.awt.Dimension(88, 44));
         btnTemplates.setMinimumSize(new java.awt.Dimension(88, 44));
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
@@ -211,9 +214,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnTemplates);
 
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/config.gif")));
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/package_settings.png")));
         btnConfig.setText("Configuration");
         btnConfig.setToolTipText("Configuration view");
+        btnConfig.setFocusPainted(false);
         btnConfig.setMaximumSize(new java.awt.Dimension(88, 44));
         btnConfig.setMinimumSize(new java.awt.Dimension(88, 44));
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -227,6 +231,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/close.gif")));
         btnClose.setText("Close");
         btnClose.setToolTipText("Close the program");
+        btnClose.setFocusPainted(false);
         btnClose.setMaximumSize(new java.awt.Dimension(88, 44));
         btnClose.setMinimumSize(new java.awt.Dimension(88, 44));
         btnClose.addActionListener(new java.awt.event.ActionListener() {

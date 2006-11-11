@@ -45,6 +45,8 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         
     }
     
+    private Color gridColor = new Color(221, 221, 221);
+    
     @Override
     public void paint(java.awt.Graphics g) {
         
@@ -52,6 +54,14 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         
         Graphics2D g2 =  (Graphics2D) g;
         
+        g2.setColor(gridColor);
+        for (int i=0; i<DisplayTemplate.TEMPLATE_WIDTH; i+=10){
+            g2.drawLine(i, 0, i, DisplayTemplate.TEMPLATE_HEIGHT);
+        }
+        for (int i=0; i<DisplayTemplate.TEMPLATE_HEIGHT; i+=10){
+            g2.drawLine(0, i, DisplayTemplate.TEMPLATE_WIDTH, i);
+        }
+
         if (template != null){
             synchronized(template){
                 template.paint(g2, 1);
@@ -85,7 +95,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(204, 255, 204));
+        setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         setMaximumSize(new java.awt.Dimension(640, 480));
         setMinimumSize(new java.awt.Dimension(640, 480));
