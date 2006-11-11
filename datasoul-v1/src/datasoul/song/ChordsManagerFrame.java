@@ -6,7 +6,10 @@
 
 package datasoul.song;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -37,8 +40,15 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         StyleContext sc = new StyleContext();
         Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
         chordShapeStyle = sc.addStyle("chordShapeStyle",null);        
+        
+        this.center();
     }
-    
+
+    public void center(){
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle frame = getBounds();
+        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
+    }
     
     public SongsPanel getObjectManager() {
         return objectManager;
@@ -90,10 +100,13 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         split1 = new javax.swing.JSplitPane();
-        scrollChorsList = new javax.swing.JScrollPane();
-        tableChordsList = new datasoul.util.DnDTable();
         scroolChordShapesPanel = new javax.swing.JScrollPane();
         panelChordShapes = new javax.swing.JEditorPane();
+        jPanel1 = new javax.swing.JPanel();
+        scrollChorsList = new javax.swing.JScrollPane();
+        tableChordsList = new datasoul.util.DnDTable();
+        fieldString = new javax.swing.JTextField();
+        labelString = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Chords Manager");
@@ -158,7 +171,11 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
 
         jToolBar1.add(btnClose);
 
-        split1.setDividerLocation(80);
+        split1.setDividerLocation(160);
+        scroolChordShapesPanel.setViewportView(panelChordShapes);
+
+        split1.setRightComponent(scroolChordShapesPanel);
+
         tableChordsList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -183,28 +200,78 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
 
         scrollChorsList.setViewportView(tableChordsList);
 
-        split1.setLeftComponent(scrollChorsList);
+        fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldStringKeyPressed(evt);
+            }
+        });
 
-        scroolChordShapesPanel.setViewportView(panelChordShapes);
+        labelString.setText("Search");
 
-        split1.setRightComponent(scroolChordShapesPanel);
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(scrollChorsList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(labelString, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(17, 17, 17)
+                        .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(labelString, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(fieldString, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(scrollChorsList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
+        );
+        split1.setLeftComponent(jPanel1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .add(split1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void fieldStringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldStringKeyPressed
+        SongListTable foundSongTable = new SongListTable();
+        
+        for(int i=0; i<tableChordsList.getRowCount();i++){
+            try {
+                    String searchStr;
+                    if(String.valueOf(evt.getKeyChar()).equals("\b")&&(fieldString.getText().length()>0)){
+                        searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
+                    }else{
+                        searchStr = fieldString.getText()+evt.getKeyChar();
+                    }
+                    
+                    if(tableChordsList.getValueAt(i,0).toString().startsWith(searchStr)){
+                        tableChordsList.getSelectionModel().setSelectionInterval(i,i);
+                        break;
+                    }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,"Error in searching.\nError: "+ex.getMessage(),"DataSoul Error",0);
+                ex.printStackTrace();
+            }
+        }
+ 
+    }//GEN-LAST:event_fieldStringKeyPressed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         dispose();
@@ -246,7 +313,10 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
+    private javax.swing.JTextField fieldString;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel labelString;
     private javax.swing.JEditorPane panelChordShapes;
     private javax.swing.JScrollPane scrollChorsList;
     private javax.swing.JScrollPane scroolChordShapesPanel;
