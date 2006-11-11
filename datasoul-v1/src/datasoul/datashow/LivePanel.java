@@ -105,7 +105,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         );
 
         jToolBar1.setFloatable(false);
-        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/tv.png")));
+        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector3_small.png")));
         labelLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
         jToolBar1.add(labelLive);
 

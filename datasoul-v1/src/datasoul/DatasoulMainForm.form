@@ -3,7 +3,7 @@
 <Form version="1.3" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="DataSoul - Alpha 60910"/>
+    <Property name="title" type="java.lang.String" value="DataSoul - Alpha 61111"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -48,7 +48,7 @@
         <Component class="javax.swing.JButton" name="btnDatashow">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/datashow.gif"/>
+              <Image iconType="3" name="/datasoul/icons/projector1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Projector"/>
             <Property name="toolTipText" type="java.lang.String" value="Projector operation view"/>
