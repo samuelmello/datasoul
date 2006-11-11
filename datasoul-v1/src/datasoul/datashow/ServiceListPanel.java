@@ -169,6 +169,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         setDoubleBuffered(false);
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png")));
         btnAddWizard.setText("Add Item");

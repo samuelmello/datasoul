@@ -131,6 +131,7 @@
             <EmptyBorder/>
           </Border>
         </Property>
+        <Property name="floatable" type="boolean" value="false"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[30, 25]"/>
         </Property>
