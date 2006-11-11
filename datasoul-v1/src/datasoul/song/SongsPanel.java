@@ -23,7 +23,6 @@ public class SongsPanel extends javax.swing.JPanel {
     public SongsPanel() {
         initComponents();
         
-        ObjectManager.getInstance().setChordsManagerPanel(chordsManagerPanel1);
         ObjectManager.getInstance().setServiceListPanel(serviceList);
         ObjectManager.getInstance().setSongViewerPanel(songViewer);
         ObjectManager.getInstance().setSongsSearchPanel(songsSearch);
@@ -37,58 +36,24 @@ public class SongsPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         split1 = new javax.swing.JSplitPane();
-        panelSongViewer = new javax.swing.JPanel();
-        tabSongViewer = new javax.swing.JTabbedPane();
         songViewer = new datasoul.song.SongViewerPanel();
         split2 = new javax.swing.JSplitPane();
-        panelList = new javax.swing.JPanel();
-        tabList = new javax.swing.JTabbedPane();
-        songsSearch = new datasoul.song.SongsSearchPanel();
-        chordsManagerPanel1 = new datasoul.song.ChordsManagerPanel();
         serviceList = new datasoul.datashow.ServiceListPanel();
+        songsSearch = new datasoul.song.SongsSearchPanel();
 
         split1.setBorder(null);
         split1.setDividerLocation(250);
-        tabSongViewer.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         songViewer.setMinimumSize(new java.awt.Dimension(10, 10));
-        tabSongViewer.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG_VIEWER"), songViewer);
-
-        org.jdesktop.layout.GroupLayout panelSongViewerLayout = new org.jdesktop.layout.GroupLayout(panelSongViewer);
-        panelSongViewer.setLayout(panelSongViewerLayout);
-        panelSongViewerLayout.setHorizontalGroup(
-            panelSongViewerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabSongViewer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
-        );
-        panelSongViewerLayout.setVerticalGroup(
-            panelSongViewerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabSongViewer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-        );
-        split1.setRightComponent(panelSongViewer);
+        split1.setRightComponent(songViewer);
 
         split2.setBorder(null);
         split2.setDividerLocation(350);
         split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split2.setMinimumSize(new java.awt.Dimension(10, 10));
         split2.setOneTouchExpandable(true);
-        panelList.setAlignmentX(0.0F);
-        panelList.setAlignmentY(0.0F);
-        tabList.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONGS_SEARCH"), songsSearch);
-
-        tabList.addTab("Chords Manager", chordsManagerPanel1);
-
-        org.jdesktop.layout.GroupLayout panelListLayout = new org.jdesktop.layout.GroupLayout(panelList);
-        panelList.setLayout(panelListLayout);
-        panelListLayout.setHorizontalGroup(
-            panelListLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-        );
-        panelListLayout.setVerticalGroup(
-            panelListLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-        );
-        split2.setLeftComponent(panelList);
-
         split2.setBottomComponent(serviceList);
+
+        split2.setLeftComponent(songsSearch);
 
         split1.setLeftComponent(split2);
 
@@ -108,16 +73,11 @@ public class SongsPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private datasoul.song.ChordsManagerPanel chordsManagerPanel1;
-    private javax.swing.JPanel panelList;
-    private javax.swing.JPanel panelSongViewer;
     private datasoul.datashow.ServiceListPanel serviceList;
     private datasoul.song.SongViewerPanel songViewer;
     private datasoul.song.SongsSearchPanel songsSearch;
     private javax.swing.JSplitPane split1;
     private javax.swing.JSplitPane split2;
-    private javax.swing.JTabbedPane tabList;
-    private javax.swing.JTabbedPane tabSongViewer;
     // End of variables declaration//GEN-END:variables
     
 }

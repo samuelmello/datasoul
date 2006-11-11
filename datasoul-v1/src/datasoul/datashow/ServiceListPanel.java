@@ -96,6 +96,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         tableServiceList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         btnFile = new javax.swing.JButton();
 
         actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png")));
@@ -167,7 +168,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmAddItem.add(actImportItem);
 
-        setDoubleBuffered(false);
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
@@ -175,6 +175,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnAddWizard.setText("Add Item");
         btnAddWizard.setToolTipText("Add wizard ...");
         btnAddWizard.setAlignmentY(0.0F);
+        btnAddWizard.setBorderPainted(false);
+        btnAddWizard.setFocusPainted(false);
+        btnAddWizard.setOpaque(false);
         btnAddWizard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -183,13 +186,16 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(btnAddWizard);
 
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         toolBar.add(jSeparator1);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
         btnRemove.setText("Delete");
         btnRemove.setToolTipText("Delete item");
         btnRemove.setAlignmentY(0.0F);
+        btnRemove.setBorderPainted(false);
         btnRemove.setFocusPainted(false);
+        btnRemove.setOpaque(false);
         btnRemove.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRemoveMouseClicked(evt);
@@ -201,6 +207,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png")));
         btnEdit.setToolTipText("Edit selected item ...");
         btnEdit.setAlignmentY(0.0F);
+        btnEdit.setBorderPainted(false);
+        btnEdit.setFocusPainted(false);
+        btnEdit.setOpaque(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -212,6 +221,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png")));
         btnUp.setToolTipText("Change item order to upper position");
         btnUp.setAlignmentY(0.0F);
+        btnUp.setBorderPainted(false);
+        btnUp.setFocusPainted(false);
+        btnUp.setOpaque(false);
         btnUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnUpMouseClicked(evt);
@@ -223,6 +235,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png")));
         btnDown.setToolTipText("Change item order to lower position");
         btnDown.setAlignmentY(0.0F);
+        btnDown.setBorderPainted(false);
+        btnDown.setFocusPainted(false);
+        btnDown.setOpaque(false);
         btnDown.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDownMouseClicked(evt);
@@ -261,30 +276,32 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1.setText("Service List");
         jToolBar1.add(jLabel1);
 
+        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jToolBar1.add(jSeparator2);
+
         btnFile.setText("File");
+        btnFile.setBorderPainted(false);
+        btnFile.setOpaque(false);
         btnFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFileActionPerformed(evt);
             }
         });
 
+        jToolBar1.add(btnFile);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnFile))
             .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(btnFile)
-                    .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(13, 13, 13)
                 .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -512,6 +529,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu ppmAddItem;
     private javax.swing.JPopupMenu ppmFile;

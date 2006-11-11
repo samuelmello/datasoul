@@ -71,7 +71,6 @@ public class DatashowPanel extends javax.swing.JPanel {
         cbPreviewSize = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         preview = new datasoul.datashow.PreviewPanel();
-        jPanel2 = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         serviceList = new datasoul.datashow.ServiceListPanel();
         auxiliar = new datasoul.datashow.AuxiliarPanel();
@@ -162,23 +161,14 @@ public class DatashowPanel extends javax.swing.JPanel {
 
         jSplitPane2.setRightComponent(split3);
 
+        jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jSplitPane1.setLeftComponent(serviceList);
 
         jSplitPane1.setRightComponent(auxiliar);
 
-        org.jdesktop.layout.GroupLayout jPanel2Layout = new org.jdesktop.layout.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-        );
-        jSplitPane2.setLeftComponent(jPanel2);
+        jSplitPane2.setLeftComponent(jSplitPane1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -256,7 +246,6 @@ public class DatashowPanel extends javax.swing.JPanel {
     private datasoul.datashow.AuxiliarPanel auxiliar;
     private javax.swing.JComboBox cbPreviewSize;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private datasoul.datashow.LivePanel live;

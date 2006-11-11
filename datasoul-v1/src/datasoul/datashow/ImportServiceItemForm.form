@@ -19,9 +19,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="scroolServiceList" alignment="1" pref="294" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="btnOpen" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -29,7 +30,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnClose" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="scroolServiceList" alignment="0" pref="294" max="32767" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -39,12 +40,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="scroolServiceList" pref="281" max="32767" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="scroolServiceList" min="-2" pref="261" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnOpen" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnImport" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnClose" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnOpen" alignment="0" max="32767" attributes="1"/>
+                  <Component id="btnImport" alignment="0" max="32767" attributes="1"/>
+                  <Component id="btnClose" alignment="0" max="32767" attributes="1"/>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
@@ -76,7 +79,7 @@
     <Component class="javax.swing.JButton" name="btnImport">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/addToList.gif"/>
+          <Image iconType="3" name="/datasoul/icons/additem.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Import"/>
         <Property name="toolTipText" type="java.lang.String" value="Import selected item to actual service list"/>
@@ -88,7 +91,7 @@
     <Component class="javax.swing.JButton" name="btnOpen">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/open.gif"/>
+          <Image iconType="3" name="/datasoul/icons/fileopen.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Open"/>
         <Property name="toolTipText" type="java.lang.String" value="Open service list ..."/>
@@ -109,7 +112,7 @@
     <Component class="javax.swing.JButton" name="btnClose">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/delete.gif"/>
+          <Image iconType="3" name="/datasoul/icons/fileclose.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Close"/>
         <Property name="toolTipText" type="java.lang.String" value="Close window"/>
@@ -117,6 +120,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Select another service list to import an item"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

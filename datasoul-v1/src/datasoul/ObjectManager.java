@@ -14,7 +14,6 @@ import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.ServiceListPanel;
 import datasoul.song.AddSongForm;
-import datasoul.song.ChordsManagerPanel;
 import datasoul.song.SongViewerPanel;
 import datasoul.song.SongsSearchPanel;
 import java.awt.Cursor;
@@ -33,7 +32,6 @@ public class ObjectManager {
 
     private static ObjectManager instance;
     
-    private ChordsManagerPanel chordsManagerPanel1;
     private ServiceListPanel serviceListPanel;
     private SongViewerPanel songViewerPanel;
     private SongsSearchPanel songsSearchPanel;
@@ -62,9 +60,6 @@ public class ObjectManager {
     
     
     //SONGS PANEL OBJECTS
-    public ChordsManagerPanel getChordsManagerPanel(){
-        return chordsManagerPanel1;
-    }
     public ServiceListPanel getPraiseListPanel(){
         return serviceListPanel;
     }
@@ -73,9 +68,6 @@ public class ObjectManager {
     }
     public SongsSearchPanel getSongsSearchPanel(){
         return songsSearchPanel;
-    }
-    public void setChordsManagerPanel(ChordsManagerPanel chordsManagerPanel){
-        this.chordsManagerPanel1 = chordsManagerPanel;
     }
     public void setPraiseListPanel(ServiceListPanel serviceListPanel){
         this.serviceListPanel = serviceListPanel;

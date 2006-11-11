@@ -90,7 +90,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             .add(0, 476, Short.MAX_VALUE)
         );
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
         btnSave.setText("Save");
         btnSave.setToolTipText("Save template");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -267,6 +267,9 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png")));
         btnLoad.setText("Load");
         btnLoad.setToolTipText("Load selected template");
+        btnLoad.setBorderPainted(false);
+        btnLoad.setFocusPainted(false);
+        btnLoad.setOpaque(false);
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -278,6 +281,9 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png")));
         btnNew.setText("New");
         btnNew.setToolTipText("Create a new template");
+        btnNew.setBorderPainted(false);
+        btnNew.setFocusPainted(false);
+        btnNew.setOpaque(false);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -289,6 +295,9 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edittrash.png")));
         btnDeleteTemplate.setText("Delete");
         btnDeleteTemplate.setToolTipText("Delete selected template");
+        btnDeleteTemplate.setBorderPainted(false);
+        btnDeleteTemplate.setFocusPainted(false);
+        btnDeleteTemplate.setOpaque(false);
         btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteTemplateActionPerformed(evt);
@@ -315,9 +324,9 @@ public class TemplatePanel extends javax.swing.JPanel {
             .add(panelTemplatesLayout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
         jSplitPane2.setTopComponent(panelTemplates);
 

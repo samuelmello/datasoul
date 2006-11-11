@@ -221,7 +221,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         keyActual="";
         
         this.song = song;
-        
+        lblSongName.setText("   "+song.getTitle());
         showSong();
     }
     
@@ -487,12 +487,16 @@ public class SongViewerPanel extends javax.swing.JPanel {
         btnPrint = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
         btnFormat = new javax.swing.JButton();
+        btnChords = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
-        labelKey = new javax.swing.JLabel();
-        comboKey = new javax.swing.JComboBox();
-        jSeparator1 = new javax.swing.JSeparator();
         labelVersion = new javax.swing.JLabel();
         comboVersion = new javax.swing.JComboBox();
+        jSeparator1 = new javax.swing.JSeparator();
+        labelKey = new javax.swing.JLabel();
+        comboKey = new javax.swing.JComboBox();
+        jToolBar2 = new javax.swing.JToolBar();
+        jLabel1 = new javax.swing.JLabel();
+        lblSongName = new javax.swing.JLabel();
 
         split1.setDividerLocation(375);
         editorSong.setEditable(false);
@@ -506,7 +510,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
         );
         split1.setLeftComponent(panelSong);
 
@@ -521,14 +525,20 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
         );
         split1.setRightComponent(panelSongChords);
 
         jToolBar1.setFloatable(false);
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print.gif")));
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print_printer.png")));
         btnPrint.setText("Print");
         btnPrint.setToolTipText("Print song ...");
+        btnPrint.setBorderPainted(false);
+        btnPrint.setFocusPainted(false);
+        btnPrint.setMaximumSize(new java.awt.Dimension(61, 28));
+        btnPrint.setMinimumSize(new java.awt.Dimension(61, 28));
+        btnPrint.setOpaque(false);
+        btnPrint.setPreferredSize(new java.awt.Dimension(61, 28));
         btnPrint.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnPrintMouseClicked(evt);
@@ -537,9 +547,15 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnPrint);
 
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/generatePraiseDoc.gif")));
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png")));
         btnExport.setText("Export");
         btnExport.setToolTipText("Export song ...");
+        btnExport.setBorderPainted(false);
+        btnExport.setFocusPainted(false);
+        btnExport.setMaximumSize(new java.awt.Dimension(72, 28));
+        btnExport.setMinimumSize(new java.awt.Dimension(72, 28));
+        btnExport.setOpaque(false);
+        btnExport.setPreferredSize(new java.awt.Dimension(72, 28));
         btnExport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnExportMouseClicked(evt);
@@ -548,11 +564,15 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnExport);
 
-        btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/format.gif")));
+        btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png")));
         btnFormat.setText("Format");
         btnFormat.setToolTipText("Format song view ...");
-        btnFormat.setMaximumSize(new java.awt.Dimension(80, 32));
+        btnFormat.setBorderPainted(false);
+        btnFormat.setFocusPainted(false);
+        btnFormat.setMaximumSize(new java.awt.Dimension(76, 28));
         btnFormat.setMinimumSize(new java.awt.Dimension(72, 32));
+        btnFormat.setOpaque(false);
+        btnFormat.setPreferredSize(new java.awt.Dimension(76, 28));
         btnFormat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFormatMouseClicked(evt);
@@ -561,9 +581,42 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar1.add(btnFormat);
 
+        btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/chordsmanager.png")));
+        btnChords.setText("Chords");
+        btnChords.setBorderPainted(false);
+        btnChords.setFocusPainted(false);
+        btnChords.setMaximumSize(new java.awt.Dimension(180, 28));
+        btnChords.setMinimumSize(new java.awt.Dimension(57, 28));
+        btnChords.setOpaque(false);
+        btnChords.setPreferredSize(new java.awt.Dimension(80, 28));
+        btnChords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChordsActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(btnChords);
+
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.add(jSeparator2);
 
+        labelVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/versions.png")));
+        labelVersion.setText("Version ");
+        jToolBar1.add(labelVersion);
+
+        comboVersion.setToolTipText("Select the version to be view");
+        comboVersion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboVersionActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(comboVersion);
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar1.add(jSeparator1);
+
+        labelKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/changekey.png")));
         labelKey.setText("Key ");
         jToolBar1.add(labelKey);
 
@@ -579,37 +632,37 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar1.add(comboKey);
 
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jToolBar1.add(jSeparator1);
+        jToolBar2.setFloatable(false);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png")));
+        jLabel1.setText("Song:");
+        jToolBar2.add(jLabel1);
 
-        labelVersion.setText("Version ");
-        jToolBar1.add(labelVersion);
-
-        comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboVersion.setToolTipText("Select the version to be view");
-        comboVersion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboVersionActionPerformed(evt);
-            }
-        });
-
-        jToolBar1.add(comboVersion);
+        lblSongName.setText("   ");
+        jToolBar2.add(lblSongName);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jToolBar2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
             .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
             .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnChordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChordsActionPerformed
+        ChordsManagerFrame cmf = new ChordsManagerFrame();
+        cmf.setVisible(true);
+    }//GEN-LAST:event_btnChordsActionPerformed
 
     private void comboVersionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboVersionActionPerformed
         this.refresh();
@@ -777,6 +830,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnChords;
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnFormat;
     private javax.swing.JButton btnPrint;
@@ -784,11 +838,14 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox comboVersion;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labelKey;
     private javax.swing.JLabel labelVersion;
+    private javax.swing.JLabel lblSongName;
     private javax.swing.JPanel panelSong;
     private javax.swing.JPanel panelSongChords;
     private javax.swing.JScrollPane scroolSong;

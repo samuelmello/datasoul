@@ -61,6 +61,8 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         for (int i=0; i<DisplayTemplate.TEMPLATE_HEIGHT; i+=10){
             g2.drawLine(0, i, DisplayTemplate.TEMPLATE_WIDTH, i);
         }
+        g2.setColor(Color.BLACK);
+        g2.drawRect(0,0,DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT );
 
         if (template != null){
             synchronized(template){
