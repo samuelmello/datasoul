@@ -45,6 +45,8 @@ import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -84,7 +86,8 @@ public class SongViewerPanel extends javax.swing.JPanel {
     public static String VIEW_LYRICS = "Lyrics";
     public static String VIEW_CHORDS_COMPLETE = "Chords Complete";
     public static String VIEW_CHORDS_SIMPLIFIED = "Chords Simplified";
-    
+
+    public static String activeView = VIEW_LYRICS;
     
     private void loadSongTemplate(){
         songTemplate = new SongTemplate();
@@ -163,11 +166,6 @@ public class SongViewerPanel extends javax.swing.JPanel {
         specialWords.add("(8x)");        
         specialWords.add("(9x)");        
         
-        comboVersion.removeAllItems();
-        comboVersion.addItem(this.VIEW_LYRICS);
-        comboVersion.addItem(this.VIEW_CHORDS_COMPLETE);
-        comboVersion.addItem(this.VIEW_CHORDS_SIMPLIFIED);
-        comboVersion.setSelectedIndex(0);
         
         chordsName = new ArrayList<String>();
         
@@ -180,6 +178,8 @@ public class SongViewerPanel extends javax.swing.JPanel {
         chordsStyle = sc.addStyle("chordsStyle",defaultStyle);
         chordShapeStyle = sc.addStyle("chordShapeStyle",null);
 
+        this.btnViewLyricsActionPerformed(null);
+        
         setStyles();
     }
     
@@ -213,8 +213,13 @@ public class SongViewerPanel extends javax.swing.JPanel {
     }
     
     public void setView(String item){
-        comboVersion.setSelectedItem(item);
+        activeView = item;
     }
+
+    public String getView(){
+        return activeView;
+    }
+    
     
     public void viewSong(Song song){
         keyOrig="";
@@ -252,9 +257,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         
         javax.swing.text.Document doc = jep.getDocument();
 
-        if(comboVersion.getSelectedItem().equals(this.VIEW_CHORDS_COMPLETE)){
+        if(this.getView().equals(this.VIEW_CHORDS_COMPLETE)){
             strSong = song.getChordsComplete();
-        }else if(comboVersion.getSelectedItem().equals(this.VIEW_CHORDS_SIMPLIFIED)){
+        }else if(this.getView().equals(this.VIEW_CHORDS_SIMPLIFIED)){
             strSong = song.getChordsSimplified();
         }else{
             strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
@@ -490,7 +495,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         btnChords = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         labelVersion = new javax.swing.JLabel();
-        comboVersion = new javax.swing.JComboBox();
+        btnViewLyrics = new javax.swing.JButton();
+        btnViewChordsComplete = new javax.swing.JButton();
+        btnViewChordsSimpified = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         labelKey = new javax.swing.JLabel();
         comboKey = new javax.swing.JComboBox();
@@ -510,7 +517,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
         split1.setLeftComponent(panelSong);
 
@@ -525,7 +532,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
         );
         split1.setRightComponent(panelSongChords);
 
@@ -600,18 +607,37 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.add(jSeparator2);
 
-        labelVersion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/versions.png")));
         labelVersion.setText("Version ");
         jToolBar1.add(labelVersion);
 
-        comboVersion.setToolTipText("Select the version to be view");
-        comboVersion.addActionListener(new java.awt.event.ActionListener() {
+        btnViewLyrics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songView1.gif")));
+        btnViewLyrics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboVersionActionPerformed(evt);
+                btnViewLyricsActionPerformed(evt);
             }
         });
 
-        jToolBar1.add(comboVersion);
+        jToolBar1.add(btnViewLyrics);
+
+        btnViewChordsComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songView2.gif")));
+        btnViewChordsComplete.setDefaultCapable(false);
+        btnViewChordsComplete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewChordsCompleteActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(btnViewChordsComplete);
+
+        btnViewChordsSimpified.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songView3.gif")));
+        btnViewChordsSimpified.setDefaultCapable(false);
+        btnViewChordsSimpified.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewChordsSimpifiedActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(btnViewChordsSimpified);
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.add(jSeparator1);
@@ -655,18 +681,41 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnViewChordsSimpifiedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewChordsSimpifiedActionPerformed
+        this.btnViewLyrics.setEnabled(true);
+        this.btnViewChordsComplete.setEnabled(true);
+        this.btnViewChordsSimpified.setEnabled(false);
+        
+        this.setView(this.VIEW_CHORDS_SIMPLIFIED);
+        this.refresh();
+    }//GEN-LAST:event_btnViewChordsSimpifiedActionPerformed
+
+    private void btnViewChordsCompleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewChordsCompleteActionPerformed
+        this.btnViewLyrics.setEnabled(true);
+        this.btnViewChordsComplete.setEnabled(false);
+        this.btnViewChordsSimpified.setEnabled(true);
+        
+        this.setView(this.VIEW_CHORDS_COMPLETE);
+        this.refresh();
+    }//GEN-LAST:event_btnViewChordsCompleteActionPerformed
+
+    private void btnViewLyricsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewLyricsActionPerformed
+        this.btnViewLyrics.setEnabled(false);
+        this.btnViewChordsComplete.setEnabled(true);
+        this.btnViewChordsSimpified.setEnabled(true);
+        
+        this.setView(this.VIEW_LYRICS);
+        this.refresh();
+    }//GEN-LAST:event_btnViewLyricsActionPerformed
 
     private void btnChordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChordsActionPerformed
         ChordsManagerFrame cmf = new ChordsManagerFrame();
         cmf.setVisible(true);
     }//GEN-LAST:event_btnChordsActionPerformed
-
-    private void comboVersionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboVersionActionPerformed
-        this.refresh();
-    }//GEN-LAST:event_comboVersionActionPerformed
 
     private void comboKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboKeyActionPerformed
         if(keyOrig.equals(""))
@@ -834,8 +883,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnExport;
     private javax.swing.JButton btnFormat;
     private javax.swing.JButton btnPrint;
+    private javax.swing.JButton btnViewChordsComplete;
+    private javax.swing.JButton btnViewChordsSimpified;
+    private javax.swing.JButton btnViewLyrics;
     private javax.swing.JComboBox comboKey;
-    private javax.swing.JComboBox comboVersion;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
     private javax.swing.JLabel jLabel1;
