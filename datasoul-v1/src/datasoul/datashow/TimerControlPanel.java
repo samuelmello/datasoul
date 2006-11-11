@@ -247,6 +247,8 @@ public class TimerControlPanel extends javax.swing.JPanel {
         if (btnTimerBackward.isSelected() ){
             btnTimerForward.setSelected(false);
             btnTimerOff.setSelected(false);
+        }else{
+            btnTimerBackward.setSelected(true);
         }
         
         pnlTimerStart.setVisible(true);
@@ -257,6 +259,8 @@ public class TimerControlPanel extends javax.swing.JPanel {
         if (btnTimerForward.isSelected() ){
             btnTimerBackward.setSelected(false);
             btnTimerOff.setSelected(false);
+        }else{
+            btnTimerForward.setSelected(true);
         }
         
         pnlTimerStart.setVisible(true);
@@ -267,6 +271,8 @@ public class TimerControlPanel extends javax.swing.JPanel {
         if (btnTimerOff.isSelected() ){
             btnTimerBackward.setSelected(false);
             btnTimerForward.setSelected(false);
+        }else{
+            btnTimerOff.setSelected(true);
         }
         
         pnlTimerStart.setVisible(false);
