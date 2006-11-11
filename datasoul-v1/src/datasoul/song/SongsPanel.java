@@ -45,7 +45,6 @@ public class SongsPanel extends javax.swing.JPanel {
         tabList = new javax.swing.JTabbedPane();
         songsSearch = new datasoul.song.SongsSearchPanel();
         chordsManagerPanel1 = new datasoul.song.ChordsManagerPanel();
-        tabPraise = new javax.swing.JTabbedPane();
         serviceList = new datasoul.datashow.ServiceListPanel();
 
         split1.setBorder(null);
@@ -58,7 +57,7 @@ public class SongsPanel extends javax.swing.JPanel {
         panelSongViewer.setLayout(panelSongViewerLayout);
         panelSongViewerLayout.setHorizontalGroup(
             panelSongViewerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabSongViewer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+            .add(tabSongViewer, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE)
         );
         panelSongViewerLayout.setVerticalGroup(
             panelSongViewerLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -85,13 +84,11 @@ public class SongsPanel extends javax.swing.JPanel {
         );
         panelListLayout.setVerticalGroup(
             panelListLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(tabList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .add(tabList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
         );
         split2.setLeftComponent(panelList);
 
-        tabPraise.addTab("Service List", serviceList);
-
-        split2.setRightComponent(tabPraise);
+        split2.setBottomComponent(serviceList);
 
         split1.setLeftComponent(split2);
 
@@ -99,9 +96,7 @@ public class SongsPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 883, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -122,7 +117,6 @@ public class SongsPanel extends javax.swing.JPanel {
     private javax.swing.JSplitPane split1;
     private javax.swing.JSplitPane split2;
     private javax.swing.JTabbedPane tabList;
-    private javax.swing.JTabbedPane tabPraise;
     private javax.swing.JTabbedPane tabSongViewer;
     // End of variables declaration//GEN-END:variables
     
