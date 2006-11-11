@@ -7,6 +7,9 @@
 package datasoul.song;
 
 import datasoul.templates.TextTemplateItem;
+import java.awt.Dimension;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 
 /**
  *
@@ -29,7 +32,13 @@ public class SongFormatFrame extends javax.swing.JFrame {
         
         tableProperties.setDefaultEditor(Object.class, songTemplate.getTableCellEditor() );
         tableProperties.setModel(this.songTemplate);
-
+        this.center();
+    }
+    
+    public void center(){
+        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+        Rectangle frame = getBounds();
+        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
     /** This method is called from within the constructor to
