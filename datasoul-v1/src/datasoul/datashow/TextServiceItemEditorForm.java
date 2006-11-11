@@ -70,18 +70,15 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         labelTitle1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textText = new javax.swing.JTextArea();
-        toolBar = new javax.swing.JToolBar();
-        btnApply = new javax.swing.JButton();
-        btnClose1 = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
-        textLine = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btnBreak = new javax.swing.JButton();
+        textLine = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        btnSplit = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Text");
         setAlwaysOnTop(true);
         fieldTitle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -103,127 +100,102 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(textText);
 
-        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
-        btnApply.setText("Save");
-        btnApply.setToolTipText("Save text changes");
-        btnApply.setMaximumSize(new java.awt.Dimension(60, 32));
-        btnApply.setMinimumSize(new java.awt.Dimension(60, 32));
-        btnApply.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApplyActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Split text in slides with");
 
-        toolBar.add(btnApply);
-
-        btnClose1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
-        btnClose1.setText("Close");
-        btnClose1.setToolTipText("Close window");
-        btnClose1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnClose1MouseClicked(evt);
-            }
-        });
-
-        toolBar.add(btnClose1);
-
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setMaximumSize(new java.awt.Dimension(100, 100));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
-        toolBar.add(jSeparator1);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.setMaximumSize(new java.awt.Dimension(150, 250));
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(250, 250));
+        textLine.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textLine.setText("2");
-
-        jLabel1.setText("Break slide in");
-
-        btnBreak.setText("Break");
-        btnBreak.setToolTipText("Break slides in each X lines");
-        btnBreak.setContentAreaFilled(false);
-        btnBreak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBreakActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("lines");
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jLabel1)
-                .add(4, 4, 4)
-                .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(4, 4, 4)
-                .add(jLabel2)
-                .add(3, 3, 3)
-                .add(btnBreak)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(3, 3, 3)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2)
-                    .add(btnBreak))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        toolBar.add(jPanel1);
+        btnSplit.setText("Split");
+        btnSplit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSplitActionPerformed(evt);
+            }
+        });
 
-        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator2.setMinimumSize(new java.awt.Dimension(100, 100));
-        toolBar.add(jSeparator2);
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(labelTitle)
-                .addContainerGap(666, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
-                .addContainerGap())
-            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(labelTitle1)
-                .addContainerGap(667, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 682, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(jLabel1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnSplit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 67, Short.MAX_VALUE)
+                        .add(btnSave)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnClose))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, labelTitle)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, labelTitle1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
                 .add(labelTitle)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(fieldTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(labelTitle1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                .add(17, 17, 17)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel2)
+                    .add(jLabel1)
+                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnSplit)
+                    .add(btnClose)
+                    .add(btnSave))
                 .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBreakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakActionPerformed
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        actualizeValues();
+        
+        if(this.textServiceItem.getTitle().equals("")){
+            JOptionPane.showMessageDialog(this,"You must field the Title");
+            return;
+        }
+
+        if(isNewItem){
+            ServiceListTable.getActiveInstance().addItem(this.textServiceItem);
+            isNewItem = false;
+        }
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSplitActionPerformed
         int lines = 0;
         String str = this.textLine.getText();
         try{
@@ -268,30 +240,12 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         sb.append(inStr.substring(inStr.length()-2,inStr.length()));
         this.textText.setText(sb.toString());
         highlightlyric(this.textText);        
-    }//GEN-LAST:event_btnBreakActionPerformed
-
-    private void btnClose1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnClose1MouseClicked
-        this.dispose();
-    }//GEN-LAST:event_btnClose1MouseClicked
+    }//GEN-LAST:event_btnSplitActionPerformed
 
     private void textTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTextKeyPressed
         if(evt.isConsumed()||evt.getKeyCode()==10)
             highlightlyric(this.textText);
     }//GEN-LAST:event_textTextKeyPressed
-
-    private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
-        actualizeValues();
-        
-        if(this.textServiceItem.getTitle().equals("")){
-            JOptionPane.showMessageDialog(this,"You must field the Title");
-            return;
-        }
-
-        if(isNewItem){
-            ServiceListTable.getActiveInstance().addItem(this.textServiceItem);
-            isNewItem = false;
-        }
-    }//GEN-LAST:event_btnApplyActionPerformed
 
     private void fieldTitleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTitleKeyTyped
         if(evt.getKeyCode()==16)
@@ -305,21 +259,17 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApply;
-    private javax.swing.JButton btnBreak;
-    private javax.swing.JButton btnClose1;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSplit;
     private javax.swing.JTextField fieldTitle;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;
     private javax.swing.JTextField textLine;
     private javax.swing.JTextArea textText;
-    private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
 
     public void highlightlyric(JTextComponent textComp){

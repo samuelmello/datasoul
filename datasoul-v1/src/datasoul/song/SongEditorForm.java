@@ -173,16 +173,12 @@ public class SongEditorForm extends javax.swing.JFrame {
         textChordsCompleted = new javax.swing.JTextPane();
         scroolChordsSimplified = new javax.swing.JScrollPane();
         textChordsSimplified = new javax.swing.JTextPane();
-        toolBar = new javax.swing.JToolBar();
-        btnSave = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanel1 = new javax.swing.JPanel();
-        textLine = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        btnBreak = new javax.swing.JButton();
+        textLine = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        btnSplit = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         fieldName.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -236,113 +232,68 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Simplified"), scroolChordsSimplified);
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/save.gif")));
-        btnSave.setText("Save");
-        btnSave.setToolTipText("Save song");
-        btnSave.setMaximumSize(new java.awt.Dimension(60, 32));
-        btnSave.setMinimumSize(new java.awt.Dimension(60, 32));
-        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSaveMouseClicked(evt);
-            }
-        });
+        jLabel1.setText("Split lyrics in slides with");
 
-        toolBar.add(btnSave);
-
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/delete.gif")));
-        btnClose.setText("Close");
-        btnClose.setToolTipText("Close song");
-        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnCloseMouseClicked(evt);
-            }
-        });
-
-        toolBar.add(btnClose);
-
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator1.setMaximumSize(new java.awt.Dimension(100, 100));
-        jSeparator1.setPreferredSize(new java.awt.Dimension(10, 10));
-        toolBar.add(jSeparator1);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jPanel1.setMaximumSize(new java.awt.Dimension(100, 250));
-        jPanel1.setOpaque(false);
-        jPanel1.setPreferredSize(new java.awt.Dimension(250, 250));
+        textLine.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textLine.setText("2");
-
-        jLabel1.setText("Break slide in");
-
-        btnBreak.setText("Break");
-        btnBreak.setToolTipText("Break slides in each X lines");
-        btnBreak.setContentAreaFilled(false);
-        btnBreak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBreakActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("lines");
 
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(jLabel1)
-                .add(1, 1, 1)
-                .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(3, 3, 3)
-                .add(jLabel2)
-                .add(3, 3, 3)
-                .add(btnBreak, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                .add(31, 31, 31))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(3, 3, 3)
-                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2)
-                    .add(btnBreak))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        toolBar.add(jPanel1);
+        btnSplit.setText("Split");
+        btnSplit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSplitActionPerformed(evt);
+            }
+        });
 
-        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        toolBar.add(jSeparator2);
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
+
+        btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(labelName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
+                        .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnSplit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 244, Short.MAX_VALUE)
+                        .add(btnSave)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnClose))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(labelName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 38, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(17, 17, 17)
+                        .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(labelAuthor)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)))
-                .addContainerGap())
-            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 712, Short.MAX_VALUE)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 688, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(labelName)
                     .add(fieldName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -350,14 +301,47 @@ public class SongEditorForm extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(labelAuthor)
                     .add(fieldAuthor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(16, 16, 16)
-                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .add(14, 14, 14)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel1)
+                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2)
+                    .add(btnSplit)
+                    .add(btnClose)
+                    .add(btnSave))
                 .addContainerGap())
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBreakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBreakActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        if(this.fieldName.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please fill the field \"Song Name\"");
+            return;
+        }
+
+        String filename = this.fieldName.getText();
+        if(!filename.contains(".song"))
+            filename = filename + ".song";
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
+                "songs"+ System.getProperty("file.separator")+filename;
+        
+        if(!path.equals(song.getFilePath())){
+            File file = new File(song.getFilePath());
+            file.delete();
+        }
+        song.setFilePath(path);
+        
+        saveFile();            
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSplitActionPerformed
         int lines = 0;
         String str = this.textLine.getText();
         try{
@@ -403,7 +387,7 @@ public class SongEditorForm extends javax.swing.JFrame {
          
         this.textLyrics.setText(sb.toString());
         highlightlyric(this.textLyrics);        
-    }//GEN-LAST:event_btnBreakActionPerformed
+    }//GEN-LAST:event_btnSplitActionPerformed
 
     private void textChordsSimplifiedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textChordsSimplifiedKeyPressed
         highlightchord(this.textChordsSimplified);
@@ -427,33 +411,6 @@ public class SongEditorForm extends javax.swing.JFrame {
         if(disallowed.contains(String.valueOf(evt.getKeyChar())))
             evt.consume();
     }//GEN-LAST:event_fieldNameKeyTyped
-
-    private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
-        this.dispose();
-    }//GEN-LAST:event_btnCloseMouseClicked
-
-    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        
-        if(this.fieldName.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please fill the field \"Song Name\"");
-            return;
-        }
-
-        String filename = this.fieldName.getText();
-        if(!filename.contains(".song"))
-            filename = filename + ".song";
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
-                "songs"+ System.getProperty("file.separator")+filename;
-        
-        if(!path.equals(song.getFilePath())){
-            File file = new File(song.getFilePath());
-            file.delete();
-        }
-        song.setFilePath(path);
-        
-        saveFile();            
-        
-    }//GEN-LAST:event_btnSaveMouseClicked
 
   private void saveFile(){
         actualizeValues();
@@ -496,16 +453,13 @@ public class SongEditorForm extends javax.swing.JFrame {
   */  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBreak;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSplit;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel labelAuthor;
     private javax.swing.JLabel labelName;
     private javax.swing.JScrollPane scroolChordsComplete;
@@ -516,7 +470,6 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JTextPane textChordsSimplified;
     private javax.swing.JTextField textLine;
     private javax.swing.JTextPane textLyrics;
-    private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
     
 
