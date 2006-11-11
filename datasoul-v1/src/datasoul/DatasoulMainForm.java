@@ -6,8 +6,10 @@
 
 package datasoul;
 
+import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.ConfigPanel;
+import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.DatashowPanel;
 import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;
@@ -299,12 +301,22 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         //start splashscreen
         //SplashScreen splashScreen = new SplashScreen("/datasoul/icons/splashScreen.gif");
         //splashScreen.splashShow();
+        final Splash splash = new Splash();
+        splash.setVisible(true);
 
+        splash.setStatusText("Loading configuration...");
         ConfigObj.getInstance();
+        BackgroundConfig.getInstance();
+        DisplayControlConfig.getInstance();
+
+        splash.setStatusText("Loading songs...");
         AllSongsListTable.getInstance();
+        splash.setStatusText("Loading chords database...");
         ChordsDB.getInstance();
+        splash.setStatusText("Starting content manager...");
         ContentManager.getInstance();
         TimerManager.getInstance();
+        splash.setStatusText("Creating user interface...");
 
         //stop splashscreen
         //splashScreen.splashHide();        
@@ -314,6 +326,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DatasoulMainForm().setVisible(true);
+                splash.setVisible(false);
+                splash.dispose();
             }
         });
     }
