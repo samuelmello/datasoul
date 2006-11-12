@@ -64,6 +64,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         registerComponent(txtAlertTemplateFilter, "AlertTemplateFilter");
         registerComponent(txtGeneralTemplateFilter, "GeneralTemplateFilter");
         
+        /*
         registerComponent(videoInput,"VideoInput");
         videoInput.removeAllItems();
         for (int i=0; i<ConfigObj.VIDEOINPUT_TABLE.length; i++){
@@ -81,6 +82,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         for (int i=0; i<ConfigObj.VIDEOMODE_TABLE.length; i++){
             videoMode.addItem(ConfigObj.VIDEOMODE_TABLE[i]);
         }
+        */        
         
         registerComponent(clockMode,"ClockMode");
         clockMode.removeAllItems();

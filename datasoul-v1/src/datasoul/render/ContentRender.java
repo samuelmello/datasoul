@@ -478,8 +478,6 @@ public abstract class ContentRender {
     
     public abstract void setDebugMode(int i);
     
-    public abstract void setBackgroundMode(int i);
-    
     public abstract void paintBackground(BufferedImage bufferedImage);
     
     public abstract void setClear(int i);

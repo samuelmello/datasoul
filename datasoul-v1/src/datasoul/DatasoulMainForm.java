@@ -308,7 +308,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         try{
 //            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             
         }catch(Exception e){
             

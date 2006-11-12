@@ -46,9 +46,6 @@ public class ConfigObj extends SerializableObject {
     private String monitorOutputPositionTop;
     private String monitorOutputSizeWidth;
     private String monitorOutputSizeHeight;
-    private int videoInput;
-    private int videoMode;
-    private int videoDeintrelace;
     private int clockMode;    
     private boolean videoDebugMode;
     private String mainDisplayEngine;
@@ -65,6 +62,7 @@ public class ConfigObj extends SerializableObject {
     public static final int CLOCKMODE_12_NOSEC = 3;
     public static final String[] CLOCKMODE_TABLE = {"24 Hours with Seconds", "24 Hours without Seconds", "AM/PM with Seconds", "AM/PM without Seconds"};
 
+    /*
     public static final int VIDEODEINTRELACE_NONE = 0;
     public static final int VIDEODEINTRELACE_BLEND = 1;
     public static final int VIDEODEINTRELACE_SMARTBLEND = 2;
@@ -81,6 +79,8 @@ public class ConfigObj extends SerializableObject {
     public static final int VIDEOINPUT_COMPSVIDEO = 2;
     public static final int VIDEOINPUT_SVIDEO = 3;
     public static final String[] VIDEOINPUT_TABLE = {"Tuner", "Composite", "Composite2/S-Video", "S-Video"};
+    
+     */
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -161,9 +161,6 @@ public class ConfigObj extends SerializableObject {
         properties.add("MonitorOutputSizeWidth");
         properties.add("MonitorOutputSizeHeight");
         properties.add("TemplateText");
-        properties.add("VideoInputIdx");
-        properties.add("VideoModeIdx");
-        properties.add("VideoDeintrelaceIdx");
         properties.add("ClockModeIdx");        
         properties.add("VideoDebugModeIdx");
         properties.add("MonitorTemplateFilter");
@@ -287,6 +284,7 @@ public class ConfigObj extends SerializableObject {
         this.monitorOutputSizeHeight = monitorOutputSizeHeight;
     }
 
+    /*
     public String getVideoInput() {
         return VIDEOINPUT_TABLE[videoInput];
     }
@@ -370,7 +368,7 @@ public class ConfigObj extends SerializableObject {
                 setVideoDeintrelaceIdx(i);
         }
     }
-    
+    */
     
     public int getClockModeIdx() {
         return clockMode;

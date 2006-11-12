@@ -202,9 +202,10 @@ public class RemoteContentRenderServer {
         cr.setDebugMode(i);
     }
 
+    
     private static void setBackgroundMode() throws IOException {
         int i = input.readInt();
-        cr.setBackgroundMode(i);
+    //    cr.setBackgroundMode(i);
     }
 
     private static void paintBackground() throws IOException {

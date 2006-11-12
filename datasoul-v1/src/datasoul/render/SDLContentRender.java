@@ -25,18 +25,13 @@ import java.nio.ByteBuffer;
 public class SDLContentRender extends ContentRender {
     
     static {
-        // depois a gente arruma isso
-        if (System.getProperty("os.name").equals("Linux")){
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator");
-            //+ "native"+System.getProperty("file.separator");
-    
-            System.load(path+"libdatasoulsdl.so");
-        }
+        
         if (System.getProperty("os.name").contains("Windows")){
             String path = System.getProperty("user.dir") + System.getProperty("file.separator");
-            //+ "native"+System.getProperty("file.separator");
-    
-            System.load(path+"libdatasoulsdl.dll");
+            System.load(path+"libsdlrender.dll");
+        }else{
+            String path = System.getProperty("user.dir") + System.getProperty("file.separator");
+            System.load(path+"libsdlrender.so");            
         }
         
     }
@@ -97,10 +92,12 @@ public class SDLContentRender extends ContentRender {
     private native void nativeSetBackground(ByteBuffer bb);
     public native void setBlack(int active);
     public native void setClear(int active);
+    /*
     public native void setBackgroundMode(int mode);
     public native void setInputSrc(int src);
     public native void setInputMode(int mode);
     public native void setDeintrelaceMode(int mode);
+     */
     public native void setDebugMode (int mode);
     public native void shutdown();
     
