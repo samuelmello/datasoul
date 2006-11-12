@@ -517,7 +517,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+            .add(scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         split1.setLeftComponent(panelSong);
 
@@ -532,7 +532,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
         );
         split1.setRightComponent(panelSongChords);
 
@@ -611,6 +611,9 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.add(labelVersion);
 
         btnViewLyrics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songView1.gif")));
+        btnViewLyrics.setBorderPainted(false);
+        btnViewLyrics.setFocusPainted(false);
+        btnViewLyrics.setOpaque(false);
         btnViewLyrics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewLyricsActionPerformed(evt);
@@ -620,7 +623,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.add(btnViewLyrics);
 
         btnViewChordsComplete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songView2.gif")));
+        btnViewChordsComplete.setBorderPainted(false);
         btnViewChordsComplete.setDefaultCapable(false);
+        btnViewChordsComplete.setFocusPainted(false);
+        btnViewChordsComplete.setOpaque(false);
         btnViewChordsComplete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewChordsCompleteActionPerformed(evt);
@@ -630,7 +636,10 @@ public class SongViewerPanel extends javax.swing.JPanel {
         jToolBar1.add(btnViewChordsComplete);
 
         btnViewChordsSimpified.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songView3.gif")));
+        btnViewChordsSimpified.setBorderPainted(false);
         btnViewChordsSimpified.setDefaultCapable(false);
+        btnViewChordsSimpified.setFocusPainted(false);
+        btnViewChordsSimpified.setOpaque(false);
         btnViewChordsSimpified.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewChordsSimpifiedActionPerformed(evt);
@@ -681,7 +690,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
