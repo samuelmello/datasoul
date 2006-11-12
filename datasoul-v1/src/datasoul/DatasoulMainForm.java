@@ -165,8 +165,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void initComponents() {
         toolBarMain = new javax.swing.JToolBar();
         btnDatashow = new javax.swing.JButton();
-        btnSongs = new javax.swing.JButton();
         btnTemplates = new javax.swing.JButton();
+        btnSongs = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -190,20 +190,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnDatashow);
 
-        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/music1.png")));
-        btnSongs.setText("Songs");
-        btnSongs.setToolTipText("Song manipulation view");
-        btnSongs.setBorderPainted(false);
-        btnSongs.setFocusPainted(false);
-        btnSongs.setOpaque(false);
-        btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSongsMouseClicked(evt);
-            }
-        });
-
-        toolBarMain.add(btnSongs);
-
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel.png")));
         btnTemplates.setText("Templates");
         btnTemplates.setToolTipText("template view");
@@ -219,6 +205,20 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
 
         toolBarMain.add(btnTemplates);
+
+        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/music1.png")));
+        btnSongs.setText("Songs");
+        btnSongs.setToolTipText("Song manipulation view");
+        btnSongs.setBorderPainted(false);
+        btnSongs.setFocusPainted(false);
+        btnSongs.setOpaque(false);
+        btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSongsMouseClicked(evt);
+            }
+        });
+
+        toolBarMain.add(btnSongs);
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/package_settings.png")));
         btnConfig.setText("Configuration");
@@ -308,7 +308,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public static void main(String args[]) {
         try{
 //            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             
         }catch(Exception e){
             
