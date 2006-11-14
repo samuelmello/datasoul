@@ -50,7 +50,6 @@ public class SongsPanel extends javax.swing.JPanel {
         split2.setDividerLocation(350);
         split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split2.setMinimumSize(new java.awt.Dimension(10, 10));
-        split2.setOneTouchExpandable(true);
         split2.setBottomComponent(serviceList);
 
         split2.setLeftComponent(songsSearch);

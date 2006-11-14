@@ -120,7 +120,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png")));
+        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/raise.png")));
         btnMoveUp.setText("To Front");
         btnMoveUp.setToolTipText("Move the item to the upper layer");
         btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png")));
+        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/lower.png")));
         btnMoveDown.setText("To Back");
         btnMoveDown.setToolTipText("Move the item to the lowest layer");
         btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
@@ -203,7 +203,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .add(btnMoveDown)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Dialog", 2, 12));
@@ -224,7 +224,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                         .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel1)
                     .add(lblTemplateName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         panelTemplateEditorLayout.setVerticalGroup(
             panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -341,6 +341,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableProperties.setTableHeader(null);
         jScrollPane2.setViewportView(jTableProperties);
 
         jToolBar3.setFloatable(false);

@@ -1,18 +1,18 @@
 JDK_HOME="C:\Program Files\Java\jdk1.5.0_07"
-CFLAGS=-O4 -Wall -Wl,--kill-at -D_JNI_IMPLEMENTATION_
 DATASOUL_CLASSES=../../build/classes
 SDL_INCLUDE="C:\Temp\SDL-1.2.11\include"
 SDL_LIB="C:\Temp\SDL-1.2.11\lib"
+CFLAGS=-O4 -Wall -Wl,--kill-at -D_JNI_IMPLEMENTATION_
 
-all: libdatasoulsdl.dll 
+all: libsdlrender.dll 
 
-libdatasoulsdl.dll: datasoul_render_SDLContentRender.h datasoul_render_SDLContentRender.c
-	gcc ${CFLAGS} -I${SDL_INCLUDE} -I${JDK_HOME}/include -I${JDK_HOME}/include/win32\
-  	  -shared datasoul_render_SDLContentRender.c -o libdatasoulsdl.dll\
+libsdlrender.dll: datasoul_render_SDLContentRender.h datasoul_render_SDLContentRender.c
+	$(CC) ${CFLAGS} -I${SDL_INCLUDE} -I${JDK_HOME}/include -I${JDK_HOME}/include/win32\
+  	  -shared datasoul_render_SDLContentRender.c -o libsdlrender.dll\
 	  -lSDL -L${SDL_LIB}
 
 datasoul_render_SDLContentRender.h:
 	${JDK_HOME}/bin/javah -classpath ${DATASOUL_CLASSES} datasoul.render.SDLContentRender
 
 clean:
-	del datasoul_render_SDLContentRender.h libdatasoulsdl.dll 
+	del datasoul_render_SDLContentRender.h libsdlrender.dll 
