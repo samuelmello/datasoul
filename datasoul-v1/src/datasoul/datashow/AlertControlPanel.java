@@ -7,6 +7,8 @@
 package datasoul.datashow;
 
 import datasoul.templates.TemplateComboBox;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -15,11 +17,15 @@ import javax.swing.SpinnerNumberModel;
  */
 public class AlertControlPanel extends javax.swing.JPanel {
     
+    private ArrayList<String> history;
+    
     /** Creates new form AlertControlPanel */
     public AlertControlPanel() {
         initComponents();
         cbMainTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
         cbMonitorTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
+        history = new ArrayList<String>();
+        cbHistory.removeAllItems();
     }
     
     /** This method is called from within the constructor to
@@ -42,6 +48,8 @@ public class AlertControlPanel extends javax.swing.JPanel {
         spnAlertTime = new javax.swing.JSpinner();
         jLabel14 = new javax.swing.JLabel();
         btnShowAlert = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cbHistory = new javax.swing.JComboBox();
 
         jLabel3.setText("Text:");
 
@@ -76,6 +84,16 @@ public class AlertControlPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/history.png")));
+        jLabel4.setText("Recently used texts");
+
+        cbHistory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbHistoryActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,23 +101,25 @@ public class AlertControlPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(cbHistory, 0, 228, Short.MAX_VALUE)
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                     .add(jLabel3)
-                    .add(cbShowOnMain1)
+                    .add(jLabel4)
                     .add(layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbMainTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
-                    .add(cbShowOnMonitor1)
                     .add(layout.createSequentialGroup()
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbMonitorTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                    .add(cbShowOnMain1)
+                    .add(cbShowOnMonitor1)
                     .add(layout.createSequentialGroup()
                         .add(jLabel13)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(3, 3, 3)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel14))
                     .add(btnShowAlert))
                 .addContainerGap())
@@ -112,42 +132,67 @@ public class AlertControlPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel4)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cbHistory, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(18, 18, 18)
                 .add(cbShowOnMain1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
                     .add(cbMainTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(16, 16, 16)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbShowOnMonitor1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(cbMonitorTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(20, 20, 20)
+                .add(17, 17, 17)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel13)
                     .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel14))
-                .add(22, 22, 22)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnShowAlert)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHistoryActionPerformed
+        int index = cbHistory.getSelectedIndex();
+        if (index >= 0 && index < history.size()){
+            txtAlert.setText( history.get( index ) );
+        }
+    }//GEN-LAST:event_cbHistoryActionPerformed
+
     private void btnShowAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAlertActionPerformed
         Alert a = new Alert();
-        a.setText( txtAlert.getText() );
+        String text = txtAlert.getText();
+        a.setText( text );
         a.setMainTemplate( cbMainTemplate.getSelectedItem().toString() );
         a.setMonitorTemplate( cbMonitorTemplate.getSelectedItem().toString() );
         a.setShowOnMain( cbShowOnMain1.isSelected() );
         a.setShowOnMonitor( cbShowOnMonitor1.isSelected() );
         a.setTime( Integer.parseInt(spnAlertTime.getValue().toString()) * 1000 );
         a.start();
+        
+        history.add(0, text);
+        if (text.length() > 40){
+            cbHistory.insertItemAt(text.substring(0, 40) + "...", 0);
+        }else{
+            cbHistory.insertItemAt(text, 0);
+        }
+        if (history.size()==6){
+            history.remove(5);
+            cbHistory.removeItemAt(5);
+        }
+        
     }//GEN-LAST:event_btnShowAlertActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnShowAlert;
+    private javax.swing.JComboBox cbHistory;
     private datasoul.templates.TemplateComboBox cbMainTemplate;
     private datasoul.templates.TemplateComboBox cbMonitorTemplate;
     private javax.swing.JCheckBox cbShowOnMain1;
@@ -157,9 +202,14 @@ public class AlertControlPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spnAlertTime;
     private javax.swing.JTextArea txtAlert;
     // End of variables declaration//GEN-END:variables
+
+    public class HistoryModel extends DefaultComboBoxModel {
+        
+    }
     
 }
