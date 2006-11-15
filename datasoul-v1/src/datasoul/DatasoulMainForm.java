@@ -168,6 +168,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnTemplates = new javax.swing.JButton();
         btnSongs = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
@@ -235,6 +236,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
 
         toolBarMain.add(btnConfig);
+
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/khelpcenter.png")));
+        btnHelp.setText("Help");
+        btnHelp.setBorderPainted(false);
+        btnHelp.setFocusPainted(false);
+        btnHelp.setOpaque(false);
+        toolBarMain.add(btnHelp);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exit.png")));
         btnClose.setText("Close");
@@ -352,6 +360,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnConfig;
     private javax.swing.JButton btnDatashow;
+    private javax.swing.JButton btnHelp;
     private javax.swing.JButton btnSongs;
     private javax.swing.JButton btnTemplates;
     private javax.swing.JSeparator jSeparator1;
