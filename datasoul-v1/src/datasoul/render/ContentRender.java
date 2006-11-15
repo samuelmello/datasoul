@@ -212,6 +212,9 @@ public abstract class ContentRender {
             slideTransTimerTotal = transictionTime;
             updateDisplayValues();
             saveImage(templateImage, template, 1.0f);   
+        }else if (transictionTime < 0){
+            updateDisplayValues();
+            saveImage(templateImage, template, 1.0f);   
         }
         update();
     }
@@ -266,49 +269,51 @@ public abstract class ContentRender {
             
             int content;
             if (template != null){
-                for (TemplateItem t : template.getItems() ){
-                    if (t instanceof TextTemplateItem) {
-                        content = ((TextTemplateItem)t).getContentIdx();
-                        if ( titleChanged && content == TextTemplateItem.CONTENT_TITLE) {
-                            ((TextTemplateItem)t).setText(title);
+                synchronized(template){
+                    for (TemplateItem t : template.getItems() ){
+                        if (t instanceof TextTemplateItem) {
+                            content = ((TextTemplateItem)t).getContentIdx();
+                            if ( titleChanged && content == TextTemplateItem.CONTENT_TITLE) {
+                                ((TextTemplateItem)t).setText(title);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( slideChanged && content == TextTemplateItem.CONTENT_SLIDE) {
+                                ((TextTemplateItem)t).setText(slide);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( nextSlideChanged && content == TextTemplateItem.CONTENT_NEXTSLIDE) {
+                                ((TextTemplateItem)t).setText(nextSlide);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( clockChanged && content == TextTemplateItem.CONTENT_CLOCK) {
+                                ((TextTemplateItem)t).setText(clock);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( timerChanged && content == TextTemplateItem.CONTENT_TIMER) {
+                                ((TextTemplateItem)t).setText(timer);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
+                                ((TextTemplateItem)t).setText(alert);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( songAuthorChanged && content == TextTemplateItem.CONTENT_SONGAUTHOR) {
+                                ((TextTemplateItem)t).setText(songAuthor);
+                                needUpdate = true;
+                                continue;
+                            }
+                        }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                             needUpdate = true;
                             continue;
-                        }
-                        if ( slideChanged && content == TextTemplateItem.CONTENT_SLIDE) {
-                            ((TextTemplateItem)t).setText(slide);
-                            needUpdate = true;
-                            continue;
-                        }
-                        if ( nextSlideChanged && content == TextTemplateItem.CONTENT_NEXTSLIDE) {
-                            ((TextTemplateItem)t).setText(nextSlide);
-                            needUpdate = true;
-                            continue;
-                        }
-                        if ( clockChanged && content == TextTemplateItem.CONTENT_CLOCK) {
-                            ((TextTemplateItem)t).setText(clock);
-                            needUpdate = true;
-                            continue;
-                        }
-                        if ( timerChanged && content == TextTemplateItem.CONTENT_TIMER) {
-                            ((TextTemplateItem)t).setText(timer);
-                            needUpdate = true;
-                            continue;
-                        }
-                        if ( alertChanged && content == TextTemplateItem.CONTENT_ALERT) {
-                            ((TextTemplateItem)t).setText(alert);
-                            needUpdate = true;
-                            continue;
-                        }
-                        if ( songAuthorChanged && content == TextTemplateItem.CONTENT_SONGAUTHOR) {
-                            ((TextTemplateItem)t).setText(songAuthor);
-                            needUpdate = true;
-                            continue;
-                        }
-                    }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
-                        needUpdate = true;
-                        continue;
-                    }// if is TextTemplateItem
-                }// for need update
+                        }// if is TextTemplateItem
+                    }// for need update
+                }//synchornized
             }// if template not null
             
             if (alertActive){
@@ -408,7 +413,7 @@ public abstract class ContentRender {
 
             if (slideTransition == TRANSITION_CHANGE){
                 
-                if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES){
+                if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
                     synchronized(transitionImage){
                         paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
                     }
@@ -489,14 +494,7 @@ public abstract class ContentRender {
             long t1, t2, t3, sleepTime;
             while (true){
                 try{
-                    if(monitor){
-                        System.out.println("monitor aguardando");
-                    }
                     updSemaphore.acquire();
-                    if(monitor){
-                        System.out.println("chegou");
-                    }
-
                     
                     while ( slideTransTimer > 0 || alertTransTimer > 0){
                         t1 = System.currentTimeMillis();
