@@ -19,7 +19,7 @@ typedef struct {
 	int needRefresh;
 	int stopDisplay;
 	int debugMode;
-
+	char x11Display[1024];
 	SDL_Thread *displayThread;
 	
 } globals_t;
@@ -78,18 +78,14 @@ int displayThread (void *arg){
 /*
  * Class:     datasoul_render_SDLContentRender
  * Method:    init
- * Signature: (IIII)V
  */
 JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
-(JNIEnv *env, jobject obj, jint width, jint height, jint top, jint left){
+(JNIEnv *env, jobject obj, jint width, jint height, jint top, jint left ){
 
 
         SDL_Surface *surface;
 
         Uint32 rmask, gmask, bmask, amask;
-
-	char envopt[256];
-
 
 	if (width <= 0){
 		width = 640;
@@ -97,9 +93,11 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
 	if (height <= 0){
 		height = 480;
 	}
+
 		
-	sprintf(envopt, "SDL_VIDEO_WINDOW_POS=%d,%d", left, top);
-	putenv(envopt);
+	char envopt2[1024];
+	snprintf(envopt2, 1023, "SDL_VIDEO_WINDOW_POS=%d,%d", left, top);
+	putenv(envopt2);
 	
         if( SDL_Init( SDL_INIT_EVERYTHING ) == -1 )
         {
@@ -285,3 +283,20 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_shutdown
 	SDL_Quit();
 }
 
+/*
+ * Class:     datasoul_render_SDLContentRender
+ * Method:    setX11Display
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setX11Display
+  (JNIEnv *env, jobject obj, jstring x11displayStr){
+
+	char *envoptX11 = (char*)malloc(1024);
+        const char *str;
+        str = (*env)->GetStringUTFChars(env, x11displayStr, NULL);
+        snprintf(envoptX11, 1023, "DISPLAY=%s", str);
+        (*env)->ReleaseStringUTFChars(env, x11displayStr, str);
+	putenv(envoptX11);
+	// do NOT free envoptX11. putenv stores only a pointer to it.
+	// freeing envoptX11 will lose the value
+}
