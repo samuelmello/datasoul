@@ -242,7 +242,7 @@ public class ContentManager {
                 left = 0;
             }
             
-            mainDisplay.initDisplay(width, height, top, left);
+            mainDisplay.initDisplay(width, height, top, left, false);
             mainDisplay.setWindowTitle("Datasoul - Main Display");
         }
         return mainDisplay;
@@ -281,9 +281,7 @@ public class ContentManager {
                 left = 0;
             }
 
-            monitorDisplay.setMonitor(true);
-            monitorDisplay.setTemplate("monitor");
-            monitorDisplay.initDisplay(width, height, top, left);
+            monitorDisplay.initDisplay(width, height, top, left, true);
             monitorDisplay.setWindowTitle("Datasoul - Monitor Display");
         }
         return monitorDisplay;

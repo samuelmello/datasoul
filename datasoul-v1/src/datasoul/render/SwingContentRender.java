@@ -60,9 +60,9 @@ public class SwingContentRender extends ContentRender {
         display.setBlack(i);
     }
 
-    public void initDisplay(int width, int height, int top, int left) {
-        super.initDisplay(width, height, top, left);
-        display.initDisplay(width, height, top, left);
+    public void initDisplay(int width, int height, int top, int left, boolean isMonitor) {
+        super.initDisplay(width, height, top, left, isMonitor);
+        display.initDisplay(width, height, top, left, isMonitor);
     }
 
     public void shutdown(){

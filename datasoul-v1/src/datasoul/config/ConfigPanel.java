@@ -7,6 +7,7 @@
 package datasoul.config;
 
 import datasoul.*;
+import datasoul.render.RenderConfigItf;
 import java.awt.Component;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -249,7 +251,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnConfigMain = new javax.swing.JButton();
+        jLabel37 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         monitorOutput = new javax.swing.JCheckBox();
@@ -271,7 +274,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnConfigMonitor = new javax.swing.JButton();
+        jLabel38 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         clockMode = new javax.swing.JComboBox();
@@ -290,8 +294,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         templateText = new datasoul.templates.TemplateComboBox();
         jLabel35 = new javax.swing.JLabel();
 
-        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnApply.setText("Apply");
+        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
+        btnApply.setText("Save");
         btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyActionPerformed(evt);
@@ -349,7 +353,15 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel32.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel32.setText("usually connected to a projector.");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png")));
+        btnConfigMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png")));
+        btnConfigMain.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigMainActionPerformed(evt);
+            }
+        });
+
+        jLabel37.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel37.setText("Some configurations only apply after application restart");
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -390,9 +402,9 @@ public class ConfigPanel extends javax.swing.JPanel {
                                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                         .add(jLabel17))))
                             .add(jPanel5Layout.createSequentialGroup()
-                                .add(mainDisplayEngine, 0, 168, Short.MAX_VALUE)
+                                .add(mainDisplayEngine, 0, 183, Short.MAX_VALUE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton1)
+                                .add(btnConfigMain)
                                 .add(16, 16, 16))))
                     .add(jLabel30)
                     .add(jPanel5Layout.createSequentialGroup()
@@ -400,7 +412,8 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel32)
-                            .add(jLabel24))))
+                            .add(jLabel24)))
+                    .add(jLabel37))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -428,7 +441,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                             .add(btnSelectDeviceMain)))
                     .add(jPanel5Layout.createSequentialGroup()
                         .add(25, 25, 25)
-                        .add(jButton1)))
+                        .add(btnConfigMain)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel12)
@@ -445,6 +458,8 @@ public class ConfigPanel extends javax.swing.JPanel {
                     .add(mainOutputSizeWidth, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel30)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel37)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -500,7 +515,15 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel22.setText("stage, providing feedback for musicans or preachers.");
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png")));
+        btnConfigMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png")));
+        btnConfigMonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigMonitorActionPerformed(evt);
+            }
+        });
+
+        jLabel38.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel38.setText("Some configurations only apply after application restart");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -535,7 +558,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                     .add(org.jdesktop.layout.GroupLayout.TRAILING, monitorOutputSizeHeight, 0, 0, Short.MAX_VALUE)
-                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, monitorOutputPositionTop, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(jLabel19)
@@ -543,14 +566,16 @@ public class ConfigPanel extends javax.swing.JPanel {
                             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .add(monitorDisplayEngine, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                .add(jButton2))))
+                                .add(btnConfigMonitor)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))))
                     .add(jLabel31)
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel20)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jLabel22)
-                            .add(jLabel21))))
+                            .add(jLabel21)))
+                    .add(jLabel38))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -564,7 +589,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .add(jLabel22)))
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                             .add(monitorOutput)
                             .add(jLabel2))
@@ -575,12 +600,11 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(jLabel29)
-                            .add(btnSelectDeviceMonitor))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED))
+                            .add(btnSelectDeviceMonitor)))
                     .add(jPanel4Layout.createSequentialGroup()
-                        .add(27, 27, 27)
-                        .add(jButton2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)))
+                        .add(26, 26, 26)
+                        .add(btnConfigMonitor)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel4)
                     .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -599,6 +623,8 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .add(jLabel19)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel31)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jLabel38)
                 .addContainerGap())
         );
 
@@ -623,7 +649,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 207, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jLabel36))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -633,7 +659,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel8Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel9)
                     .add(clockMode, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Templates"));
@@ -695,7 +721,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(templateText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 207, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(jLabel8))))))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -732,14 +758,14 @@ public class ConfigPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnApply)
                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(btnApply)))
+                        .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                            .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                            .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -747,18 +773,43 @@ public class ConfigPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel5, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 160, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnApply)
-                .add(85, 85, 85))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnConfigMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigMonitorActionPerformed
+        showConfig(true);
+    }//GEN-LAST:event_btnConfigMonitorActionPerformed
+
+    private void btnConfigMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigMainActionPerformed
+        showConfig(false);
+    }//GEN-LAST:event_btnConfigMainActionPerformed
+
+    public void showConfig(boolean isMonitor){
+        String render;
+        if (isMonitor){
+            render = monitorDisplayEngine.getSelectedItem().toString();
+        }else{
+            render = mainDisplayEngine.getSelectedItem().toString();
+        }
+        RenderConfigItf conf;
+        try{
+            conf = (RenderConfigItf) Class.forName("datasoul.render."+render+"Config").newInstance();
+            conf.showConfiguration(isMonitor);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Unable to create configuration for "+render, "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+    }
+    
     private void btnSelectDeviceMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectDeviceMonitorActionPerformed
         jPpMenuMonitor.show(btnSelectDeviceMonitor, btnSelectDeviceMonitor.getWidth(), 0);
     }//GEN-LAST:event_btnSelectDeviceMonitorActionPerformed
@@ -782,11 +833,11 @@ public class ConfigPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
+    private javax.swing.JButton btnConfigMain;
+    private javax.swing.JButton btnConfigMonitor;
     private javax.swing.JButton btnSelectDeviceMain;
     private javax.swing.JButton btnSelectDeviceMonitor;
     private javax.swing.JComboBox clockMode;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -817,6 +868,8 @@ public class ConfigPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

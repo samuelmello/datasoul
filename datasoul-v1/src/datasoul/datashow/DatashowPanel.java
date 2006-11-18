@@ -49,7 +49,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         }
         
         SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);
-        contentRender.initDisplay( width, height, 0, 0 );
+        contentRender.initDisplay( width, height, 0, 0, false );
         
         ContentManager.getInstance().registerPreviewPanel( contentRender );
         

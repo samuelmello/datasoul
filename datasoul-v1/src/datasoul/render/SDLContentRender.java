@@ -9,6 +9,7 @@
 
 package datasoul.render;
 
+import datasoul.config.SDLRenderConfig;
 import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
 import java.awt.Color;
@@ -48,34 +49,23 @@ public class SDLContentRender extends ContentRender {
         return contentRender;
     }
     
-    public void initDisplay (final int width, final int height, final int top, final int left){
+    public void initDisplay (final int width, final int height, final int top, final int left, final boolean isMonitor){
 
-        super.initDisplay(width, height, top, left);
+        super.initDisplay(width, height, top, left, isMonitor);
         
         overlayTemplateSize = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         overlay = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         overlayBuf = ByteBuffer.allocateDirect(width * height * 4);
         background = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         backgroundBuf = ByteBuffer.allocateDirect(width * height * 4);
-
-        if (System.getProperty("os.name").equals("Linux")){
-            Thread t = new Thread(){
-                public void run(){
-                    init(width, height, top, left);
-                }
-            };
-
-            t.setPriority(Thread.MAX_PRIORITY);
-            t.start();
-            try {
-                t.join();
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
+        
+        SDLRenderConfig config = SDLRenderConfig.getInstance(isMonitor);
+        String x11display = "";
+        if (config.getSetX11Display()){
+            setX11Display(config.getX11Display());
         }
-        if (System.getProperty("os.name").contains("Windows")){
-            init(width, height, top, left);        
-        }
+        init(width, height, top, left);        
+
         
         paintBackgroundColor(Color.ORANGE);
         
@@ -87,6 +77,7 @@ public class SDLContentRender extends ContentRender {
     }
             
     private native void init(int width, int height, int top, int left);
+    private native void setX11Display(String x11display);
     private native void cleanup();
     private native void displayOverlay(ByteBuffer bb);
     private native void nativeSetBackground(ByteBuffer bb);

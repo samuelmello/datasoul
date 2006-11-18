@@ -47,7 +47,6 @@ public abstract class ContentRender {
     private float timerProgress;
     private boolean showHideNeedUpdate;
     
-    
     private boolean monitor;
     
     private Semaphore updSemaphore;
@@ -187,11 +186,6 @@ public abstract class ContentRender {
     public boolean isMonitor(){
         return this.monitor;
     }
-    
-    public void setMonitor(boolean b){
-        this.monitor = b;
-    }
-    
     
     public void slideShow(int transictionTime){
         slideTransition = TRANSITION_SHOW;
@@ -467,13 +461,14 @@ public abstract class ContentRender {
     
     
     /**
-     * this method SOULD be overriden by super class
+     * this method MUST be overriden by super class
      */
-    public void initDisplay(int width, int height, int top, int left){
+    public void initDisplay(int width, int height, int top, int left, boolean isMonitor){
         this.width = width;
         this.height = height;
         this.top = top;
         this.left = left;
+        this.monitor = isMonitor;
         transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);

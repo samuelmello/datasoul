@@ -29,7 +29,7 @@ import org.w3c.dom.Node;
  *
  * @author samuelm
  */
-public class BackgroundConfig extends SerializableObject {
+public class BackgroundConfig extends AbstractConfig {
     
     private static BackgroundConfig instance = null; 
     
@@ -42,63 +42,13 @@ public class BackgroundConfig extends SerializableObject {
     
     /** Creates a new instance of ConfigObj */
     private BackgroundConfig() {
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-        + "config" + System.getProperty("file.separator") + "background.config";
-
-        File configFile = new File(path);
-
-        Document dom=null;
-        Node node = null;
-        try {
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-                //Using factory get an instance of document builder
-                DocumentBuilder db = dbf.newDocumentBuilder();
-
-                //parse using builder to get DOM representation of the XML file
-                dom = db.parse(configFile);
-
-                //node = dom.getDocumentElement().getChildNodes().item(0);
-                node = dom.getElementsByTagName("BackgroundConfig").item(0);
-
-        }catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Error parsing config file\n"+e.getMessage(),"DataSoul Error",0);    
-            e.printStackTrace();
-            return;
-        }        
-
-        try {
-            this.readObject(node);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error parsing config file\nError: "+e.getMessage(),"DataSoul Error",0);    
-            e.printStackTrace();
-        }
+        load("background.config");
     }
     
-    public void save(){
-        try{
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-            + "config" + System.getProperty("file.separator") + "background.config";
 
-            Node node = this.writeObject();
-            Document doc = node.getOwnerDocument();
-            doc.appendChild( node);                        // Add Root to Document
-            FileOutputStream fos = new FileOutputStream(path);
-            org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
-            OutputFormat outFormat = new OutputFormat();
-            outFormat.setIndenting(true);
-            outFormat.setEncoding("ISO-8859-1");
-            xs.setOutputFormat(outFormat);
-            xs.setOutputByteStream(fos);
-            xs.serialize(doc);
-
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error writing file.\nError:"+e.getMessage(),"DataSoul Error",0);    
-            e.printStackTrace();
-        }
+    public void save() {
+        save("background.config");
     }
-    
-    
 
     private BufferedImage mainBackgroundImg;
     private BufferedImage monitorBackgroundImg;
@@ -213,6 +163,5 @@ public class BackgroundConfig extends SerializableObject {
         properties.add("MainBackgroundImgStr");
         properties.add("MonitorBackgroundImgStr");
     }
-    
     
 }

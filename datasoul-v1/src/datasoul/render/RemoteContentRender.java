@@ -150,8 +150,8 @@ public class RemoteContentRender extends ContentRender {
         }
     }
     
-    public void initDisplay(int width, int height, int top, int left) {
-        super.initDisplay(width, height, top, left);
+    public void initDisplay(int width, int height, int top, int left, boolean isMonitor) {
+        super.initDisplay(width, height, top, left, isMonitor);
         templateImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         try{
             output.writeInt(RemoteContentRenderConstants.CMD_INIT);
@@ -159,6 +159,7 @@ public class RemoteContentRender extends ContentRender {
             output.writeInt(height);
             output.writeInt(top);
             output.writeInt(left);
+            output.writeBoolean(isMonitor);
             output.flush();
         }catch(IOException e){
             e.printStackTrace();

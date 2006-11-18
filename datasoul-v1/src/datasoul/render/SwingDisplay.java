@@ -69,7 +69,7 @@ public class SwingDisplay extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void initDisplay(int width, int height, int top, int left) {
+    public void initDisplay(int width, int height, int top, int left, boolean isMonitor) {
         this.setSize(width, height);
         this.setLocation(left, top);
         swingDisplayPanel1.initDisplay(width, height, 0, 0);

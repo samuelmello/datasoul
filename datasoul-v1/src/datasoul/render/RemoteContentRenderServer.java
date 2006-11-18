@@ -146,11 +146,13 @@ public class RemoteContentRenderServer {
     
     private static void initDisplay() throws IOException {
         int width, height, top, left;
+        boolean isMonitor;
         width = input.readInt();
         height = input.readInt();
         top = input.readInt();
         left = input.readInt();
-        cr.initDisplay(width, height, top, left);
+        isMonitor = input.readBoolean();
+        cr.initDisplay(width, height, top, left, isMonitor);
     }
 
     private static void paint() throws IOException {
