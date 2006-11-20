@@ -29,6 +29,7 @@ public class ObjectManager {
     public static final int VIEW_TEMPLATES = 2;
     public static final int VIEW_CONFIG = 3;
     public static final int VIEW_ADD_SONGS = 4;    
+    public static final int VIEW_HELP = 5;
 
     private static ObjectManager instance;
     

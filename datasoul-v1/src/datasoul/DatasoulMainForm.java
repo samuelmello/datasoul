@@ -32,11 +32,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public DatashowPanel datashow = new DatashowPanel();
     public TemplatePanel templates = new TemplatePanel();
     public ConfigPanel config = new ConfigPanel();
+    public HelpPanel help = new HelpPanel();
+    
+    
+    public static final String DATASOUL_VERSION = "Alpha 61111";
     
     org.jdesktop.layout.GroupLayout songsLayout;
     org.jdesktop.layout.GroupLayout datashowLayout;
     org.jdesktop.layout.GroupLayout templatesLayout;
     org.jdesktop.layout.GroupLayout configLayout;
+    org.jdesktop.layout.GroupLayout helpLayout;
 
     
     /**
@@ -45,7 +50,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public DatasoulMainForm() {
         
         initComponents();
-
+        
+        this.setTitle("DataSoul - "+DATASOUL_VERSION);
+        
         ObjectManager.getInstance().setDatasoulMainForm(this);
         
         this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datasoul.gif")).getImage());
@@ -110,6 +117,20 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .add(config, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
+        // Initialize help layout
+        helpLayout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        helpLayout.setHorizontalGroup(
+            helpLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(help, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .add(toolBarMain)
+        );
+        helpLayout.setVerticalGroup(
+            helpLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.LEADING, helpLayout.createSequentialGroup()
+                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(help, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+        );
 
         showPanel(ObjectManager.VIEW_PROJECTOR);
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
@@ -122,10 +143,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         datashow.setVisible(false);
         templates.setVisible(false);
         config.setVisible(false);
+        help.setVisible(false);
         btnDatashow.setEnabled(true);
         btnSongs.setEnabled(true);
         btnTemplates.setEnabled(true);
         btnConfig.setEnabled(true);
+        btnHelp.setEnabled(true);
 
         switch (panel) {
             case ObjectManager.VIEW_PROJECTOR:
@@ -152,6 +175,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 config.validate();
                 btnConfig.setEnabled(false);
                 break;
+            case ObjectManager.VIEW_HELP:
+                help.setVisible(true);
+                getContentPane().setLayout(helpLayout);
+                help.validate();
+                btnHelp.setEnabled(false);
+                break;
+                
         }
         
     }
@@ -173,7 +203,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DataSoul - Alpha 61111");
+        setTitle("DataSoul");
         toolBarMain.setFloatable(false);
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
@@ -242,6 +272,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnHelp.setBorderPainted(false);
         btnHelp.setFocusPainted(false);
         btnHelp.setOpaque(false);
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+
         toolBarMain.add(btnHelp);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exit.png")));
@@ -277,6 +313,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_HELP);        
+        showPanel(ObjectManager.VIEW_HELP);
+
+    }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         System.exit(0);
