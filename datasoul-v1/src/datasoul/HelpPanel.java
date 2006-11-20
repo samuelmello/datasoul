@@ -18,8 +18,6 @@ public class HelpPanel extends javax.swing.JPanel {
     public HelpPanel() {
         initComponents();
         lblVersion.setText( DatasoulMainForm.DATASOUL_VERSION );
-        jScrollPaneGPL.scrollRectToVisible(new Rectangle(0,0,10,10));
-        jScrollPaneGPL.getViewport().scrollRectToVisible(new Rectangle(0,0,10,10));
     }
     
     /** This method is called from within the constructor to
@@ -48,6 +46,7 @@ public class HelpPanel extends javax.swing.JPanel {
         jScrollPaneGPL = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
         pnlKeyboard = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/splashScreen.gif")));
         jPanel1.add(jLabel1);
@@ -107,7 +106,12 @@ public class HelpPanel extends javax.swing.JPanel {
         );
         jTabbedPane1.addTab("About", pnlAbout);
 
-        jScrollPaneGPL.setAutoscrolls(true);
+        pnlLicense.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                pnlLicenseComponentShown(evt);
+            }
+        });
+
         jTextArea2.setColumns(20);
         jTextArea2.setEditable(false);
         jTextArea2.setRows(5);
@@ -132,15 +136,24 @@ public class HelpPanel extends javax.swing.JPanel {
         );
         jTabbedPane1.addTab("License Agreement", pnlLicense);
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/key_bindings.png")));
+        jLabel6.setText("jLabel6");
+
         org.jdesktop.layout.GroupLayout pnlKeyboardLayout = new org.jdesktop.layout.GroupLayout(pnlKeyboard);
         pnlKeyboard.setLayout(pnlKeyboardLayout);
         pnlKeyboardLayout.setHorizontalGroup(
             pnlKeyboardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 558, Short.MAX_VALUE)
+            .add(pnlKeyboardLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel6)
+                .addContainerGap(475, Short.MAX_VALUE))
         );
         pnlKeyboardLayout.setVerticalGroup(
             pnlKeyboardLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 413, Short.MAX_VALUE)
+            .add(pnlKeyboardLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(jLabel6)
+                .addContainerGap(379, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab("Keboard Shortcuts", pnlKeyboard);
 
@@ -161,6 +174,10 @@ public class HelpPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pnlLicenseComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_pnlLicenseComponentShown
+
+    }//GEN-LAST:event_pnlLicenseComponentShown
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -169,6 +186,7 @@ public class HelpPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
