@@ -180,6 +180,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         btnMainBlack.setText("Black");
         btnMainBlack.setToolTipText("Makes the main output black (F12)");
+        btnMainBlack.setFocusPainted(false);
         btnMainBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainBlackActionPerformed(evt);
@@ -188,23 +189,28 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         btnMainClear.setText("Clear");
         btnMainClear.setToolTipText("Clear the main output (F11)");
+        btnMainClear.setFocusPainted(false);
         btnMainClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainClearActionPerformed(evt);
             }
         });
 
+        btnHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/jabber_offline.png")));
         btnHide.setSelected(true);
         btnHide.setText("Hide");
         btnHide.setToolTipText("Hide the main output content (F9)");
+        btnHide.setFocusPainted(false);
         btnHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHideActionPerformed(evt);
             }
         });
 
+        btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/jabber_online.png")));
         btnShow.setText("Show");
         btnShow.setToolTipText("Show the main output content (F10)");
+        btnShow.setFocusPainted(false);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowActionPerformed(evt);

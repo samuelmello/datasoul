@@ -10,6 +10,7 @@
 package datasoul.datashow;
 
 import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.ContentManager;
 
@@ -26,6 +27,12 @@ public class Alert extends Thread {
     private String mainTemplate;
     private String monitorTemplate;
 
+    private AlertControlPanel panel;
+    
+    public Alert(AlertControlPanel panel){
+        this.panel = panel;
+    }
+    
     public int getTime() {
         return time;
     }
@@ -76,14 +83,14 @@ public class Alert extends Thread {
             ContentManager.getMonitorDisplay().setAlertActive(true);
         }
         cm.setAlertText(text);
-        cm.alertShow(2000);
+        cm.alertShow( DisplayControlConfig.getInstance().getSlideShowHideTime() );
         
         
         // wait
         try {
             Thread.sleep(time);
         } catch (InterruptedException ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
 
         // hide
@@ -93,9 +100,9 @@ public class Alert extends Thread {
         if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput() ){
             ContentManager.getMonitorDisplay().setAlertActive(false);
         }
-        cm.alertHide(2000);
+        cm.alertHide(DisplayControlConfig.getInstance().getSlideShowHideTime());
         
-        
+        panel.notifyAlertEnd();
     }
 
     public String getMainTemplate() {

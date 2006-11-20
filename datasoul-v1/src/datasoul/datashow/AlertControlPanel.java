@@ -19,6 +19,8 @@ public class AlertControlPanel extends javax.swing.JPanel {
     
     private ArrayList<String> history;
     
+    private Alert activeAlert;
+    
     /** Creates new form AlertControlPanel */
     public AlertControlPanel() {
         initComponents();
@@ -50,6 +52,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         btnShowAlert = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         cbHistory = new javax.swing.JComboBox();
+        btnCancel = new javax.swing.JButton();
 
         jLabel3.setText("Text:");
 
@@ -94,6 +97,15 @@ public class AlertControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
+        btnCancel.setText("Cancel");
+        btnCancel.setEnabled(false);
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,7 +133,10 @@ public class AlertControlPanel extends javax.swing.JPanel {
                         .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 50, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel14))
-                    .add(btnShowAlert))
+                    .add(layout.createSequentialGroup()
+                        .add(btnShowAlert)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnCancel)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -153,10 +168,18 @@ public class AlertControlPanel extends javax.swing.JPanel {
                     .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel14))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnShowAlert)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnShowAlert)
+                    .add(btnCancel))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        if (activeAlert != null){
+            activeAlert.interrupt();
+        }
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     private void cbHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbHistoryActionPerformed
         int index = cbHistory.getSelectedIndex();
@@ -165,16 +188,22 @@ public class AlertControlPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cbHistoryActionPerformed
 
+    public void notifyAlertEnd(){
+        btnShowAlert.setEnabled(true);
+        btnCancel.setEnabled(false);
+    }
+    
+    
     private void btnShowAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAlertActionPerformed
-        Alert a = new Alert();
+        activeAlert = new Alert(this);
         String text = txtAlert.getText();
-        a.setText( text );
-        a.setMainTemplate( cbMainTemplate.getSelectedItem().toString() );
-        a.setMonitorTemplate( cbMonitorTemplate.getSelectedItem().toString() );
-        a.setShowOnMain( cbShowOnMain1.isSelected() );
-        a.setShowOnMonitor( cbShowOnMonitor1.isSelected() );
-        a.setTime( Integer.parseInt(spnAlertTime.getValue().toString()) * 1000 );
-        a.start();
+        activeAlert.setText( text );
+        activeAlert.setMainTemplate( cbMainTemplate.getSelectedItem().toString() );
+        activeAlert.setMonitorTemplate( cbMonitorTemplate.getSelectedItem().toString() );
+        activeAlert.setShowOnMain( cbShowOnMain1.isSelected() );
+        activeAlert.setShowOnMonitor( cbShowOnMonitor1.isSelected() );
+        activeAlert.setTime( Integer.parseInt(spnAlertTime.getValue().toString()) * 1000 );
+        activeAlert.start();
         
         history.add(0, text);
         if (text.length() > 40){
@@ -186,11 +215,14 @@ public class AlertControlPanel extends javax.swing.JPanel {
             history.remove(5);
             cbHistory.removeItemAt(5);
         }
+        btnShowAlert.setEnabled(false);
+        btnCancel.setEnabled(true);
         
     }//GEN-LAST:event_btnShowAlertActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnShowAlert;
     private javax.swing.JComboBox cbHistory;
     private datasoul.templates.TemplateComboBox cbMainTemplate;
