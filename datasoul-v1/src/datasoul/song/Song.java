@@ -75,10 +75,8 @@ public class Song extends TextServiceItem{
             int width = icon1w+icon2w+icon3w;
             int height = icon1h;
             
-            BufferedImage image = new BufferedImage(width,height,java.awt.image.BufferedImage.TYPE_INT_RGB);
+            BufferedImage image = new BufferedImage(width,height,java.awt.image.BufferedImage.TRANSLUCENT);
             Graphics g = image.getGraphics();
-            g.setColor(Color.WHITE);
-            g.fillRect(0,0,width,height);
             
             if(!this.getText().equals("")){
                 g.drawImage(icon1,0,0,icon1w,icon1h,null);
