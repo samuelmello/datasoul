@@ -237,11 +237,14 @@
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Select the key to song"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[50, 32767]"/>
+            </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[25, 18]"/>
+              <Dimension value="[50, 18]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[25, 22]"/>
+              <Dimension value="[50, 22]"/>
             </Property>
           </Properties>
           <Events>

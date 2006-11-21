@@ -614,8 +614,9 @@ public class SongViewer extends javax.swing.JPanel {
 
         comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboKey.setToolTipText("Select the key to song");
-        comboKey.setMinimumSize(new java.awt.Dimension(25, 18));
-        comboKey.setPreferredSize(new java.awt.Dimension(25, 22));
+        comboKey.setMaximumSize(new java.awt.Dimension(50, 32767));
+        comboKey.setMinimumSize(new java.awt.Dimension(50, 18));
+        comboKey.setPreferredSize(new java.awt.Dimension(50, 22));
         comboKey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboKeyActionPerformed(evt);
