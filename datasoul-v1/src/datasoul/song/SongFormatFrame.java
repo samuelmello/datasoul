@@ -17,11 +17,13 @@ import java.awt.Toolkit;
  */
 public class SongFormatFrame extends javax.swing.JFrame {
     
-    private SongViewerPanel svp;
+    private SongViewer svp;
     private SongTemplate songTemplate;
     
+    private String view;
+    
     /** Creates new form SongFormatFrame */
-    public SongFormatFrame(SongViewerPanel svp, SongTemplate songTemplate) {
+    public SongFormatFrame(SongViewer svp, SongTemplate songTemplate) {
         initComponents();
         
         this.songTemplate = songTemplate;
@@ -39,6 +41,14 @@ public class SongFormatFrame extends javax.swing.JFrame {
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         Rectangle frame = getBounds();
         setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public void setView(String view) {
+        this.view = view;
     }
     
     /** This method is called from within the constructor to
@@ -115,7 +125,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         svp.refresh();
         try {
             String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") 
-            + "config"+ System.getProperty("file.separator") + "datasoul.songtemplate";
+            + "config"+ System.getProperty("file.separator") + "datasoul.song"+view+"template";
 
             this.songTemplate.save(filepath);
         } catch (Exception ex) {

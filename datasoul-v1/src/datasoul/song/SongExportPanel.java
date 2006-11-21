@@ -28,9 +28,9 @@ public class SongExportPanel extends javax.swing.JFrame {
         this.center();
 
         comboVersion.removeAllItems();
-        comboVersion.addItem(SongViewerPanel.VIEW_LYRICS);
-        comboVersion.addItem(SongViewerPanel.VIEW_CHORDS_COMPLETE);
-        comboVersion.addItem(SongViewerPanel.VIEW_CHORDS_SIMPLIFIED);
+        comboVersion.addItem(SongViewer.VIEW_LYRICS);
+        comboVersion.addItem(SongViewer.VIEW_CHORDS_COMPLETE);
+        comboVersion.addItem(SongViewer.VIEW_CHORDS_SIMPLIFIED);
         comboVersion.setSelectedIndex(0);
         
     }
@@ -174,7 +174,7 @@ public class SongExportPanel extends javax.swing.JFrame {
                 for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
                     if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
                         Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
-                        SongViewerPanel svp = new SongViewerPanel();
+                        SongViewer svp = new SongViewer();
                         svp.setView(this.comboVersion.getSelectedItem().toString());
                         svp.viewSong(song);
                         osOut = svp.exportRTFSong(osOut);
