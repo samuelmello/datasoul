@@ -109,7 +109,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
 
         btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
-        btnDeleteItem.setText("Delete");
+        btnDeleteItem.setText("Remove");
         btnDeleteItem.setToolTipText("Delete item");
         btnDeleteItem.setMaximumSize(new java.awt.Dimension(91, 26));
         btnDeleteItem.setMinimumSize(new java.awt.Dimension(91, 26));
