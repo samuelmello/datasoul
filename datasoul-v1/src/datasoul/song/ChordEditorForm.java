@@ -135,7 +135,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
         chordShapePanel5.setLayout(chordShapePanel5Layout);
         chordShapePanel5Layout.setHorizontalGroup(
             chordShapePanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 89, Short.MAX_VALUE)
+            .add(0, 95, Short.MAX_VALUE)
         );
         chordShapePanel5Layout.setVerticalGroup(
             chordShapePanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -147,7 +147,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
         chordShapePanel6.setLayout(chordShapePanel6Layout);
         chordShapePanel6Layout.setHorizontalGroup(
             chordShapePanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 82, Short.MAX_VALUE)
+            .add(0, 90, Short.MAX_VALUE)
         );
         chordShapePanel6Layout.setVerticalGroup(
             chordShapePanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -156,8 +156,8 @@ public class ChordEditorForm extends javax.swing.JFrame {
 
         jLabel1.setText("Chord:");
 
-        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        btnApply.setText("Save");
+        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
+        btnApply.setText("Apply");
         btnApply.setToolTipText("Apply chord changes");
         btnApply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,8 +165,8 @@ public class ChordEditorForm extends javax.swing.JFrame {
             }
         });
 
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png")));
-        btnCancel.setText("Close");
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
+        btnCancel.setText("Cancel");
         btnCancel.setToolTipText("Cancel and close the window");
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -12,6 +12,7 @@
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
@@ -21,9 +22,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane1" alignment="0" pref="266" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="0" pref="283" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="80" max="32767" attributes="0"/>
               <Component id="btnApply" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnClose" min="-2" max="-2" attributes="0"/>
@@ -70,9 +71,9 @@
     <Component class="javax.swing.JButton" name="btnApply">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/filesave.png"/>
+          <Image iconType="3" name="/datasoul/icons/apply.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Save"/>
+        <Property name="text" type="java.lang.String" value="Apply"/>
         <Property name="toolTipText" type="java.lang.String" value="Apply the changes to song view"/>
       </Properties>
       <Events>
@@ -82,9 +83,9 @@
     <Component class="javax.swing.JButton" name="btnClose">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/fileclose.png"/>
+          <Image iconType="3" name="/datasoul/icons/button_cancel.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Close"/>
+        <Property name="text" type="java.lang.String" value="Cancel"/>
         <Property name="toolTipText" type="java.lang.String" value="Close window"/>
       </Properties>
       <Events>

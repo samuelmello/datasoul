@@ -88,16 +88,16 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png")));
-        btnClose.setText("Close");
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
+        btnClose.setText("Cancel");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        btnSave.setText("Save");
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
+        btnSave.setText("Apply");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -135,7 +135,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
                     .add(btnSave))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,6 +148,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         config.setSetX11Display( cbSetX11Display.isSelected() );
         config.setX11Display( txtX11Display.getText().trim() );
         config.save();
+        dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
     
     

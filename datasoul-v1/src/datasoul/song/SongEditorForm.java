@@ -187,10 +187,11 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
 
-        labelName.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NAME"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        labelName.setText(bundle.getString("NAME")); // NOI18N
         labelName.setFocusable(false);
 
-        labelAuthor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AUTHOR"));
+        labelAuthor.setText(bundle.getString("AUTHOR")); // NOI18N
         labelAuthor.setFocusable(false);
 
         tabSong.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -208,7 +209,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         scroolLyric.setViewportView(textLyrics);
 
-        tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LYRICS"), scroolLyric);
+        tabSong.addTab(bundle.getString("LYRICS"), scroolLyric); // NOI18N
 
         textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 12));
         textChordsCompleted.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -219,7 +220,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         scroolChordsComplete.setViewportView(textChordsCompleted);
 
-        tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORDS_COMPLETE"), scroolChordsComplete);
+        tabSong.addTab(bundle.getString("CHORDS_COMPLETE"), scroolChordsComplete); // NOI18N
 
         textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 12));
         textChordsSimplified.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -230,7 +231,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         scroolChordsSimplified.setViewportView(textChordsSimplified);
 
-        tabSong.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Simplified"), scroolChordsSimplified);
+        tabSong.addTab(bundle.getString("Chords_Simplified"), scroolChordsSimplified); // NOI18N
 
         jLabel1.setText("Split lyrics in slides with");
 
@@ -247,16 +248,16 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png")));
-        btnClose.setText("Close");
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
+        btnClose.setText("Cancel");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        btnSave.setText("Save");
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
+        btnSave.setText("Apply");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -279,7 +280,7 @@ public class SongEditorForm extends javax.swing.JFrame {
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnSplit)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 184, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 170, Short.MAX_VALUE)
                         .add(btnSave)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClose))
@@ -341,7 +342,8 @@ public class SongEditorForm extends javax.swing.JFrame {
         }
         song.setFilePath(path);
         
-        saveFile();            
+        saveFile();    
+        dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSplitActionPerformed

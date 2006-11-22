@@ -294,8 +294,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         templateText = new datasoul.templates.TemplateComboBox();
         jLabel35 = new javax.swing.JLabel();
 
-        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        btnApply.setText("Save");
+        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
+        btnApply.setText("Apply");
         btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyActionPerformed(evt);
@@ -781,7 +781,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnApply)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
