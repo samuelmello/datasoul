@@ -60,26 +60,6 @@ public class ConfigPanel extends javax.swing.JPanel {
         registerComponent(txtAlertTemplateFilter, "AlertTemplateFilter");
         registerComponent(txtGeneralTemplateFilter, "GeneralTemplateFilter");
         
-        /*
-        registerComponent(videoInput,"VideoInput");
-        videoInput.removeAllItems();
-        for (int i=0; i<ConfigObj.VIDEOINPUT_TABLE.length; i++){
-            videoInput.addItem(ConfigObj.VIDEOINPUT_TABLE[i]);
-        }
-        
-        registerComponent(videoDeintrelace,"VideoDeintrelace");
-        videoDeintrelace.removeAllItems();        
-        for (int i=0; i<ConfigObj.VIDEODEINTRELACE_TABLE.length; i++){
-            videoDeintrelace.addItem(ConfigObj.VIDEODEINTRELACE_TABLE[i]);
-        }
-        
-        registerComponent(videoMode,"VideoMode");
-        videoMode.removeAllItems();
-        for (int i=0; i<ConfigObj.VIDEOMODE_TABLE.length; i++){
-            videoMode.addItem(ConfigObj.VIDEOMODE_TABLE[i]);
-        }
-        */        
-        
         registerComponent(clockMode,"ClockMode");
         clockMode.removeAllItems();
         for (int i=0; i<ConfigObj.CLOCKMODE_TABLE.length; i++){
@@ -92,11 +72,13 @@ public class ConfigPanel extends javax.swing.JPanel {
         mainDisplayEngine.removeAllItems();
         mainDisplayEngine.addItem("SDLContentRender");
         mainDisplayEngine.addItem("SwingContentRender");
+        //mainDisplayEngine.addItem("SDLLiveContentRender");
 
         registerComponent( monitorDisplayEngine, "MonitorDisplayEngine" );
         monitorDisplayEngine.removeAllItems();
         monitorDisplayEngine.addItem("SDLContentRender");
         monitorDisplayEngine.addItem("SwingContentRender");
+        //monitorDisplayEngine.addItem("SDLLiveContentRender");
         
     }
 
@@ -361,7 +343,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jLabel37.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel37.setText("Some configurations only apply after application restart");
+        jLabel37.setText("Some configurations apply only after application restart");
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -523,7 +505,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jLabel38.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel38.setText("Some configurations only apply after application restart");
+        jLabel38.setText("Some configurations apply only after application restart");
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -781,7 +763,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnApply)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

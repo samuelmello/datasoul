@@ -51,7 +51,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Unix Configurations"));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kxconfig.png")));
-        jLabel2.setText("These configurations affects only systems running on Unix");
+        jLabel2.setText("These configurations specify how to create output in Unix systems");
 
         cbSetX11Display.setText("Override X11 Display");
         cbSetX11Display.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
@@ -73,7 +73,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
                             .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                             .add(txtX11Display))
                         .add(org.jdesktop.layout.GroupLayout.LEADING, cbSetX11Display)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -135,7 +135,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
                     .add(btnSave))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,6 +177,12 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         
         cbSetX11Display.setSelected (config.getSetX11Display());
         txtX11Display.setText( config.getX11Display() );
+        
+        if (isMonitor){
+            lblMonitor.setText("Monitor");
+        }else{
+            lblMonitor.setText("Main");
+        }
         
         center();
         

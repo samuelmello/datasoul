@@ -25,7 +25,7 @@ import org.w3c.dom.Node;
  */
 public abstract class AbstractConfig extends SerializableObject {
     
-    public void load(String fileName){
+    protected void load(String fileName){
                 String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
         + "config" + System.getProperty("file.separator") + fileName;
 
@@ -59,7 +59,7 @@ public abstract class AbstractConfig extends SerializableObject {
         }
     }
     
-    public void save(String nodeName){
+    protected void save(String nodeName){
         try{
             String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
             + "config" + System.getProperty("file.separator") + nodeName;

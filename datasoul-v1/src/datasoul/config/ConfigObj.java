@@ -62,25 +62,6 @@ public class ConfigObj extends AbstractConfig {
     public static final int CLOCKMODE_12_NOSEC = 3;
     public static final String[] CLOCKMODE_TABLE = {"24 Hours with Seconds", "24 Hours without Seconds", "AM/PM with Seconds", "AM/PM without Seconds"};
 
-    /*
-    public static final int VIDEODEINTRELACE_NONE = 0;
-    public static final int VIDEODEINTRELACE_BLEND = 1;
-    public static final int VIDEODEINTRELACE_SMARTBLEND = 2;
-    public static final int VIDEODEINTRELACE_SMOOTHBLEND = 3;
-    public static final String[] VIDEODEINTRELACE_TABLE = {"None", "Blend", "Smart blend", "Smooth blend"};
-
-    public static final int VIDEOMODE_PAL = 0;
-    public static final int VIDEOMODE_NTSC = 1;
-    public static final int VIDEOMODE_SECAM = 2;
-    public static final String[] VIDEOMODE_TABLE = {"PAL", "NTSC", "SECAM"};
-
-    public static final int VIDEOINPUT_TUNER = 0;
-    public static final int VIDEOINPUT_COMPOSITE = 1;
-    public static final int VIDEOINPUT_COMPSVIDEO = 2;
-    public static final int VIDEOINPUT_SVIDEO = 3;
-    public static final String[] VIDEOINPUT_TABLE = {"Tuner", "Composite", "Composite2/S-Video", "S-Video"};
-    
-     */
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
@@ -235,92 +216,6 @@ public class ConfigObj extends AbstractConfig {
         this.monitorOutputSizeHeight = monitorOutputSizeHeight;
     }
 
-    /*
-    public String getVideoInput() {
-        return VIDEOINPUT_TABLE[videoInput];
-    }
-    
-    public int getVideoInputIdx() {
-        return videoInput;
-    }
-
-    public void setVideoInputIdx(String videoInput) {
-        setVideoInputIdx(Integer.parseInt(videoInput));
-    }
-    
-    public void setVideoInputIdx(int videoInput) {
-
-        this.videoInput = videoInput;
-        if ( this.getMainOutput() && ContentManager.getMainDisplay() instanceof SDLContentRender ){
-            ((SDLContentRender)ContentManager.getMainDisplay()).setInputSrc(videoInput);
-        }
-        
-    }
-    
-    public void setVideoInput(String str){
-        for (int i=0; i<VIDEOINPUT_TABLE.length; i++){
-            if (str.equalsIgnoreCase(VIDEOINPUT_TABLE[i]))
-                setVideoInputIdx(i);
-        }
-    }
-    
-    
-
-    public String getVideoMode() {
-        return VIDEOMODE_TABLE[videoMode];
-    }
-
-    public int getVideoModeIdx() {
-        return videoMode;
-    }
-    
-    public void setVideoModeIdx(String videoMode) {
-        setVideoModeIdx(Integer.parseInt(videoMode));
-    }
-    
-    public void setVideoModeIdx(int videoMode) {
-        this.videoMode = videoMode;
-        if ( this.getMainOutput() &&  ContentManager.getMainDisplay() instanceof SDLContentRender ){
-            ((SDLContentRender)ContentManager.getMainDisplay()).setInputMode(videoMode);
-        }
-    }
-
-    public void setVideoMode(String str){
-        for (int i=0; i<VIDEOMODE_TABLE.length; i++){
-            if (str.equalsIgnoreCase(VIDEOMODE_TABLE[i]))
-                setVideoModeIdx(i);
-        }
-    }
-    
-    
-    public String getVideoDeintrelace() {
-        return VIDEODEINTRELACE_TABLE[videoDeintrelace];
-    }
-
-    public int getVideoDeintrelaceIdx() {
-        return videoDeintrelace;
-    }
-
-    public void setVideoDeintrelaceIdx(String videoDeintrelace) {
-        setVideoDeintrelaceIdx(Integer.parseInt(videoDeintrelace));
-    }
-    
-    public void setVideoDeintrelaceIdx(int videoDeintrelace) {
-        this.videoDeintrelace = videoDeintrelace;
-        if ( this.getMainOutput() && ContentManager.getMainDisplay() instanceof SDLContentRender ){
-            ((SDLContentRender)ContentManager.getMainDisplay()).setDeintrelaceMode( videoDeintrelace );
-        }        
-        
-    }
-
-    public void setVideoDeintrelace(String str){
-        for (int i=0; i<VIDEODEINTRELACE_TABLE.length; i++){
-            if (str.equalsIgnoreCase(VIDEODEINTRELACE_TABLE[i]))
-                setVideoDeintrelaceIdx(i);
-        }
-    }
-    */
-    
     public int getClockModeIdx() {
         return clockMode;
     }

@@ -11,6 +11,7 @@ import datasoul.config.ConfigObj;
 import datasoul.config.ConfigPanel;
 import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.DatashowPanel;
+import datasoul.help.HelpPanel;
 import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;
 import datasoul.song.ChordsDB;
@@ -35,7 +36,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public HelpPanel help = new HelpPanel();
     
     
-    public static final String DATASOUL_VERSION = "Alpha 61111";
+    public static final String DATASOUL_VERSION = "Alpha 61122";
     
     org.jdesktop.layout.GroupLayout songsLayout;
     org.jdesktop.layout.GroupLayout datashowLayout;
@@ -51,7 +52,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         initComponents();
         
-        this.setTitle("DataSoul - "+DATASOUL_VERSION);
+        this.setTitle("Datasoul - "+DATASOUL_VERSION);
         
         ObjectManager.getInstance().setDatasoulMainForm(this);
         
@@ -356,17 +357,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        try{
-//            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            
-        }catch(Exception e){
-            
-        }
 
         //start splashscreen
-        //SplashScreen splashScreen = new SplashScreen("/datasoul/icons/splashScreen.gif");
-        //splashScreen.splashShow();
         final Splash splash = new Splash();
         splash.setVisible(true);
 
@@ -384,8 +376,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         TimerManager.getInstance();
         splash.setStatusText("Creating user interface...");
 
-        //stop splashscreen
-        //splashScreen.splashHide();        
 
         Toolkit.getDefaultToolkit().addAWTEventListener( new KeyListner(), AWTEvent.KEY_EVENT_MASK);        
         

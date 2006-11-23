@@ -51,7 +51,7 @@
               <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnApply" min="-2" max="-2" attributes="1"/>
-              <EmptySpace pref="115" max="32767" attributes="0"/>
+              <EmptySpace pref="119" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -359,7 +359,7 @@
                 <Font name="Dialog" size="10" style="0"/>
               </FontInfo>
             </Property>
-            <Property name="text" type="java.lang.String" value="Some configurations only apply after application restart"/>
+            <Property name="text" type="java.lang.String" value="Some configurations apply only after application restart"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -666,7 +666,7 @@
                 <Font name="Dialog" size="10" style="0"/>
               </FontInfo>
             </Property>
-            <Property name="text" type="java.lang.String" value="Some configurations only apply after application restart"/>
+            <Property name="text" type="java.lang.String" value="Some configurations apply only after application restart"/>
           </Properties>
         </Component>
       </SubComponents>

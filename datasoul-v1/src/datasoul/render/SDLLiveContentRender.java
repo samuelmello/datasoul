@@ -9,6 +9,7 @@
 
 package datasoul.render;
 
+import datasoul.config.SDLLiveRenderConfig;
 import datasoul.config.SDLRenderConfig;
 import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
@@ -23,16 +24,13 @@ import java.nio.ByteBuffer;
  *
  * @author root
  */
-public class SDLContentRender extends ContentRender {
+public class SDLLiveContentRender extends ContentRender {
     
     static {
         
-        if (System.getProperty("os.name").contains("Windows")){
+        if (System.getProperty("os.name").contains("Linux")){
             String path = System.getProperty("user.dir") + System.getProperty("file.separator");
-            System.load(path+"libsdlrender.dll");
-        }else{
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator");
-            System.load(path+"libsdlrender.so");            
+            System.load(path+"libsdlliverender.so");            
         }
         
     }
@@ -43,9 +41,9 @@ public class SDLContentRender extends ContentRender {
     private BufferedImage background;
     private ByteBuffer backgroundBuf;
     
-    private SDLContentRender contentRender;
+    private SDLLiveContentRender contentRender;
     
-    public SDLContentRender getContentRender(){
+    public SDLLiveContentRender getContentRender(){
         return contentRender;
     }
     
@@ -59,12 +57,17 @@ public class SDLContentRender extends ContentRender {
         background = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         backgroundBuf = ByteBuffer.allocateDirect(width * height * 4);
         
-        SDLRenderConfig config = SDLRenderConfig.getInstance(isMonitor);
+        SDLLiveRenderConfig config = SDLLiveRenderConfig.getInstance(isMonitor);
         String x11display = "";
         if (config.getSetX11Display()){
             setX11Display(config.getX11Display());
         }
-        init(width, height, top, left);        
+        setDeviceName(config.getDeviceName());
+        init(width, height, top, left);     
+        setInputMode( config.getVideoModeIdx() );
+        setDeintrelaceMode( config.getVideoDeintrelaceIdx() );
+        setInputSrc( config.getVideoInputIdx() );
+
         
     }
     
@@ -77,11 +80,15 @@ public class SDLContentRender extends ContentRender {
     private native void setX11Display(String x11display);
     private native void cleanup();
     private native void displayOverlay(ByteBuffer bb);
-    private native void nativeSetBackground(ByteBuffer bb);
+    private native void setDeviceName(String devName);
     public native void setBlack(int active);
     public native void setClear(int active);
+    public native void setInputSrc(int src);
+    public native void setInputMode(int mode);
+    public native void setDeintrelaceMode(int mode);
     public native void setDebugMode (int mode);
     public native void shutdown();
+    
     
     public void clear(){
 
@@ -115,16 +122,7 @@ public class SDLContentRender extends ContentRender {
     
     public void paintBackground(BufferedImage img){
         
-        if (img == null || background == null) return;
-
-        // we need to convert it to ensure that its on the correct format and dimensions
-        Graphics2D g = background.createGraphics();
-        g.drawImage(img, 0, 0, background.getWidth(), background.getHeight(), null);
-        
-        backgroundBuf.put(((DataBufferByte)background.getRaster().getDataBuffer()).getData() ) ;
-        backgroundBuf.flip();
-        this.nativeSetBackground(backgroundBuf);
-        backgroundBuf.clear();
+        // do nothing, live render does not support backgrounds
         
     }
 
