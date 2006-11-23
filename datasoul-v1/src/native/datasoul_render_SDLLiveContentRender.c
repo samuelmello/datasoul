@@ -4,17 +4,10 @@
 #include <jni.h> 
 #include <SDL/SDL.h>
 #include <SDL/SDL_thread.h>
-#include "datasoul_render_SDLContentRender.h"
-
-#ifdef VIDEO4LINUX
-#define USE_PTHREAD
+#include "datasoul_render_SDLLiveContentRender.h"
 #include "linux/SDL_bgrab-1.0.0/SDL_bgrab.h"
-#endif
-
-#ifdef USE_PTHREAD
 #include <pthread.h>
 #include <sched.h>
-#endif
 
 #define FRAMETIME_MS 30
 
@@ -25,90 +18,66 @@ typedef struct {
 	SDL_Surface *screen;
 	SDL_Surface *overlay[2];
 	int overlayActive;
-	SDL_Surface *background;
 	int black;
 	int clear;
-	int needRefresh;
 	int stopDisplay;
-	int bgMode;
 	int debugMode;
 
-#ifdef USE_PTHREAD
 	pthread_t displayThread;
-#else
-	SDL_Thread *displayThread;
-#endif
 	
-#ifdef VIDEO4LINUX
 	tSDL_bgrab bgrab;
+	char device[512];
 	int deintrelaceMode;
 	int inputSrc;
 	int inputMode;
-#endif
+
 } globals_t;
 
 static globals_t globals;
 
-#ifdef USE_PTHREAD
 void* displayThread (void *arg){
-#else
-int displayThread (void *arg){
-#endif
 	
 	Uint32 time1, time2, time3 = 0;
 	
+	globals.debugMode = 1;
+
 	while (globals.stopDisplay == 0){
 		time1 = SDL_GetTicks();
 		
-		if (globals.needRefresh || globals.bgMode == BACKGROUND_MODE_LIVE){
+		// Update the screen
 
-			// Update the screen
+		// we are in black?
+		if (globals.black){
+			SDL_FillRect (globals.screen, NULL, 0);	
+		}else{
+			// ok, "normal" painting"
+			bgrabBlitFramebuffer(&globals.bgrab, globals.screen, globals.deintrelaceMode /* deintrelace */);
 
-			// we are in black?
-			if (globals.black && globals.needRefresh){
-				SDL_FillRect (globals.screen, NULL, 0);	
-			}else{
-				// ok, "normal" painting"
-				
-				
-				if (globals.bgMode == BACKGROUND_MODE_LIVE){
-#ifdef VIDEO4LINUX
-					bgrabBlitFramebuffer(&globals.bgrab, globals.screen, globals.deintrelaceMode /* deintrelace */);
-#endif
-				}else{
-					SDL_BlitSurface(globals.background, NULL, globals.screen, NULL);
-				}
+			if (! globals.clear){
+				SDL_BlitSurface(globals.overlay[globals.overlayActive], NULL, globals.screen, NULL);
 
-				if (! globals.clear){
-					SDL_BlitSurface(globals.overlay[globals.overlayActive], NULL, globals.screen, NULL);
-
-				}
 			}
-			time3 = SDL_GetTicks();
-			SDL_Flip(globals.screen);
-			globals.needRefresh = 0;
-
 		}
-		
+		time3 = SDL_GetTicks();
+		SDL_Flip(globals.screen);
+
 		time2 = SDL_GetTicks();
 		// Sleep until the next screen refresh
 		if ( (time2 - time1) < FRAMETIME_MS ){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
 
+/*
 		if (globals.debugMode) {
 			fprintf(stderr, "Processing: %d ms, Sleeping: %d ms (%d, %d, %d)\n", 
 					(time2 - time1), 
 					FRAMETIME_MS - (time2 - time1),
 					time1, time2, time3);
 		}
+*/
 	}
 
-#ifdef USE_PTHREAD
 	return NULL;
-#else
-	return 0;
-#endif
 
 }
 
@@ -119,7 +88,7 @@ int displayThread (void *arg){
  * Method:    init
  * Signature: (IIII)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_init
 (JNIEnv *env, jobject obj, jint width, jint height, jint top, jint left){
 
 
@@ -128,7 +97,6 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
         Uint32 rmask, gmask, bmask, amask;
 
 	char envopt[256];
-
 
 	if (width <= 0){
 		width = 640;
@@ -146,8 +114,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
         }
 
 
-#ifdef VIDEO4LINUX
-	bgrabOpen(&globals.bgrab,"/dev/video0");
+	bgrabOpen(&globals.bgrab, globals.device);
 
 	/* Print some device info */
 	bgrabPrintInfo(&globals.bgrab);
@@ -158,10 +125,8 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
 	/* Start! */
         bgrabStart(&globals.bgrab, width, height, 1);
 	
-#endif
-	
 
-	globals.screen = SDL_SetVideoMode( width, height, 0, SDL_SWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME);
+	globals.screen = SDL_SetVideoMode( width, height, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME);
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         rmask = 0xff000000;
         gmask = 0x00ff0000;
@@ -179,35 +144,30 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
 
         globals.overlay[0] = SDL_DisplayFormatAlpha(surface);
         globals.overlay[1] = SDL_DisplayFormatAlpha(surface);
-        globals.background = SDL_DisplayFormatAlpha(surface);
 	
 	SDL_FreeSurface(surface);
 
-	globals.needRefresh = 1;
 	globals.stopDisplay = 0;
 	
-#ifdef USE_PTHREAD
 	
-	// Init the painting thread using the RoundRobin Scheduler
+	// Init the painting thread using the FIFO RealTime Scheduler
 	// and the highest priority
 	pthread_attr_t attr;
 	pthread_attr_init(&attr);
-	pthread_attr_setschedpolicy(&attr, SCHED_RR);
+	pthread_attr_setschedpolicy(&attr, SCHED_FIFO);
         struct sched_param param;
-	param.__sched_priority = sched_get_priority_max(SCHED_RR);
+	param.__sched_priority = sched_get_priority_max(SCHED_FIFO);
 	pthread_attr_setschedparam(&attr, &param);
 	pthread_create(&globals.displayThread, &attr, &displayThread, NULL);
 
-	// also setup the process scheduler to RoundRobin
+	// also setup the process scheduler to FIFO RealTime
 	/*
 	int x = sched_setscheduler(0, SCHED_RR, &param);
 	if (x != 0){
 		perror("setsched");
 	}
 	*/
-#else
-	globals.displayThread = SDL_CreateThread( &displayThread, NULL);
-#endif
+
 }
 
 
@@ -217,23 +177,15 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_init
  * Method:    cleanup
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_cleanup
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_cleanup
   (JNIEnv *env, jobject obj){
 
 	  int x;
 	  globals.stopDisplay = 1;
 
-#ifdef VIDEO4LINUX
 	  bgrabStop(&globals.bgrab);
 	  bgrabClose(&globals.bgrab);
-#endif
-
-	  
-#ifdef USE_PTHREAD
 	  pthread_join(globals.displayThread, (void*) &x);
-#else
-	  SDL_WaitThread(globals.displayThread, &x);
-#endif
 	  
 }
 
@@ -273,7 +225,7 @@ void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
  * Method:    displayOverlay
  * Signature: (Ljava/nio/ByteBuffer;)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_displayOverlay
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_displayOverlay
   (JNIEnv *env, jobject obj, jobject bytebuf){
 
 	  int x;
@@ -284,25 +236,11 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_displayOverlay
 	  }
 	setImageOnSurface(env, globals.overlay[x], bytebuf);
 	globals.overlayActive = x;
-	globals.needRefresh = 1;
 
 	if (globals.debugMode > 0){
-		fprintf(stdout, "Received overlay image!\n");
+		fprintf(stderr, "Received overlay image!\n");
 	}
 	
-}
-
-/*
- * Class:     datasoul_render_SDLContentRender
- * Method:    nativeSetBackground
- * Signature: (Ljava/nio/ByteBuffer;)V
- */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_nativeSetBackground
-  (JNIEnv *env, jobject obj, jobject bytebuf){
-
-	setImageOnSurface(env, globals.background, bytebuf);
-	globals.needRefresh = 1;
-
 }
 
 /*
@@ -310,10 +248,9 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_nativeSetBackground
  * Method:    setBlack
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setBlack
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setBlack
   (JNIEnv *env, jobject obj, jint active){
 	  globals.black = active;
-	  globals.needRefresh = 1;
 }
 
 /*
@@ -321,36 +258,26 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setBlack
  * Method:    setClear
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setClear
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setClear
   (JNIEnv *env, jobject obj, jint active){
 	  globals.clear = active;
-	  globals.needRefresh = 1;
 }
 
-
-/*
- * Class:     datasoul_render_SDLContentRender
- * Method:    setBackgroundMode
- * Signature: (I)V
- */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setBackgroundMode
-  (JNIEnv *env, jobject obj, jint mode){
-	  globals.bgMode = mode;
-	  globals.needRefresh = 1;
-}
 
 /*
  * Class:     datasoul_render_SDLContentRender
  * Method:    setInputSrc
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setInputSrc
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setInputSrc
   (JNIEnv *env, jobject obj, jint src){
 
-#ifdef VIDEO4LINUX
 	globals.inputSrc = src;
 	bgrabSetChannel(&globals.bgrab, globals.inputSrc, globals.inputMode);
-#endif
+	if (globals.debugMode){
+		fprintf(stderr, "Setting Source (src=%d, mode=%d)\n", 
+			globals.inputSrc, globals.inputMode);
+	}
 	  
 }
 
@@ -359,13 +286,16 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setInputSrc
  * Method:    setInputMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setInputMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setInputMode
   (JNIEnv *env, jobject obj, jint mode){
 
-#ifdef VIDEO4LINUX
 	globals.inputMode = mode;
 	bgrabSetChannel(&globals.bgrab, globals.inputSrc, globals.inputMode);
-#endif
+	if (globals.debugMode){
+		fprintf(stderr, "Setting Input (src=%d, mode=%d)\n", 
+			globals.inputSrc, globals.inputMode);
+	}
+
 
 }
 
@@ -374,12 +304,10 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setInputMode
  * Method:    setDeintrelaceMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setDeintrelaceMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setDeintrelaceMode
   (JNIEnv *env, jobject obj, jint mode){
 
-#ifdef VIDEO4LINUX
 	  globals.deintrelaceMode = mode;
-#endif
 	  
 }
 
@@ -388,7 +316,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setDeintrelaceMode
  * Method:    setDebugMode
  * Signature: (I)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setDebugMode
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setDebugMode
   (JNIEnv *env, jobject obj, jint mode){
 
 	globals.debugMode = mode;
@@ -400,7 +328,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setDebugMode
  * Method:    setWindowTitle
  * Signature: (Ljava/lang/String;)V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setWindowTitle
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setWindowTitle
 	(JNIEnv *env, jobject obj, jstring title){
 
      const char *str;
@@ -421,8 +349,41 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_setWindowTitle
  * Method:    shutdown
  * Signature: ()V
  */
-JNIEXPORT void JNICALL Java_datasoul_render_SDLContentRender_shutdown
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_shutdown
   (JNIEnv *env, jobject obj){
 	SDL_Quit();
+}
+
+/*
+ * Class:     datasoul_render_SDLContentRender
+ * Method:    setX11Display
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setX11Display
+  (JNIEnv *env, jobject obj, jstring x11displayStr){
+
+	char *envoptX11 = (char*)malloc(512);
+        const char *str;
+        str = (*env)->GetStringUTFChars(env, x11displayStr, NULL);
+        snprintf(envoptX11, 511, "DISPLAY=%s", str);
+        (*env)->ReleaseStringUTFChars(env, x11displayStr, str);
+	putenv(envoptX11);
+	// do NOT free envoptX11. putenv stores only a pointer to it.
+	// freeing envoptX11 will lose the value
+}
+
+
+/*
+ * Class:     datasoul_render_SDLLiveContentRender
+ * Method:    setDeviceName
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_setDeviceName
+  (JNIEnv *env, jobject obj, jstring devName){
+
+        const char *str = (*env)->GetStringUTFChars(env, devName, NULL);
+        snprintf(globals.device, 511, "%s", str);
+        (*env)->ReleaseStringUTFChars(env, devName, str);
+
 }
 
