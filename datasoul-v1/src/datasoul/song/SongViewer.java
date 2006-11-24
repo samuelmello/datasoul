@@ -248,6 +248,7 @@ public class SongViewer extends javax.swing.JPanel {
             drawLyrics(this.editorSong,true);
             drawChords(this.editorSongChords,true);
 
+            this.editorSong.setCaretPosition(0);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
