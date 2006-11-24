@@ -32,7 +32,7 @@ public class HelpLicense extends javax.swing.JPanel {
             ex.printStackTrace();
         }
         txtGPL.setText(sb.toString());
-        
+        txtGPL.setCaretPosition(0);
     }
     
     /** This method is called from within the constructor to

@@ -92,6 +92,9 @@ public class SongEditorForm extends javax.swing.JFrame {
         highlightchord(this.textChordsSimplified);
         highlightchord(this.textChordsCompleted);
         highlightlyric(this.textLyrics);
+        textChordsSimplified.setCaretPosition(0);
+        textChordsCompleted.setCaretPosition(0);
+        textLyrics.setCaretPosition(0);
     }
 
     /**
@@ -113,6 +116,9 @@ public class SongEditorForm extends javax.swing.JFrame {
         highlightchord(this.textChordsSimplified);
         highlightchord(this.textChordsCompleted);
         highlightlyric(this.textLyrics);
+        textChordsSimplified.setCaretPosition(0);
+        textChordsCompleted.setCaretPosition(0);
+        textLyrics.setCaretPosition(0);
     }
     
     public SongEditorForm() {
@@ -129,6 +135,9 @@ public class SongEditorForm extends javax.swing.JFrame {
         highlightchord(this.textChordsSimplified);
         highlightchord(this.textChordsCompleted);
         highlightlyric(this.textLyrics);
+        textChordsSimplified.setCaretPosition(0);
+        textChordsCompleted.setCaretPosition(0);
+        textLyrics.setCaretPosition(0);
     }
 
     public void center(){

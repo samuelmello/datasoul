@@ -44,6 +44,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         this.center();
 
         highlightlyric(this.textText);
+        textText.setCaretPosition(0);
     }
 
     public void center(){
