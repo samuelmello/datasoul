@@ -38,7 +38,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     protected TableCellEditor cellEditor;
     protected String title;
     protected String template;
-    protected TextServiceItemTextArea slideNumberArea;
+    protected ServiceItemTextField slideNumberField;
     protected SlideNumberCellRenderer slideNumberRenderer;
     
     /** Creates a new instance of ServiceItem */
@@ -48,21 +48,21 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         this.title = "";
         this.template = "Default";
         this.slides = new ArrayList<ServiceItemRenderer>();
-        slideNumberArea = new TextServiceItemTextArea();
-        
+        slideNumberField = new ServiceItemTextField();
+        slideNumberField.setHorizontalAlignment( ServiceItemTextField.TRAILING );
         slideNumberRenderer = new SlideNumberCellRenderer();
     }
 
     public class SlideNumberCellRenderer implements TableCellRenderer {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            slideNumberArea.setText(value.toString());
-            slideNumberArea.setShowMark( slides.get(row).getMark() );
+            slideNumberField.setText(value.toString());
+            slideNumberField.setShowMark( slides.get(row).getMark() );
             if (isSelected){
-                slideNumberArea.setBackground( table.getSelectionBackground() );
+                slideNumberField.setBackground( table.getSelectionBackground() );
             }else{
-                slideNumberArea.setBackground( table.getBackground() );
+                slideNumberField.setBackground( table.getBackground() );
             }
-            return slideNumberArea;
+            return slideNumberField;
         }
         
     }
