@@ -6,6 +6,7 @@
   </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
@@ -70,7 +71,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel10">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Main Output:"/>
+        <Property name="text" type="java.lang.String" value="Main Output"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnMainBlack">
@@ -129,12 +130,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="160" max="32767" attributes="0"/>
+                  <EmptySpace pref="163" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="80" max="32767" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
               <Component id="jSliderSlideChangeSpeed" alignment="0" pref="285" max="32767" attributes="0"/>
           </Group>
@@ -157,7 +158,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel15">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Show/Hide Speed:"/>
+            <Property name="text" type="java.lang.String" value="Show/Hide Speed"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderShowHideSpeed">
@@ -175,7 +176,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Slide Change Transition Speed:"/>
+            <Property name="text" type="java.lang.String" value="Slide Change Transition Speed"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSlider" name="jSliderSlideChangeSpeed">
@@ -202,7 +203,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="templateMonitor" pref="188" max="32767" attributes="0"/>
+                  <Component id="templateMonitor" pref="191" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Component id="jPanel1" alignment="0" pref="285" max="32767" attributes="1"/>
@@ -232,7 +233,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Template:"/>
+            <Property name="text" type="java.lang.String" value="Template"/>
           </Properties>
         </Component>
         <Component class="datasoul.templates.TemplateComboBox" name="templateMonitor">

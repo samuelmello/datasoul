@@ -64,6 +64,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Song Format");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tableProperties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

@@ -176,7 +176,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSpeedCb = new javax.swing.JCheckBox();
 
         setAutoscrolls(true);
-        jLabel10.setText("Main Output:");
+        jLabel10.setText("Main Output");
 
         btnMainBlack.setText("Black");
         btnMainBlack.setToolTipText("Makes the main output black (F12)");
@@ -217,7 +217,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setText("Show/Hide Speed:");
+        jLabel15.setText("Show/Hide Speed");
 
         jSliderShowHideSpeed.setMajorTickSpacing(5);
         jSliderShowHideSpeed.setMaximum(30);
@@ -231,7 +231,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setText("Slide Change Transition Speed:");
+        jLabel16.setText("Slide Change Transition Speed");
 
         jSliderSlideChangeSpeed.setMajorTickSpacing(5);
         jSliderSlideChangeSpeed.setMaximum(30);
@@ -253,11 +253,11 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             .add(pnlSpeedLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel15)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addContainerGap(163, Short.MAX_VALUE))
             .add(pnlSpeedLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel16)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
             .add(jSliderSlideChangeSpeed, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
         );
         pnlSpeedLayout.setVerticalGroup(
@@ -273,7 +273,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel1.setText("Template:");
+        jLabel1.setText("Template");
 
         templateMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -337,7 +337,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                .add(templateMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                 .addContainerGap())
             .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
             .add(pnlMonitorLayout.createSequentialGroup()

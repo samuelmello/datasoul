@@ -54,7 +54,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbHistory = new javax.swing.JComboBox();
         btnCancel = new javax.swing.JButton();
 
-        jLabel3.setText("Text:");
+        jLabel3.setText("Text");
 
         txtAlert.setColumns(20);
         txtAlert.setRows(5);
@@ -68,11 +68,11 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbShowOnMonitor1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbShowOnMonitor1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel1.setText("Template:");
+        jLabel1.setText("Template");
 
-        jLabel2.setText("Template:");
+        jLabel2.setText("Template");
 
-        jLabel13.setText("Duration:");
+        jLabel13.setText("Duration");
 
         spnAlertTime.setModel(new SpinnerNumberModel(1, 1, 999, 1));
 
@@ -120,11 +120,11 @@ public class AlertControlPanel extends javax.swing.JPanel {
                     .add(layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbMainTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                        .add(cbMainTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbMonitorTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE))
+                        .add(cbMonitorTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                     .add(cbShowOnMain1)
                     .add(cbShowOnMonitor1)
                     .add(layout.createSequentialGroup()

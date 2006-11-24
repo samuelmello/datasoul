@@ -186,7 +186,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         toolBar.add(btnAddWizard);
 
-        jSeparator1.setForeground(java.awt.SystemColor.control);
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         toolBar.add(jSeparator1);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
@@ -276,7 +276,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1.setText("Service List");
         jToolBar1.add(jLabel1);
 
-        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator2);
 
         btnFile.setText("File");

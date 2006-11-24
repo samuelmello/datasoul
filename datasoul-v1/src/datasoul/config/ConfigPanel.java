@@ -285,7 +285,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
-        jLabel6.setText("Size:");
+        jLabel6.setText("Size");
 
         mainOutputSizeWidth.setText("jTextField1");
 
@@ -303,18 +303,18 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         mainOutputPositionLeft.setText("jTextField1");
 
-        jLabel3.setText("Position:");
+        jLabel3.setText("Position");
 
-        jLabel10.setText("Display Engine:");
+        jLabel10.setText("Display Engine");
 
         mainDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         mainOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel1.setText("Enable main output:");
+        jLabel1.setText("Enable main output");
 
-        jLabel28.setText("Output Device:");
+        jLabel28.setText("Output Device");
 
         btnSelectDeviceMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kcontrol.png")));
         btnSelectDeviceMain.setText("Select");
@@ -446,16 +446,16 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
-        jLabel2.setText("Enable monitor output:");
+        jLabel2.setText("Enable monitor output");
 
         monitorOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         monitorOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel11.setText("Display Engine:");
+        jLabel11.setText("Display Engine");
 
         monitorDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setText("Position:");
+        jLabel4.setText("Position");
 
         monitorOutputPositionLeft.setText("jTextField1");
 
@@ -473,9 +473,9 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         monitorOutputSizeWidth.setText("jTextField1");
 
-        jLabel5.setText("Size:");
+        jLabel5.setText("Size");
 
-        jLabel29.setText("Output Device:");
+        jLabel29.setText("Output Device");
 
         btnSelectDeviceMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kcontrol.png")));
         btnSelectDeviceMonitor.setText("Select");
@@ -611,7 +611,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Clock"));
-        jLabel9.setText("Clock format:");
+        jLabel9.setText("Clock format");
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -645,15 +645,15 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Templates"));
-        jLabel7.setText("For monitor templates, show only itens containing: *");
+        jLabel7.setText("For monitor templates, show only itens containing *");
 
         txtMonitorTemplateFilter.setText("filter");
 
         txtAlertTemplateFilter.setText("filter");
 
-        jLabel25.setText("For alert templates, show only itens containing: *");
+        jLabel25.setText("For alert templates, show only itens containing *");
 
-        jLabel26.setText("For general templates, show only itens containing: *");
+        jLabel26.setText("For general templates, show only itens containing *");
 
         txtGeneralTemplateFilter.setText("filter");
 
@@ -665,7 +665,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel34.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel34.setText("Template filters makes easy to find the right template to select in each situation.");
 
-        jLabel8.setText("Default template for text items:");
+        jLabel8.setText("Default template for text items");
 
         templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "teste123" }));
         templateText.setOpaque(false);
@@ -703,7 +703,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                                 .add(jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(templateText, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 207, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(jLabel8))))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -763,7 +763,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnApply)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

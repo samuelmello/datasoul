@@ -113,7 +113,7 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setText("Preview Size:");
+        jLabel10.setText("Preview Size");
 
         org.jdesktop.layout.GroupLayout pnlPreviewBoxLayout = new org.jdesktop.layout.GroupLayout(pnlPreviewBox);
         pnlPreviewBox.setLayout(pnlPreviewBoxLayout);
@@ -127,7 +127,7 @@ public class DatashowPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

@@ -44,7 +44,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         btnTimerBackward = new javax.swing.JToggleButton();
         btnApplyTimer = new javax.swing.JButton();
 
-        jLabel1.setText("Timer Direction:");
+        jLabel1.setText("Timer Direction");
 
         pnlTimerStart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jLabel5.setText("Start");

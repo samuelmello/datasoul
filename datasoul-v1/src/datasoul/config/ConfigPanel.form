@@ -51,7 +51,7 @@
               <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnApply" min="-2" max="-2" attributes="1"/>
-              <EmptySpace pref="119" max="32767" attributes="0"/>
+              <EmptySpace pref="121" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -207,7 +207,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Size:"/>
+            <Property name="text" type="java.lang.String" value="Size"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="mainOutputSizeWidth">
@@ -252,12 +252,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Position:"/>
+            <Property name="text" type="java.lang.String" value="Position"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Display Engine:"/>
+            <Property name="text" type="java.lang.String" value="Display Engine"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="mainDisplayEngine">
@@ -286,12 +286,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enable main output:"/>
+            <Property name="text" type="java.lang.String" value="Enable main output"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel28">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Output Device:"/>
+            <Property name="text" type="java.lang.String" value="Output Device"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSelectDeviceMain">
@@ -509,7 +509,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enable monitor output:"/>
+            <Property name="text" type="java.lang.String" value="Enable monitor output"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="monitorOutput">
@@ -526,7 +526,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Display Engine:"/>
+            <Property name="text" type="java.lang.String" value="Display Engine"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="monitorDisplayEngine">
@@ -543,7 +543,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Position:"/>
+            <Property name="text" type="java.lang.String" value="Position"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="monitorOutputPositionLeft">
@@ -588,12 +588,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Size:"/>
+            <Property name="text" type="java.lang.String" value="Size"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel29">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Output Device:"/>
+            <Property name="text" type="java.lang.String" value="Output Device"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSelectDeviceMonitor">
@@ -714,7 +714,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Clock format:"/>
+            <Property name="text" type="java.lang.String" value="Clock format"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="clockMode">
@@ -791,7 +791,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -833,7 +833,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="For monitor templates, show only itens containing: *"/>
+            <Property name="text" type="java.lang.String" value="For monitor templates, show only itens containing *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMonitorTemplateFilter">
@@ -848,12 +848,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel25">
           <Properties>
-            <Property name="text" type="java.lang.String" value="For alert templates, show only itens containing: *"/>
+            <Property name="text" type="java.lang.String" value="For alert templates, show only itens containing *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel26">
           <Properties>
-            <Property name="text" type="java.lang.String" value="For general templates, show only itens containing: *"/>
+            <Property name="text" type="java.lang.String" value="For general templates, show only itens containing *"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtGeneralTemplateFilter">
@@ -890,7 +890,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Default template for text items:"/>
+            <Property name="text" type="java.lang.String" value="Default template for text items"/>
           </Properties>
         </Component>
         <Component class="datasoul.templates.TemplateComboBox" name="templateText">
