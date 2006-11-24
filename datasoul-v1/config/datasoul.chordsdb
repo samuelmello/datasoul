@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ChordsDB>
+    <Chord>
+        <name>C</name>
+        <shape>X 3 2 0 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>D</name>
+        <shape>X X 0 2 3 2</shape>
+        <shape>X 5 7 7 7 5</shape>
+    </Chord>
+    <Chord>
+        <name>E</name>
+        <shape>0 2 2 1 0 0</shape>
+        <shape>X 7 9 9 9 7</shape>
+        <shape>12 14 14 13 12 12</shape>
+    </Chord>
+    <Chord>
+        <name>F7+</name>
+        <shape>1 X 2 2 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>F/A</name>
+        <shape>X 0 3 2 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7+</name>
+        <shape>X 1 3 2 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb</name>
+        <shape>X 1 3 3 3 1 </shape>
+    </Chord>
+    <Chord>
+        <name>C/E</name>
+        <shape>0 3 2 0 1 0 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb/C</name>
+        <shape>X 3 3 3 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7</name>
+        <shape>X X 0 2 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Am</name>
+        <shape>X 0 2 2 1 0 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7</name>
+        <shape>3 X 3 3 3 X </shape>
+        <shape>3 5 3 3 3 3 </shape>
+    </Chord>
+    <Chord>
+        <name>F</name>
+        <shape>1 3 3 2 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am7</name>
+        <shape>X 0 2 0 1 0 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7+</name>
+        <shape>X 4 6 5 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7/F</name>
+        <shape>X X 3 3 6 3 </shape>
+        <shape>X 8 8 10 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Em</name>
+        <shape>X 2 2 X X X </shape>
+        <shape>X 7 9 9 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G</name>
+        <shape>3 2 X X X 3 </shape>
+        <shape>3 5 5 4 3 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm</name>
+        <shape>X 2 4 4 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb</name>
+        <shape>X 6 8 8 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm</name>
+        <shape>X X X 2 3 1 </shape>
+        <shape>X 5 7 7 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>E/B</name>
+        <shape>X 2 2 1 0 0 </shape>
+        <shape>X X X X X X </shape>
+    </Chord>
+    <Chord>
+        <name>G#m7</name>
+        <shape>4 X 4 4 4 X </shape>
+        <shape>4 6 4 4 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m7</name>
+        <shape>2 X 2 2 2 X </shape>
+        <shape>2 4 2 2 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A</name>
+        <shape>X 0 2 2 2 0 </shape>
+        <shape>5 7 7 6 5 5 </shape>
+    </Chord>
+    <Chord>
+        <name>B</name>
+        <shape>X 2 4 4 4 2 </shape>
+        <shape>7 9 9 8 7 7 </shape>
+    </Chord>
+    <Chord>
+        <name>D#º</name>
+        <shape>X X 1 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(b13)</name>
+        <shape>4 4 4 5 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7</name>
+        <shape>2 4 2 3 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(#11)</name>
+        <shape>X 1 2 1 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7</name>
+        <shape>4 6 4 5 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m7</name>
+        <shape>X 4 6 4 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>A7M</name>
+        <shape>X 0 2 1 2 0 </shape>
+        <shape>5 X 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>A/B</name>
+        <shape>X 2 2 2 2 0 </shape>
+    </Chord>
+    <Chord>
+        <name>A9</name>
+        <shape>X 0 2 2 0 0 </shape>
+    </Chord>
+    <Chord>
+        <name>E7(9)</name>
+        <shape>X X 2 1 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm7</name>
+        <shape>X 2 4 2 3 2 </shape>
+    </Chord>
+</ChordsDB>
