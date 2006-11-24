@@ -46,6 +46,7 @@ public class HelpLicense extends javax.swing.JPanel {
         txtGPL = new javax.swing.JTextArea();
 
         txtGPL.setColumns(20);
+        txtGPL.setEditable(false);
         txtGPL.setRows(5);
         jScrollPane1.setViewportView(txtGPL);
 

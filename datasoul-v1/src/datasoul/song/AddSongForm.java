@@ -120,6 +120,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         text = text + "Author: " +song.getSongAuthor()+"\n-------------------------------------------------\n";
         text = text + song.getText();
         this.textSong.setText(text);
+        textSong.setCaretPosition(0);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -38,7 +38,8 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     protected TableCellEditor cellEditor;
     protected String title;
     protected String template;
-    
+    protected TextServiceItemTextArea slideNumberArea;
+    protected SlideNumberCellRenderer slideNumberRenderer;
     
     /** Creates a new instance of ServiceItem */
     public ServiceItem() {
@@ -47,8 +48,25 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         this.title = "";
         this.template = "Default";
         this.slides = new ArrayList<ServiceItemRenderer>();
+        slideNumberArea = new TextServiceItemTextArea();
+        
+        slideNumberRenderer = new SlideNumberCellRenderer();
     }
 
+    public class SlideNumberCellRenderer implements TableCellRenderer {
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            slideNumberArea.setText(value.toString());
+            slideNumberArea.setShowMark( slides.get(row).getMark() );
+            if (isSelected){
+                slideNumberArea.setBackground( table.getSelectionBackground() );
+            }else{
+                slideNumberArea.setBackground( table.getBackground() );
+            }
+            return slideNumberArea;
+        }
+        
+    }
+    
     public String toString(){
         return this.title;
     }
@@ -114,10 +132,10 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     public Object getValueAt(int rowIndex, int columnIndex) {
         if (slides != null && slides.size()>0){
             if (columnIndex==0){
-                String text = Integer.toString(rowIndex+1);
-                if (slides.get(rowIndex).getShowMark()){
-                    text = text + " *";
-                }
+                String text = Integer.toString(rowIndex+1)+" ";
+                //if (slides.get(rowIndex).getShowMark()){
+                //    text = text + " *";
+                //}
                 return text;
             }else
                 return slides.get(rowIndex);
@@ -163,6 +181,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     public void registerJTable(JTable jTable){
         jTable.setModel(this);
         jTable.getColumn(NUMBER_LABEL).setMaxWidth(30);
+        jTable.getColumn(NUMBER_LABEL).setCellRenderer(slideNumberRenderer);
         jTable.getColumn(ITEM_LABEL).setCellRenderer(this);
         jTable.getColumn(ITEM_LABEL).setCellEditor(cellEditor);
         jTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -198,5 +217,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         }
 
     }
+    
+    
     
 }

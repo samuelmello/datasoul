@@ -11,6 +11,8 @@ package datasoul.datashow;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import javax.swing.JTextArea;
 
 /**
@@ -19,14 +21,14 @@ import javax.swing.JTextArea;
  */
 public class TextServiceItemRenderer implements ServiceItemRenderer {
     
-    private JTextArea area;
+    private TextServiceItemTextArea area;
     private float defaultFontSize;
     
     private boolean showMark;
     
     /** Creates a new instance of TextServiceItemRenderer */
     public TextServiceItemRenderer() {
-        area = new JTextArea();
+        area = new TextServiceItemTextArea();
         area.setLineWrap(true);
         area.setWrapStyleWord(true);
         area.setOpaque(true);
@@ -45,11 +47,7 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     public Component getComponent(boolean selected, boolean hasFocus) {
 
         if (selected){
-            if (hasFocus){
-                area.setBackground( Color.decode("0xccccff") );
-            }else{
-                area.setBackground( Color.decode("0xc8ddf2") );
-            }
+            area.setBackground( area.getSelectionColor() );
         }else{
             area.setBackground( Color.WHITE );
         }
@@ -98,6 +96,7 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     
     public void setMark(boolean showMark){
         this.showMark = showMark;
+        area.setShowMark(showMark);
     }
 
     public boolean getMark() {
