@@ -1,5 +1,5 @@
 JDK_HOME=/usr/java/jdk1.6.0
-CFLAGS=-O4 -Wall
+CFLAGS=-O4 -Wall -g
 DATASOUL_CLASSES=../../build/classes
 
 LIBS=libsdlrender.so libsdlliverender.so 
@@ -25,4 +25,4 @@ datasoul_render_SDLLiveContentRender.h:
 
 
 clean:
-	rm -f datasoul_render_SDLContentRender.h $(LIBS)
+	rm -f datasoul_render_SDLLiveContentRender.h datasoul_render_SDLContentRender.h $(LIBS)

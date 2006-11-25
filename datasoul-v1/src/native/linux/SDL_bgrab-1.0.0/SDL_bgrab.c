@@ -480,7 +480,7 @@ int bgrabStart (tSDL_bgrab *bgrab, int width, int height, int bgra)
  #endif
 
  /* Create framebuffer */
- bgrab->framebuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,width,height,32,
+ bgrab->framebuffer = SDL_CreateRGBSurface(SDL_HWSURFACE,width,height,32,
                                            bgrab->rmask,bgrab->gmask,bgrab->bmask,0);
  SDL_SetAlpha(bgrab->framebuffer,0,0);
  if (bgrab->framebuffer==NULL) {
@@ -490,7 +490,7 @@ int bgrabStart (tSDL_bgrab *bgrab, int width, int height, int bgra)
  DBMESSAGE ("Main Framebuffer created.\n");
 
  /* Create deframebuffer for deinterlacing */
- bgrab->deframebuffer = SDL_CreateRGBSurface(SDL_SWSURFACE,width,height,32,
+ bgrab->deframebuffer = SDL_CreateRGBSurface(SDL_HWSURFACE,width,height,32,
                                            bgrab->rmask,bgrab->gmask,bgrab->bmask,0);
  SDL_SetAlpha(bgrab->deframebuffer,0,0);
  if (bgrab->deframebuffer==NULL) {

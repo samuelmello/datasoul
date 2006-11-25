@@ -17,6 +17,7 @@
 typedef struct {
 	SDL_Surface *screen;
 	SDL_Surface *overlay[2];
+	Uint8 *blitaux;
 	int overlayActive;
 	int black;
 	int clear;
@@ -67,14 +68,14 @@ void* displayThread (void *arg){
 			SDL_Delay ( FRAMETIME_MS - (time2 - time1) );
 		}
 
-/*
-		if (globals.debugMode) {
+
+//		if (globals.debugMode) {
 			fprintf(stderr, "Processing: %d ms, Sleeping: %d ms (%d, %d, %d)\n", 
 					(time2 - time1), 
 					FRAMETIME_MS - (time2 - time1),
 					time1, time2, time3);
-		}
-*/
+//		}
+
 	}
 
 	return NULL;
@@ -126,7 +127,7 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_init
         bgrabStart(&globals.bgrab, width, height, 1);
 	
 
-	globals.screen = SDL_SetVideoMode( width, height, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME);
+	globals.screen = SDL_SetVideoMode( width, height, 0, SDL_HWSURFACE | SDL_DOUBLEBUF | SDL_NOFRAME );
 #if SDL_BYTEORDER == SDL_BIG_ENDIAN
         rmask = 0xff000000;
         gmask = 0x00ff0000;
@@ -139,13 +140,15 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_init
         amask = 0xff000000;
 #endif
 
-        surface = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, 32,
+        surface = SDL_CreateRGBSurface(SDL_HWSURFACE, width, height, 32,
                         rmask, gmask, bmask, amask);
 
         globals.overlay[0] = SDL_DisplayFormatAlpha(surface);
         globals.overlay[1] = SDL_DisplayFormatAlpha(surface);
 	
 	SDL_FreeSurface(surface);
+
+	globals.blitaux = (Uint8*) malloc( width * height * 4 );
 
 	globals.stopDisplay = 0;
 	
@@ -214,8 +217,10 @@ void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
                 //if (i<20){
                 //      fprintf(stderr, "%08x \n", tmp);
                 //}
-                memcpy ((Uint8*)surface->pixels+i, &tmp, 4);
+		memcpy(globals.blitaux+i, &tmp, 4);
         }
+	// now send it to the hardware surface
+	memcpy ((Uint8*)surface->pixels, globals.blitaux, sizeof(globals.blitaux));
 
 	
 }
