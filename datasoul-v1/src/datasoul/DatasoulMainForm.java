@@ -36,7 +36,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public HelpPanel help = new HelpPanel();
     
     
-    public static final String DATASOUL_VERSION = "Alpha 61122";
+    public static final String DATASOUL_VERSION = "Alpha 61124";
     
     org.jdesktop.layout.GroupLayout songsLayout;
     org.jdesktop.layout.GroupLayout datashowLayout;
@@ -375,13 +375,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ContentManager.getInstance();
         TimerManager.getInstance();
         splash.setStatusText("Creating user interface...");
+        final DatasoulMainForm mainForm = new DatasoulMainForm();
+        
+        splash.setStatusText("Starting application...");
 
 
         Toolkit.getDefaultToolkit().addAWTEventListener( new KeyListner(), AWTEvent.KEY_EVENT_MASK);        
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DatasoulMainForm().setVisible(true);
+                mainForm.setVisible(true);
                 splash.setVisible(false);
                 splash.dispose();
             }

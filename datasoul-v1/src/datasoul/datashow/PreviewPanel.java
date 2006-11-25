@@ -95,16 +95,20 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
     private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
 
+        goLive();
+        
+    }//GEN-LAST:event_btnGoLiveActionPerformed
+
+    public void goLive(){
         try{
             ObjectManager.getInstance().setBusyCursor();
             ServiceItem previewItem = ObjectManager.getInstance().getPreviewPanel().serviceItemTable1.getServiceItem();
             ObjectManager.getInstance().getLivePanel().showItem(previewItem);
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
-        }
-        
-    }//GEN-LAST:event_btnGoLiveActionPerformed
-
+        }        
+    }
+    
     public void valueChanged(ListSelectionEvent e) {
         ContentManager cm = ContentManager.getInstance();
         cm.setSlidePreview( serviceItemTable1.getSlideText() );

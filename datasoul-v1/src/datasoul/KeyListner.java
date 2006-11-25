@@ -59,13 +59,16 @@ public class KeyListner implements KeyListener, AWTEventListener{
                     ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
                     break;
                 case KeyEvent.VK_2:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
                     break;
                 case KeyEvent.VK_3:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
                     break;
                 case KeyEvent.VK_4:     
                     ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
+                    break;
+                case KeyEvent.VK_5:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_HELP);
                     break;
             }
         }
@@ -76,6 +79,9 @@ public class KeyListner implements KeyListener, AWTEventListener{
             case KeyEvent.VK_F2:
                 break;
             case KeyEvent.VK_F3: 
+                ObjectManager.getInstance().getPreviewPanel().goLive();
+                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
             case KeyEvent.VK_F4: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);

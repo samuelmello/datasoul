@@ -25,9 +25,22 @@ public class HelpKeyboard extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/key_bindings.png")));
         jLabel1.setText("Keyboard Shortcuts");
+
+        jScrollPane1.setBorder(null);
+        jTextArea1.setColumns(20);
+        jTextArea1.setEditable(false);
+        jTextArea1.setFont(new java.awt.Font("Dialog", 1, 12));
+        jTextArea1.setRows(5);
+        jTextArea1.setText("F3: Go Live Preview Item\nF4: Set focus on Live Item\n\nF5: Show Display Controls\nF6: Show Alert Controls\nF7: Show Timer Controls\nF8: Show Background Controls\n\nF9: Hide\nF10: Show\nF11: Clear\nF12: Black\n\nCtrl+1: Show Projector\nCtrl+2: Show Templates\nCtrl+3: Show Songs\nCtrl+4: Show Config\nCtrl+5: Show Help\n\n<Num>+Enter, with focus on Preview or Live Item: Jump to slide <Num>\n\n");
+        jTextArea1.setBorder(null);
+        jTextArea1.setOpaque(false);
+        jScrollPane1.setViewportView(jTextArea1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -35,21 +48,27 @@ public class HelpKeyboard extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel1)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+                    .add(jLabel1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
     
 }
