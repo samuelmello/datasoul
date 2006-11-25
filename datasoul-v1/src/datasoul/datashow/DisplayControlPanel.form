@@ -76,6 +76,9 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnMainBlack">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/black1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Black"/>
         <Property name="toolTipText" type="java.lang.String" value="Makes the main output black (F12)"/>
         <Property name="focusPainted" type="boolean" value="false"/>
@@ -86,6 +89,9 @@
     </Component>
     <Component class="javax.swing.JToggleButton" name="btnMainClear">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/clear1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Clear"/>
         <Property name="toolTipText" type="java.lang.String" value="Clear the main output (F11)"/>
         <Property name="focusPainted" type="boolean" value="false"/>

@@ -195,9 +195,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         }
         
         if (selectedItem == null && propTable != null){
-            propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
-            propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
-            propTable.setModel(template);
+            unselectItem();
         }
         
         this.repaint();
@@ -225,6 +223,14 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     // End of variables declaration//GEN-END:variables
     public void tableChanged(TableModelEvent e) {
         this.repaint();
+    }
+    
+    public void unselectItem(){
+        selectedItem = null;
+        propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
+        propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
+        propTable.setModel(template);
+        repaint();
     }
     
     

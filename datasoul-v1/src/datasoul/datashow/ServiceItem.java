@@ -50,6 +50,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         this.slides = new ArrayList<ServiceItemRenderer>();
         slideNumberField = new ServiceItemTextField();
         slideNumberField.setHorizontalAlignment( ServiceItemTextField.TRAILING );
+        slideNumberField.setBorder(null);
         slideNumberRenderer = new SlideNumberCellRenderer();
     }
 

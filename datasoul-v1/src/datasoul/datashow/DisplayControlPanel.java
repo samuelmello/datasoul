@@ -178,6 +178,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         setAutoscrolls(true);
         jLabel10.setText("Main Output");
 
+        btnMainBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/black1.png")));
         btnMainBlack.setText("Black");
         btnMainBlack.setToolTipText("Makes the main output black (F12)");
         btnMainBlack.setFocusPainted(false);
@@ -187,6 +188,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
+        btnMainClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/clear1.png")));
         btnMainClear.setText("Clear");
         btnMainClear.setToolTipText("Clear the main output (F11)");
         btnMainClear.setFocusPainted(false);

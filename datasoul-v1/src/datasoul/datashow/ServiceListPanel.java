@@ -130,6 +130,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         ppmFile.add(actSaveAs);
 
+        actExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png")));
         actExport.setText("Export");
         actExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
