@@ -423,6 +423,16 @@ public class TemplatePanel extends javax.swing.JPanel {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
 
+        int resp = JOptionPane.showConfirmDialog(this, "Do you want to save "+templateEditorPanel1.getTemplate().getName()+ "?" );
+        
+        switch(resp){
+            case JOptionPane.CANCEL_OPTION:
+                return;
+            case JOptionPane.YES_OPTION:
+                templateEditorPanel1.save();
+                break;
+        }
+        
         try{
             ObjectManager.getInstance().setBusyCursor();
             if ( jTableTemplates.getSelectedRowCount() == 1){
@@ -433,6 +443,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                     lblTemplateName.setText( str );
                 }
             }
+            TemplateManager.getInstance().refreshAvailableTemplates();
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
