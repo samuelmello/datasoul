@@ -266,6 +266,8 @@ public class ChordEditorForm extends javax.swing.JFrame {
         }
 
         chordsDB.sortByName();        
+        
+        chordsDB.save();        
         this.dispose();
     }//GEN-LAST:event_btnApplyMouseClicked
     

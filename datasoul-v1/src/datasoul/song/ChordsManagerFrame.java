@@ -96,7 +96,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnNew = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         btnClose = new javax.swing.JButton();
@@ -135,18 +134,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         });
 
         jToolBar1.add(btnEdit);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        btnSave.setText("Save");
-        btnSave.setBorderPainted(false);
-        btnSave.setOpaque(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        jToolBar1.add(btnSave);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
         btnDelete.setText("Delete");
@@ -220,7 +207,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(labelString)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
+                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                 .addContainerGap())
             .add(org.jdesktop.layout.GroupLayout.TRAILING, scrollChorsList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
         );
@@ -232,7 +219,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
                     .add(labelString, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(fieldString, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scrollChorsList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
+                .add(scrollChorsList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE))
         );
         split1.setLeftComponent(jPanel1);
 
@@ -246,7 +233,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -267,6 +254,8 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
                     
                     if(tableChordsList.getValueAt(i,0).toString().startsWith(searchStr)){
                         tableChordsList.getSelectionModel().setSelectionInterval(i,i);
+                        this.scrollChorsList.getVerticalScrollBar().setValue(i*tableChordsList.getRowHeight());
+                        showChord();
                         break;
                     }
             } catch (Exception ex) {
@@ -292,13 +281,10 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if(JOptionPane.showConfirmDialog(this,"Are you shure that you want to delete this chord?","Confirm",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             tableChordsList.removeItem();
+            chordsDB.getInstance().save();
         }
         this.repaint();
     }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        chordsDB.getInstance().save();
-    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         ChordEditorForm cef = new ChordEditorForm(chordsDB, (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
@@ -316,7 +302,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnSave;
     private javax.swing.JTextField fieldString;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;

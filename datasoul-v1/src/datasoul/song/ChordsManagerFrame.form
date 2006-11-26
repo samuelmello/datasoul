@@ -26,7 +26,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="split1" pref="409" max="32767" attributes="0"/>
+              <Component id="split1" pref="386" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -65,19 +65,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnSave">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/filesave.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Save"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDelete">
@@ -149,7 +136,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelString" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="fieldString" pref="83" max="32767" attributes="0"/>
+                      <Component id="fieldString" pref="102" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
                   <Component id="scrollChorsList" alignment="1" pref="159" max="32767" attributes="0"/>
@@ -164,7 +151,7 @@
                           <Component id="fieldString" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="scrollChorsList" pref="364" max="32767" attributes="0"/>
+                      <Component id="scrollChorsList" pref="341" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
