@@ -80,7 +80,6 @@ public class SDLContentRender extends ContentRender {
     private native void nativeSetBackground(ByteBuffer bb);
     public native void setBlack(int active);
     public native void setClear(int active);
-    public native void setDebugMode (int mode);
     public native void shutdown();
     
     public void clear(){

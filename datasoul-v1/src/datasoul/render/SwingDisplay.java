@@ -80,10 +80,6 @@ public class SwingDisplay extends javax.swing.JFrame {
         this.setVisible(false);
     }
     
-    public void setDebugMode(int mode) {
-        swingDisplayPanel1.setDebugMode(mode);
-    }
-
     public void setBackgroundMode(int mode) {
         swingDisplayPanel1.setBackgroundMode(mode);
     }

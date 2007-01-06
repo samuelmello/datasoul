@@ -86,7 +86,6 @@ public class SDLLiveContentRender extends ContentRender {
     public native void setInputSrc(int src);
     public native void setInputMode(int mode);
     public native void setDeintrelaceMode(int mode);
-    public native void setDebugMode (int mode);
     public native void shutdown();
     
     

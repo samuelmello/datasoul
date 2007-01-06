@@ -155,9 +155,6 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
 
-    void setDebugMode(int mode) {
-    }
-
     void setBackgroundMode(int mode) {
     }
 

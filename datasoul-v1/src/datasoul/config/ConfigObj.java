@@ -47,7 +47,6 @@ public class ConfigObj extends AbstractConfig {
     private String monitorOutputSizeWidth;
     private String monitorOutputSizeHeight;
     private int clockMode;    
-    private boolean videoDebugMode;
     private String mainDisplayEngine;
     private String monitorDisplayEngine;
     private String monitorTemplateFilter;
@@ -94,7 +93,6 @@ public class ConfigObj extends AbstractConfig {
         properties.add("MonitorOutputSizeHeight");
         properties.add("TemplateText");
         properties.add("ClockModeIdx");        
-        properties.add("VideoDebugModeIdx");
         properties.add("MonitorTemplateFilter");
         properties.add("AlertTemplateFilter");
         properties.add("GeneralTemplateFilter");
@@ -239,37 +237,6 @@ public class ConfigObj extends AbstractConfig {
         }
     }
     
-    public boolean getVideoDebugMode() {
-        return this.videoDebugMode;
-    }
-
-    public String getVideoDebugModeIdx() {
-        if (videoDebugMode==false){
-            return "0";
-        }else{
-            return "1";
-        }
-    }
-    
-    public void setVideoDebugMode(String videoDebugMode) {
-        setVideoDebugModeIdx(videoDebugMode);
-    }
-
-    public void setVideoDebugModeIdx(String videoDebugMode) {
-        setVideoDebugMode(videoDebugMode.equals("1"));
-    }
-        
-    public void setVideoDebugMode(boolean videoDebugMode) {
-        this.videoDebugMode = videoDebugMode;
-        if (this.getMainOutput()){
-            if (videoDebugMode){
-                ContentManager.getMainDisplay().setDebugMode( 1 );
-            }else{
-                ContentManager.getMainDisplay().setDebugMode( 0 );
-            }
-        }
-    }
-
     public String getMainDisplayEngine(){
         return this.mainDisplayEngine;
     }

@@ -106,10 +106,6 @@ public class RemoteContentRenderServer {
                     setWindowTitle();
                     break;
                     
-                case RemoteContentRenderConstants.CMD_SETDEBUGMODE:
-                    setDebugMode();
-                    break;
-                    
                 case RemoteContentRenderConstants.CMD_SETBGMODE:
                     setBackgroundMode();
                     break;
@@ -197,11 +193,6 @@ public class RemoteContentRenderServer {
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
         }
-    }
-
-    private static void setDebugMode() throws IOException {
-        int i = input.readInt();
-        cr.setDebugMode(i);
     }
 
     

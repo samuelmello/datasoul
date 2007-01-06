@@ -66,8 +66,6 @@ public class ConfigPanel extends javax.swing.JPanel {
             clockMode.addItem(ConfigObj.CLOCKMODE_TABLE[i]);
         }
         
-        //registerComponent(videoDebugMode, "VideoDebugModeIdx");
-        
         registerComponent( mainDisplayEngine, "MainDisplayEngine" );
         mainDisplayEngine.removeAllItems();
         mainDisplayEngine.addItem("SDLContentRender");

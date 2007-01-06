@@ -90,17 +90,6 @@ public class RemoteContentRender extends ContentRender {
         }
     }
 
-    public void setDebugMode(int i) {
-        try{
-            output.writeInt(RemoteContentRenderConstants.CMD_SETDEBUGMODE);
-            output.writeInt(i);
-            output.flush();
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        
-    }
-
     public void setBackgroundMode(int i) {
         try{
             output.writeInt(RemoteContentRenderConstants.CMD_SETBGMODE);

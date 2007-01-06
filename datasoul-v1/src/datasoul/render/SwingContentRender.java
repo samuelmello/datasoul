@@ -40,10 +40,6 @@ public class SwingContentRender extends ContentRender {
         display.flip();
     }
 
-    public void setDebugMode(int i) {
-        display.setDebugMode(i);
-    }
-
     public void setBackgroundMode(int i) {
         display.setBackgroundMode(i);
     }

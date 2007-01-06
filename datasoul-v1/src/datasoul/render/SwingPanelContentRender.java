@@ -38,10 +38,6 @@ public class SwingPanelContentRender extends ContentRender {
         p.flip();
     }
 
-    public void setDebugMode(int i) {
-        p.setDebugMode(i);
-    }
-
     public void setBackgroundMode(int i) {
         p.setBackgroundMode(i);
     }
