@@ -18,6 +18,7 @@ typedef struct {
 	SDL_Surface *screen;
 	SDL_Surface *overlay[2];
 	Uint8 *blitaux;
+	int blitauxSize;
 	int overlayActive;
 	int black;
 	int clear;
@@ -148,7 +149,8 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_init
 	
 	SDL_FreeSurface(surface);
 
-	globals.blitaux = (Uint8*) malloc( width * height * 4 );
+	globals.blitauxSize = width * height * 4;
+	globals.blitaux = (Uint8*) malloc( globals.blitauxSize );
 
 	globals.stopDisplay = 0;
 	
@@ -165,11 +167,12 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_init
 
 	// also setup the process scheduler to FIFO RealTime
 	/*
-	int x = sched_setscheduler(0, SCHED_RR, &param);
+	int x = sched_setscheduler(0, SCHED_FIFO, &param);
 	if (x != 0){
 		perror("setsched");
 	}
 	*/
+	
 
 }
 
@@ -220,7 +223,7 @@ void setImageOnSurface(JNIEnv *env, SDL_Surface *surface, jobject bytebuf){
 		memcpy(globals.blitaux+i, &tmp, 4);
         }
 	// now send it to the hardware surface
-	memcpy ((Uint8*)surface->pixels, globals.blitaux, sizeof(globals.blitaux));
+	memcpy ((Uint8*)surface->pixels, globals.blitaux, globals.blitauxSize);
 
 	
 }
@@ -242,10 +245,9 @@ JNIEXPORT void JNICALL Java_datasoul_render_SDLLiveContentRender_displayOverlay
 	setImageOnSurface(env, globals.overlay[x], bytebuf);
 	globals.overlayActive = x;
 
-	if (globals.debugMode > 0){
-		fprintf(stderr, "Received overlay image!\n");
-	}
-	
+	//if (globals.debugMode > 0){
+		fprintf(stderr, "Received overlay image! newactive=%d\n", x);
+	//}
 }
 
 /*
