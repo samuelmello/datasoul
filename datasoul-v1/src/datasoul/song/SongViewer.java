@@ -308,7 +308,13 @@ public class SongViewer extends javax.swing.JPanel {
     }
     
     private boolean isChordsLine(String line){
+        //if the line contain commentary indicated by {} it is removed
+        if(line.contains("{") && line.contains("}")){
+            line = line.substring(0,line.indexOf("{"))+line.substring(line.indexOf("}")+1,line.length());
+        }
+
         String[] chords = line.split(" ");        
+        
         ChordsDB chordsDB = ChordsDB.getInstance();
   loop: for(int i=0;i<chords.length;i++){
             if(!chords[i].equals(""))
@@ -318,8 +324,19 @@ public class SongViewer extends javax.swing.JPanel {
                         continue loop;
                     }
                 }
+                String strChord = chords[i];
+
+                //if there is some comments in the line like (C/E  E  F), these part ignores the "(" and consider it a chord line
+                if(strChord.startsWith("(")){
+                    strChord = strChord.replace("(","");
+                }
+                if( ( strChord.endsWith(")")) &&
+                    (!strChord.contains("("))    ){
+                    strChord = strChord.replace(")","");
+                }
                 
-                Chord chord = chordsDB.getChordByName(chords[i]);
+                Chord chord = chordsDB.getChordByName(strChord);
+
                 if(chord==null)
                     return false;
             }
@@ -342,6 +359,7 @@ public class SongViewer extends javax.swing.JPanel {
         int neededWidth=0;
         int spaceSize=0;
         int spacesNedded=0;
+        boolean commentary = false;
         
         String[] chords = line.split(" ");
         Font fontChords = new Font(songTemplate.getChordsFontName(), Font.PLAIN, songTemplate.getChordsFontSize());
@@ -360,8 +378,30 @@ public class SongViewer extends javax.swing.JPanel {
                 }
                 
                 String thisChord = changeKey(chords[i]);
-                if(!chordsName.contains(thisChord)&&!specialWord)
-                    chordsName.add(thisChord);
+                
+                //starts commentary
+                if(thisChord.contains("{")){
+                    commentary = true;
+                }
+                
+                String thisChordCleaned = thisChord;
+                //if there is some comments in the line like (C/E  E  F), these part ignores the "(" and consider it a chord line                
+                if(thisChordCleaned.startsWith("(")){
+                    thisChordCleaned = thisChordCleaned.replace("(","");
+                }
+                if( ( thisChordCleaned.endsWith(")")) &&
+                    (!thisChordCleaned.contains("("))    ){
+                    thisChordCleaned = thisChordCleaned.replace(")","");
+                }
+                
+                if(!chordsName.contains(thisChordCleaned)&&!specialWord&&!commentary)
+                    chordsName.add(thisChordCleaned);
+
+                //ends commentary
+                if(thisChord.contains("}")){
+                    commentary = false;
+                }                
+                
                 index = strAux.length();
                 if(index<nextline.length()){
                     widthNextLine = fontLyricsMetrics.stringWidth(nextline.substring(0,index));                
@@ -373,6 +413,13 @@ public class SongViewer extends javax.swing.JPanel {
                         spaces = spaces + " ";
                     newLine = newLine + spaces + thisChord;
                 }else{
+                    spaces = "";
+                    int indexAux= index-1;
+                    while(indexAux>1 && line.substring(indexAux, indexAux+1).equals(" "))
+                    {
+                        spaces = spaces + " ";                        
+                        indexAux = indexAux-1;
+                    }
                     newLine = newLine + spaces + thisChord;                    
                 }
                 strAux += thisChord + " ";                    
