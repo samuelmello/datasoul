@@ -269,8 +269,16 @@ public class SongViewer extends javax.swing.JPanel {
 
         if(this.getView().equals(this.VIEW_CHORDS_COMPLETE)){
             strSong = song.getChordsComplete();
+
+            if(strSong.length()==0){
+                strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
+            }
         }else if(this.getView().equals(this.VIEW_CHORDS_SIMPLIFIED)){
             strSong = song.getChordsSimplified();
+            
+            if(strSong.length()==0){
+                strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
+            }
         }else{
             strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
         }
@@ -547,7 +555,6 @@ public class SongViewer extends javax.swing.JPanel {
         editorSongChords = new javax.swing.JEditorPane();
         jToolBar2 = new javax.swing.JToolBar();
         btnPrint = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
         btnFormat = new javax.swing.JButton();
         btnChords = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -566,7 +573,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
         );
         split1.setLeftComponent(panelSong);
 
@@ -577,11 +584,11 @@ public class SongViewer extends javax.swing.JPanel {
         panelSongChords.setLayout(panelSongChordsLayout);
         panelSongChordsLayout.setHorizontalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords)
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
         );
         split1.setRightComponent(panelSongChords);
 
@@ -598,19 +605,6 @@ public class SongViewer extends javax.swing.JPanel {
         });
 
         jToolBar2.add(btnPrint);
-
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png")));
-        btnExport.setText("Export");
-        btnExport.setBorderPainted(false);
-        btnExport.setFocusPainted(false);
-        btnExport.setOpaque(false);
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportActionPerformed(evt);
-            }
-        });
-
-        jToolBar2.add(btnExport);
 
         btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png")));
         btnFormat.setText("Format");
@@ -670,7 +664,7 @@ public class SongViewer extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -684,44 +678,6 @@ public class SongViewer extends javax.swing.JPanel {
         sff.setVisible(true);
         sff.setView(this.activeView);
     }//GEN-LAST:event_btnFormatActionPerformed
-
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
-                      public boolean accept(File f) { 
-                          if (f.isDirectory()) { 
-                              return true; 
-                          } 
-                          String name = f.getName(); 
-                          if (name.endsWith(".rtf")) { 
-                              return true; 
-                          } 
-                          return false; 
-                      } 
-   
-                      public String getDescription() { 
-                          return ".rtf"; 
-                      } 
-                  });
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "songs");
-        fc.setCurrentDirectory(dir);
-        fc.setDialogTitle("Select the file to export");
-        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            try {
-
-                ByteArrayOutputStream osOut = exportRTFSong(new ByteArrayOutputStream());    
-                String filePath = fc.getSelectedFile().getPath();
-                if(!filePath.contains(".rtf"))
-                    filePath = filePath + ".rtf";
-                FileOutputStream fos = new FileOutputStream(filePath);
-                fos.write(osOut.toByteArray());
-                fos.close();
-
-            } catch (Exception ex) {
-            }
-        }
-
-    }//GEN-LAST:event_btnExportActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         PrinterJob pj = PrinterJob.getPrinterJob();
@@ -750,10 +706,14 @@ public class SongViewer extends javax.swing.JPanel {
         this.refresh();
     }//GEN-LAST:event_comboKeyActionPerformed
 
-        public ByteArrayOutputStream exportRTFSong(ByteArrayOutputStream os) throws Exception{
+        public ByteArrayOutputStream exportRTFSong(ByteArrayOutputStream os, boolean withChords) throws Exception{
             ByteArrayOutputStream os2 = exportRTFLyrics(os);
-            ByteArrayOutputStream os3 = exportRTFChords(os2);
-            return os3;
+            if(withChords){
+                ByteArrayOutputStream os3 = exportRTFChords(os2);
+                return os3;
+            }else{
+                return os2;
+            }
         }
         public ByteArrayOutputStream exportRTFLyrics(ByteArrayOutputStream os) throws Exception{
               //writes the lyrics and its chords
@@ -841,7 +801,6 @@ public class SongViewer extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChords;
-    private javax.swing.JButton btnExport;
     private javax.swing.JButton btnFormat;
     private javax.swing.JButton btnPrint;
     private javax.swing.JComboBox comboKey;

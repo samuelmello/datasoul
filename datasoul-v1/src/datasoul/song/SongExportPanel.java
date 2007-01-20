@@ -7,14 +7,21 @@
 package datasoul.song;
 
 import datasoul.datashow.ServiceListTable;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyleContext;
 
 /**
  *
@@ -27,12 +34,14 @@ public class SongExportPanel extends javax.swing.JFrame {
         initComponents();
         this.center();
 
-        comboVersion.removeAllItems();
-        comboVersion.addItem(SongViewer.VIEW_LYRICS);
-        comboVersion.addItem(SongViewer.VIEW_CHORDS_COMPLETE);
-        comboVersion.addItem(SongViewer.VIEW_CHORDS_SIMPLIFIED);
-        comboVersion.setSelectedIndex(0);
+        comboSongVersion.removeAllItems();
+        comboSongVersion.addItem(SongViewer.VIEW_LYRICS);
+        comboSongVersion.addItem(SongViewer.VIEW_CHORDS_COMPLETE);
+        comboSongVersion.addItem(SongViewer.VIEW_CHORDS_SIMPLIFIED);
+        comboSongVersion.setSelectedIndex(0);
         
+        comboSongVersion.setEnabled(false);
+        checkChordsShape.setEnabled(false);
     }
     
     public void center(){
@@ -49,19 +58,18 @@ public class SongExportPanel extends javax.swing.JFrame {
      */
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
     private void initComponents() {
-        comboVersion = new javax.swing.JComboBox();
-        jLabel1 = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         fieldFile = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnSelectFile = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        checkSongList = new javax.swing.JCheckBox();
+        comboSongVersion = new javax.swing.JComboBox();
+        checkSong = new javax.swing.JCheckBox();
+        checkChordsShape = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        comboVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel1.setText("Version:");
-
         btnOk.setText("Ok");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,27 +93,85 @@ public class SongExportPanel extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        checkSongList.setText("Song list");
+        checkSongList.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkSongList.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checkSongList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSongListActionPerformed(evt);
+            }
+        });
+
+        comboSongVersion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboSongVersion.setEnabled(false);
+        comboSongVersion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboSongVersionActionPerformed(evt);
+            }
+        });
+
+        checkSong.setText("Song");
+        checkSong.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkSong.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        checkSong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkSongActionPerformed(evt);
+            }
+        });
+
+        checkChordsShape.setText("Chords Shape");
+        checkChordsShape.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        checkChordsShape.setEnabled(false);
+        checkChordsShape.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(checkSongList)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(checkSong)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(comboSongVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 116, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(checkChordsShape))
+                .addContainerGap(132, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(checkSongList)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(checkSong)
+                    .add(comboSongVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(checkChordsShape)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel1)
-                    .add(jLabel2))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(btnOk, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(19, 19, 19)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 78, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(fieldFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 135, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(fieldFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 190, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnSelectFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(comboVersion, 0, 234, Short.MAX_VALUE))
+                        .add(btnSelectFile, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -116,18 +182,35 @@ public class SongExportPanel extends javax.swing.JFrame {
                     .add(jLabel2)
                     .add(fieldFile, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnSelectFile))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel1)
-                    .add(comboVersion, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(21, 21, 21)
+                .add(17, 17, 17)
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(14, 14, 14)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnOk)
-                    .add(btnCancel))
+                    .add(btnCancel)
+                    .add(btnOk))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboSongVersionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboSongVersionActionPerformed
+        if( comboSongVersion.getSelectedItem()!=null                                       &&
+            (comboSongVersion.getSelectedItem().equals(SongViewer.VIEW_CHORDS_COMPLETE)    ||
+            comboSongVersion.getSelectedItem().equals(SongViewer.VIEW_CHORDS_SIMPLIFIED))  ){
+                checkChordsShape.setEnabled(true);
+        }else{
+                checkChordsShape.setEnabled(false);
+        }
+    }//GEN-LAST:event_comboSongVersionActionPerformed
+
+    private void checkSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSongActionPerformed
+        comboSongVersion.setEnabled(checkSong.isSelected());
+        checkChordsShape.setEnabled(false);
+    }//GEN-LAST:event_checkSongActionPerformed
+
+    private void checkSongListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkSongListActionPerformed
+// TODO add your handling code here:
+    }//GEN-LAST:event_checkSongListActionPerformed
 
     private void btnSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectFileActionPerformed
         JFileChooser fc = new JFileChooser();
@@ -169,37 +252,163 @@ public class SongExportPanel extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"You must select a file name");
             return;
         }
-        try {
-                ByteArrayOutputStream osOut = new ByteArrayOutputStream();    
-                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
-                    if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
-                        Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
-                        SongViewer svp = new SongViewer();
-                        svp.setView(this.comboVersion.getSelectedItem().toString());
-                        svp.viewSong(song);
-                        osOut = svp.exportRTFSong(osOut);
-                    }
-                }
-                
-                FileOutputStream fos = new FileOutputStream(this.fieldFile.getText());
-                fos.write(osOut.toByteArray());
-                fos.close();
 
-            } catch (Exception ex) {
-            }
+        ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+
+        //first of all is printed the format got from a song
+        osOut = printSongFormat(osOut);
+        if(checkSongList.isSelected())
+            osOut = printSongList(osOut);
+        
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(this.fieldFile.getText());
+            fos.write(osOut.toByteArray());
+            osOut.close();
+            
+            if(checkSong.isEnabled()&&checkSong.isSelected())
+                printAllSongs(fos);
+                
+            ByteArrayOutputStream osFinish = new ByteArrayOutputStream();    
+            osFinish.write("\n}".getBytes());                            
+            fos.write(osFinish.toByteArray());
+            osFinish.close();
+            
+            fos.close();
+
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        
         JOptionPane.showMessageDialog(this,"File generated correclty (I hope so!).");
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed
     
+    private void printAllSongs(FileOutputStream fos){
+        try {
+                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
+                    if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
+                        ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+                        ByteArrayOutputStream osAux = new ByteArrayOutputStream();
+
+                        //insert page
+                        osOut.write("\n\\".getBytes());
+                        
+                        Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
+                        SongViewer svp = new SongViewer();
+                        svp.setView(this.comboSongVersion.getSelectedItem().toString());
+                        svp.viewSong(song);
+                        osAux = svp.exportRTFSong(osOut, checkChordsShape.isSelected());
+
+                        String aux = osAux.toString();
+                        int index = aux.indexOf("}}")+2;
+                        osOut.write(osAux.toByteArray(),index,osAux.size()-index-2);
+
+                        fos.write(osOut.toByteArray());
+
+                        fos.flush();
+                        
+                        osOut.close();
+                        osAux.close();
+
+                    }
+                }
+            } catch (Exception ex) {
+            }
+        return;
+    }
+
+    private ByteArrayOutputStream printSongFormat(ByteArrayOutputStream os){
+        ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+        
+        try {
+                if(ServiceListTable.getActiveInstance().getRowCount()>0){
+                    if(ServiceListTable.getActiveInstance().getValueAt(0,0) instanceof Song){
+                        Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(0,0);
+                        SongViewer svp = new SongViewer();
+                        svp.setView(this.comboSongVersion.getSelectedItem().toString());
+                        svp.viewSong(song);
+                        ByteArrayOutputStream baosAux = svp.exportRTFSong(os, checkChordsShape.isSelected());
+                        
+                        String aux = baosAux.toString();
+                        int indexFinishFormat = aux.indexOf("}}")+2;
+                        //prints only format
+                        osOut.write(baosAux.toByteArray(),0,indexFinishFormat);                  
+                    }
+                }
+                
+
+            } catch (Exception ex) {
+            }
+        return osOut;
+    }
+    
+    
+    private ByteArrayOutputStream printSongList(ByteArrayOutputStream os){
+        ByteArrayOutputStream osOut = new ByteArrayOutputStream();
+        boolean firstPage = true;
+        
+        if(os.toByteArray().length>0){
+            osOut.write(os.toByteArray(),0,os.toByteArray().length);                  
+            firstPage = false;
+        }
+              
+        try {
+            StyleContext sc = new StyleContext();
+            Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
+            Style nameStyle = sc.addStyle("songListNameStyle",defaultStyle);
+            StyleConstants.setForeground(nameStyle,Color.BLACK);
+            StyleConstants.setBackground(nameStyle,Color.white);
+            StyleConstants.setFontFamily(nameStyle,"Arial");
+            StyleConstants.setFontSize(nameStyle,18);
+
+            JEditorPane jep = new JEditorPane();
+            jep.setContentType("text/rtf");
+
+            javax.swing.text.Document doc = jep.getDocument();
+
+            doc.insertString(doc.getLength(),"Service List \n\n",nameStyle);
+            StyleConstants.setFontSize(nameStyle,12);
+
+            for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
+                doc.insertString(doc.getLength(),(i+1)+") "+ServiceListTable.getActiveInstance().getValueAt(i,0).toString()+"\n",nameStyle);
+            }
+
+            int length = doc.getLength();
+            doc.getDefaultRootElement().getElement(0);
+            
+            if(firstPage){
+                jep.getEditorKit().write(osOut, doc, 0, length);
+            }else{
+                ByteArrayOutputStream osAux = new ByteArrayOutputStream();
+                jep.getEditorKit().write(osAux, doc, 0, length);
+                String aux = osAux.toString();
+                int index = aux.indexOf("}}")+2;
+                osOut.write(osAux.toByteArray(),index,osAux.size()-index-2);
+
+        }
+            
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        return osOut;        
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnSelectFile;
-    private javax.swing.JComboBox comboVersion;
+    private javax.swing.JCheckBox checkChordsShape;
+    private javax.swing.JCheckBox checkSong;
+    private javax.swing.JCheckBox checkSongList;
+    private javax.swing.JComboBox comboSongVersion;
     private javax.swing.JTextField fieldFile;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
     
 }

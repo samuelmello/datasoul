@@ -328,66 +328,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
     private void actExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actExportActionPerformed
 
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            public boolean accept(File f) {
-                if (f.isDirectory()) {
-                    return true;
-                }
-                String name = f.getName();
-                if (name.endsWith(".rtf")) {
-                    return true;
-                }
-                return false;
-            }
-            
-            public String getDescription() {
-                return ".rtf";
-            }
-        });
-        File dir = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
-        fc.setCurrentDirectory(dir);
-        fc.setDialogTitle("Select the file to export");
-        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            try {
-                StyleContext sc = new StyleContext();
-                Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
-                Style nameStyle = sc.addStyle("nameStyle",defaultStyle);
-                StyleConstants.setForeground(nameStyle,Color.BLACK);
-                StyleConstants.setBackground(nameStyle,Color.white);
-                StyleConstants.setFontFamily(nameStyle,"Arial");
-                StyleConstants.setFontSize(nameStyle,18);
-                
-                JEditorPane jep = new JEditorPane();
-                jep.setContentType("text/rtf");
-                
-                javax.swing.text.Document doc = jep.getDocument();
-                
-                doc.insertString(doc.getLength(),"Service List \n\n",nameStyle);
-                StyleConstants.setFontSize(nameStyle,12);
-                
-                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
-                    doc.insertString(doc.getLength(),i+") "+ServiceListTable.getActiveInstance().getValueAt(i,0).toString()+"\n",nameStyle);
-                }
-                
-                ByteArrayOutputStream osOut = new ByteArrayOutputStream();
-                int length = doc.getLength();
-                doc.getDefaultRootElement().getElement(0);
-                jep.getEditorKit().write(osOut, doc, 0, length);
-                
-                String filePath = fc.getSelectedFile().getPath();
-                if(!filePath.contains(".rtf"))
-                    filePath = filePath + ".rtf";
-                FileOutputStream fos = new FileOutputStream(filePath);
-                fos.write(osOut.toByteArray());
-                fos.close();
-                
-                osOut.close();
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-       
+        SongExportPanel sep = new SongExportPanel();
+        sep.setVisible(true);
     }//GEN-LAST:event_actExportActionPerformed
 
     private void actSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveAsActionPerformed
