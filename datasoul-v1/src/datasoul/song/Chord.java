@@ -104,8 +104,8 @@ public class Chord implements SerializableItf{
         return nodeOut;
      }
      
-     public String toString(){
-         return this.getName();
+     public final String toString(){
+         return name;
      }
      
      public void readObject(Node nodeIn) {

@@ -81,26 +81,20 @@ public class SongTemplate extends TemplateItem{
 
         registerEditorComboBox("ChordShapeSizeIdx", cbChordSize);
                 
-        cb1 = new JComboBox();
-        cb1 = new JComboBox();
-        for ( int i = 0; i < fontList.length; i++ )
-          cb1.addItem( fontList[i] );
+        if (cb1 == null) {
+            cb1 = new JComboBox();
+            cb2 = new JComboBox();
+            cb3 = new JComboBox();
+            cb4 = new JComboBox();
 
-        cb2 = new JComboBox();
-        cb2 = new JComboBox();
-        for ( int i = 0; i < fontList.length; i++ )
-          cb2.addItem( fontList[i] );
+            for ( int i = 0; i < fontList.length; i++ ){
+              cb1.addItem( fontList[i] );
+              cb2.addItem( fontList[i] );
+              cb3.addItem( fontList[i] );
+              cb4.addItem( fontList[i] );
+            }
+        }
 
-        cb3 = new JComboBox();
-        cb3 = new JComboBox();
-        for ( int i = 0; i < fontList.length; i++ )
-          cb3.addItem( fontList[i] );
-
-        cb4 = new JComboBox();
-        cb4 = new JComboBox();
-        for ( int i = 0; i < fontList.length; i++ )
-          cb4.addItem( fontList[i] );
-        
         registerEditorComboBox("TitleFontName", cb1);
         registerEditorComboBox("AuthorFontName", cb2);
         registerEditorComboBox("ChordsFontName", cb3);

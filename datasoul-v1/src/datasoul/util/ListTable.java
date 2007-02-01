@@ -11,6 +11,8 @@ package datasoul.util;
 
 import com.sun.org.apache.xml.internal.utils.StringVector;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableModel;
 
@@ -89,7 +91,16 @@ public class ListTable extends SerializableObject implements TableModel {
         tableModelChanged();
     }
 
+    private class StringComparator implements Comparator<Object> {
+        public int compare(Object o1, Object o2) {
+            return o1.toString().compareTo( o2.toString() );
+        }
+    }
+    private StringComparator stringComparator = new StringComparator();
+    
     public void sortByName() {
+
+        /*
         ArrayList<Object> objectListSorted = new ArrayList<Object>();
 
 mainloop: for(int i=0;i<objectList.size();i++){
@@ -104,6 +115,10 @@ mainloop: for(int i=0;i<objectList.size();i++){
         }
         
         objectList = objectListSorted;
+         */
+        
+        Collections.sort(objectList, stringComparator);
+        
         tableModelChanged();
     }
     
