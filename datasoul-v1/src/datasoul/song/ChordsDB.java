@@ -71,7 +71,7 @@ public class ChordsDB extends ListTable{
     }
     
     public String getColumnName(int columnIndex) {
-        return "Chord";
+        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chord");
     }
     
     public Chord getChordByName(String name){

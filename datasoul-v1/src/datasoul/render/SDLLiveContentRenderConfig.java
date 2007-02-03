@@ -71,22 +71,23 @@ public class SDLLiveContentRenderConfig extends javax.swing.JFrame implements Re
         jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("SDL Live Render Configuration");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("SDL_Live_Render_Configuration")); // NOI18N
         setResizable(false);
-        jLabel1.setText("SDL Live Configuration for:");
+        jLabel1.setText(bundle.getString("SDL_Live_Configuration_for:")); // NOI18N
 
         lblMonitor.setText("jLabel2");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Unix Configurations"));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kxconfig.png")));
-        jLabel2.setText("These configurations specify how to create output in Unix systems");
+        jLabel2.setText(bundle.getString("These_configurations_specify_how_to_create_output_in_Unix_systems")); // NOI18N
 
-        cbSetX11Display.setText("Override X11 Display");
+        cbSetX11Display.setText(bundle.getString("Override_X11_Display")); // NOI18N
         cbSetX11Display.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbSetX11Display.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel3.setText("X11 Display");
+        jLabel3.setText(bundle.getString("X11_Display")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,17 +121,17 @@ public class SDLLiveContentRenderConfig extends javax.swing.JFrame implements Re
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Device Configuration"));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/hardware.png")));
-        jLabel4.setText("Configurations of Video4Linux device used");
+        jLabel4.setText(bundle.getString("Configurations_of_Video4Linux_device_used")); // NOI18N
 
-        jLabel5.setText("Device");
+        jLabel5.setText(bundle.getString("Device")); // NOI18N
 
         txtDevice.setText("/dev/video0");
 
-        jLabel6.setText("Input");
+        jLabel6.setText(bundle.getString("Input")); // NOI18N
 
-        jLabel7.setText("Mode");
+        jLabel7.setText(bundle.getString("Mode")); // NOI18N
 
-        jLabel8.setText("Deintrelace");
+        jLabel8.setText(bundle.getString("Deintrelace")); // NOI18N
 
         cbInput.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -187,7 +188,7 @@ public class SDLLiveContentRenderConfig extends javax.swing.JFrame implements Re
         );
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnCancel.setText("Cancel");
+        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -195,7 +196,7 @@ public class SDLLiveContentRenderConfig extends javax.swing.JFrame implements Re
         });
 
         btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnApply.setText("Apply");
+        btnApply.setText(bundle.getString("Apply")); // NOI18N
         btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyActionPerformed(evt);
@@ -203,7 +204,7 @@ public class SDLLiveContentRenderConfig extends javax.swing.JFrame implements Re
         });
 
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel9.setText("Some configurations apply only after application restart");
+        jLabel9.setText(bundle.getString("Some_configurations_apply_only_after_application_restart")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -286,9 +287,9 @@ public class SDLLiveContentRenderConfig extends javax.swing.JFrame implements Re
         cbMode.setSelectedIndex( config.getVideoModeIdx() );
        
         if (isMonitor){
-            lblMonitor.setText("Monitor");
+            lblMonitor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Monitor"));
         }else{
-            lblMonitor.setText("Main");
+            lblMonitor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Main"));
         }
         
         center();

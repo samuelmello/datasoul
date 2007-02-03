@@ -25,18 +25,18 @@ public class SDLLiveRenderConfig extends AbstractConfig {
     public static final int VIDEODEINTRELACE_BLEND = 1;
     public static final int VIDEODEINTRELACE_SMARTBLEND = 2;
     public static final int VIDEODEINTRELACE_SMOOTHBLEND = 3;
-    public static final String[] VIDEODEINTRELACE_TABLE = {"None", "Blend", "Smart blend", "Smooth blend"};
+    public static final String[] VIDEODEINTRELACE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("None"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Blend"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Smart_blend"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Smooth_blend")};
 
     public static final int VIDEOMODE_PAL = 0;
     public static final int VIDEOMODE_NTSC = 1;
     public static final int VIDEOMODE_SECAM = 2;
-    public static final String[] VIDEOMODE_TABLE = {"PAL", "NTSC", "SECAM"};
+    public static final String[] VIDEOMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PAL"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NTSC"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SECAM")};
 
     public static final int VIDEOINPUT_TUNER = 0;
     public static final int VIDEOINPUT_COMPOSITE = 1;
     public static final int VIDEOINPUT_COMPSVIDEO = 2;
     public static final int VIDEOINPUT_SVIDEO = 3;
-    public static final String[] VIDEOINPUT_TABLE = {"Tuner", "Composite", "Composite2/S-Video", "S-Video"};
+    public static final String[] VIDEOINPUT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Tuner"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Composite"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Composite2/S-Video"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("S-Video")};
     
     
     private boolean isMonitor;

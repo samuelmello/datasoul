@@ -310,7 +310,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         
         try{
             // Save the old template, if the user want
-            int save = JOptionPane.showConfirmDialog(this, "Save the changes?", "Save Template", JOptionPane.YES_NO_CANCEL_OPTION);
+            int save = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_Template"), JOptionPane.YES_NO_CANCEL_OPTION);
             switch (save){
                 case JOptionPane.CANCEL_OPTION:
                     return;
@@ -328,7 +328,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             
         }catch(Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this,"Unable to create template:\n"+e.getMessage(),"DataSoul Error",0);
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_create_template:\n")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
         }
     }
     

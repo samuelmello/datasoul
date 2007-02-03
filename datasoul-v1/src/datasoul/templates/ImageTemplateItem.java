@@ -43,16 +43,16 @@ public class ImageTemplateItem extends TemplateItem {
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";
     public static final int ALIGN_RIGHT = 2; //"Right";
-    public static final String[] ALIGN_TABLE = {"Left", "Center", "Right"};
+    public static final String[] ALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Left"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Center"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Right")};
 
     public static final int VALIGN_TOP = 0; //"Top";
     public static final int VALIGN_MIDDLE = 1; //"Middle";
     public static final int VALIGN_BOTTOM = 2; //"Bottom";
-    public static final String[] VALIGN_TABLE = {"Top", "Middle", "Bottom"};
+    public static final String[] VALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Top"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Middle"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Bottom")};
     
     public static final int STRETCH_NO = 0;
     public static final int STRETCH_YES = 1;
-    public static final String[] STRETCH_TABLE = {"No", "Yes"};
+    public static final String[] STRETCH_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes")};
     
     
     public ImageTemplateItem() {
@@ -134,11 +134,11 @@ public class ImageTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("AlignmentIdx");
-        registerDisplayString("AlignmentIdx", "Alignment");
+        registerDisplayString("AlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alignment"));
         properties.add("VerticalAlignmentIdx");
-        registerDisplayString("VerticalAlignmentIdx", "Vertical Alignment");
+        registerDisplayString("VerticalAlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Vertical_Alignment"));
         properties.add("StretchIdx");
-        registerDisplayString("StretchIdx", "Stretch");
+        registerDisplayString("StretchIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Stretch"));
 
     }
     

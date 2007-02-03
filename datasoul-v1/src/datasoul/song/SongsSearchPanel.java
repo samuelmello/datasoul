@@ -117,14 +117,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         comboField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        labelString.setText("Search");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        labelString.setText(bundle.getString("Search")); // NOI18N
 
-        labelField.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FIELD"));
+        labelField.setText(bundle.getString("FIELD")); // NOI18N
 
         toolBar.setBorder(null);
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png")));
-        btnNew.setText("New");
-        btnNew.setToolTipText("Create a new song ...");
+        btnNew.setText(bundle.getString("New")); // NOI18N
+        btnNew.setToolTipText(bundle.getString("Create_a_new_song_...")); // NOI18N
         btnNew.setAlignmentY(0.0F);
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
@@ -138,12 +139,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnNew);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png")));
-        btnEdit.setText("Edit");
-        btnEdit.setToolTipText("Edit song ...");
+        btnEdit.setText(bundle.getString("Edit")); // NOI18N
+        btnEdit.setToolTipText(bundle.getString("Edit_song_...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
-        btnEdit.setName("btnEdit");
+        btnEdit.setName("");
         btnEdit.setOpaque(false);
         btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -154,8 +155,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edittrash.png")));
-        btnDelete.setText("Delete");
-        btnDelete.setToolTipText("Delete song");
+        btnDelete.setText(bundle.getString("Delete")); // NOI18N
+        btnDelete.setToolTipText(bundle.getString("Delete_song")); // NOI18N
         btnDelete.setAlignmentY(0.0F);
         btnDelete.setBorderPainted(false);
         btnDelete.setFocusPainted(false);
@@ -169,8 +170,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnDelete);
 
         btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/additem.png")));
-        btnAddToList.setText("Add");
-        btnAddToList.setToolTipText("Add song to the service list");
+        btnAddToList.setText(bundle.getString("Add")); // NOI18N
+        btnAddToList.setToolTipText(bundle.getString("Add_song_to_the_service_list")); // NOI18N
         btnAddToList.setAlignmentY(0.0F);
         btnAddToList.setBorderPainted(false);
         btnAddToList.setFocusPainted(false);
@@ -184,8 +185,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnAddToList);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png")));
-        btnClose.setText("Close");
-        btnClose.setToolTipText("Close window");
+        btnClose.setText(bundle.getString("Close")); // NOI18N
+        btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
         btnClose.setAlignmentY(0.0F);
         btnClose.setBorderPainted(false);
         btnClose.setFocusPainted(false);
@@ -224,7 +225,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         jToolBar1.setFloatable(false);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songsearch.png")));
-        jLabel1.setText("Song Search");
+        jLabel1.setText(bundle.getString("Song_Search")); // NOI18N
         jToolBar1.add(jLabel1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -285,7 +286,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         String filePath = song.getFilePath();
         
         File file = new File(filePath);
-        if(JOptionPane.showConfirmDialog(this,"Are you shure that you want to delete the file "+filePath+" ?","Confirm",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_shure_that_you_want_to_delete_the_file_")+filePath+" ?",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             if(file.delete()){
                 tableSongList.removeItem();
             }
@@ -304,7 +305,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         this.btnDelete.setVisible(false);
         this.btnEdit.setVisible(false);
         this.btnNew.setVisible(false);
-        this.btnAddToList.setText("Add");
+        this.btnAddToList.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Add"));
     }
     public void addItem(java.awt.event.ActionEvent evt) {                                          
         btnAddToListActionPerformed(evt);
@@ -361,7 +362,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,"Error searching.\nError: "+ex.getMessage(),"Datasoul Error",0);    
+                JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_searching.\nError:_")+ex.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
                 ex.printStackTrace();
             }
         }

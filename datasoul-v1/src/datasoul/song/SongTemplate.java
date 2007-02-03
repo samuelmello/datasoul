@@ -48,7 +48,7 @@ public class SongTemplate extends TemplateItem{
     public static final int CHORDSIZE_BIG = 0;
     public static final int CHORDSIZE_MEDIUM = 1;
     public static final int CHORDSIZE_SMALL = 2;
-    public static final String[] CHORDSIZE_TABLE = {"Big", "Medium", "Small"};
+    public static final String[] CHORDSIZE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Big"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Medium"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Small")};
     
     
     /**
@@ -109,31 +109,31 @@ public class SongTemplate extends TemplateItem{
     protected void registerProperties() {
 //        super.registerProperties();
         properties.add("TitleFontName");
-        registerDisplayString("TitleFontName", "Title Font Name");
+        registerDisplayString("TitleFontName", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title_Font_Name"));
         properties.add("TitleFontColor");
-        registerDisplayString("TitleFontColor", "Title Font Color");
+        registerDisplayString("TitleFontColor", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title_Font_Color"));
         properties.add("TitleFontSize");        
-        registerDisplayString("TitleFontSize", "Title Font Size");
+        registerDisplayString("TitleFontSize", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title_Font_Size"));
         properties.add("AuthorFontName");
-        registerDisplayString("AuthorFontName", "Author Font Name");
+        registerDisplayString("AuthorFontName", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author_Font_Name"));
         properties.add("AuthorFontColor");
-        registerDisplayString("AuthorFontColor", "Author Font Color");
+        registerDisplayString("AuthorFontColor", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author_Font_Color"));
         properties.add("AuthorFontSize");
-        registerDisplayString("AuthorFontSize", "Author Font Size");
+        registerDisplayString("AuthorFontSize", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author_Font_Size"));
         properties.add("ChordsFontName");
-        registerDisplayString("ChordsFontName", "Chords Font Name");
+        registerDisplayString("ChordsFontName", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Font_Name"));
         properties.add("ChordsFontColor");
-        registerDisplayString("ChordsFontColor", "Chords Font Color");
+        registerDisplayString("ChordsFontColor", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Font_Color"));
         properties.add("ChordsFontSize");
-        registerDisplayString("ChordsFontSize", "Chords Font Size");
+        registerDisplayString("ChordsFontSize", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Font_Size"));
         properties.add("LyricsFontName");
-        registerDisplayString("LyricsFontName", "Lyrics Font Name");
+        registerDisplayString("LyricsFontName", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Lyrics_Font_Name"));
         properties.add("LyricsFontColor");
-        registerDisplayString("LyricsFontColor", "Lyrics Font Color");
+        registerDisplayString("LyricsFontColor", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Lyrics_Font_Color"));
         properties.add("LyricsFontSize");
-        registerDisplayString("LyricsFontSize", "Lyrics Font Size");
+        registerDisplayString("LyricsFontSize", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Lyrics_Font_Size"));
         properties.add("ChordShapeSizeIdx");
-        registerDisplayString("ChordShapeSizeIdx", "Chord Shape Size");
+        registerDisplayString("ChordShapeSizeIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chord_Shape_Size"));
     }
 
     public String getTitleFontName() {

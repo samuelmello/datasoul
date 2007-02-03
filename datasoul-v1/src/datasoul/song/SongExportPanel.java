@@ -70,23 +70,24 @@ public class SongExportPanel extends javax.swing.JFrame {
         checkChordsShape = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        btnOk.setText("Ok");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnOk.setText(bundle.getString("Ok")); // NOI18N
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
             }
         });
 
-        btnCancel.setText("Cancel");
+        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("File:");
+        jLabel2.setText(bundle.getString("File:")); // NOI18N
 
-        btnSelectFile.setText("Select File...");
+        btnSelectFile.setText(bundle.getString("Select_File...")); // NOI18N
         btnSelectFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectFileActionPerformed(evt);
@@ -94,7 +95,7 @@ public class SongExportPanel extends javax.swing.JFrame {
         });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        checkSongList.setText("Song list");
+        checkSongList.setText(bundle.getString("Song_list")); // NOI18N
         checkSongList.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         checkSongList.setMargin(new java.awt.Insets(0, 0, 0, 0));
         checkSongList.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +112,7 @@ public class SongExportPanel extends javax.swing.JFrame {
             }
         });
 
-        checkSong.setText("Song");
+        checkSong.setText(bundle.getString("Song")); // NOI18N
         checkSong.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         checkSong.setMargin(new java.awt.Insets(0, 0, 0, 0));
         checkSong.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +121,7 @@ public class SongExportPanel extends javax.swing.JFrame {
             }
         });
 
-        checkChordsShape.setText("Chords Shape");
+        checkChordsShape.setText(bundle.getString("Chords_Shape")); // NOI18N
         checkChordsShape.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         checkChordsShape.setEnabled(false);
         checkChordsShape.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -232,7 +233,7 @@ public class SongExportPanel extends javax.swing.JFrame {
                   });
         File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "songs");
         fc.setCurrentDirectory(dir);
-        fc.setDialogTitle("Select the file to export");
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_export"));
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
                 String filePath = fc.getSelectedFile().getPath();
                 if(!filePath.contains(".rtf"))
@@ -249,7 +250,7 @@ public class SongExportPanel extends javax.swing.JFrame {
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         if(this.fieldFile.getText().length()==0){
-            JOptionPane.showMessageDialog(this,"You must select a file name");
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("You_must_select_a_file_name"));
             return;
         }
 
@@ -283,7 +284,7 @@ public class SongExportPanel extends javax.swing.JFrame {
         }
 
         
-        JOptionPane.showMessageDialog(this,"File generated correclty");
+        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("File_generated_correclty"));
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed
     
@@ -370,7 +371,7 @@ public class SongExportPanel extends javax.swing.JFrame {
 
             javax.swing.text.Document doc = jep.getDocument();
 
-            doc.insertString(doc.getLength(),"Service List \n\n",nameStyle);
+            doc.insertString(doc.getLength(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_List_\n\n"),nameStyle);
             StyleConstants.setFontSize(nameStyle,12);
 
             for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){

@@ -47,7 +47,7 @@ public class DisplayTemplate extends AttributedObject {
     private int transitionKeepBG;
     public static final int KEEP_BG_YES = 0;
     public static final int KEEP_BG_NO = 1;
-    public static final String[] KEEP_BG_TABLE = {"Yes", "No"};
+    public static final String[] KEEP_BG_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No")};
     private static JComboBox cbKeepBG;
     
     /** Creates an empty DisplayTemplate */
@@ -92,7 +92,7 @@ public class DisplayTemplate extends AttributedObject {
         while (true){
             
             boolean exists = false;
-            String tmp = "Untitled"+i;
+            String tmp = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Untitled")+i;
             for (String s : files){
                 if (s.equals(tmp+".template")){
                     exists = true;
@@ -180,9 +180,9 @@ public class DisplayTemplate extends AttributedObject {
     @Override
     protected void registerProperties(){
         properties.add("Name");
-        registerDisplayString("Name", "Template Name");
+        registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template_Name"));
         properties.add("TransitionKeepBGIdx");
-        registerDisplayString("TransitionKeepBGIdx", "Transition Keep Background");
+        registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Transition_Keep_Background"));
     }
     
     public String getName(){
@@ -216,7 +216,7 @@ public class DisplayTemplate extends AttributedObject {
     
     public void addItem(TemplateItem t){
         if (t.getName().equals("")){
-            t.setName("Item #"+defaultItemNameCount++);
+            t.setName(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Item_#")+defaultItemNameCount++);
         }
         
         items.add(t);

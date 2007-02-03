@@ -78,9 +78,10 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         ));
         jScrollPane1.setViewportView(displayTable);
 
-        jLabel1.setText("Template:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel1.setText(bundle.getString("Template:")); // NOI18N
 
-        lblTemplate.setText("(none)");
+        lblTemplate.setText(bundle.getString("(none)")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

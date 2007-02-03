@@ -68,7 +68,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         setDoubleBuffered(false);
 
-        cbAutoChange.setText("Change automatically every");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        cbAutoChange.setText(bundle.getString("Change_automatically_every")); // NOI18N
         cbAutoChange.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbAutoChange.setMargin(new java.awt.Insets(0, 0, 0, 0));
         cbAutoChange.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +80,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         spnTimer.setModel(new SpinnerNumberModel(1, 1, 9999, 1));
 
-        jLabel1.setText("seconds");
+        jLabel1.setText(bundle.getString("seconds")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -106,7 +107,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         jToolBar1.setFloatable(false);
         labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector3_small.png")));
-        labelLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LIVE"));
+        labelLive.setText(bundle.getString("LIVE")); // NOI18N
         jToolBar1.add(labelLive);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);

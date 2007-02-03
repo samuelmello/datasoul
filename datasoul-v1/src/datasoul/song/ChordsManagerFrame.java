@@ -109,10 +109,11 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         labelString = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Chords Manager");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Chords_Manager")); // NOI18N
         jToolBar1.setFloatable(false);
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png")));
-        btnNew.setText("New");
+        btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setOpaque(false);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +125,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.add(btnNew);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png")));
-        btnEdit.setText("Edit");
+        btnEdit.setText(bundle.getString("Edit")); // NOI18N
         btnEdit.setBorderPainted(false);
         btnEdit.setOpaque(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +137,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
-        btnDelete.setText("Delete");
+        btnDelete.setText(bundle.getString("Delete")); // NOI18N
         btnDelete.setBorderPainted(false);
         btnDelete.setOpaque(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +152,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.add(jSeparator1);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png")));
-        btnClose.setText("Close");
+        btnClose.setText(bundle.getString("Close")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.setOpaque(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
@@ -197,7 +198,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
             }
         });
 
-        labelString.setText("Search");
+        labelString.setText(bundle.getString("Search")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,7 +275,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tableChordsListKeyPressed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if(JOptionPane.showConfirmDialog(this,"Are you shure that you want to delete this chord?","Confirm",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_shure_that_you_want_to_delete_this_chord?"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             tableChordsList.removeItem();
             chordsDB.getInstance().save();
         }

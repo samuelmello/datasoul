@@ -240,15 +240,15 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         tabSong.addTab(bundle.getString("Chords_Simplified"), scroolChordsSimplified); // NOI18N
 
-        jLabel1.setText("Split lyrics in slides with");
+        jLabel1.setText(bundle.getString("Split_lyrics_in_slides_with")); // NOI18N
 
         textLine.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textLine.setText("2");
 
-        jLabel2.setText("lines");
+        jLabel2.setText(bundle.getString("lines")); // NOI18N
 
         btnSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/show_table_row.png")));
-        btnSplit.setText("Split");
+        btnSplit.setText(bundle.getString("Split")); // NOI18N
         btnSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSplitActionPerformed(evt);
@@ -256,7 +256,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnClose.setText("Cancel");
+        btnClose.setText(bundle.getString("Cancel")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -264,7 +264,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnSave.setText("Apply");
+        btnSave.setText(bundle.getString("Apply")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -333,7 +333,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(this.fieldName.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please fill the field \"Song Name\"");
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_fill_the_field_\"Song_Name\""));
             return;
         }
 
@@ -359,7 +359,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         try{
             lines = Integer.parseInt(str);
         }catch (Exception e){
-            JOptionPane.showMessageDialog(this,"Please in the next time digit a number!");
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_in_the_next_time_digit_a_number!"));
             return;
         }
        

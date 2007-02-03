@@ -176,11 +176,12 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSpeedCb = new javax.swing.JCheckBox();
 
         setAutoscrolls(true);
-        jLabel10.setText("Main Output");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel10.setText(bundle.getString("Main_Output")); // NOI18N
 
         btnMainBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/black1.png")));
-        btnMainBlack.setText("Black");
-        btnMainBlack.setToolTipText("Makes the main output black (F12)");
+        btnMainBlack.setText(bundle.getString("Black")); // NOI18N
+        btnMainBlack.setToolTipText(bundle.getString("Makes_the_main_output_black_(F12)")); // NOI18N
         btnMainBlack.setFocusPainted(false);
         btnMainBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,8 +190,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
 
         btnMainClear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/clear1.png")));
-        btnMainClear.setText("Clear");
-        btnMainClear.setToolTipText("Clear the main output (F11)");
+        btnMainClear.setText(bundle.getString("Clear")); // NOI18N
+        btnMainClear.setToolTipText(bundle.getString("Clear_the_main_output_(F11)")); // NOI18N
         btnMainClear.setFocusPainted(false);
         btnMainClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,8 +201,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         btnHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/jabber_offline.png")));
         btnHide.setSelected(true);
-        btnHide.setText("Hide");
-        btnHide.setToolTipText("Hide the main output content (F9)");
+        btnHide.setText(bundle.getString("Hide")); // NOI18N
+        btnHide.setToolTipText(bundle.getString("Hide_the_main_output_content_(F9)")); // NOI18N
         btnHide.setFocusPainted(false);
         btnHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -210,8 +211,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/jabber_online.png")));
-        btnShow.setText("Show");
-        btnShow.setToolTipText("Show the main output content (F10)");
+        btnShow.setText(bundle.getString("Show")); // NOI18N
+        btnShow.setToolTipText(bundle.getString("Show_the_main_output_content_(F10)")); // NOI18N
         btnShow.setFocusPainted(false);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +220,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setText("Show/Hide Speed");
+        jLabel15.setText(bundle.getString("Show/Hide_Speed")); // NOI18N
 
         jSliderShowHideSpeed.setMajorTickSpacing(5);
         jSliderShowHideSpeed.setMaximum(30);
@@ -233,7 +234,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setText("Slide Change Transition Speed");
+        jLabel16.setText(bundle.getString("Slide_Change_Transition_Speed")); // NOI18N
 
         jSliderSlideChangeSpeed.setMajorTickSpacing(5);
         jSliderSlideChangeSpeed.setMaximum(30);
@@ -275,7 +276,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jLabel1.setText("Template");
+        jLabel1.setText(bundle.getString("Template")); // NOI18N
 
         templateMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +286,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 3, 0));
 
-        btnMonitorClear.setText("Clear");
+        btnMonitorClear.setText(bundle.getString("Clear")); // NOI18N
         btnMonitorClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorClearActionPerformed(evt);
@@ -294,7 +295,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.add(btnMonitorClear);
 
-        btnMonitorBlack.setText("Black");
+        btnMonitorBlack.setText(bundle.getString("Black")); // NOI18N
         btnMonitorBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorBlackActionPerformed(evt);
@@ -304,7 +305,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel1.add(btnMonitorBlack);
 
         btnMonitorHide.setSelected(true);
-        btnMonitorHide.setText("Hide");
+        btnMonitorHide.setText(bundle.getString("Hide")); // NOI18N
         btnMonitorHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorHideActionPerformed(evt);
@@ -313,7 +314,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.add(btnMonitorHide);
 
-        btnMonitorShow.setText("Show");
+        btnMonitorShow.setText(bundle.getString("Show")); // NOI18N
         btnMonitorShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorShowActionPerformed(evt);
@@ -322,7 +323,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.add(btnMonitorShow);
 
-        cbMonitorFollowMain.setText("Monitor follows Main Output controls");
+        cbMonitorFollowMain.setText(bundle.getString("Monitor_follows_Main_Output_controls")); // NOI18N
         cbMonitorFollowMain.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbMonitorFollowMain.setMargin(new java.awt.Insets(0, 0, 0, 0));
         cbMonitorFollowMain.addActionListener(new java.awt.event.ActionListener() {
@@ -360,7 +361,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMonitorCb.setText("Show Monitor Controls");
+        jMonitorCb.setText(bundle.getString("Show_Monitor_Controls")); // NOI18N
         jMonitorCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jMonitorCb.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jMonitorCb.addActionListener(new java.awt.event.ActionListener() {
@@ -369,7 +370,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jSpeedCb.setText("Show Speed Controls");
+        jSpeedCb.setText(bundle.getString("Show_Speed_Controls")); // NOI18N
         jSpeedCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jSpeedCb.setMargin(new java.awt.Insets(0, 0, 0, 0));
         jSpeedCb.addActionListener(new java.awt.event.ActionListener() {

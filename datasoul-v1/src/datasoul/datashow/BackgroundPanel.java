@@ -67,7 +67,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
         btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")));
-        btnChangeMain.setText("Image");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnChangeMain.setText(bundle.getString("Image")); // NOI18N
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMainActionPerformed(evt);
@@ -75,7 +76,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         });
 
         btnColorMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png")));
-        btnColorMain.setText("Color");
+        btnColorMain.setText(bundle.getString("Color")); // NOI18N
         btnColorMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColorMainActionPerformed(evt);
@@ -134,7 +135,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
         btnMonitorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png")));
-        btnMonitorColor.setText("Color");
+        btnMonitorColor.setText(bundle.getString("Color")); // NOI18N
         btnMonitorColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorColorActionPerformed(evt);
@@ -142,7 +143,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         });
 
         btnChangeMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")));
-        btnChangeMonitor.setText("Image");
+        btnChangeMonitor.setText(bundle.getString("Image")); // NOI18N
         btnChangeMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMonitorActionPerformed(evt);
@@ -222,7 +223,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
     private void btnMonitorColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorColorActionPerformed
 
         JColorChooser cc = new JColorChooser();
-        Color color =  cc.showDialog(this, "Choose color", Color.BLACK);
+        Color color =  cc.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
             BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
@@ -239,7 +240,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
     private void btnColorMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorMainActionPerformed
 
         JColorChooser cc = new JColorChooser();
-        Color color =  cc.showDialog(this, "Choose color", Color.BLACK);
+        Color color =  cc.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
             BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
@@ -262,7 +263,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         fc.setMultiSelectionEnabled(false);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.setControlButtonsAreShown(true);
-        fc.setDialogTitle("Select Image");
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             imageDisplayMonitor.getImageTemplateItem().loadImage(filename);
@@ -282,7 +283,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         fc.setMultiSelectionEnabled(false);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.setControlButtonsAreShown(true);
-        fc.setDialogTitle("Select Image");
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             imageDisplayMain.getImageTemplateItem().loadImage(filename);

@@ -94,7 +94,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnFile = new javax.swing.JButton();
 
         actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png")));
-        actOpen.setText("Open");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        actOpen.setText(bundle.getString("Open")); // NOI18N
         actOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actOpenActionPerformed(evt);
@@ -104,7 +105,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmFile.add(actOpen);
 
         actSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        actSave.setText("Save");
+        actSave.setText(bundle.getString("Save")); // NOI18N
         actSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actSaveActionPerformed(evt);
@@ -114,7 +115,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmFile.add(actSave);
 
         actSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png")));
-        actSaveAs.setText("Save as");
+        actSaveAs.setText(bundle.getString("Save_as")); // NOI18N
         actSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actSaveAsActionPerformed(evt);
@@ -124,7 +125,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmFile.add(actSaveAs);
 
         actExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png")));
-        actExport.setText("Export");
+        actExport.setText(bundle.getString("Export")); // NOI18N
         actExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actExportActionPerformed(evt);
@@ -134,7 +135,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmFile.add(actExport);
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png")));
-        actAddSong.setText("Add Song");
+        actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddSongActionPerformed(evt);
@@ -144,7 +145,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmAddItem.add(actAddSong);
 
         actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png")));
-        actAddText.setText("Add Text");
+        actAddText.setText(bundle.getString("Add_Text")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddTextActionPerformed(evt);
@@ -154,7 +155,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmAddItem.add(actAddText);
 
         actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png")));
-        actImportItem.setText("Import Item");
+        actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
         actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actImportItemActionPerformed(evt);
@@ -167,8 +168,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png")));
-        btnAddWizard.setText("Add Item");
-        btnAddWizard.setToolTipText("Add wizard ...");
+        btnAddWizard.setText(bundle.getString("Add_Item")); // NOI18N
+        btnAddWizard.setToolTipText(bundle.getString("Add_wizard_...")); // NOI18N
         btnAddWizard.setAlignmentY(0.0F);
         btnAddWizard.setBorderPainted(false);
         btnAddWizard.setFocusPainted(false);
@@ -185,8 +186,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(jSeparator1);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
-        btnRemove.setText("Delete");
-        btnRemove.setToolTipText("Delete item");
+        btnRemove.setText(bundle.getString("Delete")); // NOI18N
+        btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
         btnRemove.setAlignmentY(0.0F);
         btnRemove.setBorderPainted(false);
         btnRemove.setFocusPainted(false);
@@ -200,7 +201,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnRemove);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png")));
-        btnEdit.setToolTipText("Edit selected item ...");
+        btnEdit.setToolTipText(bundle.getString("Edit_selected_item_...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
@@ -214,7 +215,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnEdit);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png")));
-        btnUp.setToolTipText("Change item order to upper position");
+        btnUp.setToolTipText(bundle.getString("Change_item_order_to_upper_position")); // NOI18N
         btnUp.setAlignmentY(0.0F);
         btnUp.setBorderPainted(false);
         btnUp.setFocusPainted(false);
@@ -228,7 +229,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnUp);
 
         btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png")));
-        btnDown.setToolTipText("Change item order to lower position");
+        btnDown.setToolTipText(bundle.getString("Change_item_order_to_lower_position")); // NOI18N
         btnDown.setAlignmentY(0.0F);
         btnDown.setBorderPainted(false);
         btnDown.setFocusPainted(false);
@@ -268,13 +269,13 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         jToolBar1.setFloatable(false);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png")));
-        jLabel1.setText("Service List");
+        jLabel1.setText(bundle.getString("Service_List")); // NOI18N
         jToolBar1.add(jLabel1);
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator2);
 
-        btnFile.setText("File");
+        btnFile.setText(bundle.getString("File")); // NOI18N
         btnFile.setBorderPainted(false);
         btnFile.setOpaque(false);
         btnFile.addActionListener(new java.awt.event.ActionListener() {
@@ -345,7 +346,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                   });
         File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
         fc.setCurrentDirectory(dir);
-        fc.setDialogTitle("Select the file to save.");
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
             fileName = fc.getSelectedFile().getPath();
             if(!fileName.contains(".servicelist"))

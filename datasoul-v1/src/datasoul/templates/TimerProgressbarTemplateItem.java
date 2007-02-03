@@ -66,21 +66,21 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("ColorGoAhead");
-        registerDisplayString("ColorGoAhead", "Color Go Ahead");
+        registerDisplayString("ColorGoAhead", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Go_Ahead"));
         properties.add("ColorFinish");
-        registerDisplayString("ColorFinish", "Color Finish");
+        registerDisplayString("ColorFinish", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Finish"));
         properties.add("ColorStop");
-        registerDisplayString("ColorStop", "Color Stop");
+        registerDisplayString("ColorStop", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Stop"));
         properties.add("ColorRemainingTime");
-        registerDisplayString("ColorRemainingTime", "Color Remaining Time");
+        registerDisplayString("ColorRemainingTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Remaining_Time"));
         properties.add("AlphaRemainingTime");
-        registerDisplayString("AlphaRemainingTime", "Alpha Remaining Time");
+        registerDisplayString("AlphaRemainingTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alpha_Remaining_Time"));
         properties.add("AlphaUsedTime");
-        registerDisplayString("AlphaUsedTime", "Alpha Used Time");
+        registerDisplayString("AlphaUsedTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alpha_Used_Time"));
         properties.add("Position");
-        registerDisplayString("Position", "Position");
+        registerDisplayString("Position", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Position"));
         properties.add("ShowTimer");
-        registerDisplayString("ShowTimer", "Show Timer");
+        registerDisplayString("ShowTimer", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Show_Timer"));
     }
 
     public void draw(Graphics2D g, float time) {

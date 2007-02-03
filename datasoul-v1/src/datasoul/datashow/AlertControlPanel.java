@@ -54,40 +54,41 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbHistory = new javax.swing.JComboBox();
         btnCancel = new javax.swing.JButton();
 
-        jLabel3.setText("Text");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel3.setText(bundle.getString("Text")); // NOI18N
 
         txtAlert.setColumns(20);
         txtAlert.setRows(5);
         jScrollPane1.setViewportView(txtAlert);
 
-        cbShowOnMain1.setText("Show on Main Output");
+        cbShowOnMain1.setText(bundle.getString("Show_on_Main_Output")); // NOI18N
         cbShowOnMain1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbShowOnMain1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        cbShowOnMonitor1.setText("Show on Monitor Output");
+        cbShowOnMonitor1.setText(bundle.getString("Show_on_Monitor_Output")); // NOI18N
         cbShowOnMonitor1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbShowOnMonitor1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel1.setText("Template");
+        jLabel1.setText(bundle.getString("Template")); // NOI18N
 
-        jLabel2.setText("Template");
+        jLabel2.setText(bundle.getString("Template")); // NOI18N
 
-        jLabel13.setText("Duration");
+        jLabel13.setText(bundle.getString("Duration")); // NOI18N
 
         spnAlertTime.setModel(new SpinnerNumberModel(1, 1, 999, 1));
 
-        jLabel14.setText("seconds");
+        jLabel14.setText(bundle.getString("seconds")); // NOI18N
 
         btnShowAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png")));
-        btnShowAlert.setText("Show Alert");
-        btnShowAlert.setToolTipText("Show alert");
+        btnShowAlert.setText(bundle.getString("Show_Alert")); // NOI18N
+        btnShowAlert.setToolTipText(bundle.getString("Show_alert")); // NOI18N
         btnShowAlert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowAlertActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Recently used texts");
+        jLabel4.setText(bundle.getString("Recently_used_texts")); // NOI18N
 
         cbHistory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -97,7 +98,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnCancel.setText("Cancel");
+        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
         btnCancel.setEnabled(false);
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

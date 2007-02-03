@@ -114,7 +114,8 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel10.setText("Preview Size");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel10.setText(bundle.getString("Preview_Size")); // NOI18N
 
         org.jdesktop.layout.GroupLayout pnlPreviewBoxLayout = new org.jdesktop.layout.GroupLayout(pnlPreviewBox);
         pnlPreviewBox.setLayout(pnlPreviewBoxLayout);

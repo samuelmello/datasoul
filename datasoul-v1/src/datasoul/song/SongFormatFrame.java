@@ -64,7 +64,8 @@ public class SongFormatFrame extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Song Format");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Song_Format")); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tableProperties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -80,8 +81,8 @@ public class SongFormatFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableProperties);
 
         btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnApply.setText("Apply");
-        btnApply.setToolTipText("Apply the changes to song view");
+        btnApply.setText(bundle.getString("Apply")); // NOI18N
+        btnApply.setToolTipText(bundle.getString("Apply_the_changes_to_song_view")); // NOI18N
         btnApply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnApplyMouseClicked(evt);
@@ -89,8 +90,8 @@ public class SongFormatFrame extends javax.swing.JFrame {
         });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnClose.setText("Cancel");
-        btnClose.setToolTipText("Close window");
+        btnClose.setText(bundle.getString("Cancel")); // NOI18N
+        btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCloseMouseClicked(evt);

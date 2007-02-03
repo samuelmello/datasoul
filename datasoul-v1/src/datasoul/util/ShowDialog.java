@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class ShowDialog {
 
     public static void showReadFileError(String filename, Exception e){
-            JOptionPane.showMessageDialog(null,"Error reading file\nFile: "+filename+"\nError: "+e.getMessage(),"Datasoul Error",0);
+            JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_reading_file\nFile:_")+filename+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("\nError:_")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
     }
     
     public static void showReadFileError(File file, Exception e){
@@ -27,7 +27,7 @@ public class ShowDialog {
     }
 
     public static void showWriteFileError(String filename, Exception e){
-            JOptionPane.showMessageDialog(null,"Error writing file\nFile: "+filename+"\nError: "+e.getMessage(),"Datasoul Error",0);
+            JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_writing_file\nFile:_")+filename+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("\nError:_")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
     }
     
     public static void showWriteFileError(File file, Exception e){

@@ -22,7 +22,7 @@ public class SwingContentRenderConfig implements RenderConfigItf {
     }
     
     public void showConfiguration(boolean isMonitor){
-        JOptionPane.showMessageDialog(null, "There is nothing to configure", "SwingContentRender", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("There_is_nothing_to_configure"), "SwingContentRender", JOptionPane.INFORMATION_MESSAGE);
     }
     
 }

@@ -28,7 +28,7 @@ import javax.swing.table.TableModel;
 public class ServiceItem extends SerializableObject implements TableModel, TableCellRenderer {
     
     final private static String NUMBER_LABEL = "#";
-    final private static String ITEM_LABEL = "Item";
+    final private static String ITEM_LABEL = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Item");
     
     /**
      * Contain the slide itens

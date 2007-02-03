@@ -57,29 +57,29 @@ public class TextTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("ContentIdx");
-        registerDisplayString("ContentIdx", "Content");
+        registerDisplayString("ContentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Content"));
         properties.add("Text");
-        registerDisplayString("Text", "Text");
+        registerDisplayString("Text", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Text"));
         properties.add("FontName");
-        registerDisplayString("FontName", "Font Name");
+        registerDisplayString("FontName", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Font_Name"));
         properties.add("FontSize");
-        registerDisplayString("FontSize", "Font Size");
+        registerDisplayString("FontSize", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Font_Size"));
         properties.add("FontOutline");
-        registerDisplayString("FontOutline", "Font Outline");
+        registerDisplayString("FontOutline", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Font_Outline"));
         properties.add("FontColor");
-        registerDisplayString("FontColor", "Font Color");
+        registerDisplayString("FontColor", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Font_Color"));
         properties.add("OutlineColor");
-        registerDisplayString("OutlineColor", "Outline Color");
+        registerDisplayString("OutlineColor", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Outline_Color"));
         properties.add("AlignmentIdx");
-        registerDisplayString("AlignmentIdx", "Alignment");
+        registerDisplayString("AlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alignment"));
         properties.add("VerticalAlignmentIdx");
-        registerDisplayString("VerticalAlignmentIdx", "Vertical Alignment");
+        registerDisplayString("VerticalAlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Vertical_Alignment"));
         properties.add("TextWidthIdx");
-        registerDisplayString("TextWidthIdx", "Text Width");
+        registerDisplayString("TextWidthIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Text_Width"));
         properties.add("TextWeightIdx");
-        registerDisplayString("TextWeightIdx", "Text Weight");
+        registerDisplayString("TextWeightIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Text_Weight"));
         properties.add("UnderlineIdx");
-        registerDisplayString("UnderlineIdx", "Underline");
+        registerDisplayString("UnderlineIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Underline"));
 
     }
 
@@ -99,24 +99,24 @@ public class TextTemplateItem extends TemplateItem {
     public static final int CONTENT_STATIC = 5;//"Static";
     public static final int CONTENT_ALERT = 6;//"Alert";
     public static final int CONTENT_SONGAUTHOR = 7;//"Author";    
-    public static final String[] CONTENT_TABLE = {"Title", "Slide", "Next Slide", "Clock", "Timer", "Static", "Alert","Song Author"};
+    public static final String[] CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Next_Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Clock"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Timer"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alert"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Song_Author")};
     
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";
     public static final int ALIGN_RIGHT = 2; //"Right";
-    public static final String[] ALIGN_TABLE = {"Left", "Center", "Right"};
+    public static final String[] ALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Left"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Center"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Right")};
 
     public static final int VALIGN_TOP = 0; //"Top";
     public static final int VALIGN_MIDDLE = 1; //"Middle";
     public static final int VALIGN_BOTTOM = 2; //"Bottom";
-    public static final String[] VALIGN_TABLE = {"Top", "Middle", "Bottom"};
+    public static final String[] VALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Top"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Middle"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Bottom")};
 
     public static final int TEXTWIDTH_CONDENSED = 0;
     public static final int TEXTWIDTH_SEMICONDENSED = 1;
     public static final int TEXTWIDTH_REGULAR = 2;
     public static final int TEXTWIDTH_SEMIEXTENDED = 3;
     public static final int TEXTWIDTH_EXTENDED = 4;
-    public static final String[] TEXTWIDTH_TABLE = {"Condensed", "Semi Condensed", "Regular", "Semi Extended", "Extended"};
+    public static final String[] TEXTWIDTH_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Condensed"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Semi_Condensed"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Regular"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Semi_Extended"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Extended")};
     
     public static final int TEXTWEIGHT_REGULAR = 0;
     public static final int TEXTWEIGHT_EXTRALIGHT = 1;
@@ -125,17 +125,17 @@ public class TextTemplateItem extends TemplateItem {
     public static final int TEXTWEIGHT_MEDIUM = 4;
     public static final int TEXTWEIGHT_BOLD = 5;
     public static final int TEXTWEIGHT_EXTRABOLD = 6;
-    public static final String[] TEXTWEIGHT_TABLE = {"Regular", "Extra Light", "Light", "Semi Bold", "Medium", "Bold", "Extra Bold"};
+    public static final String[] TEXTWEIGHT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Regular"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Extra_Light"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Light"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Semi_Bold"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Medium"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Bold"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Extra_Bold")};
 
     public static final int UNDERLINE_OFF = 0;
     public static final int UNDERLINE_SIMPLE = 1;
     public static final int UNDERLINE_TWOPIXEL = 2;
     public static final int UNDERLINE_DOTTED = 3;
     public static final int UNDERLINE_DASHED = 4;
-    public static final String[] UNDERLINE_TABLE = {"Off", "Simple", "TwoPixel", "Dotted", "Dashed"};
+    public static final String[] UNDERLINE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Off"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Simple"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TwoPixel"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Dotted"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Dashed")};
     
     
-    public static final String DEFAULT_TEXT = "TextItem";
+    public static final String DEFAULT_TEXT = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TextItem");
 
     public TextTemplateItem () {
         

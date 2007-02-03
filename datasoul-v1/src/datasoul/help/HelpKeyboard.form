@@ -46,7 +46,9 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/datasoul/icons/key_bindings.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Keyboard Shortcuts"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="datasoul/internationalize.properties" key="Keyboard_Shortcuts" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -71,7 +73,6 @@
               </FontInfo>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="F3: Go Live Preview Item&#xa;F4: Set focus on Live Item&#xa;&#xa;F5: Show Display Controls&#xa;F6: Show Alert Controls&#xa;F7: Show Timer Controls&#xa;F8: Show Background Controls&#xa;&#xa;F9: Hide&#xa;F10: Show&#xa;F11: Clear&#xa;F12: Black&#xa;&#xa;Ctrl+1: Show Projector&#xa;Ctrl+2: Show Templates&#xa;Ctrl+3: Show Songs&#xa;Ctrl+4: Show Config&#xa;Ctrl+5: Show Help&#xa;&#xa;&lt;Num&gt;+Enter, with focus on Preview or Live Item: Jump to slide &lt;Num&gt;&#xa;&#xa;"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

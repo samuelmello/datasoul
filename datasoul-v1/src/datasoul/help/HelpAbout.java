@@ -17,7 +17,7 @@ public class HelpAbout extends javax.swing.JPanel {
     /** Creates new form HelpAbout */
     public HelpAbout() {
         initComponents();
-        lblVersion.setText("Version"+" "+DatasoulMainForm.DATASOUL_VERSION);
+        lblVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Version")+" "+DatasoulMainForm.DATASOUL_VERSION);
     }
      
     /** This method is called from within the constructor to
@@ -55,7 +55,8 @@ public class HelpAbout extends javax.swing.JPanel {
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kdmconfig.png")));
-        jLabel4.setText("Authors");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel4.setText(bundle.getString("Authors")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

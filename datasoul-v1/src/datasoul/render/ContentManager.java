@@ -243,7 +243,7 @@ public class ContentManager {
             }
             
             mainDisplay.initDisplay(width, height, top, left, false);
-            mainDisplay.setWindowTitle("Datasoul - Main Display");
+            mainDisplay.setWindowTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
         }
         return mainDisplay;
     }
@@ -282,7 +282,7 @@ public class ContentManager {
             }
 
             monitorDisplay.initDisplay(width, height, top, left, true);
-            monitorDisplay.setWindowTitle("Datasoul - Monitor Display");
+            monitorDisplay.setWindowTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Monitor_Display"));
         }
         return monitorDisplay;
     }

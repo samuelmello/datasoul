@@ -15,6 +15,49 @@ public class HelpKeyboard extends javax.swing.JPanel {
     /** Creates new form HelpKeyboard */
     public HelpKeyboard() {
         initComponents();
+        StringBuffer sb = new StringBuffer();
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F4:_Set_focus_on_Live_Item"));
+        sb.append("\n");
+        sb.append("");
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F5:_Show_Display_Controls"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F6:_Show_Alert_Controls"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F7:_Show_Timer_Controls"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F8:_Show_Background_Controls"));
+        sb.append("\n");
+        sb.append("");
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F9:_Hide"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F10:_Show"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F11:_Clear"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F12:_Black"));
+        sb.append("\n");
+        sb.append("");
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+1:_Show_Projector"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+2:_Show_Templates"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+3:_Show_Songs"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+4:_Show_Config"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+5:_Show_Help"));
+        sb.append("\n");
+        sb.append("");
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("<Num>+Enter,_with_focus_on_Preview_or_Live_Item:_Jump_to_slide_<Num>"));
+        sb.append("\n");
+
+        jTextArea1.setText(sb.toString());
+
+
     }
     
     /** This method is called from within the constructor to
@@ -30,14 +73,14 @@ public class HelpKeyboard extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/key_bindings.png")));
-        jLabel1.setText("Keyboard Shortcuts");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel1.setText(bundle.getString("Keyboard_Shortcuts")); // NOI18N
 
         jScrollPane1.setBorder(null);
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
         jTextArea1.setFont(new java.awt.Font("Dialog", 1, 12));
         jTextArea1.setRows(5);
-        jTextArea1.setText("F3: Go Live Preview Item\nF4: Set focus on Live Item\n\nF5: Show Display Controls\nF6: Show Alert Controls\nF7: Show Timer Controls\nF8: Show Background Controls\n\nF9: Hide\nF10: Show\nF11: Clear\nF12: Black\n\nCtrl+1: Show Projector\nCtrl+2: Show Templates\nCtrl+3: Show Songs\nCtrl+4: Show Config\nCtrl+5: Show Help\n\n<Num>+Enter, with focus on Preview or Live Item: Jump to slide <Num>\n\n");
         jTextArea1.setBorder(null);
         jTextArea1.setOpaque(false);
         jScrollPane1.setViewportView(jTextArea1);

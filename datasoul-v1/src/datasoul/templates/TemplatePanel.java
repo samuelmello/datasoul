@@ -76,7 +76,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
         panelTemplateEditor.setAutoscrolls(true);
-        jLabel1.setText("Template:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel1.setText(bundle.getString("Template:")); // NOI18N
 
         lblTemplateName.setText("jLabel2");
 
@@ -92,8 +93,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         );
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png")));
-        btnSave.setText("Save");
-        btnSave.setToolTipText("Save template");
+        btnSave.setText(bundle.getString("Save")); // NOI18N
+        btnSave.setToolTipText(bundle.getString("Save_template")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -101,8 +102,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
 
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fonts.png")));
-        btnAddText.setText("Text");
-        btnAddText.setToolTipText("Add a text");
+        btnAddText.setText(bundle.getString("Text")); // NOI18N
+        btnAddText.setToolTipText(bundle.getString("Add_a_text")); // NOI18N
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTextActionPerformed(evt);
@@ -110,8 +111,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
 
         btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png")));
-        btnDeleteItem.setText("Remove");
-        btnDeleteItem.setToolTipText("Delete item");
+        btnDeleteItem.setText(bundle.getString("Remove")); // NOI18N
+        btnDeleteItem.setToolTipText(bundle.getString("Delete_item")); // NOI18N
         btnDeleteItem.setMaximumSize(new java.awt.Dimension(91, 26));
         btnDeleteItem.setMinimumSize(new java.awt.Dimension(91, 26));
         btnDeleteItem.setPreferredSize(new java.awt.Dimension(91, 26));
@@ -122,8 +123,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
 
         btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/raise.png")));
-        btnMoveUp.setText("To Front");
-        btnMoveUp.setToolTipText("Move the item to the upper layer");
+        btnMoveUp.setText(bundle.getString("To_Front")); // NOI18N
+        btnMoveUp.setToolTipText(bundle.getString("Move_the_item_to_the_upper_layer")); // NOI18N
         btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoveUpActionPerformed(evt);
@@ -131,31 +132,31 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
 
         btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/lower.png")));
-        btnMoveDown.setText("To Back");
-        btnMoveDown.setToolTipText("Move the item to the lowest layer");
+        btnMoveDown.setText(bundle.getString("To_Back")); // NOI18N
+        btnMoveDown.setToolTipText(bundle.getString("Move_the_item_to_the_lowest_layer")); // NOI18N
         btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoveDownActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Template");
+        jLabel2.setText(bundle.getString("Template")); // NOI18N
 
-        jLabel3.setText("Add Item");
+        jLabel3.setText(bundle.getString("Add_Item")); // NOI18N
 
         btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")));
-        btnAddImage.setText("Image");
-        btnAddImage.setToolTipText("Add an image ...");
+        btnAddImage.setText(bundle.getString("Image")); // NOI18N
+        btnAddImage.setToolTipText(bundle.getString("Add_an_image_...")); // NOI18N
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImageActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Selected Item");
+        jLabel4.setText(bundle.getString("Selected_Item")); // NOI18N
 
         btnTimerProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kalarm.png")));
-        btnTimerProgress.setText("Timer");
+        btnTimerProgress.setText(bundle.getString("Timer")); // NOI18N
         btnTimerProgress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimerProgressActionPerformed(evt);
@@ -163,7 +164,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
 
         btnProperties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/info.png")));
-        btnProperties.setText("Properties");
+        btnProperties.setText(bundle.getString("Properties")); // NOI18N
         btnProperties.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPropertiesActionPerformed(evt);
@@ -220,7 +221,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         );
 
         jLabel5.setFont(new java.awt.Font("Dialog", 2, 12));
-        jLabel5.setText("Hold Shift down for resizing itens");
+        jLabel5.setText(bundle.getString("Hold_Shift_down_for_resizing_itens")); // NOI18N
 
         org.jdesktop.layout.GroupLayout panelTemplateEditorLayout = new org.jdesktop.layout.GroupLayout(panelTemplateEditor);
         panelTemplateEditor.setLayout(panelTemplateEditorLayout);
@@ -277,8 +278,8 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar1.setFloatable(false);
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png")));
-        btnLoad.setText("Load");
-        btnLoad.setToolTipText("Load selected template");
+        btnLoad.setText(bundle.getString("Load")); // NOI18N
+        btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
         btnLoad.setBorderPainted(false);
         btnLoad.setFocusPainted(false);
         btnLoad.setOpaque(false);
@@ -291,8 +292,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar1.add(btnLoad);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png")));
-        btnNew.setText("New");
-        btnNew.setToolTipText("Create a new template");
+        btnNew.setText(bundle.getString("New")); // NOI18N
+        btnNew.setToolTipText(bundle.getString("Create_a_new_template")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
         btnNew.setOpaque(false);
@@ -305,8 +306,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar1.add(btnNew);
 
         btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edittrash.png")));
-        btnDeleteTemplate.setText("Delete");
-        btnDeleteTemplate.setToolTipText("Delete selected template");
+        btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
+        btnDeleteTemplate.setToolTipText(bundle.getString("Delete_selected_template")); // NOI18N
         btnDeleteTemplate.setBorderPainted(false);
         btnDeleteTemplate.setFocusPainted(false);
         btnDeleteTemplate.setOpaque(false);
@@ -320,7 +321,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar2.setFloatable(false);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/images.png")));
-        jLabel6.setText("Templates");
+        jLabel6.setText(bundle.getString("Templates")); // NOI18N
         jToolBar2.add(jLabel6);
 
         org.jdesktop.layout.GroupLayout panelTemplatesLayout = new org.jdesktop.layout.GroupLayout(panelTemplates);
@@ -357,7 +358,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar3.setFloatable(false);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/info.png")));
-        jLabel7.setText("Properties");
+        jLabel7.setText(bundle.getString("Properties")); // NOI18N
         jToolBar3.add(jLabel7);
 
         org.jdesktop.layout.GroupLayout panelPropertiesLayout = new org.jdesktop.layout.GroupLayout(panelProperties);
@@ -406,12 +407,12 @@ public class TemplatePanel extends javax.swing.JPanel {
             Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
             if (x instanceof String){
                 String str = (String) x;
-                int confirm = JOptionPane.showConfirmDialog(this, "Delete template "+x+"?", "Confirm", JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Delete_template_")+x+"?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"), JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION){
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,"Unable to delete template:\n"+e.getMessage(),"Datasoul Error",0);    
+                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_delete_template:\n")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
                     }// try
                 }//if confirm
             }// if instance of
@@ -422,7 +423,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
 
-        int resp = JOptionPane.showConfirmDialog(this, "Do you want to save "+templateEditorPanel1.getTemplate().getName()+ "?" );
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Do_you_want_to_save_")+templateEditorPanel1.getTemplate().getName()+ "?" );
         
         switch(resp){
             case JOptionPane.CANCEL_OPTION:
@@ -484,7 +485,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         fc.setMultiSelectionEnabled(false);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.setControlButtonsAreShown(true);
-        fc.setDialogTitle("Select Image");
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             ImageTemplateItem img = new ImageTemplateItem( filename );

@@ -76,17 +76,18 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar2.setFloatable(false);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png")));
-        jLabel1.setText("Song:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel1.setText(bundle.getString("Song:")); // NOI18N
         jToolBar2.add(jLabel1);
 
         lblSongName.setText("   ");
         jToolBar2.add(lblSongName);
 
-        jTabbedPane1.addTab("Lyrics", songViewer1);
+        jTabbedPane1.addTab(bundle.getString("Lyrics"), songViewer1); // NOI18N
 
-        jTabbedPane1.addTab("Chords Complete", songViewer2);
+        jTabbedPane1.addTab(bundle.getString("Chords_Complete"), songViewer2); // NOI18N
 
-        jTabbedPane1.addTab("Chords Simplified", songViewer3);
+        jTabbedPane1.addTab(bundle.getString("Chords_Simplified"), songViewer3); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

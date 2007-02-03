@@ -42,22 +42,23 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("SDL Content Render Configuration");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("SDL_Content_Render_Configuration")); // NOI18N
         setResizable(false);
-        jLabel1.setText("SDL Configuration for display:");
+        jLabel1.setText(bundle.getString("SDL_Configuration_for_display:")); // NOI18N
 
-        lblMonitor.setText("Main");
+        lblMonitor.setText(bundle.getString("Main")); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Unix Configurations"));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kxconfig.png")));
-        jLabel2.setText("These configurations specify how to create output in Unix systems");
+        jLabel2.setText(bundle.getString("These_configurations_specify_how_to_create_output_in_Unix_systems")); // NOI18N
 
-        cbSetX11Display.setText("Override X11 Display");
+        cbSetX11Display.setText(bundle.getString("Override_X11_Display")); // NOI18N
         cbSetX11Display.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbSetX11Display.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel3.setText("X11 Display");
+        jLabel3.setText(bundle.getString("X11_Display")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -89,7 +90,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         );
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnClose.setText("Cancel");
+        btnClose.setText(bundle.getString("Cancel")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -97,7 +98,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         });
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnSave.setText("Apply");
+        btnSave.setText(bundle.getString("Apply")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -135,7 +136,7 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
                     .add(btnSave))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -179,9 +180,9 @@ public class SDLContentRenderConfig extends javax.swing.JFrame implements Render
         txtX11Display.setText( config.getX11Display() );
         
         if (isMonitor){
-            lblMonitor.setText("Monitor");
+            lblMonitor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Monitor"));
         }else{
-            lblMonitor.setText("Main");
+            lblMonitor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Main"));
         }
         
         center();

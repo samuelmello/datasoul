@@ -59,7 +59,8 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Import Service Item");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Import_Service_Item")); // NOI18N
         setAlwaysOnTop(true);
         tableServiceList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -81,8 +82,8 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         scroolServiceList.setViewportView(tableServiceList);
 
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/additem.png")));
-        btnImport.setText("Import");
-        btnImport.setToolTipText("Import selected item to actual service list");
+        btnImport.setText(bundle.getString("Import")); // NOI18N
+        btnImport.setToolTipText(bundle.getString("Import_selected_item_to_actual_service_list")); // NOI18N
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);
@@ -90,8 +91,8 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         });
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png")));
-        btnOpen.setText("Open");
-        btnOpen.setToolTipText("Open service list ...");
+        btnOpen.setText(bundle.getString("Open")); // NOI18N
+        btnOpen.setToolTipText(bundle.getString("Open_service_list_...")); // NOI18N
         btnOpen.setMaximumSize(new java.awt.Dimension(89, 29));
         btnOpen.setMinimumSize(new java.awt.Dimension(89, 29));
         btnOpen.setPreferredSize(new java.awt.Dimension(89, 29));
@@ -102,15 +103,15 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png")));
-        btnClose.setText("Close");
-        btnClose.setToolTipText("Close window");
+        btnClose.setText(bundle.getString("Close")); // NOI18N
+        btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Select another service list to import an item");
+        jLabel1.setText(bundle.getString("Select_another_service_list_to_import_an_item")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

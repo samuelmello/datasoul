@@ -29,11 +29,12 @@ public class HelpPanel extends javax.swing.JPanel {
         helpLicense1 = new datasoul.help.HelpLicense();
         helpKeyboard1 = new datasoul.help.HelpKeyboard();
 
-        jTabbedPane1.addTab("About", helpAbout1);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jTabbedPane1.addTab(bundle.getString("About"), helpAbout1); // NOI18N
 
-        jTabbedPane1.addTab("License Agreement", helpLicense1);
+        jTabbedPane1.addTab(bundle.getString("License_Agreement"), helpLicense1); // NOI18N
 
-        jTabbedPane1.addTab("Keyboard Shortcuts", helpKeyboard1);
+        jTabbedPane1.addTab(bundle.getString("Keyboard_Shortcuts"), helpKeyboard1); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -48,7 +49,7 @@ public class HelpPanel extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                .add(jTabbedPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 420, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents

@@ -64,13 +64,14 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         tabAuxiliar.setToolTipText("");
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(0, 0));
-        tabAuxiliar.addTab("Display", displayControlPanel1);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        tabAuxiliar.addTab(bundle.getString("Display"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/display.png")), displayControlPanel1); // NOI18N
 
-        tabAuxiliar.addTab("Alert", alertControlPanel1);
+        tabAuxiliar.addTab(bundle.getString("Alert"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png")), alertControlPanel1); // NOI18N
 
-        tabAuxiliar.addTab("Timer", timerControlPanel1);
+        tabAuxiliar.addTab(bundle.getString("Timer"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kalarm.png")), timerControlPanel1); // NOI18N
 
-        tabAuxiliar.addTab("Background", backgroundPanel1);
+        tabAuxiliar.addTab(bundle.getString("Background"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")), backgroundPanel1); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

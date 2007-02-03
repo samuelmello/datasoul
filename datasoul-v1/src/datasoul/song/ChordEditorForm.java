@@ -81,9 +81,10 @@ public class ChordEditorForm extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Edit Chord");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Edit_Chord")); // NOI18N
         setResizable(false);
-        chordShapePanel1.setToolTipText("Select the notes clicking");
+        chordShapePanel1.setToolTipText(bundle.getString("Select_the_notes_clicking")); // NOI18N
         org.jdesktop.layout.GroupLayout chordShapePanel1Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel1);
         chordShapePanel1.setLayout(chordShapePanel1Layout);
         chordShapePanel1Layout.setHorizontalGroup(
@@ -95,7 +96,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        chordShapePanel2.setToolTipText("Select the notes clicking");
+        chordShapePanel2.setToolTipText(bundle.getString("Select_the_notes_clicking")); // NOI18N
         org.jdesktop.layout.GroupLayout chordShapePanel2Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel2);
         chordShapePanel2.setLayout(chordShapePanel2Layout);
         chordShapePanel2Layout.setHorizontalGroup(
@@ -107,7 +108,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        chordShapePanel3.setToolTipText("Select the notes clicking");
+        chordShapePanel3.setToolTipText(bundle.getString("Select_the_notes_clicking")); // NOI18N
         org.jdesktop.layout.GroupLayout chordShapePanel3Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel3);
         chordShapePanel3.setLayout(chordShapePanel3Layout);
         chordShapePanel3Layout.setHorizontalGroup(
@@ -119,7 +120,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        chordShapePanel4.setToolTipText("Select the notes clicking");
+        chordShapePanel4.setToolTipText(bundle.getString("Select_the_notes_clicking")); // NOI18N
         org.jdesktop.layout.GroupLayout chordShapePanel4Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel4);
         chordShapePanel4.setLayout(chordShapePanel4Layout);
         chordShapePanel4Layout.setHorizontalGroup(
@@ -131,7 +132,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        chordShapePanel5.setToolTipText("Select the notes clicking");
+        chordShapePanel5.setToolTipText(bundle.getString("Select_the_notes_clicking")); // NOI18N
         org.jdesktop.layout.GroupLayout chordShapePanel5Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel5);
         chordShapePanel5.setLayout(chordShapePanel5Layout);
         chordShapePanel5Layout.setHorizontalGroup(
@@ -143,7 +144,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        chordShapePanel6.setToolTipText("Select the notes clicking");
+        chordShapePanel6.setToolTipText(bundle.getString("Select_the_notes_clicking")); // NOI18N
         org.jdesktop.layout.GroupLayout chordShapePanel6Layout = new org.jdesktop.layout.GroupLayout(chordShapePanel6);
         chordShapePanel6.setLayout(chordShapePanel6Layout);
         chordShapePanel6Layout.setHorizontalGroup(
@@ -155,11 +156,11 @@ public class ChordEditorForm extends javax.swing.JFrame {
             .add(0, 150, Short.MAX_VALUE)
         );
 
-        jLabel1.setText("Chord");
+        jLabel1.setText(bundle.getString("Chord")); // NOI18N
 
         btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnApply.setText("Apply");
-        btnApply.setToolTipText("Apply chord changes");
+        btnApply.setText(bundle.getString("Apply")); // NOI18N
+        btnApply.setToolTipText(bundle.getString("Apply_chord_changes")); // NOI18N
         btnApply.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnApplyMouseClicked(evt);
@@ -167,8 +168,8 @@ public class ChordEditorForm extends javax.swing.JFrame {
         });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnCancel.setText("Cancel");
-        btnCancel.setToolTipText("Cancel and close the window");
+        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
+        btnCancel.setToolTipText(bundle.getString("Cancel_and_close_the_window")); // NOI18N
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCancelMouseClicked(evt);
@@ -242,7 +243,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
         chord.removeAllShapes();
 
         if(this.fieldName.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please fill the chord name, it is empty");
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_fill_the_chord_name,_it_is_empty"));
             return;
         }
 

@@ -56,15 +56,16 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
         jToolBar1.setFloatable(false);
         labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/krdc.png")));
-        labelLive.setText("Preview");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        labelLive.setText(bundle.getString("Preview")); // NOI18N
         jToolBar1.add(labelLive);
 
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator1);
 
         btnGoLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_play.png")));
-        btnGoLive.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GO_LIVE"));
-        btnGoLive.setToolTipText("Send slides to live");
+        btnGoLive.setText(bundle.getString("GO_LIVE")); // NOI18N
+        btnGoLive.setToolTipText(bundle.getString("Send_slides_to_live")); // NOI18N
         btnGoLive.setBorderPainted(false);
         btnGoLive.setFocusPainted(false);
         btnGoLive.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);

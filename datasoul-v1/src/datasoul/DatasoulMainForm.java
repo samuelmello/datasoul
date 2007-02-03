@@ -207,13 +207,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("DataSoul");
+        setTitle("Datasoul");
         toolBarMain.setFloatable(false);
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png")));
-        btnDatashow.setText("Projector");
-        btnDatashow.setToolTipText("Projector operation view");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnDatashow.setText(bundle.getString("Projector")); // NOI18N
+        btnDatashow.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
         btnDatashow.setBorderPainted(false);
         btnDatashow.setFocusPainted(false);
         btnDatashow.setOpaque(false);
@@ -226,8 +227,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnDatashow);
 
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel.png")));
-        btnTemplates.setText("Templates");
-        btnTemplates.setToolTipText("Template edit view");
+        btnTemplates.setText(bundle.getString("Templates")); // NOI18N
+        btnTemplates.setToolTipText(bundle.getString("Template_edit_view")); // NOI18N
         btnTemplates.setBorderPainted(false);
         btnTemplates.setFocusPainted(false);
         btnTemplates.setMaximumSize(new java.awt.Dimension(88, 44));
@@ -242,8 +243,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnTemplates);
 
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/music1.png")));
-        btnSongs.setText("Songs");
-        btnSongs.setToolTipText("Song manipulation view");
+        btnSongs.setText(bundle.getString("Songs")); // NOI18N
+        btnSongs.setToolTipText(bundle.getString("Song_manipulation_view")); // NOI18N
         btnSongs.setBorderPainted(false);
         btnSongs.setFocusPainted(false);
         btnSongs.setOpaque(false);
@@ -256,8 +257,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnSongs);
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/package_settings.png")));
-        btnConfig.setText("Configuration");
-        btnConfig.setToolTipText("Configuration view");
+        btnConfig.setText(bundle.getString("Configuration")); // NOI18N
+        btnConfig.setToolTipText(bundle.getString("Configuration_view")); // NOI18N
         btnConfig.setBorderPainted(false);
         btnConfig.setFocusPainted(false);
         btnConfig.setMaximumSize(new java.awt.Dimension(88, 44));
@@ -272,7 +273,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnConfig);
 
         btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/khelpcenter.png")));
-        btnHelp.setText("Help");
+        btnHelp.setText(bundle.getString("Help")); // NOI18N
         btnHelp.setBorderPainted(false);
         btnHelp.setFocusPainted(false);
         btnHelp.setOpaque(false);
@@ -285,8 +286,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnHelp);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/exit.png")));
-        btnClose.setText("Close");
-        btnClose.setToolTipText("Close the program");
+        btnClose.setText(bundle.getString("Close")); // NOI18N
+        btnClose.setToolTipText(bundle.getString("Close_the_program")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.setFocusPainted(false);
         btnClose.setMaximumSize(new java.awt.Dimension(88, 44));
@@ -365,22 +366,22 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         final Splash splash = new Splash();
         splash.setVisible(true);
 
-        splash.setStatusText("Loading configuration...");
+        splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_configuration..."));
         ConfigObj.getInstance();
         BackgroundConfig.getInstance();
         DisplayControlConfig.getInstance();
 
-        splash.setStatusText("Loading songs...");
+        splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_songs..."));
         AllSongsListTable.getInstance();
-        splash.setStatusText("Loading chords database...");
+        splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_chords_database..."));
         ChordsDB.getInstance();
-        splash.setStatusText("Starting content manager...");
+        splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_content_manager..."));
         ContentManager.getInstance();
         TimerManager.getInstance();
-        splash.setStatusText("Creating user interface...");
+        splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Creating_user_interface..."));
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         
-        splash.setStatusText("Starting application...");
+        splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_application..."));
 
 
         Toolkit.getDefaultToolkit().addAWTEventListener( new KeyListner(), AWTEvent.KEY_EVENT_MASK);        

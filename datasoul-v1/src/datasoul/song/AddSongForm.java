@@ -62,7 +62,8 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         lblAuthor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Song");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Add_Song")); // NOI18N
         setAlwaysOnTop(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,12 +79,12 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
 
         jToolBar1.setFloatable(false);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kappfinder.png")));
-        jLabel1.setText("Preview");
+        jLabel1.setText(bundle.getString("Preview")); // NOI18N
         jToolBar1.add(jLabel1);
 
-        jLabel2.setText("Author:");
+        jLabel2.setText(bundle.getString("Author:")); // NOI18N
 
-        jLabel3.setText("Song:");
+        jLabel3.setText(bundle.getString("Song:")); // NOI18N
 
         lblSongName.setText("     ");
 

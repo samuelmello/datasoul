@@ -48,7 +48,7 @@ public class TemplateManager implements TableModel {
     }
 
     public String getColumnName(int columnIndex) {
-        return "Template";
+        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
     }
 
     public Class<?> getColumnClass(int columnIndex) {

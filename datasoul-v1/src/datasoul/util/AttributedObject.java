@@ -89,9 +89,9 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0){
-            return "Property";
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Property");
         }else{
-            return "Value";
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Value");
         }
     }
 
@@ -287,7 +287,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
                         edited = true;
                         
                         JColorChooser cc = new JColorChooser();
-                        Color color =  cc.showDialog(JColorTextField.this, "Choose color", Color.BLACK);
+                        Color color =  cc.showDialog(JColorTextField.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
 
                         if (color != null){
                             String hexcolor = (color.getRed()>0x09) ? Integer.toHexString(color.getRed()) : Integer.toHexString(color.getRed())+"0";

@@ -41,7 +41,7 @@ public class Song extends TextServiceItem{
     private String obs="";
 
     private String filePath="";        
-    private String view="Title";
+    private String view=java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
     
     /** Creates a new instance of Song */
     public Song() {

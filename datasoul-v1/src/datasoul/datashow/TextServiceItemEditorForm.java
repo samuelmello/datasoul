@@ -79,7 +79,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Edit Text");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Edit_Text")); // NOI18N
         setAlwaysOnTop(true);
         fieldTitle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -87,9 +88,9 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             }
         });
 
-        labelTitle.setText("Title");
+        labelTitle.setText(bundle.getString("Title")); // NOI18N
 
-        labelTitle1.setText("Text");
+        labelTitle1.setText(bundle.getString("Text")); // NOI18N
 
         textText.setColumns(20);
         textText.setRows(5);
@@ -101,15 +102,15 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(textText);
 
-        jLabel1.setText("Split text in slides with");
+        jLabel1.setText(bundle.getString("Split_text_in_slides_with")); // NOI18N
 
         textLine.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         textLine.setText("2");
 
-        jLabel2.setText("lines");
+        jLabel2.setText(bundle.getString("lines")); // NOI18N
 
         btnSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/show_table_row.png")));
-        btnSplit.setText("Split");
+        btnSplit.setText(bundle.getString("Split")); // NOI18N
         btnSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSplitActionPerformed(evt);
@@ -117,7 +118,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnClose.setText("Cancel");
+        btnClose.setText(bundle.getString("Cancel")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -125,7 +126,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         });
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnSave.setText("Apply");
+        btnSave.setText(bundle.getString("Apply")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -185,7 +186,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         actualizeValues();
         
         if(this.textServiceItem.getTitle().equals("")){
-            JOptionPane.showMessageDialog(this,"You must field the Title");
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("You_must_field_the_Title"));
             return;
         }
 
@@ -206,7 +207,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         try{
             lines = Integer.parseInt(str);
         }catch (Exception e){
-            JOptionPane.showMessageDialog(this,"Please in the next time digit a number!");
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_in_the_next_time_digit_a_number!"));
             return;
         }
         

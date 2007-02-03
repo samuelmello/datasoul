@@ -276,7 +276,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel35 = new javax.swing.JLabel();
 
         btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png")));
-        btnApply.setText("Apply");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnApply.setText(bundle.getString("Apply")); // NOI18N
         btnApply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyActionPerformed(evt);
@@ -284,39 +285,39 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
-        jLabel6.setText("Size");
+        jLabel6.setText(bundle.getString("Size")); // NOI18N
 
         mainOutputSizeWidth.setText("jTextField1");
 
-        jLabel16.setText("width");
+        jLabel16.setText(bundle.getString("width")); // NOI18N
 
         mainOutputSizeHeight.setText("jTextField1");
 
-        jLabel17.setText("height");
+        jLabel17.setText(bundle.getString("height")); // NOI18N
 
-        jLabel13.setText("top");
+        jLabel13.setText(bundle.getString("top")); // NOI18N
 
         mainOutputPositionTop.setText("jTextField1");
 
-        jLabel12.setText("left");
+        jLabel12.setText(bundle.getString("left")); // NOI18N
 
         mainOutputPositionLeft.setText("jTextField1");
 
-        jLabel3.setText("Position");
+        jLabel3.setText(bundle.getString("Position")); // NOI18N
 
-        jLabel10.setText("Display Engine");
+        jLabel10.setText(bundle.getString("Display_Engine")); // NOI18N
 
         mainDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         mainOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel1.setText("Enable main output");
+        jLabel1.setText(bundle.getString("Enable_main_output")); // NOI18N
 
-        jLabel28.setText("Output Device");
+        jLabel28.setText(bundle.getString("Output_Device")); // NOI18N
 
         btnSelectDeviceMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kcontrol.png")));
-        btnSelectDeviceMain.setText("Select");
+        btnSelectDeviceMain.setText(bundle.getString("Select")); // NOI18N
         btnSelectDeviceMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectDeviceMainActionPerformed(evt);
@@ -324,15 +325,15 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jLabel30.setFont(new java.awt.Font("Dialog", 2, 10));
-        jLabel30.setText("* Using 640x480 is highly recommented for better performance");
+        jLabel30.setText(bundle.getString("*_Using_640x480_is_highly_recommented_for_better_performance")); // NOI18N
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector2_22x22.png")));
 
         jLabel24.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel24.setText("Main output is used for displaying information for the public,");
+        jLabel24.setText(bundle.getString("Main_output_is_used_for_displaying_information_for_the_public,")); // NOI18N
 
         jLabel32.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel32.setText("usually connected to a projector.");
+        jLabel32.setText(bundle.getString("usually_connected_to_a_projector.")); // NOI18N
 
         btnConfigMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png")));
         btnConfigMain.addActionListener(new java.awt.event.ActionListener() {
@@ -342,7 +343,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jLabel37.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel37.setText("Some configurations apply only after application restart");
+        jLabel37.setText(bundle.getString("Some_configurations_apply_only_after_application_restart")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel5Layout = new org.jdesktop.layout.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -445,39 +446,39 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
-        jLabel2.setText("Enable monitor output");
+        jLabel2.setText(bundle.getString("Enable_monitor_output")); // NOI18N
 
         monitorOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         monitorOutput.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel11.setText("Display Engine");
+        jLabel11.setText(bundle.getString("Display_Engine")); // NOI18N
 
         monitorDisplayEngine.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setText("Position");
+        jLabel4.setText(bundle.getString("Position")); // NOI18N
 
         monitorOutputPositionLeft.setText("jTextField1");
 
-        jLabel14.setText("left");
+        jLabel14.setText(bundle.getString("left")); // NOI18N
 
         monitorOutputPositionTop.setText("jTextField1");
 
-        jLabel15.setText("top");
+        jLabel15.setText(bundle.getString("top")); // NOI18N
 
-        jLabel19.setText("height");
+        jLabel19.setText(bundle.getString("height")); // NOI18N
 
         monitorOutputSizeHeight.setText("jTextField1");
 
-        jLabel18.setText("width");
+        jLabel18.setText(bundle.getString("width")); // NOI18N
 
         monitorOutputSizeWidth.setText("jTextField1");
 
-        jLabel5.setText("Size");
+        jLabel5.setText(bundle.getString("Size")); // NOI18N
 
-        jLabel29.setText("Output Device");
+        jLabel29.setText(bundle.getString("Output_Device")); // NOI18N
 
         btnSelectDeviceMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kcontrol.png")));
-        btnSelectDeviceMonitor.setText("Select");
+        btnSelectDeviceMonitor.setText(bundle.getString("Select")); // NOI18N
         btnSelectDeviceMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSelectDeviceMonitorActionPerformed(evt);
@@ -485,16 +486,16 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jLabel31.setFont(new java.awt.Font("Dialog", 2, 10));
-        jLabel31.setText("* Using 640x480 is highly recommented for better performance");
+        jLabel31.setText(bundle.getString("*_Using_640x480_is_highly_recommented_for_better_performance")); // NOI18N
 
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/display_22x22.png")));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel21.setText("Monitor output is used to display information in monitors on");
+        jLabel21.setText(bundle.getString("Monitor_output_is_used_to_display_information_in_monitors_on")); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel22.setText("stage, providing feedback for musicans or preachers.");
+        jLabel22.setText(bundle.getString("stage,_providing_feedback_for_musicans_or_preachers.")); // NOI18N
 
         btnConfigMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png")));
         btnConfigMonitor.addActionListener(new java.awt.event.ActionListener() {
@@ -504,7 +505,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         });
 
         jLabel38.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel38.setText("Some configurations apply only after application restart");
+        jLabel38.setText(bundle.getString("Some_configurations_apply_only_after_application_restart")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -610,13 +611,13 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Clock"));
-        jLabel9.setText("Clock format");
+        jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel36.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/clock.png")));
-        jLabel36.setText("Specify the format to display the time in templates that contains clocks");
+        jLabel36.setText(bundle.getString("Specify_the_format_to_display_the_time_in_templates_that_contains_clocks")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -644,33 +645,33 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Templates"));
-        jLabel7.setText("For monitor templates, show only itens containing *");
+        jLabel7.setText(bundle.getString("For_monitor_templates,_show_only_itens_containing_*")); // NOI18N
 
-        txtMonitorTemplateFilter.setText("filter");
+        txtMonitorTemplateFilter.setText(bundle.getString("filter")); // NOI18N
 
-        txtAlertTemplateFilter.setText("filter");
+        txtAlertTemplateFilter.setText(bundle.getString("filter")); // NOI18N
 
-        jLabel25.setText("For alert templates, show only itens containing *");
+        jLabel25.setText(bundle.getString("For_alert_templates,_show_only_itens_containing_*")); // NOI18N
 
-        jLabel26.setText("For general templates, show only itens containing *");
+        jLabel26.setText(bundle.getString("For_general_templates,_show_only_itens_containing_*")); // NOI18N
 
-        txtGeneralTemplateFilter.setText("filter");
+        txtGeneralTemplateFilter.setText(bundle.getString("filter")); // NOI18N
 
         jLabel27.setFont(new java.awt.Font("Dialog", 2, 10));
-        jLabel27.setText("* leave blank to view all available templates");
+        jLabel27.setText(bundle.getString("*_leave_blank_to_view_all_available_templates")); // NOI18N
 
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/template_filter.png")));
 
         jLabel34.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel34.setText("Template filters makes easy to find the right template to select in each situation.");
+        jLabel34.setText(bundle.getString("Template_filters_makes_easy_to_find_the_right_template_to_select_in_each_situation.")); // NOI18N
 
-        jLabel8.setText("Default template for text items");
+        jLabel8.setText(bundle.getString("Default_template_for_text_items")); // NOI18N
 
         templateText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "monitor", "Template1", "Aviso 1", "Biblia40dias", "Musicas40Dias", "Avisos40Dias", "teste123" }));
         templateText.setOpaque(false);
 
         jLabel35.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel35.setText("You can also specify the default template selected for newly created items.");
+        jLabel35.setText(bundle.getString("You_can_also_specify_the_default_template_selected_for_newly_created_items.")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel9Layout = new org.jdesktop.layout.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -762,7 +763,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnApply)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -786,7 +787,7 @@ public class ConfigPanel extends javax.swing.JPanel {
             conf = (RenderConfigItf) Class.forName("datasoul.render."+render+"Config").newInstance();
             conf.showConfiguration(isMonitor);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Unable to create configuration for "+render, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_create_configuration_for_")+render, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error"), JOptionPane.ERROR_MESSAGE);
         }
         
     }

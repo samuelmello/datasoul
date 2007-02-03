@@ -53,7 +53,7 @@ public class SongListTable extends ListTable{
 
     public String getColumnName(int columnIndex) {
         if(columnIndex==1)
-            return "Song Name";
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Song_Name");
         else
             return "";
     }

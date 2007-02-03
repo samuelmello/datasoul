@@ -33,8 +33,8 @@ public class Splash extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Starting Datasoul");
-        setBounds(new java.awt.Rectangle(0, 0, 334, 105));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Starting_Datasoul")); // NOI18N
         setResizable(false);
         setUndecorated(true);
         lblStatus.setText("jLabel1");

@@ -45,9 +45,9 @@ public class ServiceListTable extends ListTable{
     
     public String getColumnName(int columnIndex) {
         if(columnIndex == 0)
-            return "Service Item";
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item");
         else
-            return "Template";
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
     }
     
     public Object getValueAt(int rowIndex, int columnIndex) {
