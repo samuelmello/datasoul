@@ -7,6 +7,7 @@
 package datasoul.templates;
 
 import datasoul.util.AttributedObject;
+import datasoul.util.ShowDialog;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -268,7 +269,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         try{
             template.save();
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(this,"Unable to save template:\n"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showWriteFileError(template.getName(), e);
             e.printStackTrace();
         }        
     }
@@ -300,8 +301,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             propTable.setModel(template);
             this.repaint();
         }catch(Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this,"Unable to open template:\n"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showReadFileError(template.getName(), e);
         }        
         
     }

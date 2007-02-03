@@ -6,12 +6,12 @@
 
 package datasoul.datashow;
 
+import datasoul.util.ShowDialog;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -196,14 +196,14 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 node = dom.getElementsByTagName("ServiceListTable").item(0);
                 
             }catch(Exception e) {
-                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
+                ShowDialog.showReadFileError(file, e);
             }
             
             slt = new ServiceListTable();
             try {
                 slt.readObject(node);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);
+                ShowDialog.showReadFileError(file, e);
             }
             
             tableServiceList.setModel(slt);

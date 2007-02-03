@@ -13,6 +13,7 @@ import datasoul.render.SwingPanelContentRender;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import datasoul.util.ObjectManager;
 import java.awt.Dimension;
 
 /**

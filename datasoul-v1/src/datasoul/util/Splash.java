@@ -4,7 +4,7 @@
  * Created on 10 November 2006, 23:01
  */
 
-package datasoul;
+package datasoul.util;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;

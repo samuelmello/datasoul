@@ -6,14 +6,7 @@
 
 package datasoul.datashow;
 
-import datasoul.config.ConfigObj;
-import datasoul.ObjectManager;
-import datasoul.render.ContentManager;
-import java.io.IOException;
-import java.util.Hashtable;
-import javax.swing.JFileChooser;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import datasoul.util.ObjectManager;
 
 /**
  *

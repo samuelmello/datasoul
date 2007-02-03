@@ -6,7 +6,7 @@
 
 package datasoul.song;
 
-import datasoul.ObjectManager;
+import datasoul.util.ObjectManager;
 import datasoul.datashow.ServiceListTable;
 import java.awt.Dimension;
 import java.awt.Rectangle;

@@ -9,8 +9,8 @@
 
 package datasoul.song;
 
+import datasoul.util.ShowDialog;
 import java.io.File;
-import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -55,7 +55,7 @@ public class AllSongsListTable extends SongListTable{
                         node = dom.getElementsByTagName("Song").item(0);
                         
                     }catch(Exception e) {
-                        JOptionPane.showMessageDialog(null,"Error, the file is not well formed\nFile: "+songFile.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);
+                        ShowDialog.showReadFileError(songFile, e);
                     }
                     
                     song = new Song();
@@ -63,7 +63,7 @@ public class AllSongsListTable extends SongListTable{
                         song.readObject(node);
                         song.setFilePath(songFile.getPath());
                     } catch (Exception e) {
-                        JOptionPane.showMessageDialog(null,"Error, the file is not well formed\nFile: "+songFile.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);
+                        ShowDialog.showReadFileError(songFile, e);
                     }
                     
                     this.addItem(song);

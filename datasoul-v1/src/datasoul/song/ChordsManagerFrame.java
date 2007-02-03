@@ -244,23 +244,18 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         SongListTable foundSongTable = new SongListTable();
         
         for(int i=0; i<tableChordsList.getRowCount();i++){
-            try {
-                    String searchStr;
-                    if(String.valueOf(evt.getKeyChar()).equals("\b")&&(fieldString.getText().length()>0)){
-                        searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
-                    }else{
-                        searchStr = fieldString.getText()+evt.getKeyChar();
-                    }
-                    
-                    if(tableChordsList.getValueAt(i,0).toString().startsWith(searchStr)){
-                        tableChordsList.getSelectionModel().setSelectionInterval(i,i);
-                        this.scrollChorsList.getVerticalScrollBar().setValue(i*tableChordsList.getRowHeight());
-                        showChord();
-                        break;
-                    }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,"Error in searching.\nError: "+ex.getMessage(),"DataSoul Error",0);
-                ex.printStackTrace();
+            String searchStr;
+            if(String.valueOf(evt.getKeyChar()).equals("\b")&&(fieldString.getText().length()>0)){
+                searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
+            }else{
+                searchStr = fieldString.getText()+evt.getKeyChar();
+            }
+
+            if(tableChordsList.getValueAt(i,0).toString().startsWith(searchStr)){
+                tableChordsList.getSelectionModel().setSelectionInterval(i,i);
+                this.scrollChorsList.getVerticalScrollBar().setValue(i*tableChordsList.getRowHeight());
+                showChord();
+                break;
             }
         }
  

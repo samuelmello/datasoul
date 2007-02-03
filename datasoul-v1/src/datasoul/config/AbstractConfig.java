@@ -10,9 +10,9 @@
 package datasoul.config;
 
 import datasoul.util.SerializableObject;
+import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
-import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -46,23 +46,22 @@ public abstract class AbstractConfig extends SerializableObject {
                 node = dom.getElementsByTagName( this.getClass().getSimpleName() ).item(0);
 
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Error parsing config file\n"+e.getMessage(),"DataSoul Error",0);    
-            e.printStackTrace();
+            ShowDialog.showReadFileError(configFile, e);
             return;
         }        
 
         try {
             this.readObject(node);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error parsing config file\nError: "+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showReadFileError(configFile, e);
             e.printStackTrace();
         }
     }
     
     protected void save(String nodeName){
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+        + "config" + System.getProperty("file.separator") + nodeName;
         try{
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-            + "config" + System.getProperty("file.separator") + nodeName;
 
             Node node = this.writeObject();
             Document doc = node.getOwnerDocument();
@@ -77,7 +76,7 @@ public abstract class AbstractConfig extends SerializableObject {
             xs.serialize(doc);
 
         } catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error writing file.\nError:"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showWriteFileError(path, e);
             e.printStackTrace();
         }
 

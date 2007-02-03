@@ -9,16 +9,6 @@
 
 package datasoul.config;
 
-import datasoul.util.SerializableObject;
-import java.io.File;
-import java.io.FileOutputStream;
-import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-
 /**
  *
  * @author samuelm

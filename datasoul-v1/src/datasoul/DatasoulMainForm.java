@@ -18,6 +18,9 @@ import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.templates.TemplatePanel;
 import datasoul.datashow.TimerManager;
+import datasoul.util.KeyListner;
+import datasoul.util.ObjectManager;
+import datasoul.util.Splash;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
@@ -224,7 +227,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel.png")));
         btnTemplates.setText("Templates");
-        btnTemplates.setToolTipText("template view");
+        btnTemplates.setToolTipText("Template edit view");
         btnTemplates.setBorderPainted(false);
         btnTemplates.setFocusPainted(false);
         btnTemplates.setMaximumSize(new java.awt.Dimension(88, 44));
@@ -297,7 +300,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain.add(btnClose);
 
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         toolBarMain.add(jSeparator1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());

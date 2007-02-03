@@ -283,7 +283,7 @@ public class SongExportPanel extends javax.swing.JFrame {
         }
 
         
-        JOptionPane.showMessageDialog(this,"File generated correclty (I hope so!).");
+        JOptionPane.showMessageDialog(this,"File generated correclty");
         this.dispose();
     }//GEN-LAST:event_btnOkActionPerformed
     

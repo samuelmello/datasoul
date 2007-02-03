@@ -11,16 +11,12 @@ package datasoul.song;
 
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
-import datasoul.util.SerializableObject;
+import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
@@ -56,14 +52,14 @@ public class ChordsDB extends ListTable{
                 node = dom.getElementsByTagName("ChordsDB").item(0);
 
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Error, the file is not well formed\n"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showReadFileError(chordsFile, e);
             return;
         }        
 
         try {
             this.readObject(node);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showReadFileError(chordsFile, e);
         }
     }
 
@@ -95,9 +91,9 @@ public class ChordsDB extends ListTable{
     }
     
     public void save(){
+        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
+        + "config"+System.getProperty("file.separator")+"datasoul.chordsdb";
         try{
-            String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-            + "config"+System.getProperty("file.separator")+"datasoul.chordsdb";
 
             Node node = this.writeObject();
             Document doc = node.getOwnerDocument();
@@ -112,7 +108,7 @@ public class ChordsDB extends ListTable{
             xs.serialize(doc);
 
         } catch(Exception e){
-            JOptionPane.showMessageDialog(null,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showWriteFileError(path, e);
         }        
     }
     

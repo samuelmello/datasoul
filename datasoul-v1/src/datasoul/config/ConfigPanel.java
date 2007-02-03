@@ -8,6 +8,7 @@ package datasoul.config;
 
 import datasoul.*;
 import datasoul.render.RenderConfigItf;
+import datasoul.util.ObjectManager;
 import java.awt.Component;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;

@@ -6,13 +6,9 @@
 
 package datasoul.song;
 
-import com.sun.image.codec.jpeg.ImageFormatException;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
-import datasoul.*;
 import datasoul.util.*;
-import datasoul.datashow.*;
-import datasoul.song.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -21,38 +17,20 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
-import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.StringReader;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.Vector;
-import javax.print.attribute.AttributeSet;
 import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JTextPane;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
-import javax.swing.text.StyledDocument;
-import javax.swing.text.rtf.RTFEditorKit;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -116,7 +94,7 @@ public class SongViewer extends javax.swing.JPanel {
                 songTemplate.readObject(node);
                
             }catch(Exception e) {
-                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nFile: "+songTemplateFile.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);
+                ShowDialog.showReadFileError(songTemplateFile, e);
             }
         }
     }

@@ -10,6 +10,7 @@ import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import datasoul.util.ObjectManager;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -360,7 +361,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,"Error in searching.\nError: "+ex.getMessage(),"DataSoul Error",0);    
+                JOptionPane.showMessageDialog(this,"Error searching.\nError: "+ex.getMessage(),"Datasoul Error",0);    
                 ex.printStackTrace();
             }
         }

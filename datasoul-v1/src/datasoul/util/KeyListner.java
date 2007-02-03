@@ -7,8 +7,9 @@
  * and open the template in the editor.
  */
 
-package datasoul;
+package datasoul.util;
 
+import datasoul.*;
 import datasoul.datashow.AuxiliarPanel;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;

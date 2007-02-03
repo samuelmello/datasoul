@@ -9,17 +9,10 @@
 
 package datasoul.datashow;
 
-import datasoul.*;
 import datasoul.util.*;
-import datasoul.datashow.*;
 import datasoul.song.*;
-import java.util.ArrayList;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

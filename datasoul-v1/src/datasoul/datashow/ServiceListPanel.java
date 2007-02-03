@@ -6,22 +6,15 @@
 
 package datasoul.datashow;
 
-import datasoul.*;
 import datasoul.templates.TemplateComboBox;
 import datasoul.util.*;
 import datasoul.song.*;
-import java.awt.Color;
-import java.io.ByteArrayOutputStream;
+import datasoul.util.ObjectManager;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyleContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -419,14 +412,14 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                     node = dom.getElementsByTagName("ServiceListTable").item(0);
 
             }catch(Exception e) {
-                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+                ShowDialog.showReadFileError(file, e);
             }        
 
             slt = ServiceListTable.getActiveInstance();
             try {
                 slt.readObject(node);
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nErro:"+e.getMessage(),"DataSoul Error",0);    
+                ShowDialog.showReadFileError(file, e);
             }
          
             tableServiceList.setModel(slt);
@@ -496,7 +489,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             xs.serialize(doc);
 
         } catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showWriteFileError(fileName, e);
         }
     }
 

@@ -68,16 +68,14 @@ public class SongEditorForm extends javax.swing.JFrame {
                 node = dom.getElementsByTagName("Song").item(0);
                 
         }catch(Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nFile: "+file.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);    
-            e.printStackTrace();
+            ShowDialog.showReadFileError(file, e);
         }        
 
         song = new Song();
         try {
             song.readObject(node);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error, the file is not well formed\nFile: "+file.getName()+"\nError: "+e.getMessage(),"DataSoul Error",0);    
-            e.printStackTrace();
+            ShowDialog.showReadFileError(file, e);
         }
 
         this.setTitle(song.getFileName());
@@ -444,7 +442,7 @@ public class SongEditorForm extends javax.swing.JFrame {
             fos.close();
 
         } catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Error writing file.\nErro:"+e.getMessage(),"DataSoul Error",0);    
+            ShowDialog.showWriteFileError(song.getFileName(), e);
         }
         
         if(newSong){

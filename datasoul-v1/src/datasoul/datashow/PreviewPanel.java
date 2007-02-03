@@ -6,7 +6,7 @@
 
 package datasoul.datashow;
 
-import datasoul.ObjectManager;
+import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
 import javax.swing.event.ListSelectionEvent;

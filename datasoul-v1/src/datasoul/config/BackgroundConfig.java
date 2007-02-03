@@ -10,20 +10,11 @@
 package datasoul.config;
 
 import datasoul.render.ContentManager;
-import datasoul.util.SerializableObject;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  *

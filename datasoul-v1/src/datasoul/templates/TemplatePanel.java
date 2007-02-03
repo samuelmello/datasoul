@@ -6,7 +6,7 @@
 
 package datasoul.templates;
 
-import datasoul.ObjectManager;
+import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -411,8 +411,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,"Unable to delete template:\n"+e.getMessage(),"DataSoul Error",0);    
-                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(this,"Unable to delete template:\n"+e.getMessage(),"Datasoul Error",0);    
                     }// try
                 }//if confirm
             }// if instance of
