@@ -282,7 +282,6 @@ public class SongExportPanel extends javax.swing.JFrame {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-
         
         JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("File_generated_correclty"));
         this.dispose();
@@ -290,7 +289,8 @@ public class SongExportPanel extends javax.swing.JFrame {
     
     private void printAllSongs(FileOutputStream fos){
         try {
-                for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
+            SongViewer svp = new SongViewer();
+            for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
                     if(ServiceListTable.getActiveInstance().getValueAt(i,0) instanceof Song){
                         ByteArrayOutputStream osOut = new ByteArrayOutputStream();
                         ByteArrayOutputStream osAux = new ByteArrayOutputStream();
@@ -299,11 +299,9 @@ public class SongExportPanel extends javax.swing.JFrame {
                         osOut.write("\n\\".getBytes());
                         
                         Song song = (Song)ServiceListTable.getActiveInstance().getValueAt(i,0);
-                        SongViewer svp = new SongViewer();
                         svp.setView(this.comboSongVersion.getSelectedItem().toString());
                         svp.viewSong(song);
                         osAux = svp.exportRTFSong(osOut, checkChordsShape.isSelected());
-
                         String aux = osAux.toString();
                         int index = aux.indexOf("}}")+2;
                         osOut.write(osAux.toByteArray(),index,osAux.size()-index-2);

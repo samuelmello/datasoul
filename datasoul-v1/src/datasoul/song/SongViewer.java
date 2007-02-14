@@ -21,6 +21,7 @@ import java.awt.print.PrinterJob;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import org.apache.xml.serialize.OutputFormat;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -58,8 +60,6 @@ public class SongViewer extends javax.swing.JPanel {
     private String keyActual="";
     
     private Vector<String> notes = new Vector<String>();
-
-    private static ArrayList<String> specialWords = new ArrayList<String>();    
 
     public static String VIEW_LYRICS = "Lyrics";
     public static String VIEW_CHORDS_COMPLETE = "ChordsComplete";
@@ -131,17 +131,6 @@ public class SongViewer extends javax.swing.JPanel {
         comboKey.addItem("A#");
         comboKey.addItem("B");
 
-        specialWords.add("Intro");
-        specialWords.add("(1x)");
-        specialWords.add("(2x)");
-        specialWords.add("(3x)");
-        specialWords.add("(4x)");
-        specialWords.add("(5x)");        
-        specialWords.add("(6x)");
-        specialWords.add("(7x)");
-        specialWords.add("(8x)");        
-        specialWords.add("(9x)");        
-        
 
         chordsName = new ArrayList<String>();
         
@@ -225,7 +214,6 @@ public class SongViewer extends javax.swing.JPanel {
         try {            
             drawLyrics(this.editorSong,true);
             drawChords(this.editorSongChords,true);
-
             this.editorSong.setCaretPosition(0);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -286,6 +274,7 @@ public class SongViewer extends javax.swing.JPanel {
             return;
         
         if(isChordsLine(line)){
+            line = line.substring(1,line.length());
             doc.insertString(doc.getLength(),getFormattedChordLine(line,nextline)+"\n",chordsStyle);
         }else{
             doc.insertString(doc.getLength(),getFormattedLyricLine(line)+"\n",lyricsStyle);
@@ -294,41 +283,12 @@ public class SongViewer extends javax.swing.JPanel {
     }
     
     private boolean isChordsLine(String line){
-        //if the line contain commentary indicated by {} it is removed
-        if(line.contains("{") && line.contains("}")){
-            line = line.substring(0,line.indexOf("{"))+line.substring(line.indexOf("}")+1,line.length());
+
+        if(line.startsWith("=")){
+            return true;
+        }else{
+            return false;
         }
-
-        String[] chords = line.split(" ");        
-        
-        ChordsDB chordsDB = ChordsDB.getInstance();
-  loop: for(int i=0;i<chords.length;i++){
-            if(!chords[i].equals(""))
-            {
-                for(int j=0;j<specialWords.size();j++){
-                    if(chords[i].toLowerCase().contains(specialWords.get(j).toLowerCase())){
-                        continue loop;
-                    }
-                }
-                String strChord = chords[i];
-
-                //if there is some comments in the line like (C/E  E  F), these part ignores the "(" and consider it a chord line
-                if(strChord.startsWith("(")){
-                    strChord = strChord.replace("(","");
-                }
-                if( ( strChord.endsWith(")")) &&
-                    (!strChord.contains("("))    ){
-                    strChord = strChord.replace(")","");
-                }
-                
-                Chord chord = chordsDB.getChordByName(strChord);
-
-                if(chord==null)
-                    return false;
-            }
-        }
-
-        return true;
     }
 
     private String getFormattedLyricLine(String line){
@@ -345,7 +305,6 @@ public class SongViewer extends javax.swing.JPanel {
         int neededWidth=0;
         int spaceSize=0;
         int spacesNedded=0;
-        boolean commentary = false;
         
         String[] chords = line.split(" ");
         Font fontChords = new Font(songTemplate.getChordsFontName(), Font.PLAIN, songTemplate.getChordsFontSize());
@@ -356,19 +315,8 @@ public class SongViewer extends javax.swing.JPanel {
         
         for(int i=0;i<chords.length;i++){
             if(!chords[i].equals("")){
-                boolean specialWord = false;
-                for(int j=0;j<specialWords.size();j++){
-                    if(chords[i].toLowerCase().contains(specialWords.get(j).toLowerCase())){
-                        specialWord = true;
-                    }
-                }
                 
                 String thisChord = changeKey(chords[i]);
-                
-                //starts commentary
-                if(thisChord.contains("{")){
-                    commentary = true;
-                }
                 
                 String thisChordCleaned = thisChord;
                 //if there is some comments in the line like (C/E  E  F), these part ignores the "(" and consider it a chord line                
@@ -380,13 +328,18 @@ public class SongViewer extends javax.swing.JPanel {
                     thisChordCleaned = thisChordCleaned.replace(")","");
                 }
                 
-                if(!chordsName.contains(thisChordCleaned)&&!specialWord&&!commentary)
+                if(!chordsName.contains(thisChordCleaned)&&
+                    (thisChordCleaned.startsWith("C")||
+                     thisChordCleaned.startsWith("D")||
+                     thisChordCleaned.startsWith("E")||
+                     thisChordCleaned.startsWith("F")||
+                     thisChordCleaned.startsWith("G")||
+                     thisChordCleaned.startsWith("A")||
+                     thisChordCleaned.startsWith("B") 
+                    )
+                 ){
                     chordsName.add(thisChordCleaned);
-
-                //ends commentary
-                if(thisChord.contains("}")){
-                    commentary = false;
-                }                
+                }
                 
                 index = strAux.length();
                 if(index<nextline.length()){
