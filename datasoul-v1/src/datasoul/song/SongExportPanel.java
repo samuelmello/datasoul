@@ -369,7 +369,7 @@ public class SongExportPanel extends javax.swing.JFrame {
 
             javax.swing.text.Document doc = jep.getDocument();
 
-            doc.insertString(doc.getLength(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_List_\n\n"),nameStyle);
+            doc.insertString(doc.getLength(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_List_\\n\\n"),nameStyle);
             StyleConstants.setFontSize(nameStyle,12);
 
             for(int i=0;i<ServiceListTable.getActiveInstance().getRowCount();i++){
