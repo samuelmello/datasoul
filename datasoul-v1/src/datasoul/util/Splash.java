@@ -6,9 +6,13 @@
 
 package datasoul.util;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -18,9 +22,41 @@ public class Splash extends javax.swing.JFrame {
     
     /** Creates new form Splash */
     public Splash() {
-        initComponents();
+//        initComponents();
+        init();
         center();
+        
     }
+
+    private void init() {
+    this.setLayout(null);
+        
+        lblStatus = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Starting_Datasoul")); // NOI18N
+        setResizable(false);
+        setUndecorated(true);
+        lblStatus.setText("init");
+        getContentPane().add(lblStatus);
+        
+        ImageIcon image = new ImageIcon(getClass().getResource("/datasoul/icons/splashScreen.gif"));
+        jLabel1.setIcon(image);
+        jLabel1.setSize(image.getIconWidth(), image.getIconHeight());
+        getContentPane().add(jLabel1);
+
+        this.setBounds(0,0,image.getIconWidth()+1, image.getIconHeight()+21);
+        
+        jLabel1.setLocation(0,0);
+        lblStatus.setSize(image.getIconWidth()-20,20);
+        lblStatus.setLocation(11,image.getIconHeight());
+       
+        getContentPane().setBackground(new Color(220,220,220));
+        lblStatus.setForeground(Color.BLACK);  
+
+    }// </editor-fold>                        
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -62,5 +98,10 @@ public class Splash extends javax.swing.JFrame {
         setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
+    public void paint(Graphics g) {
+        super.paint(g);
+        
+        g.drawRect(0,0,this.getWidth()-1, this.getHeight()-1);        
+    }
     
 }
