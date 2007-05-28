@@ -43,7 +43,16 @@ public class SongListTable extends ListTable{
     public int getSongColumn(){
         return songColumn;
     }
-            
+
+    public Song getSong(String name){
+        for(int i=0; i<this.getRowCount();i++){
+            if(((Song)this.getValueAt(i,songColumn)).getTitle().equalsIgnoreCase(name)){
+                return ((Song)this.getValueAt(i,songColumn));
+            }                        
+        }
+        return null;
+    }
+    
     public void setView(String view){
         for(int i=0;i < this.getRowCount();i++){
             Song song = (Song)this.getValueAt(i,1);
