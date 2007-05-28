@@ -81,6 +81,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private void initComponents() {
         jScrollPane1 = new javax.swing.JScrollPane();
         dnDTable1 = new datasoul.util.DnDTable();
+        fileMenu = new javax.swing.JPopupMenu();
+        actImportSongsToDatabase = new javax.swing.JMenuItem();
         fieldString = new javax.swing.JTextField();
         comboField = new javax.swing.JComboBox();
         labelString = new javax.swing.JLabel();
@@ -95,6 +97,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         tableSongList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnFile = new javax.swing.JButton();
 
         dnDTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,6 +112,16 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             }
         ));
         jScrollPane1.setViewportView(dnDTable1);
+
+        fileMenu.setLabel("File");
+        actImportSongsToDatabase.setText("Import Songs To Database");
+        actImportSongsToDatabase.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actImportSongsToDatabaseActionPerformed(evt);
+            }
+        });
+
+        fileMenu.add(actImportSongsToDatabase);
 
         fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -223,10 +237,25 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         scroolSongList.setViewportView(tableSongList);
 
+        jToolBar1.setComponentPopupMenu(fileMenu);
         jToolBar1.setFloatable(false);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songsearch.png")));
         jLabel1.setText(bundle.getString("Song_Search")); // NOI18N
         jToolBar1.add(jLabel1);
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jToolBar1.add(jSeparator1);
+
+        btnFile.setText("File");
+        btnFile.setBorderPainted(false);
+        btnFile.setOpaque(false);
+        btnFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFileActionPerformed(evt);
+            }
+        });
+
+        jToolBar1.add(btnFile);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -239,8 +268,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     .add(labelField))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                    .add(comboField, 0, 277, Short.MAX_VALUE))
+                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                    .add(comboField, 0, 296, Short.MAX_VALUE))
                 .addContainerGap())
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
@@ -264,6 +293,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
+        fileMenu.show(btnFile, 0 /*btnFile.getWidth()-ppmFile.getWidth()*/, btnFile.getHeight());
+    }//GEN-LAST:event_btnFileActionPerformed
+
+    private void actImportSongsToDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportSongsToDatabaseActionPerformed
+        SongsImport importSongs = new SongsImport();
+        importSongs.setVisible(true);
+    }//GEN-LAST:event_actImportSongsToDatabaseActionPerformed
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
         if(frameParent!=null)
@@ -382,16 +420,20 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actImportSongsToDatabase;
     private javax.swing.JButton btnAddToList;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
+    private javax.swing.JButton btnFile;
     private javax.swing.JButton btnNew;
     private javax.swing.JComboBox comboField;
     private datasoul.util.DnDTable dnDTable1;
     private javax.swing.JTextField fieldString;
+    private javax.swing.JPopupMenu fileMenu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelField;
     private javax.swing.JLabel labelString;

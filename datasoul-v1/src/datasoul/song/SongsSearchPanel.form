@@ -23,6 +23,21 @@
         </Component>
       </SubComponents>
     </Container>
+    <Menu class="javax.swing.JPopupMenu" name="fileMenu">
+      <Properties>
+        <Property name="label" type="java.lang.String" value="File"/>
+      </Properties>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="actImportSongsToDatabase">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Import Songs To Database"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="actImportSongsToDatabaseActionPerformed"/>
+          </Events>
+        </MenuItem>
+      </SubComponents>
+    </Menu>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
@@ -44,8 +59,8 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="fieldString" pref="277" max="32767" attributes="0"/>
-                  <Component id="comboField" alignment="1" pref="277" max="32767" attributes="0"/>
+                  <Component id="fieldString" pref="296" max="32767" attributes="0"/>
+                  <Component id="comboField" alignment="1" pref="296" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -247,6 +262,9 @@
     </Container>
     <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
+        <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="fileMenu"/>
+        </Property>
         <Property name="floatable" type="boolean" value="false"/>
       </Properties>
 
@@ -261,6 +279,23 @@
               <ResourceString bundle="datasoul/internationalize.properties" key="Song_Search" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnFile">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFileActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
