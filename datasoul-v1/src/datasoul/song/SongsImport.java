@@ -286,26 +286,25 @@ public class SongsImport extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         scrollListMergeSongs = new javax.swing.JScrollPane();
         listMergeSongs = new datasoul.util.DnDTable();
-        jPanel4 = new javax.swing.JPanel();
-        radioLyricsNew = new javax.swing.JRadioButton();
-        radioLyricsOld = new javax.swing.JRadioButton();
-        jLabel6 = new javax.swing.JLabel();
+        radioTitleOld = new javax.swing.JRadioButton();
+        radioTitleNew = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         radioAuthorOld = new javax.swing.JRadioButton();
         radioAuthorNew = new javax.swing.JRadioButton();
-        radioTitleNew = new javax.swing.JRadioButton();
-        radioTitleOld = new javax.swing.JRadioButton();
+        radioLyricsNew = new javax.swing.JRadioButton();
+        radioLyricsOld = new javax.swing.JRadioButton();
         radioCompletedOld = new javax.swing.JRadioButton();
         radioCompletedNew = new javax.swing.JRadioButton();
-        radioSimplifiedOld = new javax.swing.JRadioButton();
         radioSimplifiedNew = new javax.swing.JRadioButton();
+        radioSimplifiedOld = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jSplitPane4 = new javax.swing.JSplitPane();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -329,7 +328,7 @@ public class SongsImport extends javax.swing.JFrame {
             .add(0, 97, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         jSplitPane2.setDividerLocation(230);
         jScrollPane1.setViewportView(textOldSong);
 
@@ -350,7 +349,7 @@ public class SongsImport extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE))
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
         );
         jSplitPane2.setLeftComponent(jPanel2);
 
@@ -365,7 +364,7 @@ public class SongsImport extends javax.swing.JFrame {
             .add(jPanel3Layout.createSequentialGroup()
                 .add(jLabel5)
                 .addContainerGap())
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -373,7 +372,7 @@ public class SongsImport extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(jLabel5)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE))
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
         );
         jSplitPane2.setRightComponent(jPanel3);
 
@@ -394,6 +393,7 @@ public class SongsImport extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        listMergeSongs.setMinimumSize(new java.awt.Dimension(19, 19));
         listMergeSongs.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 mergeSongsOnKeyReleased(evt);
@@ -407,25 +407,15 @@ public class SongsImport extends javax.swing.JFrame {
 
         scrollListMergeSongs.setViewportView(listMergeSongs);
 
-        radioLyricsNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioLyricsNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        radioTitleOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        radioTitleOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        radioLyricsOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioLyricsOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
-        jLabel6.setText("Old");
+        radioTitleNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        radioTitleNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jLabel7.setText("New");
 
-        jLabel8.setText("Title");
-
-        jLabel9.setText("Author");
-
-        jLabel10.setText("Lyrics");
-
-        jLabel11.setText("Chords Completed");
-
-        jLabel12.setText("Chords Simplified");
+        jLabel6.setText("Old");
 
         radioAuthorOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radioAuthorOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -433,11 +423,11 @@ public class SongsImport extends javax.swing.JFrame {
         radioAuthorNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radioAuthorNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        radioTitleNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioTitleNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        radioLyricsNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        radioLyricsNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        radioTitleOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioTitleOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        radioLyricsOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        radioLyricsOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         radioCompletedOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radioCompletedOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -445,11 +435,11 @@ public class SongsImport extends javax.swing.JFrame {
         radioCompletedNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radioCompletedNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        radioSimplifiedOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioSimplifiedOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
-
         radioSimplifiedNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         radioSimplifiedNew.setMargin(new java.awt.Insets(0, 0, 0, 0));
+
+        radioSimplifiedOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        radioSimplifiedOld.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         jButton1.setText("Apply it for selected song");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -465,113 +455,102 @@ public class SongsImport extends javax.swing.JFrame {
             }
         });
 
-        org.jdesktop.layout.GroupLayout jPanel4Layout = new org.jdesktop.layout.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton2)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jButton1)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                        .add(jPanel4Layout.createSequentialGroup()
-                            .add(114, 114, 114)
-                            .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                .add(jPanel4Layout.createSequentialGroup()
-                                    .add(radioTitleOld)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(radioTitleNew))
-                                .add(jPanel4Layout.createSequentialGroup()
-                                    .add(jLabel6)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(jLabel7))
-                                .add(jPanel4Layout.createSequentialGroup()
-                                    .add(radioLyricsOld)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(radioLyricsNew))
-                                .add(jPanel4Layout.createSequentialGroup()
-                                    .add(radioAuthorOld)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(radioAuthorNew))
-                                .add(jPanel4Layout.createSequentialGroup()
-                                    .add(radioCompletedOld)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(radioCompletedNew))
-                                .add(jPanel4Layout.createSequentialGroup()
-                                    .add(radioSimplifiedOld)
-                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                                    .add(radioSimplifiedNew))))
-                        .add(jLabel8)
-                        .add(jLabel9)
-                        .add(jLabel10)
-                        .add(jLabel11)
-                        .add(jLabel12)))
-                .addContainerGap(81, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel4Layout.createSequentialGroup()
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel6)
-                    .add(jLabel7))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel8)
-                    .add(radioTitleOld)
-                    .add(radioTitleNew))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel9)
-                    .add(radioAuthorOld)
-                    .add(radioAuthorNew))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel10)
-                    .add(radioLyricsOld)
-                    .add(radioLyricsNew))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel11)
-                    .add(radioCompletedOld)
-                    .add(radioCompletedNew))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel12)
-                    .add(radioSimplifiedOld)
-                    .add(radioSimplifiedNew))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jButton2)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel12.setText("Chords Simplified");
+
+        jLabel11.setText("Chords Completed");
+
+        jLabel10.setText("Lyrics");
+
+        jLabel9.setText("Author");
+
+        jLabel8.setText("Title");
 
         org.jdesktop.layout.GroupLayout jPanel6Layout = new org.jdesktop.layout.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel6Layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, scrollListMergeSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3)
+                    .add(jButton2)
+                    .add(jButton1)
                     .add(jPanel6Layout.createSequentialGroup()
-                        .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, scrollListMergeSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
-                        .add(12, 12, 12))
-                    .add(jPanel6Layout.createSequentialGroup()
-                        .add(jPanel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jLabel8)
+                            .add(jLabel9)
+                            .add(jLabel10)
+                            .add(jLabel11)
+                            .add(jLabel12))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 117, Short.MAX_VALUE)
+                        .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(jPanel6Layout.createSequentialGroup()
+                                .add(radioTitleOld)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(radioTitleNew))
+                            .add(jPanel6Layout.createSequentialGroup()
+                                .add(jLabel6)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel7))
+                            .add(jPanel6Layout.createSequentialGroup()
+                                .add(radioLyricsOld)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(radioLyricsNew))
+                            .add(jPanel6Layout.createSequentialGroup()
+                                .add(radioAuthorOld)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(radioAuthorNew))
+                            .add(jPanel6Layout.createSequentialGroup()
+                                .add(radioCompletedOld)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(radioCompletedNew))
+                            .add(jPanel6Layout.createSequentialGroup()
+                                .add(radioSimplifiedOld)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(radioSimplifiedNew)))))
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel6Layout.createSequentialGroup()
                 .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 14, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scrollListMergeSongs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 139, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(scrollListMergeSongs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 244, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18))
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel6)
+                    .add(jLabel7))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(radioTitleOld)
+                    .add(radioTitleNew)
+                    .add(jLabel8))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(radioAuthorOld)
+                    .add(radioAuthorNew)
+                    .add(jLabel9))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(radioLyricsOld)
+                    .add(radioLyricsNew)
+                    .add(jLabel10))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(radioCompletedOld)
+                    .add(radioCompletedNew)
+                    .add(jLabel11))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jPanel6Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(radioSimplifiedOld)
+                    .add(radioSimplifiedNew)
+                    .add(jLabel12))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jButton2)
+                .addContainerGap())
         );
         jSplitPane3.setRightComponent(jPanel6);
 
@@ -636,6 +615,7 @@ public class SongsImport extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        listIgnoreSongs.setMinimumSize(new java.awt.Dimension(19, 19));
         listIgnoreSongs.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 ignoreSongsOnKeyReleased(evt);
@@ -665,7 +645,7 @@ public class SongsImport extends javax.swing.JFrame {
             .add(jPanel8Layout.createSequentialGroup()
                 .add(jLabel2)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scrollListIgnoreSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+                .add(scrollListIgnoreSongs, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
         );
         jSplitPane4.setRightComponent(jPanel8);
 
@@ -694,17 +674,17 @@ public class SongsImport extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(627, Short.MAX_VALUE)
+                .addContainerGap(663, Short.MAX_VALUE)
                 .add(btnImportFiles)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnCancel)
                 .addContainerGap())
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnCancel)
@@ -1016,7 +996,6 @@ public class SongsImport extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
