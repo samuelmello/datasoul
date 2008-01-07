@@ -35,6 +35,16 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     
     private boolean droppable=true;
     
+    private boolean deleteAfterDragAndDrop=false;
+
+    public boolean getDeleteAfterDragAndDrop(){
+        return this.deleteAfterDragAndDrop;
+    }
+    
+    public void setDeleteAfterDragAndDrop(boolean bool){
+        this.deleteAfterDragAndDrop = bool;
+    }
+    
     public boolean getDroppable(){
         return this.droppable;
     }
@@ -73,6 +83,9 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     }
 
     public void dragExit(DropTargetEvent dte) {
+        if(deleteAfterDragAndDrop){
+            this.removeItem();
+        }
     }
 
     
@@ -106,6 +119,7 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     public void dragExit(DragSourceEvent dse) {
         DragSourceContext context = dse.getDragSourceContext();        
         context.setCursor(DragSource.DefaultCopyNoDrop);           
+        
     }
 
     public void dragDropEnd(DragSourceDropEvent dsde) {
@@ -122,7 +136,6 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
         SerializableObject obj = (SerializableObject)((ListTable)this.getModel()).getValueAt(this.getSelectedRows()[0],column);        
 
         dge.startDrag(DragSource.DefaultCopyNoDrop, (Transferable)obj, this);
-
     }
 
     public void upItem(){
