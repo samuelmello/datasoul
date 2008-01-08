@@ -6,6 +6,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.ConfigObj;
 import datasoul.templates.TemplateComboBox;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -28,6 +29,13 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbMonitorTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
         history = new ArrayList<String>();
         cbHistory.removeAllItems();
+        if (!ConfigObj.getInstance().getMainOutput()){
+            cbShowOnMonitor1.setVisible(false);
+            cbMonitorTemplate.setVisible(false);
+            lblTemplateMonitor.setVisible(false);
+            cbShowOnMain1.setSelected(true);
+            cbShowOnMain1.setVisible(false);
+        }
     }
     
     /** This method is called from within the constructor to
@@ -44,7 +52,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbShowOnMonitor1 = new javax.swing.JCheckBox();
         cbMainTemplate = new datasoul.templates.TemplateComboBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTemplateMonitor = new javax.swing.JLabel();
         cbMonitorTemplate = new datasoul.templates.TemplateComboBox();
         jLabel13 = new javax.swing.JLabel();
         spnAlertTime = new javax.swing.JSpinner();
@@ -54,41 +62,40 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbHistory = new javax.swing.JComboBox();
         btnCancel = new javax.swing.JButton();
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel3.setText(bundle.getString("Text")); // NOI18N
+        jLabel3.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Text"));
 
         txtAlert.setColumns(20);
         txtAlert.setRows(5);
         jScrollPane1.setViewportView(txtAlert);
 
-        cbShowOnMain1.setText(bundle.getString("Show_on_Main_Output")); // NOI18N
+        cbShowOnMain1.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Show_on_Main_Output"));
         cbShowOnMain1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbShowOnMain1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        cbShowOnMonitor1.setText(bundle.getString("Show_on_Monitor_Output")); // NOI18N
+        cbShowOnMonitor1.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Show_on_Monitor_Output"));
         cbShowOnMonitor1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbShowOnMonitor1.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
-        jLabel1.setText(bundle.getString("Template")); // NOI18N
+        jLabel1.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template"));
 
-        jLabel2.setText(bundle.getString("Template")); // NOI18N
+        lblTemplateMonitor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template"));
 
-        jLabel13.setText(bundle.getString("Duration")); // NOI18N
+        jLabel13.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Duration"));
 
         spnAlertTime.setModel(new SpinnerNumberModel(1, 1, 999, 1));
 
-        jLabel14.setText(bundle.getString("seconds")); // NOI18N
+        jLabel14.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("seconds"));
 
         btnShowAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png")));
-        btnShowAlert.setText(bundle.getString("Show_Alert")); // NOI18N
-        btnShowAlert.setToolTipText(bundle.getString("Show_alert")); // NOI18N
+        btnShowAlert.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Show_Alert"));
+        btnShowAlert.setToolTipText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Show_alert"));
         btnShowAlert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowAlertActionPerformed(evt);
             }
         });
 
-        jLabel4.setText(bundle.getString("Recently_used_texts")); // NOI18N
+        jLabel4.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Recently_used_texts"));
 
         cbHistory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbHistory.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +105,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png")));
-        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
+        btnCancel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Cancel"));
         btnCancel.setEnabled(false);
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +129,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbMainTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                     .add(layout.createSequentialGroup()
-                        .add(jLabel2)
+                        .add(lblTemplateMonitor)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbMonitorTemplate, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
                     .add(cbShowOnMain1)
@@ -160,7 +167,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
                 .add(cbShowOnMonitor1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
+                    .add(lblTemplateMonitor)
                     .add(cbMonitorTemplate, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(17, 17, 17)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
@@ -232,10 +239,10 @@ public class AlertControlPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTemplateMonitor;
     private javax.swing.JSpinner spnAlertTime;
     private javax.swing.JTextArea txtAlert;
     // End of variables declaration//GEN-END:variables

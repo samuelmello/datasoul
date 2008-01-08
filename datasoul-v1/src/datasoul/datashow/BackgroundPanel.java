@@ -44,6 +44,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
         
         imageDisplayMain.getImageTemplateItem().setImage(img1);
         imageDisplayMonitor.getImageTemplateItem().setImage(img2);
+        
+        pnlMonitor.setVisible( ConfigObj.getInstance().getMonitorOutput() );
 
     }
     
@@ -59,7 +61,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         btnColorMain = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         imageDisplayMain = new datasoul.util.ImageDisplay();
-        jPanel3 = new javax.swing.JPanel();
+        pnlMonitor = new javax.swing.JPanel();
         btnMonitorColor = new javax.swing.JButton();
         btnChangeMonitor = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -67,8 +69,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
         btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")));
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnChangeMain.setText(bundle.getString("Image")); // NOI18N
+        btnChangeMain.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Image"));
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMainActionPerformed(evt);
@@ -76,7 +77,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         });
 
         btnColorMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png")));
-        btnColorMain.setText(bundle.getString("Color")); // NOI18N
+        btnColorMain.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color"));
         btnColorMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColorMainActionPerformed(evt);
@@ -133,9 +134,9 @@ public class BackgroundPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
+        pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
         btnMonitorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png")));
-        btnMonitorColor.setText(bundle.getString("Color")); // NOI18N
+        btnMonitorColor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color"));
         btnMonitorColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorColorActionPerformed(evt);
@@ -143,7 +144,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         });
 
         btnChangeMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")));
-        btnChangeMonitor.setText(bundle.getString("Image")); // NOI18N
+        btnChangeMonitor.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Image"));
         btnChangeMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMonitorActionPerformed(evt);
@@ -173,24 +174,24 @@ public class BackgroundPanel extends javax.swing.JPanel {
             .add(imageDisplayMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
         );
 
-        org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
+        org.jdesktop.layout.GroupLayout pnlMonitorLayout = new org.jdesktop.layout.GroupLayout(pnlMonitor);
+        pnlMonitor.setLayout(pnlMonitorLayout);
+        pnlMonitorLayout.setHorizontalGroup(
+            pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlMonitorLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                .add(pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                     .add(btnMonitorColor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(btnChangeMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel3Layout.createSequentialGroup()
-                .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jPanel3Layout.createSequentialGroup()
+        pnlMonitorLayout.setVerticalGroup(
+            pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlMonitorLayout.createSequentialGroup()
+                .add(pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlMonitorLayout.createSequentialGroup()
                         .add(btnChangeMonitor)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnMonitorColor))
@@ -205,7 +206,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, pnlMonitor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -215,8 +216,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(pnlMonitor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -304,8 +305,8 @@ public class BackgroundPanel extends javax.swing.JPanel {
     private datasoul.util.ImageDisplay imageDisplayMonitor;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel pnlMonitor;
     // End of variables declaration//GEN-END:variables
     
 }
