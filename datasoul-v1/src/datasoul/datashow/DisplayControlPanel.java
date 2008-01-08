@@ -47,7 +47,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         pnlSpeed.setVisible( jSpeedCb.isSelected() );
         pnlMonitor.setVisible( jMonitorCb.isSelected() );
         
-        if (!ConfigObj.getInstance().getMainOutput()){
+        if (!ConfigObj.getInstance().getMonitorOutput()){
             pnlMonitor.setVisible(false);
             jMonitorCb.setVisible(false);
         }
