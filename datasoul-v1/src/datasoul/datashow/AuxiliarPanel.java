@@ -6,6 +6,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.ConfigObj;
 import datasoul.util.ObjectManager;
 
 /**
@@ -18,8 +19,8 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     
     public static final int TAB_DISPLAY = 0;
     public static final int TAB_ALARM = 1;
-    public static final int TAB_CLOCK = 2;
-    public static final int TAB_BACKGROUND = 3;
+    public static final int TAB_BACKGROUND = 2;
+    public static final int TAB_CLOCK = 3;
     /**
      * Creates new form AuxiliarPanel
      */
@@ -27,6 +28,10 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         initComponents();
 
         ObjectManager.getInstance().setAuxiliarPanel(this);
+        //if (!ConfigObj.getInstance().getMonitorOutput()){
+            tabAuxiliar.removeTabAt(TAB_CLOCK);
+        //}
+        
     }
 
     public DisplayControlPanel getDisplayControlPanel(){
@@ -58,20 +63,19 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         tabAuxiliar = new javax.swing.JTabbedPane();
         displayControlPanel1 = new datasoul.datashow.DisplayControlPanel();
         alertControlPanel1 = new datasoul.datashow.AlertControlPanel();
-        timerControlPanel1 = new datasoul.datashow.TimerControlPanel();
         backgroundPanel1 = new datasoul.datashow.BackgroundPanel();
+        timerControlPanel1 = new datasoul.datashow.TimerControlPanel();
 
         tabAuxiliar.setToolTipText("");
         tabAuxiliar.setMaximumSize(new java.awt.Dimension(32767, 250));
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(0, 0));
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        tabAuxiliar.addTab(bundle.getString("Display"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/display.png")), displayControlPanel1); // NOI18N
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Display"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/display.png")), displayControlPanel1);
 
-        tabAuxiliar.addTab(bundle.getString("Alert"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png")), alertControlPanel1); // NOI18N
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alert"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png")), alertControlPanel1);
 
-        tabAuxiliar.addTab(bundle.getString("Timer"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kalarm.png")), timerControlPanel1); // NOI18N
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Background"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")), backgroundPanel1);
 
-        tabAuxiliar.addTab(bundle.getString("Background"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")), backgroundPanel1); // NOI18N
+        tabAuxiliar.addTab(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Timer"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kalarm.png")), timerControlPanel1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

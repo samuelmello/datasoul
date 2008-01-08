@@ -29,7 +29,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbMonitorTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
         history = new ArrayList<String>();
         cbHistory.removeAllItems();
-        if (!ConfigObj.getInstance().getMainOutput()){
+        if (!ConfigObj.getInstance().getMonitorOutput()){
             cbShowOnMonitor1.setVisible(false);
             cbMonitorTemplate.setVisible(false);
             lblTemplateMonitor.setVisible(false);
