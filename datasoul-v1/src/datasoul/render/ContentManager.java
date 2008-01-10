@@ -213,12 +213,15 @@ public class ContentManager {
     static public ContentRender getMainDisplay(){
 
         if (mainDisplay == null ){
+            /*
             try{
                 mainDisplay = (ContentRender) Class.forName( "datasoul.render." + mainDisplayEngine ).newInstance();
             }catch(Exception e){
                 e.printStackTrace();
                 mainDisplay = new SwingContentRender();
             }
+             */
+            mainDisplay = new SwingContentRender();
             
             int width, height, top, left;
             try{
@@ -252,12 +255,16 @@ public class ContentManager {
         
         if (monitorDisplay == null  ){
 
+            /*
             try{
                 monitorDisplay = (ContentRender) Class.forName( "datasoul.render." + monitorDisplayEngine ).newInstance();
             }catch(Exception e){
                 e.printStackTrace();
                 monitorDisplay = new SwingContentRender();
             }
+            */
+            
+            monitorDisplay = new SwingContentRender();
             
             int width, height, top, left;
             try{
