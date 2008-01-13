@@ -9,12 +9,17 @@
 
 package datasoul.song;
 
+import datasoul.config.AbstractConfig;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.ShowDialog;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -29,13 +34,57 @@ import org.w3c.dom.NodeList;
  */
 public class ChordsDB extends ListTable{
 
+    private void writeFileFromStream(File f, InputStream is) throws IOException{
+        
+        FileOutputStream fos = new FileOutputStream(f);
+        
+        int x;
+        while ((x = is.read()) != -1){
+            fos.write((byte)x);
+        }
+        fos.close();
+        is.close();
+    }
+    
+    
     private static ChordsDB instance;
     /** Creates a new instance of ChordsDB */
     private ChordsDB() {
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-        + "config"+System.getProperty("file.separator")+"datasoul.chordsdb";
-        
+        /* Find the configuration file. If its not in ~/.datasoul/config, copy it there */
+        String fileName = "datasoul.chordsdb";
+        String fs = System.getProperty("file.separator");
+        String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + fileName;
         File chordsFile = new File(path);
+        
+        if (!chordsFile.exists()){
+            // Ensure directory exists
+            String dirpath = System.getProperty("user.home") + fs + ".datasoul"+fs+"config";
+            File configdir = new File(dirpath);
+            configdir.mkdirs();
+            
+            // check if there is old config file
+            String oldpath = System.getProperty("user.dir") + fs + "config" + System.getProperty("file.separator") + fileName;
+            File oldfile = new File(oldpath);
+            if (oldfile.exists()){
+                try {
+                    writeFileFromStream(chordsFile, new FileInputStream(oldfile));
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                }
+            }else{
+                // Get it from jar
+                InputStream is = AbstractConfig.class.getResourceAsStream("defaults/"+fileName);
+                try {
+                    writeFileFromStream(chordsFile, is);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                }
+
+            }
+            
+            // Reopen the file
+            chordsFile = new File(path); 
+        }
 
         Document dom=null;
         Node node = null;
@@ -91,8 +140,9 @@ public class ChordsDB extends ListTable{
     }
     
     public void save(){
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-        + "config"+System.getProperty("file.separator")+"datasoul.chordsdb";
+        String fileName = "datasoul.chordsdb";
+        String fs = System.getProperty("file.separator");
+        String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + fileName;
         try{
 
             Node node = this.writeObject();

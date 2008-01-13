@@ -1,0 +1,6747 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<ChordsDB>
+    <Chord>
+        <name>A</name>
+        <shape>X 0 2 2 2 X </shape>
+        <shape>5 7 7 6 5 5 </shape>
+        <shape>X X 0 2 6 1 </shape>
+        <shape>X 12 0 2 6 1 </shape>
+        <shape>5 X 2 2 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#</name>
+        <shape>X 1 3 3 3 1 </shape>
+        <shape>0 2 8 7 6 6 </shape>
+        <shape>X X 8 10 11 10 </shape>
+        <shape>6 X 3 3 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#(5)</name>
+        <shape>X 1 3 3 X X </shape>
+        <shape>0 2 8 X X X </shape>
+        <shape>X X 8 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#(add9)</name>
+        <shape>6 X 8 7 0 2 </shape>
+        <shape>X X 8 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#(add9)</name>
+        <shape>6 X 3 5 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#/C</name>
+        <shape>X 3 3 3 3 X </shape>
+        <shape>8 X 8 7 6 X </shape>
+        <shape>X X 10 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>A#/D</name>
+        <shape>X X 0 3 3 1 </shape>
+        <shape>X 5 X 7 6 6 </shape>
+        <shape>X 5 3 3 6 X </shape>
+        <shape>X 5 3 3 3 X </shape>
+        <shape>10 X 8 10 11 X </shape>
+        <shape>X 5 8 7 6 X </shape>
+        <shape>X X 12 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>A#/F</name>
+        <shape>1 1 3 3 3 1 </shape>
+        <shape>X X 3 3 3 6 </shape>
+        <shape>X 2 8 7 6 6 </shape>
+        <shape>X 2 8 7 6 X </shape>
+        <shape>X 2 X 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>A#/G#</name>
+        <shape>4 X 3 3 3 X </shape>
+        <shape>X X 6 7 6 6 </shape>
+        <shape>X 11 X 10 11 10 </shape>
+        <shape>X 11 12 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#4/7(9)</name>
+        <shape>X 1 1 1 1 X </shape>
+        <shape>X 1 1 1 1 1 </shape>
+        <shape>6 X 6 5 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#6</name>
+        <shape>X 1 3 0 3 X </shape>
+        <shape>6 X 5 7 6 X </shape>
+        <shape>X 1 X 3 3 3 </shape>
+        <shape>6 X 8 7 8 6 </shape>
+        <shape>X X 8 10 8 10 </shape>
+        <shape>6 X 3 3 3 3 </shape>
+    </Chord>
+    <Chord>
+        <name>A#6(9)</name>
+        <shape>X 1 0 0 1 X </shape>
+        <shape>X 1 0 0 1 1 </shape>
+        <shape>6 X 5 5 6 X </shape>
+        <shape>X X 8 7 12 2 </shape>
+        <shape>6 X X 7 12 2 </shape>
+        <shape>6 5 5 5 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>A#6/D</name>
+        <shape>X 5 X 3 6 3 </shape>
+        <shape>X 5 3 3 3 3 </shape>
+        <shape>10 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#6/F</name>
+        <shape>X X 3 3 3 3 </shape>
+        <shape>X 2 8 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#7</name>
+        <shape>X 1 3 1 3 1 </shape>
+        <shape>0 2 6 7 6 6 </shape>
+        <shape>6 X 6 7 6 X </shape>
+        <shape>6 X 8 7 9 6 </shape>
+        <shape>0 2 6 7 9 6 </shape>
+        <shape>X X 8 10 9 10 </shape>
+        <shape>X X 8 7 9 6 </shape>
+        <shape>X 1 X 3 3 4 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(#11)</name>
+        <shape>6 X 6 7 5 X </shape>
+        <shape>X 1 2 1 3 X </shape>
+        <shape>X X 13 2 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(#5)</name>
+        <shape>X 1 3 1 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(#9)</name>
+        <shape>X 1 0 1 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(13)</name>
+        <shape>X 1 3 1 3 3 </shape>
+        <shape>6 X 6 7 8 X </shape>
+        <shape>0 2 6 7 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(9)</name>
+        <shape>X 1 0 1 1 X </shape>
+        <shape>6 X 6 5 3 X </shape>
+        <shape>X X 8 7 0 2 </shape>
+        <shape>X 1 3 1 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(b13)</name>
+        <shape>X 1 3 1 3 2 </shape>
+        <shape>6 X 6 7 7 X </shape>
+        <shape>0 2 6 7 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(b5)</name>
+        <shape>6 X 6 7 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#7(b9)</name>
+        <shape>X 1 0 1 0 X </shape>
+        <shape>X X 8 7 9 7 </shape>
+        <shape>6 X 6 4 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#7/D</name>
+        <shape>X 5 6 3 6 X </shape>
+        <shape>10 X 8 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#7/F</name>
+        <shape>X X 3 3 3 4 </shape>
+    </Chord>
+    <Chord>
+        <name>A#7sus</name>
+        <shape>X 1 3 1 4 1 </shape>
+        <shape>0 2 0 2 6 6 </shape>
+        <shape>X X 8 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>A#aug</name>
+        <shape>X 1 X 3 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#dim</name>
+        <shape>X 1 2 0 2 X </shape>
+        <shape>6 X 5 6 5 X </shape>
+        <shape>X X 13 2 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#dim(b13)</name>
+        <shape>X 1 X 0 2 2 </shape>
+        <shape>6 X 5 6 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#half-dim</name>
+        <shape>X 1 2 1 2 X </shape>
+        <shape>6 X 6 6 5 X </shape>
+        <shape>X X 13 2 1 2 </shape>
+        <shape>X 1 X 1 2 0 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m</name>
+        <shape>X 1 3 3 2 1 </shape>
+        <shape>0 2 8 6 6 6 </shape>
+        <shape>X X 8 10 0 2 </shape>
+        <shape>X X 8 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m(add9)</name>
+        <shape>0 2 8 6 0 2 </shape>
+        <shape>X 1 3 5 2 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m(maj7)</name>
+        <shape>X 1 3 2 2 1 </shape>
+        <shape>6 X 7 6 6 X </shape>
+        <shape>0 2 7 6 6 6 </shape>
+        <shape>X 1 X 2 2 1 </shape>
+        <shape>X X 8 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m/C</name>
+        <shape>X 3 3 3 2 X </shape>
+        <shape>X X 10 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m/C#</name>
+        <shape>X 4 3 3 6 X </shape>
+        <shape>X 4 3 3 2 X </shape>
+        <shape>9 X 8 10 11 X </shape>
+        <shape>X 4 X 3 6 6 </shape>
+        <shape>X X 11 10 0 2 </shape>
+        <shape>X 4 X 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m/F</name>
+        <shape>1 1 3 3 2 1 </shape>
+        <shape>X X 3 3 2 1 </shape>
+        <shape>X 2 8 6 6 6 </shape>
+        <shape>X 2 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m/F#</name>
+        <shape>2 X 3 3 2 X </shape>
+        <shape>15 15 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m/G</name>
+        <shape>3 X 3 3 2 X </shape>
+        <shape>X 10 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m/G#</name>
+        <shape>4 X 3 3 2 X </shape>
+        <shape>X X 6 6 6 6 </shape>
+        <shape>X 11 11 10 11 X </shape>
+        <shape>X 11 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m6</name>
+        <shape>6 X 5 6 6 X </shape>
+        <shape>X 1 X 0 2 1 </shape>
+        <shape>6 X X 6 8 6 </shape>
+        <shape>X 1 X 3 2 3 </shape>
+        <shape>0 2 8 6 8 6 </shape>
+        <shape>X X 8 10 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m6/C#</name>
+        <shape>X 4 5 3 6 X </shape>
+        <shape>9 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#m6/F</name>
+        <shape>X X 3 3 2 3 </shape>
+        <shape>X 2 8 6 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#m7</name>
+        <shape>X 1 3 1 2 1 </shape>
+        <shape>0 2 6 6 6 6 </shape>
+        <shape>X 1 X 1 2 1 </shape>
+        <shape>X X 8 6 9 6 </shape>
+        <shape>X X 8 10 1 2 </shape>
+        <shape>0 2 8 6 9 6 </shape>
+        <shape>6 X 6 6 6 X </shape>
+        <shape>6 X X 6 6 4 </shape>
+        <shape>X 1 X 3 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m7(11)</name>
+        <shape>6 X 6 6 4 X </shape>
+        <shape>X 1 1 1 2 X </shape>
+        <shape>X X 12 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m7(9)</name>
+        <shape>X X 8 6 0 2 </shape>
+        <shape>0 2 6 6 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m7/C#</name>
+        <shape>X 4 X 3 2 4 </shape>
+        <shape>9 X 8 6 9 X </shape>
+        <shape>9 X 8 10 9 X </shape>
+        <shape>9 X X 6 9 6 </shape>
+    </Chord>
+    <Chord>
+        <name>A#m7/F</name>
+        <shape>X X 3 3 2 4 </shape>
+        <shape>X 2 8 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#maj7</name>
+        <shape>X 1 3 2 3 1 </shape>
+        <shape>6 X 7 7 6 X </shape>
+        <shape>0 2 7 7 6 6 </shape>
+        <shape>X X 8 7 6 5 </shape>
+        <shape>6 X X 7 6 5 </shape>
+        <shape>X X 8 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>A#maj7(9)</name>
+        <shape>X 1 0 2 1 X </shape>
+        <shape>X X 8 7 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A#maj7/D</name>
+        <shape>X 5 X 3 6 5 </shape>
+        <shape>10 X 8 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#maj7/F</name>
+        <shape>X X 3 3 3 5 </shape>
+        <shape>X 2 8 7 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>A#sus</name>
+        <shape>X 1 3 3 4 1 </shape>
+        <shape>0 2 12 2 6 6 </shape>
+        <shape>X X 8 10 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>A#sus9</name>
+        <shape>X 1 3 3 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A#sus9</name>
+        <shape>X X 8 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A(5)</name>
+        <shape>X 0 2 2 X X </shape>
+        <shape>5 7 7 X X X </shape>
+        <shape>X X 0 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>A(add9)</name>
+        <shape>X X 7 6 5 7 </shape>
+        <shape>5 X 7 6 5 7 </shape>
+    </Chord>
+    <Chord>
+        <name>A(add9)</name>
+        <shape>X 12 0 2 12 X </shape>
+        <shape>5 X 2 4 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>A+5</name>
+        <shape>5 4 3 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>A-5</name>
+        <shape>X 0 1 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>A/Ab</name>
+        <shape>4 0 2 2 2 0</shape>
+    </Chord>
+    <Chord>
+        <name>A/B</name>
+        <shape>X 2 2 2 2 X </shape>
+        <shape>7 X 7 6 5 X </shape>
+        <shape>X X 1 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A/C#</name>
+        <shape>X 4 X 6 5 5 </shape>
+        <shape>X 4 2 2 5 X </shape>
+        <shape>9 X 0 2 10 X </shape>
+        <shape>X X 0 2 10 12 </shape>
+        <shape>X 4 2 2 2 X </shape>
+        <shape>X X 0 2 6 1 </shape>
+        <shape>X 4 7 6 5 X </shape>
+        <shape>9 12 0 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A/E</name>
+        <shape>0 X 2 2 2 X </shape>
+        <shape>X 7 7 6 5 5 </shape>
+        <shape>X 7 7 6 5 X </shape>
+        <shape>X X 2 2 2 5 </shape>
+        <shape>X 7 15 15 6 1 </shape>
+        <shape>12 X 0 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A/F</name>
+        <shape>1 0 2 2 2 0</shape>
+    </Chord>
+    <Chord>
+        <name>A/F#</name>
+        <shape>2 0 2 2 2 0</shape>
+    </Chord>
+    <Chord>
+        <name>A/G</name>
+        <shape>3 X 2 2 2 X </shape>
+        <shape>X X 5 6 5 5 </shape>
+        <shape>X 10 15 15 6 1 </shape>
+        <shape>X 10 0 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>A/G#</name>
+        <shape>4 X 2 2 2 X </shape>
+        <shape>X X 6 6 5 5 </shape>
+        <shape>X 11 0 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A11</name>
+        <shape>X 0 0 0 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>A13</name>
+        <shape>X 0 5 4 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>A3</name>
+        <shape>10 13 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>A4/7(9)</name>
+        <shape>X 0 5 4 3 X </shape>
+        <shape>5 X 5 4 3 X </shape>
+        <shape>X X 7 7 8 7 </shape>
+        <shape>X 0 0 0 0 X </shape>
+        <shape>X 0 0 0 0 X </shape>
+        <shape>X 12 12 12 12 12 </shape>
+        <shape>X 12 12 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>A5</name>
+        <shape>6 8 8 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>A5dim</name>
+        <shape>6 7 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>A6</name>
+        <shape>5 X 4 6 5 X </shape>
+        <shape>X 0 2 2 2 2 </shape>
+        <shape>5 X 7 6 7 5 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 12 11 11 10 X </shape>
+        <shape>5 X 2 2 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A6(9)</name>
+        <shape>5 X 4 4 5 X </shape>
+        <shape>X X 7 6 7 7 </shape>
+        <shape>X 12 11 11 12 X </shape>
+        <shape>X 12 11 11 12 12 </shape>
+        <shape>5 X X 6 7 7 </shape>
+        <shape>5 4 4 4 5 5 </shape>
+    </Chord>
+    <Chord>
+        <name>A6/9</name>
+        <shape>X 0 4 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>A6/C#</name>
+        <shape>X 4 X 2 5 2 </shape>
+        <shape>X 4 2 2 2 2 </shape>
+        <shape>X X 11 11 10 12 </shape>
+        <shape>9 X X 11 10 12 </shape>
+        <shape>9 X 0 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>A6/E</name>
+        <shape>X X 2 2 2 2 </shape>
+        <shape>X 7 7 6 7 X </shape>
+        <shape>12 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>A7</name>
+        <shape>X 0 2 0 2 X </shape>
+        <shape>5 7 5 6 5 5 </shape>
+        <shape>5 X 5 6 5 X </shape>
+        <shape>5 7 5 6 8 5 </shape>
+        <shape>X X 7 6 8 5 </shape>
+        <shape>X X 0 2 13 2 </shape>
+        <shape>X 0 2 2 2 3 </shape>
+        <shape>X 12 11 12 10 X </shape>
+        <shape>5 X 7 6 8 5 </shape>
+    </Chord>
+    <Chord>
+        <name>A7(#11)</name>
+        <shape>5 X 5 6 4 X </shape>
+        <shape>X 0 1 0 2 X </shape>
+        <shape>X X 0 2 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>A7(#5)</name>
+        <shape>X 0 2 0 2 1 </shape>
+    </Chord>
+    <Chord>
+        <name>A7(13)</name>
+        <shape>X 0 2 0 2 2 </shape>
+        <shape>5 X 5 6 7 X </shape>
+        <shape>5 7 5 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>A7(9)</name>
+        <shape>X 0 5 4 2 X </shape>
+        <shape>5 X 5 4 2 X </shape>
+        <shape>X 0 5 6 0 X </shape>
+        <shape>X X 7 6 8 7 </shape>
+        <shape>X 0 2 0 0 X </shape>
+        <shape>X 12 11 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>A7(b13)</name>
+        <shape>X 0 2 0 2 1 </shape>
+        <shape>5 X 5 6 6 X </shape>
+        <shape>5 7 5 6 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>A7(b5)</name>
+        <shape>5 X 5 6 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>A7(b9)</name>
+        <shape>X 0 5 3 2 X </shape>
+        <shape>X X 7 6 8 6 </shape>
+        <shape>5 X 5 3 2 X </shape>
+        <shape>X 12 11 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>A7+5</name>
+        <shape>X 0 3 0 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>A7+9</name>
+        <shape>X 0 2 5 2 3</shape>
+    </Chord>
+    <Chord>
+        <name>A7-5</name>
+        <shape>X 0 1 0 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>A7-9</name>
+        <shape>5 4 5 3 X X</shape>
+    </Chord>
+    <Chord>
+        <name>A7/C#</name>
+        <shape>X 4 5 2 5 X </shape>
+        <shape>X X 11 12 10 12 </shape>
+        <shape>9 X 0 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>A7/E</name>
+        <shape>X X 2 2 2 3 </shape>
+        <shape>12 X 11 12 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>A7M</name>
+        <shape>X 0 2 1 2 0</shape>
+    </Chord>
+    <Chord>
+        <name>A7M/E</name>
+        <shape>0 0 2 1 2 0 </shape>
+    </Chord>
+    <Chord>
+        <name>A7sus</name>
+        <shape>X 0 2 0 3 X </shape>
+        <shape>5 7 5 7 5 5 </shape>
+        <shape>X X 0 2 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>A7sus4</name>
+        <shape>X 0 2 0 3 0</shape>
+    </Chord>
+    <Chord>
+        <name>A9</name>
+        <shape>X 0 2 2 0 0 </shape>
+        <shape>X 0 2 4 2 3 </shape>
+    </Chord>
+    <Chord>
+        <name>A9-5</name>
+        <shape>X 0 1 0 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>A9/B</name>
+        <shape>X 2 2 2 0 0 </shape>
+    </Chord>
+    <Chord>
+        <name>AM7b5</name>
+        <shape>X 0 1 1 2 4</shape>
+    </Chord>
+    <Chord>
+        <name>AM9</name>
+        <shape>X 0 2 1 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>Aaug</name>
+        <shape>X 0 2 2 2 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab</name>
+        <shape>4 6 6 5 4 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 11 6 1 0 2 </shape>
+        <shape>4 X 1 1 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab(5)</name>
+        <shape>4 6 6 X X X </shape>
+        <shape>X X 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab(add9)</name>
+        <shape>X X 6 5 4 6 </shape>
+        <shape>4 X 6 5 4 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab(add9)</name>
+        <shape>X 11 6 1 11 X </shape>
+        <shape>4 X 1 3 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab+5</name>
+        <shape>4 3 2 1 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab-5</name>
+        <shape>X X 7 6 4 5</shape>
+    </Chord>
+    <Chord>
+        <name>Ab/Bb</name>
+        <shape>X 1 1 1 1 X </shape>
+        <shape>6 X 6 5 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab/C</name>
+        <shape>X 3 X 5 4 4 </shape>
+        <shape>X 3 1 1 4 X </shape>
+        <shape>X 3 1 1 1 X </shape>
+        <shape>8 X 0 2 9 X </shape>
+        <shape>X X 6 1 0 2 </shape>
+        <shape>X X 6 1 9 11 </shape>
+        <shape>X 3 6 5 4 X </shape>
+        <shape>8 11 6 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab/Eb</name>
+        <shape>X 6 6 5 4 4 </shape>
+        <shape>X 6 6 5 4 X </shape>
+        <shape>X X 1 1 1 4 </shape>
+        <shape>X 6 X 2 0 2 </shape>
+        <shape>11 X 6 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab/G</name>
+        <shape>3 X 1 1 1 X </shape>
+        <shape>X X 5 5 4 4 </shape>
+        <shape>X 10 6 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab/Gb</name>
+        <shape>2 X 1 1 1 X </shape>
+        <shape>X X 4 5 4 4 </shape>
+        <shape>15 15 X 2 0 2 </shape>
+        <shape>15 15 6 1 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab11</name>
+        <shape>4 X 4 3 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>Ab13</name>
+        <shape>4 X 4 3 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Ab3</name>
+        <shape>9 12 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab4/7(9)</name>
+        <shape>4 X 4 3 2 X </shape>
+        <shape>X X 6 6 7 6 </shape>
+        <shape>X 11 11 11 11 X </shape>
+        <shape>X 11 11 11 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab5</name>
+        <shape>5 7 7 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab5dim</name>
+        <shape>5 6 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab6</name>
+        <shape>4 X 3 5 4 X </shape>
+        <shape>4 X 6 5 6 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 11 10 10 9 X </shape>
+        <shape>4 X 1 1 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab6(9)</name>
+        <shape>4 X 3 3 4 X </shape>
+        <shape>4 X X 5 6 6 </shape>
+        <shape>X X 6 5 6 6 </shape>
+        <shape>4 3 3 3 4 4 </shape>
+        <shape>X 11 10 10 11 X </shape>
+        <shape>X 11 10 10 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab6/9</name>
+        <shape>4 3 3 3 4 4</shape>
+    </Chord>
+    <Chord>
+        <name>Ab6/C</name>
+        <shape>X 3 X 1 4 1 </shape>
+        <shape>8 X 0 2 6 X </shape>
+        <shape>X 3 1 1 1 1 </shape>
+        <shape>8 X X 10 9 11 </shape>
+        <shape>X X 10 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab6/Eb</name>
+        <shape>X X 1 1 1 1 </shape>
+        <shape>X 6 6 5 6 X </shape>
+        <shape>11 X 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7</name>
+        <shape>4 6 4 5 4 4 </shape>
+        <shape>4 X 4 5 4 X </shape>
+        <shape>4 6 4 5 7 4 </shape>
+        <shape>4 X 6 5 7 4 </shape>
+        <shape>X X 6 5 7 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 11 10 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7(#11)</name>
+        <shape>4 X 4 5 3 X </shape>
+        <shape>X X 6 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7(13)</name>
+        <shape>4 X 4 5 6 X </shape>
+        <shape>4 6 4 5 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7(9)</name>
+        <shape>X X 6 5 7 6 </shape>
+        <shape>4 X 4 3 1 X </shape>
+        <shape>X 11 10 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7(b13)</name>
+        <shape>4 X 4 5 5 X </shape>
+        <shape>4 6 4 5 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7(b5)</name>
+        <shape>4 X 4 5 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7(b9)</name>
+        <shape>X X 6 5 7 5 </shape>
+        <shape>4 X 4 2 1 X </shape>
+        <shape>X 11 10 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7+5</name>
+        <shape>4 X 4 5 5 4</shape>
+    </Chord>
+    <Chord>
+        <name>Ab7+9</name>
+        <shape>4 3 4 4 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab7-5</name>
+        <shape>X X 4 5 3 4</shape>
+    </Chord>
+    <Chord>
+        <name>Ab7-9</name>
+        <shape>4 3 4 2 X X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab7/C</name>
+        <shape>X 3 4 1 4 X </shape>
+        <shape>8 X 0 2 7 X </shape>
+        <shape>X X 10 11 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7/Eb</name>
+        <shape>X 6 6 5 7 X </shape>
+        <shape>X X 1 1 1 2 </shape>
+        <shape>11 X 10 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7sus</name>
+        <shape>4 6 4 6 4 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ab7sus4</name>
+        <shape>X X 1 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>Ab9</name>
+        <shape>X 3 4 3 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>Ab9-5</name>
+        <shape>4 3 4 3 3 4</shape>
+    </Chord>
+    <Chord>
+        <name>AbM7</name>
+        <shape>X X 7 6 5 4</shape>
+    </Chord>
+    <Chord>
+        <name>AbM7b5</name>
+        <shape>4 X 5 5 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>AbM9</name>
+        <shape>4 3 5 3 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>Abaug</name>
+        <shape>0 3 2 1 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>Abdim</name>
+        <shape>4 X 3 4 3 X </shape>
+        <shape>X X 6 7 6 7 </shape>
+        <shape>X 11 12 10 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abdim(b13)</name>
+        <shape>4 X 3 4 5 X </shape>
+        <shape>X 11 X 10 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Abhalf-dim</name>
+        <shape>4 X 4 4 3 X </shape>
+        <shape>X X 6 7 7 7 </shape>
+        <shape>X 11 12 11 12 X </shape>
+        <shape>X 11 X 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm</name>
+        <shape>4 6 6 4 4 4 </shape>
+        <shape>X X 6 4 4 4 </shape>
+        <shape>X X 0 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm(add9)</name>
+        <shape>4 6 6 4 4 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm(maj7)</name>
+        <shape>4 X 5 4 4 X </shape>
+        <shape>4 6 5 4 4 4 </shape>
+        <shape>X X 0 2 8 7 </shape>
+        <shape>X 11 X 12 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm/B</name>
+        <shape>X 2 1 1 4 X </shape>
+        <shape>X 2 X 4 4 4 </shape>
+        <shape>X 2 X 1 4 4 </shape>
+        <shape>X X 0 2 9 7 </shape>
+        <shape>7 X 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abm/Bb</name>
+        <shape>X 1 1 1 0 X </shape>
+        <shape>X X 12 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm/E</name>
+        <shape>0 X 1 1 0 X </shape>
+        <shape>X 7 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm/Eb</name>
+        <shape>X 6 6 4 4 4 </shape>
+        <shape>X 6 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm/F</name>
+        <shape>1 X 1 1 0 X </shape>
+        <shape>X 2 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm/Gb</name>
+        <shape>X X 4 4 4 4 </shape>
+        <shape>15 15 0 2 9 X </shape>
+        <shape>2 X 1 1 0 X </shape>
+        <shape>15 15 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm6</name>
+        <shape>4 X 3 4 4 X </shape>
+        <shape>4 X X 4 6 4 </shape>
+        <shape>4 6 6 4 6 4 </shape>
+        <shape>X X 0 2 6 7 </shape>
+        <shape>X 11 X 10 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm6/B</name>
+        <shape>X 2 3 1 4 X </shape>
+        <shape>7 X 0 2 6 X </shape>
+        <shape>X X 9 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm6/Eb</name>
+        <shape>X X 1 1 0 1 </shape>
+        <shape>X 6 6 4 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abm7</name>
+        <shape>4 6 4 4 4 4 </shape>
+        <shape>4 6 6 4 7 4 </shape>
+        <shape>X 11 X 11 12 11 </shape>
+        <shape>4 X 4 4 4 X </shape>
+        <shape>X X 6 4 7 4 </shape>
+        <shape>4 X X 4 4 2 </shape>
+        <shape>X 11 9 11 9 X </shape>
+        <shape>X X 0 2 7 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Abm7(11)</name>
+        <shape>4 X 4 4 2 X </shape>
+        <shape>X 11 X 11 5 1 </shape>
+        <shape>X X 6 6 7 7 </shape>
+        <shape>X 11 11 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abm7(9)</name>
+        <shape>X X 6 4 7 6 </shape>
+        <shape>4 6 4 4 7 6 </shape>
+        <shape>X 11 9 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abm7/B</name>
+        <shape>X 2 X 1 0 2 </shape>
+        <shape>7 X X 4 7 4 </shape>
+        <shape>7 X 0 2 7 X </shape>
+        <shape>7 X 6 4 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abm7/Eb</name>
+        <shape>X X 1 1 0 2 </shape>
+        <shape>X 6 6 4 7 X </shape>
+        <shape>11 X 9 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abm9</name>
+        <shape>5 7 5 5 5 7</shape>
+    </Chord>
+    <Chord>
+        <name>Abmaj7</name>
+        <shape>4 X 5 5 4 X </shape>
+        <shape>4 6 5 5 4 4 </shape>
+        <shape>X X 0 2 12 2 </shape>
+        <shape>4 X X 5 4 3 </shape>
+        <shape>X 11 6 1 12 2 </shape>
+        <shape>X X 6 5 4 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Abmaj7(9)</name>
+        <shape>X 11 10 12 11 X </shape>
+        <shape>X X 6 5 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Abmaj7/C</name>
+        <shape>X 3 X 1 4 3 </shape>
+        <shape>8 X 0 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Abmaj7/Eb</name>
+        <shape>X X 1 1 1 3 </shape>
+        <shape>X 6 6 5 8 X </shape>
+        <shape>11 X 10 12 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Absus</name>
+        <shape>4 6 6 6 4 4 </shape>
+        <shape>X X 0 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Absus2</name>
+        <shape>4 1 1 1 X X</shape>
+    </Chord>
+    <Chord>
+        <name>Absus4</name>
+        <shape>X X 1 1 2 4</shape>
+    </Chord>
+    <Chord>
+        <name>Absus9</name>
+        <shape>X X 0 2 9 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Adim</name>
+        <shape>5 X 4 5 4 X </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Adim(b13)</name>
+        <shape>5 X 4 5 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ahalf-dim</name>
+        <shape>X 0 1 0 1 X </shape>
+        <shape>5 X 5 5 4 X </shape>
+        <shape>X X 0 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Am</name>
+        <shape>X 0 2 2 1 0 </shape>
+        <shape>5 7 7 5 5 5 </shape>
+        <shape>X X 7 5 5 5 </shape>
+        <shape>X X 0 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am(add9)</name>
+        <shape>X 0 2 4 1 0 </shape>
+        <shape>5 7 7 5 5 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Am(maj7)</name>
+        <shape>X 0 2 1 1 X </shape>
+        <shape>X 0 X 1 1 0 </shape>
+        <shape>5 X 6 5 5 X </shape>
+        <shape>5 7 6 5 5 5 </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Am/B</name>
+        <shape>X 2 2 2 1 X </shape>
+        <shape>X X 1 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am/C</name>
+        <shape>X 3 2 2 5 X </shape>
+        <shape>X 3 2 2 1 0 </shape>
+        <shape>8 X 0 2 10 X </shape>
+        <shape>X 3 X 2 5 5 </shape>
+        <shape>X 3 X 5 5 5 </shape>
+        <shape>X X 6 1 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am/E</name>
+        <shape>X X 2 2 1 0 </shape>
+        <shape>X 7 7 5 5 5 </shape>
+        <shape>0 X 2 2 1 X </shape>
+        <shape>X 7 15 15 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am/F</name>
+        <shape>1 X 2 2 1 X </shape>
+        <shape>X 2 15 15 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am/F#</name>
+        <shape>2 X 2 2 1 X </shape>
+        <shape>15 15 15 15 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Am/G</name>
+        <shape>3 X 2 2 1 X </shape>
+        <shape>X X 5 5 5 5 </shape>
+        <shape>X 10 15 15 6 1 </shape>
+        <shape>X 10 6 1 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Am6</name>
+        <shape>5 X 4 5 5 X </shape>
+        <shape>X 0 2 2 1 2 </shape>
+        <shape>5 7 7 5 7 5 </shape>
+        <shape>5 X X 5 7 5 </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Am6/C</name>
+        <shape>X 3 4 2 5 X </shape>
+        <shape>8 X 0 2 7 X </shape>
+        <shape>X X 10 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Am6/E</name>
+        <shape>X X 2 2 1 2 </shape>
+        <shape>X 7 7 5 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Am7</name>
+        <shape>X 0 2 0 1 X </shape>
+        <shape>5 7 5 5 5 5 </shape>
+        <shape>5 X 5 5 5 X </shape>
+        <shape>5 7 7 5 8 5 </shape>
+        <shape>X X 7 5 8 5 </shape>
+        <shape>X 0 2 2 1 3 </shape>
+        <shape>X X 0 2 12 2 </shape>
+        <shape>5 X X 5 5 3 </shape>
+        <shape>X 12 10 12 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Am7(11)</name>
+        <shape>5 X 5 5 3 X </shape>
+        <shape>X X 7 7 12 2 </shape>
+        <shape>X 0 0 0 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>Am7(9)</name>
+        <shape>X 0 5 5 0 X </shape>
+        <shape>X X 7 5 8 7 </shape>
+        <shape>5 7 5 5 8 7 </shape>
+        <shape>X 12 10 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Am7/C</name>
+        <shape>X 3 X 2 1 3 </shape>
+        <shape>8 X 7 5 8 X </shape>
+        <shape>8 X 0 2 8 X </shape>
+        <shape>8 X X 5 8 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Am7/E</name>
+        <shape>X X 2 2 1 3 </shape>
+        <shape>X 7 7 5 8 X </shape>
+        <shape>12 X 10 12 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Am9</name>
+        <shape>X 0 2 4 1 3</shape>
+    </Chord>
+    <Chord>
+        <name>Amaj7</name>
+        <shape>X 0 2 1 2 X </shape>
+        <shape>5 X 6 6 5 X </shape>
+        <shape>X X 0 2 1 2 </shape>
+        <shape>5 7 6 6 5 5 </shape>
+        <shape>X X 7 6 5 4 </shape>
+        <shape>X 12 0 2 1 2 </shape>
+        <shape>5 X X 6 5 4 </shape>
+        <shape>X 0 2 2 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Amaj7(9)</name>
+        <shape>X 0 6 6 0 X </shape>
+        <shape>X X 7 6 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Amaj7/C#</name>
+        <shape>X 4 X 2 5 4 </shape>
+        <shape>9 X 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Amaj7/E</name>
+        <shape>X X 2 2 2 4 </shape>
+        <shape>X 7 7 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Asus</name>
+        <shape>X 0 2 2 3 0 </shape>
+        <shape>5 7 7 7 5 5 </shape>
+        <shape>X X 0 2 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Asus2</name>
+        <shape>X 0 2 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>Asus4</name>
+        <shape>X 0 2 2 3 0</shape>
+    </Chord>
+    <Chord>
+        <name>Asus9</name>
+        <shape>X 0 2 2 0 X </shape>
+    </Chord>
+    <Chord>
+        <name>Asus9</name>
+        <shape>X X 0 2 10 7 </shape>
+    </Chord>
+    <Chord>
+        <name>B</name>
+        <shape>X 2 4 4 4 2 </shape>
+        <shape>0 2 0 2 7 7 </shape>
+        <shape>X X 9 11 12 11 </shape>
+        <shape>7 X 4 4 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>B(5)</name>
+        <shape>X 2 4 4 X X </shape>
+        <shape>0 2 9 X X X </shape>
+        <shape>X X 9 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>B(add9)</name>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>7 X X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>B(add9)</name>
+        <shape>7 X 4 6 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>B+5</name>
+        <shape>X 2 1 0 0 3</shape>
+    </Chord>
+    <Chord>
+        <name>B-5</name>
+        <shape>X 2 3 4 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>B/A</name>
+        <shape>5 X 4 4 4 X </shape>
+        <shape>X X 0 2 7 7 </shape>
+        <shape>X 12 X 11 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>B/A#</name>
+        <shape>6 X 4 4 4 X </shape>
+        <shape>X X 12 2 7 7 </shape>
+    </Chord>
+    <Chord>
+        <name>B/C#</name>
+        <shape>X 4 4 4 4 X </shape>
+        <shape>9 X 0 2 7 X </shape>
+        <shape>X X 11 11 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>B/D#</name>
+        <shape>X 6 4 4 7 X </shape>
+        <shape>X 6 X 2 7 7 </shape>
+        <shape>X 6 4 4 4 X </shape>
+        <shape>X 6 0 2 7 X </shape>
+        <shape>11 X 9 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>B/F#</name>
+        <shape>2 2 4 4 4 2 </shape>
+        <shape>15 15 0 2 7 7 </shape>
+        <shape>15 15 0 2 7 X </shape>
+        <shape>X X 4 4 4 7 </shape>
+        <shape>15 15 X 11 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>B11</name>
+        <shape>X 2 2 2 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>B13</name>
+        <shape>X 2 1 2 2 4</shape>
+    </Chord>
+    <Chord>
+        <name>B3</name>
+        <shape>12 15 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>B4/7(9)</name>
+        <shape>X 2 2 2 2 X </shape>
+        <shape>X 2 2 2 2 2 </shape>
+        <shape>7 X 7 6 5 X </shape>
+        <shape>X X 1 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>B5</name>
+        <shape>8 10 10 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>B5dim</name>
+        <shape>8 9 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>B6</name>
+        <shape>7 X 0 2 7 X </shape>
+        <shape>7 X 0 2 9 7 </shape>
+        <shape>X X 9 11 9 11 </shape>
+        <shape>7 X 4 4 4 4 </shape>
+        <shape>X 2 1 1 0 X </shape>
+        <shape>X 2 4 1 4 X </shape>
+        <shape>X 2 X 4 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>B6(9)</name>
+        <shape>X 2 1 1 2 X </shape>
+        <shape>X 2 1 1 2 2 </shape>
+        <shape>7 X 6 6 7 X </shape>
+        <shape>7 6 6 6 7 7 </shape>
+        <shape>X X 0 2 1 2 </shape>
+        <shape>7 X X 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>B6/9</name>
+        <shape>X 2 1 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>B6/D#</name>
+        <shape>X 6 X 4 7 4 </shape>
+        <shape>11 X 9 11 9 X </shape>
+        <shape>X X 1 1 0 2 </shape>
+        <shape>X 6 4 4 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>B6/F#</name>
+        <shape>X X 4 4 4 4 </shape>
+        <shape>2 X 1 1 0 X </shape>
+        <shape>15 15 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>B7</name>
+        <shape>X 2 4 2 4 2 </shape>
+        <shape>X 2 1 2 0 2 </shape>
+        <shape>0 2 0 2 7 7 </shape>
+        <shape>0 2 0 2 10 7 </shape>
+        <shape>7 X 0 2 7 X </shape>
+        <shape>7 X 0 2 10 7 </shape>
+        <shape>X X 9 11 10 11 </shape>
+        <shape>X X 0 2 10 7 </shape>
+        <shape>X 2 X 4 4 5 </shape>
+    </Chord>
+    <Chord>
+        <name>B7(#11)</name>
+        <shape>7 X 0 2 6 X </shape>
+        <shape>X 2 3 2 4 X </shape>
+        <shape>X X 9 10 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>B7(#5)</name>
+        <shape>X 2 4 2 4 3 </shape>
+    </Chord>
+    <Chord>
+        <name>B7(#9)</name>
+        <shape>X 2 1 2 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>B7(13)</name>
+        <shape>X 2 4 2 4 4 </shape>
+        <shape>7 X 0 2 9 X </shape>
+        <shape>0 2 0 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>B7(9)</name>
+        <shape>X 2 1 2 2 X </shape>
+        <shape>7 X 7 6 4 X </shape>
+        <shape>X X 0 2 6 1 </shape>
+        <shape>X 2 4 2 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>B7(b13)</name>
+        <shape>X 2 4 2 4 3 </shape>
+        <shape>7 X 0 2 8 X </shape>
+        <shape>0 2 0 2 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>B7(b5)</name>
+        <shape>7 X 0 2 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>B7(b9)</name>
+        <shape>X 2 1 2 1 X </shape>
+        <shape>X X 0 2 6 1 </shape>
+        <shape>7 X 7 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>B7+5</name>
+        <shape>X 0 1 0 0 3</shape>
+    </Chord>
+    <Chord>
+        <name>B7+9</name>
+        <shape>X 2 1 2 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>B7-5</name>
+        <shape>X 2 3 2 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>B7-9</name>
+        <shape>X 2 1 2 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>B7/D#</name>
+        <shape>X X 1 2 0 2 </shape>
+        <shape>X 6 7 4 7 X </shape>
+        <shape>11 X 9 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>B7/F#</name>
+        <shape>2 X 1 2 0 X </shape>
+        <shape>X X 4 4 4 5 </shape>
+    </Chord>
+    <Chord>
+        <name>B7sus</name>
+        <shape>X 2 4 2 5 2 </shape>
+        <shape>0 2 0 2 7 7 </shape>
+        <shape>X X 9 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>B7sus4</name>
+        <shape>X 2 2 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>B9</name>
+        <shape>X 2 1 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>B9-5</name>
+        <shape>1 2 1 2 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>BM7</name>
+        <shape>X 2 4 3 4 2</shape>
+    </Chord>
+    <Chord>
+        <name>BM7b5</name>
+        <shape>X 2 3 3 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>BM9</name>
+        <shape>X 2 1 3 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>Baug</name>
+        <shape>X 2 X 4 4 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb</name>
+        <shape>X 1 3 3 3 1 </shape>
+        <shape>0 2 8 7 6 6 </shape>
+        <shape>X X 8 10 11 10 </shape>
+        <shape>6 X 3 3 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb(5)</name>
+        <shape>X 1 3 3 X X </shape>
+        <shape>0 2 8 X X X </shape>
+        <shape>X X 8 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb(add9)</name>
+        <shape>6 X 8 7 0 2 </shape>
+        <shape>X X 8 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb(add9)</name>
+        <shape>6 X 3 5 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb+5</name>
+        <shape>7 6 5 4 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb-5</name>
+        <shape>X 1 2 3 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb/A</name>
+        <shape>5 X 3 3 3 X </shape>
+        <shape>X X 7 7 6 6 </shape>
+        <shape>X 12 12 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb/Ab</name>
+        <shape>4 X 3 3 3 X </shape>
+        <shape>X X 6 7 6 6 </shape>
+        <shape>X 11 X 10 11 10 </shape>
+        <shape>X 11 12 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb/C</name>
+        <shape>X 3 3 3 3 X </shape>
+        <shape>8 X 8 7 6 X </shape>
+        <shape>X X 10 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb/D</name>
+        <shape>X X 0 3 3 1 </shape>
+        <shape>X 5 X 7 6 6 </shape>
+        <shape>X 5 3 3 6 X </shape>
+        <shape>X 5 3 3 3 X </shape>
+        <shape>10 X 8 10 11 X </shape>
+        <shape>X 5 8 7 6 X </shape>
+        <shape>X X 12 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb/F</name>
+        <shape>1 1 3 3 3 1 </shape>
+        <shape>X X 3 3 3 6 </shape>
+        <shape>X 2 8 7 6 6 </shape>
+        <shape>X 2 8 7 6 X </shape>
+        <shape>X 2 X 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb11</name>
+        <shape>X 1 1 1 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bb13</name>
+        <shape>X 1 0 1 1 3</shape>
+    </Chord>
+    <Chord>
+        <name>Bb3</name>
+        <shape>11 14 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb4/7(9)</name>
+        <shape>X 1 1 1 1 X </shape>
+        <shape>X 1 1 1 1 1 </shape>
+        <shape>6 X 6 5 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb5</name>
+        <shape>7 9 9 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb5dim</name>
+        <shape>7 8 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb6</name>
+        <shape>X 1 3 0 3 X </shape>
+        <shape>6 X 5 7 6 X </shape>
+        <shape>X 1 X 3 3 3 </shape>
+        <shape>6 X 8 7 8 6 </shape>
+        <shape>X X 8 10 8 10 </shape>
+        <shape>6 X 3 3 3 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb6(9)</name>
+        <shape>X 1 0 0 1 X </shape>
+        <shape>X 1 0 0 1 1 </shape>
+        <shape>6 X 5 5 6 X </shape>
+        <shape>X X 8 7 12 2 </shape>
+        <shape>6 X X 7 12 2 </shape>
+        <shape>6 5 5 5 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb6/9</name>
+        <shape>X 1 0 0 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bb6/D</name>
+        <shape>X 5 X 3 6 3 </shape>
+        <shape>X 5 3 3 3 3 </shape>
+        <shape>10 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb6/F</name>
+        <shape>X X 3 3 3 3 </shape>
+        <shape>X 2 8 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7</name>
+        <shape>X 1 3 1 3 1 </shape>
+        <shape>0 2 6 7 6 6 </shape>
+        <shape>6 X 6 7 6 X </shape>
+        <shape>6 X 8 7 9 6 </shape>
+        <shape>0 2 6 7 9 6 </shape>
+        <shape>X X 8 10 9 10 </shape>
+        <shape>X X 8 7 9 6 </shape>
+        <shape>X 1 X 3 3 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(#11)</name>
+        <shape>6 X 6 7 5 X </shape>
+        <shape>X 1 2 1 3 X </shape>
+        <shape>X X 13 2 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(#5)</name>
+        <shape>X 1 3 1 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(#9)</name>
+        <shape>X 1 0 1 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(13)</name>
+        <shape>X 1 3 1 3 3 </shape>
+        <shape>6 X 6 7 8 X </shape>
+        <shape>0 2 6 7 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(9)</name>
+        <shape>X 1 0 1 1 X </shape>
+        <shape>6 X 6 5 3 X </shape>
+        <shape>X X 8 7 0 2 </shape>
+        <shape>X 1 3 1 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(b13)</name>
+        <shape>X 1 3 1 3 2 </shape>
+        <shape>6 X 6 7 7 X </shape>
+        <shape>0 2 6 7 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(b5)</name>
+        <shape>6 X 6 7 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7(b9)</name>
+        <shape>X 1 0 1 0 X </shape>
+        <shape>X X 8 7 9 7 </shape>
+        <shape>6 X 6 4 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7+5</name>
+        <shape>X 1 4 1 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>Bb7+9</name>
+        <shape>X 1 0 1 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bb7-5</name>
+        <shape>X 1 2 1 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb7-9</name>
+        <shape>X 1 0 1 0 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bb7/D</name>
+        <shape>X 5 6 3 6 X </shape>
+        <shape>10 X 8 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7/F</name>
+        <shape>X X 3 3 3 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7sus</name>
+        <shape>X 1 3 1 4 1 </shape>
+        <shape>0 2 0 2 6 6 </shape>
+        <shape>X X 8 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Bb7sus4</name>
+        <shape>X 1 3 1 4 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bb9</name>
+        <shape>X 1 0 1 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>Bb9-5</name>
+        <shape>0 1 0 1 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>BbM7</name>
+        <shape>X 1 3 2 3 1</shape>
+    </Chord>
+    <Chord>
+        <name>BbM7b5</name>
+        <shape>X 1 2 2 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>BbM9</name>
+        <shape>X 1 0 2 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bbaug</name>
+        <shape>X 1 X 3 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbdim</name>
+        <shape>X 1 2 0 2 X </shape>
+        <shape>6 X 5 6 5 X </shape>
+        <shape>X X 13 2 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbdim(b13)</name>
+        <shape>X 1 X 0 2 2 </shape>
+        <shape>6 X 5 6 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bbhalf-dim</name>
+        <shape>X 1 2 1 2 X </shape>
+        <shape>6 X 6 6 5 X </shape>
+        <shape>X X 13 2 1 2 </shape>
+        <shape>X 1 X 1 2 0 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm</name>
+        <shape>X 1 3 3 2 1 </shape>
+        <shape>0 2 8 6 6 6 </shape>
+        <shape>X X 8 10 0 2 </shape>
+        <shape>X X 8 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm(add9)</name>
+        <shape>0 2 8 6 0 2 </shape>
+        <shape>X 1 3 5 2 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm(maj7)</name>
+        <shape>X 1 3 2 2 1 </shape>
+        <shape>6 X 7 6 6 X </shape>
+        <shape>0 2 7 6 6 6 </shape>
+        <shape>X 1 X 2 2 1 </shape>
+        <shape>X X 8 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm/Ab</name>
+        <shape>4 X 3 3 2 X </shape>
+        <shape>X X 6 6 6 6 </shape>
+        <shape>X 11 11 10 11 X </shape>
+        <shape>X 11 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm/C</name>
+        <shape>X 3 3 3 2 X </shape>
+        <shape>X X 10 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm/Db</name>
+        <shape>X 4 3 3 6 X </shape>
+        <shape>X 4 3 3 2 X </shape>
+        <shape>9 X 8 10 11 X </shape>
+        <shape>X 4 X 3 6 6 </shape>
+        <shape>X X 11 10 0 2 </shape>
+        <shape>X 4 X 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm/F</name>
+        <shape>1 1 3 3 2 1 </shape>
+        <shape>X X 3 3 2 1 </shape>
+        <shape>X 2 8 6 6 6 </shape>
+        <shape>X 2 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm/G</name>
+        <shape>3 X 3 3 2 X </shape>
+        <shape>X 10 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm/Gb</name>
+        <shape>2 X 3 3 2 X </shape>
+        <shape>15 15 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm6</name>
+        <shape>6 X 5 6 6 X </shape>
+        <shape>X 1 X 0 2 1 </shape>
+        <shape>6 X X 6 8 6 </shape>
+        <shape>X 1 X 3 2 3 </shape>
+        <shape>0 2 8 6 8 6 </shape>
+        <shape>X X 8 10 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm6/Db</name>
+        <shape>X 4 5 3 6 X </shape>
+        <shape>9 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm6/F</name>
+        <shape>X X 3 3 2 3 </shape>
+        <shape>X 2 8 6 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm7</name>
+        <shape>X 1 3 1 2 1 </shape>
+        <shape>0 2 6 6 6 6 </shape>
+        <shape>X 1 X 1 2 1 </shape>
+        <shape>X X 8 6 9 6 </shape>
+        <shape>X X 8 10 1 2 </shape>
+        <shape>0 2 8 6 9 6 </shape>
+        <shape>6 X 6 6 6 X </shape>
+        <shape>6 X X 6 6 4 </shape>
+        <shape>X 1 X 3 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm7(11)</name>
+        <shape>6 X 6 6 4 X </shape>
+        <shape>X 1 1 1 2 X </shape>
+        <shape>X X 12 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm7(9)</name>
+        <shape>X X 8 6 0 2 </shape>
+        <shape>0 2 6 6 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm7/Db</name>
+        <shape>X 4 X 3 2 4 </shape>
+        <shape>9 X 8 6 9 X </shape>
+        <shape>9 X 8 10 9 X </shape>
+        <shape>9 X X 6 9 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm7/F</name>
+        <shape>X X 3 3 2 4 </shape>
+        <shape>X 2 8 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bbm9</name>
+        <shape>7 5 7 6 X X</shape>
+    </Chord>
+    <Chord>
+        <name>Bbmaj7</name>
+        <shape>X 1 3 2 3 1 </shape>
+        <shape>6 X 7 7 6 X </shape>
+        <shape>0 2 7 7 6 6 </shape>
+        <shape>X X 8 7 6 5 </shape>
+        <shape>6 X X 7 6 5 </shape>
+        <shape>X X 8 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbmaj7(9)</name>
+        <shape>X 1 0 2 1 X </shape>
+        <shape>X X 8 7 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbmaj7/D</name>
+        <shape>X 5 X 3 6 5 </shape>
+        <shape>10 X 8 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bbmaj7/F</name>
+        <shape>X X 3 3 3 5 </shape>
+        <shape>X 2 8 7 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bbsus</name>
+        <shape>X 1 3 3 4 1 </shape>
+        <shape>0 2 12 2 6 6 </shape>
+        <shape>X X 8 10 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbsus2</name>
+        <shape>X 1 3 3 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bbsus4</name>
+        <shape>X 1 3 3 4 1</shape>
+    </Chord>
+    <Chord>
+        <name>Bbsus9</name>
+        <shape>X 1 3 3 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bbsus9</name>
+        <shape>X X 8 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bdim</name>
+        <shape>X 2 3 1 3 X </shape>
+        <shape>X X 9 10 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bdim(b13)</name>
+        <shape>X 2 X 1 3 3 </shape>
+        <shape>7 X 6 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bhalf-dim</name>
+        <shape>X 2 3 2 3 X </shape>
+        <shape>7 X 7 7 6 X </shape>
+        <shape>X X 9 10 10 10 </shape>
+        <shape>X 2 X 2 3 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm</name>
+        <shape>X 2 4 4 3 2 </shape>
+        <shape>0 2 9 7 7 7 </shape>
+        <shape>X X 9 7 7 7 </shape>
+        <shape>X X 9 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm(add9)</name>
+        <shape>0 2 9 7 0 2 </shape>
+        <shape>X 2 4 6 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm(maj7)</name>
+        <shape>X 2 4 3 3 2 </shape>
+        <shape>7 X 8 7 7 X </shape>
+        <shape>0 2 8 7 7 7 </shape>
+        <shape>X X 9 11 11 10 </shape>
+        <shape>X 2 X 3 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm/A</name>
+        <shape>X X 7 7 7 7 </shape>
+        <shape>5 X 4 4 3 X </shape>
+        <shape>X 12 12 11 12 X </shape>
+        <shape>X 12 X 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm/C#</name>
+        <shape>X 4 4 4 3 X </shape>
+        <shape>X X 11 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm/D</name>
+        <shape>X X 0 4 3 2 </shape>
+        <shape>X 5 4 4 3 X </shape>
+        <shape>X 5 4 4 7 X </shape>
+        <shape>10 X 9 11 12 X </shape>
+        <shape>X 5 X 4 7 7 </shape>
+        <shape>X X 12 11 12 10 </shape>
+        <shape>X 5 X 7 7 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm/F#</name>
+        <shape>2 2 4 4 3 2 </shape>
+        <shape>X X 4 4 3 2 </shape>
+        <shape>15 15 9 7 7 7 </shape>
+        <shape>15 15 X 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm/G</name>
+        <shape>3 X 4 4 3 X </shape>
+        <shape>X 10 X 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm/G#</name>
+        <shape>4 X 4 4 3 X </shape>
+        <shape>X 11 X 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm6</name>
+        <shape>X 2 X 1 3 2 </shape>
+        <shape>7 X 6 7 7 X </shape>
+        <shape>7 X X 7 9 7 </shape>
+        <shape>0 2 9 7 9 7 </shape>
+        <shape>X X 9 11 9 10 </shape>
+        <shape>X 2 X 4 3 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm6/D</name>
+        <shape>X X 0 1 0 2 </shape>
+        <shape>X 5 6 4 7 X </shape>
+        <shape>10 X 9 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bm6/F#</name>
+        <shape>X X 4 4 3 4 </shape>
+        <shape>15 15 9 7 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bm7</name>
+        <shape>X 2 4 2 3 2 </shape>
+        <shape>0 2 7 7 7 7 </shape>
+        <shape>7 X 7 7 7 X </shape>
+        <shape>0 2 9 7 10 7 </shape>
+        <shape>7 X 7 7 7 X </shape>
+        <shape>X 2 0 2 0 X </shape>
+        <shape>X X 9 11 10 10 </shape>
+        <shape>X 2 X 2 3 2 </shape>
+        <shape>X X 9 7 10 7 </shape>
+        <shape>X 2 X 4 3 5 </shape>
+        <shape>7 X X 7 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm7(11)</name>
+        <shape>X 2 X 2 3 0 </shape>
+        <shape>7 X 7 7 5 X </shape>
+        <shape>X 2 2 2 3 X </shape>
+        <shape>X X 1 2 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm7(9)</name>
+        <shape>X 2 0 2 2 X </shape>
+        <shape>X X 9 7 6 1 </shape>
+        <shape>0 2 7 7 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Bm7/D</name>
+        <shape>X 5 X 4 3 5 </shape>
+        <shape>10 X 9 7 10 X </shape>
+        <shape>10 X X 7 10 7 </shape>
+        <shape>10 X 9 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bm7/F#</name>
+        <shape>X X 4 4 3 5 </shape>
+        <shape>2 X 0 2 0 X </shape>
+        <shape>15 15 9 7 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bm9</name>
+        <shape>X 2 0 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>Bm9/A</name>
+        <shape>5 X 4 6 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bmaj7</name>
+        <shape>X 2 4 3 4 2 </shape>
+        <shape>0 2 12 2 7 7 </shape>
+        <shape>7 X 12 2 7 X </shape>
+        <shape>X X 9 11 11 11 </shape>
+        <shape>X X 0 2 7 6 </shape>
+        <shape>7 X X 2 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Bmaj7(9)</name>
+        <shape>X 2 1 3 2 X </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bmaj7/D#</name>
+        <shape>X 6 X 4 7 6 </shape>
+        <shape>11 X 9 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bmaj7/F#</name>
+        <shape>X X 4 4 4 6 </shape>
+        <shape>15 15 0 2 11 X </shape>
+        <shape>2 X 1 3 0 X </shape>
+    </Chord>
+    <Chord>
+        <name>Bsus</name>
+        <shape>X 2 4 4 5 2 </shape>
+        <shape>0 2 1 2 7 7 </shape>
+        <shape>X X 9 11 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Bsus2</name>
+        <shape>X 2 4 4 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>Bsus4</name>
+        <shape>X 2 4 4 5 2</shape>
+    </Chord>
+    <Chord>
+        <name>Bsus9</name>
+        <shape>X 2 4 4 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Bsus9</name>
+        <shape>X X 9 11 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>C</name>
+        <shape>X 3 2 0 1 X </shape>
+        <shape>X 3 5 5 5 3 </shape>
+        <shape>8 10 6 1 12 2 </shape>
+        <shape>8 X 5 5 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#</name>
+        <shape>X 4 6 6 6 4 </shape>
+        <shape>9 11 11 10 1 2 </shape>
+        <shape>X 4 3 1 2 1 </shape>
+        <shape>9 X 6 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#(5)</name>
+        <shape>X 4 6 6 X X </shape>
+        <shape>9 11 11 X X X </shape>
+    </Chord>
+    <Chord>
+        <name>C#(add9)</name>
+        <shape>X 4 3 1 4 X </shape>
+        <shape>X X 11 10 9 11 </shape>
+        <shape>9 X 11 10 9 11 </shape>
+        <shape>9 X 0 2 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#+5</name>
+        <shape>X 4 3 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#-5</name>
+        <shape>X 5 6 7 7 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#/B</name>
+        <shape>7 X 6 6 6 X </shape>
+        <shape>X 2 X 1 2 1 </shape>
+        <shape>X 2 3 1 2 X </shape>
+        <shape>X X 9 10 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#/D#</name>
+        <shape>X X 1 1 2 1 </shape>
+        <shape>X 6 6 6 6 X </shape>
+        <shape>11 X 11 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#/F</name>
+        <shape>1 X X 1 2 1 </shape>
+        <shape>X X 3 1 2 1 </shape>
+        <shape>X X 3 1 2 4 </shape>
+        <shape>X 2 6 6 9 X </shape>
+        <shape>1 4 3 1 2 1 </shape>
+        <shape>X 2 X 10 1 2 </shape>
+        <shape>X 2 11 10 9 X </shape>
+        <shape>X 2 6 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#/G#</name>
+        <shape>4 4 6 6 6 4 </shape>
+        <shape>4 X 3 1 2 1 </shape>
+        <shape>X X 6 6 0 2 </shape>
+        <shape>X 11 11 10 1 2 </shape>
+        <shape>X 11 11 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#11</name>
+        <shape>X 4 4 4 4 4</shape>
+    </Chord>
+    <Chord>
+        <name>C#13</name>
+        <shape>X 5 4 5 5 7</shape>
+    </Chord>
+    <Chord>
+        <name>C#3</name>
+        <shape>1 4 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>C#4/7(9)</name>
+        <shape>X 4 4 4 4 X </shape>
+        <shape>X 4 4 4 4 4 </shape>
+        <shape>9 X 0 2 7 X </shape>
+        <shape>X X 11 11 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>C#5</name>
+        <shape>10 12 12 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>C#5dim</name>
+        <shape>10 11 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>C#6</name>
+        <shape>9 X 8 10 9 X </shape>
+        <shape>X 4 3 3 2 X </shape>
+        <shape>X 4 6 3 6 X </shape>
+        <shape>X 4 3 3 2 X </shape>
+        <shape>9 X 11 10 0 2 </shape>
+        <shape>X 4 X 6 6 6 </shape>
+        <shape>9 X 6 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>C#6(9)</name>
+        <shape>X 4 3 3 4 X </shape>
+        <shape>X 4 3 3 4 4 </shape>
+        <shape>9 X 12 2 9 X </shape>
+        <shape>X X 11 10 11 11 </shape>
+        <shape>9 X X 10 11 11 </shape>
+        <shape>0 2 12 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#6/9</name>
+        <shape>X 4 3 3 4 4</shape>
+    </Chord>
+    <Chord>
+        <name>C#6/F</name>
+        <shape>X X 3 3 2 4 </shape>
+        <shape>X 2 6 6 6 6 </shape>
+        <shape>X 2 X 6 9 6 </shape>
+        <shape>1 X X 3 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>C#6/G#</name>
+        <shape>4 X 3 3 2 X </shape>
+        <shape>X X 6 6 6 6 </shape>
+        <shape>X 11 11 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7</name>
+        <shape>X 4 6 4 6 4 </shape>
+        <shape>X 4 3 4 2 X </shape>
+        <shape>9 11 9 10 1 2 </shape>
+        <shape>9 11 9 10 5 1 </shape>
+        <shape>9 X 9 10 9 X </shape>
+        <shape>9 X 11 10 5 1 </shape>
+        <shape>X 4 X 6 6 7 </shape>
+        <shape>X X 11 10 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(#11)</name>
+        <shape>9 X 9 10 8 X </shape>
+        <shape>X 4 5 4 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(#5)</name>
+        <shape>X 4 6 4 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(#9)</name>
+        <shape>X 4 3 4 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(#9)</name>
+        <shape>X 4 3 4 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(13)</name>
+        <shape>X 4 6 4 6 6 </shape>
+        <shape>9 X 9 10 11 X </shape>
+        <shape>9 11 9 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(9)</name>
+        <shape>X 4 3 4 4 X </shape>
+        <shape>9 X 0 2 6 X </shape>
+        <shape>X X 11 10 12 11 </shape>
+        <shape>X 4 6 4 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(b13)</name>
+        <shape>X 4 6 4 6 5 </shape>
+        <shape>9 X 9 10 10 X </shape>
+        <shape>9 11 9 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(b5)</name>
+        <shape>9 X 9 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7(b9)</name>
+        <shape>X 4 3 4 3 X </shape>
+        <shape>X X 11 10 12 10 </shape>
+        <shape>9 X 9 7 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7+5</name>
+        <shape>X 2 3 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#7+9</name>
+        <shape>X 4 3 4 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#7-5</name>
+        <shape>X 5 6 5 7 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#7-9</name>
+        <shape>X 4 3 4 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#7/F</name>
+        <shape>X X 3 4 2 4 </shape>
+        <shape>X 2 9 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#7/G#</name>
+        <shape>4 X 3 4 2 X </shape>
+        <shape>X X 6 6 6 7 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7sus</name>
+        <shape>X 4 6 4 7 4 </shape>
+        <shape>9 11 9 11 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#7sus4</name>
+        <shape>X 4 4 4 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#9</name>
+        <shape>X 4 3 4 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#9-5</name>
+        <shape>3 4 3 4 4 3</shape>
+    </Chord>
+    <Chord>
+        <name>C#M7</name>
+        <shape>X 4 3 1 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>C#M7b5</name>
+        <shape>X 5 6 6 7 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#M9</name>
+        <shape>X 4 3 5 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#aug</name>
+        <shape>X 4 X 6 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>C#dim</name>
+        <shape>X 4 5 3 5 X </shape>
+        <shape>9 X 13 2 8 X </shape>
+        <shape>X X 11 12 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>C#dim(b13)</name>
+        <shape>X 4 X 3 5 5 </shape>
+        <shape>9 X 13 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#half-dim</name>
+        <shape>X 4 5 4 5 X </shape>
+        <shape>9 X 1 2 8 X </shape>
+        <shape>X X 11 12 12 12 </shape>
+        <shape>X 4 X 4 5 3 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m</name>
+        <shape>X 4 6 6 5 4 </shape>
+        <shape>9 11 0 2 1 2 </shape>
+        <shape>X X 0 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m(add9)</name>
+        <shape>9 11 X 2 9 11 </shape>
+        <shape>X 4 X 2 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m(maj7)</name>
+        <shape>X 4 6 5 5 4 </shape>
+        <shape>9 11 6 1 1 2 </shape>
+        <shape>X 4 X 5 5 4 </shape>
+        <shape>9 X 6 1 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m/A</name>
+        <shape>X 0 X 1 2 0 </shape>
+        <shape>5 X 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m/A#</name>
+        <shape>X 1 X 1 2 0 </shape>
+        <shape>6 X 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m/B</name>
+        <shape>X 2 2 1 2 X </shape>
+        <shape>X X 1 2 1 2 </shape>
+        <shape>7 X 6 6 5 X </shape>
+        <shape>X 2 X 1 2 0 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m/D#</name>
+        <shape>X X 1 1 2 0 </shape>
+        <shape>X 6 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m/E</name>
+        <shape>X 7 6 6 9 X </shape>
+        <shape>X 7 6 6 5 X </shape>
+        <shape>X X 2 1 2 0 </shape>
+        <shape>X 7 15 15 1 2 </shape>
+        <shape>X 7 X 6 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m/G#</name>
+        <shape>4 4 6 6 5 4 </shape>
+        <shape>X X 6 6 5 4 </shape>
+        <shape>X 11 X 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m6</name>
+        <shape>X 4 X 6 5 6 </shape>
+        <shape>9 X 13 2 9 X </shape>
+        <shape>9 11 0 2 0 2 </shape>
+        <shape>X 4 X 3 5 4 </shape>
+        <shape>9 X 15 15 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m6/E</name>
+        <shape>X X 2 3 2 4 </shape>
+        <shape>X 7 8 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m6/G#</name>
+        <shape>X X 6 6 5 6 </shape>
+        <shape>X 11 0 2 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m7</name>
+        <shape>X 4 6 4 5 4 </shape>
+        <shape>9 11 1 2 1 2 </shape>
+        <shape>X 4 X 4 5 4 </shape>
+        <shape>9 X 1 2 9 X </shape>
+        <shape>9 11 0 2 5 1 </shape>
+        <shape>X X 0 2 5 1 </shape>
+        <shape>9 X 15 15 9 7 </shape>
+        <shape>X 4 X 6 5 7 </shape>
+        <shape>X 4 2 4 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m7(11)</name>
+        <shape>X 4 X 4 5 2 </shape>
+        <shape>9 X 1 2 7 X </shape>
+        <shape>X 4 4 4 5 X </shape>
+        <shape>X X 11 11 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m7(9)</name>
+        <shape>X 4 2 4 4 X </shape>
+        <shape>X X 0 2 12 11 </shape>
+        <shape>9 11 1 2 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>C#m7/E</name>
+        <shape>X 7 X 6 5 7 </shape>
+        <shape>12 X 15 15 5 1 </shape>
+        <shape>12 X 0 2 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m7/G#</name>
+        <shape>4 X 2 4 2 X </shape>
+        <shape>X X 6 6 5 7 </shape>
+        <shape>X 11 0 2 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#m9</name>
+        <shape>X 4 2 4 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>C#maj7</name>
+        <shape>X 4 6 5 6 4 </shape>
+        <shape>9 X 10 10 9 X </shape>
+        <shape>X 4 3 1 1 1 </shape>
+        <shape>9 11 10 10 1 2 </shape>
+        <shape>9 X X 10 0 2 </shape>
+        <shape>X X 11 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#maj7(9)</name>
+        <shape>X 4 3 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>C#maj7/F</name>
+        <shape>X 2 X 6 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#maj7/G#</name>
+        <shape>4 X 3 5 2 X </shape>
+        <shape>X X 6 6 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#sus</name>
+        <shape>X 4 6 6 7 4 </shape>
+        <shape>9 11 11 11 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C#sus2</name>
+        <shape>X 5 7 7 5 5</shape>
+    </Chord>
+    <Chord>
+        <name>C#sus4</name>
+        <shape>X 5 7 7 8 5</shape>
+    </Chord>
+    <Chord>
+        <name>C#sus9</name>
+        <shape>X 4 6 6 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>C(5)</name>
+        <shape>X 3 5 5 X X </shape>
+        <shape>8 10 10 X X X </shape>
+    </Chord>
+    <Chord>
+        <name>C(add9)</name>
+        <shape>X 3 2 0 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>C(add9)</name>
+        <shape>X X 6 1 8 10 </shape>
+        <shape>8 X 6 1 8 10 </shape>
+        <shape>8 X 5 7 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C+5</name>
+        <shape>X 3 2 1 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>C-5</name>
+        <shape>X 3 4 5 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/A</name>
+        <shape>5 X 5 5 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/Ab</name>
+        <shape>4 X 5 5 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/B</name>
+        <shape>X 2 2 0 1 X </shape>
+        <shape>7 X 5 5 5 X </shape>
+        <shape>X X 1 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C/Bb</name>
+        <shape>X 1 2 0 1 X </shape>
+        <shape>X 1 X 0 1 0 </shape>
+        <shape>6 X 5 5 5 X </shape>
+        <shape>X X 13 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C/C</name>
+        <shape>X 3 5 5 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/C#</name>
+        <shape>X 4 5 5 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/D</name>
+        <shape>X 5 5 5 5 X </shape>
+        <shape>X X 0 0 1 0 </shape>
+        <shape>10 X 6 1 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>C/E</name>
+        <shape>X X 2 0 1 3 </shape>
+        <shape>X X 2 0 1 0 </shape>
+        <shape>0 3 2 0 1 X </shape>
+        <shape>X 7 5 5 8 X </shape>
+        <shape>X 7 15 15 12 2 </shape>
+        <shape>X 7 5 5 5 X </shape>
+        <shape>X 7 6 1 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>C/E#</name>
+        <shape>15 X X 13 14 13</shape>
+    </Chord>
+    <Chord>
+        <name>C/Eb</name>
+        <shape>X 7 6 6 6 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/F</name>
+        <shape>X 9 6 6 6 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/F#</name>
+        <shape>X 10 6 6 6 X</shape>
+    </Chord>
+    <Chord>
+        <name>C/G</name>
+        <shape>3 X 2 0 1 X </shape>
+        <shape>3 3 5 5 5 3 </shape>
+        <shape>X X 5 5 0 2 </shape>
+        <shape>X 10 6 1 12 2 </shape>
+        <shape>X 10 6 1 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>C11</name>
+        <shape>X 3 3 3 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>C13</name>
+        <shape>X 3 2 3 3 5</shape>
+    </Chord>
+    <Chord>
+        <name>C3</name>
+        <shape>0 3 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>C4/7(9)</name>
+        <shape>X 3 3 3 3 X </shape>
+        <shape>X 3 3 3 3 3 </shape>
+        <shape>8 X 8 7 6 X </shape>
+        <shape>X X 10 10 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>C5</name>
+        <shape>9 11 11 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>C5dim</name>
+        <shape>9 10 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>C6</name>
+        <shape>8 X 0 2 8 X </shape>
+        <shape>X 3 2 2 1 X </shape>
+        <shape>8 X 6 1 6 1 </shape>
+        <shape>X 3 5 2 5 X </shape>
+        <shape>X 3 X 5 5 5 </shape>
+        <shape>X X 10 12 10 12 </shape>
+        <shape>8 X 5 5 5 5 </shape>
+    </Chord>
+    <Chord>
+        <name>C6(9)</name>
+        <shape>X 3 2 2 3 X </shape>
+        <shape>X 3 2 2 3 3 </shape>
+        <shape>8 X 7 7 8 X </shape>
+        <shape>X X 6 1 10 10 </shape>
+        <shape>8 X 15 15 10 10 </shape>
+        <shape>8 7 7 7 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C6/9</name>
+        <shape>X 3 2 2 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>C6/E</name>
+        <shape>X 7 X 5 8 5 </shape>
+        <shape>0 X X 2 1 3 </shape>
+        <shape>X X 2 2 1 3 </shape>
+        <shape>12 X 10 12 10 X </shape>
+        <shape>X 7 5 5 5 5 </shape>
+    </Chord>
+    <Chord>
+        <name>C6/G</name>
+        <shape>3 X 2 2 1 X </shape>
+        <shape>X X 5 5 5 5 </shape>
+        <shape>X 10 6 1 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>C7</name>
+        <shape>X 3 2 3 1 X </shape>
+        <shape>X 3 5 3 5 3 </shape>
+        <shape>8 10 13 2 12 2 </shape>
+        <shape>8 10 13 2 0 2 </shape>
+        <shape>8 X 6 1 0 2 </shape>
+        <shape>8 X 13 2 8 X </shape>
+        <shape>X X 6 1 0 2 </shape>
+        <shape>X X 10 12 11 12 </shape>
+        <shape>X 3 X 5 5 6 </shape>
+    </Chord>
+    <Chord>
+        <name>C7(#11)</name>
+        <shape>8 X 13 2 7 X </shape>
+        <shape>X 3 4 3 5 X </shape>
+        <shape>X X 10 11 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>C7(#5)</name>
+        <shape>X 3 5 3 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>C7(#9)</name>
+        <shape>X 3 2 3 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>C7(13)</name>
+        <shape>X 3 5 3 5 5 </shape>
+        <shape>8 X 13 2 10 X </shape>
+        <shape>8 10 13 2 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>C7(9)</name>
+        <shape>X 3 2 3 3 X </shape>
+        <shape>8 X 8 7 5 X </shape>
+        <shape>X X 6 1 11 10 </shape>
+        <shape>X 3 5 3 3 3 </shape>
+    </Chord>
+    <Chord>
+        <name>C7(b13)</name>
+        <shape>X 3 5 3 5 4 </shape>
+        <shape>8 X 13 2 9 X </shape>
+        <shape>8 10 13 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C7(b5)</name>
+        <shape>8 X 13 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>C7(b9)</name>
+        <shape>X 3 2 3 2 X </shape>
+        <shape>X X 6 1 0 2 </shape>
+        <shape>8 X 8 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>C7+5</name>
+        <shape>X 1 2 1 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>C7+9</name>
+        <shape>X 3 2 3 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>C7-5</name>
+        <shape>X 3 4 3 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>C7-9</name>
+        <shape>X 3 2 3 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>C7/E</name>
+        <shape>X X 2 3 1 3 </shape>
+        <shape>X 7 8 5 8 X </shape>
+        <shape>12 X 10 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>C7/G</name>
+        <shape>3 X 2 3 1 X </shape>
+        <shape>X X 5 5 5 6 </shape>
+    </Chord>
+    <Chord>
+        <name>C7sus</name>
+        <shape>X 3 5 3 6 3 </shape>
+        <shape>8 10 8 10 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>C7sus4</name>
+        <shape>X 3 3 3 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>C9</name>
+        <shape>X 3 2 3 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>C9-5</name>
+        <shape>2 3 2 3 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>CM7</name>
+        <shape>X 3 2 0 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>CM7b5</name>
+        <shape>X 3 4 4 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>CM9</name>
+        <shape>X 3 2 4 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>Caug</name>
+        <shape>X 3 X 5 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Cdim</name>
+        <shape>X 3 4 2 4 X </shape>
+        <shape>8 X 0 2 7 X </shape>
+        <shape>X X 10 11 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Cdim(b13)</name>
+        <shape>X 3 X 2 4 4 </shape>
+        <shape>8 X 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Chalf-dim</name>
+        <shape>X 3 4 3 4 X </shape>
+        <shape>8 X 12 2 7 X </shape>
+        <shape>X X 10 11 11 11 </shape>
+        <shape>X 3 X 3 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm</name>
+        <shape>X 3 5 5 4 3 </shape>
+        <shape>8 10 6 1 12 2 </shape>
+        <shape>X X 6 1 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm(add9)</name>
+        <shape>8 10 6 1 8 10 </shape>
+        <shape>X 3 5 7 4 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm(maj7)</name>
+        <shape>X 3 5 4 4 3 </shape>
+        <shape>X 3 X 4 4 3 </shape>
+        <shape>8 X 0 2 8 X </shape>
+        <shape>X X 10 12 12 11 </shape>
+        <shape>8 10 0 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm/A</name>
+        <shape>5 X 5 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm/Bb</name>
+        <shape>6 X 5 5 4 X </shape>
+        <shape>X X 12 2 12 2 </shape>
+        <shape>X 1 1 0 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm/D</name>
+        <shape>X 5 5 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm/Eb</name>
+        <shape>X 6 5 5 4 X </shape>
+        <shape>X 6 5 5 8 X </shape>
+        <shape>X 6 X 2 12 2 </shape>
+        <shape>X 6 X 5 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm/G</name>
+        <shape>3 3 5 5 4 3 </shape>
+        <shape>X X 5 5 4 3 </shape>
+        <shape>X 10 6 1 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm/G#</name>
+        <shape>4 X 5 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm6</name>
+        <shape>X 3 X 2 4 3 </shape>
+        <shape>8 X 0 2 8 X </shape>
+        <shape>8 10 6 1 6 1 </shape>
+        <shape>X X 10 12 10 11 </shape>
+        <shape>8 X X 2 6 1 </shape>
+        <shape>X 3 X 5 4 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm6/Eb</name>
+        <shape>X X 1 2 1 3 </shape>
+        <shape>X 6 7 5 8 X </shape>
+        <shape>11 X 10 12 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm6/G</name>
+        <shape>X 10 6 1 10 X </shape>
+        <shape>X X 5 5 4 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm7</name>
+        <shape>X 3 5 3 4 3 </shape>
+        <shape>8 10 12 2 12 2 </shape>
+        <shape>8 10 6 1 0 2 </shape>
+        <shape>X 3 X 3 4 3 </shape>
+        <shape>8 X 12 2 8 X </shape>
+        <shape>X X 6 1 0 2 </shape>
+        <shape>8 X X 2 8 6 </shape>
+        <shape>X X 10 12 11 11 </shape>
+        <shape>X 3 1 3 1 X </shape>
+        <shape>X 3 X 5 4 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm7(11)</name>
+        <shape>X 3 X 3 4 1 </shape>
+        <shape>8 X 12 2 6 X </shape>
+        <shape>X X 10 10 11 11 </shape>
+        <shape>X 3 3 3 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm7(9)</name>
+        <shape>X 3 1 3 3 X </shape>
+        <shape>X X 6 1 11 10 </shape>
+        <shape>8 10 12 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Cm7/Eb</name>
+        <shape>X 6 X 5 4 6 </shape>
+        <shape>11 X 6 1 11 X </shape>
+        <shape>11 X X 2 0 2 </shape>
+        <shape>11 X 10 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm7/G</name>
+        <shape>3 X 1 3 1 X </shape>
+        <shape>X X 5 5 4 6 </shape>
+        <shape>X 10 6 1 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cm9</name>
+        <shape>X 3 1 3 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>Cmaj7</name>
+        <shape>X 3 2 0 0 X </shape>
+        <shape>X 3 5 4 5 3 </shape>
+        <shape>8 X 1 2 8 X </shape>
+        <shape>8 10 1 2 12 2 </shape>
+        <shape>X X 10 12 12 12 </shape>
+        <shape>X X 6 1 8 7 </shape>
+        <shape>8 X 15 15 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Cmaj7(9)</name>
+        <shape>X 3 2 4 3 X </shape>
+        <shape>X X 6 1 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Cmaj7/E</name>
+        <shape>X 7 X 5 8 7 </shape>
+        <shape>12 X 10 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Cmaj7/G</name>
+        <shape>3 X 2 4 1 X </shape>
+        <shape>X X 5 5 5 7 </shape>
+        <shape>X 10 6 1 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Csus</name>
+        <shape>X 3 5 5 6 3 </shape>
+        <shape>X 3 2 0 1 1 </shape>
+        <shape>8 10 10 10 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Csus2</name>
+        <shape>X 3 5 5 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>Csus4</name>
+        <shape>X 3 3 0 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>Csus9</name>
+        <shape>X 3 5 5 3 3 </shape>
+    </Chord>
+    <Chord>
+        <name>D</name>
+        <shape>X X 0 2 3 2 </shape>
+        <shape>X 5 7 7 7 5 </shape>
+        <shape>10 12 12 11 10 10 </shape>
+        <shape>X 5 4 2 3 2 </shape>
+        <shape>10 X 7 7 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#</name>
+        <shape>X 6 12 2 8 6 </shape>
+        <shape>X X 1 3 4 3 </shape>
+        <shape>X 6 5 3 4 3 </shape>
+        <shape>11 X 12 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#(5)</name>
+        <shape>X X 1 3 4 X </shape>
+        <shape>X 6 12 2 X X </shape>
+    </Chord>
+    <Chord>
+        <name>D#(add9)</name>
+        <shape>X 6 5 3 6 X </shape>
+        <shape>11 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#/A#</name>
+        <shape>6 6 12 2 8 6 </shape>
+        <shape>6 X 5 3 4 3 </shape>
+        <shape>X 1 X 3 4 3 </shape>
+        <shape>X X 12 2 8 11 </shape>
+    </Chord>
+    <Chord>
+        <name>D#/C#</name>
+        <shape>X 4 X 3 4 3 </shape>
+        <shape>X 4 5 3 4 X </shape>
+        <shape>9 X 12 2 8 X </shape>
+        <shape>X X 11 12 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>D#/F</name>
+        <shape>X X 3 3 4 3 </shape>
+        <shape>X 2 12 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#/G</name>
+        <shape>3 X 1 3 4 X </shape>
+        <shape>X 10 12 2 11 X </shape>
+        <shape>X X 5 3 4 3 </shape>
+        <shape>X 10 12 2 8 X </shape>
+        <shape>3 6 5 3 4 3 </shape>
+        <shape>X X 5 3 4 6 </shape>
+        <shape>X 10 X 12 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>D#4/7(9)</name>
+        <shape>X X 1 1 2 1 </shape>
+        <shape>X 6 6 6 6 X </shape>
+        <shape>X 6 6 6 6 6 </shape>
+        <shape>11 X 11 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#6</name>
+        <shape>X X 1 3 1 3 </shape>
+        <shape>11 X 10 12 11 X </shape>
+        <shape>X 6 8 5 8 X </shape>
+        <shape>X 6 5 5 4 X </shape>
+        <shape>X 6 X 2 12 2 </shape>
+        <shape>11 X 12 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#6(9)</name>
+        <shape>X 6 5 5 6 X </shape>
+        <shape>X X 1 0 1 1 </shape>
+        <shape>X 6 5 5 6 6 </shape>
+        <shape>11 X 10 10 11 X </shape>
+        <shape>11 10 10 10 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>D#6/A#</name>
+        <shape>X 1 1 0 1 X </shape>
+        <shape>X X 12 2 12 2 </shape>
+        <shape>6 X 5 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#6/G</name>
+        <shape>3 X 1 3 1 X </shape>
+        <shape>X X 5 5 4 6 </shape>
+        <shape>X 10 X 2 0 2 </shape>
+        <shape>3 X X 5 4 6 </shape>
+        <shape>X 10 12 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#7</name>
+        <shape>X X 1 3 2 3 </shape>
+        <shape>X 6 5 6 4 X </shape>
+        <shape>X 6 8 6 8 6 </shape>
+        <shape>11 X 11 12 11 X </shape>
+        <shape>X 6 X 2 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(#11)</name>
+        <shape>11 X 11 12 10 X </shape>
+        <shape>X 6 7 6 8 X </shape>
+        <shape>X X 1 2 2 3 </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(#5)</name>
+        <shape>X 6 8 6 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(#9)</name>
+        <shape>X 6 5 6 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(13)</name>
+        <shape>X 6 8 6 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(9)</name>
+        <shape>X 6 5 6 6 X </shape>
+        <shape>X X 1 0 2 1 </shape>
+        <shape>11 X 11 10 8 X </shape>
+        <shape>X 6 8 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(b13)</name>
+        <shape>X 6 8 6 8 7 </shape>
+        <shape>11 X 11 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(b5)</name>
+        <shape>11 X 11 12 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#7(b9)</name>
+        <shape>X 6 5 6 5 X </shape>
+        <shape>X X 1 0 2 0 </shape>
+        <shape>11 X 0 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#7/A#</name>
+        <shape>6 X 5 6 4 X </shape>
+        <shape>X X 12 2 13 2 </shape>
+        <shape>X 1 1 0 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#7/G</name>
+        <shape>3 X 1 3 2 X </shape>
+        <shape>X X 5 6 4 6 </shape>
+        <shape>X 10 0 2 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#7sus</name>
+        <shape>X X 1 3 2 4 </shape>
+        <shape>X 6 8 6 9 6 </shape>
+    </Chord>
+    <Chord>
+        <name>D#aug</name>
+        <shape>X 6 X 2 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>D#dim</name>
+        <shape>X X 1 2 1 2 </shape>
+        <shape>X 6 7 5 7 X </shape>
+        <shape>11 X 10 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#dim(b13)</name>
+        <shape>X 6 X 5 7 7 </shape>
+        <shape>11 X 10 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#half-dim</name>
+        <shape>X X 1 2 2 2 </shape>
+        <shape>X 6 7 6 7 X </shape>
+        <shape>11 X 11 11 10 X </shape>
+        <shape>X 6 X 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m</name>
+        <shape>X 6 12 2 7 6 </shape>
+        <shape>X X 1 3 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m(add9)</name>
+        <shape>X 6 8 10 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m(maj7)</name>
+        <shape>X 6 8 7 7 6 </shape>
+        <shape>X X 1 3 3 2 </shape>
+        <shape>X 6 X 7 7 6 </shape>
+        <shape>11 X 12 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m/A#</name>
+        <shape>6 6 12 2 7 6 </shape>
+        <shape>X X 12 2 7 6 </shape>
+        <shape>X 1 X 3 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m/B</name>
+        <shape>X 2 X 3 4 2 </shape>
+        <shape>7 X 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m/C</name>
+        <shape>X 3 X 3 4 2 </shape>
+        <shape>8 X 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m/C#</name>
+        <shape>X 4 X 3 4 2 </shape>
+        <shape>X 4 4 3 4 X </shape>
+        <shape>9 X 12 2 7 X </shape>
+        <shape>X X 11 11 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m/F</name>
+        <shape>X X 3 3 4 2 </shape>
+        <shape>X 2 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m/F#</name>
+        <shape>2 X 1 3 4 X </shape>
+        <shape>X X 4 3 4 2 </shape>
+        <shape>15 15 12 2 11 X </shape>
+        <shape>15 15 12 2 7 X </shape>
+        <shape>15 15 X 11 11 11 </shape>
+        <shape>15 15 X 2 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m6</name>
+        <shape>X 6 X 5 7 6 </shape>
+        <shape>11 X 10 11 11 X </shape>
+        <shape>X X 1 3 1 2 </shape>
+        <shape>X 6 X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m6/A#</name>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m6/F#</name>
+        <shape>2 X 1 3 1 X </shape>
+        <shape>X X 4 5 4 6 </shape>
+        <shape>15 15 6 1 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7</name>
+        <shape>X 6 8 6 7 6 </shape>
+        <shape>X X 1 3 2 2 </shape>
+        <shape>X 6 X 6 7 6 </shape>
+        <shape>X 6 X 2 0 2 </shape>
+        <shape>11 X 11 11 11 X </shape>
+        <shape>11 X X 11 0 2 </shape>
+        <shape>X 6 4 6 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7(11)</name>
+        <shape>X 6 X 6 7 4 </shape>
+        <shape>11 X 11 11 9 X </shape>
+        <shape>X X 1 1 2 2 </shape>
+        <shape>X 6 6 6 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7(5b)</name>
+        <shape>X X 1 2 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7(9)</name>
+        <shape>X 6 4 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7(b5)</name>
+        <shape>X X 1 2 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7/A#</name>
+        <shape>6 X 4 6 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#m7/F#</name>
+        <shape>2 X 1 3 2 X </shape>
+        <shape>15 15 X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D#maj7</name>
+        <shape>X 6 8 7 8 6 </shape>
+        <shape>X X 1 3 3 3 </shape>
+        <shape>X 6 5 3 3 3 </shape>
+        <shape>11 X 12 12 11 X </shape>
+        <shape>11 X X 12 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D#maj7(9)</name>
+        <shape>X 6 5 7 6 X </shape>
+        <shape>X X 1 0 3 1 </shape>
+    </Chord>
+    <Chord>
+        <name>D#maj7/A#</name>
+        <shape>6 X 5 7 4 X </shape>
+        <shape>X X 12 2 8 10 </shape>
+        <shape>X 1 1 0 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>D#maj7/G</name>
+        <shape>3 X 1 3 3 X </shape>
+        <shape>X 10 X 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D#sus</name>
+        <shape>X 6 12 2 9 6 </shape>
+        <shape>X X 1 3 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>D#sus9</name>
+        <shape>X 6 12 2 6 6 </shape>
+        <shape>X X 1 3 4 1 </shape>
+    </Chord>
+    <Chord>
+        <name>D(5)</name>
+        <shape>X 5 7 7 X X </shape>
+        <shape>X X 0 2 3 X </shape>
+        <shape>10 12 12 X X X </shape>
+    </Chord>
+    <Chord>
+        <name>D(add9)</name>
+        <shape>X X 12 11 10 12 </shape>
+        <shape>X 5 4 2 5 X </shape>
+        <shape>10 X 12 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>D+5</name>
+        <shape>X 5 4 3 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>D-5</name>
+        <shape>X 6 7 8 8 X</shape>
+    </Chord>
+    <Chord>
+        <name>D/A</name>
+        <shape>X 0 X 2 3 2 </shape>
+        <shape>X 0 4 2 3 X </shape>
+        <shape>5 5 7 7 7 5 </shape>
+        <shape>X 12 12 11 10 10 </shape>
+        <shape>X X 7 7 7 10 </shape>
+        <shape>5 X 4 2 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D/Ab</name>
+        <shape>4 0 0 2 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>D/B</name>
+        <shape>X 2 0 2 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>D/Bb</name>
+        <shape>X 1 0 2 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>D/C</name>
+        <shape>X 3 X 2 3 2 </shape>
+        <shape>8 X 7 7 7 X </shape>
+        <shape>X 3 4 2 3 X </shape>
+        <shape>X X 10 11 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D/C#</name>
+        <shape>X 4 4 2 3 2 </shape>
+        <shape>9 X 7 7 7 X </shape>
+        <shape>X X 11 11 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D/E</name>
+        <shape>X X 2 2 3 2 </shape>
+        <shape>X 7 7 7 7 X </shape>
+        <shape>12 X 12 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>D/F</name>
+        <shape>1 0 0 2 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>D/F#</name>
+        <shape>2 X 0 2 3 X </shape>
+        <shape>X X 4 2 3 2 </shape>
+        <shape>X X 4 2 3 5 </shape>
+        <shape>15 15 7 7 10 X </shape>
+        <shape>15 15 X 11 10 10 </shape>
+        <shape>15 15 7 7 7 X </shape>
+        <shape>15 15 12 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>D/G</name>
+        <shape>3 0 0 2 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>D11</name>
+        <shape>X X 0 0 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>D13</name>
+        <shape>X 6 5 6 6 8</shape>
+    </Chord>
+    <Chord>
+        <name>D3</name>
+        <shape>2 5 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>D4/7(9)</name>
+        <shape>X 5 5 5 5 X </shape>
+        <shape>X 5 5 5 5 5 </shape>
+        <shape>X X 0 0 1 0 </shape>
+        <shape>10 X 6 1 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>D5</name>
+        <shape>11 13 13 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>D5dim</name>
+        <shape>11 12 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>D6</name>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>10 X 9 11 10 X </shape>
+        <shape>X 5 4 4 3 X </shape>
+        <shape>10 X 12 11 12 10 </shape>
+        <shape>X 5 X 7 7 7 </shape>
+        <shape>10 X 7 7 7 7 </shape>
+    </Chord>
+    <Chord>
+        <name>D6(9)</name>
+        <shape>X 5 4 4 5 X </shape>
+        <shape>10 X 1 2 10 X </shape>
+        <shape>X X 12 11 12 12 </shape>
+        <shape>6 1 1 2 10 10 </shape>
+        <shape>10 X X 11 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>D6/9</name>
+        <shape>X 5 4 4 5 5</shape>
+    </Chord>
+    <Chord>
+        <name>D6/A</name>
+        <shape>X X 7 7 7 7 </shape>
+        <shape>5 X 4 4 3 X </shape>
+        <shape>X 12 12 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>D6/F#</name>
+        <shape>2 X 0 2 0 X </shape>
+        <shape>X X 4 4 3 5 </shape>
+        <shape>15 15 X 7 10 7 </shape>
+        <shape>15 15 7 7 7 7 </shape>
+        <shape>2 X X 4 3 5 </shape>
+    </Chord>
+    <Chord>
+        <name>D7</name>
+        <shape>X X 0 2 1 2 </shape>
+        <shape>X 5 7 5 7 5 </shape>
+        <shape>X 5 4 5 3 X </shape>
+        <shape>10 12 10 11 10 10 </shape>
+        <shape>10 X 10 11 10 X </shape>
+        <shape>X 5 X 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D7(#11)</name>
+        <shape>10 X 10 11 9 X </shape>
+        <shape>X X 0 1 1 2 </shape>
+        <shape>X 5 6 5 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7(#5)</name>
+        <shape>X 5 7 5 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>D7(#9)</name>
+        <shape>X 5 4 5 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7(13)</name>
+        <shape>X 5 7 5 7 7 </shape>
+        <shape>10 X 10 11 12 X </shape>
+        <shape>10 12 10 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D7(9)</name>
+        <shape>X 5 4 5 5 X </shape>
+        <shape>10 X 6 1 7 X </shape>
+        <shape>X 5 7 5 5 5 </shape>
+    </Chord>
+    <Chord>
+        <name>D7(b13)</name>
+        <shape>X 5 7 5 7 6 </shape>
+        <shape>10 X 10 11 11 X </shape>
+        <shape>10 12 10 11 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D7(b5)</name>
+        <shape>10 X 10 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7(b9)</name>
+        <shape>X 5 4 5 4 X </shape>
+        <shape>10 X 6 1 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7+5</name>
+        <shape>X 3 4 3 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>D7+9</name>
+        <shape>X 6 5 6 7 X</shape>
+    </Chord>
+    <Chord>
+        <name>D7-5</name>
+        <shape>X 6 7 6 8 X</shape>
+    </Chord>
+    <Chord>
+        <name>D7-9</name>
+        <shape>X 5 4 5 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>D7/A</name>
+        <shape>5 X 4 5 3 X </shape>
+        <shape>X X 7 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D7/F#</name>
+        <shape>2 X 0 2 1 X </shape>
+        <shape>X X 4 5 3 5 </shape>
+        <shape>15 15 10 7 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7M</name>
+        <shape>X X 0 2 2 2 </shape>
+        <shape>X 5 7 6 7 5 </shape>
+        <shape>10 X 11 11 10 X </shape>
+        <shape>10 12 11 11 10 10 </shape>
+        <shape>X X 12 11 6 1 </shape>
+        <shape>X 5 4 2 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>D7M(9)</name>
+        <shape>X 4 3 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>D7sus</name>
+        <shape>X X 0 2 1 3 </shape>
+        <shape>X 5 7 5 8 5 </shape>
+        <shape>10 12 10 12 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>D7sus4</name>
+        <shape>X X 0 2 1 3</shape>
+    </Chord>
+    <Chord>
+        <name>D9</name>
+        <shape>X X 0 2 3 0 </shape>
+    </Chord>
+    <Chord>
+        <name>D9-5</name>
+        <shape>X X 0 1 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>DM7</name>
+        <shape>X X 0 2 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>DM7b5</name>
+        <shape>X X 0 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>DM9</name>
+        <shape>X X 4 2 2 0</shape>
+    </Chord>
+    <Chord>
+        <name>Daug</name>
+        <shape>X 5 X 7 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Db</name>
+        <shape>X 4 6 6 6 4 </shape>
+        <shape>9 11 11 10 1 2 </shape>
+        <shape>X 4 3 1 2 1 </shape>
+        <shape>9 X 6 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db(5)</name>
+        <shape>X 4 6 6 X X </shape>
+        <shape>9 11 11 X X X </shape>
+    </Chord>
+    <Chord>
+        <name>Db(add9)</name>
+        <shape>X 4 3 1 4 X </shape>
+        <shape>X X 11 10 9 11 </shape>
+        <shape>9 X 11 10 9 11 </shape>
+        <shape>9 X 0 2 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db/Ab</name>
+        <shape>4 4 6 6 6 4 </shape>
+        <shape>4 X 3 1 2 1 </shape>
+        <shape>X X 6 6 0 2 </shape>
+        <shape>X 11 11 10 1 2 </shape>
+        <shape>X 11 11 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db/B</name>
+        <shape>7 X 6 6 6 X </shape>
+        <shape>X 2 X 1 2 1 </shape>
+        <shape>X 2 3 1 2 X </shape>
+        <shape>X X 9 10 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Db/C</name>
+        <shape>X 3 3 1 2 1 </shape>
+        <shape>8 X 6 6 6 X </shape>
+        <shape>X X 10 10 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Db/Eb</name>
+        <shape>X X 1 1 2 1 </shape>
+        <shape>X 6 6 6 6 X </shape>
+        <shape>11 X 11 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db/F</name>
+        <shape>1 X X 1 2 1 </shape>
+        <shape>X X 3 1 2 1 </shape>
+        <shape>X X 3 1 2 4 </shape>
+        <shape>X 2 6 6 9 X </shape>
+        <shape>1 4 3 1 2 1 </shape>
+        <shape>X 2 X 10 1 2 </shape>
+        <shape>X 2 11 10 9 X </shape>
+        <shape>X 2 6 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db4/7(9)</name>
+        <shape>X 4 4 4 4 X </shape>
+        <shape>X 4 4 4 4 4 </shape>
+        <shape>9 X 0 2 7 X </shape>
+        <shape>X X 11 11 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Db6</name>
+        <shape>9 X 8 10 9 X </shape>
+        <shape>X 4 3 3 2 X </shape>
+        <shape>X 4 6 3 6 X </shape>
+        <shape>X 4 3 3 2 X </shape>
+        <shape>9 X 11 10 0 2 </shape>
+        <shape>X 4 X 6 6 6 </shape>
+        <shape>9 X 6 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Db6(9)</name>
+        <shape>X 4 3 3 4 X </shape>
+        <shape>X 4 3 3 4 4 </shape>
+        <shape>9 X 12 2 9 X </shape>
+        <shape>X X 11 10 11 11 </shape>
+        <shape>9 X X 10 11 11 </shape>
+        <shape>0 2 12 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Db6/Ab</name>
+        <shape>4 X 3 3 2 X </shape>
+        <shape>X X 6 6 6 6 </shape>
+        <shape>X 11 11 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db6/F</name>
+        <shape>X X 3 3 2 4 </shape>
+        <shape>X 2 6 6 6 6 </shape>
+        <shape>X 2 X 6 9 6 </shape>
+        <shape>1 X X 3 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7</name>
+        <shape>X 4 6 4 6 4 </shape>
+        <shape>X 4 3 4 2 X </shape>
+        <shape>9 11 9 10 1 2 </shape>
+        <shape>9 11 9 10 5 1 </shape>
+        <shape>9 X 9 10 9 X </shape>
+        <shape>9 X 11 10 5 1 </shape>
+        <shape>X 4 X 6 6 7 </shape>
+        <shape>X X 11 10 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(#11)</name>
+        <shape>9 X 9 10 8 X </shape>
+        <shape>X 4 5 4 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(#5)</name>
+        <shape>X 4 6 4 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(#9)</name>
+        <shape>X 4 3 4 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(13)</name>
+        <shape>X 4 6 4 6 6 </shape>
+        <shape>9 X 9 10 11 X </shape>
+        <shape>9 11 9 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(9)</name>
+        <shape>X 4 3 4 4 X </shape>
+        <shape>9 X 0 2 6 X </shape>
+        <shape>X X 11 10 12 11 </shape>
+        <shape>X 4 6 4 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(b13)</name>
+        <shape>X 4 6 4 6 5 </shape>
+        <shape>9 X 9 10 10 X </shape>
+        <shape>9 11 9 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(b5)</name>
+        <shape>9 X 9 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db7(b9)</name>
+        <shape>X 4 3 4 3 X </shape>
+        <shape>X X 11 10 12 10 </shape>
+        <shape>9 X 9 7 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db7/Ab</name>
+        <shape>4 X 3 4 2 X </shape>
+        <shape>X X 6 6 6 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Db7/F</name>
+        <shape>X X 3 4 2 4 </shape>
+        <shape>X 2 9 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Db7sus</name>
+        <shape>X 4 6 4 7 4 </shape>
+        <shape>9 11 9 11 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbaug</name>
+        <shape>X 4 X 6 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbdim</name>
+        <shape>X 4 5 3 5 X </shape>
+        <shape>9 X 13 2 8 X </shape>
+        <shape>X X 11 12 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbdim(b13)</name>
+        <shape>X 4 X 3 5 5 </shape>
+        <shape>9 X 13 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbhalf-dim</name>
+        <shape>X 4 5 4 5 X </shape>
+        <shape>9 X 1 2 8 X </shape>
+        <shape>X X 11 12 12 12 </shape>
+        <shape>X 4 X 4 5 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm</name>
+        <shape>X 4 6 6 5 4 </shape>
+        <shape>9 11 0 2 1 2 </shape>
+        <shape>X X 0 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm(add9)</name>
+        <shape>9 11 X 2 9 11 </shape>
+        <shape>X 4 X 2 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm(maj7)</name>
+        <shape>X 4 6 5 5 4 </shape>
+        <shape>9 11 6 1 1 2 </shape>
+        <shape>X 4 X 5 5 4 </shape>
+        <shape>9 X 6 1 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm/A</name>
+        <shape>X 0 X 1 2 0 </shape>
+        <shape>5 X 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm/Ab</name>
+        <shape>4 4 6 6 5 4 </shape>
+        <shape>X X 6 6 5 4 </shape>
+        <shape>X 11 X 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm/B</name>
+        <shape>X 2 2 1 2 X </shape>
+        <shape>X X 1 2 1 2 </shape>
+        <shape>7 X 6 6 5 X </shape>
+        <shape>X 2 X 1 2 0 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm/Bb</name>
+        <shape>X 1 X 1 2 0 </shape>
+        <shape>6 X 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm/E</name>
+        <shape>X 7 6 6 9 X </shape>
+        <shape>X 7 6 6 5 X </shape>
+        <shape>X X 2 1 2 0 </shape>
+        <shape>X 7 15 15 1 2 </shape>
+        <shape>X 7 X 6 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm/Eb</name>
+        <shape>X X 1 1 2 0 </shape>
+        <shape>X 6 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm6</name>
+        <shape>X 4 X 6 5 6 </shape>
+        <shape>9 X 13 2 9 X </shape>
+        <shape>9 11 0 2 0 2 </shape>
+        <shape>X 4 X 3 5 4 </shape>
+        <shape>9 X 15 15 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm6/Ab</name>
+        <shape>X X 6 6 5 6 </shape>
+        <shape>X 11 0 2 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm6/E</name>
+        <shape>X X 2 3 2 4 </shape>
+        <shape>X 7 8 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm7</name>
+        <shape>X 4 6 4 5 4 </shape>
+        <shape>9 11 1 2 1 2 </shape>
+        <shape>X 4 X 4 5 4 </shape>
+        <shape>9 X 1 2 9 X </shape>
+        <shape>9 11 0 2 5 1 </shape>
+        <shape>X X 0 2 5 1 </shape>
+        <shape>9 X 15 15 9 7 </shape>
+        <shape>X 4 X 6 5 7 </shape>
+        <shape>X 4 2 4 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm7(11)</name>
+        <shape>X 4 X 4 5 2 </shape>
+        <shape>9 X 1 2 7 X </shape>
+        <shape>X 4 4 4 5 X </shape>
+        <shape>X X 11 11 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm7(9)</name>
+        <shape>X 4 2 4 4 X </shape>
+        <shape>X X 0 2 12 11 </shape>
+        <shape>9 11 1 2 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm7/Ab</name>
+        <shape>4 X 2 4 2 X </shape>
+        <shape>X X 6 6 5 7 </shape>
+        <shape>X 11 0 2 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbm7/E</name>
+        <shape>X 7 X 6 5 7 </shape>
+        <shape>12 X 15 15 5 1 </shape>
+        <shape>12 X 0 2 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbmaj7</name>
+        <shape>X 4 6 5 6 4 </shape>
+        <shape>9 X 10 10 9 X </shape>
+        <shape>X 4 3 1 1 1 </shape>
+        <shape>9 11 10 10 1 2 </shape>
+        <shape>9 X X 10 0 2 </shape>
+        <shape>X X 11 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbmaj7(9)</name>
+        <shape>X 4 3 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dbmaj7/Ab</name>
+        <shape>4 X 3 5 2 X </shape>
+        <shape>X X 6 6 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbmaj7/F</name>
+        <shape>X 2 X 6 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbsus</name>
+        <shape>X 4 6 6 7 4 </shape>
+        <shape>9 11 11 11 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dbsus9</name>
+        <shape>X 4 6 6 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Ddim</name>
+        <shape>X X 0 1 0 1 </shape>
+        <shape>X 5 6 4 6 X </shape>
+        <shape>10 X 9 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ddim(b13)</name>
+        <shape>X 5 X 4 6 6 </shape>
+        <shape>10 X 9 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dhalf-dim</name>
+        <shape>X X 0 1 1 1 </shape>
+        <shape>X 5 6 5 6 X </shape>
+        <shape>10 X 10 10 9 X </shape>
+        <shape>X 5 X 5 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm</name>
+        <shape>X X 0 2 3 1 </shape>
+        <shape>X 5 7 7 6 5 </shape>
+        <shape>10 12 12 10 10 10 </shape>
+        <shape>X X 12 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm(add9)</name>
+        <shape>10 12 12 10 10 12 </shape>
+        <shape>X 5 X 2 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm(maj7)</name>
+        <shape>X X 0 2 2 1 </shape>
+        <shape>X 5 7 6 6 5 </shape>
+        <shape>10 12 11 10 10 10 </shape>
+        <shape>X 5 X 6 6 5 </shape>
+        <shape>10 X 11 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm/A</name>
+        <shape>X 0 X 2 3 1 </shape>
+        <shape>5 5 7 7 6 5 </shape>
+        <shape>X X 7 7 6 5 </shape>
+        <shape>X 12 12 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm/A#</name>
+        <shape>6 X 7 7 6 X </shape>
+        <shape>X 1 X 2 3 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm/B</name>
+        <shape>X 2 X 2 3 1 </shape>
+        <shape>7 X 7 7 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm/C</name>
+        <shape>X 3 X 2 3 1 </shape>
+        <shape>X 3 3 2 3 X </shape>
+        <shape>8 X 7 7 6 X </shape>
+        <shape>X X 10 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm/E</name>
+        <shape>X X 2 2 3 1 </shape>
+        <shape>X 7 7 7 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm/F</name>
+        <shape>1 X 0 2 3 X </shape>
+        <shape>X X 3 2 3 1 </shape>
+        <shape>X 2 7 7 10 X </shape>
+        <shape>X 2 X 7 10 10 </shape>
+        <shape>X 2 7 7 6 X </shape>
+        <shape>X 2 X 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm6</name>
+        <shape>X X 0 2 0 1 </shape>
+        <shape>X 5 X 4 6 5 </shape>
+        <shape>10 X 9 10 10 X </shape>
+        <shape>X 5 X 7 6 7 </shape>
+        <shape>10 X X 10 12 10 </shape>
+        <shape>10 12 12 10 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm6/A</name>
+        <shape>X X 7 7 6 7 </shape>
+        <shape>X 12 12 10 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm6/F</name>
+        <shape>1 X 0 2 0 X </shape>
+        <shape>X X 3 4 3 5 </shape>
+        <shape>X 2 9 7 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm7</name>
+        <shape>X X 0 2 1 1 </shape>
+        <shape>X 5 7 5 6 5 </shape>
+        <shape>10 12 10 10 10 10 </shape>
+        <shape>X 5 X 5 6 5 </shape>
+        <shape>X 5 3 5 3 X </shape>
+        <shape>X 5 X 7 0 2 </shape>
+        <shape>10 X X 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm7(11)</name>
+        <shape>X 5 X 5 6 3 </shape>
+        <shape>10 X 10 10 8 X </shape>
+        <shape>X X 0 0 1 1 </shape>
+        <shape>X 5 5 5 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm7(9)</name>
+        <shape>X 5 3 5 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dm7/A</name>
+        <shape>X X 7 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dm9</name>
+        <shape>X X 0 2 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>Dmaj7(9)</name>
+        <shape>X 5 4 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Dmaj7/A</name>
+        <shape>5 X 4 6 3 X </shape>
+        <shape>X X 7 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Dmaj7/F#</name>
+        <shape>2 X 0 2 2 X </shape>
+        <shape>15 15 X 7 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Dsus</name>
+        <shape>X X 0 2 3 3 </shape>
+        <shape>X 5 7 7 8 5 </shape>
+        <shape>10 12 12 12 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Dsus2</name>
+        <shape>X X 0 2 3 0</shape>
+    </Chord>
+    <Chord>
+        <name>Dsus4</name>
+        <shape>X X 0 2 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>Dsus9</name>
+        <shape>X X 0 2 3 0 </shape>
+        <shape>X 5 7 7 5 5 </shape>
+    </Chord>
+    <Chord>
+        <name>E</name>
+        <shape>0 2 2 1 0 X </shape>
+        <shape>X 7 1 2 9 7 </shape>
+        <shape>X X 2 4 5 4 </shape>
+        <shape>X 7 6 4 5 4 </shape>
+        <shape>12 X 1 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>E(5)</name>
+        <shape>0 2 2 X X X </shape>
+        <shape>X 7 1 2 X X </shape>
+        <shape>X X 2 4 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>E(add9)</name>
+        <shape>0 2 2 1 0 2 </shape>
+        <shape>0 2 4 1 0 X </shape>
+        <shape>X X 2 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>E(add9)</name>
+        <shape>X 7 6 4 7 X </shape>
+        <shape>12 X 9 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>E+5</name>
+        <shape>X 3 2 1 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>E-5</name>
+        <shape>0 1 2 1 X 0</shape>
+    </Chord>
+    <Chord>
+        <name>E/B</name>
+        <shape>X 2 2 1 0 X </shape>
+        <shape>7 7 1 2 9 7 </shape>
+        <shape>7 X 6 4 5 4 </shape>
+        <shape>X 2 X 4 5 4 </shape>
+        <shape>X X 1 2 9 12 </shape>
+    </Chord>
+    <Chord>
+        <name>E/D</name>
+        <shape>X X 0 1 0 0 </shape>
+        <shape>X 5 X 4 5 4 </shape>
+        <shape>X 5 6 4 5 X </shape>
+        <shape>10 X 1 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>E/D#</name>
+        <shape>X X 1 1 0 0 </shape>
+        <shape>X 6 6 4 5 4 </shape>
+        <shape>11 X 1 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>E/F#</name>
+        <shape>2 X 2 1 0 X </shape>
+        <shape>X X 4 4 5 4 </shape>
+        <shape>15 15 1 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>E/G#</name>
+        <shape>4 X 2 4 5 X </shape>
+        <shape>X X 6 4 5 4 </shape>
+        <shape>X X 6 4 5 7 </shape>
+        <shape>X 11 1 2 9 X </shape>
+        <shape>X 11 1 2 12 X </shape>
+        <shape>4 7 6 4 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>E11</name>
+        <shape>0 2 2 2 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>E13</name>
+        <shape>0 X 0 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>E3</name>
+        <shape>5 8 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>E4/7(9)</name>
+        <shape>X X 2 2 3 2 </shape>
+        <shape>X 7 7 7 7 X </shape>
+        <shape>X 7 7 7 7 7 </shape>
+        <shape>12 X 12 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>E5</name>
+        <shape>0 2 2 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>E5dim</name>
+        <shape>0 1 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>E6</name>
+        <shape>0 2 2 1 2 X </shape>
+        <shape>X X 2 4 2 4 </shape>
+        <shape>X 7 15 15 1 2 </shape>
+        <shape>X 7 9 6 9 X </shape>
+        <shape>X 7 6 6 5 X </shape>
+        <shape>12 X 1 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>E6(9)</name>
+        <shape>X X 2 1 2 2 </shape>
+        <shape>0 X 2 1 2 2 </shape>
+        <shape>X 7 6 6 7 X </shape>
+        <shape>X 7 6 6 7 7 </shape>
+        <shape>12 X 11 11 12 X </shape>
+        <shape>12 11 11 11 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>E6/9</name>
+        <shape>0 0 2 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>E6/B</name>
+        <shape>X 2 2 1 2 X </shape>
+        <shape>X X 1 2 1 2 </shape>
+        <shape>7 X 6 6 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>E6/G#</name>
+        <shape>4 X 2 4 2 X </shape>
+        <shape>X 11 15 15 5 1 </shape>
+        <shape>X X 6 6 5 7 </shape>
+        <shape>X 11 1 2 1 2 </shape>
+        <shape>4 X X 6 5 7 </shape>
+    </Chord>
+    <Chord>
+        <name>E7</name>
+        <shape>0 2 0 1 0 X </shape>
+        <shape>X X 2 1 3 0 </shape>
+        <shape>X 7 9 7 9 7 </shape>
+        <shape>X X 2 4 3 4 </shape>
+        <shape>X 7 6 7 5 X </shape>
+        <shape>0 2 2 1 3 X </shape>
+        <shape>0 X 0 1 0 X </shape>
+        <shape>0 2 0 1 3 X </shape>
+        <shape>X 7 15 15 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>E7(#11)</name>
+        <shape>X X 2 3 3 4 </shape>
+        <shape>X 7 8 7 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>E7(#5)</name>
+        <shape>X 7 9 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>E7(#9)</name>
+        <shape>X 7 6 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>E7(13)</name>
+        <shape>0 2 0 1 2 X </shape>
+        <shape>0 X 0 1 2 X </shape>
+        <shape>X 7 9 7 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>E7(9)</name>
+        <shape>X X 2 1 3 2 </shape>
+        <shape>X 7 6 7 7 X </shape>
+        <shape>X 7 9 7 7 7 </shape>
+        <shape>12 X 12 11 9 X </shape>
+        <shape>0 X 4 1 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>E7(b13)</name>
+        <shape>0 2 0 1 1 X </shape>
+        <shape>X 7 9 7 0 2 </shape>
+        <shape>0 X 0 1 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>E7(b5)</name>
+        <shape>X X 2 3 3 4 </shape>
+    </Chord>
+    <Chord>
+        <name>E7(b9)</name>
+        <shape>X X 2 1 3 1 </shape>
+        <shape>X 7 6 7 6 X </shape>
+        <shape>12 X 12 10 9 X </shape>
+        <shape>0 X 3 1 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>E7+5</name>
+        <shape>0 X 0 1 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>E7+9</name>
+        <shape>0 0 2 1 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>E7-5</name>
+        <shape>0 1 0 1 X 0</shape>
+    </Chord>
+    <Chord>
+        <name>E7-9</name>
+        <shape>0 X 0 1 0 1</shape>
+    </Chord>
+    <Chord>
+        <name>E7/B</name>
+        <shape>X 2 2 1 3 X </shape>
+        <shape>7 X 6 7 5 X </shape>
+        <shape>X X 1 2 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>E7/G#</name>
+        <shape>4 X 2 4 3 X </shape>
+        <shape>X X 6 7 5 7 </shape>
+        <shape>X 11 5 1 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>E7sus</name>
+        <shape>0 2 0 2 0 X </shape>
+        <shape>X X 2 4 3 5 </shape>
+        <shape>X 7 9 7 10 7 </shape>
+    </Chord>
+    <Chord>
+        <name>E7sus4</name>
+        <shape>0 2 0 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>E9</name>
+        <shape>0 2 0 1 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>E9-5</name>
+        <shape>0 X 2 3 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>EM7</name>
+        <shape>0 2 1 1 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>EM7b5</name>
+        <shape>X X 2 3 4 4</shape>
+    </Chord>
+    <Chord>
+        <name>EM9</name>
+        <shape>0 2 1 1 0 2</shape>
+    </Chord>
+    <Chord>
+        <name>Eaug</name>
+        <shape>X 7 15 15 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb</name>
+        <shape>X 6 12 2 8 6 </shape>
+        <shape>X X 1 3 4 3 </shape>
+        <shape>X 6 5 3 4 3 </shape>
+        <shape>11 X 12 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb(5)</name>
+        <shape>X X 1 3 4 X </shape>
+        <shape>X 6 12 2 X X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb(add9)</name>
+        <shape>X 6 5 3 6 X </shape>
+        <shape>11 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb+5</name>
+        <shape>X 7 6 5 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb-5</name>
+        <shape>X X 1 2 4 3</shape>
+    </Chord>
+    <Chord>
+        <name>Eb/Bb</name>
+        <shape>6 6 12 2 8 6 </shape>
+        <shape>6 X 5 3 4 3 </shape>
+        <shape>X 1 X 3 4 3 </shape>
+        <shape>X X 12 2 8 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb/D</name>
+        <shape>X 5 5 3 4 3 </shape>
+        <shape>10 X 12 2 8 X </shape>
+        <shape>X X 12 12 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb/Db</name>
+        <shape>X 4 X 3 4 3 </shape>
+        <shape>X 4 5 3 4 X </shape>
+        <shape>9 X 12 2 8 X </shape>
+        <shape>X X 11 12 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb/F</name>
+        <shape>X X 3 3 4 3 </shape>
+        <shape>X 2 12 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb/G</name>
+        <shape>3 X 1 3 4 X </shape>
+        <shape>X 10 12 2 11 X </shape>
+        <shape>X X 5 3 4 3 </shape>
+        <shape>X 10 12 2 8 X </shape>
+        <shape>3 6 5 3 4 3 </shape>
+        <shape>X X 5 3 4 6 </shape>
+        <shape>X 10 X 12 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb11</name>
+        <shape>X X 1 1 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>Eb13</name>
+        <shape>X 7 6 7 7 9</shape>
+    </Chord>
+    <Chord>
+        <name>Eb3</name>
+        <shape>4 7 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb4/7(9)</name>
+        <shape>X X 1 1 2 1 </shape>
+        <shape>X 6 6 6 6 X </shape>
+        <shape>X 6 6 6 6 6 </shape>
+        <shape>11 X 11 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb5</name>
+        <shape>12 14 14 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb5dim</name>
+        <shape>12 13 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb6</name>
+        <shape>X X 1 3 1 3 </shape>
+        <shape>11 X 10 12 11 X </shape>
+        <shape>X 6 8 5 8 X </shape>
+        <shape>X 6 5 5 4 X </shape>
+        <shape>X 6 X 2 12 2 </shape>
+        <shape>11 X 12 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb6(9)</name>
+        <shape>X 6 5 5 6 X </shape>
+        <shape>X X 1 0 1 1 </shape>
+        <shape>X 6 5 5 6 6 </shape>
+        <shape>11 X 10 10 11 X </shape>
+        <shape>11 10 10 10 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb6/9</name>
+        <shape>X X 1 0 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Eb6/Bb</name>
+        <shape>X 1 1 0 1 X </shape>
+        <shape>X X 12 2 12 2 </shape>
+        <shape>6 X 5 5 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb6/G</name>
+        <shape>3 X 1 3 1 X </shape>
+        <shape>X X 5 5 4 6 </shape>
+        <shape>X 10 X 2 0 2 </shape>
+        <shape>3 X X 5 4 6 </shape>
+        <shape>X 10 12 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7</name>
+        <shape>X X 1 3 2 3 </shape>
+        <shape>X 6 5 6 4 X </shape>
+        <shape>X 6 8 6 8 6 </shape>
+        <shape>11 X 11 12 11 X </shape>
+        <shape>X 6 X 2 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(#11)</name>
+        <shape>11 X 11 12 10 X </shape>
+        <shape>X 6 7 6 8 X </shape>
+        <shape>X X 1 2 2 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(#5)</name>
+        <shape>X 6 8 6 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(#9)</name>
+        <shape>X 6 5 6 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(13)</name>
+        <shape>X 6 8 6 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(9)</name>
+        <shape>X 6 5 6 6 X </shape>
+        <shape>X X 1 0 2 1 </shape>
+        <shape>11 X 11 10 8 X </shape>
+        <shape>X 6 8 6 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(b13)</name>
+        <shape>X 6 8 6 8 7 </shape>
+        <shape>11 X 11 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(b5)</name>
+        <shape>11 X 11 12 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7(b9)</name>
+        <shape>X 6 5 6 5 X </shape>
+        <shape>X X 1 0 2 0 </shape>
+        <shape>11 X 0 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7+5</name>
+        <shape>X 4 5 4 4 X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb7+9</name>
+        <shape>X X 1 0 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>Eb7-5</name>
+        <shape>X X 1 2 2 3</shape>
+    </Chord>
+    <Chord>
+        <name>Eb7-9</name>
+        <shape>X X 1 0 2 0</shape>
+    </Chord>
+    <Chord>
+        <name>Eb7/Bb</name>
+        <shape>6 X 5 6 4 X </shape>
+        <shape>X X 12 2 13 2 </shape>
+        <shape>X 1 1 0 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7/G</name>
+        <shape>3 X 1 3 2 X </shape>
+        <shape>X X 5 6 4 6 </shape>
+        <shape>X 10 0 2 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7sus</name>
+        <shape>X X 1 3 2 4 </shape>
+        <shape>X 6 8 6 9 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Eb7sus4</name>
+        <shape>X 7 7 7 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb9</name>
+        <shape>X 7 6 7 7 X</shape>
+    </Chord>
+    <Chord>
+        <name>Eb9-5</name>
+        <shape>X X 1 2 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>EbM7</name>
+        <shape>X 7 6 4 4 4</shape>
+    </Chord>
+    <Chord>
+        <name>EbM7b5</name>
+        <shape>X X 1 2 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>EbM9</name>
+        <shape>X X 1 0 3 1</shape>
+    </Chord>
+    <Chord>
+        <name>Ebaug</name>
+        <shape>X 6 X 2 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebdim</name>
+        <shape>X X 1 2 1 2 </shape>
+        <shape>X 6 7 5 7 X </shape>
+        <shape>11 X 10 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebdim(b13)</name>
+        <shape>X 6 X 5 7 7 </shape>
+        <shape>11 X 10 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebhalf-dim</name>
+        <shape>X X 1 2 2 2 </shape>
+        <shape>X 6 7 6 7 X </shape>
+        <shape>11 X 11 11 10 X </shape>
+        <shape>X 6 X 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm</name>
+        <shape>X 6 12 2 7 6 </shape>
+        <shape>X X 1 3 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm(add9)</name>
+        <shape>X 6 8 10 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm(maj7)</name>
+        <shape>X 6 8 7 7 6 </shape>
+        <shape>X X 1 3 3 2 </shape>
+        <shape>X 6 X 7 7 6 </shape>
+        <shape>11 X 12 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm/B</name>
+        <shape>X 2 X 3 4 2 </shape>
+        <shape>7 X 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm/Bb</name>
+        <shape>6 6 12 2 7 6 </shape>
+        <shape>X X 12 2 7 6 </shape>
+        <shape>X 1 X 3 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm/C</name>
+        <shape>X 3 X 3 4 2 </shape>
+        <shape>8 X 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm/Db</name>
+        <shape>X 4 X 3 4 2 </shape>
+        <shape>X 4 4 3 4 X </shape>
+        <shape>9 X 12 2 7 X </shape>
+        <shape>X X 11 11 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm/F</name>
+        <shape>X X 3 3 4 2 </shape>
+        <shape>X 2 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm/Gb</name>
+        <shape>2 X 1 3 4 X </shape>
+        <shape>X X 4 3 4 2 </shape>
+        <shape>15 15 12 2 11 X </shape>
+        <shape>15 15 12 2 7 X </shape>
+        <shape>15 15 X 11 11 11 </shape>
+        <shape>15 15 X 2 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm6</name>
+        <shape>X 6 X 5 7 6 </shape>
+        <shape>11 X 10 11 11 X </shape>
+        <shape>X X 1 3 1 2 </shape>
+        <shape>X 6 X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm6/Bb</name>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm6/Gb</name>
+        <shape>2 X 1 3 1 X </shape>
+        <shape>X X 4 5 4 6 </shape>
+        <shape>15 15 6 1 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm7</name>
+        <shape>X 6 8 6 7 6 </shape>
+        <shape>X X 1 3 2 2 </shape>
+        <shape>X 6 X 6 7 6 </shape>
+        <shape>X 6 X 2 0 2 </shape>
+        <shape>11 X 11 11 11 X </shape>
+        <shape>11 X X 11 0 2 </shape>
+        <shape>X 6 4 6 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm7(11)</name>
+        <shape>X 6 X 6 7 4 </shape>
+        <shape>11 X 11 11 9 X </shape>
+        <shape>X X 1 1 2 2 </shape>
+        <shape>X 6 6 6 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm7(9)</name>
+        <shape>X 6 4 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm7/Bb</name>
+        <shape>6 X 4 6 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm7/Gb</name>
+        <shape>2 X 1 3 2 X </shape>
+        <shape>15 15 X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebm9</name>
+        <shape>X 7 5 7 7 X</shape>
+    </Chord>
+    <Chord>
+        <name>Ebmaj7</name>
+        <shape>X 6 8 7 8 6 </shape>
+        <shape>X X 1 3 3 3 </shape>
+        <shape>X 6 5 3 3 3 </shape>
+        <shape>11 X 12 12 11 X </shape>
+        <shape>11 X X 12 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebmaj7(9)</name>
+        <shape>X 6 5 7 6 X </shape>
+        <shape>X X 1 0 3 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebmaj7/Bb</name>
+        <shape>6 X 5 7 4 X </shape>
+        <shape>X X 12 2 8 10 </shape>
+        <shape>X 1 1 0 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Ebmaj7/G</name>
+        <shape>3 X 1 3 3 X </shape>
+        <shape>X 10 X 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebsus</name>
+        <shape>X 6 12 2 9 6 </shape>
+        <shape>X X 1 3 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Ebsus2</name>
+        <shape>X X 1 3 4 1</shape>
+    </Chord>
+    <Chord>
+        <name>Ebsus4</name>
+        <shape>X 7 7 4 5 X</shape>
+    </Chord>
+    <Chord>
+        <name>Ebsus9</name>
+        <shape>X 6 12 2 6 6 </shape>
+        <shape>X X 1 3 4 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Edim</name>
+        <shape>X X 2 3 2 3 </shape>
+        <shape>X 7 8 6 8 X </shape>
+        <shape>12 X 11 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Edim(b13)</name>
+        <shape>X 7 X 6 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Ehalf-dim</name>
+        <shape>X X 2 3 3 3 </shape>
+        <shape>X 7 8 7 8 X </shape>
+        <shape>12 X 12 12 11 X </shape>
+        <shape>X 7 X 7 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Em</name>
+        <shape>0 2 2 0 0 X </shape>
+        <shape>X 7 1 2 8 7 </shape>
+        <shape>X X 2 0 0 0 </shape>
+        <shape>X X 2 4 5 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Em(add9)</name>
+        <shape>0 2 2 0 0 2 </shape>
+        <shape>0 2 4 0 0 X </shape>
+        <shape>X 7 9 11 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Em(maj7)</name>
+        <shape>0 2 1 0 0 X </shape>
+        <shape>X 7 0 2 8 7 </shape>
+        <shape>0 X 1 0 0 X </shape>
+        <shape>X X 2 4 4 3 </shape>
+        <shape>X 7 X 2 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Em/B</name>
+        <shape>X 2 2 0 0 0 </shape>
+        <shape>7 7 1 2 8 7 </shape>
+        <shape>X X 1 2 8 7 </shape>
+        <shape>X 2 X 4 5 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Em/C</name>
+        <shape>X 3 X 4 5 3 </shape>
+        <shape>8 X 1 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em/C#</name>
+        <shape>X 4 X 4 5 3 </shape>
+        <shape>9 X 1 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em/D</name>
+        <shape>X X 0 0 0 0 </shape>
+        <shape>X 5 5 4 5 X </shape>
+        <shape>X 5 X 4 5 3 </shape>
+        <shape>X X 12 12 12 12 </shape>
+        <shape>10 X 1 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em/F#</name>
+        <shape>X X 4 4 5 3 </shape>
+        <shape>15 15 1 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em/G</name>
+        <shape>3 X 2 4 5 X </shape>
+        <shape>X X 5 4 5 3 </shape>
+        <shape>X 10 1 2 12 X </shape>
+        <shape>X 10 1 2 8 X </shape>
+        <shape>X 10 X 12 12 12 </shape>
+        <shape>X 10 15 15 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Em6</name>
+        <shape>0 2 2 0 2 X </shape>
+        <shape>X 7 X 6 8 7 </shape>
+        <shape>X X 2 4 2 3 </shape>
+        <shape>0 X X 0 2 0 </shape>
+        <shape>12 X 11 12 12 X </shape>
+        <shape>X 7 15 15 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Em6/B</name>
+        <shape>X 2 2 0 2 X </shape>
+        <shape>X X 1 2 13 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Em6/G</name>
+        <shape>3 X 2 4 2 X </shape>
+        <shape>X X 5 6 5 7 </shape>
+        <shape>X 10 0 2 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em7</name>
+        <shape>0 2 0 0 0 X </shape>
+        <shape>0 2 2 0 3 X </shape>
+        <shape>X 7 9 7 8 7 </shape>
+        <shape>X X 2 4 3 3 </shape>
+        <shape>X 7 X 7 8 7 </shape>
+        <shape>X X 2 0 3 0 </shape>
+        <shape>X 7 15 15 8 10 </shape>
+        <shape>12 X 12 12 12 X </shape>
+        <shape>12 X X 12 12 10 </shape>
+        <shape>X 7 5 7 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em7(11)</name>
+        <shape>X 7 X 7 8 5 </shape>
+        <shape>12 X 12 12 10 X </shape>
+        <shape>X X 2 2 3 3 </shape>
+        <shape>X 7 7 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em7(9)</name>
+        <shape>X X 2 0 3 2 </shape>
+        <shape>0 2 X 0 3 2 </shape>
+        <shape>X 7 5 7 7 X </shape>
+        <shape>0 X 4 0 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>Em7/B</name>
+        <shape>X 2 2 0 3 X </shape>
+        <shape>7 X 5 7 5 X </shape>
+        <shape>X X 1 2 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Em7/G</name>
+        <shape>3 X 2 4 3 X </shape>
+        <shape>3 X X 0 3 0 </shape>
+        <shape>3 X 2 0 3 X </shape>
+        <shape>X 10 15 15 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Em9</name>
+        <shape>0 2 2 0 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>Emaj7</name>
+        <shape>0 2 1 1 0 X </shape>
+        <shape>X 7 0 2 9 7 </shape>
+        <shape>X X 2 4 4 4 </shape>
+        <shape>0 X 1 1 0 X </shape>
+        <shape>X 7 6 4 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Emaj7(9)</name>
+        <shape>X 7 0 2 7 X </shape>
+        <shape>X X 2 1 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Emaj7/B</name>
+        <shape>X 2 2 1 4 X </shape>
+        <shape>7 X 0 2 5 X </shape>
+        <shape>X X 1 2 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Emaj7/G#</name>
+        <shape>4 X 2 4 4 X </shape>
+        <shape>X 11 15 15 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Esus</name>
+        <shape>0 2 2 2 0 X </shape>
+        <shape>X X 2 4 5 5 </shape>
+        <shape>X 7 1 2 10 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Esus2</name>
+        <shape>X X 2 4 5 2</shape>
+    </Chord>
+    <Chord>
+        <name>Esus4</name>
+        <shape>0 2 2 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>Esus9</name>
+        <shape>X 7 1 2 7 7 </shape>
+        <shape>X X 2 4 5 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F</name>
+        <shape>1 3 3 2 1 1 </shape>
+        <shape>X 2 10 10 6 1 </shape>
+        <shape>X X 3 5 6 5 </shape>
+        <shape>X 2 7 5 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>F#</name>
+        <shape>2 4 4 3 2 2 </shape>
+        <shape>X X 4 6 7 6 </shape>
+        <shape>15 15 11 11 0 2 </shape>
+        <shape>15 15 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>F#(5)</name>
+        <shape>2 4 4 X X X </shape>
+        <shape>X X 4 6 7 X </shape>
+        <shape>15 15 11 11 X X </shape>
+    </Chord>
+    <Chord>
+        <name>F#(add9)</name>
+        <shape>2 X 4 3 2 4 </shape>
+        <shape>X X 4 3 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>F#(add9)</name>
+        <shape>15 15 8 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#+5</name>
+        <shape>X X 4 3 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#-5</name>
+        <shape>2 3 4 3 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>F#/A#</name>
+        <shape>X 1 X 3 2 2 </shape>
+        <shape>6 X 4 6 7 X </shape>
+        <shape>X X 8 6 7 6 </shape>
+        <shape>X X 8 6 0 2 </shape>
+        <shape>X 1 4 3 2 X </shape>
+        <shape>0 2 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>F#/C#</name>
+        <shape>X 4 4 3 2 2 </shape>
+        <shape>X 4 4 3 2 X </shape>
+        <shape>1 2 11 11 0 2 </shape>
+        <shape>X 4 X 6 7 6 </shape>
+        <shape>9 X 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>F#/E</name>
+        <shape>X X 2 3 2 2 </shape>
+        <shape>X 7 X 6 7 6 </shape>
+        <shape>X 7 8 6 7 X </shape>
+        <shape>12 X 11 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#/G#</name>
+        <shape>4 X 4 3 2 X </shape>
+        <shape>X X 6 6 7 6 </shape>
+        <shape>X 11 11 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#11</name>
+        <shape>2 X 2 1 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>F#13</name>
+        <shape>2 X 2 3 4 4</shape>
+    </Chord>
+    <Chord>
+        <name>F#3</name>
+        <shape>7 10 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>F#4/7(9)</name>
+        <shape>X X 4 4 5 4 </shape>
+        <shape>2 X 2 1 0 X </shape>
+        <shape>15 15 1 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#4/7(9)</name>
+        <shape>15 15 1 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F#5</name>
+        <shape>2 4 4 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>F#5dim</name>
+        <shape>2 3 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>F#6</name>
+        <shape>2 X 1 3 2 X </shape>
+        <shape>2 X 4 3 4 2 </shape>
+        <shape>X X 4 6 4 6 </shape>
+        <shape>15 15 X 11 11 11 </shape>
+        <shape>15 15 0 2 11 X </shape>
+        <shape>15 15 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#6(9)</name>
+        <shape>X X 4 3 4 4 </shape>
+        <shape>2 X X 3 4 4 </shape>
+        <shape>2 X 1 1 2 X </shape>
+        <shape>15 15 12 2 9 X </shape>
+        <shape>15 15 12 2 1 2 </shape>
+        <shape>2 1 1 1 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F#6/9</name>
+        <shape>2 1 1 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#6/A#</name>
+        <shape>6 X 4 6 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+        <shape>6 X X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F#6/C#</name>
+        <shape>X 4 4 3 4 X </shape>
+        <shape>9 X 12 2 7 X </shape>
+        <shape>X X 11 11 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7</name>
+        <shape>2 4 2 3 2 2 </shape>
+        <shape>X X 4 3 5 2 </shape>
+        <shape>15 15 13 2 7 X </shape>
+        <shape>2 4 2 3 5 2 </shape>
+        <shape>2 X 4 3 5 2 </shape>
+        <shape>X X 4 6 5 6 </shape>
+        <shape>15 15 0 2 0 2 </shape>
+        <shape>2 X 2 3 2 X </shape>
+        <shape>15 15 X 11 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(#11)</name>
+        <shape>2 X 2 3 1 X </shape>
+        <shape>15 15 6 1 11 X </shape>
+        <shape>X X 4 5 5 6 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(#5)</name>
+        <shape>15 15 X 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(#9)</name>
+        <shape>15 15 13 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(13)</name>
+        <shape>2 X 2 3 4 X </shape>
+        <shape>2 4 2 3 4 2 </shape>
+        <shape>15 15 X 2 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(9)</name>
+        <shape>X X 4 3 5 4 </shape>
+        <shape>15 15 13 2 9 X </shape>
+        <shape>15 15 0 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(b13)</name>
+        <shape>2 X 2 3 3 X </shape>
+        <shape>2 4 2 3 3 2 </shape>
+        <shape>15 15 X 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(b5)</name>
+        <shape>2 X 2 3 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#7(b9)</name>
+        <shape>X X 4 3 5 3 </shape>
+        <shape>15 15 13 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#7+5</name>
+        <shape>2 X 2 3 3 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#7+9</name>
+        <shape>2 1 2 2 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>F#7-5</name>
+        <shape>2 3 2 3 X X</shape>
+    </Chord>
+    <Chord>
+        <name>F#7-9</name>
+        <shape>2 X 2 3 2 3</shape>
+    </Chord>
+    <Chord>
+        <name>F#7/A#</name>
+        <shape>6 X 4 6 5 X </shape>
+        <shape>X X 13 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7/C#</name>
+        <shape>X 4 4 3 5 X </shape>
+        <shape>9 X 13 2 7 X </shape>
+        <shape>X X 11 11 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7sus</name>
+        <shape>2 4 2 4 2 2 </shape>
+        <shape>X X 4 6 5 7 </shape>
+        <shape>15 15 0 2 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F#7sus4</name>
+        <shape>2 4 2 4 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#9</name>
+        <shape>X X 2 1 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#9-5</name>
+        <shape>2 1 2 1 1 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#M7</name>
+        <shape>2 4 3 3 2 X</shape>
+    </Chord>
+    <Chord>
+        <name>F#M7b5</name>
+        <shape>X X 4 3 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>F#M9</name>
+        <shape>X X 4 1 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>F#aug</name>
+        <shape>15 15 X 11 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>F#dim</name>
+        <shape>2 X 1 2 1 X </shape>
+        <shape>X X 4 5 4 5 </shape>
+        <shape>15 15 6 1 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#dim(b13)</name>
+        <shape>2 X 1 2 3 X </shape>
+        <shape>15 15 X 2 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>F#half-dim</name>
+        <shape>X X 4 5 5 5 </shape>
+        <shape>2 X 2 2 1 X </shape>
+        <shape>15 15 6 1 10 X </shape>
+        <shape>15 15 15 15 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m</name>
+        <shape>2 4 4 2 2 2 </shape>
+        <shape>15 15 11 11 6 1 </shape>
+        <shape>X X 4 2 2 2 </shape>
+        <shape>X X 4 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m(add9)</name>
+        <shape>2 4 4 2 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m(maj7)</name>
+        <shape>2 4 3 2 2 2 </shape>
+        <shape>2 X 3 2 2 X </shape>
+        <shape>X X 4 6 6 5 </shape>
+        <shape>15 15 11 10 6 1 </shape>
+        <shape>15 15 X 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m/A</name>
+        <shape>X 0 X 2 2 2 </shape>
+        <shape>5 X 4 6 7 X </shape>
+        <shape>X X 7 6 7 5 </shape>
+        <shape>X 12 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m/C#</name>
+        <shape>X 4 4 2 2 2 </shape>
+        <shape>X X 11 11 6 1 </shape>
+        <shape>1 2 11 11 6 1 </shape>
+        <shape>X 4 X 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m/D</name>
+        <shape>X 5 X 6 7 5 </shape>
+        <shape>10 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m/D#</name>
+        <shape>X 6 X 6 7 5 </shape>
+        <shape>11 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m/E</name>
+        <shape>X X 2 2 2 2 </shape>
+        <shape>X 7 X 6 7 5 </shape>
+        <shape>X 7 7 6 7 X </shape>
+        <shape>12 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m/G#</name>
+        <shape>X X 6 6 7 5 </shape>
+        <shape>X 11 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m6</name>
+        <shape>2 X 1 2 2 X </shape>
+        <shape>15 15 X 2 6 1 </shape>
+        <shape>2 X X 2 4 2 </shape>
+        <shape>X X 4 6 4 5 </shape>
+        <shape>2 4 4 2 4 2 </shape>
+        <shape>15 15 X 11 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m6/A</name>
+        <shape>5 X 4 6 4 X </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m6/C#</name>
+        <shape>X 4 4 2 4 X </shape>
+        <shape>X X 11 11 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m7</name>
+        <shape>2 4 2 2 2 2 </shape>
+        <shape>2 4 4 2 5 2 </shape>
+        <shape>2 X 2 2 2 X </shape>
+        <shape>X X 4 6 5 5 </shape>
+        <shape>X X 4 2 5 2 </shape>
+        <shape>15 15 0 2 6 1 </shape>
+        <shape>15 15 15 15 6 1 </shape>
+        <shape>2 X X 2 2 0 </shape>
+        <shape>15 15 0 2 7 X </shape>
+        <shape>15 15 X 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m7(11)</name>
+        <shape>2 X 2 2 0 X </shape>
+        <shape>15 15 15 15 10 7 </shape>
+        <shape>X X 4 4 5 5 </shape>
+        <shape>15 15 1 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m7(9)</name>
+        <shape>X X 4 2 5 4 </shape>
+        <shape>15 15 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#m7/A</name>
+        <shape>5 X X 2 5 2 </shape>
+        <shape>5 X 4 2 5 X </shape>
+        <shape>5 X 4 6 5 X </shape>
+        <shape>X 12 X 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m7/C#</name>
+        <shape>X 4 4 2 5 X </shape>
+        <shape>9 X 0 2 7 X </shape>
+        <shape>X X 11 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>F#m9</name>
+        <shape>2 4 2 2 2 4</shape>
+    </Chord>
+    <Chord>
+        <name>F#maj7</name>
+        <shape>2 X 3 3 2 X </shape>
+        <shape>2 4 3 3 2 2 </shape>
+        <shape>X X 4 6 6 6 </shape>
+        <shape>15 15 11 10 0 2 </shape>
+        <shape>X X 4 3 2 1 </shape>
+        <shape>15 15 8 6 6 6 </shape>
+        <shape>2 X X 3 2 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F#maj7(9)</name>
+        <shape>15 15 8 10 9 X </shape>
+        <shape>X X 4 3 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>F#maj7/A#</name>
+        <shape>6 X 4 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#maj7/C#</name>
+        <shape>X 4 4 3 6 X </shape>
+        <shape>9 X 8 10 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>F#sus</name>
+        <shape>2 4 4 4 2 2 </shape>
+        <shape>X X 4 6 7 7 </shape>
+        <shape>15 15 11 11 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F#sus2</name>
+        <shape>X X 5 7 8 5</shape>
+    </Chord>
+    <Chord>
+        <name>F#sus4</name>
+        <shape>2 2 4 4 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>F#sus9</name>
+        <shape>X X 4 6 7 4 </shape>
+    </Chord>
+    <Chord>
+        <name>F#sus9</name>
+        <shape>15 15 11 11 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F(5)</name>
+        <shape>1 3 3 X X X </shape>
+        <shape>X X 3 5 6 X </shape>
+        <shape>X 2 10 10 X X </shape>
+    </Chord>
+    <Chord>
+        <name>F(add9)</name>
+        <shape>1 X 3 2 1 3 </shape>
+    </Chord>
+    <Chord>
+        <name>F(add9)</name>
+        <shape>X X 3 2 1 3 </shape>
+    </Chord>
+    <Chord>
+        <name>F(add9)</name>
+        <shape>X 2 7 5 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>F+5</name>
+        <shape>X X 3 2 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>F-5</name>
+        <shape>1 2 3 2 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>F/A</name>
+        <shape>X 0 X 2 1 1 </shape>
+        <shape>5 X 3 5 6 X </shape>
+        <shape>X 0 3 2 1 X </shape>
+        <shape>X X 7 5 6 5 </shape>
+        <shape>X X 7 5 0 2 </shape>
+        <shape>0 2 7 5 6 5 </shape>
+        <shape>X 12 10 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F/C</name>
+        <shape>X 3 3 2 1 1 </shape>
+        <shape>X 3 3 2 1 X </shape>
+        <shape>12 2 10 10 6 1 </shape>
+        <shape>X 3 X 5 6 5 </shape>
+        <shape>8 X 7 5 6 5 </shape>
+    </Chord>
+    <Chord>
+        <name>F/E</name>
+        <shape>X X 2 2 1 1 </shape>
+        <shape>X 7 7 5 6 5 </shape>
+        <shape>12 X 10 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F/Eb</name>
+        <shape>X X 1 2 1 1 </shape>
+        <shape>X 6 7 5 6 X </shape>
+        <shape>X 6 X 5 6 5 </shape>
+        <shape>11 X 10 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F/G</name>
+        <shape>3 X 3 2 1 X </shape>
+        <shape>X X 5 5 6 5 </shape>
+        <shape>X 10 10 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F11</name>
+        <shape>X X 3 3 4 3</shape>
+    </Chord>
+    <Chord>
+        <name>F13</name>
+        <shape>1 X 1 2 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>F3</name>
+        <shape>6 9 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>F4/7(9)</name>
+        <shape>X X 3 3 4 3 </shape>
+        <shape>X 2 12 2 8 X </shape>
+        <shape>X 2 12 2 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F5</name>
+        <shape>1 3 3 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>F5dim</name>
+        <shape>1 2 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>F6</name>
+        <shape>1 X 0 2 1 X </shape>
+        <shape>1 X 3 2 3 1 </shape>
+        <shape>X X 3 5 3 5 </shape>
+        <shape>X 2 10 7 10 X </shape>
+        <shape>X 2 X 10 10 10 </shape>
+        <shape>X 2 7 7 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>F6(9)</name>
+        <shape>1 X 0 0 1 X </shape>
+        <shape>X X 3 2 3 3 </shape>
+        <shape>1 X 0 0 1 1 </shape>
+        <shape>1 X X 2 3 3 </shape>
+        <shape>X 2 7 7 8 X </shape>
+        <shape>X 2 7 7 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F6/9</name>
+        <shape>1 0 0 0 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>F6/A</name>
+        <shape>5 X 3 5 3 X </shape>
+        <shape>X X 7 7 0 2 </shape>
+        <shape>5 X X 7 0 2 </shape>
+        <shape>X 12 10 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>F6/C</name>
+        <shape>X 3 3 2 3 X </shape>
+        <shape>X X 10 10 10 10 </shape>
+        <shape>8 X 7 7 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>F7</name>
+        <shape>1 3 1 2 1 1 </shape>
+        <shape>1 X 3 2 4 1 </shape>
+        <shape>1 X 1 2 1 X </shape>
+        <shape>1 3 1 2 4 1 </shape>
+        <shape>X X 3 5 4 5 </shape>
+        <shape>X 2 0 2 6 X </shape>
+        <shape>X 2 6 1 6 1 </shape>
+        <shape>X X 3 2 4 1 </shape>
+        <shape>X 2 X 10 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>F7(#11)</name>
+        <shape>1 X 1 2 0 X </shape>
+        <shape>X X 3 4 4 5 </shape>
+        <shape>X 2 0 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>F7(#5)</name>
+        <shape>X 2 6 1 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F7(#9)</name>
+        <shape>X 2 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>F7(13)</name>
+        <shape>1 X 1 2 3 X </shape>
+        <shape>1 3 1 2 3 1 </shape>
+        <shape>X 2 6 1 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>F7(9)</name>
+        <shape>X X 3 2 4 3 </shape>
+        <shape>X 2 0 2 8 X </shape>
+        <shape>X 2 6 1 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F7(b13)</name>
+        <shape>1 X 1 2 2 X </shape>
+        <shape>1 3 1 2 2 1 </shape>
+        <shape>X 2 6 1 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>F7(b5)</name>
+        <shape>1 X 1 2 0 X </shape>
+    </Chord>
+    <Chord>
+        <name>F7(b9)</name>
+        <shape>X 2 0 2 7 X </shape>
+        <shape>X X 3 2 4 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F7+5</name>
+        <shape>1 X 1 2 2 1</shape>
+    </Chord>
+    <Chord>
+        <name>F7+9</name>
+        <shape>1 3 1 2 1 4</shape>
+    </Chord>
+    <Chord>
+        <name>F7-5</name>
+        <shape>1 2 1 2 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>F7-9</name>
+        <shape>1 X 1 2 1 2</shape>
+    </Chord>
+    <Chord>
+        <name>F7/A</name>
+        <shape>5 X 3 5 4 X </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F7/C</name>
+        <shape>X 3 3 2 4 X </shape>
+        <shape>8 X 0 2 6 X </shape>
+        <shape>X X 10 10 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>F7sus</name>
+        <shape>1 3 1 3 1 1 </shape>
+        <shape>X X 3 5 4 6 </shape>
+        <shape>X 2 6 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>F7sus4</name>
+        <shape>1 3 1 3 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>F9</name>
+        <shape>1 0 1 0 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>F9-5</name>
+        <shape>2 0 2 0 0 2</shape>
+    </Chord>
+    <Chord>
+        <name>FM7</name>
+        <shape>1 X 3 2 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>FM7b5</name>
+        <shape>X X 3 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>FM9</name>
+        <shape>1 0 3 0 1 0</shape>
+    </Chord>
+    <Chord>
+        <name>Faug</name>
+        <shape>X 2 X 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Fdim</name>
+        <shape>1 X 0 1 0 X </shape>
+        <shape>X X 3 4 3 4 </shape>
+        <shape>X 2 9 7 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fdim(b13)</name>
+        <shape>1 X 0 1 2 X </shape>
+        <shape>X 2 X 7 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Fhalf-dim</name>
+        <shape>1 X 1 1 0 X </shape>
+        <shape>X X 3 4 4 4 </shape>
+        <shape>X 2 0 2 9 X </shape>
+        <shape>X 2 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm</name>
+        <shape>1 3 3 1 1 1 </shape>
+        <shape>X 2 10 10 0 2 </shape>
+        <shape>X X 3 1 1 1 </shape>
+        <shape>X X 3 5 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm(add9)</name>
+        <shape>1 3 3 1 1 3 </shape>
+        <shape>X 2 10 12 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm(maj7)</name>
+        <shape>1 3 2 1 1 1 </shape>
+        <shape>1 X 2 1 1 X </shape>
+        <shape>X X 3 5 5 4 </shape>
+        <shape>X 2 6 1 0 2 </shape>
+        <shape>X 2 15 15 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm/Ab</name>
+        <shape>4 X 3 5 6 X </shape>
+        <shape>X X 6 5 6 4 </shape>
+        <shape>X 11 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm/C</name>
+        <shape>X 3 3 1 1 1 </shape>
+        <shape>12 2 10 10 0 2 </shape>
+        <shape>X X 10 10 0 2 </shape>
+        <shape>X 3 X 5 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm/C#</name>
+        <shape>X 4 X 5 6 4 </shape>
+        <shape>9 X 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm/D</name>
+        <shape>X 5 X 5 6 4 </shape>
+        <shape>10 X 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm/Eb</name>
+        <shape>X X 1 1 1 1 </shape>
+        <shape>X 6 X 5 6 4 </shape>
+        <shape>X 6 6 5 6 X </shape>
+        <shape>11 X 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm/G</name>
+        <shape>X X 5 5 6 4 </shape>
+        <shape>X 10 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm6</name>
+        <shape>1 X 0 1 1 X </shape>
+        <shape>X 2 X 7 0 2 </shape>
+        <shape>1 X X 1 3 1 </shape>
+        <shape>1 3 3 1 3 1 </shape>
+        <shape>X X 3 5 3 4 </shape>
+        <shape>X 2 X 10 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm6/Ab</name>
+        <shape>4 X 3 5 3 X </shape>
+        <shape>X X 6 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm6/C</name>
+        <shape>X 3 3 1 3 X </shape>
+        <shape>X X 10 10 9 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm7</name>
+        <shape>1 3 1 1 1 1 </shape>
+        <shape>1 3 3 1 4 1 </shape>
+        <shape>1 X 1 1 1 X </shape>
+        <shape>X 2 6 1 0 2 </shape>
+        <shape>X 2 X 2 0 2 </shape>
+        <shape>X X 3 5 4 4 </shape>
+        <shape>X X 3 1 4 1 </shape>
+        <shape>X 2 X 10 9 11 </shape>
+        <shape>X 2 0 2 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm7(11)</name>
+        <shape>X 2 X 2 9 6 </shape>
+        <shape>X 2 12 2 9 X </shape>
+        <shape>X X 3 3 4 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm7(9)</name>
+        <shape>X X 3 1 4 3 </shape>
+        <shape>1 3 1 1 4 3 </shape>
+        <shape>X 2 0 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm7/Ab</name>
+        <shape>4 X X 1 4 1 </shape>
+        <shape>4 X 3 5 4 X </shape>
+        <shape>X 11 X 10 9 11 </shape>
+        <shape>4 X 3 1 4 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fm7/C</name>
+        <shape>X 3 3 1 4 X </shape>
+        <shape>8 X 0 2 6 X </shape>
+        <shape>X X 10 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Fm9</name>
+        <shape>1 3 1 1 1 3</shape>
+    </Chord>
+    <Chord>
+        <name>Fmaj7</name>
+        <shape>1 X 2 2 1 X </shape>
+        <shape>1 3 2 2 1 1 </shape>
+        <shape>X X 3 2 1 0 </shape>
+        <shape>X X 3 5 5 5 </shape>
+        <shape>X 2 6 1 6 1 </shape>
+        <shape>X 2 7 5 5 5 </shape>
+        <shape>1 X X 2 1 0 </shape>
+    </Chord>
+    <Chord>
+        <name>Fmaj7(9)</name>
+        <shape>X 2 0 2 8 X </shape>
+        <shape>X X 3 2 5 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Fmaj7/A</name>
+        <shape>5 X 3 5 5 X </shape>
+    </Chord>
+    <Chord>
+        <name>Fmaj7/C</name>
+        <shape>X 3 3 2 5 X </shape>
+        <shape>8 X 0 2 6 X </shape>
+        <shape>X X 10 10 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Fsus</name>
+        <shape>1 3 3 3 1 1 </shape>
+        <shape>X X 3 5 6 6 </shape>
+        <shape>X 2 10 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Fsus2</name>
+        <shape>X X 4 6 7 4</shape>
+    </Chord>
+    <Chord>
+        <name>Fsus4</name>
+        <shape>1 1 3 3 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>Fsus9</name>
+        <shape>X X 3 5 6 3 </shape>
+    </Chord>
+    <Chord>
+        <name>Fsus9</name>
+        <shape>X 2 10 10 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G</name>
+        <shape>3 2 0 0 0 3 </shape>
+        <shape>3 5 5 4 3 3 </shape>
+        <shape>3 2 0 0 3 3 </shape>
+        <shape>X 10 12 12 12 10 </shape>
+        <shape>X X 5 7 8 7 </shape>
+        <shape>X 10 9 7 8 7 </shape>
+        <shape>3 X 0 0 0 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#</name>
+        <shape>4 6 6 5 4 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 11 6 1 0 2 </shape>
+        <shape>4 X 1 1 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#(5)</name>
+        <shape>4 6 6 X X X </shape>
+        <shape>X X 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#(add9)</name>
+        <shape>X X 6 5 4 6 </shape>
+        <shape>4 X 6 5 4 6 </shape>
+    </Chord>
+    <Chord>
+        <name>G#(add9)</name>
+        <shape>X 11 6 1 11 X </shape>
+        <shape>4 X 1 3 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#/A#</name>
+        <shape>X 1 1 1 1 X </shape>
+        <shape>6 X 6 5 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#/C</name>
+        <shape>X 3 X 5 4 4 </shape>
+        <shape>X 3 1 1 4 X </shape>
+        <shape>X 3 1 1 1 X </shape>
+        <shape>8 X 0 2 9 X </shape>
+        <shape>X X 6 1 0 2 </shape>
+        <shape>X X 6 1 9 11 </shape>
+        <shape>X 3 6 5 4 X </shape>
+        <shape>8 11 6 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#/D#</name>
+        <shape>X 6 6 5 4 4 </shape>
+        <shape>X 6 6 5 4 X </shape>
+        <shape>X X 1 1 1 4 </shape>
+        <shape>X 6 X 2 0 2 </shape>
+        <shape>11 X 6 1 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#/F#</name>
+        <shape>2 X 1 1 1 X </shape>
+        <shape>X X 4 5 4 4 </shape>
+        <shape>15 15 X 2 0 2 </shape>
+        <shape>15 15 6 1 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#4/7(9)</name>
+        <shape>4 X 4 3 2 X </shape>
+        <shape>X X 6 6 7 6 </shape>
+        <shape>X 11 11 11 11 X </shape>
+        <shape>X 11 11 11 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#6</name>
+        <shape>4 X 3 5 4 X </shape>
+        <shape>4 X 6 5 6 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 11 10 10 9 X </shape>
+        <shape>4 X 1 1 1 1 </shape>
+    </Chord>
+    <Chord>
+        <name>G#6(9)</name>
+        <shape>4 X 3 3 4 X </shape>
+        <shape>4 X X 5 6 6 </shape>
+        <shape>X X 6 5 6 6 </shape>
+        <shape>4 3 3 3 4 4 </shape>
+        <shape>X 11 10 10 11 X </shape>
+        <shape>X 11 10 10 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#6/C</name>
+        <shape>X 3 X 1 4 1 </shape>
+        <shape>8 X 0 2 6 X </shape>
+        <shape>X 3 1 1 1 1 </shape>
+        <shape>8 X X 10 9 11 </shape>
+        <shape>X X 10 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#6/D#</name>
+        <shape>X X 1 1 1 1 </shape>
+        <shape>X 6 6 5 6 X </shape>
+        <shape>11 X 10 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7</name>
+        <shape>4 6 4 5 4 4 </shape>
+        <shape>4 X 4 5 4 X </shape>
+        <shape>4 6 4 5 7 4 </shape>
+        <shape>4 X 6 5 7 4 </shape>
+        <shape>X X 6 5 7 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+        <shape>X 11 10 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(#11)</name>
+        <shape>4 X 4 5 3 X </shape>
+        <shape>X X 6 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(13)</name>
+        <shape>4 X 4 5 6 X </shape>
+        <shape>4 6 4 5 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(9)</name>
+        <shape>X X 6 5 7 6 </shape>
+        <shape>4 X 4 3 1 X </shape>
+        <shape>X 11 10 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(b13)</name>
+        <shape>4 X 4 5 5 X </shape>
+        <shape>4 6 4 5 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(b13)</name>
+        <shape>4 4 4 5 5 4 </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(b5)</name>
+        <shape>4 X 4 5 3 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7(b9)</name>
+        <shape>X X 6 5 7 5 </shape>
+        <shape>4 X 4 2 1 X </shape>
+        <shape>X 11 10 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7/C</name>
+        <shape>X 3 4 1 4 X </shape>
+        <shape>8 X 0 2 7 X </shape>
+        <shape>X X 10 11 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#7/D#</name>
+        <shape>X 6 6 5 7 X </shape>
+        <shape>X X 1 1 1 2 </shape>
+        <shape>11 X 10 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#7sus</name>
+        <shape>4 6 4 6 4 4 </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#dim</name>
+        <shape>4 X 3 4 3 X </shape>
+        <shape>X X 6 7 6 7 </shape>
+        <shape>X 11 12 10 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#dim(b13)</name>
+        <shape>4 X 3 4 5 X </shape>
+        <shape>X 11 X 10 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>G#half-dim</name>
+        <shape>4 X 4 4 3 X </shape>
+        <shape>X X 6 7 7 7 </shape>
+        <shape>X 11 12 11 12 X </shape>
+        <shape>X 11 X 11 12 10 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m</name>
+        <shape>4 6 6 4 4 4 </shape>
+        <shape>X X 6 4 4 4 </shape>
+        <shape>X X 0 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m(add9)</name>
+        <shape>4 6 6 4 4 6 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m(maj7)</name>
+        <shape>4 X 5 4 4 X </shape>
+        <shape>4 6 5 4 4 4 </shape>
+        <shape>X X 0 2 8 7 </shape>
+        <shape>X 11 X 12 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m/A#</name>
+        <shape>X 1 1 1 0 X </shape>
+        <shape>X X 12 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m/B</name>
+        <shape>X 2 1 1 4 X </shape>
+        <shape>X 2 X 4 4 4 </shape>
+        <shape>X 2 X 1 4 4 </shape>
+        <shape>X X 0 2 9 7 </shape>
+        <shape>7 X 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#m/D#</name>
+        <shape>X 6 6 4 4 4 </shape>
+        <shape>X 6 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m/E</name>
+        <shape>0 X 1 1 0 X </shape>
+        <shape>X 7 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m/F</name>
+        <shape>1 X 1 1 0 X </shape>
+        <shape>X 2 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m/F#</name>
+        <shape>X X 4 4 4 4 </shape>
+        <shape>15 15 0 2 9 X </shape>
+        <shape>2 X 1 1 0 X </shape>
+        <shape>15 15 X 2 9 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m6</name>
+        <shape>4 X 3 4 4 X </shape>
+        <shape>4 X X 4 6 4 </shape>
+        <shape>4 6 6 4 6 4 </shape>
+        <shape>X X 0 2 6 7 </shape>
+        <shape>X 11 X 10 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m6/B</name>
+        <shape>X 2 3 1 4 X </shape>
+        <shape>7 X 0 2 6 X </shape>
+        <shape>X X 9 10 9 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m6/D#</name>
+        <shape>X X 1 1 0 1 </shape>
+        <shape>X 6 6 4 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#m7</name>
+        <shape>4 6 4 4 4 4 </shape>
+        <shape>4 6 6 4 7 4 </shape>
+        <shape>X 11 X 11 12 11 </shape>
+        <shape>4 X 4 4 4 X </shape>
+        <shape>X X 6 4 7 4 </shape>
+        <shape>4 X X 4 4 2 </shape>
+        <shape>X 11 9 11 9 X </shape>
+        <shape>X X 0 2 7 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G#m7(11)</name>
+        <shape>4 X 4 4 2 X </shape>
+        <shape>X 11 X 11 5 1 </shape>
+        <shape>X X 6 6 7 7 </shape>
+        <shape>X 11 11 11 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#m7(9)</name>
+        <shape>X X 6 4 7 6 </shape>
+        <shape>4 6 4 4 7 6 </shape>
+        <shape>X 11 9 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#m7/B</name>
+        <shape>X 2 X 1 0 2 </shape>
+        <shape>7 X X 4 7 4 </shape>
+        <shape>7 X 0 2 7 X </shape>
+        <shape>7 X 6 4 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#m7/D#</name>
+        <shape>X X 1 1 0 2 </shape>
+        <shape>X 6 6 4 7 X </shape>
+        <shape>11 X 9 11 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#maj7</name>
+        <shape>4 X 5 5 4 X </shape>
+        <shape>4 6 5 5 4 4 </shape>
+        <shape>X X 0 2 12 2 </shape>
+        <shape>4 X X 5 4 3 </shape>
+        <shape>X 11 6 1 12 2 </shape>
+        <shape>X X 6 5 4 3 </shape>
+    </Chord>
+    <Chord>
+        <name>G#maj7(9)</name>
+        <shape>X 11 10 12 11 X </shape>
+        <shape>X X 6 5 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>G#maj7/C</name>
+        <shape>X 3 X 1 4 3 </shape>
+        <shape>8 X 0 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#maj7/D#</name>
+        <shape>X X 1 1 1 3 </shape>
+        <shape>X 6 6 5 8 X </shape>
+        <shape>11 X 10 12 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G#sus</name>
+        <shape>4 6 6 6 4 4 </shape>
+        <shape>X X 0 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G#sus9</name>
+        <shape>X X 0 2 9 6 </shape>
+    </Chord>
+    <Chord>
+        <name>G(5)</name>
+        <shape>3 5 5 X X X </shape>
+        <shape>X X 5 7 8 X </shape>
+        <shape>X 10 12 12 X X </shape>
+    </Chord>
+    <Chord>
+        <name>G(add9)</name>
+        <shape>3 X 0 2 0 3 </shape>
+        <shape>3 X 0 2 0 X </shape>
+        <shape>3 X 5 4 3 5 </shape>
+        <shape>X X 5 4 3 5 </shape>
+    </Chord>
+    <Chord>
+        <name>G(add9)</name>
+        <shape>X 10 9 7 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>G+5</name>
+        <shape>3 2 1 0 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>G-5</name>
+        <shape>X X 5 4 2 3</shape>
+    </Chord>
+    <Chord>
+        <name>G/A</name>
+        <shape>X 0 0 0 0 X </shape>
+        <shape>5 X 5 4 3 X </shape>
+        <shape>X X 7 7 8 7 </shape>
+        <shape>X 12 12 12 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>G/B</name>
+        <shape>X 2 X 0 3 3 </shape>
+        <shape>X 2 X 4 3 3 </shape>
+        <shape>X 2 0 0 3 X </shape>
+        <shape>X 2 0 0 0 X </shape>
+        <shape>7 X 5 7 8 X </shape>
+        <shape>X 2 5 4 3 X </shape>
+        <shape>X X 9 7 8 7 </shape>
+        <shape>X X 9 7 8 10 </shape>
+        <shape>7 10 9 7 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G/C#</name>
+        <shape>10 X X 10 9 8</shape>
+    </Chord>
+    <Chord>
+        <name>G/D</name>
+        <shape>X 5 5 4 3 3 </shape>
+        <shape>X X 0 0 0 3 </shape>
+        <shape>X 5 5 4 3 X </shape>
+        <shape>X 5 X 7 8 7 </shape>
+        <shape>10 10 12 12 12 10 </shape>
+        <shape>10 X 9 7 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G/E</name>
+        <shape>0 2 0 0 0 3</shape>
+    </Chord>
+    <Chord>
+        <name>G/F</name>
+        <shape>1 X 0 0 0 X </shape>
+        <shape>X X 3 4 3 3 </shape>
+        <shape>X 2 X 7 8 7 </shape>
+        <shape>X 2 9 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>G/F#</name>
+        <shape>2 X X 0 0 X </shape>
+        <shape>X X 4 4 3 3 </shape>
+        <shape>15 15 9 7 8 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G11</name>
+        <shape>3 X 3 2 1 1</shape>
+    </Chord>
+    <Chord>
+        <name>G13</name>
+        <shape>3 X 3 2 0 0</shape>
+    </Chord>
+    <Chord>
+        <name>G3</name>
+        <shape>8 11 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>G4/7(9)</name>
+        <shape>3 X 3 2 1 X </shape>
+        <shape>X X 5 5 6 5 </shape>
+        <shape>X 10 10 10 10 X </shape>
+        <shape>X 10 10 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>G5</name>
+        <shape>3 5 5 X X X</shape>
+    </Chord>
+    <Chord>
+        <name>G5dim</name>
+        <shape>3 4 X X X X</shape>
+    </Chord>
+    <Chord>
+        <name>G6</name>
+        <shape>3 X 2 4 3 X </shape>
+        <shape>3 X 5 4 5 3 </shape>
+        <shape>3 2 X 0 0 0 </shape>
+        <shape>X X 5 7 5 7 </shape>
+        <shape>X 10 5 1 12 X </shape>
+        <shape>X 10 1 2 8 X </shape>
+        <shape>X 10 X 12 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>G6(9)</name>
+        <shape>3 X 2 2 3 X </shape>
+        <shape>X X 5 4 5 5 </shape>
+        <shape>3 X X 4 5 5 </shape>
+        <shape>3 2 2 2 3 3 </shape>
+        <shape>X 10 1 2 10 X </shape>
+        <shape>X 10 1 2 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>G6/9</name>
+        <shape>3 2 2 2 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>G6/B</name>
+        <shape>X 2 X 0 3 0 </shape>
+        <shape>7 X 5 7 5 X </shape>
+        <shape>X 2 X 0 0 0 </shape>
+        <shape>X X 1 2 8 10 </shape>
+        <shape>7 X 15 15 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>G6/D</name>
+        <shape>X X 0 0 0 0 </shape>
+        <shape>X 5 5 4 5 X </shape>
+        <shape>10 X 1 2 8 X </shape>
+        <shape>X X 12 12 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>G7</name>
+        <shape>3 2 X 0 0 1 </shape>
+        <shape>3 5 3 4 3 3 </shape>
+        <shape>3 X 3 4 3 X </shape>
+        <shape>3 5 3 4 5 3 </shape>
+        <shape>3 X 5 4 6 3 </shape>
+        <shape>X X 5 4 6 3 </shape>
+        <shape>X 10 9 10 8 X </shape>
+        <shape>X 10 12 10 12 10 </shape>
+        <shape>X X 5 7 6 7 </shape>
+    </Chord>
+    <Chord>
+        <name>G7(#11)</name>
+        <shape>3 X 3 4 2 X </shape>
+        <shape>X X 5 6 6 7 </shape>
+        <shape>X 10 11 10 12 X </shape>
+    </Chord>
+    <Chord>
+        <name>G7(#5)</name>
+        <shape>X 10 12 10 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G7(#9)</name>
+        <shape>X 10 9 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>G7(13)</name>
+        <shape>3 X 3 4 5 X </shape>
+        <shape>3 5 3 4 5 3 </shape>
+        <shape>X 10 12 10 12 12 </shape>
+    </Chord>
+    <Chord>
+        <name>G7(9)</name>
+        <shape>3 X 3 2 0 X </shape>
+        <shape>X X 5 4 6 5 </shape>
+        <shape>X 10 9 10 10 X </shape>
+        <shape>X 10 12 10 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>G7(b13)</name>
+        <shape>3 X 3 4 4 X </shape>
+        <shape>3 5 3 4 4 3 </shape>
+        <shape>X 10 12 10 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>G7(b5)</name>
+        <shape>3 X 3 4 2 X </shape>
+    </Chord>
+    <Chord>
+        <name>G7(b9)</name>
+        <shape>3 X 3 1 0 X </shape>
+        <shape>X X 5 4 6 4 </shape>
+        <shape>X 10 9 10 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>G7+5</name>
+        <shape>3 X 3 4 4 3</shape>
+    </Chord>
+    <Chord>
+        <name>G7+9</name>
+        <shape>3 2 3 3 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>G7-5</name>
+        <shape>3 4 3 4 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>G7-9</name>
+        <shape>3 2 3 1 0 X</shape>
+    </Chord>
+    <Chord>
+        <name>G7/B</name>
+        <shape>X 2 3 0 3 X </shape>
+        <shape>7 X 5 7 6 X </shape>
+        <shape>X X 9 10 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>G7/D</name>
+        <shape>X 5 5 4 6 X </shape>
+        <shape>X X 0 0 0 1 </shape>
+        <shape>10 X 9 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>G7M</name>
+        <shape>4 X 5 5 4 X </shape>
+        <shape>X X 5 4 3 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G7sus</name>
+        <shape>3 5 3 5 3 3 </shape>
+        <shape>X X 5 7 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>G7sus4</name>
+        <shape>3 X 3 0 1 X</shape>
+    </Chord>
+    <Chord>
+        <name>G9</name>
+        <shape>X 2 3 2 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>G9-5</name>
+        <shape>3 2 3 2 2 3</shape>
+    </Chord>
+    <Chord>
+        <name>GM7b5</name>
+        <shape>X X 5 4 2 2</shape>
+    </Chord>
+    <Chord>
+        <name>GM9</name>
+        <shape>3 2 4 2 3 X</shape>
+    </Chord>
+    <Chord>
+        <name>Gaug</name>
+        <shape>X 10 X 12 12 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb</name>
+        <shape>2 4 4 3 2 2 </shape>
+        <shape>X X 4 6 7 6 </shape>
+        <shape>15 15 11 11 0 2 </shape>
+        <shape>15 15 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb(5)</name>
+        <shape>2 4 4 X X X </shape>
+        <shape>X X 4 6 7 X </shape>
+        <shape>15 15 11 11 X X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb(add9)</name>
+        <shape>2 X 4 3 2 4 </shape>
+        <shape>X X 4 3 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb(add9)</name>
+        <shape>15 15 8 6 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb/Ab</name>
+        <shape>4 X 4 3 2 X </shape>
+        <shape>X X 6 6 7 6 </shape>
+        <shape>X 11 11 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb/Bb</name>
+        <shape>X 1 X 3 2 2 </shape>
+        <shape>6 X 4 6 7 X </shape>
+        <shape>X X 8 6 7 6 </shape>
+        <shape>X X 8 6 0 2 </shape>
+        <shape>X 1 4 3 2 X </shape>
+        <shape>0 2 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb/Db</name>
+        <shape>X 4 4 3 2 2 </shape>
+        <shape>X 4 4 3 2 X </shape>
+        <shape>1 2 11 11 0 2 </shape>
+        <shape>X 4 X 6 7 6 </shape>
+        <shape>9 X 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb/E</name>
+        <shape>X X 2 3 2 2 </shape>
+        <shape>X 7 X 6 7 6 </shape>
+        <shape>X 7 8 6 7 X </shape>
+        <shape>12 X 11 11 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb/F</name>
+        <shape>X X 3 3 2 2 </shape>
+        <shape>X 2 8 6 7 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb4/7(9)</name>
+        <shape>X X 4 4 5 4 </shape>
+        <shape>2 X 2 1 0 X </shape>
+        <shape>15 15 1 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb4/7(9)</name>
+        <shape>15 15 1 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb6</name>
+        <shape>2 X 1 3 2 X </shape>
+        <shape>2 X 4 3 4 2 </shape>
+        <shape>X X 4 6 4 6 </shape>
+        <shape>15 15 X 11 11 11 </shape>
+        <shape>15 15 0 2 11 X </shape>
+        <shape>15 15 12 2 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb6(9)</name>
+        <shape>X X 4 3 4 4 </shape>
+        <shape>2 X X 3 4 4 </shape>
+        <shape>2 X 1 1 2 X </shape>
+        <shape>15 15 12 2 9 X </shape>
+        <shape>15 15 12 2 1 2 </shape>
+        <shape>2 1 1 1 2 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb6/Bb</name>
+        <shape>6 X 4 6 4 X </shape>
+        <shape>X X 12 2 0 2 </shape>
+        <shape>6 X X 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb6/Db</name>
+        <shape>X 4 4 3 4 X </shape>
+        <shape>9 X 12 2 7 X </shape>
+        <shape>X X 11 11 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7</name>
+        <shape>2 4 2 3 2 2 </shape>
+        <shape>X X 4 3 5 2 </shape>
+        <shape>15 15 13 2 7 X </shape>
+        <shape>2 4 2 3 5 2 </shape>
+        <shape>2 X 4 3 5 2 </shape>
+        <shape>X X 4 6 5 6 </shape>
+        <shape>15 15 0 2 0 2 </shape>
+        <shape>2 X 2 3 2 X </shape>
+        <shape>15 15 X 11 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(#11)</name>
+        <shape>2 X 2 3 1 X </shape>
+        <shape>15 15 6 1 11 X </shape>
+        <shape>X X 4 5 5 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(#5)</name>
+        <shape>15 15 X 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(#9)</name>
+        <shape>15 15 13 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(13)</name>
+        <shape>2 X 2 3 4 X </shape>
+        <shape>2 4 2 3 4 2 </shape>
+        <shape>15 15 X 2 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(9)</name>
+        <shape>X X 4 3 5 4 </shape>
+        <shape>15 15 13 2 9 X </shape>
+        <shape>15 15 0 2 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(b13)</name>
+        <shape>2 X 2 3 3 X </shape>
+        <shape>2 4 2 3 3 2 </shape>
+        <shape>15 15 X 2 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(b5)</name>
+        <shape>2 X 2 3 1 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7(b9)</name>
+        <shape>X X 4 3 5 3 </shape>
+        <shape>15 15 13 2 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7/Bb</name>
+        <shape>6 X 4 6 5 X </shape>
+        <shape>X X 13 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7/Db</name>
+        <shape>X 4 4 3 5 X </shape>
+        <shape>9 X 13 2 7 X </shape>
+        <shape>X X 11 11 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gb7sus</name>
+        <shape>2 4 2 4 2 2 </shape>
+        <shape>X X 4 6 5 7 </shape>
+        <shape>15 15 0 2 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbaug</name>
+        <shape>15 15 X 11 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbdim</name>
+        <shape>2 X 1 2 1 X </shape>
+        <shape>X X 4 5 4 5 </shape>
+        <shape>15 15 6 1 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbdim(b13)</name>
+        <shape>2 X 1 2 3 X </shape>
+        <shape>15 15 X 2 10 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbhalf-dim</name>
+        <shape>X X 4 5 5 5 </shape>
+        <shape>2 X 2 2 1 X </shape>
+        <shape>15 15 6 1 10 X </shape>
+        <shape>15 15 15 15 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm</name>
+        <shape>2 4 4 2 2 2 </shape>
+        <shape>15 15 11 11 6 1 </shape>
+        <shape>X X 4 2 2 2 </shape>
+        <shape>X X 4 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm(add9)</name>
+        <shape>2 4 4 2 2 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm(maj7)</name>
+        <shape>2 4 3 2 2 2 </shape>
+        <shape>2 X 3 2 2 X </shape>
+        <shape>X X 4 6 6 5 </shape>
+        <shape>15 15 11 10 6 1 </shape>
+        <shape>15 15 X 10 6 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm/A</name>
+        <shape>X 0 X 2 2 2 </shape>
+        <shape>5 X 4 6 7 X </shape>
+        <shape>X X 7 6 7 5 </shape>
+        <shape>X 12 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm/Ab</name>
+        <shape>X X 6 6 7 5 </shape>
+        <shape>X 11 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm/D</name>
+        <shape>X 5 X 6 7 5 </shape>
+        <shape>10 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm/Db</name>
+        <shape>X 4 4 2 2 2 </shape>
+        <shape>X X 11 11 6 1 </shape>
+        <shape>1 2 11 11 6 1 </shape>
+        <shape>X 4 X 6 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm/E</name>
+        <shape>X X 2 2 2 2 </shape>
+        <shape>X 7 X 6 7 5 </shape>
+        <shape>X 7 7 6 7 X </shape>
+        <shape>12 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm/Eb</name>
+        <shape>X 6 X 6 7 5 </shape>
+        <shape>11 X 11 11 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm6</name>
+        <shape>2 X 1 2 2 X </shape>
+        <shape>15 15 X 2 6 1 </shape>
+        <shape>2 X X 2 4 2 </shape>
+        <shape>X X 4 6 4 5 </shape>
+        <shape>2 4 4 2 4 2 </shape>
+        <shape>15 15 X 11 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm6/A</name>
+        <shape>5 X 4 6 4 X </shape>
+        <shape>X X 0 2 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm6/Db</name>
+        <shape>X 4 4 2 4 X </shape>
+        <shape>X X 11 11 10 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm7</name>
+        <shape>2 4 2 2 2 2 </shape>
+        <shape>2 4 4 2 5 2 </shape>
+        <shape>2 X 2 2 2 X </shape>
+        <shape>X X 4 6 5 5 </shape>
+        <shape>X X 4 2 5 2 </shape>
+        <shape>15 15 0 2 6 1 </shape>
+        <shape>15 15 15 15 6 1 </shape>
+        <shape>2 X X 2 2 0 </shape>
+        <shape>15 15 0 2 7 X </shape>
+        <shape>15 15 X 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm7(11)</name>
+        <shape>2 X 2 2 0 X </shape>
+        <shape>15 15 15 15 10 7 </shape>
+        <shape>X X 4 4 5 5 </shape>
+        <shape>15 15 1 2 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm7(9)</name>
+        <shape>X X 4 2 5 4 </shape>
+        <shape>15 15 0 2 9 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm7/A</name>
+        <shape>5 X X 2 5 2 </shape>
+        <shape>5 X 4 2 5 X </shape>
+        <shape>5 X 4 6 5 X </shape>
+        <shape>X 12 X 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbm7/Db</name>
+        <shape>X 4 4 2 5 X </shape>
+        <shape>9 X 0 2 7 X </shape>
+        <shape>X X 11 11 10 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbmaj7</name>
+        <shape>2 X 3 3 2 X </shape>
+        <shape>2 4 3 3 2 2 </shape>
+        <shape>X X 4 6 6 6 </shape>
+        <shape>15 15 11 10 0 2 </shape>
+        <shape>X X 4 3 2 1 </shape>
+        <shape>15 15 8 6 6 6 </shape>
+        <shape>2 X X 3 2 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbmaj7(9)</name>
+        <shape>15 15 8 10 9 X </shape>
+        <shape>X X 4 3 6 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbmaj7/Bb</name>
+        <shape>6 X 4 6 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbmaj7/Db</name>
+        <shape>X 4 4 3 6 X </shape>
+        <shape>9 X 8 10 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gbsus</name>
+        <shape>2 4 4 4 2 2 </shape>
+        <shape>X X 4 6 7 7 </shape>
+        <shape>15 15 11 11 5 1 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbsus9</name>
+        <shape>X X 4 6 7 4 </shape>
+    </Chord>
+    <Chord>
+        <name>Gbsus9</name>
+        <shape>15 15 11 11 1 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gdim</name>
+        <shape>3 X 2 3 2 X </shape>
+        <shape>X X 5 6 5 6 </shape>
+        <shape>X 10 0 2 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gdim(b13)</name>
+        <shape>3 X 2 3 4 X </shape>
+        <shape>X 10 15 15 11 11 </shape>
+    </Chord>
+    <Chord>
+        <name>Ghalf-dim</name>
+        <shape>3 X 3 3 2 X </shape>
+        <shape>X X 5 6 6 6 </shape>
+        <shape>X 10 11 10 11 X </shape>
+        <shape>X 10 X 10 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm</name>
+        <shape>3 5 5 3 3 3 </shape>
+        <shape>X X 5 3 3 3 </shape>
+        <shape>X X 5 7 8 6 </shape>
+        <shape>X 10 12 12 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm(add9)</name>
+        <shape>3 5 5 3 3 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm(maj7)</name>
+        <shape>3 5 4 3 3 3 </shape>
+        <shape>3 X 4 3 3 X </shape>
+        <shape>X X 5 7 7 6 </shape>
+        <shape>X 10 12 11 11 10 </shape>
+        <shape>X 10 X 11 11 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm/A</name>
+        <shape>X X 7 7 8 6 </shape>
+        <shape>X 12 12 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm/Bb</name>
+        <shape>6 X 5 7 8 X </shape>
+        <shape>X 1 X 3 3 3 </shape>
+        <shape>X 1 0 0 3 X </shape>
+        <shape>X 1 X 0 3 3 </shape>
+        <shape>X X 8 7 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm/D</name>
+        <shape>X 5 5 3 3 3 </shape>
+        <shape>10 10 12 12 11 10 </shape>
+        <shape>X X 12 12 11 10 </shape>
+        <shape>X 5 X 7 8 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm/D#</name>
+        <shape>X 6 X 7 8 6 </shape>
+        <shape>11 X 12 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm/E</name>
+        <shape>X 7 X 7 8 6 </shape>
+        <shape>12 X 12 12 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm/F</name>
+        <shape>X X 3 3 3 3 </shape>
+        <shape>X 2 X 7 8 6 </shape>
+        <shape>X 2 8 7 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm6</name>
+        <shape>3 X 2 3 3 X </shape>
+        <shape>3 5 5 3 5 3 </shape>
+        <shape>X 10 15 15 11 10 </shape>
+        <shape>3 X X 3 5 3 </shape>
+        <shape>X X 5 7 5 6 </shape>
+        <shape>X 10 X 12 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm6/Bb</name>
+        <shape>X 1 2 0 3 X </shape>
+        <shape>6 X 5 7 5 X </shape>
+        <shape>X X 13 2 8 10 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm6/D</name>
+        <shape>X 5 5 3 5 X </shape>
+        <shape>X X 12 12 11 12 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7</name>
+        <shape>3 5 3 3 3 3 </shape>
+        <shape>3 5 5 3 6 3 </shape>
+        <shape>X 10 12 10 11 10 </shape>
+        <shape>3 X 3 3 3 X </shape>
+        <shape>X 10 X 10 11 10 </shape>
+        <shape>X 10 8 10 8 X </shape>
+        <shape>X X 5 3 6 3 </shape>
+        <shape>3 X X 3 3 1 </shape>
+        <shape>X X 5 7 6 6 </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7(11)</name>
+        <shape>3 X 3 3 1 X </shape>
+        <shape>X 10 X 10 0 2 </shape>
+        <shape>X X 5 5 6 6 </shape>
+        <shape>X 10 10 10 11 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7(9)</name>
+        <shape>X X 5 3 6 5 </shape>
+        <shape>3 5 3 3 6 5 </shape>
+        <shape>X 10 8 10 10 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7/Bb</name>
+        <shape>6 X X 3 6 3 </shape>
+        <shape>6 X 5 7 6 X </shape>
+        <shape>6 X 5 3 6 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm7/D</name>
+        <shape>X 5 5 3 6 X </shape>
+        <shape>10 X 8 10 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gm9</name>
+        <shape>3 1 3 2 X X</shape>
+    </Chord>
+    <Chord>
+        <name>Gmaj7</name>
+        <shape>3 X 4 4 3 X </shape>
+        <shape>3 5 4 4 3 3 </shape>
+        <shape>X X 5 7 7 7 </shape>
+        <shape>X X 5 4 3 2 </shape>
+        <shape>X 10 12 11 12 10 </shape>
+        <shape>X 10 9 7 7 7 </shape>
+        <shape>3 X X 4 3 2 </shape>
+        <shape>3 2 X 0 0 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gmaj7(9)</name>
+        <shape>X 10 9 11 10 X </shape>
+        <shape>X X 5 4 7 5 </shape>
+    </Chord>
+    <Chord>
+        <name>Gmaj7/B</name>
+        <shape>X 2 X 0 3 2 </shape>
+        <shape>7 X 5 7 7 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gmaj7/D</name>
+        <shape>X X 0 0 0 2 </shape>
+        <shape>X 5 5 4 7 X </shape>
+        <shape>10 X 9 11 8 X </shape>
+    </Chord>
+    <Chord>
+        <name>Gsus</name>
+        <shape>3 5 5 5 3 3 </shape>
+        <shape>3 2 0 0 1 3 </shape>
+        <shape>X X 5 7 12 2 </shape>
+    </Chord>
+    <Chord>
+        <name>Gsus2</name>
+        <shape>3 X 0 2 3 3</shape>
+    </Chord>
+    <Chord>
+        <name>Gsus4</name>
+        <shape>3 X 0 0 1 3</shape>
+    </Chord>
+    <Chord>
+        <name>Gsus9</name>
+        <shape>X X 5 7 8 5 </shape>
+        <shape>X 10 12 12 10 10 </shape>
+    </Chord>
+</ChordsDB>

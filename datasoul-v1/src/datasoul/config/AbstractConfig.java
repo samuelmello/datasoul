@@ -12,7 +12,14 @@ package datasoul.config;
 import datasoul.util.SerializableObject;
 import datasoul.util.ShowDialog;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
@@ -25,11 +32,54 @@ import org.w3c.dom.Node;
  */
 public abstract class AbstractConfig extends SerializableObject {
     
+    private void writeFileFromStream(File f, InputStream is) throws IOException{
+        
+        FileOutputStream fos = new FileOutputStream(f);
+        
+        int x;
+        while ((x = is.read()) != -1){
+            fos.write((byte)x);
+        }
+        fos.close();
+        is.close();
+    }
+    
     protected void load(String fileName){
-                String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-        + "config" + System.getProperty("file.separator") + fileName;
+        
 
+        /* Find the configuration file. If its not in ~/.datasoul/config, copy it there */
+        String fs = System.getProperty("file.separator");
+        String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + fileName;
         File configFile = new File(path);
+        
+        if (!configFile.exists()){
+            // Ensure directory exists
+            String dirpath = System.getProperty("user.home") + fs + ".datasoul"+fs+"config";
+            File configdir = new File(dirpath);
+            configdir.mkdirs();
+            
+            // check if there is old config file
+            String oldpath = System.getProperty("user.dir") + fs + "config" + System.getProperty("file.separator") + fileName;
+            File oldfile = new File(oldpath);
+            if (oldfile.exists()){
+                try {
+                    writeFileFromStream(configFile, new FileInputStream(oldfile));
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                }
+            }else{
+                // Get it from jar
+                InputStream is = AbstractConfig.class.getResourceAsStream("defaults/"+fileName);
+                try {
+                    writeFileFromStream(configFile, is);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                }
+            }
+            
+            // Reopen the file
+            configFile = new File(path); 
+        }
 
         Document dom=null;
         Node node = null;
@@ -59,8 +109,9 @@ public abstract class AbstractConfig extends SerializableObject {
     }
     
     protected void save(String nodeName){
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") 
-        + "config" + System.getProperty("file.separator") + nodeName;
+        String fs = System.getProperty("file.separator");
+        String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + nodeName;
+        
         try{
 
             Node node = this.writeObject();
