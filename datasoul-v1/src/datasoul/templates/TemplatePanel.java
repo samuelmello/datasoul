@@ -479,7 +479,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
     private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
         JFileChooser fc = new JFileChooser();
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "templates");
+        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
         fc.setCurrentDirectory(dir);
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.setMultiSelectionEnabled(false);

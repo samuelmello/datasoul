@@ -344,7 +344,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                           return ".servicelist"; 
                       } 
                   });
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "serviceslist");
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
@@ -390,7 +390,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                           return ".servicelist"; 
                       } 
                   });
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "serviceslist");
         fc.setCurrentDirectory(dir);
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             fileName = fc.getSelectedFile().getPath();

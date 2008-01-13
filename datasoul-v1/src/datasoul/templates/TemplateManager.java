@@ -85,7 +85,7 @@ public class TemplateManager implements TableModel {
     public void refreshAvailableTemplates(){
         
         availableTemplates.clear();
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         
         File file = new File(path);
         String[] files = file.list();
@@ -108,7 +108,7 @@ public class TemplateManager implements TableModel {
     
     public void deleteTemplate(String templateName) throws Exception {
 
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         File f = new File(path + System.getProperty("file.separator") + templateName + ".template");
         f.delete();
         DisplayTemplate.deleteTemplate(templateName);

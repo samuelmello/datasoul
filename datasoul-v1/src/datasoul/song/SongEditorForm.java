@@ -347,7 +347,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         String filename = this.fieldName.getText();
         if(!filename.contains(".song"))
             filename = filename + ".song";
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + 
                 "songs"+ System.getProperty("file.separator")+filename;
         
         if(!path.equals(song.getFilePath())){

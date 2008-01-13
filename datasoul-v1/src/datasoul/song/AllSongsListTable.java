@@ -26,7 +26,7 @@ public class AllSongsListTable extends SongListTable{
     
     /** Creates a new instance of AllSongsListTable */
     private AllSongsListTable() {
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "songs";
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "songs";
         
         File file = new File(path);
         String[] files = file.list();

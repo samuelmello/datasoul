@@ -70,7 +70,7 @@ public class SongViewer extends javax.swing.JPanel {
     private void loadSongTemplate(){
         songTemplate = new SongTemplate();
         
-        String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") 
+        String filepath = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") 
         + "config"+ System.getProperty("file.separator") + "datasoul.song"+this.activeView+"template";
 
         File songTemplateFile = new File(filepath);

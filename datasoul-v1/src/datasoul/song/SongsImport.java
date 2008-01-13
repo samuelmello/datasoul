@@ -761,7 +761,7 @@ public class SongsImport extends javax.swing.JFrame {
   }  
     
   private void saveFile(Song song){
-      String path = System.getProperty("user.dir") + System.getProperty("file.separator") + 
+      String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + 
                 "songs"+ System.getProperty("file.separator")+song.getTitle()+".song";
       song.setFilePath(path);
       

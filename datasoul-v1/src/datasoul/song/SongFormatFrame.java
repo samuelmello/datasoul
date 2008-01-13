@@ -126,7 +126,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
     private void btnApplyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApplyMouseClicked
         svp.refresh();
         try {
-            String filepath = System.getProperty("user.dir") + System.getProperty("file.separator") 
+            String filepath = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") 
             + "config"+ System.getProperty("file.separator") + "datasoul.song"+view+"template";
 
             this.songTemplate.save(filepath);

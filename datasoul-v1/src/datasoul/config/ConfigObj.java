@@ -38,6 +38,7 @@ public class ConfigObj extends AbstractConfig {
     private String alertTemplateFilter;
     private String generalTemplateFilter;
     private String templateText;
+    private String storageLoc;
     
     
     public static final int CLOCKMODE_24_SEC = 0;
@@ -81,6 +82,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("MonitorTemplateFilter");
         properties.add("AlertTemplateFilter");
         properties.add("GeneralTemplateFilter");
+        properties.add("StorageLoc");
     }
     
     public ArrayList<String> getProperties(){
@@ -289,4 +291,12 @@ public class ConfigObj extends AbstractConfig {
         this.templateText = templateText;
     }
 
+    public String getStorageLoc(){
+        return storageLoc;
+    }
+    
+    public void setStorageLoc(String storageLoc){
+        this.storageLoc = storageLoc;
+    }
+    
 }

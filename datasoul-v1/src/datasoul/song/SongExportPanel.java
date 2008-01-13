@@ -231,7 +231,7 @@ public class SongExportPanel extends javax.swing.JFrame {
                           return ".rtf"; 
                       } 
                   });
-        File dir = new File (System.getProperty("user.dir") + System.getProperty("file.separator") + "songs");
+        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "songs");
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_export"));
         if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){

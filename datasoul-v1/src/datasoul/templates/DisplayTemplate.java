@@ -84,7 +84,7 @@ public class DisplayTemplate extends AttributedObject {
     public static String findUnusedName(){
         
         // try to find a Name
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         int i = 0;
         File file = new File(path);
         String[] files = file.list();
@@ -136,7 +136,7 @@ public class DisplayTemplate extends AttributedObject {
     
     private void loadFromFile(String name) throws Exception{
         
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         String filename = path + System.getProperty("file.separator") + name + ".template";
 
         Document dom=null;
@@ -340,7 +340,7 @@ public class DisplayTemplate extends AttributedObject {
     
     public void save() throws Exception {
         
-        String path = System.getProperty("user.dir") + System.getProperty("file.separator") + "templates";
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         String filename = path + System.getProperty("file.separator") + this.getName()+".template";
         
         Node node = this.writeObject();

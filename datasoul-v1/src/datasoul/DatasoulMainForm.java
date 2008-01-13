@@ -24,6 +24,7 @@ import datasoul.util.Splash;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
+import java.io.File;
 import javax.swing.UIManager;
 
 /**
@@ -357,6 +358,38 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnDatashowMouseClicked
     
+    public static void checkStorageLocation(){
+        String stgloc = ConfigObj.getInstance().getStorageLoc();
+        if (stgloc == null || stgloc.trim().equals("")){
+            stgloc = System.getProperty("user.dir")+System.getProperty("file.separator")+"datasoul";
+            ConfigObj.getInstance().setStorageLoc(stgloc);
+            ConfigObj.getInstance().save();
+        }
+        System.setProperty("datasoul.stgloc", stgloc);
+        
+        File stglocdir  = new File(stgloc);
+        if (!stglocdir.exists()){
+            stglocdir.mkdirs();
+        }
+        
+        File templates  = new File(stgloc+System.getProperty("file.separator")+"templates");
+        if (!templates.exists()){
+            templates.mkdirs();
+        }
+        
+        File songs  = new File(stgloc+System.getProperty("file.separator")+"songs");
+        if (!songs.exists()){
+            songs.mkdirs();
+        }
+    
+        File serviceslist  = new File(stgloc+System.getProperty("file.separator")+"serviceslist");
+        if (!serviceslist.exists()){
+            serviceslist.mkdirs();
+        }
+
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -368,6 +401,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_configuration..."));
         ConfigObj.getInstance();
+        checkStorageLocation();
+        
         BackgroundConfig.getInstance();
         DisplayControlConfig.getInstance();
 
