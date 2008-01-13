@@ -382,7 +382,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             songs.mkdirs();
         }
     
-        File serviceslist  = new File(stgloc+System.getProperty("file.separator")+"serviceslist");
+        File serviceslist  = new File(stgloc+System.getProperty("file.separator")+"servicelists");
         if (!serviceslist.exists()){
             serviceslist.mkdirs();
         }

@@ -174,7 +174,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 return ".servicelist";
             }
         });
-        File dir = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "serviceslist");
+        File dir = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "servicelists");
         fc.setCurrentDirectory(dir);
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             String fileName = fc.getSelectedFile().getPath();

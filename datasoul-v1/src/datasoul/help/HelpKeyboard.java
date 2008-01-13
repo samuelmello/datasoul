@@ -34,8 +34,6 @@ public class HelpKeyboard extends javax.swing.JPanel {
         sb.append("\n");
         sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F10:_Show"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F11:_Clear"));
-        sb.append("\n");
         sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F12:_Black"));
         sb.append("\n");
         sb.append("");

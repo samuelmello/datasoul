@@ -1,4 +1,4 @@
-(c) 2006 - Samuel Mello & Eduardo Schnell
+(c) 2006-2008 - Samuel Mello & Eduardo Schnell
 
 This program is distributed under the terms of the LGPL v2.
 
