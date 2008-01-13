@@ -210,6 +210,10 @@ public class ContentManager {
     static private String mainDisplayEngine = "SwingDisplay";
     static private String monitorDisplayEngine = "SwingDisplay";
     
+    static public boolean isMainDisplayActive(){
+        return mainDisplay != null;
+    }
+    
     static public ContentRender getMainDisplay(){
 
         if (mainDisplay == null ){
@@ -250,6 +254,11 @@ public class ContentManager {
         }
         return mainDisplay;
     }
+    
+    static public boolean isMonitorDisplayActive(){
+        return monitorDisplay != null;
+    }
+    
     
     static public ContentRender getMonitorDisplay(){
         

@@ -56,6 +56,7 @@ public class SwingContentRender extends ContentRender {
         display.setBlack(i);
     }
 
+    @Override
     public void initDisplay(int width, int height, int top, int left, boolean isMonitor) {
         super.initDisplay(width, height, top, left, isMonitor);
         display.initDisplay(width, height, top, left, isMonitor);
@@ -69,7 +70,9 @@ public class SwingContentRender extends ContentRender {
         display.setWindowTitle(title);
     }
 
-    
+    public void updatePosition(int width, int height, int top, int left){
+        display.setBounds(left, top, width, height);
+    }
 
     
 }
