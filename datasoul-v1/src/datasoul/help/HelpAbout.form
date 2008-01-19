@@ -60,7 +60,7 @@
           <Font name="Dialog" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="www.datasoul.org"/>
+        <Property name="text" type="java.lang.String" value="datasoul.sourceforge.net"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
@@ -79,7 +79,7 @@
                 <Property name="columns" type="int" value="25"/>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="rows" type="int" value="10"/>
-                <Property name="text" type="java.lang.String" value="Samuel Mello &#xa;samuel@datasoul.org&#xa;Developer&#xa;&#xa;Eduardo Schnell &#xa;schnell@datasoul.org&#xa;Developer"/>
+                <Property name="text" type="java.lang.String" value="Samuel Mello &#xa;svmello@users.sourceforge.net&#xa;Developer&#xa;&#xa;Eduardo Schnell &#xa;eduschnell@users.sourceforge.net&#xa;Developer"/>
               </Properties>
             </Component>
           </SubComponents>

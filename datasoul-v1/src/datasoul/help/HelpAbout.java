@@ -58,12 +58,12 @@ public class HelpAbout extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("www.datasoul.org");
+        jLabel3.setText("datasoul.sourceforge.net");
 
         jTextArea1.setColumns(25);
         jTextArea1.setEditable(false);
         jTextArea1.setRows(10);
-        jTextArea1.setText("Samuel Mello \nsamuel@datasoul.org\nDeveloper\n\nEduardo Schnell \nschnell@datasoul.org\nDeveloper");
+        jTextArea1.setText("Samuel Mello \nsvmello@users.sourceforge.net\nDeveloper\n\nEduardo Schnell \neduschnell@users.sourceforge.net\nDeveloper");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
