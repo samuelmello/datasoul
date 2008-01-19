@@ -161,6 +161,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
+        toolBar.setOpaque(false);
 
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png"))); // NOI18N
         btnAddWizard.setText(bundle.getString("Add_Item")); // NOI18N
@@ -175,7 +176,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnAddWizard);
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         toolBar.add(jSeparator1);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png"))); // NOI18N

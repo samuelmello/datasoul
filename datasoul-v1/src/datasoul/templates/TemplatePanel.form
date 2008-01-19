@@ -412,6 +412,7 @@
                 <Container class="javax.swing.JToolBar" name="jToolBar1">
                   <Properties>
                     <Property name="floatable" type="boolean" value="false"/>
+                    <Property name="opaque" type="boolean" value="false"/>
                   </Properties>
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>

@@ -135,7 +135,7 @@ public class SongsImport extends javax.swing.JFrame {
             dom = db.parse(file);
 
             //node = dom.getDocumentElement().getChildNodes().item(0);
-            node = dom.getElementsByTagName("Song").item(0);
+            node = dom.getElementsByTagName(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Song")).item(0);
 
         }catch(Exception e) {
             ShowDialog.showReadFileError(file, e);
@@ -335,7 +335,8 @@ public class SongsImport extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(textOldSong);
 
-        jLabel4.setText("Old file");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel4.setText(bundle.getString("Old_file")); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -352,14 +353,14 @@ public class SongsImport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel2);
 
         jScrollPane2.setViewportView(textNewSong);
 
-        jLabel5.setText("New file");
+        jLabel5.setText(bundle.getString("New_file")); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -376,7 +377,7 @@ public class SongsImport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE))
         );
 
         jSplitPane2.setRightComponent(jPanel3);
@@ -386,7 +387,7 @@ public class SongsImport extends javax.swing.JFrame {
         jSplitPane3.setDividerLocation(210);
         jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jLabel3.setText("Merge song");
+        jLabel3.setText(bundle.getString("Merge_song")); // NOI18N
 
         listMergeSongs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -416,9 +417,9 @@ public class SongsImport extends javax.swing.JFrame {
 
         radioTitleNew.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        jLabel7.setText("New");
+        jLabel7.setText(bundle.getString("New")); // NOI18N
 
-        jLabel6.setText("Old");
+        jLabel6.setText(bundle.getString("Old")); // NOI18N
 
         radioAuthorOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -436,29 +437,29 @@ public class SongsImport extends javax.swing.JFrame {
 
         radioSimplifiedOld.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        jButton1.setText("Apply it for selected song");
+        jButton1.setText(bundle.getString("Apply_it_for_selected_song")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 applyForSongActionPeformed(evt);
             }
         });
 
-        jButton2.setText("Apply it for all songs");
+        jButton2.setText(bundle.getString("Apply_it_for_all_songs")); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 applyForAllSongsActionPeformed(evt);
             }
         });
 
-        jLabel12.setText("Chords Simplified");
+        jLabel12.setText(bundle.getString("Chords_Simplified")); // NOI18N
 
-        jLabel11.setText("Chords Completed");
+        jLabel11.setText(bundle.getString("Chords_Completed")); // NOI18N
 
-        jLabel10.setText("Lyrics");
+        jLabel10.setText(bundle.getString("Lyrics")); // NOI18N
 
-        jLabel9.setText("Author");
+        jLabel9.setText(bundle.getString("Author")); // NOI18N
 
-        jLabel8.setText("Title");
+        jLabel8.setText(bundle.getString("Title")); // NOI18N
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -553,7 +554,7 @@ public class SongsImport extends javax.swing.JFrame {
         jSplitPane4.setDividerLocation(80);
         jSplitPane4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
-        jLabel1.setText("Add song");
+        jLabel1.setText(bundle.getString("Add_song")); // NOI18N
 
         listAddSongs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -594,12 +595,12 @@ public class SongsImport extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollListAddSongs, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                .addComponent(scrollListAddSongs, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
         );
 
         jSplitPane4.setTopComponent(jPanel7);
 
-        jLabel2.setText("Ignore song");
+        jLabel2.setText(bundle.getString("Ignore_song")); // NOI18N
 
         listIgnoreSongs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -641,7 +642,7 @@ public class SongsImport extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollListIgnoreSongs, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
+                .addComponent(scrollListIgnoreSongs, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
         );
 
         jSplitPane4.setRightComponent(jPanel8);
@@ -651,7 +652,7 @@ public class SongsImport extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jSplitPane3);
 
         btnImportFiles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png"))); // NOI18N
-        btnImportFiles.setText("ImportFiles");
+        btnImportFiles.setText(bundle.getString("Import_Files")); // NOI18N
         btnImportFiles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportFilesActionPerformed(evt);
@@ -659,7 +660,7 @@ public class SongsImport extends javax.swing.JFrame {
         });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png"))); // NOI18N
-        btnCancel.setText("Cancel");
+        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -671,7 +672,7 @@ public class SongsImport extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(674, Short.MAX_VALUE)
+                .addContainerGap(670, Short.MAX_VALUE)
                 .addComponent(btnImportFiles)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancel)
@@ -681,7 +682,7 @@ public class SongsImport extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel)
@@ -749,7 +750,7 @@ public class SongsImport extends javax.swing.JFrame {
 
         }
         
-        JOptionPane.showMessageDialog(null, "Files was imported corredtly");
+        JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Files_was_imported_corredtly"));
         this.dispose();
     }//GEN-LAST:event_btnImportFilesActionPerformed
 
@@ -951,15 +952,15 @@ public class SongsImport extends javax.swing.JFrame {
     private void showSong(JTextPane textPane, Song song){
         StringBuffer sb = new StringBuffer();
         
-        stringTitle(sb, "Title");
+        stringTitle(sb, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title"));
         sb.append(song.getTitle()); sb.append("\n");
-        stringTitle(sb, "Author");        
+        stringTitle(sb, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author"));        
         sb.append(song.getSongAuthor()); sb.append("\n");
-        stringTitle(sb, "Lyrics");
+        stringTitle(sb, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Lyrics"));
         sb.append(song.getText()); sb.append("\n");
-        stringTitle(sb, "Chords Completed");
+        stringTitle(sb, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Completed"));
         sb.append(song.getChordsComplete()); sb.append("\n");
-        stringTitle(sb, "Chords Simplified");
+        stringTitle(sb, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Simplified"));
         sb.append(song.getChordsSimplified()); sb.append("\n");
         
         textPane.setText(sb.toString());

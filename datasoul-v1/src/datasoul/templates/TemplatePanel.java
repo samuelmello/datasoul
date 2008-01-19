@@ -283,6 +283,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTableTemplates);
 
         jToolBar1.setFloatable(false);
+        jToolBar1.setOpaque(false);
 
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
         btnLoad.setText(bundle.getString("Load")); // NOI18N

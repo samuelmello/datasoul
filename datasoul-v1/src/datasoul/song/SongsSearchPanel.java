@@ -138,6 +138,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         labelField.setText(bundle.getString("FIELD")); // NOI18N
 
         toolBar.setBorder(null);
+        toolBar.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N

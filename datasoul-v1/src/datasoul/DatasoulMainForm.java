@@ -212,9 +212,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Datasoul");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         toolBarMain.setFloatable(false);
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 60));
+        toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
 
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png"))); // NOI18N
