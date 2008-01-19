@@ -114,9 +114,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         ));
         jScrollPane1.setViewportView(dnDTable1);
 
-        fileMenu.setLabel("File");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        fileMenu.setLabel(bundle.getString("File")); // NOI18N
 
-        actImportSongsToDatabase.setText("Import Songs To Database");
+        actImportSongsToDatabase.setText(bundle.getString("Import_Songs_To_Database")); // NOI18N
         actImportSongsToDatabase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actImportSongsToDatabaseActionPerformed(evt);
@@ -132,7 +133,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         comboField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         labelString.setText(bundle.getString("Search")); // NOI18N
 
         labelField.setText(bundle.getString("FIELD")); // NOI18N
@@ -239,7 +239,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator1);
 
-        btnFile.setText("File");
+        btnFile.setText(bundle.getString("File")); // NOI18N
         btnFile.setBorderPainted(false);
         btnFile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

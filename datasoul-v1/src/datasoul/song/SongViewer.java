@@ -528,9 +528,11 @@ public class SongViewer extends javax.swing.JPanel {
         split1.setRightComponent(panelSongChords);
 
         jToolBar2.setFloatable(false);
+        jToolBar2.setOpaque(false);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print_printer.png"))); // NOI18N
-        btnPrint.setText("Print");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnPrint.setText(bundle.getString("Print")); // NOI18N
         btnPrint.setBorderPainted(false);
         btnPrint.setFocusPainted(false);
         btnPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -541,7 +543,7 @@ public class SongViewer extends javax.swing.JPanel {
         jToolBar2.add(btnPrint);
 
         btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png"))); // NOI18N
-        btnFormat.setText("Format");
+        btnFormat.setText(bundle.getString("Format")); // NOI18N
         btnFormat.setBorderPainted(false);
         btnFormat.setFocusPainted(false);
         btnFormat.addActionListener(new java.awt.event.ActionListener() {
@@ -552,7 +554,7 @@ public class SongViewer extends javax.swing.JPanel {
         jToolBar2.add(btnFormat);
 
         btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/chordsmanager.png"))); // NOI18N
-        btnChords.setText("Chords");
+        btnChords.setText(bundle.getString("Chords")); // NOI18N
         btnChords.setBorderPainted(false);
         btnChords.setFocusPainted(false);
         btnChords.addActionListener(new java.awt.event.ActionListener() {
@@ -566,11 +568,11 @@ public class SongViewer extends javax.swing.JPanel {
         jToolBar2.add(jSeparator1);
 
         labelKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/changekey.png"))); // NOI18N
-        labelKey.setText("Key ");
+        labelKey.setText(bundle.getString("Key_")); // NOI18N
         jToolBar2.add(labelKey);
 
         comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboKey.setToolTipText("Select the key to song");
+        comboKey.setToolTipText(bundle.getString("Select_the_key_to_song")); // NOI18N
         comboKey.setMaximumSize(new java.awt.Dimension(50, 32767));
         comboKey.setMinimumSize(new java.awt.Dimension(50, 18));
         comboKey.setPreferredSize(new java.awt.Dimension(50, 22));

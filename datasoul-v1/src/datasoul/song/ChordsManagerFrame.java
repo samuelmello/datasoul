@@ -114,6 +114,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         setTitle(bundle.getString("Chords_Manager")); // NOI18N
 
         jToolBar1.setFloatable(false);
+        jToolBar1.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
