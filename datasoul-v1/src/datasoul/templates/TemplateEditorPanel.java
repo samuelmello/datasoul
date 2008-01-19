@@ -328,7 +328,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             
         }catch(Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_create_template:\n")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_create_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
         }
     }
     

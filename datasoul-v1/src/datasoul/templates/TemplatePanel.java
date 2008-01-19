@@ -417,7 +417,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_delete_template:\n")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
+                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_delete_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
                     }// try
                 }//if confirm
             }// if instance of

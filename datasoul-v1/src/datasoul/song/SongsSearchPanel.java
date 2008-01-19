@@ -390,7 +390,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }
                 }
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_searching.\nError:_")+ex.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
+                JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_searching.Error:_")+ex.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
                 ex.printStackTrace();
             }
         }
