@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.4" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.4" maxVersion="1.4" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
@@ -124,14 +125,14 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="59" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="btnAddText" alignment="0" pref="117" max="32767" attributes="2"/>
-                          <Component id="btnAddImage" alignment="0" pref="117" max="32767" attributes="2"/>
-                          <Component id="btnSave" alignment="0" pref="117" max="32767" attributes="2"/>
-                          <Component id="btnTimerProgress" alignment="0" pref="117" max="32767" attributes="0"/>
-                          <Component id="btnDeleteItem" alignment="0" pref="117" max="32767" attributes="2"/>
-                          <Component id="btnMoveDown" alignment="0" pref="117" max="32767" attributes="2"/>
-                          <Component id="btnMoveUp" alignment="0" pref="117" max="32767" attributes="2"/>
-                          <Component id="btnProperties" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnAddText" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnAddImage" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnSave" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnTimerProgress" alignment="0" pref="119" max="32767" attributes="0"/>
+                          <Component id="btnDeleteItem" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnMoveDown" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnMoveUp" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnProperties" alignment="0" pref="119" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -328,10 +329,8 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
-                      <FontInfo relative="false">
-                        <Font name="Dialog" size="12" style="2"/>
-                      </FontInfo>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Dialog" size="12" style="2"/>
                     </Property>
                     <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                       <ResourceString bundle="datasoul/internationalize.properties" key="Hold_Shift_down_for_resizing_itens" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -381,7 +380,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="181" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="182" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -430,7 +429,6 @@
                         </Property>
                         <Property name="borderPainted" type="boolean" value="false"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoadActionPerformed"/>
@@ -449,7 +447,6 @@
                         </Property>
                         <Property name="borderPainted" type="boolean" value="false"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewActionPerformed"/>
@@ -468,7 +465,6 @@
                         </Property>
                         <Property name="borderPainted" type="boolean" value="false"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteTemplateActionPerformed"/>
@@ -516,7 +512,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jToolBar3" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="280" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="284" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
