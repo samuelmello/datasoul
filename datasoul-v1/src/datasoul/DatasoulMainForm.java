@@ -389,10 +389,20 @@ public class DatasoulMainForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
+        
+        // Enable anti-aliasing
+        System.setProperty("swing.aatext","true");
+        
+        try{
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        }catch(Exception e){
+            //ignore and fall back to java look and feel
+        }
+        
         //start splashscreen
         final Splash splash = new Splash();
         splash.setVisible(true);
-
+        
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_configuration..."));
         ConfigObj.getInstance();
         checkStorageLocation();

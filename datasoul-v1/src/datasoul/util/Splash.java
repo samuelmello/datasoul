@@ -90,6 +90,7 @@ public class Splash extends javax.swing.JFrame {
 
     public void setStatusText(String status){
         lblStatus.setText(status);
+        setTitle(status);
     }
  
     public void center(){
