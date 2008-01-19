@@ -9,6 +9,7 @@
 
 package datasoul.templates;
 
+import datasoul.config.ConfigObj;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,6 +35,10 @@ public class TemplateManager implements TableModel {
     public static synchronized TemplateManager getInstance(){
         if (instance == null){
             instance = new TemplateManager();
+            // Ensure ConfigObj already loaded.
+            // If any template combo box register to the TemplateManager before 
+            // ConfigObj, it will cause a dead lock
+            ConfigObj.getInstance();
         }
         return instance;
     }
