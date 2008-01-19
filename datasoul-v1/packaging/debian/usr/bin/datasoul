@@ -1,0 +1,2 @@
+DSDIR=/usr/lib/datasoul
+java -cp $DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm

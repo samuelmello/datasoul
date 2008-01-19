@@ -1,0 +1,7 @@
+Package: datasoul
+Version: 1.0
+Section: misc
+Priority: optional
+Architecture: all
+Maintainer: Samuel Lucas Vaz de Mello
+Description: Datasoul is an application to manage and display song lyrics in worship services.
