@@ -9,6 +9,7 @@ all:
 	cp dist/datasoul.jar debian.tmp/usr/lib/datasoul
 	cp ../lib/xercesImpl.jar  debian.tmp/usr/lib/datasoul
 	cp ../lib/xml-apis.jar debian.tmp/usr/lib/datasoul
+	cp ../lib/swing-layout.jar debian.tmp/usr/lib/datasoul
 	ant clean
 	rm -rf datasoul
 	chmod a+x debian.tmp/usr/bin/datasoul

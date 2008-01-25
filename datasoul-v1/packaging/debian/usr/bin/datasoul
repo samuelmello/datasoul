@@ -26,7 +26,7 @@ then
 	exit 0
 fi
 
-JVM_VERS=$($MYJAVA -version 2>&1 | grep "1.[678]" >/dev/null)
+JVM_VERS=$($MYJAVA -version 2>&1 | grep "1.[5678]" >/dev/null)
 if [[ "$?" != "0" ]]
 then
 	showerror
@@ -35,4 +35,4 @@ fi
 
 
 DSDIR=/usr/lib/datasoul
-java -cp $DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm
+java -cp $DSDIR/swing-layout.jar:$DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm

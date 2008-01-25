@@ -112,15 +112,15 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout previewDisplayPanel1Layout = new javax.swing.GroupLayout(previewDisplayPanel1);
+        org.jdesktop.layout.GroupLayout previewDisplayPanel1Layout = new org.jdesktop.layout.GroupLayout(previewDisplayPanel1);
         previewDisplayPanel1.setLayout(previewDisplayPanel1Layout);
         previewDisplayPanel1Layout.setHorizontalGroup(
-            previewDisplayPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
+            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 156, Short.MAX_VALUE)
         );
         previewDisplayPanel1Layout.setVerticalGroup(
-            previewDisplayPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 116, Short.MAX_VALUE)
+            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 116, Short.MAX_VALUE)
         );
 
         cbPreviewSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Don't show", "Small", "Medium", "Large" }));
@@ -134,47 +134,47 @@ public class DatashowPanel extends javax.swing.JPanel {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel10.setText(bundle.getString("Preview_Size")); // NOI18N
 
-        javax.swing.GroupLayout pnlPreviewBoxLayout = new javax.swing.GroupLayout(pnlPreviewBox);
+        org.jdesktop.layout.GroupLayout pnlPreviewBoxLayout = new org.jdesktop.layout.GroupLayout(pnlPreviewBox);
         pnlPreviewBox.setLayout(pnlPreviewBoxLayout);
         pnlPreviewBoxLayout.setHorizontalGroup(
-            pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+            pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbPreviewSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(pnlPreviewBoxLayout.createSequentialGroup()
+                        .add(jLabel10)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
-            pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+            pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(cbPreviewSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel10)
+                    .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         preview.setMinimumSize(new java.awt.Dimension(10, 10));
 
-        javax.swing.GroupLayout pnlPreviewLayout = new javax.swing.GroupLayout(pnlPreview);
+        org.jdesktop.layout.GroupLayout pnlPreviewLayout = new org.jdesktop.layout.GroupLayout(pnlPreview);
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
-            pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlPreviewBox, 0, 350, Short.MAX_VALUE)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlPreviewBox, 0, 350, Short.MAX_VALUE)
+            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
-            pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlPreviewBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         split3.setTopComponent(pnlPreview);
@@ -189,15 +189,15 @@ public class DatashowPanel extends javax.swing.JPanel {
 
         jSplitPane2.setLeftComponent(jSplitPane1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

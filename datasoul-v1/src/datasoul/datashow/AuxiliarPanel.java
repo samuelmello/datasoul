@@ -90,15 +90,15 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         tabAuxiliar.addTab(bundle.getString("Background"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png")), backgroundPanel1); // NOI18N
         tabAuxiliar.addTab(bundle.getString("Timer"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kalarm.png")), timerControlPanel1); // NOI18N
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabAuxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabAuxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(tabAuxiliar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
