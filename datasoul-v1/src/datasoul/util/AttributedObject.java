@@ -229,6 +229,9 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             if ( propEditors.containsKey( prop ) ){
                 //super.getTableCellEditorComponent (table, value, isSelected, row, column);
                 Component c = propEditors.get( properties.get(row) );
+                if (c instanceof JComboBox){
+                    ((JComboBox)c).setSelectedItem(value);
+                }
                 return c;
             }else{
                 return super.getTableCellEditorComponent (table, value, isSelected, row, column);
@@ -236,6 +239,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         }
         
         protected void setValue (Object o){
+            System.out.println("Value: "+o);
             this.delegate.setValue(o);
             stopCellEditing();
         }
@@ -273,6 +277,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         */
         public void actionPerformed(ActionEvent e) {
             
+            System.out.println(e);
             Object source = e.getSource();
             if (source instanceof JComboBox){
                 tableCellEditor.setValue( ((JComboBox) source).getSelectedItem() );
