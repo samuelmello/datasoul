@@ -239,7 +239,6 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         }
         
         protected void setValue (Object o){
-            System.out.println("Value: "+o);
             this.delegate.setValue(o);
             stopCellEditing();
         }
@@ -277,7 +276,6 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         */
         public void actionPerformed(ActionEvent e) {
             
-            System.out.println(e);
             Object source = e.getSource();
             if (source instanceof JComboBox){
                 tableCellEditor.setValue( ((JComboBox) source).getSelectedItem() );
