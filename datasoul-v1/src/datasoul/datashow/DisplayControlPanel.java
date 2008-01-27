@@ -26,6 +26,7 @@ import datasoul.render.ContentManager;
 import datasoul.templates.TemplateComboBox;
 import java.util.Hashtable;
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
   
 /**
  *
@@ -42,7 +43,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     public DisplayControlPanel() {
         initComponents();
         
-        templateMonitor.setSelectedItem(DisplayControlConfig.getInstance().getTemplateMonitor());
+        String x = DisplayControlConfig.getInstance().getTemplateMonitor();
+        templateMonitor.setSelectedItem(x);
+        
         jSliderShowHideSpeed.setValue( DisplayControlConfig.getInstance().getSlideShowHideTime() / 100 );
         jSliderSlideChangeSpeed.setValue( DisplayControlConfig.getInstance().getSlideTransitionTime() / 100 );
         cbMonitorFollowMain.setSelected( DisplayControlConfig.getInstance().getMonitorFollowMainControls() );
@@ -491,13 +494,15 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 ContentManager.getMonitorDisplay().setBlack( 0 );
             }
         }
+        
     }//GEN-LAST:event_btnMonitorBlackActionPerformed
 
     private void templateMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_templateMonitorActionPerformed
 
-        if (templateMonitor.getSelectedItem() != null){
+        if (templateMonitor.getSelectedItem() != null && !templateMonitor.isUpdating()){
             ContentManager.getInstance().setTemplateMonitorLive( templateMonitor.getSelectedItem().toString() );
             ContentManager.getInstance().slideChange(-1);
+            DisplayControlConfig.getInstance().setTemplateMonitor( templateMonitor.getSelectedItem().toString() );                    
         }
         
     }//GEN-LAST:event_templateMonitorActionPerformed

@@ -44,6 +44,8 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
     
     private int filterType;
     
+    private boolean updating;
+    
     /** Creates a new instance of templateComboBox */
     public TemplateComboBox() {
         TemplateManager manager = TemplateManager.getInstance();
@@ -63,6 +65,8 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
     
     private void populateList(){
         
+        updating = true;
+                
         String filter = null;
         
         switch (filterType){
@@ -92,6 +96,11 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
         for(Object obj:objs){
             this.setSelectedItem(obj);
         }
+        updating = false;
+    }
+    
+    public boolean isUpdating(){
+        return updating;
     }
     
     public void setFilterType(int filterType){

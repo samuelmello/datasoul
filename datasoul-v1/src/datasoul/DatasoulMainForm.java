@@ -32,6 +32,7 @@ import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.templates.TemplatePanel;
 import datasoul.datashow.TimerManager;
+import datasoul.templates.TemplateManager;
 import datasoul.util.KeyListner;
 import datasoul.util.ObjectManager;
 import datasoul.util.Splash;
@@ -424,6 +425,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         checkStorageLocation();
         
         BackgroundConfig.getInstance();
+        TemplateManager.getInstance().refreshAvailableTemplates();
         DisplayControlConfig.getInstance();
 
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_songs..."));

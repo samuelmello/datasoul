@@ -243,6 +243,7 @@ public class TextTemplateItem extends TemplateItem {
         this.setFontName(from.getFontName());
         this.setFontColor(from.getFontColor());
         this.setOutlineColor(from.getOutlineColor());
+        this.setFontOutline(from.getFontOutline());
     }
     
 
