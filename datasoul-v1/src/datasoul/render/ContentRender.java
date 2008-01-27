@@ -23,6 +23,7 @@
 
 package datasoul.render;
 
+import datasoul.config.ConfigObj;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateItem;
 import datasoul.templates.TextTemplateItem;
@@ -30,6 +31,7 @@ import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -173,7 +175,12 @@ public abstract class ContentRender {
     
     public void setTemplate(String template){
         try{
-            this.template = new DisplayTemplate(template);
+            try{
+                this.template = new DisplayTemplate(template);
+            }catch(FileNotFoundException f){
+                // inexistent template, fallback to default
+                this.template = new DisplayTemplate( ConfigObj.getInstance().getTemplateText() );
+            }
             this.templateChanged = true;
         }catch(Exception e){
             e.printStackTrace();

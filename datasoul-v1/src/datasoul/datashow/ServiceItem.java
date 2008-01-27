@@ -23,6 +23,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.ConfigObj;
 import datasoul.util.SerializableObject;
 import java.awt.Component;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         slides = new ArrayList<ServiceItemRenderer>();
         tableModelListeners = new LinkedList<TableModelListener>();
         this.title = "";
-        this.template = "Default";
+        this.template = ConfigObj.getInstance().getTemplateText();
         this.slides = new ArrayList<ServiceItemRenderer>();
         slideNumberField = new ServiceItemTextField();
         slideNumberField.setHorizontalAlignment( ServiceItemTextField.TRAILING );

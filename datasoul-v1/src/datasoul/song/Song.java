@@ -26,22 +26,11 @@ package datasoul.song;
 import datasoul.*;
 import datasoul.util.*;
 import datasoul.datashow.*;
-import datasoul.song.*;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import javax.swing.ImageIcon;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Node;
 
 /**
  *
