@@ -23,6 +23,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,11 +35,6 @@ import java.util.Date;
 public class TimerManager extends Thread {
     
     private static TimerManager instance;
-    
-    public static final int TIMER_FORMAT_24H_WITH_SEC = 0;
-    public static final int TIMER_FORMAT_24H_WITHOUT_SEC = 1;
-    public static final int TIMER_FORMAT_AMPM_WITH_SEC = 2;
-    public static final int TIMER_FORMAT_AMPM_WITHOUT_SEC = 3;
     
     public static final int TIMER_DIRECTION_OFF = 0;
     public static final int TIMER_DIRECTION_FORWARD = 1;
@@ -56,26 +52,26 @@ public class TimerManager extends Thread {
     /** Creates a new instance of TimerManager */
     private TimerManager() {
 
-        int format = TIMER_FORMAT_24H_WITH_SEC;
+        int format = ConfigObj.getInstance().getClockModeIdx();
         
         sdformatTimer = new SimpleDateFormat("H:mm:ss");
         
         // Select the format
         switch(format){
             
-            case TIMER_FORMAT_24H_WITH_SEC: 
+            case ConfigObj.CLOCKMODE_24_SEC: 
                 sdformat = new SimpleDateFormat("k:mm:ss");
                 break;
 
-            case TIMER_FORMAT_24H_WITHOUT_SEC: 
+            case ConfigObj.CLOCKMODE_24_NOSEC: 
                 sdformat = new SimpleDateFormat("k:mm");
                 break;
                 
-            case TIMER_FORMAT_AMPM_WITH_SEC: 
+            case ConfigObj.CLOCKMODE_12_SEC: 
                 sdformat = new SimpleDateFormat("h:mm:ss a");
                 break;
                 
-            case TIMER_FORMAT_AMPM_WITHOUT_SEC: 
+            case ConfigObj.CLOCKMODE_12_NOSEC: 
                 sdformat = new SimpleDateFormat("h:mm");
                 break;
                 
