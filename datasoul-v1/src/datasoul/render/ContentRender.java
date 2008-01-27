@@ -317,6 +317,8 @@ public abstract class ContentRender {
                                 continue;
                             }
                         }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
+                            ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
+                            ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
                             needUpdate = true;
                             continue;
                         }// if is TextTemplateItem
