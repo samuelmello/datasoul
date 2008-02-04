@@ -515,9 +515,13 @@ public class SongEditorForm extends javax.swing.JFrame {
 
     public void highlightchord(JTextComponent textComp){
         removeHighlights(textComp);
+        highlight(textComp,"\n"+TextServiceItem.SLIDE_BREAK+"\n",Color.ORANGE);
+        highlight(textComp,"\n"+TextServiceItem.CHORUS_MARK+"\n",Color.PINK);
+        /*
         for(String chord:ChordsDB.getInstance().getChordsName()){
             highlight(textComp,chord,Color.decode("0xddddff"));
         }
+         */
     }
     
     // Creates highlights around all occurrences of pattern in textComp

@@ -40,6 +40,10 @@ import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.awt.event.AWTEventListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.swing.UIManager;
 import org.jdesktop.layout.GroupLayout;
 import org.jdesktop.layout.LayoutStyle;
@@ -386,6 +390,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         File templates  = new File(stgloc+System.getProperty("file.separator")+"templates");
         if (!templates.exists()){
             templates.mkdirs();
+            copySampleTemplates(templates.getAbsolutePath());
         }
         
         File songs  = new File(stgloc+System.getProperty("file.separator")+"songs");
@@ -396,6 +401,39 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         File serviceslist  = new File(stgloc+System.getProperty("file.separator")+"servicelists");
         if (!serviceslist.exists()){
             serviceslist.mkdirs();
+        }
+
+    }
+    
+    protected static void copyFile(String resource, String targetName) throws IOException{
+        InputStream is = DatasoulMainForm.class.getResourceAsStream(resource);
+        FileOutputStream fos = new FileOutputStream(targetName);
+        int x;
+        while ((x=is.read()) != -1){
+            fos.write((byte)x);
+        }
+        is.close();
+        fos.close();
+    }
+    
+    protected static void copySampleTemplates(String dir){
+        String files[] = {"alert-general.template",
+            "alert-nursery.template",
+            "alert-parking.template",
+            "bible.template",
+            "monitor-preaching.template",
+            "monitor-song.template",
+            "nature.template",
+            "song.template",
+            "subtitle.template"
+        };
+        
+        for (String f: files){
+            try{
+                copyFile("samples/"+f, dir+System.getProperty("file.separator")+f);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
         }
 
     }
