@@ -320,7 +320,7 @@ public class SongViewer extends javax.swing.JPanel {
         int spaceSize=0;
         int spacesNedded=0;
         
-        String[] chords = line.split(" ");
+        String[] chords = line.replace("\t"," ").split(" ");
         Font fontChords = new Font(songTemplate.getChordsFontName(), Font.PLAIN, songTemplate.getChordsFontSize());
         FontMetrics fontChordsMetrics = getFontMetrics(fontChords);
         Font fontLyrics = new Font(songTemplate.getLyricsFontName(), Font.PLAIN, songTemplate.getLyricsFontSize());
