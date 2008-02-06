@@ -30,25 +30,16 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.StringWriter;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
-import javax.swing.text.Keymap;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.apache.xml.serialize.OutputFormat;
-import org.apache.xml.serialize.XMLSerializer;
 import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
-import org.w3c.dom.Text;
 
 /**
  *
@@ -431,8 +422,7 @@ public class SongEditorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_textChordsCompleteKeyPressed
 
     private void textLyricsKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textLyricsKeyPressed
-        if(evt.isConsumed()||evt.getKeyCode()==10)
-            highlightlyric(this.textLyrics);
+        highlightlyric(this.textLyrics);
     }//GEN-LAST:event_textLyricsKeyPressed
 
     private void fieldNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldNameKeyTyped
