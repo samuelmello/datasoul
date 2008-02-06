@@ -548,7 +548,11 @@ public class SongEditorForm extends javax.swing.JFrame {
     // Removes only our private highlights
     public void removeHighlights(JTextComponent textComp) {
         Highlighter hilite = textComp.getHighlighter();
-        hilite.removeAllHighlights();
+        for ( Highlighter.Highlight h : hilite.getHighlights()){
+            if (h.getPainter() instanceof MyHighlightPainter){
+                hilite.removeHighlight(h);
+            }
+        }
     }
     
 
