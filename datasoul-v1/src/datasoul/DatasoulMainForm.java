@@ -38,9 +38,7 @@ import datasoul.util.ObjectManager;
 import datasoul.util.Splash;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
-import java.awt.event.AWTEventListener;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -376,7 +374,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
         if (stgloc == null || stgloc.trim().equals("")){
-            stgloc = System.getProperty("user.dir")+System.getProperty("file.separator")+"datasoul";
+            stgloc = System.getProperty("user.home")+System.getProperty("file.separator")+".datasoul";
             ConfigObj.getInstance().setStorageLoc(stgloc);
             ConfigObj.getInstance().save();
         }
@@ -396,11 +394,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         File songs  = new File(stgloc+System.getProperty("file.separator")+"songs");
         if (!songs.exists()){
             songs.mkdirs();
+            copySampleSongs(songs.getAbsolutePath());
         }
     
         File serviceslist  = new File(stgloc+System.getProperty("file.separator")+"servicelists");
         if (!serviceslist.exists()){
             serviceslist.mkdirs();
+            copySampleServices(serviceslist.getAbsolutePath());
         }
 
     }
@@ -423,7 +423,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             "bible.template",
             "monitor-preaching.template",
             "monitor-song.template",
-            "nature.template",
+            "default.template",
             "song.template",
             "subtitle.template"
         };
@@ -437,7 +437,38 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
 
     }
+
+    protected static void copySampleSongs(String dir){
+        String files[] = {"Amazing Grace.song",
+            "How Great Thou Art.song",
+            "It Is Well With My Soul.song",
+            "Joyful Joyful We Adore Thee.song",
+            };
+        
+        for (String f: files){
+            try{
+                copyFile("samples/"+f, dir+System.getProperty("file.separator")+f);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
     
+
+    protected static void copySampleServices(String dir){
+        String files[] = {"SampleService.servicelist"};
+        
+        for (String f: files){
+            try{
+                copyFile("samples/"+f, dir+System.getProperty("file.separator")+f);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
+        
     
     /**
      * @param args the command line arguments
