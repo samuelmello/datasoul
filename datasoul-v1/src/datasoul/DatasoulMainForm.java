@@ -374,7 +374,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
         if (stgloc == null || stgloc.trim().equals("")){
-            stgloc = System.getProperty("user.home")+System.getProperty("file.separator")+".datasoul";
+            stgloc = System.getProperty("user.home")+System.getProperty("file.separator")+".datasoul"+System.getProperty("file.separator")+"data";
             ConfigObj.getInstance().setStorageLoc(stgloc);
             ConfigObj.getInstance().save();
         }
