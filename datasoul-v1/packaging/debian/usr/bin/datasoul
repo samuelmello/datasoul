@@ -34,5 +34,5 @@ then
 fi
 
 
-DSDIR=/usr/lib/datasoul
+DSDIR=$(dirname $0)
 java -cp $DSDIR/swing-layout.jar:$DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm
