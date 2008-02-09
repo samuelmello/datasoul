@@ -1,0 +1,144 @@
+<project>
+    <shortName>datasoul</shortName>
+    <fullName>Datasoul</fullName>
+    <version>1.0</version>
+    <outputDirectory>installers</outputDirectory>
+    <preInstallationActionList>
+        <autodetectJava>
+            <promptUser>0</promptUser>
+            <validVersionList>
+                <validVersion>
+                    <maxVersion></maxVersion>
+                    <minVersion>1.5</minVersion>
+                    <requireJDK>0</requireJDK>
+                    <vendor>sun</vendor>
+                </validVersion>
+            </validVersionList>
+        </autodetectJava>
+    </preInstallationActionList>
+    <description>Datasoul is an application to manage and display song lyrics in worship services.</description>
+    <enableRollback>1</enableRollback>
+    <registerWithPackageDatabase>1</registerWithPackageDatabase>
+    <summary>Datasoul is an application to manage and display song lyrics in worship services.</summary>
+    <vendor>Datasoul</vendor>
+    <componentList>
+        <component>
+            <name>default</name>
+            <description>Default Component</description>
+            <canBeEdited>1</canBeEdited>
+            <requiredSize>1998</requiredSize>
+            <selected>1</selected>
+            <show>1</show>
+            <folderList>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfiles</name>
+                    <platforms>all</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>../lib/swing-layout.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xercesImpl.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xml-apis.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>dist/datasoul.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>datasoul.png</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Uninstall</comment>
+                            <exec>${installdir}/${uninstallerName}</exec>
+                            <icon></icon>
+                            <name>Uninstall ${product_fullname}</name>
+                            <path>${installdir}</path>
+                            <platforms>all</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath>${installdir}</windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfileslinux</name>
+                    <platforms>linux</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>datasoul</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Program Files</description>
+                    <destination>${installdir}</destination>
+                    <name>programfileswindows</name>
+                    <platforms>windows</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>datasoul.ico</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>ShareApplications</description>
+                    <destination>/usr/share/applications</destination>
+                    <name>usrshareapps</name>
+                    <platforms>linux</platforms>
+                    <shortcutList>
+                        <shortcut>
+                            <comment>Datasoul - Service Presentation Application</comment>
+                            <exec>${installdir}/datasoul</exec>
+                            <icon>${installdir}/datasoul.png</icon>
+                            <name>Datasoul</name>
+                            <path>${installdir}/</path>
+                            <platforms>linux</platforms>
+                            <runInTerminal>0</runInTerminal>
+                            <windowsExec></windowsExec>
+                            <windowsExecArgs></windowsExecArgs>
+                            <windowsIcon></windowsIcon>
+                            <windowsPath></windowsPath>
+                        </shortcut>
+                    </shortcutList>
+                </folder>
+            </folderList>
+            <startMenuShortcutList>
+                <startMenuShortcut>
+                    <comment>Datasoul - Service Presentation Application</comment>
+                    <name>Datasoul</name>
+                    <runInTerminal>0</runInTerminal>
+                    <windowsExec>javaw</windowsExec>
+                    <windowsExecArgs>-cp swing-layout.jar;xercesImpl.jar;xml-apis.jar;datasoul.jar datasoul.DatasoulMainForm</windowsExecArgs>
+                    <windowsIcon>${installdir}/datasoul.ico</windowsIcon>
+                    <windowsPath>${installdir}/</windowsPath>
+                </startMenuShortcut>
+            </startMenuShortcutList>
+        </component>
+    </componentList>
+    <parameterList>
+        <directoryParameter>
+            <name>installdir</name>
+            <description>Installer.Parameter.installdir.description</description>
+            <explanation>Installer.Parameter.installdir.explanation</explanation>
+            <value>${platform_install_prefix}/${product_shortname}-${product_version}</value>
+            <default>${platform_install_prefix}/${product_shortname}-${product_version}</default>
+            <allowEmptyValue>0</allowEmptyValue>
+            <ask>yes</ask>
+            <cliOptionName>prefix</cliOptionName>
+            <mustBeWritable>yes</mustBeWritable>
+            <mustExist>0</mustExist>
+            <width>30</width>
+        </directoryParameter>
+    </parameterList>
+</project>
+
