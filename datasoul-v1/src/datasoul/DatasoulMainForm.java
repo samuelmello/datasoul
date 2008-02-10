@@ -42,6 +42,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.UIManager;
 import org.jdesktop.layout.GroupLayout;
 import org.jdesktop.layout.LayoutStyle;
@@ -67,7 +70,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     GroupLayout configLayout;
     GroupLayout helpLayout;
 
-    
+      
     /**
      * Creates new form DatasoulMainForm
      */
@@ -75,7 +78,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         initComponents();
         
-        this.setTitle("Datasoul - "+DATASOUL_VERSION);
+        this.setTitle("Datasoul - "+getVersion());
         
         ObjectManager.getInstance().setDatasoulMainForm(this);
         
@@ -520,6 +523,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
     }
+
+    public static String getVersion(){
+        try {
+            Properties prop = new Properties();
+            prop.load(DatasoulMainForm.class.getResourceAsStream("version.properties"));
+            return prop.getProperty("version");
+        } catch (IOException ex) {
+            Logger.getLogger(DatasoulMainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "Unknown Private Build";
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;

@@ -8,6 +8,9 @@ rm -Rf installers
 ant clean 
 find ../src -name "*#*" | xargs rm -f
 
+# Setup vesion
+echo "version=$DSVERSION" > ../src/datasoul/version.properties
+
 # Compile
 ant jar
 

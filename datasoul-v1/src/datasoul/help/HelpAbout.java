@@ -31,7 +31,7 @@ public class HelpAbout extends javax.swing.JPanel {
     /** Creates new form HelpAbout */
     public HelpAbout() {
         initComponents();
-        lblVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Version")+" "+DatasoulMainForm.DATASOUL_VERSION);
+        lblVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Version")+" "+DatasoulMainForm.getVersion());
     }
      
     /** This method is called from within the constructor to
