@@ -324,13 +324,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE)
+            .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 52, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(657, Short.MAX_VALUE))
+                .addContainerGap(655, Short.MAX_VALUE))
         );
 
         pack();

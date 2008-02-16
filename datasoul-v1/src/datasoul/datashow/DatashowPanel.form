@@ -36,7 +36,7 @@
       <SubComponents>
         <Container class="javax.swing.JSplitPane" name="split3">
           <Properties>
-            <Property name="dividerLocation" type="int" value="350"/>
+            <Property name="dividerLocation" type="int" value="300"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
@@ -68,8 +68,8 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="pnlPreviewBox" alignment="0" min="0" pref="350" max="32767" attributes="1"/>
-                      <Component id="preview" alignment="0" pref="350" max="32767" attributes="1"/>
+                      <Component id="pnlPreviewBox" alignment="0" min="0" pref="300" max="32767" attributes="1"/>
+                      <Component id="preview" alignment="0" pref="300" max="32767" attributes="1"/>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
@@ -98,7 +98,7 @@
                                   </Group>
                                   <Component id="previewDisplayPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="140" max="32767" attributes="0"/>
+                              <EmptySpace pref="90" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>

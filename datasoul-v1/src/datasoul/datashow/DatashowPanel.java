@@ -99,7 +99,7 @@ public class DatashowPanel extends javax.swing.JPanel {
 
         jSplitPane2.setDividerLocation(320);
 
-        split3.setDividerLocation(350);
+        split3.setDividerLocation(300);
 
         live.setMinimumSize(new java.awt.Dimension(10, 10));
         split3.setRightComponent(live);
@@ -146,7 +146,7 @@ public class DatashowPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -166,8 +166,8 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlPreviewBox, 0, 350, Short.MAX_VALUE)
-            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+            .add(pnlPreviewBox, 0, 300, Short.MAX_VALUE)
+            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
