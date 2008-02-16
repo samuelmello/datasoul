@@ -1,8 +1,7 @@
 <project>
     <shortName>datasoul</shortName>
     <fullName>Datasoul</fullName>
-    <version>0.91</version>
-    <outputDirectory>installers</outputDirectory>
+    <version>0.92</version>
     <preInstallationActionList>
         <autodetectJava>
             <promptUser>0</promptUser>
@@ -18,6 +17,7 @@
     </preInstallationActionList>
     <description>Datasoul is an application to manage and display song lyrics in worship services.</description>
     <enableRollback>1</enableRollback>
+    <outputDirectory>installers</outputDirectory>
     <registerWithPackageDatabase>1</registerWithPackageDatabase>
     <summary>Datasoul is an application to manage and display song lyrics in worship services.</summary>
     <vendor>Datasoul</vendor>
@@ -34,39 +34,7 @@
                     <description>Program Files</description>
                     <destination>${installdir}</destination>
                     <name>programfiles</name>
-                    <platforms>all</platforms>
-                    <distributionFileList>
-                        <distributionFile>
-                            <origin>../lib/swing-layout.jar</origin>
-                        </distributionFile>
-                        <distributionFile>
-                            <origin>../lib/xercesImpl.jar</origin>
-                        </distributionFile>
-                        <distributionFile>
-                            <origin>../lib/xml-apis.jar</origin>
-                        </distributionFile>
-                        <distributionFile>
-                            <origin>dist/datasoul.jar</origin>
-                        </distributionFile>
-                        <distributionFile>
-                            <origin>datasoul.png</origin>
-                        </distributionFile>
-                    </distributionFileList>
-                    <shortcutList>
-                        <shortcut>
-                            <comment>Uninstall</comment>
-                            <exec>${installdir}/${uninstallerName}</exec>
-                            <icon></icon>
-                            <name>Uninstall ${product_fullname}</name>
-                            <path>${installdir}</path>
-                            <platforms>all</platforms>
-                            <runInTerminal>0</runInTerminal>
-                            <windowsExec>${installdir}/${uninstallerName}.exe</windowsExec>
-                            <windowsExecArgs></windowsExecArgs>
-                            <windowsIcon></windowsIcon>
-                            <windowsPath>${installdir}</windowsPath>
-                        </shortcut>
-                    </shortcutList>
+                    <platforms>osx</platforms>
                 </folder>
                 <folder>
                     <description>Program Files</description>
@@ -76,6 +44,21 @@
                     <distributionFileList>
                         <distributionFile>
                             <origin>datasoul</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>datasoul.png</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>dist/datasoul.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/swing-layout.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xercesImpl.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xml-apis.jar</origin>
                         </distributionFile>
                     </distributionFileList>
                 </folder>
@@ -87,6 +70,18 @@
                     <distributionFileList>
                         <distributionFile>
                             <origin>datasoul.ico</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/swing-layout.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xercesImpl.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xml-apis.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>dist/datasoul.jar</origin>
                         </distributionFile>
                     </distributionFileList>
                 </folder>
@@ -110,6 +105,65 @@
                             <windowsPath></windowsPath>
                         </shortcut>
                     </shortcutList>
+                </folder>
+                <folder>
+                    <description>Datasoul.app</description>
+                    <destination>${installdir}/Datasoul.app</destination>
+                    <name>Datasoul.app</name>
+                    <platforms>osx</platforms>
+                </folder>
+                <folder>
+                    <description>Contents</description>
+                    <destination>${installdir}/Datasoul.app/Contents</destination>
+                    <name>Contents</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>Info.plist</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>MacOS</description>
+                    <destination>${installdir}/Datasoul.app/Contents/MacOS</destination>
+                    <name>MacOS</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>JavaApplicationStub</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Resources</description>
+                    <destination>${installdir}/Datasoul.app/Contents/Resources</destination>
+                    <name>Resources</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>datasoul.icns</origin>
+                        </distributionFile>
+                    </distributionFileList>
+                </folder>
+                <folder>
+                    <description>Java</description>
+                    <destination>${installdir}/Datasoul.app/Contents/Resources/Java</destination>
+                    <name>Java</name>
+                    <platforms>osx</platforms>
+                    <distributionFileList>
+                        <distributionFile>
+                            <origin>dist/datasoul.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/swing-layout.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xercesImpl.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/xml-apis.jar</origin>
+                        </distributionFile>
+                    </distributionFileList>
                 </folder>
             </folderList>
             <startMenuShortcutList>
