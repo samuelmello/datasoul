@@ -18,7 +18,7 @@
     <description>Datasoul is an application to manage and display song lyrics in worship services.</description>
     <enableRollback>1</enableRollback>
     <outputDirectory>installers</outputDirectory>
-    <registerWithPackageDatabase>1</registerWithPackageDatabase>
+    <registerWithPackageDatabase>0</registerWithPackageDatabase>
     <summary>Datasoul is an application to manage and display song lyrics in worship services.</summary>
     <vendor>Datasoul</vendor>
     <componentList>
