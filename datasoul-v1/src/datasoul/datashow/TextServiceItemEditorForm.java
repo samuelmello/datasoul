@@ -233,13 +233,14 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_in_the_next_time_digit_a_number!"));
             return;
         }
-        
+       
         String inStr = this.textText.getText();
         StringBuffer sb = new StringBuffer();
-        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\r\n","\n\n");
-        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\r\n","");
+        inStr.replace("\r", "");
+        inStr = inStr.replace("\n"+TextServiceItem.SLIDE_BREAK+"\n","\n");
+
+        /*
         inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\n","\n\n");
-        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\n","");
         String str2;
         int count = 0;
         for(int i=0; i< inStr.length()-2;i++){
@@ -263,10 +264,30 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             sb.append(str);
             if(count==lines){
                 sb.append(TextServiceItem.SLIDE_BREAK+"\n");
-                count =0;
+                count = 0;
             }
         }
         sb.append(inStr.substring(inStr.length()-2,inStr.length()));
+         */
+        
+        String verses[] = inStr.split(TextServiceItem.CHORUS_MARK+"\n");
+        for (int i=0; i<verses.length; i++){
+            String vlines[] = verses[i].split("\n");
+            for (int j=0; j<vlines.length; j++){
+                sb.append(vlines[j]);
+                sb.append("\n");
+                if (lines != 0 && (j+1)%lines == 0 && vlines.length-j>1){
+                    sb.append(TextServiceItem.SLIDE_BREAK);
+                    sb.append("\n");
+                }
+            }
+            if (i < verses.length -1){
+                sb.append(TextServiceItem.CHORUS_MARK);
+                sb.append("\n");
+            }
+            
+        }
+        
         this.textText.setText(sb.toString());
         highlightlyric(this.textText);        
     }//GEN-LAST:event_btnSplitActionPerformed

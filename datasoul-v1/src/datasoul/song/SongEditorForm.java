@@ -288,13 +288,13 @@ public class SongEditorForm extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(jLabel1)
-                        .add(208, 208, 208)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 208, Short.MAX_VALUE)
                         .add(btnSplit)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 78, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnSave)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClose))
@@ -304,9 +304,9 @@ public class SongEditorForm extends javax.swing.JFrame {
                             .add(labelAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
-                            .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)))
-                    .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                            .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                            .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)))
+                    .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                     .add(jLabel3))
                 .addContainerGap())
         );
@@ -328,11 +328,11 @@ public class SongEditorForm extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel1)
+                    .add(btnClose)
+                    .add(btnSave)
                     .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel2)
-                    .add(btnSplit)
-                    .add(btnClose)
-                    .add(btnSave))
+                    .add(btnSplit))
                 .addContainerGap())
         );
 
@@ -377,10 +377,11 @@ public class SongEditorForm extends javax.swing.JFrame {
        
         String inStr = this.textLyrics.getText();
         StringBuffer sb = new StringBuffer();
-        inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\r\n","\n\n");
-        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\r\n","");
+        inStr.replace("\r", "");
+        inStr = inStr.replace("\n"+TextServiceItem.SLIDE_BREAK+"\n","\n");
+
+        /*
         inStr = inStr.replace(TextServiceItem.CHORUS_MARK+"\n","\n\n");
-        inStr = inStr.replace(TextServiceItem.SLIDE_BREAK+"\n","");
         String str2;
         int count = 0;
         for(int i=0; i< inStr.length()-2;i++){
@@ -404,11 +405,30 @@ public class SongEditorForm extends javax.swing.JFrame {
             sb.append(str);
             if(count==lines){
                 sb.append(TextServiceItem.SLIDE_BREAK+"\n");
-                count =0;
+                count = 0;
             }
         }
         sb.append(inStr.substring(inStr.length()-2,inStr.length()));
-         
+         */
+        
+        String verses[] = inStr.split(TextServiceItem.CHORUS_MARK+"\n");
+        for (int i=0; i<verses.length; i++){
+            String vlines[] = verses[i].split("\n");
+            for (int j=0; j<vlines.length; j++){
+                sb.append(vlines[j]);
+                sb.append("\n");
+                if (lines != 0 && (j+1)%lines == 0 && vlines.length-j>1){
+                    sb.append(TextServiceItem.SLIDE_BREAK);
+                    sb.append("\n");
+                }
+            }
+            if (i < verses.length -1){
+                sb.append(TextServiceItem.CHORUS_MARK);
+                sb.append("\n");
+            }
+            
+        }
+        
         this.textLyrics.setText(sb.toString());
         highlightlyric(this.textLyrics);        
     }//GEN-LAST:event_btnSplitActionPerformed
