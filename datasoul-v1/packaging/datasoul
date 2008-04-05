@@ -2,13 +2,22 @@
 
 function showerror(){
 
-echo "$LANG" | grep "pt" > /dev/null
-if [[ "$?" == "0" ]]
-then
-	MSG="Datasoul precisa de Java Runtime 6 ou mais recente.\nPor favor instale Java Runtime 6"
-else
-	MSG="Datasoul needs Java Runtime 6 or newer.\nPlease install Java Runtime 6"
-fi
+#set a default, used if $LANG is not set
+MSG="Datasoul needs Java Runtime 6 or newer.\nPlease install Java Runtime 6"
+
+LANG1=$(echo $LANG | awk -F_ '{ print $1 }')
+case $LANG1 in
+	pt)
+		MSG="Datasoul precisa de Java Runtime 6 ou mais recente.\nPor favor instale Java Runtime 6"
+	;;
+	en)
+		MSG="Datasoul needs Java Runtime 6 or newer.\nPlease install Java Runtime 6"
+	;;
+	de) 
+		MSG="Um Datasoul auszuführen, wird Java Runtime 6 oder neuer benötigt.\nBitte installieren Sie Java Runtime 6"
+	;;
+
+esac
 
 if [[ -x /usr/bin/zenity ]]
 then
@@ -35,4 +44,4 @@ fi
 
 
 DSDIR=$(dirname $0)
-java -cp $DSDIR/swing-layout.jar:$DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm
+java -Xmx512m -cp $DSDIR/swing-layout.jar:$DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm

@@ -351,7 +351,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel6.setText(bundle.getString("Size")); // NOI18N
 
         jLabel30.setFont(new java.awt.Font("Dialog", 2, 10));
-        jLabel30.setText(bundle.getString("*_Using_640x480_is_highly_recommented_for_better_performance")); // NOI18N
+        jLabel30.setText(bundle.getString("*_Using_640x480_is_highly_recommended_for_better_performance")); // NOI18N
 
         mainOutputPositionLeft.setText("jTextField1");
 
@@ -506,7 +506,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel5.setText(bundle.getString("Size")); // NOI18N
 
         jLabel31.setFont(new java.awt.Font("Dialog", 2, 10));
-        jLabel31.setText(bundle.getString("*_Using_640x480_is_highly_recommented_for_better_performance")); // NOI18N
+        jLabel31.setText(bundle.getString("*_Using_640x480_is_highly_recommended_for_better_performance")); // NOI18N
 
         monitorOutputPositionLeft.setText("jTextField1");
 
@@ -625,7 +625,7 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         jLabel36.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/clock.png"))); // NOI18N
-        jLabel36.setText(bundle.getString("Specify_the_format_to_display_the_time_in_templates_that_contains_clocks")); // NOI18N
+        jLabel36.setText(bundle.getString("Specify_the_format_to_display_the_time_in_templates_that_contain_clocks")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel8Layout = new org.jdesktop.layout.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -654,15 +654,15 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Templates"));
 
-        jLabel7.setText(bundle.getString("For_monitor_templates,_show_only_itens_containing_*")); // NOI18N
+        jLabel7.setText(bundle.getString("For_monitor_templates,_show_only_items_containing_*")); // NOI18N
 
         txtMonitorTemplateFilter.setText(bundle.getString("filter")); // NOI18N
 
         txtAlertTemplateFilter.setText(bundle.getString("filter")); // NOI18N
 
-        jLabel25.setText(bundle.getString("For_alert_templates,_show_only_itens_containing_*")); // NOI18N
+        jLabel25.setText(bundle.getString("For_alert_templates,_show_only_items_containing_*")); // NOI18N
 
-        jLabel26.setText(bundle.getString("For_general_templates,_show_only_itens_containing_*")); // NOI18N
+        jLabel26.setText(bundle.getString("For_general_templates,_show_only_items_containing_*")); // NOI18N
 
         txtGeneralTemplateFilter.setText(bundle.getString("filter")); // NOI18N
 
@@ -672,7 +672,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/template_filter.png"))); // NOI18N
 
         jLabel34.setFont(new java.awt.Font("Dialog", 0, 10));
-        jLabel34.setText(bundle.getString("Template_filters_makes_easy_to_find_the_right_template_to_select_in_each_situation.")); // NOI18N
+        jLabel34.setText(bundle.getString("Template_filters_make_it_easy_to_find_the_right_template_to_select_in_each_situation.")); // NOI18N
 
         jLabel8.setText(bundle.getString("Default_template_for_text_items")); // NOI18N
 
@@ -748,7 +748,7 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         jLabel38.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/database.png"))); // NOI18N
-        jLabel38.setText(bundle.getString("Specify_the_format_to_display_the_time_in_templates_that_contains_clocks")); // NOI18N
+        jLabel38.setText(bundle.getString("Select_directory_to_store_Datasoul_related_files")); // NOI18N
 
         btnStgloc.setText("Change");
         btnStgloc.addActionListener(new java.awt.event.ActionListener() {

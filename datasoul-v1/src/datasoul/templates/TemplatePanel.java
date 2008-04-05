@@ -238,7 +238,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         );
 
         jLabel5.setFont(new java.awt.Font("Dialog", 2, 12));
-        jLabel5.setText(bundle.getString("Hold_Shift_down_for_resizing_itens")); // NOI18N
+        jLabel5.setText(bundle.getString("Hold_Shift_down_for_resizing_items")); // NOI18N
 
         org.jdesktop.layout.GroupLayout panelTemplateEditorLayout = new org.jdesktop.layout.GroupLayout(panelTemplateEditor);
         panelTemplateEditor.setLayout(panelTemplateEditorLayout);

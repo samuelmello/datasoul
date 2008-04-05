@@ -1,7 +1,7 @@
 <project>
     <shortName>datasoul</shortName>
     <fullName>Datasoul</fullName>
-    <version>0.93</version>
+    <version>1.0</version>
     <preInstallationActionList>
         <autodetectJava>
             <promptUser>0</promptUser>
@@ -18,7 +18,6 @@
     <description>Datasoul is an application to manage and display song lyrics in worship services.</description>
     <enableRollback>1</enableRollback>
     <outputDirectory>installers</outputDirectory>
-    <registerWithPackageDatabase>0</registerWithPackageDatabase>
     <summary>Datasoul is an application to manage and display song lyrics in worship services.</summary>
     <vendor>Datasoul</vendor>
     <componentList>
@@ -172,7 +171,7 @@
                     <name>Datasoul</name>
                     <runInTerminal>0</runInTerminal>
                     <windowsExec>javaw</windowsExec>
-                    <windowsExecArgs>-cp swing-layout.jar;xercesImpl.jar;xml-apis.jar;datasoul.jar datasoul.DatasoulMainForm</windowsExecArgs>
+                    <windowsExecArgs>-Xmx512m -cp swing-layout.jar;xercesImpl.jar;xml-apis.jar;datasoul.jar datasoul.DatasoulMainForm</windowsExecArgs>
                     <windowsIcon>${installdir}/datasoul.ico</windowsIcon>
                     <windowsPath>${installdir}/</windowsPath>
                 </startMenuShortcut>
