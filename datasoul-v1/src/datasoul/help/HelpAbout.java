@@ -62,8 +62,8 @@ public class HelpAbout extends javax.swing.JPanel {
 
         jTextArea1.setColumns(25);
         jTextArea1.setEditable(false);
-        jTextArea1.setRows(10);
-        jTextArea1.setText("Samuel Mello \nsvmello@users.sourceforge.net\nDeveloper\n\nEduardo Schnell \neduschnell@users.sourceforge.net\nDeveloper");
+        jTextArea1.setRows(11);
+        jTextArea1.setText("Samuel Mello \nsvmello@users.sourceforge.net\nLead Developer\n\nEduardo Schnell \neduschnell@users.sourceforge.net\nLead Developer\n\nBastian Germann\nbgermann@users.sourceforge.net\nGerman Translation");
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
@@ -95,8 +95,8 @@ public class HelpAbout extends javax.swing.JPanel {
                 .add(29, 29, 29)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 240, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
