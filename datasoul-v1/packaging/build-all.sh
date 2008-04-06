@@ -15,11 +15,11 @@ echo "version=$DSVERSION" > ../src/datasoul/version.properties
 ant jar
 
 # Build installers
-/opt/installbuilder-5.4.1/bin/builder build datasoul.xml linux 
-/opt/installbuilder-5.4.1/bin/builder build datasoul.xml windows
-/opt/installbuilder-5.4.1/bin/builder build datasoul.xml osx 
-/opt/installbuilder-5.4.1/bin/builder build datasoul.xml rpm
-/opt/installbuilder-5.4.1/bin/builder build datasoul.xml deb
+/opt/installbuilder-5.4.4/bin/builder build datasoul.xml linux 
+/opt/installbuilder-5.4.4/bin/builder build datasoul.xml windows
+/opt/installbuilder-5.4.4/bin/builder build datasoul.xml osx 
+/opt/installbuilder-5.4.4/bin/builder build datasoul.xml rpm
+/opt/installbuilder-5.4.4/bin/builder build datasoul.xml deb
 
 # Clean up
 ant clean
