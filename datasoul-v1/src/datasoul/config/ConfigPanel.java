@@ -308,7 +308,7 @@ public class ConfigPanel extends javax.swing.JPanel {
             }
         });
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Main_Output"))); // NOI18N
 
         mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
@@ -406,7 +406,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         btnMainAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png"))); // NOI18N
-        btnMainAdvanced.setText("Advanced");
+        btnMainAdvanced.setText(bundle.getString("Advanced")); // NOI18N
         btnMainAdvanced.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainAdvancedActionPerformed(evt);
@@ -462,7 +462,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Backstage Monitor Output"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Backstage_Monitor_Output"))); // NOI18N
 
         jLabel2.setText(bundle.getString("Enable_monitor_output")); // NOI18N
 
@@ -561,7 +561,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         );
 
         btnMonitorAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/configure.png"))); // NOI18N
-        btnMonitorAdvanced.setText("Advanced");
+        btnMonitorAdvanced.setText(bundle.getString("Advanced")); // NOI18N
         btnMonitorAdvanced.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorAdvancedActionPerformed(evt);
@@ -617,7 +617,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Clock"));
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Clock"))); // NOI18N
 
         jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
 
@@ -652,7 +652,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Templates"));
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Templates"))); // NOI18N
 
         jLabel7.setText(bundle.getString("For_monitor_templates,_show_only_items_containing_*")); // NOI18N
 
@@ -744,13 +744,13 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel37.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel37.setText(bundle.getString("Some_configurations_apply_only_after_application_restart")); // NOI18N
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Storage Location"));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Storage_Location"))); // NOI18N
 
         jLabel38.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel38.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/database.png"))); // NOI18N
         jLabel38.setText(bundle.getString("Select_directory_to_store_Datasoul_related_files")); // NOI18N
 
-        btnStgloc.setText("Change");
+        btnStgloc.setText(bundle.getString("Change")); // NOI18N
         btnStgloc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStglocActionPerformed(evt);
@@ -760,7 +760,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         txtStorageLoc.setEditable(false);
         txtStorageLoc.setText("jTextField1");
 
-        jLabel10.setText("Storage Directory");
+        jLabel10.setText(bundle.getString("Storage_Directory")); // NOI18N
 
         org.jdesktop.layout.GroupLayout jPanel10Layout = new org.jdesktop.layout.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -831,7 +831,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel37)
                     .add(btnApply))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

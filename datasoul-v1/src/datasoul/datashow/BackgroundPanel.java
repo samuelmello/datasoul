@@ -82,10 +82,10 @@ public class BackgroundPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         imageDisplayMonitor = new datasoul.util.ImageDisplay();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Main Output"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Main_Output"))); // NOI18N
 
         btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnChangeMain.setText(bundle.getString("Image")); // NOI18N
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +153,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Output"));
+        pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Backstage_Monitor_Output"))); // NOI18N
 
         btnMonitorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png"))); // NOI18N
         btnMonitorColor.setText(bundle.getString("Color")); // NOI18N
