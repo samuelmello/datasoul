@@ -46,6 +46,16 @@ public class DatashowPanel extends javax.swing.JPanel {
         ObjectManager.getInstance().setServiceListPanel(serviceList);
         ObjectManager.getInstance().setPreviewPanel(preview);
         ObjectManager.getInstance().setLivePanel(live);
+        
+        
+        java.util.ResourceBundle intl = java.util.ResourceBundle.getBundle("datasoul/internationalize");
+
+        cbPreviewSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { 
+            intl.getString("Dont_show"), 
+            intl.getString("Small"), 
+            intl.getString("Medium"), 
+            intl.getString("Large") }));        
+                
             
         initPreview();
     }
