@@ -25,25 +25,11 @@ import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
 import datasoul.util.ObjectManager;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.lang.reflect.InvocationTargetException;
-import javax.swing.DefaultListModel;
-import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
-import javax.swing.plaf.basic.BasicDirectoryModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableModel;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  *
@@ -54,6 +40,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private AllSongsListTable allSongsListTable;
     private JFrame frameParent;
     private int songColumn;
+    private int sourceView;
+    
     /**
      * Creates new form SongsSearchPanel
      */
@@ -354,6 +342,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnAddToListActionPerformed(evt);
     }
     
+    public void setSourceView(int i){
+        sourceView = i;
+    }
+    
     private void tableSongListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSongListMouseClicked
         showItem();
     }//GEN-LAST:event_tableSongListMouseClicked
@@ -364,17 +356,22 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private void showItem(){
         
-        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+        
+        if(sourceView==ObjectManager.VIEW_PROJECTOR){
             if(ObjectManager.getInstance().getPreviewPanel()!=null)
                 ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         }
-        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+        if(sourceView==ObjectManager.VIEW_SONGS){
             if(ObjectManager.getInstance().getSongViewerPanel()!=null)
                 ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         }
-        if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_ADD_SONGS){        
+        if(sourceView==ObjectManager.VIEW_ADD_SONGS){        
             if(ObjectManager.getInstance().getAddSongForm()!=null)
                 ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+        }
+        if(sourceView==ObjectManager.VIEW_SERVICE){        
+            if(ObjectManager.getInstance().getExtServicePanel()!=null)
+                ObjectManager.getInstance().getExtServicePanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
         }
     }    
     

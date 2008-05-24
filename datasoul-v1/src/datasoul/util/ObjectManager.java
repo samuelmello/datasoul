@@ -28,6 +28,7 @@ import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.ServiceListPanel;
+import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.song.AddSongForm;
 import datasoul.song.SongViewerPanel;
 import datasoul.song.SongsSearchPanel;
@@ -56,6 +57,7 @@ public class ObjectManager {
     private AuxiliarPanel auxiliarPanel;
     private LivePanel livePanel;
     private PreviewPanel previewPanel;
+    private ExtServiceListPanel extServicePanel;
     
     private int viewActive;
     
@@ -95,7 +97,6 @@ public class ObjectManager {
     public void setSongsSearchPanel(SongsSearchPanel songsSearchPanel){
         this.songsSearchPanel = songsSearchPanel;
     }
-    
     
     //DATASHOW PANEL OBJECTS
     public AuxiliarPanel getAuxiliarPanel(){
@@ -153,4 +154,13 @@ public class ObjectManager {
     public void setDatasoulMainForm(DatasoulMainForm datasoulMainForm) {
         this.datasoulMainForm = datasoulMainForm;
     }
+    
+    public void setExtServicePanel(ExtServiceListPanel servicePanel){
+        this.extServicePanel = servicePanel;
+    }
+    
+    public ExtServiceListPanel getExtServicePanel(){
+        return this.extServicePanel;
+    }
+    
 }

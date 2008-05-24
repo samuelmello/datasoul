@@ -14,6 +14,7 @@ import datasoul.datashow.TextServiceItemEditorForm;
 import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
 import datasoul.templates.TemplateComboBox;
+import datasoul.util.ObjectManager;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -41,7 +42,8 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             this.tableServiceList.getColumnModel().getColumn(i).setCellRenderer(cr);
         } 
           
-        
+        songsSearchPanel1.setSourceView(ObjectManager.VIEW_SERVICE);
+        ObjectManager.getInstance().setExtServicePanel(this);
         
     }
     
@@ -55,10 +57,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        txtHours = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMinutes = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         txtTitle = new javax.swing.JTextField();
@@ -75,34 +73,26 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         btnEdit = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
         btnDown = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        txtHours = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtMinutes = new javax.swing.JTextField();
+        jSplitPane2 = new javax.swing.JSplitPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        textSong = new javax.swing.JTextPane();
+        jToolBar2 = new javax.swing.JToolBar();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lblSongName = new javax.swing.JLabel();
+        lblAuthor = new javax.swing.JLabel();
         songsSearchPanel1 = new datasoul.song.SongsSearchPanel();
 
         jSplitPane1.setDividerLocation(600);
-
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 1, 0));
-
-        txtHours.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtHours.setText("10");
-        txtHours.setMinimumSize(new java.awt.Dimension(30, 27));
-        txtHours.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtHoursFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtHours);
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText(":");
-        jPanel1.add(jLabel3);
-
-        txtMinutes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMinutes.setText("30");
-        txtMinutes.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMinutesFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtMinutes);
 
         jLabel2.setText("Start Time:");
 
@@ -235,63 +225,175 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar.add(btnDown);
 
+        jLabel4.setText("Service Notes:");
+
+        txtNotes.setColumns(20);
+        txtNotes.setRows(5);
+        txtNotes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNotesFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(txtNotes);
+
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
+
+        txtHours.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtHours.setText("10");
+        txtHours.setMinimumSize(new java.awt.Dimension(30, 27));
+        txtHours.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtHoursFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtHoursFocusLost(evt);
+            }
+        });
+        txtHours.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHoursKeyPressed(evt);
+            }
+        });
+        jPanel1.add(txtHours);
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText(":");
+        jPanel1.add(jLabel3);
+
+        txtMinutes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMinutes.setText("30");
+        txtMinutes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMinutesFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMinutesFocusLost(evt);
+            }
+        });
+        jPanel1.add(txtMinutes);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(495, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jSplitPane1.setLeftComponent(jPanel3);
 
-        songsSearchPanel1.setMaximumSize(new java.awt.Dimension(300, 32767));
-        songsSearchPanel1.setMinimumSize(new java.awt.Dimension(200, 164));
-        jSplitPane1.setRightComponent(songsSearchPanel1);
+        jSplitPane2.setDividerLocation(350);
+        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        jScrollPane3.setViewportView(textSong);
+
+        jToolBar2.setFloatable(false);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kappfinder.png"))); // NOI18N
+        jLabel5.setText(bundle.getString("Preview")); // NOI18N
+        jToolBar2.add(jLabel5);
+
+        jLabel6.setText(bundle.getString("Author:")); // NOI18N
+
+        jLabel7.setText(bundle.getString("Song:")); // NOI18N
+
+        lblSongName.setText("     ");
+
+        lblAuthor.setText("     ");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSongName)
+                    .addComponent(lblAuthor))
+                .addContainerGap(271, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(lblSongName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(lblAuthor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+        );
+
+        jSplitPane2.setRightComponent(jPanel4);
+        jSplitPane2.setLeftComponent(songsSearchPanel1);
+
+        jSplitPane1.setRightComponent(jSplitPane2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -306,6 +408,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Invalid value");
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
         }
+        revalidate();
     }//GEN-LAST:event_txtHoursFocusLost
 
     private void txtMinutesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinutesFocusLost
@@ -350,7 +453,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             return;
         }
         
-        ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+        ServiceItem item = (ServiceItem)ServiceListTable.getActiveInstance().getServiceItem( tableServiceList.getSelectedRow() );
         if(item instanceof Song){
             SongEditorForm sef = new SongEditorForm((Song)item);
             sef.setVisible(true);
@@ -367,6 +470,21 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private void btnDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDownMouseClicked
         tableServiceList.downItem();
     }//GEN-LAST:event_btnDownMouseClicked
+
+    private void txtNotesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNotesFocusLost
+        ServiceListTable.getActiveInstance().setNotes(txtNotes.getText());
+}//GEN-LAST:event_txtNotesFocusLost
+
+    private void txtHoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoursKeyPressed
+    }//GEN-LAST:event_txtHoursKeyPressed
+
+    private void txtHoursFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoursFocusGained
+        txtHours.selectAll();
+    }//GEN-LAST:event_txtHoursFocusGained
+
+    private void txtMinutesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinutesFocusGained
+        txtMinutes.selectAll();
+    }//GEN-LAST:event_txtMinutesFocusGained
     
     public JTable getTableServiceList(){
         return tableServiceList;
@@ -381,6 +499,18 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtTitle.setText(title);
     }
     
+    public void setNotes(String notes){
+        txtNotes.setText(notes);
+    }
+
+    public void viewSong(Song song) {
+        lblSongName.setText(song.getTitle());
+        lblAuthor.setText(song.getSongAuthor());
+        textSong.setText(song.getText().replace(Song.CHORUS_MARK, "").replace(Song.SLIDE_BREAK, ""));
+        textSong.setCaretPosition(0);
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnEdit;
@@ -393,17 +523,30 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
+    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JLabel lblAuthor;
+    private javax.swing.JLabel lblSongName;
     private datasoul.song.SongsSearchPanel songsSearchPanel1;
     private datasoul.util.DnDTable tableServiceList;
+    private javax.swing.JTextPane textSong;
     private javax.swing.JToolBar toolBar;
     private javax.swing.JTextField txtHours;
     private javax.swing.JTextField txtMinutes;
+    private javax.swing.JTextArea txtNotes;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
     

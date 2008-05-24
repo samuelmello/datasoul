@@ -41,6 +41,8 @@ public class SongsPanel extends javax.swing.JPanel {
         ObjectManager.getInstance().setServiceListPanel(serviceList);
         ObjectManager.getInstance().setSongViewerPanel(songViewer);
         ObjectManager.getInstance().setSongsSearchPanel(songsSearch);
+        
+        songsSearch.setSourceView(ObjectManager.VIEW_SONGS);
     }
 
     /** This method is called from within the constructor to

@@ -49,6 +49,7 @@ public class ServiceListTable extends ListTable {
     private int startHour;
     private int startMinute;
     private String title;
+    private String notes;
     private String fileName = "";
     private ExtServiceListPanel extPanel;
 
@@ -135,6 +136,9 @@ public class ServiceListTable extends ListTable {
         Node nTitle = doc.createElement("title");
         nTitle.setTextContent(title);
         nodeOut.appendChild(doc.importNode(nTitle, true));
+        Node nNotes = doc.createElement("notes");
+        nNotes.setTextContent(notes);
+        nodeOut.appendChild(doc.importNode(nNotes, true));
         Node nHour = doc.createElement("hour");
         nHour.setTextContent(Integer.toString(startHour));
         nodeOut.appendChild(doc.importNode(nHour, true));
@@ -157,10 +161,9 @@ public class ServiceListTable extends ListTable {
         startHour = 0;
         startMinute = 0;
         title = "";
+        notes = "";
 
         NodeList nodeList = nodeIn.getChildNodes();
-        String paramName;
-        String paramValue;
         for (int i = 0; i < nodeList.getLength(); i++) {
             if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
                 if (nodeList.item(i).getNodeName().equals("Song")) {
@@ -173,6 +176,8 @@ public class ServiceListTable extends ListTable {
                     this.addItem(tsi);
                 } else if (nodeList.item(i).getNodeName().equals("title")) {
                     this.title = nodeList.item(i).getTextContent();
+                } else if (nodeList.item(i).getNodeName().equals("notes")) {
+                    this.notes = nodeList.item(i).getTextContent();
                 } else if (nodeList.item(i).getNodeName().equals("hour")) {
                     this.startHour = Integer.parseInt(nodeList.item(i).getTextContent());
                 } else if (nodeList.item(i).getNodeName().equals("minute")) {
@@ -183,6 +188,7 @@ public class ServiceListTable extends ListTable {
         if (extPanel != null) {
             extPanel.setTitle(title);
             extPanel.setStartHourMinute(Integer.toString(startHour), Integer.toString(startMinute));
+            extPanel.setNotes(notes);
         }
         updateStartTimes();
 
@@ -212,6 +218,14 @@ public class ServiceListTable extends ListTable {
 
     public void setTitle(String s) {
         title = s;
+    }
+    
+    public String getNotes(){
+        return notes;
+    }
+    
+    public void setNotes(String s){
+        notes = s;
     }
 
     public void updateStartTimes() {

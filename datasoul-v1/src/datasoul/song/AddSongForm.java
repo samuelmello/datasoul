@@ -33,7 +33,6 @@ import javax.swing.event.TableModelEvent;
  */
 public class AddSongForm extends javax.swing.JFrame  implements javax.swing.event.TableModelListener{
     
-    private int oldView;
     /** Creates new form AddSongForm */
     public AddSongForm() {
         initComponents();
@@ -44,8 +43,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         
         ObjectManager.getInstance().setAddSongForm(this);
         
-        this.oldView = ObjectManager.getInstance().getViewActive();
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_ADD_SONGS);
+        this.songsSearchPanel.setSourceView(ObjectManager.VIEW_ADD_SONGS);
         
     }
 
@@ -157,7 +155,6 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     }// </editor-fold>//GEN-END:initComponents
 
     private void onWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_onWindowClosed
-        ObjectManager.getInstance().setViewActive(this.oldView);
         ObjectManager.getInstance().setAddSongForm(null);
     }//GEN-LAST:event_onWindowClosed
 
@@ -168,7 +165,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     public void viewSong(Song song) {
         lblSongName.setText(song.getTitle());
         lblAuthor.setText(song.getSongAuthor());
-        textSong.setText(song.getText());
+        textSong.setText(song.getText().replace(Song.CHORUS_MARK, "").replace(Song.SLIDE_BREAK, ""));
         textSong.setCaretPosition(0);
     }
     
