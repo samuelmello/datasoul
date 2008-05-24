@@ -132,7 +132,7 @@ public class DisplayTemplate extends AttributedObject {
         this.items.clear();
         for (TemplateItem t : from.getItems()){
             
-            Class itemClass = t.getClass();
+            Class<?> itemClass = t.getClass();
             try {
                 TemplateItem newItem = (TemplateItem) itemClass.newInstance();
                 Class[] formalParams = { itemClass  };

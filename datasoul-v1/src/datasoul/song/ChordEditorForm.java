@@ -20,7 +20,6 @@
 
 package datasoul.song;
 
-import com.sun.jndi.url.dns.dnsURLContext;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;

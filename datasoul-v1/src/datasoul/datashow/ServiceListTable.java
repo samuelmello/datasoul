@@ -274,7 +274,7 @@ public class ServiceListTable extends ListTable {
         public static final int COLUMN_TIME = 0;
         public static final int COLUMN_DURATION = 1;
         public static final int COLUMN_TITLE = 2;
-        public static final int COLUMN_RESPONSIBLE = 3;
+        public static final int COLUMN_NOTES = 3;
         public static final int COLUMN_TEMPLATE = 4;
         public static final int COLUMN_COUNT = 5;
 
@@ -294,8 +294,8 @@ public class ServiceListTable extends ListTable {
                     return "Duration";
                 case COLUMN_TITLE:
                     return "Title";
-                case COLUMN_RESPONSIBLE:
-                    return "Responsible";
+                case COLUMN_NOTES:
+                    return "Notes";
                 case COLUMN_TEMPLATE:
                     return "Template";
             }
@@ -309,7 +309,7 @@ public class ServiceListTable extends ListTable {
         public boolean isCellEditable(int rowIndex, int columnIndex) {
             switch (columnIndex) {
                 case COLUMN_DURATION:
-                case COLUMN_RESPONSIBLE:
+                case COLUMN_NOTES:
                 case COLUMN_TEMPLATE:
                     return true;
                 default:
@@ -328,8 +328,8 @@ public class ServiceListTable extends ListTable {
                         return si.getDuration();
                     case COLUMN_TITLE:
                         return si.getTitle();
-                    case COLUMN_RESPONSIBLE:
-                        return si.getResponsible();
+                    case COLUMN_NOTES:
+                        return si.getNotes();
                     case COLUMN_TEMPLATE:
                         return si.getTemplate();
                 }
@@ -354,8 +354,8 @@ public class ServiceListTable extends ListTable {
                             JOptionPane.showMessageDialog(null, "Invalid Value");
                         }
                         break;
-                    case COLUMN_RESPONSIBLE:
-                        si.setResponsible(aValue.toString());
+                    case COLUMN_NOTES:
+                        si.setNotes(aValue.toString());
                         break;
                     case COLUMN_TEMPLATE:
                     si.setTemplate(aValue.toString());                        
