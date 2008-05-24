@@ -49,6 +49,8 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     
     private boolean droppable=true;
     
+    private boolean draggable=true;
+    
     private boolean deleteAfterDragAndDrop=false;
 
     public boolean getDeleteAfterDragAndDrop(){
@@ -65,6 +67,10 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     
     public void setDroppable(boolean bool){
         this.droppable = bool;
+    }
+    
+    public void setDraggable(boolean b){
+        this.draggable = b;
     }
     
     /**
@@ -87,13 +93,17 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
         dragSource.createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY, this); // drag gesture listener        
     }
 
+    
     public void dragEnter(DropTargetDragEvent dtde) {
+
     }
 
     public void dragOver(DropTargetDragEvent dtde) {
+
     }
 
     public void dropActionChanged(DropTargetDragEvent dtde) {
+
     }
 
     public void dragExit(DropTargetEvent dte) {
@@ -140,6 +150,9 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
     }
 
     public void dragGestureRecognized(DragGestureEvent dge) {
+        
+        if (!draggable) return;
+        
         int column=0;
         
         TableModel tm = this.getModel();

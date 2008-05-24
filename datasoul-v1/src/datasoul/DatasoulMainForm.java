@@ -32,6 +32,7 @@ import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.templates.TemplatePanel;
 import datasoul.datashow.TimerManager;
+import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.templates.TemplateManager;
 import datasoul.util.KeyListner;
 import datasoul.util.ObjectManager;
@@ -60,15 +61,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public TemplatePanel templates = new TemplatePanel();
     public ConfigPanel config = new ConfigPanel();
     public HelpPanel help = new HelpPanel();
+    public ExtServiceListPanel service = new ExtServiceListPanel();
     
-    
-    public static final String DATASOUL_VERSION = "RC1";
     
     GroupLayout songsLayout;
     GroupLayout datashowLayout;
     GroupLayout templatesLayout;
     GroupLayout configLayout;
     GroupLayout helpLayout;
+    GroupLayout serviceLayout;
 
       
     /**
@@ -159,7 +160,23 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .add(help, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
 
-        showPanel(ObjectManager.VIEW_PROJECTOR);
+        // Initialize service layout
+        serviceLayout = new GroupLayout(getContentPane());
+        serviceLayout.setHorizontalGroup(
+            serviceLayout.createParallelGroup(GroupLayout.LEADING)
+            .add(service, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .add(toolBarMain)
+        );
+        serviceLayout.setVerticalGroup(
+            serviceLayout.createParallelGroup(GroupLayout.LEADING)
+            .add(GroupLayout.LEADING, serviceLayout.createSequentialGroup()
+                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.RELATED)
+                .add(service, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+        );
+        
+        
+        showPanel(ObjectManager.VIEW_SERVICE);
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
     }
     
@@ -171,11 +188,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         templates.setVisible(false);
         config.setVisible(false);
         help.setVisible(false);
+        service.setVisible(false);
         btnDatashow.setEnabled(true);
         btnSongs.setEnabled(true);
         btnTemplates.setEnabled(true);
         btnConfig.setEnabled(true);
         btnHelp.setEnabled(true);
+        btnServiceList.setEnabled(true);
 
         switch (panel) {
             case ObjectManager.VIEW_PROJECTOR:
@@ -208,7 +227,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 help.validate();
                 btnHelp.setEnabled(false);
                 break;
-                
+            case ObjectManager.VIEW_SERVICE:
+                service.setVisible(true);
+                getContentPane().setLayout(serviceLayout);
+                service.validate();
+                btnServiceList.setEnabled(false);
+                break;
         }
         
     }
@@ -222,6 +246,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBarMain = new javax.swing.JToolBar();
+        btnServiceList = new javax.swing.JButton();
         btnDatashow = new javax.swing.JButton();
         btnTemplates = new javax.swing.JButton();
         btnSongs = new javax.swing.JButton();
@@ -239,8 +264,21 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
 
-        btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png"))); // NOI18N
+        btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnServiceList.setText(bundle.getString("Service List")); // NOI18N
+        btnServiceList.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
+        btnServiceList.setBorderPainted(false);
+        btnServiceList.setFocusPainted(false);
+        btnServiceList.setFocusable(false);
+        btnServiceList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnServiceListMouseClicked(evt);
+            }
+        });
+        toolBarMain.add(btnServiceList);
+
+        btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png"))); // NOI18N
         btnDatashow.setText(bundle.getString("Projector")); // NOI18N
         btnDatashow.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
         btnDatashow.setBorderPainted(false);
@@ -373,6 +411,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         showPanel(ObjectManager.VIEW_PROJECTOR);
         
     }//GEN-LAST:event_btnDatashowMouseClicked
+
+    private void btnServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiceListMouseClicked
+
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);        
+        showPanel(ObjectManager.VIEW_SERVICE); 
+        
+}//GEN-LAST:event_btnServiceListMouseClicked
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
@@ -541,6 +586,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnConfig;
     javax.swing.JButton btnDatashow;
     javax.swing.JButton btnHelp;
+    javax.swing.JButton btnServiceList;
     javax.swing.JButton btnSongs;
     javax.swing.JButton btnTemplates;
     javax.swing.JSeparator jSeparator1;

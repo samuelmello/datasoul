@@ -53,6 +53,10 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     protected TableCellEditor cellEditor;
     protected String title;
     protected String template;
+    protected int duration;
+    protected String responsible;
+    protected int startHour;
+    protected int startMinute;
     protected ServiceItemTextField slideNumberField;
     protected SlideNumberCellRenderer slideNumberRenderer;
     
@@ -99,8 +103,38 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     protected void registerProperties() {
         properties.add("Title");
         properties.add("Template");
+        properties.add("Duration");
+        properties.add("Responsible");
     }
 
+    public int getDuration(){
+        return this.duration;
+    }
+    
+    public void setDuration(String s){
+        this.duration = Integer.parseInt(s);
+    }
+    
+    public String getResponsible(){
+        return this.responsible;
+    }
+    
+    public void setResponsible(String resp){
+        this.responsible = resp;
+    }
+    
+    public void setStartHour(int x){
+        startHour = x;
+    }
+
+    public void setStartMinute(int x){
+        startMinute = x;
+    }
+    
+    public String getStartTime(){
+        return String.format("%d:%02d", startHour, startMinute);
+    }
+    
     public String getTitle(){
         return this.title;
     }

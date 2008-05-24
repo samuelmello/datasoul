@@ -23,7 +23,6 @@
 
 package datasoul.util;
 
-import com.sun.org.apache.xml.internal.utils.StringVector;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -45,15 +44,6 @@ public class ListTable extends SerializableObject implements TableModel {
     public ListTable() {
         objectList = new ArrayList<Object>();
         listeners = new ArrayList<javax.swing.event.TableModelListener>();
-        
-    }
-    
-    //to do, implement the serialize
-    public String getList(){
-        return "";
-    }
-    //to do, implement the serialize    
-    public void setList(String string){
         
     }
 
@@ -140,7 +130,6 @@ mainloop: for(int i=0;i<objectList.size();i++){
         String str1 = obj1.toString();
         String str2 = obj2.toString();
         
-        StringVector sv = new StringVector();
         int max = str2.length();
         if(str1.length()<str2.length()){
             max = str1.length();

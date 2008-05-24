@@ -24,16 +24,8 @@ import datasoul.templates.TemplateComboBox;
 import datasoul.util.*;
 import datasoul.song.*;
 import datasoul.util.ObjectManager;
-import java.io.File;
-import java.io.FileOutputStream;
 import javax.swing.DefaultCellEditor;
-import javax.swing.JFileChooser;
 import javax.swing.event.TableModelEvent;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  *
@@ -41,7 +33,6 @@ import org.w3c.dom.Node;
  */
 public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
-    private String fileName="";
     /**
      * Creates new form ServiceListPanel
      */
@@ -65,13 +56,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(cr);        
     }
 
-    
-    private String getFileName(){
-        return this.fileName;
-    }
-    private void setFileName(String fileName){
-        this.fileName = fileName;
-    }
 
     public void tableChanged(TableModelEvent e) {
         this.repaint();
@@ -253,7 +237,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableServiceList.setCellSelectionEnabled(true);
         tableServiceList.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 tableServiceListKeyPressed(evt);
@@ -325,45 +308,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_actExportActionPerformed
 
     private void actSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveAsActionPerformed
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
-                      public boolean accept(File f) { 
-                          if (f.isDirectory()) { 
-                              return true; 
-                          } 
-                          String name = f.getName(); 
-                          if (name.endsWith(".servicelist")) { 
-                              return true; 
-                          } 
-                          return false; 
-                      } 
-   
-                      public String getDescription() { 
-                          return ".servicelist"; 
-                      } 
-                  });
-        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
-        fc.setCurrentDirectory(dir);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
-        if(fc.showSaveDialog(this)==JFileChooser.APPROVE_OPTION){
-            fileName = fc.getSelectedFile().getPath();
-            if(!fileName.contains(".servicelist"))
-                 fileName = fileName + ".servicelist";            
-            saveFile();
-        }
-
+        ServiceListTable.getActiveInstance().saveServiceListAs();
     }//GEN-LAST:event_actSaveAsActionPerformed
 
     private void actSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveActionPerformed
-        if(!fileName.contains(".servicelist"))
-            fileName = fileName + ".servicelist";
-
-        if(fileName.equals("")){
-            actSaveAsActionPerformed(evt);
-            return;
-        }
-        
-        saveFile();
+        ServiceListTable.getActiveInstance().saveServiceList();
     }//GEN-LAST:event_actSaveActionPerformed
 
     private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
@@ -371,58 +320,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_btnFileActionPerformed
 
     private void actOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actOpenActionPerformed
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() { 
-                      public boolean accept(File f) { 
-                          if (f.isDirectory()) { 
-                              return true; 
-                          } 
-                          String name = f.getName(); 
-                          if (name.endsWith(".servicelist")) { 
-                              return true; 
-                          } 
-                          return false; 
-                      } 
-   
-                      public String getDescription() { 
-                          return ".servicelist"; 
-                      } 
-                  });
-        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
-        fc.setCurrentDirectory(dir);
-        if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-            fileName = fc.getSelectedFile().getPath();
-
-            File file = new File(fileName);
-
-            Document dom=null;
-            Node node = null;
-            ServiceListTable slt;
-            try {
-                    DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-                    //Using factory get an instance of document builder
-                    DocumentBuilder db = dbf.newDocumentBuilder();
-
-                    //parse using builder to get DOM representation of the XML file
-                    dom = db.parse(file);
-
-                    //node = dom.getDocumentElement().getChildNodes().item(0);
-                    node = dom.getElementsByTagName("ServiceListTable").item(0);
-
-            }catch(Exception e) {
-                ShowDialog.showReadFileError(file, e);
-            }        
-
-            slt = ServiceListTable.getActiveInstance();
-            try {
-                slt.readObject(node);
-            } catch (Exception e) {
-                ShowDialog.showReadFileError(file, e);
-            }
-         
-            tableServiceList.setModel(slt);
-        }
+        ServiceListTable.getActiveInstance().openServiceList();
     }//GEN-LAST:event_actOpenActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -472,25 +370,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         }
     }
     
-    private void saveFile(){
-        try{
-            ServiceListTable slt = (ServiceListTable)tableServiceList.getModel();
-            Node node = slt.writeObject();
-            Document doc = node.getOwnerDocument();
-            doc.appendChild( node);                        // Add Root to Document
-            FileOutputStream fos = new FileOutputStream(fileName);
-            org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
-            OutputFormat outFormat = new OutputFormat();
-            outFormat.setIndenting(true);
-            outFormat.setEncoding("ISO-8859-1");
-            xs.setOutputFormat(outFormat);
-            xs.setOutputByteStream(fos);
-            xs.serialize(doc);
-
-        } catch(Exception e){
-            ShowDialog.showWriteFileError(fileName, e);
-        }
-    }
 
     private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
         tableServiceList.removeItem();
