@@ -79,18 +79,20 @@ public class ServiceListTable extends ListTable {
     }
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if (columnIndex == 0) {
-            return false;
-        } else {
+        if (columnIndex == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0) {
             return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item");
-        } else {
+        } else if (columnIndex == 1) {
             return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
+        } else {
+            return "Time";
         }
     }
 
@@ -103,9 +105,12 @@ public class ServiceListTable extends ListTable {
         if (columnIndex == 0) {
             Object object = objectList.get(rowIndex);
             return object;
-        } else {
+        } else if (columnIndex == 1) {
             Object object = objectList.get(rowIndex);
             return ((ServiceItem) object).getTemplate();
+        } else {
+            Object object = objectList.get(rowIndex);
+            return ((ServiceItem) object).getDuration();
         }
     }
 
@@ -113,14 +118,14 @@ public class ServiceListTable extends ListTable {
         if (columnIndex == 0) {
             objectList.set(rowIndex, (String) aValue.toString());
             tableModelChanged();
-        } else {
+        } else if (columnIndex == 1) {
             ((ServiceItem) objectList.get(rowIndex)).setTemplate((String) aValue.toString());
             tableModelChanged();
-        }
+        } 
     }
 
     public int getColumnCount() {
-        return 2;
+        return 3;
     }
 
     public Node writeObject() throws Exception {

@@ -53,7 +53,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ServiceListColorRender cr = new ServiceListColorRender();
         
         this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(cr);
+        this.tableServiceList.getColumnModel().getColumn(0).setPreferredWidth(150);
         this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(cr);        
+        this.tableServiceList.getColumnModel().getColumn(1).setPreferredWidth(100);
+        this.tableServiceList.getColumnModel().getColumn(2).setCellRenderer(cr);        
+        this.tableServiceList.getColumnModel().getColumn(2).setPreferredWidth(40);
     }
 
 
