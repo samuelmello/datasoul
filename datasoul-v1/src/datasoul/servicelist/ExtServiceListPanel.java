@@ -558,7 +558,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
             String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
-            if (!s.trim().equals("")){
+            if (s != null && !s.trim().equals("")){
                 item.setTitle(s);
             }
             tableServiceList.repaint();
@@ -615,7 +615,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
         String s = JOptionPane.showInputDialog(this, "Service Item Name:", "");
-        if (!s.trim().equals("")){
+        if (s != null && !s.trim().equals("")){
             ContentlessServiceItem csi = new ContentlessServiceItem();
             csi.setTitle(s);
             csi.setTemplate("");

@@ -49,7 +49,12 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         ServiceListColorRender cr = new ServiceListColorRender();
         
         this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(cr);
+        this.tableServiceList.getColumnModel().getColumn(0).setPreferredWidth(150);
         this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(cr);        
+        this.tableServiceList.getColumnModel().getColumn(1).setPreferredWidth(100);
+        this.tableServiceList.getColumnModel().getColumn(2).setCellRenderer(cr);        
+        this.tableServiceList.getColumnModel().getColumn(2).setPreferredWidth(40);
+        
     }
     
     public void center(){
@@ -94,7 +99,6 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tableServiceList.setCellSelectionEnabled(true);
         scroolServiceList.setViewportView(tableServiceList);
 
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/additem.png"))); // NOI18N
@@ -115,6 +119,11 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnOpenMouseClicked(evt);
+            }
+        });
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
             }
         });
 
@@ -191,7 +200,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 return ".servicelist";
             }
         });
-        File dir = new File(System.getProperty("user.dir") + System.getProperty("file.separator") + "servicelists");
+        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
         fc.setCurrentDirectory(dir);
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             String fileName = fc.getSelectedFile().getPath();
@@ -228,6 +237,10 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
             setColorRender();
         }
     }//GEN-LAST:event_btnOpenMouseClicked
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOpenActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;

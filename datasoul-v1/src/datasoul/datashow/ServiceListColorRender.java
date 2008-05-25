@@ -44,7 +44,23 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
     public Component getTableCellRendererComponent(JTable table, Object value,
                           boolean isSelected, boolean hasFocus, int row, int column) {
 
+        /*
         Object serviceItem = ServiceListTable.getActiveInstance().getServiceItem(row);
+        if (serviceItem == null){
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
+         */
+        
+        Object serviceItem;
+        if (table.getModel() instanceof ServiceListTable){
+            serviceItem = ((ServiceListTable) table.getModel()).getServiceItem(row);
+        }else if (table.getModel() instanceof ServiceListTable.ExtendedServiceListTable){
+            serviceItem = ((ServiceListTable.ExtendedServiceListTable) table.getModel()).getServiceItem(row);
+        }else{
+            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        }
+        
+        
         String text = "";
         if (value != null){
             text = value.toString();

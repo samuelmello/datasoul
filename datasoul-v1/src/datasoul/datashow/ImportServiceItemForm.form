@@ -77,7 +77,6 @@
                 <Column editable="false" title="" type="java.lang.Object"/>
               </Table>
             </Property>
-            <Property name="cellSelectionEnabled" type="boolean" value="true"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -121,6 +120,7 @@
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnOpenMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOpenActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnClose">

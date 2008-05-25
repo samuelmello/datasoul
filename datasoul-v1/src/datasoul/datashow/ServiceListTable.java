@@ -102,7 +102,11 @@ public class ServiceListTable extends ListTable {
     }
 
     public Object getServiceItem(int index){
-        return objectList.get(index);
+        if (index >= 0 && index < objectList.size()){
+            return objectList.get(index);
+        }else{
+            return null;
+        }
     }
     
     
@@ -419,6 +423,11 @@ public class ServiceListTable extends ListTable {
         public void downItem(int row) {
             ServiceListTable.this.downItem(row);
         }
+        
+        public Object getServiceItem(int row){
+            return ServiceListTable.this.getServiceItem(row);
+        }
+        
     }
 
     public void fileNew(){
