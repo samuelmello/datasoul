@@ -23,6 +23,7 @@
 
 package datasoul.datashow;
 
+import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.song.Song;
 import java.awt.Color;
 import java.awt.Component;
@@ -58,11 +59,12 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
 
         if (serviceItem instanceof Song) {
             setBackground(Color.decode("0xddddff"));
-//                setForeground(c.getTextColor());
             setText(text);
         } else if (serviceItem instanceof TextServiceItem) {
             setBackground(Color.decode("0xffffdd"));
-//                setForeground(c.getTextColor());  
+            setText(text);
+        } else if (serviceItem instanceof ContentlessServiceItem) {
+            setBackground(Color.decode("0xddffff"));
             setText(text);
         } else {
             super.setValue(value);

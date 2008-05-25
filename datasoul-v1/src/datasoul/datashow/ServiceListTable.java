@@ -165,14 +165,18 @@ public class ServiceListTable extends ListTable {
         return nodeOut.cloneNode(true);
     }
 
-    public void readObject(Node nodeIn) {
+    protected void cleanup(){
         // clean up
         this.objectList.clear();
         startHour = 0;
         startMinute = 0;
         title = "";
         notes = "";
-
+    }
+    
+    public void readObject(Node nodeIn) {
+        cleanup();
+        
         NodeList nodeList = nodeIn.getChildNodes();
         for (int i = 0; i < nodeList.getLength(); i++) {
             if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
@@ -184,6 +188,10 @@ public class ServiceListTable extends ListTable {
                     TextServiceItem tsi = new TextServiceItem();
                     tsi.readObject(nodeList.item(i));
                     this.addItem(tsi);
+                } else if (nodeList.item(i).getNodeName().equals("ContentlessServiceItem")) {
+                    ContentlessServiceItem csi = new ContentlessServiceItem();
+                    csi.readObject(nodeList.item(i));
+                    this.addItem(csi);
                 } else if (nodeList.item(i).getNodeName().equals("title")) {
                     this.title = nodeList.item(i).getTextContent();
                 } else if (nodeList.item(i).getNodeName().equals("notes")) {
@@ -195,15 +203,20 @@ public class ServiceListTable extends ListTable {
                 }
             }
         }
+        updateExtPanel();
+        
+    }
+
+    public void updateExtPanel(){
         if (extPanel != null) {
             extPanel.setTitle(title);
             extPanel.setStartHourMinute(Integer.toString(startHour), Integer.toString(startMinute));
             extPanel.setNotes(notes);
         }
         updateStartTimes();
-
+        
     }
-
+    
     public int getStartHour() {
         return startHour;
     }
@@ -408,6 +421,13 @@ public class ServiceListTable extends ListTable {
         }
     }
 
+    public void fileNew(){
+        cleanup();
+        fileName = "";
+        tableModelChanged();
+        updateExtPanel();
+    }
+    
     private void saveFile() {
         try {
             Node node = this.writeObject();
@@ -515,14 +535,16 @@ public class ServiceListTable extends ListTable {
     }
 
     public void saveServiceList() {
-        if (!fileName.contains(".servicelist")) {
-            fileName = fileName + ".servicelist";
-        }
-
+        
         if (fileName.equals("")) {
             saveServiceListAs();
             return;
         }
+
+        if (!fileName.contains(".servicelist")) {
+            fileName = fileName + ".servicelist";
+        }
+
 
         saveFile();
     }

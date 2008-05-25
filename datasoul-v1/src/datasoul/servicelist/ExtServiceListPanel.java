@@ -6,11 +6,13 @@
 
 package datasoul.servicelist;
 
+import datasoul.datashow.ImportServiceItemForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
 import datasoul.datashow.TextServiceItemEditorForm;
+import datasoul.song.AddSongForm;
 import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
 import datasoul.templates.TemplateComboBox;
@@ -60,6 +62,11 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ppmAddItem = new javax.swing.JPopupMenu();
+        actAddSong = new javax.swing.JMenuItem();
+        actAddText = new javax.swing.JMenuItem();
+        actAddContentlessItem = new javax.swing.JMenuItem();
+        actImportItem = new javax.swing.JMenuItem();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -67,12 +74,8 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtTitle = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableServiceList = new datasoul.util.DnDTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnOpen = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        btnSaveAs = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
         toolBar = new javax.swing.JToolBar();
+        btnAddWizard = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -85,6 +88,14 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtHours = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtMinutes = new javax.swing.JTextField();
+        toolBar1 = new javax.swing.JToolBar();
+        jLabel8 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        btnNew = new javax.swing.JButton();
+        btnOpen = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnSaveAs = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
         jSplitPane2 = new javax.swing.JSplitPane();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -96,6 +107,43 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         lblSongName = new javax.swing.JLabel();
         lblAuthor = new javax.swing.JLabel();
         songsSearchPanel1 = new datasoul.song.SongsSearchPanel();
+
+        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
+        actAddSong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddSongActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddSong);
+
+        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png"))); // NOI18N
+        actAddText.setText(bundle.getString("Add_Text")); // NOI18N
+        actAddText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddTextActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddText);
+
+        actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
+        actAddContentlessItem.setText("Add Contentless Item");
+        actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddContentlessItemActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddContentlessItem);
+
+        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png"))); // NOI18N
+        actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
+        actImportItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actImportItemActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actImportItem);
 
         jSplitPane1.setDividerLocation(600);
 
@@ -125,60 +173,37 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tableServiceList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableServiceListMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableServiceList);
-
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-
-        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
-        btnOpen.setText("Open");
-        btnOpen.setBorderPainted(false);
-        btnOpen.setFocusPainted(false);
-        btnOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnOpen);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png"))); // NOI18N
-        btnSave.setText("Save");
-        btnSave.setBorderPainted(false);
-        btnSave.setFocusPainted(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnSave);
-
-        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png"))); // NOI18N
-        btnSaveAs.setText("Save As");
-        btnSaveAs.setBorderPainted(false);
-        btnSaveAs.setFocusPainted(false);
-        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveAsActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnSaveAs);
-
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
-        btnExport.setText("Export");
-        btnExport.setBorderPainted(false);
-        btnExport.setFocusPainted(false);
-        jToolBar1.add(btnExport);
 
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         toolBar.setOpaque(false);
 
+        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png"))); // NOI18N
+        btnAddWizard.setText(bundle.getString("Add_Item")); // NOI18N
+        btnAddWizard.setToolTipText(bundle.getString("Add_wizard_...")); // NOI18N
+        btnAddWizard.setAlignmentY(0.0F);
+        btnAddWizard.setBorderPainted(false);
+        btnAddWizard.setFocusPainted(false);
+        btnAddWizard.setFocusable(false);
+        btnAddWizard.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAddWizard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddWizardbtnAddActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnAddWizard);
+
         jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         toolBar.add(jSeparator1);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnRemove.setText(bundle.getString("Delete")); // NOI18N
         btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
         btnRemove.setAlignmentY(0.0F);
@@ -243,9 +268,14 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
+        txtHours.setColumns(2);
         txtHours.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtHours.setText("10");
         txtHours.setMinimumSize(new java.awt.Dimension(30, 27));
+        txtHours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtHoursActionPerformed(evt);
+            }
+        });
         txtHours.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtHoursFocusGained(evt);
@@ -265,8 +295,8 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jLabel3.setText(":");
         jPanel1.add(jLabel3);
 
+        txtMinutes.setColumns(2);
         txtMinutes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtMinutes.setText("30");
         txtMinutes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtMinutesFocusGained(evt);
@@ -277,43 +307,104 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         jPanel1.add(txtMinutes);
 
+        toolBar1.setFloatable(false);
+        toolBar1.setMinimumSize(new java.awt.Dimension(30, 25));
+
+        jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png"))); // NOI18N
+        jLabel8.setText("Service List");
+        toolBar1.add(jLabel8);
+
+        jSeparator3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+        toolBar1.add(jSeparator3);
+
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        btnNew.setText("New");
+        btnNew.setBorderPainted(false);
+        btnNew.setFocusPainted(false);
+        btnNew.setFocusable(false);
+        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+        toolBar1.add(btnNew);
+
+        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
+        btnOpen.setText("Open");
+        btnOpen.setBorderPainted(false);
+        btnOpen.setFocusPainted(false);
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+        toolBar1.add(btnOpen);
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png"))); // NOI18N
+        btnSave.setText("Save");
+        btnSave.setBorderPainted(false);
+        btnSave.setFocusPainted(false);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        toolBar1.add(btnSave);
+
+        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png"))); // NOI18N
+        btnSaveAs.setText("Save As");
+        btnSaveAs.setBorderPainted(false);
+        btnSaveAs.setFocusPainted(false);
+        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveAsActionPerformed(evt);
+            }
+        });
+        toolBar1.add(btnSaveAs);
+
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
+        btnExport.setText("Export");
+        btnExport.setBorderPainted(false);
+        btnExport.setFocusPainted(false);
+        toolBar1.add(btnExport);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addContainerGap(285, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(toolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 572, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(toolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
@@ -321,7 +412,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                         .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -356,7 +447,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,8 +457,8 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(386, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,7 +473,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE))
         );
 
         jSplitPane2.setRightComponent(jPanel4);
@@ -467,7 +558,9 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
             String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
-            item.setTitle(s);
+            if (!s.trim().equals("")){
+                item.setTitle(s);
+            }
             tableServiceList.repaint();
         }
         
@@ -495,6 +588,49 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private void txtMinutesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinutesFocusGained
         txtMinutes.selectAll();
     }//GEN-LAST:event_txtMinutesFocusGained
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        ServiceListTable.getActiveInstance().fileNew();
+}//GEN-LAST:event_btnNewActionPerformed
+
+    private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
+        if (evt.getClickCount() > 1){
+            btnEditActionPerformed(null);
+        }
+    }//GEN-LAST:event_tableServiceListMouseClicked
+
+    private void btnAddWizardbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddWizardbtnAddActionPerformed
+        ppmAddItem.show(this.btnAddWizard, 0, btnAddWizard.getHeight());
+    }//GEN-LAST:event_btnAddWizardbtnAddActionPerformed
+
+    private void actAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddSongActionPerformed
+        AddSongForm asf = new AddSongForm();
+        asf.setVisible(true);
+    }//GEN-LAST:event_actAddSongActionPerformed
+
+    private void actAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddTextActionPerformed
+        TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
+        tsief.setVisible(true);
+    }//GEN-LAST:event_actAddTextActionPerformed
+
+    private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
+        String s = JOptionPane.showInputDialog(this, "Service Item Name:", "");
+        if (!s.trim().equals("")){
+            ContentlessServiceItem csi = new ContentlessServiceItem();
+            csi.setTitle(s);
+            csi.setTemplate("");
+            ServiceListTable.getActiveInstance().addItem(csi);
+        }
+    }//GEN-LAST:event_actAddContentlessItemActionPerformed
+
+    private void actImportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportItemActionPerformed
+        ImportServiceItemForm isif = new ImportServiceItemForm();
+        isif.setVisible(true);
+    }//GEN-LAST:event_actImportItemActionPerformed
+
+    private void txtHoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoursActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtHoursActionPerformed
     
     public JTable getTableServiceList(){
         return tableServiceList;
@@ -522,9 +658,15 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actAddContentlessItem;
+    private javax.swing.JMenuItem actAddSong;
+    private javax.swing.JMenuItem actAddText;
+    private javax.swing.JMenuItem actImportItem;
+    private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnNew;
     private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSave;
@@ -537,6 +679,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -544,16 +687,18 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel lblAuthor;
     private javax.swing.JLabel lblSongName;
+    private javax.swing.JPopupMenu ppmAddItem;
     private datasoul.song.SongsSearchPanel songsSearchPanel1;
     private datasoul.util.DnDTable tableServiceList;
     private javax.swing.JTextPane textSong;
     private javax.swing.JToolBar toolBar;
+    private javax.swing.JToolBar toolBar1;
     private javax.swing.JTextField txtHours;
     private javax.swing.JTextField txtMinutes;
     private javax.swing.JTextArea txtNotes;

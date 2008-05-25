@@ -76,6 +76,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private void initComponents() {
 
         ppmFile = new javax.swing.JPopupMenu();
+        actNew = new javax.swing.JMenuItem();
         actOpen = new javax.swing.JMenuItem();
         actSave = new javax.swing.JMenuItem();
         actSaveAs = new javax.swing.JMenuItem();
@@ -98,6 +99,15 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         btnFile = new javax.swing.JButton();
+
+        actNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        actNew.setText("New");
+        actNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actNewActionPerformed(evt);
+            }
+        });
+        ppmFile.add(actNew);
 
         actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -154,6 +164,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmAddItem.add(actAddText);
 
+        actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
         actAddContentlessItem.setText("Add Contentless Item");
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,7 +364,9 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
             String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
-            item.setTitle(s);
+            if (!s.trim().equals("")){
+                item.setTitle(s);   
+            }
             tableServiceList.repaint();
         }
     }//GEN-LAST:event_btnEditActionPerformed
@@ -416,6 +429,10 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         }
         
     }//GEN-LAST:event_actAddContentlessItemActionPerformed
+
+    private void actNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actNewActionPerformed
+        ServiceListTable.getActiveInstance().fileNew();
+    }//GEN-LAST:event_actNewActionPerformed
     
     public void addItem(Object object){
         ((ListTable)tableServiceList.getModel()).addItem(object);
@@ -427,6 +444,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JMenuItem actAddText;
     private javax.swing.JMenuItem actExport;
     private javax.swing.JMenuItem actImportItem;
+    private javax.swing.JMenuItem actNew;
     private javax.swing.JMenuItem actOpen;
     private javax.swing.JMenuItem actSave;
     private javax.swing.JMenuItem actSaveAs;

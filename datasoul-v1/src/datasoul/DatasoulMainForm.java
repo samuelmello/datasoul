@@ -264,7 +264,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 60));
 
-        btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png"))); // NOI18N
+        btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/servicelists.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnServiceList.setText(bundle.getString("Service List")); // NOI18N
         btnServiceList.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
