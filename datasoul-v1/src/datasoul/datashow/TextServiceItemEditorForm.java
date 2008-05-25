@@ -93,6 +93,9 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -152,6 +155,15 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 10));
         jLabel3.setText(bundle.getString("*_Use_a_line_with_==_to_split_slides_and_a_line_with_===_to_split_sessions")); // NOI18N
 
+        jToolBar1.setFloatable(false);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png"))); // NOI18N
+        jLabel4.setText(bundle.getString("Service_List")); // NOI18N
+        jToolBar1.add(jLabel4);
+
+        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
+        jToolBar1.add(jSeparator2);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,18 +189,20 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                     .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 641, Short.MAX_VALUE)
                     .add(jLabel3))
                 .addContainerGap())
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
+                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(labelTitle)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(fieldTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(labelTitle1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 307, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -316,7 +330,10 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;
     private javax.swing.JTextField textLine;

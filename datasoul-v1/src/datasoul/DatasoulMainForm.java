@@ -247,9 +247,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain = new javax.swing.JToolBar();
         btnServiceList = new javax.swing.JButton();
+        btnSongs = new javax.swing.JButton();
         btnDatashow = new javax.swing.JButton();
         btnTemplates = new javax.swing.JButton();
-        btnSongs = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -278,6 +278,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnServiceList);
 
+        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/music1.png"))); // NOI18N
+        btnSongs.setText(bundle.getString("Songs")); // NOI18N
+        btnSongs.setToolTipText(bundle.getString("Song_manipulation_view")); // NOI18N
+        btnSongs.setBorderPainted(false);
+        btnSongs.setFocusPainted(false);
+        btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSongsMouseClicked(evt);
+            }
+        });
+        toolBarMain.add(btnSongs);
+
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector1.png"))); // NOI18N
         btnDatashow.setText(bundle.getString("Projector")); // NOI18N
         btnDatashow.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
@@ -303,18 +315,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnTemplates);
-
-        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/music1.png"))); // NOI18N
-        btnSongs.setText(bundle.getString("Songs")); // NOI18N
-        btnSongs.setToolTipText(bundle.getString("Song_manipulation_view")); // NOI18N
-        btnSongs.setBorderPainted(false);
-        btnSongs.setFocusPainted(false);
-        btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSongsMouseClicked(evt);
-            }
-        });
-        toolBarMain.add(btnSongs);
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/package_settings.png"))); // NOI18N
         btnConfig.setText(bundle.getString("Configuration")); // NOI18N

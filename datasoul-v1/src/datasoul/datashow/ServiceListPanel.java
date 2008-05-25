@@ -20,11 +20,13 @@
 
 package datasoul.datashow;
 
+import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.templates.TemplateComboBox;
 import datasoul.util.*;
 import datasoul.song.*;
 import datasoul.util.ObjectManager;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 
 /**
@@ -81,6 +83,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddSong = new javax.swing.JMenuItem();
         actAddText = new javax.swing.JMenuItem();
+        actAddContentlessItem = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
         toolBar = new javax.swing.JToolBar();
         btnAddWizard = new javax.swing.JButton();
@@ -150,6 +153,14 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
         ppmAddItem.add(actAddText);
+
+        actAddContentlessItem.setText("Add Contentless Item");
+        actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddContentlessItemActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddContentlessItem);
 
         actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png"))); // NOI18N
         actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
@@ -340,6 +351,10 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         }else if(item instanceof TextServiceItem){
             TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
             tsief.setVisible(true);
+        }else if(item instanceof ContentlessServiceItem){
+            String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
+            item.setTitle(s);
+            tableServiceList.repaint();
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -356,18 +371,21 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_tableServiceListMouseClicked
 
     private void showItem(){
-        
+
         try{
             ObjectManager.getInstance().setBusyCursor();
-            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
-                if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                    ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0));
-            }
-            if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
-                ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
-                if(item instanceof Song)
-                    if(ObjectManager.getInstance().getSongViewerPanel()!=null)
-                        ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+
+            ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+            if (!(item instanceof ContentlessServiceItem)){
+                if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+                    if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                        ObjectManager.getInstance().getPreviewPanel().previewItem(item);
+                }
+                if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+                    if(item instanceof Song)
+                        if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                            ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+                }
             }
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
@@ -386,12 +404,25 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private void btnUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpMouseClicked
         tableServiceList.upItem();
     }//GEN-LAST:event_btnUpMouseClicked
+
+    private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
+        
+        String s = JOptionPane.showInputDialog(this, "Service Item Name:", "");
+        if (!s.trim().equals("")){
+            ContentlessServiceItem csi = new ContentlessServiceItem();
+            csi.setTitle(s);
+            csi.setTemplate("");
+            ServiceListTable.getActiveInstance().addItem(csi);
+        }
+        
+    }//GEN-LAST:event_actAddContentlessItemActionPerformed
     
     public void addItem(Object object){
         ((ListTable)tableServiceList.getModel()).addItem(object);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actAddContentlessItem;
     private javax.swing.JMenuItem actAddSong;
     private javax.swing.JMenuItem actAddText;
     private javax.swing.JMenuItem actExport;

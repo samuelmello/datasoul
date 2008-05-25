@@ -42,6 +42,8 @@ public class Song extends TextServiceItem{
     private String chordsComplete="";
     private String chordsSimplified="";
     private String obs="";
+    private String copyright;
+    private String songSource;
 
     private String filePath="";        
     //private String view=java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
@@ -59,6 +61,8 @@ public class Song extends TextServiceItem{
         properties.add("ChordsComplete");
         properties.add("ChordsSimplified");
         properties.add("Obs");
+        properties.add("Copyright");
+        properties.add("SongSource");
 
     }
 
@@ -127,7 +131,22 @@ public class Song extends TextServiceItem{
     public String getObs(){
         return this.obs;
     }
-
+    
+    public String getCopyright(){
+        return copyright;
+    }
+    
+    public void setCopyright(String s){
+        this.copyright = s;
+    }
+    
+    public String getSongSource(){
+        return this.songSource;
+    }
+    
+    public void setSongSource(String s){
+        this.songSource = s;
+    }
     public String getFileName(){
         return this.getTitle();
     }

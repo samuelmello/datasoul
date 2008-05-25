@@ -60,7 +60,7 @@ public class SongsPanel extends javax.swing.JPanel {
         songsSearch = new datasoul.song.SongsSearchPanel();
 
         split1.setBorder(null);
-        split1.setDividerLocation(250);
+        split1.setDividerLocation(300);
 
         songViewer.setMinimumSize(new java.awt.Dimension(10, 10));
         split1.setRightComponent(songViewer);

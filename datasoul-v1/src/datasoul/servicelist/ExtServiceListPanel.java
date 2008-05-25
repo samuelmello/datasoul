@@ -465,7 +465,12 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         }else if(item instanceof TextServiceItem){
             TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
             tsief.setVisible(true);
+        }else if(item instanceof ContentlessServiceItem){
+            String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
+            item.setTitle(s);
+            tableServiceList.repaint();
         }
+        
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpMouseClicked

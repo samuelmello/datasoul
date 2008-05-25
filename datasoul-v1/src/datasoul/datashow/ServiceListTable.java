@@ -22,6 +22,7 @@
  */
 package datasoul.datashow;
 
+import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.util.*;
 import datasoul.song.*;
@@ -80,7 +81,11 @@ public class ServiceListTable extends ListTable {
 
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         if (columnIndex == 1) {
-            return true;
+            if ( ! (getServiceItem(rowIndex) instanceof ContentlessServiceItem)){
+                return true;
+            }else{
+                return false;
+            }
         } else {
             return false;
         }
@@ -315,8 +320,13 @@ public class ServiceListTable extends ListTable {
             switch (columnIndex) {
                 case COLUMN_DURATION:
                 case COLUMN_NOTES:
-                case COLUMN_TEMPLATE:
                     return true;
+                case COLUMN_TEMPLATE:
+                    if ( ! (getServiceItem(rowIndex) instanceof ContentlessServiceItem)){
+                        return true;
+                    }else{
+                        return false;
+                    }
                 default:
                     return false;
             }
