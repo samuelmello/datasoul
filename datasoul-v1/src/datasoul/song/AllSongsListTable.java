@@ -23,6 +23,7 @@
 
 package datasoul.song;
 
+import datasoul.config.ConfigObj;
 import datasoul.util.ShowDialog;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
@@ -79,6 +80,12 @@ public class AllSongsListTable extends SongListTable{
                     } catch (Exception e) {
                         ShowDialog.showReadFileError(songFile, e);
                     }
+                    
+                    // Clean up some fields that don't make sense 
+                    // in the the song list
+                    song.setDuration("0");
+                    song.setNotes("");
+                    song.setTemplate(ConfigObj.getInstance().getTemplateText());
                     
                     this.addItem(song);
                 }
