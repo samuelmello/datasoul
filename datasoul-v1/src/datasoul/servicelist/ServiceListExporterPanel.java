@@ -114,7 +114,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            ServiceListExporterDocument sled = new ServiceListExporterDocument(ServiceListExporterDocument.TYPE_PDF, "/tmp/foobar1.pdf");
+            ServiceListExporterDocument sled = new ServiceListExporterDocument(ServiceListExporterDocument.TYPE_RTF, "/tmp/foobar1.rtf");
             sled.addServicePlan();
             
             ServiceListTable slt =  ServiceListTable.getActiveInstance();

@@ -11,6 +11,7 @@ import com.lowagie.text.Chunk;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
+import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
@@ -196,18 +197,9 @@ public class ServiceListExporterDocument {
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
 
+        String text[] = s.getChordsSimplified().replace(Song.CHORUS_MARK , " ").replace(Song.SLIDE_BREAK, " ").split("\n");
         
-        
-        String text[] = s.getChordsSimplified().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "").split("\n");
-        
-        for (int i=0; i<text.length; i++){
-            if (text[i].startsWith("=")){
-                p = new Paragraph(text[i].substring(1), FontFactory.getFont(FontFactory.COURIER_OBLIQUE));
-            }else{
-                p = new Paragraph(text[i], FontFactory.getFont(FontFactory.COURIER));
-            }
-            document.add(p);
-        }
+        addSongChords(text);
         
         document.newPage();
         
@@ -228,22 +220,29 @@ public class ServiceListExporterDocument {
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
 
-        
-        
-        String text[] = s.getChordsComplete().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "").split("\n");
-        
-        for (int i=0; i<text.length; i++){
-            if (text[i].startsWith("=")){
-                p = new Paragraph(text[i].substring(1), FontFactory.getFont(FontFactory.COURIER, 12, Color.DARK_GRAY));
-            }else{
-                p = new Paragraph(text[i], FontFactory.getFont(FontFactory.COURIER_BOLD));
-            }
-            document.add(p);
-        }
+        String text[] = s.getChordsComplete().replace(Song.CHORUS_MARK , " ").replace(Song.SLIDE_BREAK, " ").split("\n");
+        addSongChords(text);
         
         document.newPage();
         
     }
 
 
+    private void addSongChords(String[] text) throws DocumentException{
+        Font chordfont  = new Font(Font.COURIER, 12, Font.ITALIC, Color.DARK_GRAY);
+        Font lyricfont  = new Font(Font.COURIER, 12, Font.BOLD);
+        Paragraph p;
+
+                
+        for (int i=0; i<text.length; i++){
+            if (text[i].startsWith("=")){
+                p = new Paragraph(text[i].substring(1), chordfont);
+            }else{
+                p = new Paragraph(text[i], lyricfont);
+            }
+            document.add(p);
+        }
+        
+    }
+    
 }
