@@ -229,8 +229,8 @@ public class ServiceListExporterDocument {
 
 
     private void addSongChords(String[] text) throws DocumentException{
-        Font chordfont  = new Font(Font.COURIER, 12, Font.ITALIC, Color.DARK_GRAY);
-        Font lyricfont  = new Font(Font.COURIER, 12, Font.BOLD);
+        Font chordfont  = new Font(Font.COURIER, 12, Font.BOLD, Color.BLUE.darker());
+        Font lyricfont  = new Font(Font.COURIER, 12, Font.NORMAL);
         Paragraph p;
 
                 

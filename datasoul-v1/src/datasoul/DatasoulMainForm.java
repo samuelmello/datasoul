@@ -527,11 +527,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         // Enable anti-aliasing
         System.setProperty("swing.aatext","true");
         
+        
         try{
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         }catch(Exception e){
             //ignore and fall back to java look and feel
         }
+         
         
         //start splashscreen
         final Splash splash = new Splash();

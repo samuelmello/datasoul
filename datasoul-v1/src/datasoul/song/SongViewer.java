@@ -35,7 +35,6 @@ import java.awt.print.PrinterJob;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -48,7 +47,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -197,10 +195,12 @@ public class SongViewer extends javax.swing.JPanel {
             this.labelKey.setVisible(false);
             this.comboKey.setVisible(false);
             this.btnChords.setVisible(false);
+            this.panelSongChords.setVisible(false);
         }else{
             this.labelKey.setVisible(true);
             this.comboKey.setVisible(true);
             this.btnChords.setVisible(true);
+            this.panelSongChords.setVisible(true);
         }
         
         loadSongTemplate();
@@ -248,13 +248,13 @@ public class SongViewer extends javax.swing.JPanel {
         javax.swing.text.Document doc = jep.getDocument();
 
         if(this.getView().equals(this.VIEW_CHORDS_COMPLETE)){
-            strSong = song.getChordsComplete();
+            strSong = song.getChordsComplete().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
 
             if(strSong.length()==0){
                 strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
             }
         }else if(this.getView().equals(this.VIEW_CHORDS_SIMPLIFIED)){
-            strSong = song.getChordsSimplified();
+            strSong = song.getChordsSimplified().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
             
             if(strSong.length()==0){
                 strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
@@ -501,7 +501,6 @@ public class SongViewer extends javax.swing.JPanel {
         editorSongChords = new javax.swing.JEditorPane();
         jToolBar2 = new javax.swing.JToolBar();
         btnPrint = new javax.swing.JButton();
-        btnFormat = new javax.swing.JButton();
         btnChords = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         labelKey = new javax.swing.JLabel();
@@ -556,17 +555,6 @@ public class SongViewer extends javax.swing.JPanel {
         });
         jToolBar2.add(btnPrint);
 
-        btnFormat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png"))); // NOI18N
-        btnFormat.setText(bundle.getString("Format")); // NOI18N
-        btnFormat.setBorderPainted(false);
-        btnFormat.setFocusPainted(false);
-        btnFormat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFormatActionPerformed(evt);
-            }
-        });
-        jToolBar2.add(btnFormat);
-
         btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/chordsmanager.png"))); // NOI18N
         btnChords.setText(bundle.getString("Chords")); // NOI18N
         btnChords.setBorderPainted(false);
@@ -617,12 +605,6 @@ public class SongViewer extends javax.swing.JPanel {
         ChordsManagerFrame cmf = new ChordsManagerFrame();
         cmf.setVisible(true);
     }//GEN-LAST:event_btnChordsActionPerformed
-
-    private void btnFormatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFormatActionPerformed
-        SongFormatFrame sff = new SongFormatFrame(this, songTemplate);
-        sff.setVisible(true);
-        sff.setView(this.activeView);
-    }//GEN-LAST:event_btnFormatActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         PrinterJob pj = PrinterJob.getPrinterJob();
@@ -746,7 +728,6 @@ public class SongViewer extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChords;
-    private javax.swing.JButton btnFormat;
     private javax.swing.JButton btnPrint;
     private javax.swing.JComboBox comboKey;
     private javax.swing.JEditorPane editorSong;
