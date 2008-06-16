@@ -119,10 +119,14 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }
     
     public void mainDisplayShow(){
+
         int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
 
         if (ConfigObj.getInstance().getMainOutput()){
-            ContentManager.getMainDisplay().slideShow( time );
+            // avoid re-showing animation if inveked by shortcut key
+            if (!btnShow.isSelected()){
+                ContentManager.getMainDisplay().slideShow( time );
+            }
         }
         
         btnShow.setSelected(true);
@@ -134,10 +138,14 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }
     
     public void mainDisplayHide(){
+        
         int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
         
         if (ConfigObj.getInstance().getMainOutput()){
-            ContentManager.getMainDisplay().slideHide( time );
+            // avoid re-showing animation if inveked by shortcut key
+            if (!btnHide.isSelected()){
+                ContentManager.getMainDisplay().slideHide( time );
+            }
         }
 
         btnShow.setSelected(false);
@@ -149,24 +157,32 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }
     
     public void monitorDisplayShow(){
+        
         int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
         
         btnMonitorShow.setSelected(true);
         btnMonitorHide.setSelected(false);
         
         if ( ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().slideShow( time );
+            // avoid re-showing animation if inveked by shortcut key
+            if (!btnMonitorShow.isSelected()){
+                ContentManager.getMonitorDisplay().slideShow( time );
+            }
         }
     }
     
     public void monitorDisplayHide(){
+
         int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
 
         btnMonitorShow.setSelected(false);
         btnMonitorHide.setSelected(true);
 
         if ( ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().slideHide( time );
+            // avoid re-showing animation if inveked by shortcut key
+            if (!btnMonitorHide.isSelected()){
+                ContentManager.getMonitorDisplay().slideHide( time );
+            }
         }
     }
     
