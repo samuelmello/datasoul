@@ -50,14 +50,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         tableSongList.setDroppable(false);
         
-        comboField.removeAllItems();
-        comboField.addItem("All");
-        comboField.addItem("FileName");
-        comboField.addItem("Title");
-        comboField.addItem("SongAuthor");
-        comboField.addItem("Text");
-        comboField.setSelectedIndex(0);
-        
         allSongsListTable = AllSongsListTable.getInstance();
 
         tableSongList.setModel(allSongsListTable);
@@ -87,9 +79,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         fileMenu = new javax.swing.JPopupMenu();
         actImportSongsToDatabase = new javax.swing.JMenuItem();
         fieldString = new javax.swing.JTextField();
-        comboField = new javax.swing.JComboBox();
         labelString = new javax.swing.JLabel();
-        labelField = new javax.swing.JLabel();
         toolBar = new javax.swing.JToolBar();
         btnNew = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
@@ -101,7 +91,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        btnFile = new javax.swing.JButton();
 
         dnDTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -133,11 +122,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
 
-        comboField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         labelString.setText(bundle.getString("Search")); // NOI18N
-
-        labelField.setText(bundle.getString("FIELD")); // NOI18N
 
         toolBar.setBorder(null);
         toolBar.setOpaque(false);
@@ -241,32 +226,19 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator1);
 
-        btnFile.setText(bundle.getString("File")); // NOI18N
-        btnFile.setBorderPainted(false);
-        btnFile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFileActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnFile);
-
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(labelString)
-                    .add(labelField))
+                .add(labelString)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                    .add(comboField, 0, 275, Short.MAX_VALUE))
+                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
             .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
             .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -277,19 +249,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     .add(labelString)
                     .add(fieldString, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(comboField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(labelField))
-                .add(10, 10, 10)
-                .add(scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                .add(scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
-        fileMenu.show(btnFile, 0 /*btnFile.getWidth()-ppmFile.getWidth()*/, btnFile.getHeight());
-    }//GEN-LAST:event_btnFileActionPerformed
 
     private void actImportSongsToDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportSongsToDatabaseActionPerformed
         SongsImport importSongs = new SongsImport();
@@ -390,6 +354,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }else{
                         searchStr = fieldString.getText()+evt.getKeyChar();
                     }
+                                foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
+
+                                /*
                     if(comboField.getSelectedItem().toString().equals("All")){
                         for(int j=1; j<comboField.getItemCount();j++){
                             if(((Song)allSongsListTable.getValueAt(i,songColumn)).containsStringInField(comboField.getItemAt(j).toString(),searchStr)){
@@ -400,6 +367,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     }else if(((Song)allSongsListTable.getValueAt(i,songColumn)).containsStringInField(comboField.getSelectedItem().toString(),searchStr)){
                         foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                     }
+                                 */
+                    if(((Song)allSongsListTable.getValueAt(i,songColumn)).getText().contains(searchStr)){
+                        foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
+                    }
+                                
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_searching.Error:_")+ex.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
@@ -427,9 +399,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnFile;
     private javax.swing.JButton btnNew;
-    private javax.swing.JComboBox comboField;
     private datasoul.util.DnDTable dnDTable1;
     private javax.swing.JTextField fieldString;
     private javax.swing.JPopupMenu fileMenu;
@@ -437,7 +407,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel labelField;
     private javax.swing.JLabel labelString;
     private javax.swing.JScrollPane scroolSongList;
     private datasoul.util.DnDTable tableSongList;

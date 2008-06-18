@@ -250,15 +250,19 @@ public class SongViewer extends javax.swing.JPanel {
         if(this.getView().equals(this.VIEW_CHORDS_COMPLETE)){
             strSong = song.getChordsComplete().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
 
+            /*
             if(strSong.length()==0){
                 strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
             }
+             */
         }else if(this.getView().equals(this.VIEW_CHORDS_SIMPLIFIED)){
             strSong = song.getChordsSimplified().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
             
+            /*
             if(strSong.length()==0){
                 strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
             }
+             */
         }else{
             strSong = song.getText().replace(Song.CHORUS_MARK,"").replace(Song.SLIDE_BREAK,"");
         }

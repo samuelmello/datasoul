@@ -158,11 +158,6 @@ public class Song extends TextServiceItem{
         return this.filePath;
     }
 
-    public boolean containsStringInField(String field, String strSearch) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException{
-        
-        return (boolean)(((String)this.getClass().getMethod("get"+field).invoke(this)).toLowerCase().contains(strSearch.toLowerCase()));     
-    }
-    
     public void setView(String view){
         this.view = view;
     }

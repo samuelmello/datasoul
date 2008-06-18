@@ -650,6 +650,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         ServiceListExporterPanel p = new ServiceListExporterPanel();
+        p.setLocationRelativeTo(this);
         p.setVisible(true);
     }//GEN-LAST:event_btnExportActionPerformed
     

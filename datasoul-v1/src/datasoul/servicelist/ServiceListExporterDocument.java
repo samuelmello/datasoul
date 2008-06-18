@@ -18,8 +18,10 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.rtf.RtfWriter2;
+import datasoul.DatasoulMainForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
+import datasoul.datashow.TextServiceItem;
 import datasoul.song.Song;
 import java.awt.Color;
 import java.io.File;
@@ -52,7 +54,7 @@ public class ServiceListExporterDocument {
             PdfWriter.getInstance(document, new FileOutputStream(filename));
         }
         document.open();
-        document.addCreator("Datasoul");
+        document.addCreator("Datasoul "+DatasoulMainForm.getVersion());
         document.addCreationDate();
     }
     
@@ -169,9 +171,12 @@ public class ServiceListExporterDocument {
 
         addSongHeader(s);
 
-        String text = s.getText().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "");
-        
         Paragraph p;
+
+        p = new Paragraph("("+"Lyrics"+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        document.add(p);
+        
+        String text = s.getText().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "");
 
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
@@ -181,6 +186,24 @@ public class ServiceListExporterDocument {
         
         document.newPage();
         
+    }
+    
+    public void addTextItem(TextServiceItem t) throws DocumentException{
+
+        String text = t.getText().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "");
+        
+        Paragraph p;
+        
+        p = new Paragraph(t.getTitle(), FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16));
+        document.add(p);
+
+        p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
+        document.add(p);
+        
+        p = new Paragraph(text, FontFactory.getFont(FontFactory.HELVETICA));
+        document.add(p);
+        
+        document.newPage();
     }
     
     public void addSongChordsSimple(Song s) throws DocumentException{
@@ -193,6 +216,9 @@ public class ServiceListExporterDocument {
         addSongHeader(s);
 
         Paragraph p;
+
+        p = new Paragraph("("+"Chords Simple"+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        document.add(p);
 
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
@@ -217,6 +243,9 @@ public class ServiceListExporterDocument {
 
         Paragraph p;
 
+        p = new Paragraph("("+"Chords Complete"+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        document.add(p);
+        
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
 
