@@ -266,7 +266,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/servicelists.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnServiceList.setText(bundle.getString("Service List")); // NOI18N
+        btnServiceList.setText(bundle.getString("Service_Plan")); // NOI18N
         btnServiceList.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
         btnServiceList.setBorderPainted(false);
         btnServiceList.setFocusPainted(false);

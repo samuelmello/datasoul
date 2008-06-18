@@ -293,7 +293,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png"))); // NOI18N
-        jLabel4.setText(bundle.getString("Service_List")); // NOI18N
+        jLabel4.setText(bundle.getString("Edit_Song")); // NOI18N
         jToolBar1.add(jLabel4);
 
         jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));

@@ -278,7 +278,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.setFloatable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png"))); // NOI18N
-        jLabel1.setText(bundle.getString("Service_List")); // NOI18N
+        jLabel1.setText(bundle.getString("Service_Plan")); // NOI18N
         jToolBar1.add(jLabel1);
 
         jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));

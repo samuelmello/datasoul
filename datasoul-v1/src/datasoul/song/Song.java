@@ -30,6 +30,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -177,5 +178,12 @@ public class Song extends TextServiceItem{
         return ret;
     }
     
-
+    public ArrayList<String> getChordsUsedSimple(){
+        ArrayList<String> result = new ArrayList<String>();
+        
+        
+        
+        return result;
+    }
+    
 }
