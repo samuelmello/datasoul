@@ -21,6 +21,7 @@
 package datasoul.datashow;
 
 import datasoul.servicelist.ContentlessServiceItem;
+import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.templates.TemplateComboBox;
 import datasoul.util.*;
 import datasoul.song.*;
@@ -329,8 +330,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
     private void actExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actExportActionPerformed
 
-        SongExportPanel sep = new SongExportPanel();
-        sep.setVisible(true);
+        ServiceListExporterPanel p = new ServiceListExporterPanel();
+        p.setLocationRelativeTo(this);
+        p.setVisible(true);
+                
+        
     }//GEN-LAST:event_actExportActionPerformed
 
     private void actSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveAsActionPerformed

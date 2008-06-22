@@ -20,8 +20,6 @@
 
 package datasoul.song;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.util.*;
 import java.awt.Color;
@@ -29,14 +27,10 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
-import java.awt.print.PrinterJob;
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -628,99 +622,6 @@ public class SongViewer extends javax.swing.JPanel {
         this.refresh();
     }//GEN-LAST:event_comboKeyActionPerformed
 
-        public ByteArrayOutputStream exportRTFSong(ByteArrayOutputStream os, boolean withChords) throws Exception{
-            ByteArrayOutputStream os2 = exportRTFLyrics(os);
-            if(withChords){
-                ByteArrayOutputStream os3 = exportRTFChords(os2);
-                return os3;
-            }else{
-                return os2;
-            }
-        }
-        public ByteArrayOutputStream exportRTFLyrics(ByteArrayOutputStream os) throws Exception{
-              //writes the lyrics and its chords
-              ByteArrayOutputStream osOut = new ByteArrayOutputStream();
-              boolean firstPage = true;
-              if(os.toByteArray().length>0){
-                  osOut.write(os.toByteArray(),0,os.toByteArray().length-2);                  
-                  firstPage = false;
-              }
-
-              javax.swing.text.Document doc = this.editorSong.getDocument();
-              int length = doc.getLength();
-              doc.getDefaultRootElement().getElement(0);
-              
-              if(firstPage){
-                  this.editorSong.getEditorKit().write(osOut, doc, 0, length);                  
-              }else{
-                osOut.write("\\page ".getBytes());                                          
-                ByteArrayOutputStream osAux = new ByteArrayOutputStream();
-                this.editorSong.getEditorKit().write(osAux, doc, 0, length);
-                String aux = osAux.toString();
-                int index = aux.indexOf("}}")+2;
-                osOut.write(osAux.toByteArray(),index,osAux.size()-index-2);
-              }
-
-              if(os.toByteArray().length>0){
-                  osOut.write("\n}".getBytes());
-              }
-              
-              osOut.close();
-              
-              return osOut;
-        }
-
-        public ByteArrayOutputStream exportRTFChords(ByteArrayOutputStream os) throws IOException{
-
-              ByteArrayOutputStream osOut = new ByteArrayOutputStream();
-              osOut.write(os.toByteArray(),0,os.toByteArray().length-2);
-              
-              javax.swing.text.Document docChords = this.editorSongChords.getDocument();
-              int chordsLength = docChords.getLength();
- 
-                ChordsDB chordsDB = ChordsDB.getInstance();
-                for(int i=0; i<chordsName.size();i++){
-                    Chord chord = chordsDB.getChordByName(chordsName.get(i));
-                    if(chord!=null){
-                        int shapeSize = 1;
-                        if(songTemplate.getChordShapeSizeIdx() == SongTemplate.CHORDSIZE_SMALL){
-                            shapeSize = 3;
-                        }else if(songTemplate.getChordShapeSizeIdx() == SongTemplate.CHORDSIZE_MEDIUM){
-                            shapeSize = 2;
-                        }
-                        ChordShapePanel csp = new ChordShapePanel(shapeSize, chord.getName(),chord.getShape());
-
-                        ByteArrayOutputStream baos=new ByteArrayOutputStream();
-                        BufferedImage bi= csp.createImage();
-
-                        JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(baos);
-                        encoder.encode(bi);
-
-                        byte[] ba=baos.toByteArray();
-
-                        int len=ba.length,j;
-                        StringBuffer sb=new StringBuffer(len*2);
-                        for (j=0;j<len;j++) {
-                            String sByte=Integer.toHexString((int)(ba[j] & 0xFF));
-                            if (sByte.length()!=2)
-                                sb.append('0'+sByte);
-                            else
-                                sb.append(sByte);
-                        }
-                        String s="{\\pict\\jpegblip " + sb.toString()+"}";
-
-                        osOut.write(s.getBytes());
-                    }else{
-                    }
-
-                }
-                osOut.write("\n}".getBytes());
-                osOut.close();
-                
-                return osOut;
-        }
-        
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChords;
     private javax.swing.JButton btnExport;
