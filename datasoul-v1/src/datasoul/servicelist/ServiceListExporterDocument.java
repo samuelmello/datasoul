@@ -13,6 +13,8 @@ import com.lowagie.text.DocumentException;
 import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
+import com.lowagie.text.Image;
+import com.lowagie.text.Jpeg;
 import com.lowagie.text.Paragraph;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Table;
@@ -22,12 +24,21 @@ import datasoul.DatasoulMainForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
+import datasoul.song.Chord;
+import datasoul.song.ChordShapePanel;
+import datasoul.song.ChordsDB;
 import datasoul.song.Song;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -227,6 +238,11 @@ public class ServiceListExporterDocument {
         
         addSongChords(text);
         
+        p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
+        document.add(p);
+        addChordsShape(s.getChordsUsedSimple());
+        document.add(p);
+
         document.newPage();
         
     }
@@ -251,11 +267,61 @@ public class ServiceListExporterDocument {
 
         String text[] = s.getChordsComplete().replace(Song.CHORUS_MARK , " ").replace(Song.SLIDE_BREAK, " ").split("\n");
         addSongChords(text);
+
         
+        p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
+        document.add(p);
+        addChordsShape(s.getChordsUsedComplete());
+        document.add(p);
+                
         document.newPage();
         
     }
 
+    private void addChordsShape(ArrayList<String> chordsName) throws DocumentException{
+        ChordsDB chordsDB = ChordsDB.getInstance();
+        String notCatalogued = "";
+        LinkedList<Chunk> images = new LinkedList<Chunk>();
+
+        for(int i=0; i<chordsName.size();i++){
+            Chord chord = chordsDB.getChordByName(chordsName.get(i));
+            if(chord!=null){
+                ChordShapePanel csp = new ChordShapePanel(2, chord.getName(),chord.getShape());
+                BufferedImage im = csp.createImage();
+                try{
+                    File tmp = File.createTempFile("datasoul-img", ".jpg");
+                    tmp.deleteOnExit();
+                    
+                    ImageIO.write(im, "jpeg", tmp);
+                    Chunk c = new Chunk(Image.getInstance(tmp.getAbsolutePath()), 0, 0, true);
+                    
+                    images.add(c);
+                }catch(IOException e){
+                    JOptionPane.showMessageDialog(null, "Internal error: "+e.getMessage());
+                }
+            }else{
+                notCatalogued += chordsName.get(i);
+            }
+        }
+        
+        Paragraph p;
+
+        if (!images.isEmpty()){
+            p = new Paragraph();
+            for (Chunk c : images){
+                p.add(c);
+            }
+            document.add(p);
+        }
+        
+        if (!notCatalogued.equals("") ){
+            p = new Paragraph("The following chords are not cataloged: "+notCatalogued, FontFactory.getFont(FontFactory.HELVETICA, 8));
+            document.add(p);
+        }
+
+        
+    }
+    
 
     private void addSongChords(String[] text) throws DocumentException{
         Font chordfont  = new Font(Font.COURIER, 12, Font.BOLD, Color.BLUE.darker());

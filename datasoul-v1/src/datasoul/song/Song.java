@@ -43,8 +43,8 @@ public class Song extends TextServiceItem{
     private String chordsComplete="";
     private String chordsSimplified="";
     private String obs="";
-    private String copyright;
-    private String songSource;
+    private String copyright = "";
+    private String songSource = "";
 
     private String filePath="";        
     //private String view=java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
@@ -179,11 +179,33 @@ public class Song extends TextServiceItem{
     }
     
     public ArrayList<String> getChordsUsedSimple(){
-        ArrayList<String> result = new ArrayList<String>();
-        
-        
-        
-        return result;
+        return getChordsUsed(chordsSimplified);
     }
     
+    public ArrayList<String> getChordsUsedComplete(){
+        return getChordsUsed(chordsComplete);
+    }
+
+    private ArrayList<String> getChordsUsed(String source){
+            ArrayList<String> result = new ArrayList<String>();
+        
+        String lines[] = source.split("\n");
+        for (String l : lines){
+            
+            if (l.trim().equals(CHORUS_MARK) || l.trim().equals(SLIDE_BREAK))
+                continue;
+            
+            if (l.startsWith("=")){
+                String tokens[] = l.substring(1).trim().split("[ \\t]+");
+                for (String t : tokens){
+                    if (!result.contains(t) && !t.equals("=")){
+                        result.add(t);
+                    }
+                }
+            }
+        }
+        
+        return result;
+
+    }
 }

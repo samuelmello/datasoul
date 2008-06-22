@@ -22,6 +22,7 @@ package datasoul.song;
 
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.util.*;
 import java.awt.Color;
 import java.awt.Font;
@@ -504,7 +505,7 @@ public class SongViewer extends javax.swing.JPanel {
         scroolSongChords = new javax.swing.JScrollPane();
         editorSongChords = new javax.swing.JEditorPane();
         jToolBar2 = new javax.swing.JToolBar();
-        btnPrint = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
         btnChords = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         labelKey = new javax.swing.JLabel();
@@ -547,17 +548,17 @@ public class SongViewer extends javax.swing.JPanel {
         jToolBar2.setFloatable(false);
         jToolBar2.setOpaque(false);
 
-        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/print_printer.png"))); // NOI18N
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnPrint.setText(bundle.getString("Print")); // NOI18N
-        btnPrint.setBorderPainted(false);
-        btnPrint.setFocusPainted(false);
-        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+        btnExport.setText(bundle.getString("Print")); // NOI18N
+        btnExport.setBorderPainted(false);
+        btnExport.setFocusPainted(false);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPrintActionPerformed(evt);
+                btnExportActionPerformed(evt);
             }
         });
-        jToolBar2.add(btnPrint);
+        jToolBar2.add(btnExport);
 
         btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/chordsmanager.png"))); // NOI18N
         btnChords.setText(bundle.getString("Chords")); // NOI18N
@@ -610,24 +611,14 @@ public class SongViewer extends javax.swing.JPanel {
         cmf.setVisible(true);
     }//GEN-LAST:event_btnChordsActionPerformed
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        PrinterJob pj = PrinterJob.getPrinterJob();
-        PageFormat pf = pj.defaultPage();
-        JEditorPane jep = new JEditorPane();
-        try {            
-            drawLyrics(jep,true);
-            drawChords(jep,false);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-      
-        Content content = new Content(jep);
-        pj.setPrintable(content, pf);
-        try {
-            if (pj.printDialog())
-                pj.print();
-        } catch (Exception e) {}
-    }//GEN-LAST:event_btnPrintActionPerformed
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+
+        ServiceListExporterPanel slep = new ServiceListExporterPanel();
+        slep.setLocationRelativeTo(this);
+        slep.setSingleSong(song);
+        slep.setVisible(true);
+        
+}//GEN-LAST:event_btnExportActionPerformed
 
     private void comboKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboKeyActionPerformed
         if(keyOrig.equals(""))
@@ -732,7 +723,7 @@ public class SongViewer extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChords;
-    private javax.swing.JButton btnPrint;
+    private javax.swing.JButton btnExport;
     private javax.swing.JComboBox comboKey;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;

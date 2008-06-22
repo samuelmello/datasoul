@@ -9,7 +9,6 @@ package datasoul.servicelist;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
 import datasoul.song.Song;
-import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -22,6 +21,15 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     /** Creates new form ServiceListExporterPanel */
     public ServiceListExporterPanel() {
         initComponents();
+    }
+    
+    private Song singleSong = null;
+    
+    public void setSingleSong(Song s){
+        singleSong = s;
+        cbServicePlan.setSelected(false);
+        cbServicePlan.setEnabled(false);
+        
     }
     
     /** This method is called from within the constructor to
@@ -184,31 +192,45 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
 
                 ServiceListExporterDocument sled = new ServiceListExporterDocument(type, fileName);
                 
-                if (cbServicePlan.isSelected()){
-                    sled.addServicePlan();
-                }
-
-                ServiceListTable slt =  ServiceListTable.getActiveInstance();
-                for (int i=0; i<slt.getRowCount(); i++){
-                    Object o = slt.getServiceItem(i);
-                    if (o instanceof Song){
-                        if (cbLyrics.isSelected()){
-                            sled.addSongLyrics((Song)o);
-                        }
-                        if (cbChordsSimple.isSelected()){
-                            sled.addSongChordsSimple((Song)o);
-                        }
-                        if (cbChordsComplete.isSelected()){
-                            sled.addSongChordsComplete((Song)o);
-                        }
-                    }else if (o instanceof TextServiceItem){
-                        if (cbLyrics.isSelected()){
-                            sled.addTextItem((TextServiceItem)o);
-                        }
+                if (singleSong == null){
+                
+                    if (cbServicePlan.isSelected()){
+                        sled.addServicePlan();
                     }
-                            
-                }
 
+                    ServiceListTable slt =  ServiceListTable.getActiveInstance();
+                    for (int i=0; i<slt.getRowCount(); i++){
+                        Object o = slt.getServiceItem(i);
+                        if (o instanceof Song){
+                            if (cbLyrics.isSelected()){
+                                sled.addSongLyrics((Song)o);
+                            }
+                            if (cbChordsSimple.isSelected()){
+                                sled.addSongChordsSimple((Song)o);
+                            }
+                            if (cbChordsComplete.isSelected()){
+                                sled.addSongChordsComplete((Song)o);
+                            }
+                        }else if (o instanceof TextServiceItem){
+                            if (cbLyrics.isSelected()){
+                                sled.addTextItem((TextServiceItem)o);
+                            }
+                        }
+
+                    }
+                }else{
+                    if (cbLyrics.isSelected()){
+                        sled.addSongLyrics(singleSong);
+                    }
+                    if (cbChordsSimple.isSelected()){
+                        sled.addSongChordsSimple(singleSong);
+                    }
+                    if (cbChordsComplete.isSelected()){
+                        sled.addSongChordsComplete(singleSong);
+                    }
+
+                }
+                        
                 sled.write();
             }
             
@@ -219,6 +241,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         }
 }//GEN-LAST:event_cbOkActionPerformed
 
+       
     private void cbCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCancelActionPerformed
         dispose();
     }//GEN-LAST:event_cbCancelActionPerformed
