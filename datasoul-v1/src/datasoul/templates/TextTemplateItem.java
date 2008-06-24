@@ -61,7 +61,7 @@ public class TextTemplateItem extends TemplateItem {
     private int textWeight;
     private int underline;
     private int content;
-    
+    private int uppercase;
         
     private AttributedString atribStr;
     
@@ -94,7 +94,9 @@ public class TextTemplateItem extends TemplateItem {
         registerDisplayString("TextWeightIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Text_Weight"));
         properties.add("UnderlineIdx");
         registerDisplayString("UnderlineIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Underline"));
-
+        properties.add("UppercaseIdx");
+        registerDisplayString("UppercaseIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Uppercase"));
+        
     }
 
     private static JComboBox cbAlignment;
@@ -104,6 +106,7 @@ public class TextTemplateItem extends TemplateItem {
     private static JComboBox cbTextWeight;
     private static JComboBox cbUnderline;
     private static JComboBox cbFontName;
+    private static JComboBox cbUppercase;
     
     public static final int CONTENT_TITLE = 0;// "Title";
     public static final int CONTENT_SLIDE = 1;// "Slide";
@@ -148,6 +151,9 @@ public class TextTemplateItem extends TemplateItem {
     public static final int UNDERLINE_DASHED = 4;
     public static final String[] UNDERLINE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Off"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Simple"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TwoPixel"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Dotted"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Dashed")};
     
+    public static final int UPPERCASE_NO = 0;
+    public static final int UPPERCASE_YES = 1;
+    public static final String[] UPPERCASE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes")};
     
     public static final String DEFAULT_TEXT = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TextItem");
 
@@ -170,6 +176,7 @@ public class TextTemplateItem extends TemplateItem {
         this.setFontName("Serif");
         this.setFontColor(Color.BLACK);
         this.setOutlineColor(Color.BLACK);
+        this.setUppercaseIdx(UPPERCASE_NO);
 
         if (cbContent == null){
             cbContent = new JComboBox();
@@ -218,6 +225,15 @@ public class TextTemplateItem extends TemplateItem {
         }
         registerEditorComboBox("UnderlineIdx", cbUnderline);
         
+        if (cbUppercase == null){
+            cbUppercase = new JComboBox();
+            for (i=0; i<UPPERCASE_TABLE.length; i++)
+                cbUppercase.addItem(UPPERCASE_TABLE[i]);
+        }
+        registerEditorComboBox("UppercaseIdx", cbUppercase);
+        
+
+        
         if (cbFontName == null){
             String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
             cbFontName = new JComboBox();
@@ -244,6 +260,7 @@ public class TextTemplateItem extends TemplateItem {
         this.setFontColor(from.getFontColor());
         this.setOutlineColor(from.getOutlineColor());
         this.setFontOutline(from.getFontOutline());
+        this.setUppercaseIdx(from.getUppercaseIdx());
     }
     
 
@@ -367,16 +384,25 @@ getFullWord: {
             return;
         }
 
+        String tmpText;
+        
+        // uppercase?
+        if (uppercase == UPPERCASE_YES){
+            tmpText = text.toUpperCase();
+        }else{
+            tmpText = text;
+        }
+        
         // The string contain something to be displayed in italic?
         
-        if (text.contains("[") && text.contains("]")) {
-            int a = text.indexOf("[");
-            int b = text.lastIndexOf("]");
-            formatedString = text.substring(0, a) + text.substring(a+1, b) + text.substring(b+1);
+        if (tmpText.contains("[") && tmpText.contains("]")) {
+            int a = tmpText.indexOf("[");
+            int b = tmpText.lastIndexOf("]");
+            formatedString = tmpText.substring(0, a) + tmpText.substring(a+1, b) + tmpText.substring(b+1);
             atribStr = new AttributedString(formatedString);
             atribStr.addAttribute(TextAttribute.POSTURE, TextAttribute.POSTURE_OBLIQUE, a, b-1);
         }else{
-            formatedString = text;
+            formatedString = tmpText;
             atribStr = new AttributedString(formatedString);
         }        
         
@@ -691,6 +717,32 @@ getFullWord: {
         for (int j=0; j<CONTENT_TABLE.length; j++){
             if (content.equalsIgnoreCase(CONTENT_TABLE[j])){
                 setContentIdx(j);
+            }
+        }
+    }
+    
+    public String getUppercase(){
+        return UPPERCASE_TABLE[uppercase];
+    }
+    
+    public int getUppercaseIdx(){
+        return uppercase;
+    }
+    
+    public void setUppercaseIdx(int x){
+        this.uppercase = x;
+        updateAttributes();
+        firePropChanged("UppercaseIdx");
+    }
+    
+    public void setUppercaseIdx(String s){
+        this.setUppercaseIdx(Integer.parseInt(s));
+    }
+    
+    public void setUppercase(String s){
+        for (int j=0; j<UPPERCASE_TABLE.length; j++){
+            if (s.equalsIgnoreCase(UPPERCASE_TABLE[j])){
+                setUppercaseIdx(j);
             }
         }
     }
