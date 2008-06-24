@@ -88,13 +88,13 @@ public class Alert extends Thread {
         
         // show
         ContentManager cm = ContentManager.getInstance();
-        if (showOnMain && ConfigObj.getInstance().getMainOutput() ){
-            ContentManager.getMainDisplay().setAlertTemplate(getMainTemplate());
-            ContentManager.getMainDisplay().setAlertActive(true);
+        if (showOnMain){
+            ContentManager.getInstance().setAlertTemplateMain(getMainTemplate());
+            ContentManager.getInstance().setAlertActiveMain(true);
         }
-        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().setAlertTemplate(getMonitorTemplate());
-            ContentManager.getMonitorDisplay().setAlertActive(true);
+        if (showOnMonitor){
+            ContentManager.getInstance().setAlertTemplateMonitor(getMonitorTemplate());
+            ContentManager.getInstance().setAlertActiveMonitor(true);
         }
         cm.setAlertText(text);
         cm.alertShow( DisplayControlConfig.getInstance().getSlideShowHideTime() );
@@ -108,11 +108,11 @@ public class Alert extends Thread {
         }
 
         // hide
-        if (showOnMain && ConfigObj.getInstance().getMainOutput() ){
+        if (showOnMain){
             ContentManager.getMainDisplay().setAlertActive(false);
         }
-        if (showOnMonitor && ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().setAlertActive(false);
+        if (showOnMonitor){
+            ContentManager.getInstance().setAlertActiveMonitor(false);
         }
         cm.alertHide(DisplayControlConfig.getInstance().getSlideShowHideTime());
         

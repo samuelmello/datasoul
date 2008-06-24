@@ -75,15 +75,11 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     public void mainDisplayBlack(){
         
         if( !isMainOnBlack ){
-            if ( ConfigObj.getInstance().getMainOutput() ){
-                ContentManager.getMainDisplay().setBlack( 1 );
-            }
+            ContentManager.getInstance().setMainBlack( 1 );
             isMainOnBlack = true;
             btnMainBlack.setSelected(true);
         }else{
-            if ( ConfigObj.getInstance().getMainOutput() ){
-                ContentManager.getMainDisplay().setBlack( 0 );
-            }
+            ContentManager.getInstance().setMainBlack( 0 );
             isMainOnBlack = false;
             btnMainBlack.setSelected(false);
         }
@@ -93,41 +89,12 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             btnMonitorBlackActionPerformed(null);
         }
     }
-    public void mainDisplayClean(){
-        
-        /*
-        
-        if( !isMainOnClean ){
-            if ( ConfigObj.getInstance().getMainOutput() ){
-                ContentManager.getMainDisplay().setClear( 1 );
-            }
-            isMainOnClean = true;
-            btnMainClear.setSelected(true);
-        }else{
-            if ( ConfigObj.getInstance().getMainOutput() ){
-                ContentManager.getMainDisplay().setClear( 0 );
-            }
-            isMainOnClean = false;
-            btnMainClear.setSelected(false);
-        }
-        
-        if (DisplayControlConfig.getInstance().getMonitorFollowMainControls()){
-            btnMonitorClear.setSelected( btnMainClear.isSelected() );
-            btnMonitorClearActionPerformed(null);
-        }
-         */
-    }
     
     public void mainDisplayShow(){
 
         int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
 
-        if (ConfigObj.getInstance().getMainOutput()){
-            // avoid re-showing animation if inveked by shortcut key
-            if (!btnShow.isSelected()){
-                ContentManager.getMainDisplay().slideShow( time );
-            }
-        }
+        ContentManager.getInstance().slideShowMain( time );
         
         btnShow.setSelected(true);
         btnHide.setSelected(false);
@@ -141,12 +108,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         
         int time = DisplayControlConfig.getInstance().getSlideShowHideTime();
         
-        if (ConfigObj.getInstance().getMainOutput()){
-            // avoid re-showing animation if inveked by shortcut key
-            if (!btnHide.isSelected()){
-                ContentManager.getMainDisplay().slideHide( time );
-            }
-        }
+        ContentManager.getInstance().slideHideMain( time );
 
         btnShow.setSelected(false);
         btnHide.setSelected(true);
@@ -163,12 +125,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnMonitorShow.setSelected(true);
         btnMonitorHide.setSelected(false);
         
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
-            // avoid re-showing animation if inveked by shortcut key
-            if (!btnMonitorShow.isSelected()){
-                ContentManager.getMonitorDisplay().slideShow( time );
-            }
-        }
+        ContentManager.getInstance().slideShowMonitor( time );
     }
     
     public void monitorDisplayHide(){
@@ -178,12 +135,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnMonitorShow.setSelected(false);
         btnMonitorHide.setSelected(true);
 
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
-            // avoid re-showing animation if inveked by shortcut key
-            if (!btnMonitorHide.isSelected()){
-                ContentManager.getMonitorDisplay().slideHide( time );
-            }
-        }
+        ContentManager.getInstance().slideHideMonitor( time );
     }
     
     /** This method is called from within the constructor to
@@ -464,6 +416,19 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnShowActionPerformed
 
+    public void shortcutShowMain(){
+        if (!btnShow.isSelected()){
+            this.mainDisplayShow();
+        }
+    }
+
+    public void shortcutHideMain(){
+        if (!btnHide.isSelected()){
+            this.mainDisplayHide();
+        }
+    }
+
+    
     private void btnHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHideActionPerformed
         if (btnHide.isSelected()){
             this.mainDisplayHide();
@@ -505,9 +470,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     private void btnMonitorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorBlackActionPerformed
         if ( ConfigObj.getInstance().getMonitorOutput() ){
             if( btnMonitorBlack.isSelected() ){
-                ContentManager.getMonitorDisplay().setBlack( 1 );
+                ContentManager.getInstance().setMonitorBlack( 1 );
             }else{
-                ContentManager.getMonitorDisplay().setBlack( 0 );
+                ContentManager.getInstance().setMonitorBlack( 0 );
             }
         }
         

@@ -27,7 +27,6 @@ import java.awt.Composite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.InvocationTargetException;
 import javax.swing.SwingUtilities;
 
 /**

@@ -24,6 +24,7 @@
 package datasoul.render;
 
 import datasoul.config.ConfigObj;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 /**
@@ -36,19 +37,25 @@ public class ContentManager {
     
     private ArrayList<ContentRender> previewRenderList;
     private ArrayList<ContentRender> liveRenderList;
+    private ArrayList<ContentRender> mainRenderList;
+    private ArrayList<ContentRender> monitorRenderList;
     
     
     /** Creates a new instance of ContentManager */
     private ContentManager() {
         previewRenderList = new ArrayList<ContentRender>();
         liveRenderList = new ArrayList<ContentRender>();
+        mainRenderList = new ArrayList<ContentRender>();
+        monitorRenderList = new ArrayList<ContentRender>();
 
         if ( ConfigObj.getInstance().getMonitorOutput() ){
             liveRenderList.add( ContentManager.getMonitorDisplay() );
+            monitorRenderList.add( ContentManager.getMonitorDisplay() );
         }
         
         if ( ConfigObj.getInstance().getMainOutput() ){
             liveRenderList.add( ContentManager.getMainDisplay() );
+            mainRenderList.add( ContentManager.getMainDisplay() );
         }
     }
     
@@ -185,14 +192,12 @@ public class ContentManager {
         }
     }
 
-    public void registerLiveRender(ContentRender r){
+    public void registerMainLiveRender(ContentRender r){
         liveRenderList.add(r);
+        mainRenderList.add(r);
     }
     
-    public void unregisterLiveRender(ContentRender r){
-        liveRenderList.remove(r);
-    }
-    
+   
     public void setAlertText(String t){
         for (ContentRender r : liveRenderList){
             r.setAlert(t);
@@ -218,6 +223,78 @@ public class ContentManager {
         }
     }
 
+    public void setMainBlack(int i){
+        for (ContentRender r : mainRenderList){
+            r.setBlack(i);
+        }
+    }
+    
+    public void slideShowMain(int i){
+        for (ContentRender r : mainRenderList){
+            r.slideShow(i);
+        }
+    }
+    
+    public void slideHideMain(int i){
+        for (ContentRender r : mainRenderList){
+            r.slideHide(i);
+        }
+    }
+
+    public void paintBackgroundMain(BufferedImage img){
+        for (ContentRender r : mainRenderList){
+            r.paintBackground(img);
+        }
+    }
+    
+    public void setAlertTemplateMain(String template){
+        for (ContentRender r : mainRenderList){
+            r.setAlertTemplate(template);
+        }
+    }
+    
+    public void setAlertActiveMain(Boolean b){
+        for (ContentRender r : mainRenderList){
+            r.setAlertActive(b);
+        }
+    }
+
+    public void setMonitorBlack(int i){
+        for (ContentRender r : monitorRenderList){
+            r.setBlack(i);
+        }
+    }
+    
+    public void slideShowMonitor(int i){
+        for (ContentRender r : monitorRenderList){
+            r.slideShow(i);
+        }
+    }
+    
+    public void slideHideMonitor(int i){
+        for (ContentRender r : monitorRenderList){
+            r.slideHide(i);
+        }
+    }
+
+    public void paintBackgroundMonitor(BufferedImage img){
+        for (ContentRender r : monitorRenderList){
+            r.paintBackground(img);
+        }
+    }
+    
+    public void setAlertTemplateMonitor(String template){
+        for (ContentRender r : monitorRenderList){
+            r.setAlertTemplate(template);
+        }
+    }
+    
+    public void setAlertActiveMonitor(Boolean b){
+        for (ContentRender r : monitorRenderList){
+            r.setAlertActive(b);
+        }
+    }
+    
     
     static private ContentRender mainDisplay;
     static private ContentRender monitorDisplay;
@@ -324,6 +401,5 @@ public class ContentManager {
     static public void setMonitorDisplayEngine(String engine) {
         monitorDisplayEngine = engine;
     }
-    
     
 }

@@ -21,6 +21,7 @@
 package datasoul.datashow;
 
 import datasoul.*;
+import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.render.SwingPanelContentRender;
@@ -56,8 +57,14 @@ public class DatashowPanel extends javax.swing.JPanel {
             intl.getString("Medium"), 
             intl.getString("Large") }));        
                 
+        cbLiveSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { 
+            intl.getString("Dont_show"), 
+            intl.getString("Small"), 
+            intl.getString("Medium"), 
+            intl.getString("Large") }));        
             
         initPreview();
+        initLive();
     }
 
     private void initPreview(){
@@ -80,6 +87,27 @@ public class DatashowPanel extends javax.swing.JPanel {
         
     }
     
+    private void initLive(){
+        int width, height;
+        try{
+            width = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeWidth());
+        }catch(Exception e){
+            width = 640;
+        }
+        try{
+            height = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeHeight());
+        }catch(Exception e){
+            height = 480;
+        }
+        
+        SwingPanelContentRender contentRender = new SwingPanelContentRender(liveDisplayPanel);
+        contentRender.initDisplay( width, height, 0, 0, false );
+        
+        ContentManager.getInstance().registerMainLiveRender( contentRender );
+        contentRender.paintBackground(BackgroundConfig.getInstance().getMainBackgroundImg());
+
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -90,13 +118,18 @@ public class DatashowPanel extends javax.swing.JPanel {
 
         jSplitPane2 = new javax.swing.JSplitPane();
         split3 = new javax.swing.JSplitPane();
-        live = new datasoul.datashow.LivePanel();
         pnlPreview = new javax.swing.JPanel();
         pnlPreviewBox = new javax.swing.JPanel();
         previewDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
         cbPreviewSize = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         preview = new datasoul.datashow.PreviewPanel();
+        pnlLive = new javax.swing.JPanel();
+        live = new datasoul.datashow.LivePanel();
+        pnlLiveBox = new javax.swing.JPanel();
+        cbLiveSize = new javax.swing.JComboBox();
+        jLabel11 = new javax.swing.JLabel();
+        liveDisplayPanel = new datasoul.render.SwingDisplayPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         serviceList = new datasoul.datashow.ServiceListPanel();
         auxiliar = new datasoul.datashow.AuxiliarPanel();
@@ -110,9 +143,6 @@ public class DatashowPanel extends javax.swing.JPanel {
         jSplitPane2.setDividerLocation(320);
 
         split3.setDividerLocation(300);
-
-        live.setMinimumSize(new java.awt.Dimension(10, 10));
-        split3.setRightComponent(live);
 
         previewDisplayPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         previewDisplayPanel1.setPreferredSize(new java.awt.Dimension(160, 120));
@@ -156,7 +186,7 @@ public class DatashowPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -176,18 +206,95 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlPreviewBox, 0, 300, Short.MAX_VALUE)
-            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .add(pnlPreviewBox, 0, 297, Short.MAX_VALUE)
+            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
         split3.setTopComponent(pnlPreview);
+
+        cbLiveSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Don't show", "Small", "Medium", "Large" }));
+        cbLiveSize.setSelectedIndex(1);
+        cbLiveSize.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLiveSizeActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText(bundle.getString("Preview_Size")); // NOI18N
+
+        liveDisplayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        liveDisplayPanel.setPreferredSize(new java.awt.Dimension(160, 120));
+        liveDisplayPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                liveDisplayPanelpreviewDisplayResized(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout liveDisplayPanelLayout = new org.jdesktop.layout.GroupLayout(liveDisplayPanel);
+        liveDisplayPanel.setLayout(liveDisplayPanelLayout);
+        liveDisplayPanelLayout.setHorizontalGroup(
+            liveDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 156, Short.MAX_VALUE)
+        );
+        liveDisplayPanelLayout.setVerticalGroup(
+            liveDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 116, Short.MAX_VALUE)
+        );
+
+        org.jdesktop.layout.GroupLayout pnlLiveBoxLayout = new org.jdesktop.layout.GroupLayout(pnlLiveBox);
+        pnlLiveBox.setLayout(pnlLiveBoxLayout);
+        pnlLiveBoxLayout.setHorizontalGroup(
+            pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 357, Short.MAX_VALUE)
+            .add(pnlLiveBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(pnlLiveBoxLayout.createSequentialGroup()
+                        .add(jLabel11)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(147, Short.MAX_VALUE))
+        );
+        pnlLiveBoxLayout.setVerticalGroup(
+            pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 177, Short.MAX_VALUE)
+            .add(pnlLiveBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(jLabel11)
+                    .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        org.jdesktop.layout.GroupLayout pnlLiveLayout = new org.jdesktop.layout.GroupLayout(pnlLive);
+        pnlLive.setLayout(pnlLiveLayout);
+        pnlLiveLayout.setHorizontalGroup(
+            pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlLiveLayout.createSequentialGroup()
+                .addContainerGap()
+                .add(pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)))
+        );
+        pnlLiveLayout.setVerticalGroup(
+            pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlLiveLayout.createSequentialGroup()
+                .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        split3.setRightComponent(pnlLive);
 
         jSplitPane2.setRightComponent(split3);
 
@@ -203,11 +310,11 @@ public class DatashowPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1046, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,15 +376,76 @@ public class DatashowPanel extends javax.swing.JPanel {
         previewDisplayPanel1.setSize(dim);
         
     }//GEN-LAST:event_previewDisplayPanel1previewDisplayResized
+
+    private void cbLiveSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLiveSizeActionPerformed
+
+        Dimension d;
+        
+        switch (cbLiveSize.getSelectedIndex()){
+            
+            case 0:
+                liveDisplayPanel.setVisible(false);
+                break;
+                
+            case 1:
+                liveDisplayPanel.setVisible(true);
+                d = new Dimension(160, 120);
+                liveDisplayPanel.setSize(d);
+                liveDisplayPanel.setPreferredSize(d);
+                liveDisplayPanel.setMinimumSize(d);
+                liveDisplayPanel.setMaximumSize(d);
+                break;
+            
+            case 2:
+                liveDisplayPanel.setVisible(true);
+                d = new Dimension(320, 240);
+                liveDisplayPanel.setSize(d);
+                liveDisplayPanel.setPreferredSize(d);
+                liveDisplayPanel.setMinimumSize(d);
+                liveDisplayPanel.setMaximumSize(d);
+                break;
+
+            case 3:
+                liveDisplayPanel.setVisible(true);
+                d = new Dimension(480, 360);
+                liveDisplayPanel.setSize(d);
+                liveDisplayPanel.setPreferredSize(d);
+                liveDisplayPanel.setMinimumSize(d);
+                liveDisplayPanel.setMaximumSize(d);
+                break;
+            
+        }
+        
+        liveDisplayPanel.revalidate();
+        pnlLiveBox.revalidate();
+        pnlLive.revalidate();
+        
+        
+}//GEN-LAST:event_cbLiveSizeActionPerformed
+
+    private void liveDisplayPanelpreviewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_liveDisplayPanelpreviewDisplayResized
+        
+        Dimension dim= liveDisplayPanel.getSize();
+        int height = dim.height;
+        int width = (dim.height/3)*4 ;
+        dim.setSize(width,height);
+        liveDisplayPanel.setSize(dim);
+
+}//GEN-LAST:event_liveDisplayPanelpreviewDisplayResized
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AuxiliarPanel auxiliar;
+    private javax.swing.JComboBox cbLiveSize;
     private javax.swing.JComboBox cbPreviewSize;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private datasoul.datashow.LivePanel live;
+    private datasoul.render.SwingDisplayPanel liveDisplayPanel;
+    private javax.swing.JPanel pnlLive;
+    private javax.swing.JPanel pnlLiveBox;
     private javax.swing.JPanel pnlPreview;
     private javax.swing.JPanel pnlPreviewBox;
     private datasoul.datashow.PreviewPanel preview;

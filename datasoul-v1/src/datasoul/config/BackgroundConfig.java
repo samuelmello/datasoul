@@ -146,9 +146,7 @@ public class BackgroundConfig extends AbstractConfig {
     
     public void setMainBackgroundImg(BufferedImage img){
         this.mainBackgroundImg = img;
-        if ( ConfigObj.getInstance().getMainOutput() ){
-            ContentManager.getMainDisplay().paintBackground(img);
-        }
+        ContentManager.getInstance().paintBackgroundMain(img);
         save();
     }
 
@@ -158,9 +156,7 @@ public class BackgroundConfig extends AbstractConfig {
     
     public void setMonitorBackgroundImg(BufferedImage img){
         this.monitorBackgroundImg = img;
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
-            ContentManager.getMonitorDisplay().paintBackground(img);
-        }
+        ContentManager.getInstance().paintBackgroundMonitor(img);
         save();
     }
     

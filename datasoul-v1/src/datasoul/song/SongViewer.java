@@ -21,7 +21,7 @@
 package datasoul.song;
 
 import datasoul.servicelist.ServiceListExporterPanel;
-import datasoul.util.*;
+import datasoul.util.ShowDialog;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
