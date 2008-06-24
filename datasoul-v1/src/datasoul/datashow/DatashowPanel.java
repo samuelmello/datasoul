@@ -30,6 +30,7 @@ import datasoul.datashow.*;
 import datasoul.song.*;
 import datasoul.util.ObjectManager;
 import java.awt.Dimension;
+import javax.swing.JPanel;
 
 /**
  *
@@ -55,13 +56,16 @@ public class DatashowPanel extends javax.swing.JPanel {
             intl.getString("Dont_show"), 
             intl.getString("Small"), 
             intl.getString("Medium"), 
-            intl.getString("Large") }));        
+            intl.getString("Large") }));   
+        cbPreviewSize.setSelectedIndex(1);
+        
                 
         cbLiveSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { 
             intl.getString("Dont_show"), 
             intl.getString("Small"), 
             intl.getString("Medium"), 
             intl.getString("Large") }));        
+        cbLiveSize.setSelectedIndex(1);
             
         initPreview();
         initLive();
@@ -81,7 +85,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         }
         
         SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);
-        contentRender.initDisplay( width, height, 0, 0, false );
+        contentRender.initDisplay( width, height, 0, 0 );
         
         ContentManager.getInstance().registerPreviewPanel( contentRender );
         
@@ -101,11 +105,25 @@ public class DatashowPanel extends javax.swing.JPanel {
         }
         
         SwingPanelContentRender contentRender = new SwingPanelContentRender(liveDisplayPanel);
-        contentRender.initDisplay( width, height, 0, 0, false );
+        contentRender.initDisplay( width, height, 0, 0 );
         
         ContentManager.getInstance().registerMainLiveRender( contentRender );
         contentRender.paintBackground(BackgroundConfig.getInstance().getMainBackgroundImg());
 
+
+        if (ConfigObj.getInstance().getMonitorOutput()){
+            SwingPanelContentRender contentRenderMon = new SwingPanelContentRender(monitorDisplayPanel);
+            contentRenderMon.initDisplay( width, height, 0, 0 );
+
+            ContentManager.getInstance().registerMonitorLiveRender( contentRenderMon );
+            contentRenderMon.paintBackground(BackgroundConfig.getInstance().getMonitorBackgroundImg());
+            contentRenderMon.setTemplate(  ContentManager.getMonitorDisplay().getTemplate()  );
+        }else{
+            btnShowMonitor.setSelected(false);
+            btnShowMonitor.setVisible(false);
+            monitorDisplayPanel.setVisible(false);
+        }
+    
     }
     
     /** This method is called from within the constructor to
@@ -130,6 +148,8 @@ public class DatashowPanel extends javax.swing.JPanel {
         cbLiveSize = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         liveDisplayPanel = new datasoul.render.SwingDisplayPanel();
+        monitorDisplayPanel = new datasoul.render.SwingDisplayPanel();
+        btnShowMonitor = new javax.swing.JToggleButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         serviceList = new datasoul.datashow.ServiceListPanel();
         auxiliar = new datasoul.datashow.AuxiliarPanel();
@@ -179,24 +199,23 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreviewBoxLayout.setHorizontalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlPreviewBoxLayout.createSequentialGroup()
-                .addContainerGap()
-                .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                .add(12, 12, 12)
+                .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(pnlPreviewBoxLayout.createSequentialGroup()
                         .add(jLabel10)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlPreviewBoxLayout.createSequentialGroup()
-                .addContainerGap()
                 .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel10)
-                    .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel10))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -206,13 +225,13 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlPreviewBox, 0, 297, Short.MAX_VALUE)
-            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+            .add(pnlPreviewBox, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -248,31 +267,63 @@ public class DatashowPanel extends javax.swing.JPanel {
             .add(0, 116, Short.MAX_VALUE)
         );
 
+        monitorDisplayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        monitorDisplayPanel.setPreferredSize(new java.awt.Dimension(160, 120));
+        monitorDisplayPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                monitorDisplayPanelpreviewDisplayResized(evt);
+            }
+        });
+
+        org.jdesktop.layout.GroupLayout monitorDisplayPanelLayout = new org.jdesktop.layout.GroupLayout(monitorDisplayPanel);
+        monitorDisplayPanel.setLayout(monitorDisplayPanelLayout);
+        monitorDisplayPanelLayout.setHorizontalGroup(
+            monitorDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 156, Short.MAX_VALUE)
+        );
+        monitorDisplayPanelLayout.setVerticalGroup(
+            monitorDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(0, 116, Short.MAX_VALUE)
+        );
+
+        btnShowMonitor.setSelected(true);
+        btnShowMonitor.setText("Show Monitor");
+        btnShowMonitor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowMonitorActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout pnlLiveBoxLayout = new org.jdesktop.layout.GroupLayout(pnlLiveBox);
         pnlLiveBox.setLayout(pnlLiveBoxLayout);
         pnlLiveBoxLayout.setHorizontalGroup(
             pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 357, Short.MAX_VALUE)
             .add(pnlLiveBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(pnlLiveBoxLayout.createSequentialGroup()
+                        .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(monitorDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(pnlLiveBoxLayout.createSequentialGroup()
                         .add(jLabel11)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(147, Short.MAX_VALUE))
+                        .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(btnShowMonitor)))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 177, Short.MAX_VALUE)
             .add(pnlLiveBoxLayout.createSequentialGroup()
-                .addContainerGap()
                 .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel11)
-                    .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(btnShowMonitor))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(monitorDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -282,13 +333,12 @@ public class DatashowPanel extends javax.swing.JPanel {
             pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlLiveLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)))
+                .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
         );
         pnlLiveLayout.setVerticalGroup(
             pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlLiveLayout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlLiveLayout.createSequentialGroup()
                 .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
@@ -332,30 +382,15 @@ public class DatashowPanel extends javax.swing.JPanel {
                 break;
                 
             case 1:
-                previewDisplayPanel1.setVisible(true);
-                d = new Dimension(160, 120);
-                previewDisplayPanel1.setSize(d);
-                previewDisplayPanel1.setPreferredSize(d);
-                previewDisplayPanel1.setMinimumSize(d);
-                previewDisplayPanel1.setMaximumSize(d);
+                applySizePanel(previewDisplayPanel1, 160, 120);
                 break;
             
             case 2:
-                previewDisplayPanel1.setVisible(true);
-                d = new Dimension(320, 240);
-                previewDisplayPanel1.setSize(d);
-                previewDisplayPanel1.setPreferredSize(d);
-                previewDisplayPanel1.setMinimumSize(d);
-                previewDisplayPanel1.setMaximumSize(d);
+                applySizePanel(previewDisplayPanel1, 240, 180);
                 break;
 
             case 3:
-                previewDisplayPanel1.setVisible(true);
-                d = new Dimension(480, 360);
-                previewDisplayPanel1.setSize(d);
-                previewDisplayPanel1.setPreferredSize(d);
-                previewDisplayPanel1.setMinimumSize(d);
-                previewDisplayPanel1.setMaximumSize(d);
+                applySizePanel(previewDisplayPanel1, 360, 240);
                 break;
             
         }
@@ -385,33 +420,28 @@ public class DatashowPanel extends javax.swing.JPanel {
             
             case 0:
                 liveDisplayPanel.setVisible(false);
+                monitorDisplayPanel.setVisible(false);
                 break;
                 
             case 1:
-                liveDisplayPanel.setVisible(true);
-                d = new Dimension(160, 120);
-                liveDisplayPanel.setSize(d);
-                liveDisplayPanel.setPreferredSize(d);
-                liveDisplayPanel.setMinimumSize(d);
-                liveDisplayPanel.setMaximumSize(d);
+                applySizePanel(liveDisplayPanel, 160, 120);
+                if (btnShowMonitor.isSelected()){
+                    applySizePanel(monitorDisplayPanel, 160, 120);
+                }
                 break;
             
             case 2:
-                liveDisplayPanel.setVisible(true);
-                d = new Dimension(320, 240);
-                liveDisplayPanel.setSize(d);
-                liveDisplayPanel.setPreferredSize(d);
-                liveDisplayPanel.setMinimumSize(d);
-                liveDisplayPanel.setMaximumSize(d);
+                applySizePanel(liveDisplayPanel, 240, 180);
+                if (btnShowMonitor.isSelected()){
+                    applySizePanel(monitorDisplayPanel, 240, 180);
+                }
                 break;
 
             case 3:
-                liveDisplayPanel.setVisible(true);
-                d = new Dimension(480, 360);
-                liveDisplayPanel.setSize(d);
-                liveDisplayPanel.setPreferredSize(d);
-                liveDisplayPanel.setMinimumSize(d);
-                liveDisplayPanel.setMaximumSize(d);
+                applySizePanel(liveDisplayPanel, 360, 240);
+                if (btnShowMonitor.isSelected()){
+                    applySizePanel(monitorDisplayPanel, 360, 240);
+                }
                 break;
             
         }
@@ -420,9 +450,17 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlLiveBox.revalidate();
         pnlLive.revalidate();
         
-        
 }//GEN-LAST:event_cbLiveSizeActionPerformed
 
+    private void applySizePanel(JPanel p, int width, int height){
+        p.setVisible(true);
+        Dimension d = new Dimension(width, height);
+        p.setSize(d);
+        p.setPreferredSize(d);
+        p.setMinimumSize(d);
+        p.setMaximumSize(d);
+    }
+    
     private void liveDisplayPanelpreviewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_liveDisplayPanelpreviewDisplayResized
         
         Dimension dim= liveDisplayPanel.getSize();
@@ -432,10 +470,24 @@ public class DatashowPanel extends javax.swing.JPanel {
         liveDisplayPanel.setSize(dim);
 
 }//GEN-LAST:event_liveDisplayPanelpreviewDisplayResized
+
+    private void monitorDisplayPanelpreviewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_monitorDisplayPanelpreviewDisplayResized
+        // TODO add your handling code here:
+}//GEN-LAST:event_monitorDisplayPanelpreviewDisplayResized
+
+    private void btnShowMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMonitorActionPerformed
+        
+        if (!btnShowMonitor.isSelected()){
+            monitorDisplayPanel.setVisible(false);
+        }else{
+            cbLiveSizeActionPerformed(evt);
+        }
+}//GEN-LAST:event_btnShowMonitorActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AuxiliarPanel auxiliar;
+    private javax.swing.JToggleButton btnShowMonitor;
     private javax.swing.JComboBox cbLiveSize;
     private javax.swing.JComboBox cbPreviewSize;
     private javax.swing.JLabel jLabel10;
@@ -444,6 +496,7 @@ public class DatashowPanel extends javax.swing.JPanel {
     private javax.swing.JSplitPane jSplitPane2;
     private datasoul.datashow.LivePanel live;
     private datasoul.render.SwingDisplayPanel liveDisplayPanel;
+    private datasoul.render.SwingDisplayPanel monitorDisplayPanel;
     private javax.swing.JPanel pnlLive;
     private javax.swing.JPanel pnlLiveBox;
     private javax.swing.JPanel pnlPreview;

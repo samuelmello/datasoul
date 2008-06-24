@@ -109,7 +109,7 @@ public class Alert extends Thread {
 
         // hide
         if (showOnMain){
-            ContentManager.getMainDisplay().setAlertActive(false);
+            ContentManager.getInstance().setAlertActiveMain(false);
         }
         if (showOnMonitor){
             ContentManager.getInstance().setAlertActiveMonitor(false);

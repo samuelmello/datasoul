@@ -109,18 +109,14 @@ public class ContentManager {
     }
     
     public void setTemplateLive(String template){
-        for (ContentRender r : liveRenderList){
-            if (r.isMonitor() == false){
-                r.setTemplate(template);
-            }
+        for (ContentRender r : mainRenderList){
+            r.setTemplate(template);
         }
     }
 
     public void setTemplateMonitorLive(String template){
-        for (ContentRender r : liveRenderList){
-            if (r.isMonitor() == true){
-                r.setTemplate(template);
-            }
+        for (ContentRender r : monitorRenderList){
+            r.setTemplate(template);
         }
     }
     
@@ -197,6 +193,10 @@ public class ContentManager {
         mainRenderList.add(r);
     }
     
+    public void registerMonitorLiveRender(ContentRender r){
+        liveRenderList.add(r);
+        monitorRenderList.add(r);
+    }
    
     public void setAlertText(String t){
         for (ContentRender r : liveRenderList){
@@ -340,7 +340,7 @@ public class ContentManager {
                 left = 0;
             }
             
-            mainDisplay.initDisplay(width, height, top, left, false);
+            mainDisplay.initDisplay(width, height, top, left);
             mainDisplay.setWindowTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
         }
         return mainDisplay;
@@ -388,7 +388,7 @@ public class ContentManager {
                 left = 0;
             }
 
-            monitorDisplay.initDisplay(width, height, top, left, true);
+            monitorDisplay.initDisplay(width, height, top, left);
             monitorDisplay.setWindowTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Monitor_Display"));
         }
         return monitorDisplay;

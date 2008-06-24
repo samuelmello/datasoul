@@ -114,12 +114,11 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(lblTemplate)
-                    .add(jLabel1))
-                .add(16, 16, 16)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
+                    .add(jLabel1)
+                    .add(lblTemplate))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

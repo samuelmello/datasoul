@@ -68,8 +68,8 @@ public class SwingPanelContentRender extends ContentRender {
         p.setBlack(i);
     }
 
-    public void initDisplay(int width, int height, int top, int left, boolean isMonitor) {
-        super.initDisplay(width, height, top, left, isMonitor);
+    public void initDisplay(int width, int height, int top, int left) {
+        super.initDisplay(width, height, top, left);
         p.initDisplay(width, height, top, left);
     }
     

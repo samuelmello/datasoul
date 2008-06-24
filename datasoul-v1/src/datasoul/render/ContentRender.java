@@ -63,8 +63,6 @@ public abstract class ContentRender {
     private float timerProgress;
     private boolean showHideNeedUpdate;
     
-    private boolean monitor;
-    
     private Semaphore updSemaphore;
     private UpdateThread updThread;
     
@@ -188,6 +186,10 @@ public abstract class ContentRender {
         }
     }
     
+    public String getTemplate(){
+        return this.template.getName();
+    }
+    
     public void setAlertTemplate(String template){
         try{
             this.alertTemplate = new DisplayTemplate(template);
@@ -202,10 +204,6 @@ public abstract class ContentRender {
     public void setAlertActive(boolean active){
         this.alertActive = active;
         this.showHideNeedUpdate = true;
-    }
-    
-    public boolean isMonitor(){
-        return this.monitor;
     }
     
     public void slideShow(int transictionTime){
@@ -486,12 +484,11 @@ public abstract class ContentRender {
     /**
      * this method MUST be overriden by super class
      */
-    public void initDisplay(int width, int height, int top, int left, boolean isMonitor){
+    public void initDisplay(int width, int height, int top, int left){
         this.width = width;
         this.height = height;
         this.top = top;
         this.left = left;
-        this.monitor = isMonitor;
         transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
