@@ -51,13 +51,14 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         cbCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Export Service List");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Export_Service_List")); // NOI18N
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel1.setText("Select sessions to export:");
+        jLabel1.setText(bundle.getString("Select_sessions_to_export:")); // NOI18N
 
         cbServicePlan.setSelected(true);
-        cbServicePlan.setText("Service Plan");
+        cbServicePlan.setText(bundle.getString("Service_Plan")); // NOI18N
         cbServicePlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbServicePlanActionPerformed(evt);
@@ -65,7 +66,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         cbLyrics.setSelected(true);
-        cbLyrics.setText("Song Lyrics and Texts Items");
+        cbLyrics.setText(bundle.getString("Song_Lyrics_and_Texts_Items")); // NOI18N
         cbLyrics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbLyricsActionPerformed(evt);
@@ -73,12 +74,12 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         cbChordsSimple.setSelected(true);
-        cbChordsSimple.setText("Songs Chords Simple");
+        cbChordsSimple.setText(bundle.getString("Songs_Chords_Simple")); // NOI18N
 
         cbChordsComplete.setSelected(true);
-        cbChordsComplete.setText("Songs Chords Complete");
+        cbChordsComplete.setText(bundle.getString("Songs_Chords_Complete")); // NOI18N
 
-        cbOk.setText("OK");
+        cbOk.setText(bundle.getString("OK")); // NOI18N
         cbOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbOkActionPerformed(evt);
@@ -86,11 +87,11 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel2.setText("Format:");
+        jLabel2.setText(bundle.getString("Format:")); // NOI18N
 
         cbFormat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PDF", "RTF" }));
 
-        cbCancel.setText("Cancel");
+        cbCancel.setText(bundle.getString("Cancel")); // NOI18N
         cbCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbCancelActionPerformed(evt);
@@ -234,10 +235,10 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 sled.write();
             }
             
-            JOptionPane.showMessageDialog(this, "Document created successfully");
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Document_created_successfully"));
             dispose();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Error creating document: "+e.getMessage());
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_creating_document:_")+e.getMessage());
         }
 }//GEN-LAST:event_cbOkActionPerformed
 

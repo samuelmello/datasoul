@@ -142,7 +142,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         ppmAddItem.add(actAddText);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
-        actAddContentlessItem.setText("Add Contentless Item");
+        actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddContentlessItemActionPerformed(evt);
@@ -161,9 +161,9 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         jSplitPane1.setDividerLocation(600);
 
-        jLabel2.setText("Start Time:");
+        jLabel2.setText(bundle.getString("Start_Time:")); // NOI18N
 
-        jLabel1.setText("Service Title:");
+        jLabel1.setText(bundle.getString("Service_Title:")); // NOI18N
 
         txtTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +231,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar.add(btnRemove);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png"))); // NOI18N
-        btnEdit.setText("Edit Item");
+        btnEdit.setText(bundle.getString("Edit_Item")); // NOI18N
         btnEdit.setToolTipText(bundle.getString("Edit_selected_item_...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setBorderPainted(false);
@@ -244,7 +244,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar.add(btnEdit);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png"))); // NOI18N
-        btnUp.setText("Move Up");
+        btnUp.setText(bundle.getString("Move_Up")); // NOI18N
         btnUp.setToolTipText(bundle.getString("Change_item_order_to_upper_position")); // NOI18N
         btnUp.setAlignmentY(0.0F);
         btnUp.setBorderPainted(false);
@@ -257,7 +257,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar.add(btnUp);
 
         btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png"))); // NOI18N
-        btnDown.setText("Move Down");
+        btnDown.setText(bundle.getString("Move_Down")); // NOI18N
         btnDown.setToolTipText(bundle.getString("Change_item_order_to_lower_position")); // NOI18N
         btnDown.setAlignmentY(0.0F);
         btnDown.setBorderPainted(false);
@@ -269,7 +269,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar.add(btnDown);
 
-        jLabel4.setText("Service Notes:");
+        jLabel4.setText(bundle.getString("Service_Notes:")); // NOI18N
 
         txtNotes.setColumns(20);
         txtNotes.setRows(5);
@@ -326,14 +326,14 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png"))); // NOI18N
-        jLabel8.setText("Service Plan");
+        jLabel8.setText(bundle.getString("Service_Plan")); // NOI18N
         toolBar1.add(jLabel8);
 
         jSeparator3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         toolBar1.add(jSeparator3);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
-        btnNew.setText("New");
+        btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
         btnNew.setFocusable(false);
@@ -346,7 +346,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar1.add(btnNew);
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
-        btnOpen.setText("Open");
+        btnOpen.setText(bundle.getString("Open")); // NOI18N
         btnOpen.setBorderPainted(false);
         btnOpen.setFocusPainted(false);
         btnOpen.addActionListener(new java.awt.event.ActionListener() {
@@ -357,7 +357,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar1.add(btnOpen);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png"))); // NOI18N
-        btnSave.setText("Save");
+        btnSave.setText(bundle.getString("Save")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusPainted(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -368,7 +368,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar1.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png"))); // NOI18N
-        btnSaveAs.setText("Save As");
+        btnSaveAs.setText(bundle.getString("Save_As")); // NOI18N
         btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusPainted(false);
         btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
@@ -379,7 +379,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar1.add(btnSaveAs);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
-        btnExport.setText("Export");
+        btnExport.setText(bundle.getString("Export")); // NOI18N
         btnExport.setBorderPainted(false);
         btnExport.setFocusPainted(false);
         btnExport.addActionListener(new java.awt.event.ActionListener() {
@@ -517,7 +517,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             }
             ServiceListTable.getActiveInstance().setStartHour(x);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Invalid value");
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
         }
         revalidate();
@@ -531,7 +531,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             }
             ServiceListTable.getActiveInstance().setStartMinute(x);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, "Invalid value");
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
             txtMinutes.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartMinute()));
         }
     }//GEN-LAST:event_txtMinutesFocusLost
@@ -573,7 +573,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
-            String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
+            String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), item.getTitle());
             if (s != null && !s.trim().equals("")){
                 item.setTitle(s);
             }
@@ -630,7 +630,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_actAddTextActionPerformed
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
-        String s = JOptionPane.showInputDialog(this, "Service Item Name:", "");
+        String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), "");
         if (s != null && !s.trim().equals("")){
             ContentlessServiceItem csi = new ContentlessServiceItem();
             csi.setTitle(s);
