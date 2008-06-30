@@ -187,7 +187,11 @@ public abstract class ContentRender {
     }
     
     public String getTemplate(){
-        return this.template.getName();
+        if (template != null){
+            return this.template.getName();
+        }else{
+            return null;
+        }
     }
     
     public void setAlertTemplate(String template){

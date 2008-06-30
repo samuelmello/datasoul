@@ -299,9 +299,9 @@ public class SongEditorForm extends javax.swing.JFrame {
         jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
         jToolBar1.add(jSeparator2);
 
-        jLabel5.setText("Copyright");
+        jLabel5.setText(bundle.getString("Copyright")); // NOI18N
 
-        jLabel6.setText("Source");
+        jLabel6.setText(bundle.getString("Source")); // NOI18N
 
         txtCopyright.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,15 +313,15 @@ public class SongEditorForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel6)
-                .addContainerGap(627, Short.MAX_VALUE))
+                .addContainerGap(640, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -342,10 +342,10 @@ public class SongEditorForm extends javax.swing.JFrame {
                             .add(jLabel5))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                            .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtCopyright, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtSongSource, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 587, Short.MAX_VALUE)))
+                            .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                            .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtCopyright, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtSongSource, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)))
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3))
                 .addContainerGap())
         );

@@ -51,7 +51,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scroolSong" alignment="1" pref="107" max="32767" attributes="0"/>
+                  <Component id="scroolSong" alignment="1" pref="105" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -87,7 +87,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scroolSongChords" alignment="1" pref="107" max="32767" attributes="0"/>
+                  <Component id="scroolSongChords" alignment="1" pref="105" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -124,7 +124,7 @@
               <Image iconType="3" name="/datasoul/icons/compfile.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="datasoul/internationalize.properties" key="Print" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+              <ResourceString bundle="datasoul/internationalize.properties" key="Export" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>

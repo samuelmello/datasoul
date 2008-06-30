@@ -117,7 +117,10 @@ public class DatashowPanel extends javax.swing.JPanel {
 
             ContentManager.getInstance().registerMonitorLiveRender( contentRenderMon );
             contentRenderMon.paintBackground(BackgroundConfig.getInstance().getMonitorBackgroundImg());
-            contentRenderMon.setTemplate(  ContentManager.getMonitorDisplay().getTemplate()  );
+            String tmp = ContentManager.getMonitorDisplay().getTemplate();
+            if (tmp != null){
+                contentRenderMon.setTemplate(  tmp  );
+            }
         }else{
             btnShowMonitor.setSelected(false);
             btnShowMonitor.setVisible(false);
@@ -206,7 +209,7 @@ public class DatashowPanel extends javax.swing.JPanel {
                         .add(jLabel10)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -226,12 +229,12 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlPreviewBox, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -287,7 +290,7 @@ public class DatashowPanel extends javax.swing.JPanel {
         );
 
         btnShowMonitor.setSelected(true);
-        btnShowMonitor.setText("Show Monitor");
+        btnShowMonitor.setText(bundle.getString("Show_Monitor")); // NOI18N
         btnShowMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowMonitorActionPerformed(evt);
@@ -334,12 +337,12 @@ public class DatashowPanel extends javax.swing.JPanel {
             .add(pnlLiveLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
         );
         pnlLiveLayout.setVerticalGroup(
             pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlLiveLayout.createSequentialGroup()
-                .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );

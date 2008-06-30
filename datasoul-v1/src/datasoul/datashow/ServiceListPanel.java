@@ -102,7 +102,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnFile = new javax.swing.JButton();
 
         actNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
-        actNew.setText("New");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        actNew.setText(bundle.getString("New")); // NOI18N
         actNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actNewActionPerformed(evt);
@@ -111,7 +112,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmFile.add(actNew);
 
         actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         actOpen.setText(bundle.getString("Open")); // NOI18N
         actOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +166,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmAddItem.add(actAddText);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
-        actAddContentlessItem.setText("Add Contentless Item");
+        actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
+        actAddContentlessItem.setActionCommand(bundle.getString("Add_Contentless_Item")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddContentlessItemActionPerformed(evt);

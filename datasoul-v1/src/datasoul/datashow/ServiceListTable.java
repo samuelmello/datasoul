@@ -97,7 +97,7 @@ public class ServiceListTable extends ListTable {
         } else if (columnIndex == 1) {
             return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
         } else {
-            return "Time";
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Time");
         }
     }
 
@@ -316,15 +316,15 @@ public class ServiceListTable extends ListTable {
         public String getColumnName(int columnIndex) {
             switch (columnIndex) {
                 case COLUMN_TIME:
-                    return "Time";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Time");
                 case COLUMN_DURATION:
-                    return "Duration";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Duration");
                 case COLUMN_TITLE:
-                    return "Title";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
                 case COLUMN_NOTES:
-                    return "Notes";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Notes");
                 case COLUMN_TEMPLATE:
-                    return "Template";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
             }
             return null;
         }
@@ -383,7 +383,7 @@ public class ServiceListTable extends ListTable {
                             si.setDuration(aValue.toString());
                             updateStartTimes();
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, "Invalid Value");
+                            JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_Value"));
                         }
                         break;
                     case COLUMN_NOTES:

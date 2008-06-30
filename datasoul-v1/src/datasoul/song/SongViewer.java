@@ -270,7 +270,14 @@ public class SongViewer extends javax.swing.JPanel {
         }
 
         doc.insertString(doc.getLength(),song.getTitle()+"\n",nameStyle);
-        doc.insertString(doc.getLength(),song.getSongAuthor()+"\n\n\n",authorStyle);
+        if (song.getSongAuthor()!=null && song.getSongAuthor().length() > 0)
+            doc.insertString(doc.getLength(),song.getSongAuthor()+"\n",authorStyle);
+        if (song.getCopyright() != null && song.getCopyright().length() > 0)
+            doc.insertString(doc.getLength(),song.getCopyright()+"\n",authorStyle);
+        if (song.getSongSource() != null && song.getSongSource().length() > 0)
+            doc.insertString(doc.getLength(),song.getSongSource()+"\n",authorStyle);
+        
+        doc.insertString(doc.getLength(),"\n\n",authorStyle);
 
         line = buff.readLine();
         while((nextline = buff.readLine())!=null){
@@ -518,7 +525,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
         );
 
         split1.setLeftComponent(panelSong);
@@ -534,7 +541,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
         );
 
         split1.setRightComponent(panelSongChords);
@@ -544,7 +551,7 @@ public class SongViewer extends javax.swing.JPanel {
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnExport.setText(bundle.getString("Print")); // NOI18N
+        btnExport.setText(bundle.getString("Export")); // NOI18N
         btnExport.setBorderPainted(false);
         btnExport.setFocusPainted(false);
         btnExport.addActionListener(new java.awt.event.ActionListener() {

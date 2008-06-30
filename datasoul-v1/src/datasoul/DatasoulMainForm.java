@@ -524,8 +524,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
-        Locale.setDefault(new Locale("pt", "BR"));
-        
         // Enable anti-aliasing
         System.setProperty("swing.aatext","true");
         

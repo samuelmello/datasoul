@@ -184,7 +184,7 @@ public class ServiceListExporterDocument {
 
         Paragraph p;
 
-        p = new Paragraph("("+"Lyrics"+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LYRICS")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
         document.add(p);
         
         String text = s.getText().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "");
