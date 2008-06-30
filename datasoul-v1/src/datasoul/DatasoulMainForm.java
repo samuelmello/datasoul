@@ -43,6 +43,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -523,6 +524,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
 
+        Locale.setDefault(new Locale("pt", "BR"));
         
         // Enable anti-aliasing
         System.setProperty("swing.aatext","true");
