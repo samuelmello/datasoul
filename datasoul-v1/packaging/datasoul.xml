@@ -1,7 +1,7 @@
 <project>
     <shortName>datasoul</shortName>
     <fullName>Datasoul</fullName>
-    <version>1.1</version>
+    <version>1.2BETA1</version>
     <preInstallationActionList>
         <autodetectJava>
             <promptUser>0</promptUser>
@@ -59,6 +59,12 @@
                         <distributionFile>
                             <origin>../lib/xml-apis.jar</origin>
                         </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/iText.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/iText-rtf.jar</origin>
+                        </distributionFile>
                     </distributionFileList>
                 </folder>
                 <folder>
@@ -81,6 +87,12 @@
                         </distributionFile>
                         <distributionFile>
                             <origin>dist/datasoul.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/iText.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/iText-rtf.jar</origin>
                         </distributionFile>
                     </distributionFileList>
                 </folder>
@@ -161,6 +173,12 @@
                         </distributionFile>
                         <distributionFile>
                             <origin>../lib/xml-apis.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/iText.jar</origin>
+                        </distributionFile>
+                        <distributionFile>
+                            <origin>../lib/iText-rtf.jar</origin>
                         </distributionFile>
                     </distributionFileList>
                 </folder>
