@@ -2,6 +2,8 @@
 <Song>
     <Title>Amazing Grace</Title>
     <Template>default</Template>
+    <Duration>0</Duration>
+    <Notes/>
     <Text>Amazing Grace, how sweet the sound,
 That saved a wretch like me.
 I once was lost, but now im found,
@@ -91,4 +93,6 @@ I once was lost, but now im found,
 =               A7     D
 Was blind, but now I see.</ChordsSimplified>
     <Obs/>
+    <Copyright/>
+    <SongSource/>
 </Song>

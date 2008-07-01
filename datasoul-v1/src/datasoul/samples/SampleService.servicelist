@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <ServiceListTable>
+    <title>Sample Service</title>
+    <notes/>
+    <hour>10</hour>
+    <minute>0</minute>
     <Song>
         <Title>Amazing Grace</Title>
         <Template>default</Template>
+        <Duration>3</Duration>
+        <Notes/>
         <Text>Amazing Grace, how sweet the sound,
 That saved a wretch like me.
 I once was lost, but now im found,
@@ -92,10 +98,14 @@ I once was lost, but now im found,
 =               A7     D
 Was blind, but now I see.</ChordsSimplified>
         <Obs/>
+        <Copyright/>
+        <SongSource/>
     </Song>
     <Song>
         <Title>How Great Thou Art</Title>
         <Template>default</Template>
+        <Duration>6</Duration>
+        <Notes/>
         <Text>O Lord my God!  When I in awesome wonder
 Consider all the works Thy hands have made,
 I see the stars, I hear the mighty thunder,
@@ -210,10 +220,14 @@ How great Thou art!  How great Thou art!
 </ChordsComplete>
         <ChordsSimplified/>
         <Obs/>
+        <Copyright/>
+        <SongSource/>
     </Song>
     <Song>
         <Title>Joyful Joyful We Adore Thee</Title>
         <Template>default</Template>
+        <Duration>5</Duration>
+        <Notes/>
         <Text>Joyful, joyful, we adore Thee,
 God of glory Lord of love;
 Hearts unfold like flow'rs before Thee,
@@ -324,10 +338,14 @@ In the triumph song of life
 </ChordsComplete>
         <ChordsSimplified/>
         <Obs/>
+        <Copyright/>
+        <SongSource/>
     </Song>
     <TextServiceItem>
         <Title>Mattew 5.1-12</Title>
         <Template>bible</Template>
+        <Duration>3</Duration>
+        <Notes/>
         <Text>1 And seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him:
 ==
 2 And he opened his mouth, and taught them, saying,
@@ -355,6 +373,8 @@ In the triumph song of life
     <Song>
         <Title>It Is Well With My Soul</Title>
         <Template>default</Template>
+        <Duration>5</Duration>
+        <Notes/>
         <Text>When peace like a river attendeth my way,
 When sorrows like sea billows roll,
 Whatever my lot, Thou hast taught me to say,
@@ -445,5 +465,7 @@ The trump shall resound, and the Lord shall descend,
 Even so, it is well with my soul.</ChordsComplete>
         <ChordsSimplified/>
         <Obs/>
+        <Copyright/>
+        <SongSource/>
     </Song>
 </ServiceListTable>

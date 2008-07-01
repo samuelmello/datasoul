@@ -2,6 +2,8 @@
 <Song>
     <Title>Joyful Joyful We Adore Thee</Title>
     <Template>default</Template>
+    <Duration>0</Duration>
+    <Notes/>
     <Text>Joyful, joyful, we adore Thee,
 God of glory Lord of love;
 Hearts unfold like flow'rs before Thee,
@@ -112,4 +114,6 @@ In the triumph song of life
 </ChordsComplete>
     <ChordsSimplified/>
     <Obs/>
+    <Copyright/>
+    <SongSource/>
 </Song>

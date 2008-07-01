@@ -2,6 +2,8 @@
 <Song>
     <Title>How Great Thou Art</Title>
     <Template>default</Template>
+    <Duration>0</Duration>
+    <Notes/>
     <Text>O Lord my God!  When I in awesome wonder
 Consider all the works Thy hands have made,
 I see the stars, I hear the mighty thunder,
@@ -116,4 +118,6 @@ How great Thou art!  How great Thou art!
 </ChordsComplete>
     <ChordsSimplified/>
     <Obs/>
+    <Copyright/>
+    <SongSource/>
 </Song>

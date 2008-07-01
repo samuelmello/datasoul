@@ -2,6 +2,8 @@
 <Song>
     <Title>It Is Well With My Soul</Title>
     <Template>default</Template>
+    <Duration>0</Duration>
+    <Notes/>
     <Text>When peace like a river attendeth my way,
 When sorrows like sea billows roll,
 Whatever my lot, Thou hast taught me to say,
@@ -92,4 +94,6 @@ The trump shall resound, and the Lord shall descend,
 Even so, it is well with my soul.</ChordsComplete>
     <ChordsSimplified/>
     <Obs/>
+    <Copyright/>
+    <SongSource/>
 </Song>
