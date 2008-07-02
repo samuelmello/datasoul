@@ -44,4 +44,4 @@ fi
 
 
 DSDIR=$(dirname $0)
-java -Xmx512m -cp $DSDIR/swing-layout.jar:$DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm
+java -Xmx512m -cp $DSDIR/swing-layout.jar:$DSDIR/xercesImpl.jar:$DSDIR/xml-apis.jar:$DSDIR/iText.jar:$DSDIR/iText-rtf.jar:$DSDIR/datasoul.jar datasoul.DatasoulMainForm

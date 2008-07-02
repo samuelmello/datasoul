@@ -116,7 +116,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         fileMenu.add(actImportSongsToDatabase);
 
+        fieldString.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldStringActionPerformed(evt);
+            }
+        });
         fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldStringKeyTyped(evt);
+            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 fieldStringKeyPressed(evt);
             }
@@ -234,9 +242,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 .addContainerGap()
                 .add(labelString)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                 .addContainerGap())
-            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
             .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
         );
@@ -343,32 +351,23 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         
         SongListTable foundSongTable = new SongListTable();
         
+        String searchStr = "";
+        if (fieldString.getText().length() > 0){
+            if(String.valueOf(evt.getKeyChar()).equals("\b")){
+                searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
+            }else{
+                searchStr = fieldString.getText()+evt.getKeyChar();
+            }
+            searchStr = searchStr.toUpperCase().trim();
+        }
+        
         for(int i=0; i<allSongsListTable.getRowCount();i++){
             try {
                 if(fieldString.getText().length()==0){
                     foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                 }else{
-                    String searchStr;
-                    if(String.valueOf(evt.getKeyChar()).equals("\b")){
-                        searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
-                    }else{
-                        searchStr = fieldString.getText()+evt.getKeyChar();
-                    }
-                                foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
 
-                                /*
-                    if(comboField.getSelectedItem().toString().equals("All")){
-                        for(int j=1; j<comboField.getItemCount();j++){
-                            if(((Song)allSongsListTable.getValueAt(i,songColumn)).containsStringInField(comboField.getItemAt(j).toString(),searchStr)){
-                                foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
-                                break;
-                            }                        
-                        }
-                    }else if(((Song)allSongsListTable.getValueAt(i,songColumn)).containsStringInField(comboField.getSelectedItem().toString(),searchStr)){
-                        foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
-                    }
-                                 */
-                    if(((Song)allSongsListTable.getValueAt(i,songColumn)).getText().contains(searchStr)){
+                    if(((Song)allSongsListTable.getValueAt(i,songColumn)).getText().toUpperCase().contains(searchStr)){
                         foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                     }
                                 
@@ -387,6 +386,14 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         col1.setMinWidth(30);
        
     }//GEN-LAST:event_fieldStringKeyPressed
+
+    private void fieldStringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldStringActionPerformed
+        
+    }//GEN-LAST:event_fieldStringActionPerformed
+
+    private void fieldStringKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldStringKeyTyped
+
+    }//GEN-LAST:event_fieldStringKeyTyped
 
     public void tableChanged(TableModelEvent e) {
         this.repaint();

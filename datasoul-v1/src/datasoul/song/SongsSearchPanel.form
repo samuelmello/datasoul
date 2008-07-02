@@ -64,10 +64,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="labelString" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="fieldString" pref="275" max="32767" attributes="0"/>
+              <Component id="fieldString" pref="285" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="toolBar" alignment="0" max="32767" attributes="0"/>
+          <Component id="toolBar" alignment="0" pref="356" max="32767" attributes="0"/>
           <Component id="jToolBar1" alignment="0" pref="356" max="32767" attributes="0"/>
           <Component id="scroolSongList" alignment="1" pref="356" max="32767" attributes="0"/>
       </Group>
@@ -92,6 +92,8 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="fieldString">
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldStringActionPerformed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldStringKeyTyped"/>
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldStringKeyPressed"/>
       </Events>
     </Component>
