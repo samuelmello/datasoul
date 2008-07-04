@@ -14,9 +14,7 @@ import com.lowagie.text.Element;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.Image;
-import com.lowagie.text.Jpeg;
 import com.lowagie.text.Paragraph;
-import com.lowagie.text.Phrase;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.rtf.RtfWriter2;
@@ -37,7 +35,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.imageio.ImageIO;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JOptionPane;
 
 /**
