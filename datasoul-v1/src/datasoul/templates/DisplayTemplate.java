@@ -193,6 +193,7 @@ public class DisplayTemplate extends AttributedObject {
     
     @Override
     protected void registerProperties(){
+        super.registerProperties();
         properties.add("Name");
         registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template_Name"));
         properties.add("TransitionKeepBGIdx");

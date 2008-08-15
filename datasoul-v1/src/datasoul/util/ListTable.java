@@ -177,6 +177,7 @@ mainloop: for(int i=0;i<objectList.size();i++){
 
     @Override
     protected void registerProperties() {
+        super.registerProperties();
         properties.add("List");
     }
     

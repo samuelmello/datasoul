@@ -29,7 +29,6 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.DefaultCellEditor;
@@ -84,7 +83,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         this.listeners.add(l);
     }
     
-
+  
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
         
         if (columnIndex != 1) return;

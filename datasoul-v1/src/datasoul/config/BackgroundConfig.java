@@ -161,6 +161,7 @@ public class BackgroundConfig extends AbstractConfig {
     }
     
     protected void registerProperties() {
+        super.registerProperties();
         properties.add("MainBackgroundImgStr");
         properties.add("MonitorBackgroundImgStr");
     }

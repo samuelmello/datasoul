@@ -79,6 +79,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     protected void registerProperties() {
+        super.registerProperties();
         //properties.add("MainDisplayEngine");
         //properties.add("MonitorDisplayEngine");
         properties.add("MainOutputIdx");

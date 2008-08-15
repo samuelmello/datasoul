@@ -24,6 +24,7 @@
 package datasoul.util;
 
 import datasoul.*;
+import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
@@ -71,18 +72,21 @@ public class KeyListner implements KeyListener, AWTEventListener{
                     ctrlPressed = false;
                     break;
                 case KeyEvent.VK_1:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SERVICE);
                     break;
                 case KeyEvent.VK_2:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
-                    break;
-                case KeyEvent.VK_3:     
                     ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
                     break;
+                case KeyEvent.VK_3:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                    break;
                 case KeyEvent.VK_4:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
                     break;
                 case KeyEvent.VK_5:     
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
+                    break;
+                case KeyEvent.VK_6:     
                     ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_HELP);
                     break;
             }
@@ -111,8 +115,10 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
                 break;
             case KeyEvent.VK_F7: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
+                if (ConfigObj.getInstance().getMonitorOutput()){
+                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                    ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
+                }
                 break;                
             case KeyEvent.VK_F8: 
                 ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);

@@ -101,6 +101,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     
     
     protected void registerProperties() {
+        super.registerProperties();
         properties.add("Title");
         properties.add("Template");
         properties.add("Duration");

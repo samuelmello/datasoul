@@ -30,6 +30,8 @@ public class HelpKeyboard extends javax.swing.JPanel {
     public HelpKeyboard() {
         initComponents();
         StringBuffer sb = new StringBuffer();
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F3:_Go_Live"));
+        sb.append("\n");
         sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F4:_Set_focus_on_Live_Item"));
         sb.append("\n");
         sb.append("");
@@ -52,15 +54,17 @@ public class HelpKeyboard extends javax.swing.JPanel {
         sb.append("\n");
         sb.append("");
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+1:_Show_Projector"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+1:_Show_Service_Plan"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+2:_Show_Templates"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+2:_Show_Songs"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+3:_Show_Songs"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+3:_Show_Projector"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+4:_Show_Config"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+4:_Show_Templates"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+5:_Show_Help"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+5:_Show_Config"));
+        sb.append("\n");
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+6:_Show_Help"));
         sb.append("\n");
         sb.append("");
         sb.append("\n");

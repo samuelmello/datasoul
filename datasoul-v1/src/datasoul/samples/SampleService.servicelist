@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <ServiceListTable>
     <title>Sample Service</title>
-    <notes/>
+    <notes>Praise Team: 
+   Guitar: Matthew  
+   Bass: Mark 
+   Drums: Luke 
+   Piano: John 
+   Vocals: Martha and Maria
+
+Announcement about the Church's Retreat
+   
+</notes>
     <hour>10</hour>
     <minute>0</minute>
+    <DatasoulFileVersion>1.2</DatasoulFileVersion>
     <Song>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
         <Title>Amazing Grace</Title>
         <Template>default</Template>
-        <Duration>3</Duration>
+        <Duration>4</Duration>
         <Notes/>
         <Text>Amazing Grace, how sweet the sound,
 That saved a wretch like me.
@@ -102,9 +113,10 @@ Was blind, but now I see.</ChordsSimplified>
         <SongSource/>
     </Song>
     <Song>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
         <Title>How Great Thou Art</Title>
         <Template>default</Template>
-        <Duration>6</Duration>
+        <Duration>4</Duration>
         <Notes/>
         <Text>O Lord my God!  When I in awesome wonder
 Consider all the works Thy hands have made,
@@ -224,9 +236,10 @@ How great Thou art!  How great Thou art!
         <SongSource/>
     </Song>
     <Song>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
         <Title>Joyful Joyful We Adore Thee</Title>
         <Template>default</Template>
-        <Duration>5</Duration>
+        <Duration>4</Duration>
         <Notes/>
         <Text>Joyful, joyful, we adore Thee,
 God of glory Lord of love;
@@ -341,11 +354,19 @@ In the triumph song of life
         <Copyright/>
         <SongSource/>
     </Song>
-    <TextServiceItem>
-        <Title>Mattew 5.1-12</Title>
-        <Template>bible</Template>
-        <Duration>3</Duration>
+    <ContentlessServiceItem>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
+        <Title>Prayer Time</Title>
+        <Template/>
+        <Duration>10</Duration>
         <Notes/>
+    </ContentlessServiceItem>
+    <TextServiceItem>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
+        <Title>Sermon - Mattew 5.1-12</Title>
+        <Template>bible</Template>
+        <Duration>35</Duration>
+        <Notes>Pr John Doe</Notes>
         <Text>1 And seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him:
 ==
 2 And he opened his mouth, and taught them, saying,
@@ -370,10 +391,18 @@ In the triumph song of life
 ==
 12 Rejoice, and be exceeding glad: for great is your reward in heaven: for so persecuted they the prophets which were before you.</Text>
     </TextServiceItem>
+    <ContentlessServiceItem>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
+        <Title>Announcements</Title>
+        <Template/>
+        <Duration>3</Duration>
+        <Notes/>
+    </ContentlessServiceItem>
     <Song>
+        <DatasoulFileVersion>1.2</DatasoulFileVersion>
         <Title>It Is Well With My Soul</Title>
         <Template>default</Template>
-        <Duration>5</Duration>
+        <Duration>4</Duration>
         <Notes/>
         <Text>When peace like a river attendeth my way,
 When sorrows like sea billows roll,

@@ -23,6 +23,7 @@
 
 package datasoul.util;
 
+import datasoul.DatasoulMainForm;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -47,12 +48,12 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     
     // we hold just one properties array instance for each class
     static private HashMap<Class, ArrayList<String>> propertiesTable = new HashMap<Class, ArrayList<String>>();
-    
-    protected abstract void registerProperties();
+
+    private String datasoulFileVersion;
     
     /** Creates a new instance of SerializableObject */
     public SerializableObject() {
-        
+
         // if this is the first object of this class, we register the static 
         // array of properties
         if ( propertiesTable.containsKey(this.getClass()) ){
@@ -65,8 +66,16 @@ public abstract class SerializableObject  implements Transferable, SerializableI
         
     }
 
+    protected void registerProperties(){
+        properties.add("DatasoulFileVersion");
+    }
+    
+    
      public Node writeObject() throws Exception{
 
+        // update version stamp
+        this.setDatasoulFileVersion(DatasoulMainForm.getVersion());
+         
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
         //Using factory get an instance of document builder
@@ -137,5 +146,13 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     return null;
   }    
 
+    public String getDatasoulFileVersion(){
+        return datasoulFileVersion;
+    }
+    
+    public void setDatasoulFileVersion(String s){
+        this.datasoulFileVersion = s;
+    }
+  
 
 }

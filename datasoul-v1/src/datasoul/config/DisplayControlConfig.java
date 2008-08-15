@@ -132,6 +132,7 @@ public class DisplayControlConfig extends AbstractConfig {
     
     
     protected void registerProperties() {
+        super.registerProperties();
         properties.add("SlideTransitionTime");
         properties.add("SlideShowHideTime");
         properties.add("MonitorFollowMainControlsIdx");

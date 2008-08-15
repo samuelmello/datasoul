@@ -22,6 +22,7 @@
  */
 package datasoul.datashow;
 
+import datasoul.DatasoulMainForm;
 import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.util.*;
@@ -159,6 +160,9 @@ public class ServiceListTable extends ListTable {
         Node nMinute = doc.createElement("minute");
         nMinute.setTextContent(Integer.toString(startMinute));
         nodeOut.appendChild(doc.importNode(nMinute, true));
+        Node nVersion = doc.createElement("DatasoulFileVersion");
+        nVersion.setTextContent(DatasoulMainForm.getVersion());
+        nodeOut.appendChild(doc.importNode(nVersion, true));
 
         Node node;
         for (int i = 0; i < objectList.size(); i++) {
@@ -172,7 +176,7 @@ public class ServiceListTable extends ListTable {
     protected void cleanup(){
         // clean up
         this.objectList.clear();
-        startHour = 0;
+        startHour = 8;
         startMinute = 0;
         title = "";
         notes = "";
@@ -214,7 +218,7 @@ public class ServiceListTable extends ListTable {
     public void updateExtPanel(){
         if (extPanel != null) {
             extPanel.setTitle(title);
-            extPanel.setStartHourMinute(Integer.toString(startHour), Integer.toString(startMinute));
+            extPanel.setStartHourMinute(Integer.toString(startHour), (startMinute>=10)?Integer.toString(startMinute):"0"+Integer.toString(startMinute));
             extPanel.setNotes(notes);
         }
         updateStartTimes();

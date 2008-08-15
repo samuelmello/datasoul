@@ -121,7 +121,7 @@ public class SongTemplate extends TemplateItem{
     }
 
     protected void registerProperties() {
-//        super.registerProperties();
+        super.registerProperties();
         properties.add("TitleFontName");
         registerDisplayString("TitleFontName", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title_Font_Name"));
         properties.add("TitleFontColor");

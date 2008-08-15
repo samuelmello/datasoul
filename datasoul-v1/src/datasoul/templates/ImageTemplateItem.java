@@ -42,7 +42,6 @@ import org.w3c.dom.Node;
 public class ImageTemplateItem extends TemplateItem {
     
     private BufferedImage img;
-    private String imageInStr;
     private String filename;
     private int stretch;
     private int alingment;
@@ -127,6 +126,7 @@ public class ImageTemplateItem extends TemplateItem {
             this.filename = filename;
             try {
                 img = ImageIO.read( new File(filename) );
+                assertImageSize();
                 this.setWidth( img.getWidth() );
                 this.setHeight( img.getHeight() );
             } catch (IOException ex) {
@@ -137,12 +137,43 @@ public class ImageTemplateItem extends TemplateItem {
     
     public void setImage(BufferedImage img){
         this.img = img;
+        assertImageSize();
     }
     
     public BufferedImage getImage(){
         return img;
     }
 
+    /**
+     * Ensures that the image is not larger than the screen size to 
+     * avoid running out of memory
+     */
+    private void assertImageSize(){
+        
+        float fw = (float) this.img.getWidth() / (float) DisplayTemplate.TEMPLATE_WIDTH;
+        float fh = (float) this.img.getHeight() / (float) DisplayTemplate.TEMPLATE_HEIGHT;
+        
+        // any of the sides is greater than the output size?
+        // using 1.1 to allow some tolerance and avoid 
+        // resizing multiple times
+        if (fw > 1.1 || fh > 1.1){
+            int neww, newh;
+            if (fw > fh){
+                neww = (int) (this.img.getWidth() * (1.0/fh));
+                newh = (int) (this.img.getHeight() * (1.0/fh));
+            }else{
+                neww = (int) (this.img.getWidth() * (1.0/fw));
+                newh = (int) (this.img.getHeight() * (1.0/fw));
+            }
+            
+            BufferedImage img2 = new BufferedImage(neww, newh, BufferedImage.TYPE_4BYTE_ABGR);
+            img2.getGraphics().drawImage(img, 0, 0, neww, newh, null);
+            this.img = img2;
+            setWidth(neww);
+            setHeight(newh);
+        }
+    } 
+    
     
     @Override
     protected void registerProperties(){
@@ -249,6 +280,7 @@ public class ImageTemplateItem extends TemplateItem {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         try {
             this.img = ImageIO.read(bais);
+            assertImageSize();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
