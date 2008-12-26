@@ -28,6 +28,7 @@ import datasoul.render.SwingPanelContentRender;
 import datasoul.util.*;
 import datasoul.datashow.*;
 import datasoul.song.*;
+import datasoul.templates.DisplayTemplate;
 import datasoul.util.ObjectManager;
 import java.awt.Dimension;
 import javax.swing.JPanel;
@@ -76,12 +77,12 @@ public class DatashowPanel extends javax.swing.JPanel {
         try{
             width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
         }catch(Exception e){
-            width = 640;
+            width = DisplayTemplate.TEMPLATE_WIDTH;
         }
         try{
             height = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeHeight());
         }catch(Exception e){
-            height = 480;
+            height = DisplayTemplate.TEMPLATE_HEIGHT;
         }
         
         SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);

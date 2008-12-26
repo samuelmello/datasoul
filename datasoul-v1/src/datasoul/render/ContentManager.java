@@ -24,6 +24,7 @@
 package datasoul.render;
 
 import datasoul.config.ConfigObj;
+import datasoul.templates.DisplayTemplate;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -322,12 +323,12 @@ public class ContentManager {
             try{
                 width = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeWidth());
             }catch(Exception e){
-                width = 640;
+                width = DisplayTemplate.TEMPLATE_WIDTH;
             }
             try{
                 height = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeHeight());
             }catch(Exception e){
-                height = 480;
+                height = DisplayTemplate.TEMPLATE_HEIGHT;
             }
             try{
                 top = Integer.parseInt(ConfigObj.getInstance().getMainOutputPositionTop());
@@ -370,12 +371,12 @@ public class ContentManager {
             try{
                 width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
             }catch(Exception e){
-                width = 640;
+                width = DisplayTemplate.TEMPLATE_WIDTH;
             }
             try{
                 height = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeHeight());
             }catch(Exception e){
-                height = 480;
+                height = DisplayTemplate.TEMPLATE_HEIGHT;
             }
             try{
                 top = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputPositionTop());

@@ -23,6 +23,7 @@
 
 package datasoul.templates;
 
+import datasoul.DatasoulMainForm;
 import datasoul.util.AttributedObject;
 import java.awt.Graphics2D;
 import java.io.File;
@@ -47,8 +48,8 @@ import org.w3c.dom.NodeList;
  */
 public class DisplayTemplate extends AttributedObject {
     
-    public final static int TEMPLATE_WIDTH = 640;
-    public final static int TEMPLATE_HEIGHT = 480;
+    public final static int TEMPLATE_WIDTH = 800;
+    public final static int TEMPLATE_HEIGHT = 600;
     
     ArrayList<TemplateItem> items;
     
@@ -188,8 +189,27 @@ public class DisplayTemplate extends AttributedObject {
         
         this.readObject(node);
         
+        // upgrade from older versions
+        
+        // version up to 1.2 had fixed resolution at 640x480
+        System.out.println("VERSION: "+getDatasoulFileVersion());
+        if (DatasoulMainForm.isVersionOlder(getDatasoulFileVersion(), "1.3")){
+            setResolution(640, 480);
+        }
+        setDatasoulFileVersion( DatasoulMainForm.getVersion() );
     }
     
+    private void setResolution(int fromWidth, int fromHeight){
+        float fWidth = (float) TEMPLATE_WIDTH / (float) fromWidth;
+        float fHeight = (float) TEMPLATE_HEIGHT / (float) fromHeight;
+        System.out.println("To mudando...");
+        for (TemplateItem it : items){
+            it.setWidth((int) (fWidth * it.getWidth()));
+            it.setHeight((int)(fHeight * it.getHeight()));
+            it.setTop((int) (fWidth * it.getTop()));
+            it.setLeft((int)(fHeight * it.getLeft()));
+        }
+    }
     
     @Override
     protected void registerProperties(){

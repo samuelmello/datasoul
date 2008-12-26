@@ -49,6 +49,10 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     /** Creates new form TemplateEditorPanel */
     public TemplateEditorPanel() {
         initComponents();
+        setMaximumSize(new java.awt.Dimension(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT));
+        setMinimumSize(new java.awt.Dimension(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT));
+        setPreferredSize(new java.awt.Dimension(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT));
+        
     }
     
     public void addItem(TemplateItem t){
