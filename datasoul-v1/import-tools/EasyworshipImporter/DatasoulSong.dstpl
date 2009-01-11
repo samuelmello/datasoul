@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Song>
+    <Title>DATASOUL_SONG_TITLE</Title>
+    <Template>default</Template>
+    <Duration>0</Duration>
+    <Notes/>
+    <Text>DATASOUL_SONG_LYRICS</Text>
+    <SongAuthor>DATASOUL_SONG_AUTHOR</SongAuthor>
+    <ChordsComplete/>
+    <ChordsSimplified/>
+    <Obs/>
+    <Copyright>DATASOUL_SONG_COPYRIGHT</Copyright>
+    <SongSource/>
+</Song>
