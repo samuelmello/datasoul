@@ -1,11 +1,11 @@
 object frmDatasoulEasyWorshipImportForm: TfrmDatasoulEasyWorshipImportForm
-  Left = 0
+  Left = 373
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Datasoul Import Tool for EasyWorship'
-  ClientHeight = 327
-  ClientWidth = 398
+  ClientHeight = 318
+  ClientWidth = 400
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -192,13 +192,14 @@ object frmDatasoulEasyWorshipImportForm: TfrmDatasoulEasyWorshipImportForm
     E0000000001FFFFFE0000000001FFFFFE0000000001FFFFFE0000000001FFFFF
     F0000000003FFFFFF0000000003FFFFFF8000000007FFFFFFE00000001FF}
   OldCreateOrder = False
+  Position = poDesigned
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 398
+    Width = 400
     Height = 133
     Align = alTop
     AutoSize = True
@@ -428,7 +429,6 @@ object frmDatasoulEasyWorshipImportForm: TfrmDatasoulEasyWorshipImportForm
       5140051451400514514005145140051451400514514005145140051451400514
       5140051451400514514005145140051451400514514005145140051451400514
       51400514514005145140051451401FFFD9}
-    ExplicitWidth = 400
   end
   object Label1: TLabel
     Left = 56
@@ -445,270 +445,145 @@ object frmDatasoulEasyWorshipImportForm: TfrmDatasoulEasyWorshipImportForm
     ParentColor = False
     ParentFont = False
   end
-  object Label2: TLabel
-    Left = 8
-    Top = 144
-    Width = 219
-    Height = 16
-    Caption = 'EasyWorship Database Directory:'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lblEasyWorship: TLabel
-    Left = 24
-    Top = 166
-    Width = 3
-    Height = 13
-  end
-  object Label4: TLabel
-    Left = 8
-    Top = 208
-    Width = 162
-    Height = 16
-    Caption = 'Datasoul Data Directory:'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'Tahoma'
-    Font.Style = [fsBold]
-    ParentFont = False
-  end
-  object lblDatasoul: TLabel
-    Left = 24
-    Top = 230
-    Width = 3
-    Height = 13
-  end
-  object lblDatabaseSize: TLabel
-    Left = 24
-    Top = 185
-    Width = 3
-    Height = 13
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = [fsItalic]
-    ParentFont = False
-  end
   object Shape1: TShape
     Left = 0
     Top = 133
-    Width = 398
+    Width = 400
     Height = 2
     Align = alTop
+    ExplicitWidth = 398
   end
-  object lblDone: TLabel
-    Left = 24
-    Top = 297
-    Width = 3
-    Height = 13
-  end
-  object btnGo: TButton
-    Left = 232
-    Top = 292
-    Width = 75
-    Height = 25
-    Caption = 'Go'
+  object pnlDirectories: TPanel
+    Left = 0
+    Top = 135
+    Width = 400
+    Height = 100
+    Align = alTop
+    BevelOuter = bvNone
     TabOrder = 0
-    OnClick = btnGoClick
+    object lblEasyWorship: TLabel
+      Left = 24
+      Top = 23
+      Width = 23
+      Height = 13
+      Caption = 'easy'
+    end
+    object Label2: TLabel
+      Left = 8
+      Top = 6
+      Width = 219
+      Height = 16
+      Caption = 'EasyWorship Database Directory:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 8
+      Top = 53
+      Width = 162
+      Height = 16
+      Caption = 'Datasoul Data Directory:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object lblDatasoul: TLabel
+      Left = 24
+      Top = 75
+      Width = 41
+      Height = 13
+      Caption = 'datasoul'
+    end
+    object btnChooseDatasoul: TButton
+      Left = 313
+      Top = 50
+      Width = 75
+      Height = 19
+      Caption = 'Change'
+      TabOrder = 0
+      OnClick = btnChooseDatasoulClick
+    end
+    object btnChooseEasyWorship: TButton
+      Left = 313
+      Top = 6
+      Width = 75
+      Height = 19
+      Caption = 'Change'
+      TabOrder = 1
+      OnClick = btnChooseEasyWorshipClick
+    end
+  end
+  object pnlControls: TPanel
+    Left = 0
+    Top = 235
+    Width = 400
+    Height = 84
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 1
+    object lblDone: TLabel
+      Left = 24
+      Top = 29
+      Width = 25
+      Height = 13
+      Caption = 'Done'
+    end
+    object btnClose: TButton
+      Left = 313
+      Top = 47
+      Width = 75
+      Height = 25
+      Caption = 'Close'
+      TabOrder = 0
+      OnClick = btnCloseClick
+    end
+    object btnGo: TButton
+      Left = 232
+      Top = 47
+      Width = 75
+      Height = 25
+      Caption = 'Go'
+      TabOrder = 1
+      OnClick = btnGoClick
+    end
+    object ProgressBar: TProgressBar
+      Left = 8
+      Top = 6
+      Width = 380
+      Height = 17
+      Step = 1
+      TabOrder = 2
+    end
+    object btnShowHideDirs: TButton
+      Left = 80
+      Top = 48
+      Width = 146
+      Height = 25
+      Caption = 'Hide Directory Controls'
+      TabOrder = 3
+      OnClick = btnShowHideDirsClick
+    end
   end
   object RichEdit1: TRichEdit
-    Left = 434
-    Top = 8
+    Left = 416
+    Top = 6
     Width = 129
     Height = 89
     Lines.Strings = (
       'RichEdit1')
     ScrollBars = ssBoth
-    TabOrder = 1
-    WordWrap = False
-  end
-  object btnClose: TButton
-    Left = 313
-    Top = 292
-    Width = 75
-    Height = 25
-    Caption = 'Close'
     TabOrder = 2
-    OnClick = btnCloseClick
-  end
-  object ProgressBar: TProgressBar
-    Left = 8
-    Top = 264
-    Width = 380
-    Height = 17
-    Step = 1
-    TabOrder = 3
-  end
-  object btnChooseEasyWorship: TButton
-    Left = 313
-    Top = 139
-    Width = 75
-    Height = 19
-    Caption = 'Choose'
-    TabOrder = 4
-    OnClick = btnChooseEasyWorshipClick
-  end
-  object btnChooseDatasoul: TButton
-    Left = 313
-    Top = 208
-    Width = 75
-    Height = 19
-    Caption = 'Choose'
-    TabOrder = 5
-    OnClick = btnChooseDatasoulClick
+    WordWrap = False
   end
   object Table1: TTable
     Left = 8
     Top = 8
-    object Table1Title: TStringField
-      FieldName = 'Title'
-      Size = 50
-    end
-    object Table1Author: TStringField
-      FieldName = 'Author'
-      Size = 50
-    end
-    object Table1RecID: TIntegerField
-      FieldName = 'RecID'
-    end
-    object Table1TextPercentageBottom: TSmallintField
-      FieldName = 'Text Percentage Bottom'
-    end
-    object Table1Copyright: TStringField
-      FieldName = 'Copyright'
-      Size = 100
-    end
-    object Table1Administrator: TStringField
-      FieldName = 'Administrator'
-      Size = 50
-    end
-    object Table1Words: TMemoField
-      FieldName = 'Words'
-      BlobType = ftMemo
-      Size = 240
-    end
-    object Table1DefaultBackground: TBooleanField
-      FieldName = 'Default Background'
-    end
-    object Table1BKType: TSmallintField
-      FieldName = 'BK Type'
-    end
-    object Table1BKColor: TIntegerField
-      FieldName = 'BK Color'
-    end
-    object Table1BKGradientColor1: TIntegerField
-      FieldName = 'BK Gradient Color1'
-    end
-    object Table1BKGradientColor2: TIntegerField
-      FieldName = 'BK Gradient Color2'
-    end
-    object Table1BKGradientShading: TSmallintField
-      FieldName = 'BK Gradient Shading'
-    end
-    object Table1BKGradientVariant: TSmallintField
-      FieldName = 'BK Gradient Variant'
-    end
-    object Table1BKTexture: TSmallintField
-      FieldName = 'BK Texture'
-    end
-    object Table1BKBitmapName: TStringField
-      FieldName = 'BK Bitmap Name'
-      Size = 255
-    end
-    object Table1BKBitmap: TBlobField
-      FieldName = 'BK Bitmap'
-    end
-    object Table1BKAspectRatio: TSmallintField
-      FieldName = 'BK AspectRatio'
-    end
-    object Table1Favorite: TSmallintField
-      FieldName = 'Favorite'
-    end
-    object Table1LastModified: TDateTimeField
-      FieldName = 'Last Modified'
-    end
-    object Table1DemoData: TBooleanField
-      FieldName = 'Demo Data'
-    end
-    object Table1SongNumber: TStringField
-      FieldName = 'Song Number'
-      Size = 10
-    end
-    object Table1BKThumbnail: TBlobField
-      FieldName = 'BK Thumbnail'
-    end
-    object Table1OverrideEnabled: TBooleanField
-      FieldName = 'Override Enabled'
-    end
-    object Table1FontSizeLimitDefault: TBooleanField
-      FieldName = 'Font Size Limit Default'
-    end
-    object Table1FontSizeLimit: TSmallintField
-      FieldName = 'Font Size Limit'
-    end
-    object Table1FontNameDefault: TBooleanField
-      FieldName = 'Font Name Default'
-    end
-    object Table1FontName: TStringField
-      FieldName = 'Font Name'
-      Size = 255
-    end
-    object Table1TextColorDefault: TBooleanField
-      FieldName = 'Text Color Default'
-    end
-    object Table1TextColor: TIntegerField
-      FieldName = 'Text Color'
-    end
-    object Table1ShadowColorDefault: TBooleanField
-      FieldName = 'Shadow Color Default'
-    end
-    object Table1ShadowColor: TIntegerField
-      FieldName = 'Shadow Color'
-    end
-    object Table1OutlineColorDefault: TBooleanField
-      FieldName = 'Outline Color Default'
-    end
-    object Table1OutlineColor: TIntegerField
-      FieldName = 'Outline Color'
-    end
-    object Table1ShadowText: TSmallintField
-      FieldName = 'Shadow Text'
-    end
-    object Table1OutlineText: TSmallintField
-      FieldName = 'Outline Text'
-    end
-    object Table1BoldText: TSmallintField
-      FieldName = 'Bold Text'
-    end
-    object Table1ItalicText: TSmallintField
-      FieldName = 'Italic Text'
-    end
-    object Table1TextAlignment: TSmallintField
-      FieldName = 'Text Alignment'
-    end
-    object Table1VertAlignment: TSmallintField
-      FieldName = 'Vert Alignment'
-    end
-    object Table1TextPercentRectDefault: TBooleanField
-      FieldName = 'Text Percent Rect Default'
-    end
-    object Table1TextPercentageLeft: TSmallintField
-      FieldName = 'Text Percentage Left'
-    end
-    object Table1TextPercentageTop: TSmallintField
-      FieldName = 'Text Percentage Top'
-    end
-    object Table1TextPercentageRight: TSmallintField
-      FieldName = 'Text Percentage Right'
-    end
-    object Table1VendorID: TIntegerField
-      FieldName = 'Vendor ID'
-    end
   end
 end

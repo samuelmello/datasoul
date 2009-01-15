@@ -9,72 +9,30 @@ uses
 
 type
   TfrmDatasoulEasyWorshipImportForm = class(TForm)
-    btnGo: TButton;
     Table1: TTable;
-    Table1Title: TStringField;
-    Table1Author: TStringField;
-    Table1RecID: TIntegerField;
-    Table1TextPercentageBottom: TSmallintField;
-    Table1Copyright: TStringField;
-    Table1Administrator: TStringField;
-    Table1Words: TMemoField;
-    Table1DefaultBackground: TBooleanField;
-    Table1BKType: TSmallintField;
-    Table1BKColor: TIntegerField;
-    Table1BKGradientColor1: TIntegerField;
-    Table1BKGradientColor2: TIntegerField;
-    Table1BKGradientShading: TSmallintField;
-    Table1BKGradientVariant: TSmallintField;
-    Table1BKTexture: TSmallintField;
-    Table1BKBitmapName: TStringField;
-    Table1BKBitmap: TBlobField;
-    Table1BKAspectRatio: TSmallintField;
-    Table1Favorite: TSmallintField;
-    Table1LastModified: TDateTimeField;
-    Table1DemoData: TBooleanField;
-    Table1SongNumber: TStringField;
-    Table1BKThumbnail: TBlobField;
-    Table1OverrideEnabled: TBooleanField;
-    Table1FontSizeLimitDefault: TBooleanField;
-    Table1FontSizeLimit: TSmallintField;
-    Table1FontNameDefault: TBooleanField;
-    Table1FontName: TStringField;
-    Table1TextColorDefault: TBooleanField;
-    Table1TextColor: TIntegerField;
-    Table1ShadowColorDefault: TBooleanField;
-    Table1ShadowColor: TIntegerField;
-    Table1OutlineColorDefault: TBooleanField;
-    Table1OutlineColor: TIntegerField;
-    Table1ShadowText: TSmallintField;
-    Table1OutlineText: TSmallintField;
-    Table1BoldText: TSmallintField;
-    Table1ItalicText: TSmallintField;
-    Table1TextAlignment: TSmallintField;
-    Table1VertAlignment: TSmallintField;
-    Table1TextPercentRectDefault: TBooleanField;
-    Table1TextPercentageLeft: TSmallintField;
-    Table1TextPercentageTop: TSmallintField;
-    Table1TextPercentageRight: TSmallintField;
-    Table1VendorID: TIntegerField;
-    RichEdit1: TRichEdit;
     Image1: TImage;
     Label1: TLabel;
-    Label2: TLabel;
+    Shape1: TShape;
+    pnlDirectories: TPanel;
     lblEasyWorship: TLabel;
+    Label2: TLabel;
     Label4: TLabel;
     lblDatasoul: TLabel;
-    btnClose: TButton;
-    ProgressBar: TProgressBar;
-    btnChooseEasyWorship: TButton;
     btnChooseDatasoul: TButton;
-    lblDatabaseSize: TLabel;
-    Shape1: TShape;
+    btnChooseEasyWorship: TButton;
+    pnlControls: TPanel;
+    btnClose: TButton;
+    btnGo: TButton;
     lblDone: TLabel;
+    ProgressBar: TProgressBar;
+    btnShowHideDirs: TButton;
+    RichEdit1: TRichEdit;
     procedure btnGoClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
     procedure btnChooseEasyWorshipClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure btnChooseDatasoulClick(Sender: TObject);
+    procedure btnShowHideDirsClick(Sender: TObject);
   private
     { Private declarations }
     TemplateList: TStringList;
@@ -82,7 +40,7 @@ type
     ConvertedCount : Integer;
     function ConvertLyrics(Words: String): String;
     function ConvertTitle(Title: String): String;
-    function CheckEasyworshipPath(Path: String): Boolean;
+    function CheckEasyworshipPath(Path: String): Integer;
     function CheckDatasoulPath(Path: String): Boolean;
     procedure CreateDatasoulSong(Title, Author, Copyright, Lyrics: String);
     procedure UpdateGoButton;
@@ -139,8 +97,11 @@ begin
                 end
               else
                 begin
-                  linesconv.Add('==');
-                  linesconv.Add(lines.Strings[i]);
+                  if i > 0 then
+                    begin
+                      linesconv.Add('==');
+                      linesconv.Add(lines.Strings[i]);
+                    end;
                 end;
             end
           else
@@ -148,15 +109,26 @@ begin
         end;
 
     end;
-  Result := linesconv.Text;
+
+    Result := linesconv.Text;
+
 end;
 
 procedure TfrmDatasoulEasyWorshipImportForm.UpdateGoButton;
 begin
-  if (lblEasyWorship.Caption <> '') and (lblDatasoul.Caption <> '') then
-    btnGo.Enabled := True
+  if (lblEasyWorship.Caption <> '') and (lblDatasoul.Caption <> '') and (Table1.Active) then
+    begin
+      btnGo.Enabled := True;
+      lblDone.Caption := 'Found '+IntToStr(Table1.RecordCount)+' songs to import. Push Go button to start.';
+    end
   else
-    btnGo.Enabled := False;
+    begin
+      btnGo.Enabled := False;
+      if (lblEasyWorship.Caption <> '') then
+        lblDone.Caption := 'EasyWorship database not found. Please check directories.'
+      else
+        lblDone.Caption := 'Datasoul data directory not found. Please check directories.'
+    end;
 end;
 
 procedure TfrmDatasoulEasyWorshipImportForm.FormCreate(Sender: TObject);
@@ -166,8 +138,11 @@ var
    tplFilePath, tmp : String;
    tplFile : TextFile;
 begin
-    OverwriteMode := -1;
-    ConvertedCount := 0;
+   OverwriteMode := -1;
+   ConvertedCount := 0;
+
+   lblDatasoul.Caption := '';
+   lblEasyWorship.Caption := '';
 
    // Load the template
    tplFilePath := ExtractFilePath( ParamStr(0) ) + '\DatasoulSong.dstpl';
@@ -192,12 +167,22 @@ begin
    // Guess EasyWorship Directory
    r := ShGetSpecialFolderPath(0, path, $002E, False) ;
    if r then
-     CheckEasyworshipPath(path+'\Softouch\EasyWorship\Default\Databases\Data');
+   CheckEasyworshipPath(path+'\Softouch\EasyWorship\Default\Databases\Data');
+
+   if lblEasyWorship.Caption = '' then
+     begin
+       r := ShGetSpecialFolderPath(0, path, $0026, False) ;
+       if r then
+         CheckEasyworshipPath(path+'\Softouch\EasyWorship\Default\Databases\Data');
+     end;
 
    // Guess Datasoul Directory
    r := ShGetSpecialFolderPath(0, path, CSIDL_PROFILE, False) ;
    if r then
      CheckDatasoulPath(path+'\.datasoul\data');
+
+   if (lblDatasoul.Caption <> '') and (lblEasyWorship.Caption <> '') then
+     btnShowHideDirs.Click;
 
 end;
 
@@ -205,7 +190,7 @@ end;
  * Try to open EasyWorship Database.
  * We baslically search for a table called "Songs.DB' in Paradox format
  *)
-function TfrmDatasoulEasyWorshipImportForm.CheckEasyworshipPath(Path: String): Boolean;
+function TfrmDatasoulEasyWorshipImportForm.CheckEasyworshipPath(Path: String): Integer;
 var
   TablePath : String;
 begin
@@ -213,23 +198,24 @@ begin
   if FileExists(TablePath) then
     begin
       try
-         Table1.Active := False;
+         if Table1.Active then
+           Table1.Active := False;
          Table1.TableName := TablePath;
          Table1.Active := True;
          lblEasyWorship.Caption := Path;
-         Result := True;
+         Result := 0;
       except
-         Table1.Active := False;
-         Result := False
+        on E: Exception do
+          begin
+           ShowMessage('Error opening database: '+E.Message);
+           if Table1.Active then
+             Table1.Active := False;
+           Result := 2
+          end;
       end;
     end
   else
-    Result := False;
-
-  if Result then
-    lblDatabaseSize.Caption := 'Found '+IntToStr(Table1.RecordCount)+' songs'
-  else
-    lblDatabaseSize.Caption := '';
+    Result := 1;
 
   UpdateGoButton;
 end;
@@ -239,7 +225,7 @@ end;
  *)
 function TfrmDatasoulEasyWorshipImportForm.CheckDatasoulPath(Path: String): Boolean;
 begin
-  if DirectoryExists(Path+'\Songs') and DirectoryExists(Path+'\ServiceLists') and DirectoryExists(Path+'\Templates') then
+  if DirectoryExists(Path+'\Songs') then
     begin
          lblDatasoul.Caption := Path;
          Result := True;
@@ -258,7 +244,7 @@ begin
   Dir := lblDatasoul.Caption;
   SelectDirectory('Select Datasoul Songs Directory', '', Dir);
   if not CheckDatasoulPath(Dir) then
-    ShowMessage('The selected directory does not contain a valid Datasoul Data Directory');
+    ShowMessage('The selected directory does not contain a valid Datasoul Data Directory'+Chr(13)+'(Unable to find Songs subdirectory)');
 
 end;
 
@@ -269,8 +255,14 @@ var
 begin
   Dir := lblEasyWorship.Caption;
   SelectDirectory('Select EasyWorship Directory', '', Dir);
-  if not CheckEasyworshipPath(Dir) then
-    ShowMessage('The selected directory does not contain a valid EasyWorship Database');
+  case CheckEasyworshipPath(Dir) of
+    1:
+    ShowMessage('The selected directory does not contain a valid EasyWorship Database'+Chr(13)+'(Songs table not found)');
+
+    2:
+    ShowMessage('The selected directory does not contain a valid EasyWorship Database'+Chr(13)+'(Unable to open database)'+Chr(13)+'Please be sure to close EasyWorship and try to use the Rebuild EasyWorship Database tool.');
+
+  end;
 
 end;
 
@@ -314,6 +306,7 @@ begin
           tmp := StringReplace(tmp, 'DATASOUL_SONG_LYRICS', Lyrics, [rfReplaceAll]);
           tmp := StringReplace(tmp, 'DATASOUL_SONG_AUTHOR', Author, [rfReplaceAll]);
           tmp := StringReplace(tmp, 'DATASOUL_SONG_COPYRIGHT', Copyright, [rfReplaceAll]);
+          tmp := StringReplace(tmp, '&', '&amp;', [rfReplaceAll]);
           WriteLn(outf, tmp);
         end;
       CloseFile(outf);
@@ -361,6 +354,24 @@ begin
 
     ProgressBar.Position := ProgressBar.Max;
     lblDone.Caption := 'Done. '+IntToStr(ConvertedCount)+' Songs converted.';
+
+end;
+
+procedure TfrmDatasoulEasyWorshipImportForm.btnShowHideDirsClick(
+  Sender: TObject);
+begin
+  if pnlDirectories.Visible then
+    begin
+      pnlDirectories.Visible := False;
+      Height := Height - pnlDirectories.Height;
+      btnShowHideDirs.Caption := 'Show Directory Controls';
+    end
+  else
+    begin
+      pnlDirectories.Visible := True;
+      Height := Height + pnlDirectories.Height;
+      btnShowHideDirs.Caption := 'Hide Directory Controls';
+    end;
 
 end;
 
