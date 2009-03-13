@@ -20,6 +20,7 @@
 
 package datasoul.servicelist;
 
+import datasoul.bible.AddBibleTextFrame;
 import datasoul.datashow.ImportServiceItemForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
@@ -79,6 +80,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddSong = new javax.swing.JMenuItem();
         actAddText = new javax.swing.JMenuItem();
+        actAddBibleText = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
         jSplitPane1 = new javax.swing.JSplitPane();
@@ -142,6 +144,15 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             }
         });
         ppmAddItem.add(actAddText);
+
+        actAddBibleText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/lower.png"))); // NOI18N
+        actAddBibleText.setText(bundle.getString("Add_Bible_Text")); // NOI18N
+        actAddBibleText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddBibleTextActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddBibleText);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
@@ -388,15 +399,15 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+            .add(toolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                    .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(txtTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                        .add(txtTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -404,7 +415,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 .add(12, 12, 12))
             .add(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -419,7 +430,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                         .add(txtTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 21, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -444,7 +455,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             .add(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel2Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
                     .add(jLabel4))
                 .addContainerGap())
         );
@@ -454,7 +465,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -485,7 +496,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+            .add(jToolBar2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
             .add(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -495,8 +506,8 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(lblSongName)
                     .add(lblAuthor))
-                .addContainerGap(385, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jScrollPane3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -675,6 +686,12 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         p.setLocationRelativeTo(this);
         p.setVisible(true);
     }//GEN-LAST:event_btnExportActionPerformed
+
+private void actAddBibleTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddBibleTextActionPerformed
+    AddBibleTextFrame frame = new AddBibleTextFrame();
+    frame.setLocationRelativeTo(this);
+    frame.setVisible(true);
+}//GEN-LAST:event_actAddBibleTextActionPerformed
     
     public JTable getTableServiceList(){
         return tableServiceList;
@@ -702,6 +719,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actAddBibleText;
     private javax.swing.JMenuItem actAddContentlessItem;
     private javax.swing.JMenuItem actAddSong;
     private javax.swing.JMenuItem actAddText;
