@@ -30,6 +30,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableColumn;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -323,7 +324,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_tableSongListMouseClicked
 
     private void tableSongListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableSongListKeyPressed
-        showItem();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                showItem();
+            }
+        });
     }//GEN-LAST:event_tableSongListKeyPressed
 
     private void showItem(){
