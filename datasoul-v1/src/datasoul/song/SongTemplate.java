@@ -85,8 +85,6 @@ public class SongTemplate extends TemplateItem{
         this.setLyricsFontSize(12);
         this.setChordShapeSize("Medium");
         
-        String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-
         JComboBox cbChordSize = new JComboBox();
         cbChordSize = new JComboBox();
         for (int i = 0; i < CHORDSIZE_TABLE.length; i++){
@@ -96,6 +94,7 @@ public class SongTemplate extends TemplateItem{
         registerEditorComboBox("ChordShapeSizeIdx", cbChordSize);
                 
         if (cb1 == null) {
+            String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
             cb1 = new JComboBox();
             cb2 = new JComboBox();
             cb3 = new JComboBox();
