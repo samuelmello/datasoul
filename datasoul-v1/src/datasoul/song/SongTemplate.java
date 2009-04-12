@@ -85,27 +85,16 @@ public class SongTemplate extends TemplateItem{
         this.setLyricsFontSize(12);
         this.setChordShapeSize("Medium");
         
-        JComboBox cbChordSize = new JComboBox();
-        cbChordSize = new JComboBox();
-        for (int i = 0; i < CHORDSIZE_TABLE.length; i++){
-            cbChordSize.addItem(CHORDSIZE_TABLE[i]);
-        }
+        JComboBox cbChordSize = new JComboBox(CHORDSIZE_TABLE);
 
         registerEditorComboBox("ChordShapeSizeIdx", cbChordSize);
                 
         if (cb1 == null) {
             String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
-            cb1 = new JComboBox();
-            cb2 = new JComboBox();
-            cb3 = new JComboBox();
-            cb4 = new JComboBox();
-
-            for ( int i = 0; i < fontList.length; i++ ){
-              cb1.addItem( fontList[i] );
-              cb2.addItem( fontList[i] );
-              cb3.addItem( fontList[i] );
-              cb4.addItem( fontList[i] );
-            }
+            cb1 = new JComboBox(fontList);
+            cb2 = new JComboBox(fontList);
+            cb3 = new JComboBox(fontList);
+            cb4 = new JComboBox(fontList);
         }
 
         registerEditorComboBox("TitleFontName", cb1);
