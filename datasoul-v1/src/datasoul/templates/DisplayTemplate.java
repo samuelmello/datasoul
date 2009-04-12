@@ -202,7 +202,6 @@ public class DisplayTemplate extends AttributedObject {
     private void setResolution(int fromWidth, int fromHeight){
         float fWidth = (float) TEMPLATE_WIDTH / (float) fromWidth;
         float fHeight = (float) TEMPLATE_HEIGHT / (float) fromHeight;
-        System.out.println("To mudando...");
         for (TemplateItem it : items){
             it.setWidth((int) (fWidth * it.getWidth()));
             it.setHeight((int)(fHeight * it.getHeight()));
