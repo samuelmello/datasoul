@@ -50,6 +50,7 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import org.jdesktop.layout.GroupLayout;
 import org.jdesktop.layout.LayoutStyle;
+import java.awt.GraphicsEnvironment;
 
 /**
  *
@@ -573,7 +574,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }catch(Exception e){
             //ignore and fall back to java look and feel
         }
-         
+
+        // Put the AvailableFontFamilyName list
+        Thread t = new Thread(){
+            @Override
+          public void run(){
+            GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+          }
+        };
+        t.start();
         
         //start splashscreen
         final Splash splash = new Splash();
@@ -599,9 +608,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_application..."));
 
-
         Toolkit.getDefaultToolkit().addAWTEventListener( new KeyListner(), AWTEvent.KEY_EVENT_MASK);        
-        
+
+        // Join the FontFamily cache thread
+        try{
+            t.join();
+        }catch(Exception e){
+            // Do nothing
+        }
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 mainForm.setVisible(true);
@@ -609,6 +624,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 splash.dispose();
             }
         });
+        
     }
 
     public static String getVersion(){
