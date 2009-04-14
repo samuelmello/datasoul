@@ -122,6 +122,10 @@ public class SongEditorForm extends javax.swing.JFrame {
         textChordsSimplified.setCaretPosition(0);
         textChordsCompleted.setCaretPosition(0);
         textLyrics.setCaretPosition(0);
+
+        textSplitPanel1.registerTextArea(textLyrics);
+        textSplitPanel1.setVisible(btnShowSplit.isSelected());
+
     }
     
     public SongEditorForm() {
@@ -184,16 +188,14 @@ public class SongEditorForm extends javax.swing.JFrame {
         labelAuthor = new javax.swing.JLabel();
         fieldAuthor = new javax.swing.JTextField();
         tabSong = new javax.swing.JTabbedPane();
+        pnlLyricsTab = new javax.swing.JPanel();
         scroolLyric = new javax.swing.JScrollPane();
         textLyrics = new javax.swing.JTextPane();
+        textSplitPanel1 = new datasoul.util.TextSplitPanel();
         scroolChordsComplete = new javax.swing.JScrollPane();
         textChordsCompleted = new javax.swing.JTextPane();
         scroolChordsSimplified = new javax.swing.JScrollPane();
         textChordsSimplified = new javax.swing.JTextPane();
-        jLabel1 = new javax.swing.JLabel();
-        textLine = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        btnSplit = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -204,6 +206,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtCopyright = new javax.swing.JTextField();
         txtSongSource = new javax.swing.JTextField();
+        btnShowSplit = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -234,7 +237,22 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
         scroolLyric.setViewportView(textLyrics);
 
-        tabSong.addTab(bundle.getString("LYRICS"), scroolLyric); // NOI18N
+        org.jdesktop.layout.GroupLayout pnlLyricsTabLayout = new org.jdesktop.layout.GroupLayout(pnlLyricsTab);
+        pnlLyricsTab.setLayout(pnlLyricsTabLayout);
+        pnlLyricsTabLayout.setHorizontalGroup(
+            pnlLyricsTabLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .add(scroolLyric, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+        );
+        pnlLyricsTabLayout.setVerticalGroup(
+            pnlLyricsTabLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlLyricsTabLayout.createSequentialGroup()
+                .add(scroolLyric, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+        );
+
+        tabSong.addTab("Lyrics", pnlLyricsTab);
 
         textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 12));
         textChordsCompleted.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -255,21 +273,6 @@ public class SongEditorForm extends javax.swing.JFrame {
         scroolChordsSimplified.setViewportView(textChordsSimplified);
 
         tabSong.addTab(bundle.getString("Chords_Simplified"), scroolChordsSimplified); // NOI18N
-
-        jLabel1.setText(bundle.getString("Split_lyrics_in_slides_with")); // NOI18N
-
-        textLine.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        textLine.setText("2");
-
-        jLabel2.setText(bundle.getString("lines")); // NOI18N
-
-        btnSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/show_table_row.png"))); // NOI18N
-        btnSplit.setText(bundle.getString("Split")); // NOI18N
-        btnSplit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSplitActionPerformed(evt);
-            }
-        });
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png"))); // NOI18N
         btnClose.setText(bundle.getString("Cancel")); // NOI18N
@@ -309,28 +312,30 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
 
+        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/show_table_row.png"))); // NOI18N
+        btnShowSplit.setText("Show Split Options");
+        btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowSplitActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 687, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel6)
-                .addContainerGap(640, Short.MAX_VALUE))
+                .addContainerGap(645, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel2)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 220, Short.MAX_VALUE)
-                        .add(btnSplit)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(btnShowSplit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(btnSave)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClose))
@@ -375,12 +380,9 @@ public class SongEditorForm extends javax.swing.JFrame {
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
                     .add(btnClose)
                     .add(btnSave)
-                    .add(textLine, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2)
-                    .add(btnSplit))
+                    .add(btnShowSplit))
                 .addContainerGap())
         );
 
@@ -413,43 +415,6 @@ public class SongEditorForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSplitActionPerformed
-        int lines = 0;
-        String str = this.textLine.getText();
-        try{
-            lines = Integer.parseInt(str);
-        }catch (Exception e){
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_in_the_next_time_digit_a_number!"));
-            return;
-        }
-       
-        String inStr = this.textLyrics.getText();
-        StringBuffer sb = new StringBuffer();
-        inStr.replace("\r", "");
-        inStr = inStr.replace("\n"+TextServiceItem.SLIDE_BREAK+"\n","\n");
-        
-        String verses[] = inStr.split(TextServiceItem.CHORUS_MARK+"\n");
-        for (int i=0; i<verses.length; i++){
-            String vlines[] = verses[i].split("\n");
-            for (int j=0; j<vlines.length; j++){
-                sb.append(vlines[j]);
-                sb.append("\n");
-                if (lines != 0 && (j+1)%lines == 0 && vlines.length-j>1){
-                    sb.append(TextServiceItem.SLIDE_BREAK);
-                    sb.append("\n");
-                }
-            }
-            if (i < verses.length -1){
-                sb.append(TextServiceItem.CHORUS_MARK);
-                sb.append("\n");
-            }
-            
-        }
-        
-        this.textLyrics.setText(sb.toString());
-        highlightlyric(this.textLyrics);        
-    }//GEN-LAST:event_btnSplitActionPerformed
-
     private void textChordsSimplifiedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textChordsSimplifiedKeyPressed
         highlightchord(this.textChordsSimplified);
     }//GEN-LAST:event_textChordsSimplifiedKeyPressed
@@ -475,6 +440,10 @@ public class SongEditorForm extends javax.swing.JFrame {
     private void txtCopyrightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCopyrightActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCopyrightActionPerformed
+
+    private void btnShowSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSplitActionPerformed
+        textSplitPanel1.setVisible(btnShowSplit.isSelected());
+    }//GEN-LAST:event_btnShowSplitActionPerformed
 
   private void saveFile(){
         actualizeValues();
@@ -519,11 +488,9 @@ public class SongEditorForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSplit;
+    private javax.swing.JToggleButton btnShowSplit;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -532,14 +499,15 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelAuthor;
     private javax.swing.JLabel labelName;
+    private javax.swing.JPanel pnlLyricsTab;
     private javax.swing.JScrollPane scroolChordsComplete;
     private javax.swing.JScrollPane scroolChordsSimplified;
     private javax.swing.JScrollPane scroolLyric;
     private javax.swing.JTabbedPane tabSong;
     private javax.swing.JTextPane textChordsCompleted;
     private javax.swing.JTextPane textChordsSimplified;
-    private javax.swing.JTextField textLine;
     private javax.swing.JTextPane textLyrics;
+    private datasoul.util.TextSplitPanel textSplitPanel1;
     private javax.swing.JTextField txtCopyright;
     private javax.swing.JTextField txtSongSource;
     // End of variables declaration//GEN-END:variables
