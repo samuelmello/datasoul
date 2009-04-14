@@ -81,7 +81,6 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         setTitle(bundle.getString("Import_Service_Item")); // NOI18N
-        setAlwaysOnTop(true);
 
         tableServiceList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
