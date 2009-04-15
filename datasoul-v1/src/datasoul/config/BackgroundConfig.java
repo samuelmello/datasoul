@@ -57,21 +57,26 @@ public class BackgroundConfig extends AbstractConfig {
 
     private BufferedImage mainBackgroundImg;
     private BufferedImage monitorBackgroundImg;
-    
+    private String mainBackgroundImgStrCache = null;
+    private String monitorBackgroundImgStrCache = null;
 
     public String getMainBackgroundImgStr(){
-        return getImgStr(this.mainBackgroundImg);
+        if (mainBackgroundImgStrCache == null)
+            mainBackgroundImgStrCache = getImgStr(this.mainBackgroundImg);
+        return mainBackgroundImgStrCache;
     }    
     
     public String getMonitorBackgroundImgStr(){
-        return getImgStr(this.monitorBackgroundImg);
+        if (monitorBackgroundImgStrCache == null)
+            monitorBackgroundImgStrCache = getImgStr(this.monitorBackgroundImg);
+        return monitorBackgroundImgStrCache;
     }    
 
     private String getImgStr(BufferedImage img){
         
         if (img == null)
             return "";
-        
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
             ImageIO.write( img, "png", baos);
@@ -99,10 +104,12 @@ public class BackgroundConfig extends AbstractConfig {
     
     public void setMainBackgroundImgStr(String strImage){
         setImgStr( 0, strImage );
+        mainBackgroundImgStrCache = strImage;
     }
     
     public void setMonitorBackgroundImgStr(String strImage){
         setImgStr( 1, strImage );
+        monitorBackgroundImgStrCache = strImage;
     }
 
     /**
@@ -131,9 +138,9 @@ public class BackgroundConfig extends AbstractConfig {
         ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         try {
             if (idx == 0){
-                setMainBackgroundImg( ImageIO.read(bais) );
+                setMainBackgroundImg( ImageIO.read(bais), strImage );
             }else if (idx == 1){
-                setMonitorBackgroundImg( ImageIO.read(bais) );
+                setMonitorBackgroundImg( ImageIO.read(bais), strImage );
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -145,7 +152,12 @@ public class BackgroundConfig extends AbstractConfig {
     }
     
     public void setMainBackgroundImg(BufferedImage img){
+        setMainBackgroundImg(img, null);
+    }
+
+    public void setMainBackgroundImg(BufferedImage img, String strImage){
         this.mainBackgroundImg = img;
+        this.mainBackgroundImgStrCache = strImage;
         ContentManager.getInstance().paintBackgroundMain(img);
         save();
     }
@@ -155,7 +167,12 @@ public class BackgroundConfig extends AbstractConfig {
     }
     
     public void setMonitorBackgroundImg(BufferedImage img){
+        setMonitorBackgroundImg(img, null);
+    }
+
+    public void setMonitorBackgroundImg(BufferedImage img, String strImage){
         this.monitorBackgroundImg = img;
+        this.monitorBackgroundImgStrCache = strImage;
         ContentManager.getInstance().paintBackgroundMonitor(img);
         save();
     }
