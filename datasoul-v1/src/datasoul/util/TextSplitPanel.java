@@ -58,6 +58,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
 
         txtMaxLenght.setText("80");
 
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/insert_table_row.png"))); // NOI18N
         btnOk.setText("Split");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +89,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
                         .addComponent(txtMaxSlideLines, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(btnOk))
         );
         layout.setVerticalGroup(
