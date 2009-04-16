@@ -87,8 +87,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         fieldTitle = new javax.swing.JTextField();
         labelTitle = new javax.swing.JLabel();
         labelTitle1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textText = new javax.swing.JTextArea();
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -97,6 +95,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         btnShowSplit = new javax.swing.JToggleButton();
         textSplitPanel1 = new datasoul.util.TextSplitPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        textText = new datasoul.util.HighlightTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -111,15 +111,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         labelTitle.setText(bundle.getString("Title")); // NOI18N
 
         labelTitle1.setText(bundle.getString("Text")); // NOI18N
-
-        textText.setColumns(20);
-        textText.setRows(5);
-        textText.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                textTextKeyPressed(evt);
-            }
-        });
-        jScrollPane1.setViewportView(textText);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png"))); // NOI18N
         btnClose.setText(bundle.getString("Cancel")); // NOI18N
@@ -157,19 +148,22 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             }
         });
 
+        textText.setColumns(20);
+        textText.setRows(5);
+        jScrollPane1.setViewportView(textText);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 772, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+                .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                 .addContainerGap())
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
                     .add(layout.createSequentialGroup()
                         .add(btnShowSplit)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
@@ -177,11 +171,15 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnClose))
                     .add(org.jdesktop.layout.GroupLayout.LEADING, labelTitle)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 748, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
                         .add(labelTitle1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 335, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 86, Short.MAX_VALUE)
                         .add(jLabel3)))
+                .addContainerGap())
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -197,7 +195,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                     .add(labelTitle1)
                     .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -230,11 +228,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void textTextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textTextKeyPressed
-        if(evt.isConsumed()||evt.getKeyCode()==10)
-            highlightlyric(this.textText);
-    }//GEN-LAST:event_textTextKeyPressed
-
     private void fieldTitleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTitleKeyTyped
         if(evt.getKeyCode()==16)
             return;
@@ -263,7 +256,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;
     private datasoul.util.TextSplitPanel textSplitPanel1;
-    private javax.swing.JTextArea textText;
+    private datasoul.util.HighlightTextArea textText;
     // End of variables declaration//GEN-END:variables
 
     public void highlightlyric(JTextComponent textComp){
