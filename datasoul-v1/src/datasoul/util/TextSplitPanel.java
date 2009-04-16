@@ -49,13 +49,12 @@ public class TextSplitPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        cbMaxLenght.setSelected(true);
         cbMaxLenght.setText("Split in lines of");
 
         cbMaxSlideLines.setSelected(true);
         cbMaxSlideLines.setText("Split in slides of");
 
-        txtMaxSlideLines.setText("10");
+        txtMaxSlideLines.setText("5");
 
         txtMaxLenght.setText("80");
 
