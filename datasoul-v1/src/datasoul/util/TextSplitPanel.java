@@ -13,6 +13,7 @@ package datasoul.util;
 
 import datasoul.datashow.TextServiceItem;
 import javax.swing.text.JTextComponent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,6 +115,23 @@ public class TextSplitPanel extends javax.swing.JPanel {
         String str0;
         str0 = textComp.getText();
 
+        int lines;
+        try{
+            lines = Integer.parseInt(txtMaxSlideLines.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Invalid lines per slide value",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            return;
+        }
+
+        int maxline;
+        try {
+            maxline = Integer.parseInt(txtMaxLenght.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this,"Invalid characters per line value",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            return;
+        }
+
+
         // If needed remove slide breaks
         if ( cbMaxSlideLines.isSelected() ){
             str0 = str0.replaceAll("\n"+TextServiceItem.SLIDE_BREAK+"\n", "\n");
@@ -134,7 +152,6 @@ public class TextSplitPanel extends javax.swing.JPanel {
             String tmp;
             int lastspace = 0;
             int lastbreak = 0;
-            int maxline = Integer.parseInt(txtMaxLenght.getText());
             for (int i=0; i<str0.length(); i++){
                 if ( str0.charAt(i) == ' '){
                     lastspace = i;
@@ -167,7 +184,6 @@ public class TextSplitPanel extends javax.swing.JPanel {
             str0 = str0.replace("\n"+TextServiceItem.SLIDE_BREAK+"\n","\n");
         
             StringBuffer sb = new StringBuffer();
-            int lines = Integer.parseInt(txtMaxSlideLines.getText());
 
             String verses[] = str0.split(TextServiceItem.CHORUS_MARK+"\n");
             for (int i=0; i<verses.length; i++){
