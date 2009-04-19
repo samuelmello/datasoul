@@ -325,7 +325,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private void tableSongListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableSongListKeyPressed
         SwingUtilities.invokeLater(new Runnable() {
-            @Override
             public void run() {
                 showItem();
             }

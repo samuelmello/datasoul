@@ -43,7 +43,6 @@ public class HighlightTextArea extends JTextArea {
 
     protected void updateHighlight(){
         SwingUtilities.invokeLater( new Runnable(){
-            @Override
             public void run(){
                 removeHighlights();
                 highlight("\n"+TextServiceItem.SLIDE_BREAK+"\n",Color.ORANGE);
