@@ -102,14 +102,14 @@ public class TemplatePanel extends javax.swing.JPanel {
         templateEditorPanel1.setLayout(templateEditorPanel1Layout);
         templateEditorPanel1Layout.setHorizontalGroup(
             templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 636, Short.MAX_VALUE)
+            .add(0, 796, Short.MAX_VALUE)
         );
         templateEditorPanel1Layout.setVerticalGroup(
             templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 476, Short.MAX_VALUE)
+            .add(0, 596, Short.MAX_VALUE)
         );
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         btnSave.setText(bundle.getString("Save")); // NOI18N
         btnSave.setToolTipText(bundle.getString("Save_template")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fonts.png"))); // NOI18N
+        btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
         btnAddText.setText(bundle.getString("Text")); // NOI18N
         btnAddText.setToolTipText(bundle.getString("Add_a_text")); // NOI18N
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png"))); // NOI18N
+        btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDeleteItem.setText(bundle.getString("Remove")); // NOI18N
         btnDeleteItem.setToolTipText(bundle.getString("Delete_item")); // NOI18N
         btnDeleteItem.setMaximumSize(new java.awt.Dimension(91, 26));
@@ -139,7 +139,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/raise.png"))); // NOI18N
+        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-behind.png"))); // NOI18N
         btnMoveUp.setText(bundle.getString("To_Front")); // NOI18N
         btnMoveUp.setToolTipText(bundle.getString("Move_the_item_to_the_upper_layer")); // NOI18N
         btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +148,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/lower.png"))); // NOI18N
+        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-infront.png"))); // NOI18N
         btnMoveDown.setText(bundle.getString("To_Back")); // NOI18N
         btnMoveDown.setToolTipText(bundle.getString("Move_the_item_to_the_lowest_layer")); // NOI18N
         btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jLabel3.setText(bundle.getString("Add_Item")); // NOI18N
 
-        btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png"))); // NOI18N
+        btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnAddImage.setText(bundle.getString("Image")); // NOI18N
         btnAddImage.setToolTipText(bundle.getString("Add_an_image_...")); // NOI18N
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jLabel4.setText(bundle.getString("Selected_Item")); // NOI18N
 
-        btnTimerProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kalarm.png"))); // NOI18N
+        btnTimerProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png"))); // NOI18N
         btnTimerProgress.setText(bundle.getString("Timer")); // NOI18N
         btnTimerProgress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,7 +180,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             }
         });
 
-        btnProperties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/info.png"))); // NOI18N
+        btnProperties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
         btnProperties.setText(bundle.getString("Properties")); // NOI18N
         btnProperties.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,9 +199,6 @@ public class TemplatePanel extends javax.swing.JPanel {
             .add(btnAddImage, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
             .add(btnSave, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
             .add(btnTimerProgress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-            .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-            .add(btnMoveDown, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-            .add(btnMoveUp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
             .add(btnProperties, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel3)
@@ -209,6 +206,9 @@ public class TemplatePanel extends javax.swing.JPanel {
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel4)
                 .addContainerGap())
+            .add(btnMoveUp, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+            .add(btnMoveDown, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+            .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -229,12 +229,12 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .add(28, 28, 28)
                 .add(jLabel4)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnMoveUp)
+                .add(btnMoveUp, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 32, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnMoveDown)
+                .add(btnMoveDown, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 32, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .add(btnDeleteItem, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 34, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         jLabel5.setFont(new java.awt.Font("Dialog", 2, 12));
@@ -299,7 +299,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar1.setFloatable(false);
         jToolBar1.setOpaque(false);
 
-        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
+        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
         btnLoad.setText(bundle.getString("Load")); // NOI18N
         btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
         btnLoad.setBorderPainted(false);
@@ -311,7 +311,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
         jToolBar1.add(btnLoad);
 
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setToolTipText(bundle.getString("Create_a_new_template")); // NOI18N
         btnNew.setBorderPainted(false);
@@ -323,7 +323,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         });
         jToolBar1.add(btnNew);
 
-        btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edittrash.png"))); // NOI18N
+        btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
         btnDeleteTemplate.setToolTipText(bundle.getString("Delete_selected_template")); // NOI18N
         btnDeleteTemplate.setBorderPainted(false);
@@ -354,7 +354,7 @@ public class TemplatePanel extends javax.swing.JPanel {
             .add(panelTemplatesLayout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -376,7 +376,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar3.setFloatable(false);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/info.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
         jLabel7.setText(bundle.getString("Properties")); // NOI18N
         jToolBar3.add(jLabel7);
 

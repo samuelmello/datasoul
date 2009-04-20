@@ -3,6 +3,7 @@
 <Form version="1.4" maxVersion="1.4" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
@@ -106,12 +107,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="636" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="796" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="476" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="596" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -129,9 +130,6 @@
                           <Component id="btnAddImage" alignment="0" pref="119" max="32767" attributes="2"/>
                           <Component id="btnSave" alignment="0" pref="119" max="32767" attributes="2"/>
                           <Component id="btnTimerProgress" alignment="0" pref="119" max="32767" attributes="0"/>
-                          <Component id="btnDeleteItem" alignment="0" pref="119" max="32767" attributes="2"/>
-                          <Component id="btnMoveDown" alignment="0" pref="119" max="32767" attributes="2"/>
-                          <Component id="btnMoveUp" alignment="0" pref="119" max="32767" attributes="2"/>
                           <Component id="btnProperties" alignment="0" pref="119" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -141,6 +139,9 @@
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
+                          <Component id="btnMoveUp" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnMoveDown" alignment="0" pref="119" max="32767" attributes="2"/>
+                          <Component id="btnDeleteItem" alignment="0" pref="119" max="32767" attributes="2"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -162,12 +163,12 @@
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnMoveUp" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMoveUp" min="-2" pref="32" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnMoveDown" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnMoveDown" min="-2" pref="32" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnDeleteItem" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="49" max="32767" attributes="0"/>
+                              <Component id="btnDeleteItem" min="-2" pref="34" max="-2" attributes="0"/>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -176,7 +177,7 @@
                     <Component class="javax.swing.JButton" name="btnSave">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/filesave.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/document-save.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Save" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -192,7 +193,7 @@
                     <Component class="javax.swing.JButton" name="btnAddText">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/fonts.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/insert-text.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Text" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -208,7 +209,7 @@
                     <Component class="javax.swing.JButton" name="btnDeleteItem">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/editdelete.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/edit-delete.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Remove" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -233,7 +234,7 @@
                     <Component class="javax.swing.JButton" name="btnMoveUp">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/raise.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/stock_object-behind.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="To_Front" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -249,7 +250,7 @@
                     <Component class="javax.swing.JButton" name="btnMoveDown">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/lower.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/stock_object-infront.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="To_Back" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -279,7 +280,7 @@
                     <Component class="javax.swing.JButton" name="btnAddImage">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/looknfeel_1.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/insert-image.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Image" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -302,7 +303,7 @@
                     <Component class="javax.swing.JButton" name="btnTimerProgress">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/kalarm.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/stock_timer.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Timer" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -315,7 +316,7 @@
                     <Component class="javax.swing.JButton" name="btnProperties">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/info.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/document-properties.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Properties" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -380,7 +381,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="182" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="181" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -420,7 +421,7 @@
                     <Component class="javax.swing.JButton" name="btnLoad">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/fileopen.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/document-open.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Load" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -438,7 +439,7 @@
                     <Component class="javax.swing.JButton" name="btnNew">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/filenew.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/document-new.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="New" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -456,7 +457,7 @@
                     <Component class="javax.swing.JButton" name="btnDeleteTemplate">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/edittrash.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/edit-delete.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Delete" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -550,7 +551,7 @@
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/datasoul/icons/info.png"/>
+                          <Image iconType="3" name="/datasoul/icons/v2/document-properties.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
                           <ResourceString bundle="datasoul/internationalize.properties" key="Properties" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>

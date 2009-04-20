@@ -124,7 +124,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         lblAuthor = new javax.swing.JLabel();
         songsSearchPanel1 = new datasoul.song.SongsSearchPanel();
 
-        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png"))); // NOI18N
+        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         ppmAddItem.add(actAddSong);
 
-        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png"))); // NOI18N
+        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         actAddText.setText(bundle.getString("Add_Text")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +143,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         ppmAddItem.add(actAddText);
 
-        actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
+        actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +152,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         ppmAddItem.add(actAddContentlessItem);
 
-        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png"))); // NOI18N
+        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
         actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
         actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,7 +204,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         toolBar.setOpaque(false);
 
-        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png"))); // NOI18N
+        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
         btnAddWizard.setText(bundle.getString("Add_Item")); // NOI18N
         btnAddWizard.setToolTipText(bundle.getString("Add_wizard_...")); // NOI18N
         btnAddWizard.setAlignmentY(0.0F);
@@ -222,7 +222,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         toolBar.add(jSeparator1);
 
-        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png"))); // NOI18N
+        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-remove.png"))); // NOI18N
         btnRemove.setText(bundle.getString("Delete")); // NOI18N
         btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
         btnRemove.setAlignmentY(0.0F);
@@ -235,7 +235,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar.add(btnRemove);
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png"))); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
         btnEdit.setText(bundle.getString("Edit_Item")); // NOI18N
         btnEdit.setToolTipText(bundle.getString("Edit_selected_item_...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
@@ -248,7 +248,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar.add(btnEdit);
 
-        btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png"))); // NOI18N
+        btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-up.png"))); // NOI18N
         btnUp.setText(bundle.getString("Move_Up")); // NOI18N
         btnUp.setToolTipText(bundle.getString("Change_item_order_to_upper_position")); // NOI18N
         btnUp.setAlignmentY(0.0F);
@@ -261,7 +261,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar.add(btnUp);
 
-        btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png"))); // NOI18N
+        btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-down.png"))); // NOI18N
         btnDown.setText(bundle.getString("Move_Down")); // NOI18N
         btnDown.setToolTipText(bundle.getString("Change_item_order_to_lower_position")); // NOI18N
         btnDown.setAlignmentY(0.0F);
@@ -328,7 +328,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jSeparator3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         toolBar1.add(jSeparator3);
 
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
@@ -341,7 +341,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar1.add(btnNew);
 
-        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
+        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
         btnOpen.setText(bundle.getString("Open")); // NOI18N
         btnOpen.setBorderPainted(false);
         btnOpen.setFocusPainted(false);
@@ -352,7 +352,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar1.add(btnOpen);
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         btnSave.setText(bundle.getString("Save")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusPainted(false);
@@ -363,7 +363,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar1.add(btnSave);
 
-        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png"))); // NOI18N
+        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
         btnSaveAs.setText(bundle.getString("Save_As")); // NOI18N
         btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusPainted(false);
@@ -374,7 +374,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar1.add(btnSaveAs);
 
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
         btnExport.setText(bundle.getString("Export")); // NOI18N
         btnExport.setBorderPainted(false);
         btnExport.setFocusPainted(false);

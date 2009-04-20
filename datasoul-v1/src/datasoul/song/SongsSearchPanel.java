@@ -136,7 +136,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.setBorder(null);
         toolBar.setOpaque(false);
 
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setToolTipText(bundle.getString("Create_a_new_song_...")); // NOI18N
         btnNew.setAlignmentY(0.0F);
@@ -149,7 +149,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnNew);
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png"))); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
         btnEdit.setText(bundle.getString("Edit")); // NOI18N
         btnEdit.setToolTipText(bundle.getString("Edit_song_...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
@@ -163,7 +163,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnEdit);
 
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edittrash.png"))); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDelete.setText(bundle.getString("Delete")); // NOI18N
         btnDelete.setToolTipText(bundle.getString("Delete_song")); // NOI18N
         btnDelete.setAlignmentY(0.0F);
@@ -176,7 +176,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnDelete);
 
-        btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/additem.png"))); // NOI18N
+        btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
         btnAddToList.setText(bundle.getString("Add")); // NOI18N
         btnAddToList.setToolTipText(bundle.getString("Add_song_to_the_service_list")); // NOI18N
         btnAddToList.setAlignmentY(0.0F);
@@ -189,7 +189,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnAddToList);
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
         btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
         btnClose.setAlignmentY(0.0F);
@@ -225,8 +225,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         scroolSongList.setViewportView(tableSongList);
 
-        jToolBar1.setComponentPopupMenu(fileMenu);
         jToolBar1.setFloatable(false);
+        jToolBar1.setComponentPopupMenu(fileMenu);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songsearch.png"))); // NOI18N
         jLabel1.setText(bundle.getString("Song_Search")); // NOI18N
@@ -245,9 +245,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
                 .addContainerGap())
-            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+            .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 366, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

@@ -101,7 +101,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator2 = new javax.swing.JSeparator();
         btnFile = new javax.swing.JButton();
 
-        actNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        actNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         actNew.setText(bundle.getString("New")); // NOI18N
         actNew.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +111,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmFile.add(actNew);
 
-        actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileopen.png"))); // NOI18N
+        actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
         actOpen.setText(bundle.getString("Open")); // NOI18N
         actOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +120,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmFile.add(actOpen);
 
-        actSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesave.png"))); // NOI18N
+        actSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         actSave.setText(bundle.getString("Save")); // NOI18N
         actSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmFile.add(actSave);
 
-        actSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filesaveas.png"))); // NOI18N
+        actSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
         actSaveAs.setText(bundle.getString("Save_as")); // NOI18N
         actSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmFile.add(actSaveAs);
 
-        actExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/compfile.png"))); // NOI18N
+        actExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
         actExport.setText(bundle.getString("Export")); // NOI18N
         actExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,7 +147,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmFile.add(actExport);
 
-        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png"))); // NOI18N
+        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +156,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmAddItem.add(actAddSong);
 
-        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png"))); // NOI18N
+        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         actAddText.setText(bundle.getString("Add_Text")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,7 +165,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmAddItem.add(actAddText);
 
-        actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
+        actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
         actAddContentlessItem.setActionCommand(bundle.getString("Add_Contentless_Item")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +175,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmAddItem.add(actAddContentlessItem);
 
-        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/document.png"))); // NOI18N
+        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
         actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
         actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.setMinimumSize(new java.awt.Dimension(30, 25));
         toolBar.setOpaque(false);
 
-        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/window_new.png"))); // NOI18N
+        btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
         btnAddWizard.setText(bundle.getString("Add_Item")); // NOI18N
         btnAddWizard.setToolTipText(bundle.getString("Add_wizard_...")); // NOI18N
         btnAddWizard.setAlignmentY(0.0F);
@@ -205,7 +205,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         toolBar.add(jSeparator1);
 
-        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png"))); // NOI18N
+        btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-remove.png"))); // NOI18N
         btnRemove.setText(bundle.getString("Delete")); // NOI18N
         btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
         btnRemove.setAlignmentY(0.0F);
@@ -218,7 +218,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnRemove);
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png"))); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
         btnEdit.setToolTipText(bundle.getString("Edit_selected_item_...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setBorderPainted(false);
@@ -230,7 +230,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnEdit);
 
-        btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/up.png"))); // NOI18N
+        btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-up.png"))); // NOI18N
         btnUp.setToolTipText(bundle.getString("Change_item_order_to_upper_position")); // NOI18N
         btnUp.setAlignmentY(0.0F);
         btnUp.setBorderPainted(false);
@@ -242,7 +242,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnUp);
 
-        btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/down.png"))); // NOI18N
+        btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-down.png"))); // NOI18N
         btnDown.setToolTipText(bundle.getString("Change_item_order_to_lower_position")); // NOI18N
         btnDown.setAlignmentY(0.0F);
         btnDown.setBorderPainted(false);
