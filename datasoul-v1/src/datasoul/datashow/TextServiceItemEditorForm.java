@@ -62,6 +62,9 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         textSplitPanel1.registerTextArea(textText);
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
+
+        bibleTextPanel1.registerTextArea(textText);
+        bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
 
     public void center(){
@@ -97,10 +100,17 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         textSplitPanel1 = new datasoul.util.TextSplitPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textText = new datasoul.util.HighlightTextArea();
+        bibleTextPanel1 = new datasoul.bible.BibleTextPanel();
+        btnShowBible = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         setTitle(bundle.getString("Edit_Text")); // NOI18N
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         fieldTitle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -152,34 +162,50 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         textText.setRows(5);
         jScrollPane1.setViewportView(textText);
 
+        btnShowBible.setText("Show Bible Options");
+        btnShowBible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowBibleActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .add(labelTitle)
+                .addContainerGap(519, Short.MAX_VALUE))
+            .add(layout.createSequentialGroup()
+                .addContainerGap()
+                .add(labelTitle1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 120, Short.MAX_VALUE)
+                .add(jLabel3)
                 .addContainerGap())
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(layout.createSequentialGroup()
-                        .add(btnShowSplit)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(btnSave)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(btnClose))
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, labelTitle)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
-                        .add(labelTitle1)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 86, Short.MAX_VALUE)
-                        .add(jLabel3)))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, bibleTextPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+                .add(fieldTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                .addContainerGap())
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(btnShowBible)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnShowSplit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnSave)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnClose)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -187,22 +213,25 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(bibleTextPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(labelTitle)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(fieldTitle, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(labelTitle1)
-                    .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 16, Short.MAX_VALUE))
+                    .add(labelTitle1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jLabel3))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
                     .add(btnSave)
-                    .add(btnShowSplit))
+                    .add(btnShowSplit)
+                    .add(btnShowBible))
                 .addContainerGap())
         );
 
@@ -241,11 +270,21 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private void btnShowSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSplitActionPerformed
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
     }//GEN-LAST:event_btnShowSplitActionPerformed
+
+    private void btnShowBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowBibleActionPerformed
+        bibleTextPanel1.setVisible(btnShowBible.isSelected());
+    }//GEN-LAST:event_btnShowBibleActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        bibleTextPanel1.onClose();
+    }//GEN-LAST:event_formWindowClosed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private datasoul.bible.BibleTextPanel bibleTextPanel1;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
+    private javax.swing.JToggleButton btnShowBible;
     private javax.swing.JToggleButton btnShowSplit;
     private javax.swing.JTextField fieldTitle;
     private javax.swing.JLabel jLabel3;

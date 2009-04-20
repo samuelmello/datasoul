@@ -20,7 +20,6 @@
 
 package datasoul.servicelist;
 
-import datasoul.bible.AddBibleTextFrame;
 import datasoul.datashow.ImportServiceItemForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
@@ -80,7 +79,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddSong = new javax.swing.JMenuItem();
         actAddText = new javax.swing.JMenuItem();
-        actAddBibleText = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
         jSplitPane1 = new javax.swing.JSplitPane();
@@ -144,15 +142,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             }
         });
         ppmAddItem.add(actAddText);
-
-        actAddBibleText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/lower.png"))); // NOI18N
-        actAddBibleText.setText(bundle.getString("Add_Bible_Text")); // NOI18N
-        actAddBibleText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actAddBibleTextActionPerformed(evt);
-            }
-        });
-        ppmAddItem.add(actAddBibleText);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/knotes.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
@@ -687,12 +676,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         p.setLocationRelativeTo(this);
         p.setVisible(true);
     }//GEN-LAST:event_btnExportActionPerformed
-
-private void actAddBibleTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddBibleTextActionPerformed
-    AddBibleTextFrame frame = new AddBibleTextFrame();
-    frame.setLocationRelativeTo(this);
-    frame.setVisible(true);
-}//GEN-LAST:event_actAddBibleTextActionPerformed
     
     public JTable getTableServiceList(){
         return tableServiceList;
@@ -720,7 +703,6 @@ private void actAddBibleTextActionPerformed(java.awt.event.ActionEvent evt) {//G
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem actAddBibleText;
     private javax.swing.JMenuItem actAddContentlessItem;
     private javax.swing.JMenuItem actAddSong;
     private javax.swing.JMenuItem actAddText;
