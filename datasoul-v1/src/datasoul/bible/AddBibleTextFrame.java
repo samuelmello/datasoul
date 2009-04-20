@@ -6,7 +6,12 @@
 package datasoul.bible;
 
 import datasoul.datashow.ServiceListTable;
-import javax.swing.DefaultComboBoxModel;
+import datasoul.datashow.TextServiceItem;
+import javax.swing.*;
+import org.crosswire.jsword.versification.BibleInfo;
+import org.crosswire.jsword.book.*;
+import org.crosswire.jsword.passage.*;
+import java.util.List;
 
 /**
  *
@@ -14,13 +19,79 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class AddBibleTextFrame extends javax.swing.JFrame {
 
+    private MyBooksListener listener;
+
     /** Creates new form AddBibleTextFrame */
     public AddBibleTextFrame() {
         initComponents();
-        cbBook.setModel( new DefaultComboBoxModel(BibleText.bookNames) );
+
+        // cbHowToSplit options
+        // Keep the current idem ordem. They are handled by their index in Load.
+        cbHowToSplit.removeAllItems();
+        cbHowToSplit.addItem("Sections");
+        cbHowToSplit.addItem("Slides");
+        cbHowToSplit.addItem("Continuous");
+
+        // cbRefType options
+        // Keep the current idem ordem. They are handled by their index in Load.
+        cbRefType.removeAllItems();
+        cbRefType.addItem("Full");
+        cbRefType.addItem("Chapter and Verse");
+        cbRefType.addItem("Verse Only");
+        cbRefType.addItem("None");
+        cbRefType.setSelectedIndex(1);
+
+
+        listener = new MyBooksListener(this);
+        Books.installed().addBooksListener(listener);
+
+        updateBibles();
+
+        cbBook.removeAllItems();
+        for (int i = 0; i < BibleInfo.booksInBible(); i++){
+            try {
+                cbBook.addItem(BibleInfo.getPreferredBookName(i+1));
+            } catch (NoSuchVerseException ex) {
+                ex.printStackTrace();
+            }
+        }
+
         textSplitPanel1.registerTextArea(txtArea);
         textSplitPanel1.setVisible(btnSplit.isSelected());
     }
+
+    public void updateBibles(){
+
+        cbBibles.removeAllItems();
+
+        List installed = Books.installed().getBooks(BookFilters.getOnlyBibles());
+
+        for (Object o : installed){
+            if (o instanceof Book){
+                cbBibles.addItem(((Book)o).getName());
+            }
+        }
+
+    }
+
+     static class MyBooksListener implements BooksListener
+     {
+         private AddBibleTextFrame orig;
+         
+         public MyBooksListener(AddBibleTextFrame orig){
+             this.orig = orig;
+         }
+         public void bookAdded(BooksEvent ev)
+         {
+             orig.updateBibles();
+         }
+
+         public void bookRemoved(BooksEvent ev)
+         {
+             orig.updateBibles();
+         }
+     }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -32,12 +103,9 @@ public class AddBibleTextFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtChapter = new javax.swing.JTextField();
-        txtVerses = new javax.swing.JTextField();
         btnOk = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbBibles = new javax.swing.JComboBox();
         cbBook = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         btnLoad = new javax.swing.JButton();
@@ -46,16 +114,25 @@ public class AddBibleTextFrame extends javax.swing.JFrame {
         btnSplit = new javax.swing.JToggleButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new datasoul.util.HighlightTextArea();
+        btnManageBible = new javax.swing.JButton();
+        cbChapter = new javax.swing.JComboBox();
+        cbVersesFrom = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        cbVersesTo = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cbHowToSplit = new javax.swing.JComboBox();
+        cbRefType = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Add Bible Text");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
-        jLabel1.setText("Book");
-
-        jLabel2.setText("Chapter");
-
-        txtChapter.setText("1");
-
-        txtVerses.setText("1-10");
+        jLabel1.setText("Verses:");
 
         btnOk.setText("OK");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
@@ -64,13 +141,18 @@ public class AddBibleTextFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Version");
+        jLabel3.setText("Bible:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbBibles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cbBook.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBookActionPerformed(evt);
+            }
+        });
 
-        jLabel4.setText("Verses");
+        jLabel4.setText(":");
 
         btnLoad.setText("Load");
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
@@ -97,68 +179,123 @@ public class AddBibleTextFrame extends javax.swing.JFrame {
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        btnManageBible.setText("Manage Installed Bibles");
+        btnManageBible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageBibleActionPerformed(evt);
+            }
+        });
+
+        cbChapter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbChapter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChapterActionPerformed(evt);
+            }
+        });
+
+        cbVersesFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setText("-");
+
+        cbVersesTo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbVersesTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbVersesToActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Put verses in");
+
+        jLabel6.setText("Add reference");
+
+        cbHowToSplit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbRefType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVerses, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
-                        .addComponent(btnLoad))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(textSplitPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSplit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCancel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnOk)))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                    .add(layout.createSequentialGroup()
+                        .add(btnSplit)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnCancel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnOk))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(jLabel3)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbBibles, 0, 401, Short.MAX_VALUE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnManageBible))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(jLabel1)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbBook, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(cbChapter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel4)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbVersesFrom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel5)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbVersesTo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, layout.createSequentialGroup()
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbHowToSplit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(jLabel6)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbRefType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 203, Short.MAX_VALUE)
+                        .add(btnLoad)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cbBook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(btnLoad)
-                    .addComponent(txtChapter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVerses, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnOk)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSplit))
+            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(layout.createSequentialGroup()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(btnManageBible)
+                            .add(cbBibles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel1)
+                            .add(cbBook, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel4)
+                            .add(cbChapter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(cbVersesFrom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel5)
+                            .add(cbVersesTo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(jLabel2)
+                            .add(btnLoad)
+                            .add(cbHowToSplit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel6)
+                            .add(cbRefType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(layout.createSequentialGroup()
+                        .add(20, 20, 20)
+                        .add(jLabel3)))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnOk)
+                    .add(btnCancel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(btnSplit))
                 .addContainerGap())
         );
 
@@ -167,22 +304,74 @@ public class AddBibleTextFrame extends javax.swing.JFrame {
 
 private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
     BibleText bt = new BibleText();
-    bt.setBookname(cbBook.getSelectedItem().toString());
-    bt.setChapter(txtChapter.getText());
-    bt.setVerses(txtVerses.getText());
     bt.setText(txtArea.getText());
-    bt.setTitle(bt.getBookname()+" "+bt.getChapter()+":"+bt.getVerses());
     ServiceListTable.getActiveInstance().addItem(bt);
     this.dispose();
 }//GEN-LAST:event_btnOkActionPerformed
 
 private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
-    txtArea.setText("1 In the beginning was the Word, and the Word was with God, " +
-            "and the Word was God.\n===\n2 He was in the beginning with God. \n===\n" +
-            "3 All things came into being through Him, and apart from Him nothing" +
-            " came into being that has come into being. \n===\n4 In Him was life, and the " +
-            "life was the Light of men. \n===\n5 The Light shines in the darkness, and the " +
-            "darkness did not comprehend it.");
+
+    int begin = cbVersesFrom.getSelectedIndex()+1;
+    int end = cbVersesTo.getSelectedIndex()+1;
+
+    if (begin > end){
+        JOptionPane.showMessageDialog(this, "Invalid verse range");
+        return;
+    }
+
+    Book book = Books.installed().getBook(cbBibles.getSelectedItem().toString());
+    if (book == null) return;
+
+    StringBuffer sb = new StringBuffer();
+
+    if (txtArea.getText().length() > 0 ){
+        sb.append(txtArea.getText()+"\n");
+    }
+
+    try {
+        for (int i = begin; i<=end; i++){
+            Verse temp = new Verse(cbBook.getSelectedIndex() + 1, cbChapter.getSelectedIndex() + 1, i);
+            BookData data = new BookData(book, temp);
+            String versetext = OSISUtil.getCanonicalText(data.getOsisFragment());
+
+            // Skip blank lines (this may happen if the selected bible does not
+            // contain the choosed text, it may be a New Testment only, for example)
+            if (versetext.trim().length() == 0 ) 
+                continue;
+
+            // Add break if needed
+            if (sb.length() > 0){
+                if (cbHowToSplit.getSelectedIndex() == 1)
+                    sb.append(TextServiceItem.SLIDE_BREAK+"\n");
+                else if (cbHowToSplit.getSelectedIndex() == 0)
+                    sb.append(TextServiceItem.CHORUS_MARK+"\n");
+            }
+
+            // Add the reference, if needed
+            switch(cbRefType.getSelectedIndex()){
+                case 0: // Full
+                    sb.append(cbBook.getSelectedItem().toString());
+                    sb.append(" ");
+                    // do not break
+                case 1: // chapter + verse
+                    sb.append(cbChapter.getSelectedItem().toString());
+                    sb.append(":");
+                    // do not break
+                case 2: // verse only
+                    sb.append(Integer.toString(i));
+                    sb.append(" ");
+                    break;
+            }
+
+            // Add the text
+            sb.append(versetext.trim()+"\n");
+        }
+    } catch (Exception ex) {
+        ex.printStackTrace();
+    }
+
+    txtArea.setText(sb.toString());
+
 }//GEN-LAST:event_btnLoadActionPerformed
 
 private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -193,21 +382,77 @@ private void btnSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     textSplitPanel1.setVisible(btnSplit.isSelected()) ;
 }//GEN-LAST:event_btnSplitActionPerformed
 
+private void btnManageBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBibleActionPerformed
+    BibleInstaller bi = new BibleInstaller();
+    bi.setLocationRelativeTo(this);
+    bi.setVisible(true);
+}//GEN-LAST:event_btnManageBibleActionPerformed
+
+private void cbBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBookActionPerformed
+    cbChapter.removeAllItems();
+    if (cbBook.getSelectedIndex() >= 0){
+
+        try {
+            int max = BibleInfo.chaptersInBook(cbBook.getSelectedIndex() + 1);
+            for (int i = 0; i < max; i++) {
+                cbChapter.addItem(Integer.toString(i+1));
+            }
+        } catch (NoSuchVerseException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+}//GEN-LAST:event_cbBookActionPerformed
+
+private void cbChapterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChapterActionPerformed
+
+    cbVersesFrom.removeAllItems();
+    cbVersesTo.removeAllItems();
+
+    if (cbBook.getSelectedIndex() >= 0 && cbChapter.getSelectedIndex() >= 0){
+
+        try {
+            int max = BibleInfo.versesInChapter(cbBook.getSelectedIndex() + 1, cbChapter.getSelectedIndex()+1);
+            for (int i = 0; i < max; i++) {
+                cbVersesFrom.addItem(Integer.toString(i+1));
+                cbVersesTo.addItem(Integer.toString(i+1));
+            }
+        } catch (NoSuchVerseException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+}//GEN-LAST:event_cbChapterActionPerformed
+
+private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    Books.installed().removeBooksListener(listener);
+}//GEN-LAST:event_formWindowClosed
+
+private void cbVersesToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVersesToActionPerformed
+    // TODO add your handling code here:
+}//GEN-LAST:event_cbVersesToActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnLoad;
+    private javax.swing.JButton btnManageBible;
     private javax.swing.JButton btnOk;
     private javax.swing.JToggleButton btnSplit;
+    private javax.swing.JComboBox cbBibles;
     private javax.swing.JComboBox cbBook;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox cbChapter;
+    private javax.swing.JComboBox cbHowToSplit;
+    private javax.swing.JComboBox cbRefType;
+    private javax.swing.JComboBox cbVersesFrom;
+    private javax.swing.JComboBox cbVersesTo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private datasoul.util.TextSplitPanel textSplitPanel1;
     private datasoul.util.HighlightTextArea txtArea;
-    private javax.swing.JTextField txtChapter;
-    private javax.swing.JTextField txtVerses;
     // End of variables declaration//GEN-END:variables
 }

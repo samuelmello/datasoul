@@ -15,7 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.crosswire.jsword.book.*;
 import org.crosswire.jsword.book.install.*;
-import org.crosswire.common.progress.*;
 import java.util.*;
 import javax.swing.*;
 import javax.swing.table.*;
