@@ -130,7 +130,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setOpaque(false);
 
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/filenew.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(btnNew);
 
-        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/edit.png"))); // NOI18N
+        btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
         btnEdit.setText(bundle.getString("Edit")); // NOI18N
         btnEdit.setBorderPainted(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +150,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         });
         jToolBar1.add(btnEdit);
 
-        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/editdelete.png"))); // NOI18N
+        btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDelete.setText(bundle.getString("Delete")); // NOI18N
         btnDelete.setBorderPainted(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar1.add(jSeparator1);
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/fileclose.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {

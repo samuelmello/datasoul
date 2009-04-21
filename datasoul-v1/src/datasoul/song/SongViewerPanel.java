@@ -91,7 +91,7 @@ public class SongViewerPanel extends javax.swing.JPanel {
 
         jToolBar2.setFloatable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/playsound.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel1.setText(bundle.getString("Song:")); // NOI18N
         jToolBar2.add(jLabel1);

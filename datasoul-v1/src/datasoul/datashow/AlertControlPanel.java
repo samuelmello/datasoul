@@ -100,7 +100,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
 
         jLabel14.setText(bundle.getString("seconds")); // NOI18N
 
-        btnShowAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/bell.png"))); // NOI18N
+        btnShowAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bell.png"))); // NOI18N
         btnShowAlert.setText(bundle.getString("Show_Alert")); // NOI18N
         btnShowAlert.setToolTipText(bundle.getString("Show_alert")); // NOI18N
         btnShowAlert.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +118,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
             }
         });
 
-        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png"))); // NOI18N
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/process-stop.png"))); // NOI18N
         btnCancel.setText(bundle.getString("Cancel")); // NOI18N
         btnCancel.setEnabled(false);
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -189,9 +189,9 @@ public class AlertControlPanel extends javax.swing.JPanel {
                     .add(spnAlertTime, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel14))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(btnShowAlert)
-                    .add(btnCancel))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(btnShowAlert, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(btnCancel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents

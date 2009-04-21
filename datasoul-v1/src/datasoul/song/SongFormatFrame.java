@@ -96,7 +96,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tableProperties);
 
-        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png"))); // NOI18N
+        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/dialog-apply.png"))); // NOI18N
         btnApply.setText(bundle.getString("Apply")); // NOI18N
         btnApply.setToolTipText(bundle.getString("Apply_the_changes_to_song_view")); // NOI18N
         btnApply.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -105,7 +105,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
             }
         });
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/process-stop.png"))); // NOI18N
         btnClose.setText(bundle.getString("Cancel")); // NOI18N
         btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
         btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,7 +118,7 @@ public class SongFormatFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(123, Short.MAX_VALUE)
                 .add(btnApply)

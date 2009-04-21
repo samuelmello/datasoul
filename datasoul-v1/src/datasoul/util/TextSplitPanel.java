@@ -58,7 +58,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
 
         txtMaxLenght.setText("80");
 
-        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/insert_table_row.png"))); // NOI18N
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_view-details.png"))); // NOI18N
         btnOk.setText("Split");
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

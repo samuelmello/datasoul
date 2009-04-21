@@ -64,22 +64,18 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
         jToolBar1 = new javax.swing.JToolBar();
         labelLive = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         btnGoLive = new javax.swing.JButton();
 
         setDoubleBuffered(false);
 
         jToolBar1.setFloatable(false);
 
-        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/krdc.png"))); // NOI18N
+        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_zoom-object.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         labelLive.setText(bundle.getString("Preview")); // NOI18N
         jToolBar1.add(labelLive);
 
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jToolBar1.add(jSeparator1);
-
-        btnGoLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_play.png"))); // NOI18N
+        btnGoLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-start.png"))); // NOI18N
         btnGoLive.setText(bundle.getString("GO_LIVE")); // NOI18N
         btnGoLive.setToolTipText(bundle.getString("Send_slides_to_live")); // NOI18N
         btnGoLive.setBorderPainted(false);
@@ -134,7 +130,6 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLive;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelLive;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;

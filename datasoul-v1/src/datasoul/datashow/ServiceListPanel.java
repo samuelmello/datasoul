@@ -108,7 +108,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         ppmAddItem.add(actAddSong);
 
-        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
+        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
         actAddText.setText(bundle.getString("Add_Text")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +231,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         jToolBar1.setFloatable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel1.setText(bundle.getString("Service_Plan")); // NOI18N
         jToolBar1.add(jLabel1);
 

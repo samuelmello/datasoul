@@ -283,7 +283,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             .add(pnlMonitorLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(cbMonitorFollowMain)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         pnlMonitorLayout.setVerticalGroup(
             pnlMonitorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -308,7 +308,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 3, 0));
 
-        btnMainBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/black1.png"))); // NOI18N
+        btnMainBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display-black.png"))); // NOI18N
         btnMainBlack.setText(bundle.getString("Black")); // NOI18N
         btnMainBlack.setToolTipText(bundle.getString("Makes_the_main_output_black_(F12)")); // NOI18N
         btnMainBlack.setFocusPainted(false);
@@ -319,7 +319,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel2.add(btnMainBlack);
 
-        btnHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/jabber_offline.png"))); // NOI18N
+        btnHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_3d-light-off.png"))); // NOI18N
         btnHide.setSelected(true);
         btnHide.setText(bundle.getString("Hide")); // NOI18N
         btnHide.setToolTipText(bundle.getString("Hide_the_main_output_content_(F9)")); // NOI18N
@@ -331,7 +331,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel2.add(btnHide);
 
-        btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/jabber_online.png"))); // NOI18N
+        btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_3d-light-on.png"))); // NOI18N
         btnShow.setText(bundle.getString("Show")); // NOI18N
         btnShow.setToolTipText(bundle.getString("Show_the_main_output_content_(F10)")); // NOI18N
         btnShow.setFocusPainted(false);

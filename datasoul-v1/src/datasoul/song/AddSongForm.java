@@ -91,7 +91,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
 
         jToolBar1.setFloatable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kappfinder.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_zoom-object.png"))); // NOI18N
         jLabel1.setText(bundle.getString("Preview")); // NOI18N
         jToolBar1.add(jLabel1);
 

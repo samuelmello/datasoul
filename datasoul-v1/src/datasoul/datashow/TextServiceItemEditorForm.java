@@ -95,7 +95,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel4 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         btnShowSplit = new javax.swing.JToggleButton();
         textSplitPanel1 = new datasoul.util.TextSplitPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -122,7 +121,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         labelTitle1.setText(bundle.getString("Text")); // NOI18N
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/button_cancel.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnClose.setText(bundle.getString("Cancel")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +129,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             }
         });
 
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png"))); // NOI18N
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/dialog-apply.png"))); // NOI18N
         btnSave.setText(bundle.getString("Apply")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,14 +142,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         jToolBar1.setFloatable(false);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kwrite.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
         jLabel4.setText(bundle.getString("Service_List")); // NOI18N
         jToolBar1.add(jLabel4);
 
-        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jToolBar1.add(jSeparator2);
-
-        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/show_table_row.png"))); // NOI18N
+        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_toggle-info.png"))); // NOI18N
         btnShowSplit.setText("Show Split Options");
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +158,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         textText.setRows(5);
         jScrollPane1.setViewportView(textText);
 
+        btnShowBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/accessories-dictionary.png"))); // NOI18N
         btnShowBible.setText("Show Bible Options");
         btnShowBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,7 +287,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;

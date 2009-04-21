@@ -134,7 +134,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         ppmAddItem.add(actAddSong);
 
-        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
+        actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
         actAddText.setText(bundle.getString("Add_Text")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -321,7 +321,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar1.setMinimumSize(new java.awt.Dimension(30, 25));
 
         jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/klipper_dock.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel8.setText(bundle.getString("Service_Plan")); // NOI18N
         toolBar1.add(jLabel8);
 
@@ -470,7 +470,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         jToolBar2.setFloatable(false);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/kappfinder.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_zoom-object.png"))); // NOI18N
         jLabel5.setText(bundle.getString("Preview")); // NOI18N
         jToolBar2.add(jLabel5);
 

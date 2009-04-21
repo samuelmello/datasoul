@@ -114,7 +114,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         });
         pnlTimerTotal.add(edtTimerTotalSec);
 
-        btnTimerOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_stop.png"))); // NOI18N
+        btnTimerOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-stop.png"))); // NOI18N
         btnTimerOff.setText(bundle.getString("Off")); // NOI18N
         btnTimerOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +122,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
             }
         });
 
-        btnTimerForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_fwd.png"))); // NOI18N
+        btnTimerForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-seek-forward.png"))); // NOI18N
         btnTimerForward.setText(bundle.getString("Forward")); // NOI18N
         btnTimerForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +130,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
             }
         });
 
-        btnTimerBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/player_rew.png"))); // NOI18N
+        btnTimerBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-seek-backward.png"))); // NOI18N
         btnTimerBackward.setText(bundle.getString("Backward")); // NOI18N
         btnTimerBackward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +138,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
             }
         });
 
-        btnApplyTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/apply.png"))); // NOI18N
+        btnApplyTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/dialog-apply.png"))); // NOI18N
         btnApplyTimer.setText(bundle.getString("Apply")); // NOI18N
         btnApplyTimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

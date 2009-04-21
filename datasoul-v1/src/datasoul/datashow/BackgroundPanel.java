@@ -85,7 +85,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Main_Output"))); // NOI18N
 
-        btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png"))); // NOI18N
+        btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnChangeMain.setText(bundle.getString("Image")); // NOI18N
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +93,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             }
         });
 
-        btnColorMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png"))); // NOI18N
+        btnColorMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bucketfill.png"))); // NOI18N
         btnColorMain.setText(bundle.getString("Color")); // NOI18N
         btnColorMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,12 +150,12 @@ public class BackgroundPanel extends javax.swing.JPanel {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnColorMain))
                     .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Backstage_Monitor_Output"))); // NOI18N
 
-        btnMonitorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/colors.png"))); // NOI18N
+        btnMonitorColor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bucketfill.png"))); // NOI18N
         btnMonitorColor.setText(bundle.getString("Color")); // NOI18N
         btnMonitorColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,7 +163,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
             }
         });
 
-        btnChangeMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/looknfeel_1.png"))); // NOI18N
+        btnChangeMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnChangeMonitor.setText(bundle.getString("Image")); // NOI18N
         btnChangeMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
