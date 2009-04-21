@@ -75,10 +75,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        dnDTable1 = new datasoul.util.DnDTable();
-        fileMenu = new javax.swing.JPopupMenu();
-        actImportSongsToDatabase = new javax.swing.JMenuItem();
         fieldString = new javax.swing.JTextField();
         labelString = new javax.swing.JLabel();
         toolBar = new javax.swing.JToolBar();
@@ -92,30 +88,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-
-        dnDTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(dnDTable1);
-
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        fileMenu.setLabel(bundle.getString("File")); // NOI18N
-
-        actImportSongsToDatabase.setText(bundle.getString("Import_Songs_To_Database")); // NOI18N
-        actImportSongsToDatabase.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actImportSongsToDatabaseActionPerformed(evt);
-            }
-        });
-        fileMenu.add(actImportSongsToDatabase);
 
         fieldString.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +103,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
 
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         labelString.setText(bundle.getString("Search")); // NOI18N
 
         toolBar.setBorder(null);
@@ -226,7 +199,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         scroolSongList.setViewportView(tableSongList);
 
         jToolBar1.setFloatable(false);
-        jToolBar1.setComponentPopupMenu(fileMenu);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/songsearch.png"))); // NOI18N
         jLabel1.setText(bundle.getString("Song_Search")); // NOI18N
@@ -263,11 +235,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void actImportSongsToDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportSongsToDatabaseActionPerformed
-        SongsImport importSongs = new SongsImport();
-        importSongs.setVisible(true);
-    }//GEN-LAST:event_actImportSongsToDatabaseActionPerformed
 
     private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
         if(frameParent!=null)
@@ -406,17 +373,13 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem actImportSongsToDatabase;
     private javax.swing.JButton btnAddToList;
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
-    private datasoul.util.DnDTable dnDTable1;
     private javax.swing.JTextField fieldString;
-    private javax.swing.JPopupMenu fileMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelString;
