@@ -21,16 +21,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" alignment="0" pref="616" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="662" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="559" max="32767" attributes="0"/>
+              <EmptySpace pref="605" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblClone" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                       <Component id="btnShowSplit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnSave" min="-2" max="-2" attributes="0"/>
@@ -47,10 +49,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="fieldName" pref="519" max="32767" attributes="0"/>
-                          <Component id="fieldAuthor" pref="519" max="32767" attributes="0"/>
-                          <Component id="txtCopyright" alignment="0" pref="519" max="32767" attributes="0"/>
-                          <Component id="txtSongSource" alignment="0" pref="519" max="32767" attributes="0"/>
+                          <Component id="fieldName" pref="565" max="32767" attributes="0"/>
+                          <Component id="fieldAuthor" pref="565" max="32767" attributes="0"/>
+                          <Component id="txtCopyright" alignment="0" pref="565" max="32767" attributes="0"/>
+                          <Component id="txtSongSource" alignment="0" pref="565" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -59,7 +61,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabSong" pref="592" max="32767" attributes="0"/>
+              <Component id="tabSong" pref="638" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -89,7 +91,7 @@
                   <Component id="txtSongSource" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabSong" pref="350" max="32767" attributes="0"/>
+              <Component id="tabSong" pref="358" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -97,6 +99,7 @@
                   <Component id="btnClose" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnShowSplit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClone" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -146,14 +149,14 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textSplitPanel1" alignment="0" pref="576" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" pref="576" max="32767" attributes="0"/>
+                  <Component id="textSplitPanel1" alignment="0" pref="622" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="622" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jScrollPane1" pref="247" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="255" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="textSplitPanel1" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -319,6 +322,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowSplitActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblClone">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+          <FontInfo relative="true">
+            <Font component="lblClone" italic="true" property="font" relativeSize="true" size="-2"/>
+          </FontInfo>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Changes will affect only the current Service Plan."/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

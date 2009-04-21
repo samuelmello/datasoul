@@ -51,19 +51,32 @@ public class Song extends TextServiceItem implements Cloneable {
     private String filePath="";        
     //private String view=java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
     private String view="Title";
+
+    private boolean isClone;
     
     /** Creates a new instance of Song */
     public Song() {
         super();
+        isClone = false;
     }
 
     public Song getClone(){
+        Song s = null;
         try {
-            return (Song) this.clone();
+            s = (Song) this.clone();
+            s.setClone(true);
         } catch (CloneNotSupportedException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return s;
+    }
+
+    public void setClone(boolean b){
+        this.isClone = b;
+    }
+
+    public boolean isClone(){
+        return this.isClone;
     }
 
     @Override

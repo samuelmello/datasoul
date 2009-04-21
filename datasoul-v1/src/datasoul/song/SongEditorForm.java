@@ -80,6 +80,8 @@ public class SongEditorForm extends javax.swing.JFrame {
         newSong = false;
         
         initTextAreas();
+
+        lblClone.setVisible(song.isClone());
     }
 
     /**
@@ -97,8 +99,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         newSong = false;
         
         initTextAreas();
-
-
+        lblClone.setVisible(song.isClone());
     }
     
     public SongEditorForm() {
@@ -111,6 +112,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         newSong = true;
 
         initTextAreas();
+        lblClone.setVisible(song.isClone());
     }
     
     private void initTextAreas(){
@@ -177,6 +179,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         txtCopyright = new javax.swing.JTextField();
         txtSongSource = new javax.swing.JTextField();
         btnShowSplit = new javax.swing.JToggleButton();
+        lblClone = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -207,13 +210,13 @@ public class SongEditorForm extends javax.swing.JFrame {
         pnlLyricsTab.setLayout(pnlLyricsTabLayout);
         pnlLyricsTabLayout.setHorizontalGroup(
             pnlLyricsTabLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+            .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
         pnlLyricsTabLayout.setVerticalGroup(
             pnlLyricsTabLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlLyricsTabLayout.createSequentialGroup()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -278,19 +281,24 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
 
+        lblClone.setFont(lblClone.getFont().deriveFont((lblClone.getFont().getStyle() | java.awt.Font.ITALIC), lblClone.getFont().getSize()-2));
+        lblClone.setText("Changes will affect only the current Service Plan.");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel6)
-                .addContainerGap(559, Short.MAX_VALUE))
+                .addContainerGap(605, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(layout.createSequentialGroup()
+                        .add(lblClone)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 41, Short.MAX_VALUE)
                         .add(btnShowSplit)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(btnSave)
@@ -304,15 +312,15 @@ public class SongEditorForm extends javax.swing.JFrame {
                             .add(jLabel5))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                            .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtCopyright, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtSongSource, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)))
+                            .add(fieldName, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                            .add(fieldAuthor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtCopyright, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, txtSongSource, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE)))
                     .add(org.jdesktop.layout.GroupLayout.LEADING, jLabel3))
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 592, Short.MAX_VALUE)
+                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -336,14 +344,15 @@ public class SongEditorForm extends javax.swing.JFrame {
                     .add(jLabel6)
                     .add(txtSongSource, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                .add(tabSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnClose)
                     .add(btnSave)
-                    .add(btnShowSplit))
+                    .add(btnShowSplit)
+                    .add(lblClone))
                 .addContainerGap())
         );
 
@@ -360,19 +369,25 @@ public class SongEditorForm extends javax.swing.JFrame {
             return;
         }
 
-        String filename = this.fieldName.getText();
-        if(!filename.contains(".song"))
-            filename = filename + ".song";
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + 
-                "songs"+ System.getProperty("file.separator")+filename;
-        
-        if(!path.equals(song.getFilePath())){
-            File file = new File(song.getFilePath());
-            file.delete();
+        // if editing a Clone (from the ServiceList), just update the values
+        // if editing from the Song library, write the .song file.
+        if (song.isClone()){
+            actualizeValues();
+        }else{
+            String filename = this.fieldName.getText();
+            if(!filename.contains(".song"))
+                filename = filename + ".song";
+            String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") +
+                    "songs"+ System.getProperty("file.separator")+filename;
+
+            if(!path.equals(song.getFilePath())){
+                File file = new File(song.getFilePath());
+                file.delete();
+            }
+            song.setFilePath(path);
+            saveFile();
         }
-        song.setFilePath(path);
-        
-        saveFile();    
+
         dispose();
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -443,6 +458,7 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelAuthor;
     private javax.swing.JLabel labelName;
+    private javax.swing.JLabel lblClone;
     private javax.swing.JPanel pnlLyricsTab;
     private javax.swing.JTabbedPane tabSong;
     private datasoul.util.HighlightTextArea textChordsCompleted;
