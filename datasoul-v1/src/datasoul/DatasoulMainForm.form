@@ -31,8 +31,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="toolBarMain" min="-2" pref="52" max="-2" attributes="1"/>
-              <EmptySpace pref="655" max="32767" attributes="0"/>
+              <Component id="toolBarMain" min="-2" pref="36" max="-2" attributes="1"/>
+              <EmptySpace pref="671" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,11 +42,11 @@
       <Properties>
         <Property name="floatable" type="boolean" value="false"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[451, 60]"/>
+          <Dimension value="[451, 36]"/>
         </Property>
         <Property name="opaque" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[442, 60]"/>
+          <Dimension value="[442, 36]"/>
         </Property>
       </Properties>
 
@@ -55,7 +55,7 @@
         <Component class="javax.swing.JButton" name="btnServiceList">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/servicelists.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/stock_task_big.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Service_Plan" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -74,7 +74,7 @@
         <Component class="javax.swing.JButton" name="btnSongs">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/music1.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/stock_effects-sound.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Songs" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -92,7 +92,7 @@
         <Component class="javax.swing.JButton" name="btnDatashow">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/projector1.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/stock_effects-preview.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Projector" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -110,7 +110,7 @@
         <Component class="javax.swing.JButton" name="btnTemplates">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/looknfeel.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/applications-graphics.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Templates" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -134,7 +134,7 @@
         <Component class="javax.swing.JButton" name="btnConfig">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/package_settings.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/preferences-system.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Configuration" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -158,7 +158,7 @@
         <Component class="javax.swing.JButton" name="btnHelp">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/khelpcenter.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/help-browser.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Help" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
@@ -170,17 +170,10 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHelpActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator1">
-          <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" id="Button.light" palette="3" red="ff" type="palette"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="btnClose">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/exit.png"/>
+              <Image iconType="3" name="/datasoul/icons/v2/application-exit.png"/>
             </Property>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Close" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
