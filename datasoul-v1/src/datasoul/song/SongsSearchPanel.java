@@ -20,10 +20,7 @@
 
 package datasoul.song;
 
-import datasoul.*;
-import datasoul.util.*;
 import datasoul.datashow.*;
-import datasoul.song.*;
 import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.JFrame;
@@ -107,6 +104,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         labelString.setText(bundle.getString("Search")); // NOI18N
 
         toolBar.setBorder(null);
+        toolBar.setMinimumSize(new java.awt.Dimension(150, 32));
         toolBar.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
@@ -215,11 +213,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 .addContainerGap()
                 .add(labelString)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .add(fieldString, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
-            .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 366, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -273,9 +271,14 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     public void usingInAddSongItemPanel(JFrame frameParent){
         this.btnClose.setVisible(true);
         this.frameParent = frameParent;
+        /*
         this.btnDelete.setVisible(false);
         this.btnEdit.setVisible(false);
         this.btnNew.setVisible(false);
+         */
+        toolBar.remove(btnDelete);
+        toolBar.remove(btnEdit);
+        toolBar.remove(btnNew);
         this.btnAddToList.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Add"));
     }
     public void addItem(java.awt.event.ActionEvent evt) {                                          
