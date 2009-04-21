@@ -68,7 +68,7 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
         
         
         if(isSelected){
-            setBackground(Color.decode("0xb8cfe5"));
+            setBackground(table.getSelectionBackground());
             setText(text);
             return this;
         }
