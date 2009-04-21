@@ -107,7 +107,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -119,7 +119,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         jToolBar1.setFloatable(false);
 
-        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/projector3_small.png"))); // NOI18N
+        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
         labelLive.setText(bundle.getString("LIVE")); // NOI18N
         jToolBar1.add(labelLive);
 

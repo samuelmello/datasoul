@@ -337,7 +337,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jToolBar2.setFloatable(false);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/images.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png"))); // NOI18N
         jLabel6.setText(bundle.getString("Templates")); // NOI18N
         jToolBar2.add(jLabel6);
 
