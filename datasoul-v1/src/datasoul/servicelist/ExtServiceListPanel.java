@@ -320,7 +320,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         toolBar1.setFloatable(false);
         toolBar1.setMinimumSize(new java.awt.Dimension(30, 25));
 
-        jLabel8.setFont(jLabel8.getFont().deriveFont(jLabel8.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel8.setText(bundle.getString("Service_Plan")); // NOI18N
         toolBar1.add(jLabel8);

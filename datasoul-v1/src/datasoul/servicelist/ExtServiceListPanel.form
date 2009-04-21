@@ -381,11 +381,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
-                        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
-                          <FontInfo relative="true">
-                            <Font bold="true" component="jLabel8" property="font" relativeSize="true" size="0"/>
-                          </FontInfo>
-                        </Property>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/datasoul/icons/v2/stock_task.png"/>
                         </Property>
