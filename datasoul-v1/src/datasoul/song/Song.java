@@ -31,13 +31,15 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author Administrador
  */
-public class Song extends TextServiceItem{
+public class Song extends TextServiceItem implements Cloneable {
   
     private String songAuthor="";
     private String chordsComplete="";
@@ -55,6 +57,15 @@ public class Song extends TextServiceItem{
         super();
     }
 
+    public Song getClone(){
+        try {
+            return (Song) this.clone();
+        } catch (CloneNotSupportedException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
     @Override
     protected void registerProperties() {
         super.registerProperties();
@@ -64,7 +75,6 @@ public class Song extends TextServiceItem{
         properties.add("Obs");
         properties.add("Copyright");
         properties.add("SongSource");
-
     }
 
     public void setSongAuthor(String songAuthor){

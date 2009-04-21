@@ -264,8 +264,13 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_btnDeletebtnRemoveMouseClicked
 
     private void btnAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToListActionPerformed
-        for(int item:tableSongList.getSelectedRows())
-            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(item,songColumn));        
+        for(int item:tableSongList.getSelectedRows()){
+            Object obj = tableSongList.getModel().getValueAt(item,songColumn);
+            if (obj instanceof Song){
+                Song s = ((Song)obj).getClone();
+                ServiceListTable.getActiveInstance().addItem(s);
+            }
+        }
     }//GEN-LAST:event_btnAddToListActionPerformed
 
     public void usingInAddSongItemPanel(JFrame frameParent){
