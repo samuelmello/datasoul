@@ -76,12 +76,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ppmFile = new javax.swing.JPopupMenu();
-        actNew = new javax.swing.JMenuItem();
-        actOpen = new javax.swing.JMenuItem();
-        actSave = new javax.swing.JMenuItem();
-        actSaveAs = new javax.swing.JMenuItem();
-        actExport = new javax.swing.JMenuItem();
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddSong = new javax.swing.JMenuItem();
         actAddText = new javax.swing.JMenuItem();
@@ -98,56 +92,14 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         tableServiceList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        btnFile = new javax.swing.JButton();
-
-        actNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        actNew.setText(bundle.getString("New")); // NOI18N
-        actNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actNewActionPerformed(evt);
-            }
-        });
-        ppmFile.add(actNew);
-
-        actOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        actOpen.setText(bundle.getString("Open")); // NOI18N
-        actOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actOpenActionPerformed(evt);
-            }
-        });
-        ppmFile.add(actOpen);
-
-        actSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        actSave.setText(bundle.getString("Save")); // NOI18N
-        actSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actSaveActionPerformed(evt);
-            }
-        });
-        ppmFile.add(actSave);
-
-        actSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
-        actSaveAs.setText(bundle.getString("Save_as")); // NOI18N
-        actSaveAs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actSaveAsActionPerformed(evt);
-            }
-        });
-        ppmFile.add(actSaveAs);
-
-        actExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
-        actExport.setText(bundle.getString("Export")); // NOI18N
-        actExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actExportActionPerformed(evt);
-            }
-        });
-        ppmFile.add(actExport);
+        btnNew = new javax.swing.JButton();
+        btnOpen = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnSaveAs = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -283,25 +235,73 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1.setText(bundle.getString("Service_Plan")); // NOI18N
         jToolBar1.add(jLabel1);
 
-        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jToolBar1.add(jSeparator2);
-
-        btnFile.setText(bundle.getString("File")); // NOI18N
-        btnFile.setBorderPainted(false);
-        btnFile.addActionListener(new java.awt.event.ActionListener() {
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
+        btnNew.setToolTipText("New");
+        btnNew.setFocusable(false);
+        btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFileActionPerformed(evt);
+                btnNewActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnFile);
+        jToolBar1.add(btnNew);
+
+        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
+        btnOpen.setToolTipText("Open");
+        btnOpen.setFocusable(false);
+        btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnOpen);
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
+        btnSave.setToolTipText("Save");
+        btnSave.setFocusable(false);
+        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnSave);
+
+        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
+        btnSaveAs.setToolTipText("Save As");
+        btnSaveAs.setFocusable(false);
+        btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveAsActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnSaveAs);
+
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
+        btnExport.setToolTipText("Export");
+        btnExport.setFocusable(false);
+        btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnExport);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-            .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+            .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -328,31 +328,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         AddSongForm asf = new AddSongForm();
         asf.setVisible(true);
     }//GEN-LAST:event_actAddSongActionPerformed
-
-    private void actExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actExportActionPerformed
-
-        ServiceListExporterPanel p = new ServiceListExporterPanel();
-        p.setLocationRelativeTo(this);
-        p.setVisible(true);
-                
-        
-    }//GEN-LAST:event_actExportActionPerformed
-
-    private void actSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveAsActionPerformed
-        ServiceListTable.getActiveInstance().saveServiceListAs();
-    }//GEN-LAST:event_actSaveAsActionPerformed
-
-    private void actSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actSaveActionPerformed
-        ServiceListTable.getActiveInstance().saveServiceList();
-    }//GEN-LAST:event_actSaveActionPerformed
-
-    private void btnFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFileActionPerformed
-        ppmFile.show(btnFile, 0 /*btnFile.getWidth()-ppmFile.getWidth()*/, btnFile.getHeight());
-    }//GEN-LAST:event_btnFileActionPerformed
-
-    private void actOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actOpenActionPerformed
-        ServiceListTable.getActiveInstance().openServiceList();
-    }//GEN-LAST:event_actOpenActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         
@@ -435,9 +410,27 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         
     }//GEN-LAST:event_actAddContentlessItemActionPerformed
 
-    private void actNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actNewActionPerformed
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         ServiceListTable.getActiveInstance().fileNew();
-    }//GEN-LAST:event_actNewActionPerformed
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+        ServiceListTable.getActiveInstance().openServiceList();
+    }//GEN-LAST:event_btnOpenActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        ServiceListTable.getActiveInstance().saveServiceList();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
+        ServiceListTable.getActiveInstance().saveServiceListAs();
+    }//GEN-LAST:event_btnSaveAsActionPerformed
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        ServiceListExporterPanel p = new ServiceListExporterPanel();
+        p.setLocationRelativeTo(this);
+        p.setVisible(true);
+    }//GEN-LAST:event_btnExportActionPerformed
     
     public void addItem(Object object){
         ((ListTable)tableServiceList.getModel()).addItem(object);
@@ -447,24 +440,21 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JMenuItem actAddContentlessItem;
     private javax.swing.JMenuItem actAddSong;
     private javax.swing.JMenuItem actAddText;
-    private javax.swing.JMenuItem actExport;
     private javax.swing.JMenuItem actImportItem;
-    private javax.swing.JMenuItem actNew;
-    private javax.swing.JMenuItem actOpen;
-    private javax.swing.JMenuItem actSave;
-    private javax.swing.JMenuItem actSaveAs;
     private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnFile;
+    private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnRemove;
+    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu ppmAddItem;
-    private javax.swing.JPopupMenu ppmFile;
     private javax.swing.JScrollPane scroolServiceList;
     private datasoul.util.DnDTable tableServiceList;
     private javax.swing.JToolBar toolBar;
