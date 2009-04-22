@@ -272,7 +272,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar1.setOpaque(false);
 
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnLoad.setText(bundle.getString("Load")); // NOI18N
+        btnLoad.setText(bundle.getString("Open")); // NOI18N
         btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
         btnLoad.setBorderPainted(false);
         btnLoad.setFocusPainted(false);
