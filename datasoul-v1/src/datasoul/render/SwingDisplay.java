@@ -49,7 +49,6 @@ public class SwingDisplay extends javax.swing.JFrame {
         swingDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
         setFocusCycleRoot(false);
