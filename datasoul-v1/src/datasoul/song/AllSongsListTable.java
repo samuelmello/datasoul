@@ -30,6 +30,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import java.util.ArrayList;
 
 /**
  *
@@ -52,42 +53,7 @@ public class AllSongsListTable extends SongListTable{
             
             for(int i=0; i<size;i++){
                 if(files[i].contains(".song")){
-                    File songFile = new File(path + System.getProperty("file.separator") + files[i]);
-                    
-                    Document dom=null;
-                    Node node = null;
-                    Song song;
-                    try {
-                        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                        
-                        //Using factory get an instance of document builder
-                        DocumentBuilder db = dbf.newDocumentBuilder();
-                        
-                        //parse using builder to get DOM representation of the XML file
-                        dom = db.parse(songFile);
-                        
-                        //node = dom.getDocumentElement().getChildNodes().item(0);
-                        node = dom.getElementsByTagName("Song").item(0);
-                        
-                    }catch(Exception e) {
-                        ShowDialog.showReadFileError(songFile, e);
-                    }
-                    
-                    song = new Song();
-                    try {
-                        song.readObject(node);
-                        song.setFilePath(songFile.getPath());
-                    } catch (Exception e) {
-                        ShowDialog.showReadFileError(songFile, e);
-                    }
-                    
-                    // Clean up some fields that don't make sense 
-                    // in the the song list
-                    song.setDuration("0");
-                    song.setNotes("");
-                    song.setTemplate(ConfigObj.getInstance().getTemplateText());
-                    
-                    this.addItem(song);
+                    refreshSong(files[i]);
                 }
             }
             
@@ -96,6 +62,58 @@ public class AllSongsListTable extends SongListTable{
         this.sortByName();
     }
     
+    public void refreshSong(String name){
+        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "songs";
+        File songFile = new File(path + System.getProperty("file.separator") + name);
+
+        Document dom=null;
+        Node node = null;
+        Song song;
+        try {
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+            //Using factory get an instance of document builder
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            //parse using builder to get DOM representation of the XML file
+            dom = db.parse(songFile);
+
+            //node = dom.getDocumentElement().getChildNodes().item(0);
+            node = dom.getElementsByTagName("Song").item(0);
+
+        }catch(Exception e) {
+            ShowDialog.showReadFileError(songFile, e);
+        }
+
+        song = new Song();
+        try {
+            song.readObject(node);
+            song.setFilePath(songFile.getPath());
+        } catch (Exception e) {
+            ShowDialog.showReadFileError(songFile, e);
+        }
+
+        // Clean up some fields that don't make sense 
+        // in the the song list
+        song.setDuration("0");
+        song.setNotes("");
+        song.setTemplate(ConfigObj.getInstance().getTemplateText());
+
+        // If already exists, remove old entry
+        ArrayList<Song> toRemove = new ArrayList<Song>();
+        for (int i=0; i < objectList.size(); i++){
+            Object obj = objectList.get(i);
+            if (obj instanceof Song){
+                if ( ((Song)obj).getTitle().equals(song.getTitle()) ){
+                    toRemove.add((Song)obj);
+                }
+            }
+        }
+        objectList.removeAll(toRemove);
+
+        this.addItem(song);
+    }
+
     public static AllSongsListTable getInstance(){
         if(instance==null){
             instance = new AllSongsListTable();

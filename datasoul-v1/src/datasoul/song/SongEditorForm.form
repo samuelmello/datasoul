@@ -21,18 +21,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" alignment="0" pref="662" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="690" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="605" max="32767" attributes="0"/>
+              <EmptySpace pref="633" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblClone" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="41" max="32767" attributes="0"/>
+                      <Component id="cbUpdateSongLibrary" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="60" max="32767" attributes="0"/>
                       <Component id="btnShowSplit" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnSave" min="-2" max="-2" attributes="0"/>
@@ -49,10 +49,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="fieldName" pref="565" max="32767" attributes="0"/>
-                          <Component id="fieldAuthor" pref="565" max="32767" attributes="0"/>
-                          <Component id="txtCopyright" alignment="0" pref="565" max="32767" attributes="0"/>
-                          <Component id="txtSongSource" alignment="0" pref="565" max="32767" attributes="0"/>
+                          <Component id="fieldName" pref="593" max="32767" attributes="0"/>
+                          <Component id="fieldAuthor" pref="593" max="32767" attributes="0"/>
+                          <Component id="txtCopyright" alignment="0" pref="593" max="32767" attributes="0"/>
+                          <Component id="txtSongSource" alignment="0" pref="593" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -61,7 +61,7 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabSong" pref="638" max="32767" attributes="0"/>
+              <Component id="tabSong" pref="666" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -99,7 +99,7 @@
                   <Component id="btnClose" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnShowSplit" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblClone" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbUpdateSongLibrary" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -149,8 +149,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textSplitPanel1" alignment="0" pref="622" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" pref="622" max="32767" attributes="0"/>
+                  <Component id="textSplitPanel1" alignment="0" pref="650" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="650" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -234,9 +234,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/datasoul/icons/v2/window-close.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="datasoul/internationalize.properties" key="Cancel" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Discard and Close"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseActionPerformed"/>
@@ -245,11 +243,9 @@
     <Component class="javax.swing.JButton" name="btnSave">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/v2/dialog-apply.png"/>
+          <Image iconType="3" name="/datasoul/icons/v2/document-save.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="datasoul/internationalize.properties" key="Apply" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="Save and Close"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
@@ -323,14 +319,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowSplitActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblClone">
+    <Component class="javax.swing.JCheckBox" name="cbUpdateSongLibrary">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
-          <FontInfo relative="true">
-            <Font component="lblClone" italic="true" property="font" relativeSize="true" size="-2"/>
-          </FontInfo>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Changes will affect only the current Service Plan."/>
+        <Property name="text" type="java.lang.String" value="Update Song Library"/>
       </Properties>
     </Component>
   </SubComponents>
