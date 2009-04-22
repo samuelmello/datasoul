@@ -143,7 +143,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
-        jLabel4.setText(bundle.getString("Service_List")); // NOI18N
+        jLabel4.setText("Edit Text");
         jToolBar1.add(jLabel4);
 
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_toggle-info.png"))); // NOI18N
@@ -185,7 +185,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(org.jdesktop.layout.GroupLayout.LEADING, textSplitPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.LEADING, bibleTextPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                    .add(org.jdesktop.layout.GroupLayout.LEADING, bibleTextPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 533, Short.MAX_VALUE))
                 .addContainerGap())
             .add(layout.createSequentialGroup()
                 .addContainerGap()
