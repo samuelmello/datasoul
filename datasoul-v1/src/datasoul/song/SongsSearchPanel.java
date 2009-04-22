@@ -104,6 +104,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         labelString.setText(bundle.getString("Search")); // NOI18N
 
         toolBar.setBorder(null);
+        toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(150, 32));
         toolBar.setOpaque(false);
 
