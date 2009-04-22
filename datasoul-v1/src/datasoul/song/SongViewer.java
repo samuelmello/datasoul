@@ -525,7 +525,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
         );
 
         split1.setLeftComponent(panelSong);
@@ -541,7 +541,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
         );
 
         split1.setRightComponent(panelSongChords);
@@ -561,8 +561,8 @@ public class SongViewer extends javax.swing.JPanel {
         });
         jToolBar2.add(btnExport);
 
-        btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/chordsmanager.png"))); // NOI18N
-        btnChords.setText(bundle.getString("Chords")); // NOI18N
+        btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_midi.png"))); // NOI18N
+        btnChords.setText("Chord Manager");
         btnChords.setBorderPainted(false);
         btnChords.setFocusPainted(false);
         btnChords.addActionListener(new java.awt.event.ActionListener() {
@@ -575,7 +575,7 @@ public class SongViewer extends javax.swing.JPanel {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jToolBar2.add(jSeparator1);
 
-        labelKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/changekey.png"))); // NOI18N
+        labelKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound_small.png"))); // NOI18N
         labelKey.setText(bundle.getString("Key_")); // NOI18N
         jToolBar2.add(labelKey);
 
@@ -603,7 +603,7 @@ public class SongViewer extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
