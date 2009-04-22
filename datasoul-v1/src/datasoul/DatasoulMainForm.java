@@ -73,6 +73,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     GroupLayout helpLayout;
     GroupLayout serviceLayout;
 
+    public static final int FILE_FORMAT_VERSION = 1;
       
     /**
      * Creates new form DatasoulMainForm
@@ -515,47 +516,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     }
         
-    /**
-     * Compare two datasoul versions stamps
-     * compareTo  SHALL use format "X.Y" without trailings
-     * @param version
-     * @param compareTo
-     * @return
-     */
-    public static boolean isVersionOlder(String version, String compareTo){
-        
-        if (version == null){
-            return true;
-        }
-        
-        try{
-            String testv[] = version.split("\\.");
-            String compv[] = compareTo.split("\\.");
-
-            int testmajor = Integer.parseInt(testv[0]);
-            int compmajor = Integer.parseInt(compv[0]);
-            if (testmajor < compmajor){
-                return true;
-            }else if (testmajor > compmajor){
-                return false;
-            }else{
-                // same majors, compare minors
-                
-                int testminor = Integer.parseInt(testv[1]);
-                int compminor = Integer.parseInt(compv[1]);
-                if (testminor < compminor){
-                    return false;
-                }else{
-                    return true;
-                }
-            }
-            
-        }catch(Exception e){
-            return true;
-        }
-    }
-    
-    
     /**
      * @param args the command line arguments
      */

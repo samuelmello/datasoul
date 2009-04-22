@@ -192,8 +192,7 @@ public class DisplayTemplate extends AttributedObject {
         // upgrade from older versions
         
         // version up to 1.2 had fixed resolution at 640x480
-        System.out.println("VERSION: "+getDatasoulFileVersion());
-        if (DatasoulMainForm.isVersionOlder(getDatasoulFileVersion(), "1.3")){
+        if (getDatasoulFileVersion() < 1){
             setResolution(640, 480);
         }
         setDatasoulFileVersion( DatasoulMainForm.getVersion() );

@@ -44,12 +44,13 @@ import org.w3c.dom.Node;
 public abstract class SerializableObject  implements Transferable, SerializableItf{
 
     protected ArrayList<String> properties;
+
     static public DataFlavor serializableObjectFlavor = new DataFlavor(datasoul.util.SerializableObject.class,"serializableObjectFlavor");;
     
     // we hold just one properties array instance for each class
     static private HashMap<Class, ArrayList<String>> propertiesTable = new HashMap<Class, ArrayList<String>>();
 
-    private String datasoulFileVersion;
+    private int datasoulFileVersion;
     
     /** Creates a new instance of SerializableObject */
     public SerializableObject() {
@@ -67,7 +68,6 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     }
 
     protected void registerProperties(){
-        properties.add("DatasoulFileVersion");
     }
     
     
@@ -87,8 +87,14 @@ public abstract class SerializableObject  implements Transferable, SerializableI
         Node node; 
         String paramName;
         Object paramValue;
-        
-         for(int i=0;i<properties.size();i++){
+
+        // Add file version
+        node = doc.createElement("DatasoulFileVersion");
+        node.setTextContent( Integer.toString(DatasoulMainForm.FILE_FORMAT_VERSION) );
+        nodeOut.appendChild(node);
+
+        // Add properties
+        for(int i=0;i<properties.size();i++){
             paramName = properties.get(i);
             
             paramValue = this.getClass().getMethod("get"+paramName).invoke(this);         
@@ -146,12 +152,23 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     return null;
   }    
 
-    public String getDatasoulFileVersion(){
+    public int getDatasoulFileVersion(){
         return datasoulFileVersion;
     }
     
     public void setDatasoulFileVersion(String s){
-        this.datasoulFileVersion = s;
+        datasoulFileVersion = 0;
+        try{
+            if (s != null && s.length() > 0 ){
+                if (s.equals("1.2")){
+                    datasoulFileVersion = 0;
+                }else{
+                    datasoulFileVersion = Integer.parseInt(s);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
   
 
