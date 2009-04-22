@@ -280,7 +280,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnServiceList);
 
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound.png"))); // NOI18N
-        btnSongs.setText(bundle.getString("Songs")); // NOI18N
+        btnSongs.setText("Song Library");
         btnSongs.setToolTipText(bundle.getString("Song_manipulation_view")); // NOI18N
         btnSongs.setBorderPainted(false);
         btnSongs.setFocusPainted(false);
