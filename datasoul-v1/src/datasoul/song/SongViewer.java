@@ -562,7 +562,7 @@ public class SongViewer extends javax.swing.JPanel {
         jToolBar2.add(btnExport);
 
         btnChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_midi.png"))); // NOI18N
-        btnChords.setText("Chord Manager");
+        btnChords.setText("Chords Manager");
         btnChords.setBorderPainted(false);
         btnChords.setFocusPainted(false);
         btnChords.addActionListener(new java.awt.event.ActionListener() {
