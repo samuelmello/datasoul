@@ -605,6 +605,7 @@ public class SongViewer extends javax.swing.JPanel {
 
     private void btnChordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChordsActionPerformed
         ChordsManagerFrame cmf = new ChordsManagerFrame();
+        cmf.setLocationRelativeTo(this);
         cmf.setVisible(true);
     }//GEN-LAST:event_btnChordsActionPerformed
 

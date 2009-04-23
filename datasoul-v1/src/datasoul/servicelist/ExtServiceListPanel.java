@@ -585,6 +585,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             sef.setVisible(true);
         }else if(item instanceof TextServiceItem){
             TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
+            tsief.setLocationRelativeTo(this);
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
             String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), item.getTitle());
@@ -635,11 +636,13 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
     private void actAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddSongActionPerformed
         AddSongForm asf = new AddSongForm();
+        asf.setLocationRelativeTo(this);
         asf.setVisible(true);
     }//GEN-LAST:event_actAddSongActionPerformed
 
     private void actAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddTextActionPerformed
         TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
+        tsief.setLocationRelativeTo(this);
         tsief.setVisible(true);
     }//GEN-LAST:event_actAddTextActionPerformed
 
@@ -655,6 +658,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
     private void actImportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportItemActionPerformed
         ImportServiceItemForm isif = new ImportServiceItemForm();
+        isif.setLocationRelativeTo(this);
         isif.setVisible(true);
     }//GEN-LAST:event_actImportItemActionPerformed
 

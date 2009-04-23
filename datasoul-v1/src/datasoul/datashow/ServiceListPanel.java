@@ -312,16 +312,19 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
     private void actImportItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportItemActionPerformed
         ImportServiceItemForm isif = new ImportServiceItemForm();
+        isif.setLocationRelativeTo(this);
         isif.setVisible(true);
     }//GEN-LAST:event_actImportItemActionPerformed
 
     private void actAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddTextActionPerformed
         TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
+        tsief.setLocationRelativeTo(this);
         tsief.setVisible(true);
     }//GEN-LAST:event_actAddTextActionPerformed
 
     private void actAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddSongActionPerformed
         AddSongForm asf = new AddSongForm();
+        asf.setLocationRelativeTo(this);
         asf.setVisible(true);
     }//GEN-LAST:event_actAddSongActionPerformed
 
@@ -337,6 +340,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             sef.setVisible(true);
         }else if(item instanceof TextServiceItem){
             TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
+            tsief.setLocationRelativeTo(this);
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
             String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());

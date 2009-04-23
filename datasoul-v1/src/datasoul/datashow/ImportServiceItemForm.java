@@ -43,7 +43,6 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
         setColorRender();
-        center();
     }
     
     private void setColorRender(){
@@ -56,12 +55,6 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         this.tableServiceList.getColumnModel().getColumn(2).setCellRenderer(cr);        
         this.tableServiceList.getColumnModel().getColumn(2).setPreferredWidth(40);
         
-    }
-    
-    public void center(){
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        Rectangle frame = getBounds();
-        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
     /** This method is called from within the constructor to

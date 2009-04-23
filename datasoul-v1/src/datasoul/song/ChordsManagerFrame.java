@@ -54,16 +54,8 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         StyleContext sc = new StyleContext();
         Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
         chordShapeStyle = sc.addStyle("chordShapeStyle",null);        
-        
-        this.center();
     }
 
-    public void center(){
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        Rectangle frame = getBounds();
-        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
-    }
-    
     public SongsPanel getObjectManager() {
         return objectManager;
     }
@@ -292,11 +284,13 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         ChordEditorForm cef = new ChordEditorForm(chordsDB, (Chord)tableChordsList.getModel().getValueAt(tableChordsList.getSelectedRow(),0));
+        cef.setLocationRelativeTo(this);
         cef.setVisible(true);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         ChordEditorForm cef = new ChordEditorForm(chordsDB, null);
+        cef.setLocationRelativeTo(this);
         cef.setVisible(true);
     }//GEN-LAST:event_btnNewActionPerformed
     

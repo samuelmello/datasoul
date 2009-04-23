@@ -67,16 +67,8 @@ public class ChordEditorForm extends javax.swing.JFrame {
             this.chordShapePanel6.setShape(shapes.get(5));
         
         this.fieldName.setText(this.chord.getName());
-        
-        this.center();
     }
 
-    public void center(){
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        Rectangle frame = getBounds();
-        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
-    }
-    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

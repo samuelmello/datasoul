@@ -38,8 +38,6 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     public AddSongForm() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
-
-        this.center();
         
         this.songsSearchPanel.usingInAddSongItemPanel(this);
         
@@ -48,13 +46,6 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
         this.songsSearchPanel.setSourceView(ObjectManager.VIEW_ADD_SONGS);
         
     }
-
-    public void center(){
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        Rectangle frame = getBounds();
-        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
-    }
-    
     
     /** This method is called from within the constructor to
      * initialize the form.

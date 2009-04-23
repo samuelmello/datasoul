@@ -57,8 +57,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         this.textText.setText(textServiceItem.getText());
 
-        this.center();
-
         highlightlyric(this.textText);
         textText.setCaretPosition(0);
 
@@ -69,12 +67,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
 
-    public void center(){
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-        Rectangle frame = getBounds();
-        setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
-    }
-    
     private void actualizeValues(){
         this.textServiceItem.setTitle(this.fieldTitle.getText());
         
