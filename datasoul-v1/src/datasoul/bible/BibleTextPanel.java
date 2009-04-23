@@ -85,6 +85,17 @@ public class BibleTextPanel extends javax.swing.JPanel {
             }
         }
 
+        boolean hasAny = installed.size() > 0;
+
+        cbBibles.setEnabled(hasAny);
+        cbBook.setEnabled(hasAny);
+        cbChapter.setEnabled(hasAny);
+        cbHowToSplit.setEnabled(hasAny);
+        cbRefType.setEnabled(hasAny);
+        cbVersesFrom.setEnabled(hasAny);
+        cbVersesTo.setEnabled(hasAny);
+        btnLoad.setEnabled(hasAny);
+
     }
 
 
