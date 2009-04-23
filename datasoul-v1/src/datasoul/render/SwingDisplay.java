@@ -20,6 +20,7 @@
 
 package datasoul.render;
 
+import datasoul.DatasoulMainForm;
 import java.awt.Composite;
 import java.awt.image.BufferedImage;
 
@@ -35,7 +36,7 @@ public class SwingDisplay extends javax.swing.JFrame {
      */
     public SwingDisplay() {
         initComponents();
-        
+        DatasoulMainForm.setDatasoulIcon(this);
     }
     
     /** This method is called from within the constructor to

@@ -6,6 +6,7 @@
 
 package datasoul.servicelist;
 
+import datasoul.DatasoulMainForm;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
 import datasoul.song.Song;
@@ -21,6 +22,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     /** Creates new form ServiceListExporterPanel */
     public ServiceListExporterPanel() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
     }
     
     private Song singleSong = null;

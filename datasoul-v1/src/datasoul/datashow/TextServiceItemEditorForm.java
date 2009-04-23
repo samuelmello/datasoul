@@ -20,6 +20,7 @@
 
 package datasoul.datashow;
 
+import datasoul.DatasoulMainForm;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -42,6 +43,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     /** Creates new form EditTextItem */
     public TextServiceItemEditorForm(TextServiceItem textServiceItem) {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
         
         this.textServiceItem = textServiceItem;
     

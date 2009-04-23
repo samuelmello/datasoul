@@ -20,6 +20,7 @@
 
 package datasoul.util;
 
+import datasoul.DatasoulMainForm;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,7 +40,7 @@ public class Splash extends javax.swing.JFrame {
 //        initComponents();
         init();
         center();
-        
+        DatasoulMainForm.setDatasoulIcon(this);
     }
 
     private void init() {

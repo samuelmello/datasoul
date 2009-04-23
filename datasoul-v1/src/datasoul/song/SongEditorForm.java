@@ -20,6 +20,7 @@
 
 package datasoul.song;
 
+import datasoul.DatasoulMainForm;
 import datasoul.util.*;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,6 +46,7 @@ public class SongEditorForm extends javax.swing.JFrame {
      */
     public SongEditorForm(File file) {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
         
         Document dom=null;
         Node node=null;
@@ -89,6 +91,7 @@ public class SongEditorForm extends javax.swing.JFrame {
      */
     public SongEditorForm(Song songIn) {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
 
         song = songIn;
         this.setTitle(songIn.getFileName());
@@ -104,6 +107,7 @@ public class SongEditorForm extends javax.swing.JFrame {
     
     public SongEditorForm() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
 
         song = new Song();
 

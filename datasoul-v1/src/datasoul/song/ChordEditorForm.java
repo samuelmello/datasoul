@@ -20,6 +20,7 @@
 
 package datasoul.song;
 
+import datasoul.DatasoulMainForm;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -38,6 +39,7 @@ public class ChordEditorForm extends javax.swing.JFrame {
     
     /** Creates new form ChordEditorFrame */
     public ChordEditorForm(ChordsDB chordsDB, Chord chord) {
+        DatasoulMainForm.setDatasoulIcon(this);
         if(chord==null){
             this.chord = new Chord();            
             isNewChord = true;

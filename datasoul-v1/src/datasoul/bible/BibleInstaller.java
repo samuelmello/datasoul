@@ -11,6 +11,7 @@
 
 package datasoul.bible;
 
+import datasoul.DatasoulMainForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.crosswire.jsword.book.*;
@@ -32,7 +33,8 @@ public class BibleInstaller extends javax.swing.JFrame {
     /** Creates new form BibleInstaller */
     public BibleInstaller() {
         initComponents();
-
+        DatasoulMainForm.setDatasoulIcon(this);
+        
         Logger.getLogger("").setLevel(Level.OFF);
 
         // An installer knows how to install books

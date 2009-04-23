@@ -20,6 +20,7 @@
 
 package datasoul.datashow;
 
+import datasoul.DatasoulMainForm;
 import datasoul.util.ShowDialog;
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -40,7 +41,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
     /** Creates new form ImportServiceItemForm */
     public ImportServiceItemForm() {
         initComponents();
-
+        DatasoulMainForm.setDatasoulIcon(this);
         setColorRender();
         center();
     }

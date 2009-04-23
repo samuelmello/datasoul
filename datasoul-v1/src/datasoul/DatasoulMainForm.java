@@ -51,6 +51,7 @@ import javax.swing.UIManager;
 import org.jdesktop.layout.GroupLayout;
 import org.jdesktop.layout.LayoutStyle;
 import java.awt.GraphicsEnvironment;
+import javax.swing.JFrame;
 
 /**
  *
@@ -83,10 +84,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         initComponents();
         
         this.setTitle("Datasoul - "+getVersion());
+        DatasoulMainForm.setDatasoulIcon(this);
         
         ObjectManager.getInstance().setDatasoulMainForm(this);
         
-        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/datasoul.gif")).getImage());
         
         // Initialize datashow Layout
         datashowLayout = new GroupLayout(getContentPane());
@@ -182,7 +183,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         showPanel(ObjectManager.VIEW_SERVICE);
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
     }
-    
+
+    public static void setDatasoulIcon(JFrame frame){
+        frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.gif")).getImage());
+    }
+
     
     public void showPanel(int panel){
         
@@ -273,9 +278,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnServiceList.setBorderPainted(false);
         btnServiceList.setFocusPainted(false);
         btnServiceList.setFocusable(false);
-        btnServiceList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnServiceListMouseClicked(evt);
+        btnServiceList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServiceListActionPerformed(evt);
             }
         });
         toolBarMain.add(btnServiceList);
@@ -285,9 +290,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnSongs.setToolTipText(bundle.getString("Song_manipulation_view")); // NOI18N
         btnSongs.setBorderPainted(false);
         btnSongs.setFocusPainted(false);
-        btnSongs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSongsMouseClicked(evt);
+        btnSongs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSongsActionPerformed(evt);
             }
         });
         toolBarMain.add(btnSongs);
@@ -300,6 +305,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDatashowMouseClicked(evt);
+            }
+        });
+        btnDatashow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatashowActionPerformed(evt);
             }
         });
         toolBarMain.add(btnDatashow);
@@ -393,13 +403,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
-    private void btnSongsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSongsMouseClicked
-    
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SONGS);        
-        showPanel(ObjectManager.VIEW_SONGS);
-  
-    }//GEN-LAST:event_btnSongsMouseClicked
-
     private void btnDatashowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatashowMouseClicked
         
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
@@ -407,12 +410,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnDatashowMouseClicked
 
-    private void btnServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiceListMouseClicked
+    private void btnServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiceListActionPerformed
+    }//GEN-LAST:event_btnServiceListActionPerformed
 
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);        
+    private void btnSongsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSongsActionPerformed
+    }//GEN-LAST:event_btnSongsActionPerformed
+
+    private void btnDatashowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatashowActionPerformed
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);
         showPanel(ObjectManager.VIEW_SERVICE); 
-        
-}//GEN-LAST:event_btnServiceListMouseClicked
+    }//GEN-LAST:event_btnDatashowActionPerformed
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();

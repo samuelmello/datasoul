@@ -20,6 +20,7 @@
 
 package datasoul.song;
 
+import datasoul.DatasoulMainForm;
 import datasoul.util.ObjectManager;
 import datasoul.datashow.ServiceListTable;
 import java.awt.Dimension;
@@ -36,6 +37,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     /** Creates new form AddSongForm */
     public AddSongForm() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
 
         this.center();
         
