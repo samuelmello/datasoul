@@ -404,16 +404,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
     private void btnDatashowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatashowMouseClicked
-        
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
         showPanel(ObjectManager.VIEW_PROJECTOR);
-        
     }//GEN-LAST:event_btnDatashowMouseClicked
 
     private void btnServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiceListActionPerformed
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);        
+        showPanel(ObjectManager.VIEW_SERVICE);
     }//GEN-LAST:event_btnServiceListActionPerformed
 
     private void btnSongsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSongsActionPerformed
+        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SONGS);
+        showPanel(ObjectManager.VIEW_SONGS);
     }//GEN-LAST:event_btnSongsActionPerformed
 
     private void btnDatashowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatashowActionPerformed
