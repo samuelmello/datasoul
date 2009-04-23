@@ -112,7 +112,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         btnNew = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         btnClose = new javax.swing.JButton();
         split1 = new javax.swing.JSplitPane();
         scroolChordShapesPanel = new javax.swing.JScrollPane();
@@ -159,9 +158,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnDelete);
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jToolBar1.add(jSeparator1);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
@@ -312,7 +308,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnNew;
     private javax.swing.JTextField fieldString;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelString;
     private javax.swing.JEditorPane panelChordShapes;

@@ -173,7 +173,6 @@ public class SongEditorForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel4 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtCopyright = new javax.swing.JTextField();
@@ -259,9 +258,6 @@ public class SongEditorForm extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         jLabel4.setText(bundle.getString("Edit_Song")); // NOI18N
         jToolBar1.add(jLabel4);
-
-        jSeparator2.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.light"));
-        jToolBar1.add(jSeparator2);
 
         jLabel5.setText(bundle.getString("Copyright")); // NOI18N
 
@@ -455,7 +451,6 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelAuthor;
     private javax.swing.JLabel labelName;

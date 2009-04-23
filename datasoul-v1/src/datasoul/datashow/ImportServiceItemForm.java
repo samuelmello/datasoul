@@ -73,10 +73,10 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
         scroolServiceList = new javax.swing.JScrollPane();
         tableServiceList = new datasoul.util.DnDTable();
-        btnImport = new javax.swing.JButton();
-        btnOpen = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnOpen = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -100,32 +100,6 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         });
         scroolServiceList.setViewportView(tableServiceList);
 
-        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        btnImport.setText(bundle.getString("Import")); // NOI18N
-        btnImport.setToolTipText(bundle.getString("Import_selected_item_to_actual_service_list")); // NOI18N
-        btnImport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImportActionPerformed(evt);
-            }
-        });
-
-        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnOpen.setText(bundle.getString("Open")); // NOI18N
-        btnOpen.setToolTipText(bundle.getString("Open_service_list_...")); // NOI18N
-        btnOpen.setMaximumSize(new java.awt.Dimension(89, 29));
-        btnOpen.setMinimumSize(new java.awt.Dimension(89, 29));
-        btnOpen.setPreferredSize(new java.awt.Dimension(89, 29));
-        btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOpenMouseClicked(evt);
-            }
-        });
-        btnOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
-            }
-        });
-
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
         btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
@@ -137,56 +111,66 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
         jLabel1.setText(bundle.getString("Select_another_service_list_to_import_an_item")); // NOI18N
 
+        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
+        btnOpen.setText("Open");
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
+        btnImport.setText("Import");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(btnOpen, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnImport)
-                .add(50, 50, 50)
-                .add(btnClose)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(btnOpen)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnImport)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 327, Short.MAX_VALUE)
+                        .add(btnClose))
+                    .add(layout.createSequentialGroup()
+                        .add(12, 12, 12)
+                        .add(jLabel1))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)))
                 .addContainerGap())
-            .add(layout.createSequentialGroup()
-                .add(12, 12, 12)
-                .add(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                .add(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .add(20, 20, 20)
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 261, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(13, 13, 13)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, btnOpen, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                        .add(btnImport, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(btnClose, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(btnClose)
+                    .add(btnOpen)
+                    .add(btnImport))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
-        for(int item:tableServiceList.getSelectedRows())
-            ServiceListTable.getActiveInstance().addItem(tableServiceList.getModel().getValueAt(item,0));        
-    }//GEN-LAST:event_btnImportActionPerformed
-
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
             public boolean accept(File f) {
@@ -199,7 +183,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 }
                 return false;
             }
-            
+
             public String getDescription() {
                 return ".servicelist";
             }
@@ -208,43 +192,44 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         fc.setCurrentDirectory(dir);
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
             String fileName = fc.getSelectedFile().getPath();
-            
+
             File file = new File(fileName);
-            
+
             Document dom=null;
             Node node = null;
             ServiceListTable slt;
             try {
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-                
+
                 //Using factory get an instance of document builder
                 DocumentBuilder db = dbf.newDocumentBuilder();
-                
+
                 //parse using builder to get DOM representation of the XML file
                 dom = db.parse(file);
-                
+
                 //node = dom.getDocumentElement().getChildNodes().item(0);
                 node = dom.getElementsByTagName("ServiceListTable").item(0);
-                
+
             }catch(Exception e) {
                 ShowDialog.showReadFileError(file, e);
             }
-            
+
             slt = new ServiceListTable();
             try {
                 slt.readObject(node);
             } catch (Exception e) {
                 ShowDialog.showReadFileError(file, e);
             }
-            
+
             tableServiceList.setModel(slt);
             setColorRender();
         }
-    }//GEN-LAST:event_btnOpenMouseClicked
-
-    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnOpenActionPerformed
+
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        for(int item:tableServiceList.getSelectedRows())
+            ServiceListTable.getActiveInstance().addItem(tableServiceList.getModel().getValueAt(item,0));        
+    }//GEN-LAST:event_btnImportActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;

@@ -508,7 +508,6 @@ public class SongViewer extends javax.swing.JPanel {
         jToolBar2 = new javax.swing.JToolBar();
         btnExport = new javax.swing.JButton();
         btnChords = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         labelKey = new javax.swing.JLabel();
         comboKey = new javax.swing.JComboBox();
 
@@ -525,7 +524,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
         );
 
         split1.setLeftComponent(panelSong);
@@ -541,7 +540,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
         );
 
         split1.setRightComponent(panelSongChords);
@@ -572,9 +571,6 @@ public class SongViewer extends javax.swing.JPanel {
         });
         jToolBar2.add(btnChords);
 
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jToolBar2.add(jSeparator1);
-
         labelKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound_small.png"))); // NOI18N
         labelKey.setText(bundle.getString("Key_")); // NOI18N
         jToolBar2.add(labelKey);
@@ -603,7 +599,7 @@ public class SongViewer extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -635,7 +631,6 @@ public class SongViewer extends javax.swing.JPanel {
     private javax.swing.JComboBox comboKey;
     private javax.swing.JEditorPane editorSong;
     private javax.swing.JEditorPane editorSongChords;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labelKey;
     private javax.swing.JPanel panelSong;

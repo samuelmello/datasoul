@@ -84,7 +84,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         tableSongList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
 
         fieldString.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,9 +201,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound_small2.png"))); // NOI18N
         jLabel1.setText("Song Library");
         jToolBar1.add(jLabel1);
-
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        jToolBar1.add(jSeparator1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -389,7 +385,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnNew;
     private javax.swing.JTextField fieldString;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelString;
     private javax.swing.JScrollPane scroolSongList;

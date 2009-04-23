@@ -54,8 +54,10 @@ public class TextSplitPanel extends javax.swing.JPanel {
         cbMaxSlideLines.setSelected(true);
         cbMaxSlideLines.setText("Split in slides of");
 
+        txtMaxSlideLines.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtMaxSlideLines.setText("5");
 
+        txtMaxLenght.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtMaxLenght.setText("80");
 
         btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_view-details.png"))); // NOI18N
@@ -77,19 +79,17 @@ public class TextSplitPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(cbMaxLenght)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(txtMaxLenght, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(4, 4, 4)
-                        .add(jLabel2))
-                    .add(layout.createSequentialGroup()
-                        .add(cbMaxSlideLines)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(txtMaxSlideLines, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(4, 4, 4)
-                        .add(jLabel1)))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 149, Short.MAX_VALUE)
+                    .add(cbMaxLenght)
+                    .add(cbMaxSlideLines))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(txtMaxLenght)
+                    .add(txtMaxSlideLines, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jLabel1)
+                    .add(jLabel2))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 130, Short.MAX_VALUE)
                 .add(btnOk))
         );
         layout.setVerticalGroup(

@@ -46,8 +46,7 @@ public class HelpAbout extends javax.swing.JPanel {
         lblVersion = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -60,13 +59,8 @@ public class HelpAbout extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("datasoul.sourceforge.net");
 
-        jTextArea1.setColumns(25);
-        jTextArea1.setEditable(false);
-        jTextArea1.setRows(11);
-        jTextArea1.setText("Samuel Mello \nsvmello@users.sourceforge.net\nLead Developer\n\nEduardo Schnell \neduschnell@users.sourceforge.net\nLead Developer\n\nBastian Germann\nbgermann@users.sourceforge.net\nGerman Translation");
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jPanel1.add(jScrollPane1);
+        jLabel2.setText("<html><center>\nSamuel Mello <br>\nsvmello@users.sourceforge.net<br>\nLead Developer<br>\n<br>\nEduardo Schnell <br>\neduschnell@users.sourceforge.net<br>\nLead Developer<br>\n<br>\nBastian Germann<br>\nbgermann@users.sourceforge.net<br>\nGerman Translation<br>");
+        jPanel1.add(jLabel2);
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_people.png"))); // NOI18N
@@ -77,11 +71,11 @@ public class HelpAbout extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblVersion, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 496, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, lblVersion, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1316, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -103,11 +97,10 @@ public class HelpAbout extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblVersion;
     // End of variables declaration//GEN-END:variables
     

@@ -83,7 +83,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         actImportItem = new javax.swing.JMenuItem();
         toolBar = new javax.swing.JToolBar();
         btnAddWizard = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
@@ -153,9 +152,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
         toolBar.add(btnAddWizard);
-
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        toolBar.add(jSeparator1);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-remove.png"))); // NOI18N
         btnRemove.setText(bundle.getString("Delete")); // NOI18N
@@ -452,7 +448,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu ppmAddItem;
     private javax.swing.JScrollPane scroolServiceList;

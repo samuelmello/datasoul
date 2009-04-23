@@ -91,7 +91,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         tableServiceList = new datasoul.util.DnDTable();
         toolBar = new javax.swing.JToolBar();
         btnAddWizard = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
         btnRemove = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
@@ -102,7 +101,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtMinutes = new javax.swing.JTextField();
         toolBar1 = new javax.swing.JToolBar();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -219,9 +217,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         });
         toolBar.add(btnAddWizard);
 
-        jSeparator1.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        toolBar.add(jSeparator1);
-
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-remove.png"))); // NOI18N
         btnRemove.setText(bundle.getString("Delete")); // NOI18N
         btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
@@ -323,9 +318,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel8.setText(bundle.getString("Service_Plan")); // NOI18N
         toolBar1.add(jLabel8);
-
-        jSeparator3.setForeground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        toolBar1.add(jSeparator3);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
@@ -731,8 +723,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;

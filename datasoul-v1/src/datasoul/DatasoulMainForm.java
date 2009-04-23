@@ -323,8 +323,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnConfig.setToolTipText(bundle.getString("Configuration_view")); // NOI18N
         btnConfig.setBorderPainted(false);
         btnConfig.setFocusPainted(false);
-        btnConfig.setMaximumSize(new java.awt.Dimension(88, 44));
-        btnConfig.setMinimumSize(new java.awt.Dimension(88, 44));
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfigActionPerformed(evt);
@@ -348,8 +346,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnClose.setToolTipText(bundle.getString("Close_the_program")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.setFocusPainted(false);
-        btnClose.setMaximumSize(new java.awt.Dimension(88, 44));
-        btnClose.setMinimumSize(new java.awt.Dimension(88, 44));
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);

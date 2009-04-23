@@ -15,11 +15,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" alignment="1" pref="496" max="32767" attributes="0"/>
-          <Component id="lblVersion" alignment="1" pref="496" max="32767" attributes="0"/>
-          <Component id="jLabel3" alignment="1" pref="496" max="32767" attributes="0"/>
-          <Component id="jLabel4" alignment="1" pref="496" max="32767" attributes="0"/>
-          <Component id="jPanel1" alignment="1" pref="496" max="32767" attributes="0"/>
+          <Component id="jLabel1" alignment="1" pref="1316" max="32767" attributes="0"/>
+          <Component id="lblVersion" alignment="1" pref="1316" max="32767" attributes="0"/>
+          <Component id="jLabel3" alignment="1" pref="1316" max="32767" attributes="0"/>
+          <Component id="jLabel4" alignment="1" pref="1316" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" pref="1316" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -68,23 +68,11 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
-              <Properties>
-                <Property name="columns" type="int" value="25"/>
-                <Property name="editable" type="boolean" value="false"/>
-                <Property name="rows" type="int" value="11"/>
-                <Property name="text" type="java.lang.String" value="Samuel Mello &#xa;svmello@users.sourceforge.net&#xa;Lead Developer&#xa;&#xa;Eduardo Schnell &#xa;eduschnell@users.sourceforge.net&#xa;Lead Developer&#xa;&#xa;Bastian Germann&#xa;bgermann@users.sourceforge.net&#xa;German Translation"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;&#xa;Samuel Mello &lt;br&gt;&#xa;svmello@users.sourceforge.net&lt;br&gt;&#xa;Lead Developer&lt;br&gt;&#xa;&lt;br&gt;&#xa;Eduardo Schnell &lt;br&gt;&#xa;eduschnell@users.sourceforge.net&lt;br&gt;&#xa;Lead Developer&lt;br&gt;&#xa;&lt;br&gt;&#xa;Bastian Germann&lt;br&gt;&#xa;bgermann@users.sourceforge.net&lt;br&gt;&#xa;German Translation&lt;br&gt;"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel4">
