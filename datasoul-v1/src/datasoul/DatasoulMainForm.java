@@ -185,7 +185,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
     public static void setDatasoulIcon(JFrame frame){
-        frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.gif")).getImage());
+        frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
     
