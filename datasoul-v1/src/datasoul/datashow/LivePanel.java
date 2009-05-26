@@ -49,8 +49,11 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         //cm.saveTransitionImage();
         cm.setTemplateLive(serviceItem.getTemplate());
         cm.setTitleLive(serviceItem.getTitle());
-        if(serviceItem instanceof Song)
+        if(serviceItem instanceof Song) {
             cm.setSongAuthorLive( ((Song)serviceItem).getSongAuthor() );
+            cm.setSongSourceLive( ((Song)serviceItem).getSongSource() );
+            cm.setCopyrightLive( ((Song)serviceItem).getCopyright() );
+        }
         this.serviceItemTable1.setServiceItem(serviceItem);
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );

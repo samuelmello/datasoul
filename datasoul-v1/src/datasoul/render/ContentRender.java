@@ -56,6 +56,10 @@ public abstract class ContentRender {
     private boolean alertChanged;
     private String songAuthor;
     private boolean songAuthorChanged;
+    private String copyright;
+    private boolean copyrightChanged;
+    private String songSource;
+    private boolean songSourceChanged;
     private DisplayTemplate alertTemplate;
     private boolean alertTemplateChanged;
     private boolean alertActive;
@@ -114,6 +118,24 @@ public abstract class ContentRender {
     public void setSongAuthor(String songAuthor) {
         this.songAuthor = songAuthor;
         this.songAuthorChanged = true;
+    }
+    
+    public String getCopyright() {
+        return copyright;
+    }
+    
+    public void setCopyright(String copyright) {
+        this.copyright = copyright;
+        this.copyrightChanged = true;
+    }
+    
+    public String getSongSource() {
+        return songSource;
+    }
+    
+    public void setSongSource(String songSource) {
+        this.songSource = songSource;
+        this.songSourceChanged = true;
     }
     
     public String getSlide() {
@@ -325,6 +347,16 @@ public abstract class ContentRender {
                                 needUpdate = true;
                                 continue;
                             }
+                            if ( (templateChanged || copyrightChanged) && content == TextTemplateItem.CONTENT_COPYRIGHT) {
+                                ((TextTemplateItem)t).setText(copyright);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ( (templateChanged || songSourceChanged) && content == TextTemplateItem.CONTENT_SONGSOURCE) {
+                                ((TextTemplateItem)t).setText(songSource);
+                                needUpdate = true;
+                                continue;
+                            }
                         }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                             ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
                             ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
@@ -374,6 +406,16 @@ public abstract class ContentRender {
                             needUpdate = true;
                             continue;
                         }
+                        if ( copyrightChanged && content == TextTemplateItem.CONTENT_COPYRIGHT) {
+                            ((TextTemplateItem)t).setText(copyright);
+                            needUpdate = true;
+                            continue;
+                        }
+                        if ( songSourceChanged && content == TextTemplateItem.CONTENT_SONGSOURCE) {
+                            ((TextTemplateItem)t).setText(songSource);
+                            needUpdate = true;
+                            continue;
+                        }
                     }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
                         ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
                         ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
@@ -392,6 +434,8 @@ public abstract class ContentRender {
             timerChanged = false;
             alertChanged = false;
             songAuthorChanged = false;
+            copyrightChanged = false;
+            songSourceChanged = false;
             showHideNeedUpdate = false;
         }
             

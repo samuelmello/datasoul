@@ -108,6 +108,18 @@ public class ContentManager {
             r.setSongAuthor(songAuthor);
         }
     }
+
+    public void setSongSourceLive(String songSource){
+        for (ContentRender r : liveRenderList){
+            r.setSongSource(songSource);
+        }
+    }
+    
+    public void setCopyrightLive(String copyright){
+        for (ContentRender r : liveRenderList){
+            r.setCopyright(copyright);
+        }
+    }
     
     public void setTemplateLive(String template){
         for (ContentRender r : mainRenderList){
@@ -174,6 +186,18 @@ public class ContentManager {
     public void setSongAuthorPreview(String songAuthor){
         for (ContentRender r : previewRenderList){
             r.setSongAuthor(songAuthor);
+        }
+    }
+    
+    public void setSongSourcePreview(String songSource){
+        for (ContentRender r : previewRenderList){
+            r.setSongSource(songSource);
+        }
+    }
+    
+    public void setCopyrightPreview(String copyright){
+        for (ContentRender r : previewRenderList){
+            r.setCopyright(copyright);
         }
     }
     

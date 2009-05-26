@@ -47,8 +47,11 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         serviceItemTable1.setServiceItem(serviceItem);
         cm.setSlidePreview( serviceItemTable1.getSlideText() );
         cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
-        if(serviceItem instanceof Song)
+        if(serviceItem instanceof Song){
             cm.setSongAuthorPreview( ((Song)serviceItem).getSongAuthor() );
+            cm.setSongSourcePreview( ((Song)serviceItem).getSongSource() );
+            cm.setCopyrightPreview( ((Song)serviceItem).getCopyright() );
+        }
         cm.updatePreview();
          
     }

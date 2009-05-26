@@ -115,8 +115,10 @@ public class TextTemplateItem extends TemplateItem {
     public static final int CONTENT_TIMER = 4;//"Timer";
     public static final int CONTENT_STATIC = 5;//"Static";
     public static final int CONTENT_ALERT = 6;//"Alert";
-    public static final int CONTENT_SONGAUTHOR = 7;//"Author";    
-    public static final String[] CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Next_Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Clock"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Timer"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alert"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Song_Author")};
+    public static final int CONTENT_SONGAUTHOR = 7;//"Author";
+    public static final int CONTENT_COPYRIGHT = 8;//"Copyright";
+    public static final int CONTENT_SONGSOURCE = 9;//"Source";
+    public static final String[] CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Next_Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Clock"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Timer"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alert"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Song_Author"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Copyright"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Source")};
     
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";
