@@ -64,6 +64,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
 
+    public void setBibleVisible(boolean b){
+        btnShowBible.setSelected(b);
+        bibleTextPanel1.setVisible(btnShowBible.isSelected());
+    }
+
     private void updateValues(){
         this.textServiceItem.setTitle(this.fieldTitle.getText());
         

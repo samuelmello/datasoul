@@ -79,6 +79,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddSong = new javax.swing.JMenuItem();
         actAddText = new javax.swing.JMenuItem();
+        actAddBible = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
         toolBar = new javax.swing.JToolBar();
@@ -115,6 +116,15 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
         ppmAddItem.add(actAddText);
+
+        actAddBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bookmark.png"))); // NOI18N
+        actAddBible.setText("Add Bible Text");
+        actAddBible.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddBibleActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddBible);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
@@ -431,12 +441,20 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         p.setLocationRelativeTo(this);
         p.setVisible(true);
     }//GEN-LAST:event_btnExportActionPerformed
+
+    private void actAddBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddBibleActionPerformed
+        TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
+        tsief.setLocationRelativeTo(this);
+        tsief.setBibleVisible(true);
+        tsief.setVisible(true);
+}//GEN-LAST:event_actAddBibleActionPerformed
     
     public void addItem(Object object){
         ((ListTable)tableServiceList.getModel()).addItem(object);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem actAddBible;
     private javax.swing.JMenuItem actAddContentlessItem;
     private javax.swing.JMenuItem actAddSong;
     private javax.swing.JMenuItem actAddText;
