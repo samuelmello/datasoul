@@ -95,9 +95,9 @@ public class Song extends TextServiceItem implements Cloneable {
     }
 
     public ImageIcon getSongIcon(){
-            Image icon1 = new ImageIcon(getClass().getResource("/datasoul/icons/songProp1.gif")).getImage();
-            Image icon2 = new ImageIcon(getClass().getResource("/datasoul/icons/songProp2.gif")).getImage();
-            Image icon3 = new ImageIcon(getClass().getResource("/datasoul/icons/songProp3.gif")).getImage();
+            Image icon1 = new ImageIcon(getClass().getResource("/datasoul/icons/songProp1.png")).getImage();
+            Image icon2 = new ImageIcon(getClass().getResource("/datasoul/icons/songProp2.png")).getImage();
+            Image icon3 = new ImageIcon(getClass().getResource("/datasoul/icons/songProp3.png")).getImage();
             int icon1w = icon1.getWidth(null);
             int icon1h = icon1.getHeight(null);
             int icon2w = icon2.getWidth(null);

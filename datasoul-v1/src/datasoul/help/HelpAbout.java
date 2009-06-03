@@ -50,7 +50,7 @@ public class HelpAbout extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/splashScreen.gif"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/splashScreen.png"))); // NOI18N
 
         lblVersion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVersion.setText("jLabel3");
