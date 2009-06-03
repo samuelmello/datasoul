@@ -23,16 +23,11 @@
 
 package datasoul.song;
 
-import datasoul.*;
-import datasoul.util.*;
 import datasoul.datashow.*;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**

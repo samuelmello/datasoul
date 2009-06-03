@@ -26,7 +26,6 @@ package datasoul.templates;
 import datasoul.config.ConfigObj;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableModel;
 

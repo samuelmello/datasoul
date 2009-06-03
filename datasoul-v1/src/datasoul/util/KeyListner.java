@@ -23,7 +23,6 @@
 
 package datasoul.util;
 
-import datasoul.*;
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
 import java.awt.AWTEvent;

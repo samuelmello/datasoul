@@ -22,9 +22,6 @@ package datasoul.datashow;
 
 import datasoul.DatasoulMainForm;
 import datasoul.util.ShowDialog;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.xml.parsers.DocumentBuilder;

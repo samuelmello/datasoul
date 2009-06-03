@@ -23,7 +23,6 @@
 
 package datasoul.datashow;
 
-import datasoul.util.ObjectManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 

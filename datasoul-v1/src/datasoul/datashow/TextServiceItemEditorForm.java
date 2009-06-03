@@ -22,9 +22,6 @@ package datasoul.datashow;
 
 import datasoul.DatasoulMainForm;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;

@@ -20,14 +20,10 @@
 
 package datasoul.datashow;
 
-import datasoul.*;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.render.SwingPanelContentRender;
-import datasoul.util.*;
-import datasoul.datashow.*;
-import datasoul.song.*;
 import datasoul.templates.DisplayTemplate;
 import datasoul.util.ObjectManager;
 import java.awt.Dimension;

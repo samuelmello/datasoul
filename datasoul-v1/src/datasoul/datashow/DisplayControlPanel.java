@@ -26,7 +26,6 @@ import datasoul.render.ContentManager;
 import datasoul.templates.TemplateComboBox;
 import java.util.Hashtable;
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
   
 /**
  *

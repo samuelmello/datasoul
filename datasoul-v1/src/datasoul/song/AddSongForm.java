@@ -22,10 +22,6 @@ package datasoul.song;
 
 import datasoul.DatasoulMainForm;
 import datasoul.util.ObjectManager;
-import datasoul.datashow.ServiceListTable;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import javax.swing.event.TableModelEvent;
 
 /**

@@ -20,10 +20,7 @@
 
 package datasoul.song;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

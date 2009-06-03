@@ -39,7 +39,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnApply" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jPanel9" alignment="0" pref="774" max="32767" attributes="2"/>
+                  <Component id="jPanel9" alignment="0" max="32767" attributes="2"/>
                   <Component id="jPanel8" alignment="0" max="32767" attributes="2"/>
                   <Component id="jPanel10" alignment="0" max="32767" attributes="2"/>
               </Group>
@@ -53,13 +53,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel5" min="-2" pref="117" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel4" min="-2" pref="114" max="-2" attributes="1"/>
+              <Component id="jPanel4" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel9" min="-2" pref="171" max="-2" attributes="0"/>
+              <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel8" min="-2" pref="77" max="-2" attributes="1"/>
+              <Component id="jPanel8" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel10" min="-2" pref="88" max="-2" attributes="1"/>
+              <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
               <EmptySpace pref="140" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnApply" alignment="3" min="-2" max="-2" attributes="1"/>

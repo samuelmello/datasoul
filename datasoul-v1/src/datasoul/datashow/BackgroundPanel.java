@@ -22,7 +22,6 @@ package datasoul.datashow;
 
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
-import datasoul.render.ContentManager;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.ImageTemplateItem;
 import java.awt.Color;

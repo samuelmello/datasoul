@@ -21,9 +21,6 @@
 package datasoul.song;
 
 import datasoul.DatasoulMainForm;
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 

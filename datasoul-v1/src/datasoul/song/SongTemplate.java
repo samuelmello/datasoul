@@ -24,7 +24,6 @@
 package datasoul.song;
 
 import datasoul.templates.TemplateItem;
-import datasoul.util.AttributedObject;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;

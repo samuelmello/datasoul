@@ -20,7 +20,6 @@
 
 package datasoul.config;
 
-import datasoul.*;
 import datasoul.render.ContentManager;
 import datasoul.render.SwingContentRender;
 import datasoul.util.ObjectManager;

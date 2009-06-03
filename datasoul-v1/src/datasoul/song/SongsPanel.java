@@ -20,10 +20,6 @@
 
 package datasoul.song;
 
-import datasoul.*;
-import datasoul.util.*;
-import datasoul.datashow.*;
-import datasoul.song.*;
 import datasoul.util.ObjectManager;
 
 /**

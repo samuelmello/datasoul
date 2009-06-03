@@ -23,9 +23,7 @@
 
 package datasoul.datashow;
 
-import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
-import datasoul.render.ContentManager;
 import datasoul.render.ContentManager;
 
 /**

@@ -20,9 +20,6 @@
 
 package datasoul.datashow;
 
-import java.awt.event.KeyListener;
-import java.util.Hashtable;
-import javax.swing.JLabel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
