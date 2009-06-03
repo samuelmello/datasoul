@@ -23,8 +23,9 @@
 
 package datasoul.datashow;
 
-import java.awt.Color;
 import java.awt.Component;
+import java.awt.Color;
+import javax.swing.JTable;
 
 /**
  *
@@ -36,6 +37,19 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     private float defaultFontSize;
     
     private boolean showMark;
+
+    private static Color selectedBackground;
+    private static Color notSelectedBackground;
+    private static Color selectedForeground;
+    private static Color notSelectedForeground;
+
+    static {
+        JTable aux = new JTable();
+        selectedBackground = new Color( aux.getSelectionBackground().getRGB()) ;
+        selectedForeground = new Color( aux.getSelectionForeground().getRGB());
+        notSelectedBackground = new Color( aux.getBackground().getRGB());
+        notSelectedForeground = new Color( aux.getForeground().getRGB());
+    }
     
     /** Creates a new instance of TextServiceItemRenderer */
     public TextServiceItemRenderer() {
@@ -43,7 +57,7 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
         area.setLineWrap(true);
         area.setWrapStyleWord(true);
         area.setOpaque(true);
-        area.setDoubleBuffered(false);
+        area.setDoubleBuffered(true);
         defaultFontSize = area.getFont().getSize2D();
     }
     
@@ -58,9 +72,11 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
     public Component getComponent(boolean selected, boolean hasFocus) {
 
         if (selected){
-            area.setBackground( area.getSelectionColor() );
+            area.setBackground(selectedBackground);
+            area.setForeground(selectedForeground);
         }else{
-            area.setBackground( Color.WHITE );
+            area.setBackground(notSelectedBackground);
+            area.setForeground(notSelectedForeground);
         }
         
         return area;
