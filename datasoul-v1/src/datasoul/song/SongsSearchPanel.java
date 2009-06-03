@@ -199,7 +199,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.setFloatable(false);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound_small2.png"))); // NOI18N
-        jLabel1.setText("Song Library");
+        jLabel1.setText(bundle.getString("Song_Library")); // NOI18N
         jToolBar1.add(jLabel1);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);

@@ -139,11 +139,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
-        jLabel4.setText("Edit Text");
+        jLabel4.setText(bundle.getString("Edit_Text")); // NOI18N
         jToolBar1.add(jLabel4);
 
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_toggle-info.png"))); // NOI18N
-        btnShowSplit.setText("Show Split Options");
+        btnShowSplit.setText(bundle.getString("Show_Split_Options")); // NOI18N
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowSplitActionPerformed(evt);
@@ -155,7 +155,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(textText);
 
         btnShowBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/accessories-dictionary.png"))); // NOI18N
-        btnShowBible.setText("Show Bible Options");
+        btnShowBible.setText(bundle.getString("Show_Bible_Options")); // NOI18N
         btnShowBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowBibleActionPerformed(evt);

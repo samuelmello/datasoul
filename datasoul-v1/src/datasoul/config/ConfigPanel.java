@@ -320,8 +320,8 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
 
-        jLabel24.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel24.setText("Main output is used for displaying information for the public, usually connected to a projector.");
+        jLabel24.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel24.setText(bundle.getString("Main_output_is_used_for_displaying_information_for_the_public,_usually_connected_to_a_projector.")); // NOI18N
 
         jLabel3.setText(bundle.getString("Position")); // NOI18N
 
@@ -464,8 +464,8 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png"))); // NOI18N
 
-        jLabel21.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel21.setText("Monitor output is used to display information in monitors on stage, providing feedback for musicans or preachers.");
+        jLabel21.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel21.setText(bundle.getString("Monitor_output_is_used_to_display_information_in_monitors_on_stage,_providing_feedback_for_musicans_or_preachers.")); // NOI18N
 
         jLabel4.setText(bundle.getString("Position")); // NOI18N
 
@@ -765,7 +765,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .add(jLabel37)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnApply))
-                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
+                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jPanel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -776,13 +776,13 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jPanel5, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 117, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 114, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 171, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel9, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 77, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jPanel10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 88, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 140, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnApply)

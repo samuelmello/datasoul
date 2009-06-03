@@ -143,7 +143,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         ppmAddItem.add(actAddText);
 
         actAddBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bookmark.png"))); // NOI18N
-        actAddBible.setText("Add Bible Text");
+        actAddBible.setText(bundle.getString("Add_Bible_Text")); // NOI18N
         actAddBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddBibleActionPerformed(evt);

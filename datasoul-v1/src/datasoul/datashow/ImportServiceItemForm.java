@@ -103,7 +103,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         jLabel1.setText(bundle.getString("Select_another_service_list_to_import_an_item")); // NOI18N
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnOpen.setText("Open");
+        btnOpen.setText(bundle.getString("Open")); // NOI18N
         btnOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpenActionPerformed(evt);
@@ -111,7 +111,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         });
 
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        btnImport.setText("Import");
+        btnImport.setText(bundle.getString("Import")); // NOI18N
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);

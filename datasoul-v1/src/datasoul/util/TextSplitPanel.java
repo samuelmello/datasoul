@@ -49,10 +49,11 @@ public class TextSplitPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        cbMaxLenght.setText("Split in lines of");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        cbMaxLenght.setText(bundle.getString("Split_in_lines_of")); // NOI18N
 
         cbMaxSlideLines.setSelected(true);
-        cbMaxSlideLines.setText("Split in slides of");
+        cbMaxSlideLines.setText(bundle.getString("Split_in_slides_of")); // NOI18N
 
         txtMaxSlideLines.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtMaxSlideLines.setText("5");
@@ -61,16 +62,16 @@ public class TextSplitPanel extends javax.swing.JPanel {
         txtMaxLenght.setText("80");
 
         btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_view-details.png"))); // NOI18N
-        btnOk.setText("Split");
+        btnOk.setText(bundle.getString("Split")); // NOI18N
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("characters");
+        jLabel2.setText(bundle.getString("characters")); // NOI18N
 
-        jLabel1.setText("lines");
+        jLabel1.setText(bundle.getString("lines")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -119,7 +120,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
         try{
             lines = Integer.parseInt(txtMaxSlideLines.getText());
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Invalid lines per slide value",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_lines_per_slide_value"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
             return;
         }
 
@@ -127,7 +128,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
         try {
             maxline = Integer.parseInt(txtMaxLenght.getText());
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this,"Invalid characters per line value",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_characters_per_line_value"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
             return;
         }
 

@@ -196,7 +196,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         labelName.setText(bundle.getString("NAME")); // NOI18N
         labelName.setFocusable(false);
 
-        labelAuthor.setText(bundle.getString("AUTHOR")); // NOI18N
+        labelAuthor.setText(bundle.getString("Author")); // NOI18N
         labelAuthor.setFocusable(false);
 
         tabSong.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -224,22 +224,22 @@ public class SongEditorForm extends javax.swing.JFrame {
                 .add(textSplitPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        tabSong.addTab("Lyrics", pnlLyricsTab);
+        tabSong.addTab(bundle.getString("Lyrics"), pnlLyricsTab); // NOI18N
 
         textChordsCompleted.setColumns(20);
         textChordsCompleted.setRows(5);
         jScrollPane3.setViewportView(textChordsCompleted);
 
-        tabSong.addTab("Chords Complete", jScrollPane3);
+        tabSong.addTab(bundle.getString("Chords_Complete"), jScrollPane3); // NOI18N
 
         textChordsSimplified.setColumns(20);
         textChordsSimplified.setRows(5);
         jScrollPane2.setViewportView(textChordsSimplified);
 
-        tabSong.addTab("Chords Simple", jScrollPane2);
+        tabSong.addTab(bundle.getString("Chords_Simple"), jScrollPane2); // NOI18N
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText("Discard and Close");
+        btnClose.setText(bundle.getString("Discard_and_Close")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -247,7 +247,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setText("Save and Close");
+        btnSave.setText(bundle.getString("Save_and_Close")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -274,14 +274,14 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
 
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_toggle-info.png"))); // NOI18N
-        btnShowSplit.setText("Show Split Options");
+        btnShowSplit.setText(bundle.getString("Show_Split_Options")); // NOI18N
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowSplitActionPerformed(evt);
             }
         });
 
-        cbUpdateSongLibrary.setText("Update Song Library");
+        cbUpdateSongLibrary.setText(bundle.getString("Update_Song_Library")); // NOI18N
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

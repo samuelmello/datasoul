@@ -138,7 +138,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar4.add(btnProperties);
         jToolBar4.add(jSeparator2);
 
-        jLabel8.setText("Add");
+        jLabel8.setText(bundle.getString("Add")); // NOI18N
         jToolBar4.add(jLabel8);
 
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N

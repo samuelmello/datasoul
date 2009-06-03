@@ -102,7 +102,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
 
         btnShowAlert.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bell.png"))); // NOI18N
         btnShowAlert.setText(bundle.getString("Show_Alert")); // NOI18N
-        btnShowAlert.setToolTipText(bundle.getString("Show_alert")); // NOI18N
+        btnShowAlert.setToolTipText(bundle.getString("Show_Alert")); // NOI18N
         btnShowAlert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowAlertActionPerformed(evt);

@@ -273,7 +273,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task_big.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnServiceList.setText(bundle.getString("Service_Plan")); // NOI18N
-        btnServiceList.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
+        btnServiceList.setToolTipText(bundle.getString("Manage_Service_List")); // NOI18N
         btnServiceList.setBorderPainted(false);
         btnServiceList.setFocusPainted(false);
         btnServiceList.setFocusable(false);
@@ -298,7 +298,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
         btnDatashow.setText(bundle.getString("Projector")); // NOI18N
-        btnDatashow.setToolTipText(bundle.getString("Projector_operation_view")); // NOI18N
+        btnDatashow.setToolTipText(bundle.getString("Manage_Service_List")); // NOI18N
         btnDatashow.setBorderPainted(false);
         btnDatashow.setFocusPainted(false);
         btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {

@@ -118,7 +118,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         ppmAddItem.add(actAddText);
 
         actAddBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bookmark.png"))); // NOI18N
-        actAddBible.setText("Add Bible Text");
+        actAddBible.setText(bundle.getString("Add_Bible_Text")); // NOI18N
         actAddBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddBibleActionPerformed(evt);
@@ -242,7 +242,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.add(jLabel1);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setToolTipText("New");
+        btnNew.setToolTipText(bundle.getString("New")); // NOI18N
         btnNew.setFocusable(false);
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -254,7 +254,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.add(btnNew);
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnOpen.setToolTipText("Open");
+        btnOpen.setToolTipText(bundle.getString("Open")); // NOI18N
         btnOpen.setFocusable(false);
         btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -266,7 +266,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.add(btnOpen);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("Save")); // NOI18N
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -278,7 +278,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
-        btnSaveAs.setToolTipText("Save As");
+        btnSaveAs.setToolTipText(bundle.getString("Save_As")); // NOI18N
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -290,7 +290,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jToolBar1.add(btnSaveAs);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
-        btnExport.setToolTipText("Export");
+        btnExport.setToolTipText(bundle.getString("Export")); // NOI18N
         btnExport.setFocusable(false);
         btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -353,7 +353,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             tsief.setLocationRelativeTo(this);
             tsief.setVisible(true);
         }else if(item instanceof ContentlessServiceItem){
-            String s = JOptionPane.showInputDialog(this, "Service Item Name:", item.getTitle());
+            String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), item.getTitle());
             if (s != null && !s.trim().equals("")){
                 item.setTitle(s);   
             }
@@ -410,7 +410,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
         
-        String s = JOptionPane.showInputDialog(this, "Service Item Name:", "");
+        String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), "");
         if (s != null && !s.trim().equals("")){
             ContentlessServiceItem csi = new ContentlessServiceItem();
             csi.setTitle(s);

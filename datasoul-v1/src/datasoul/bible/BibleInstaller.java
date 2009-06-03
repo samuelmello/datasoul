@@ -83,7 +83,8 @@ public class BibleInstaller extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Datasoul - Bible Manager");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("Datasoul_-_Bible_Manager")); // NOI18N
 
         cbSource.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbSource.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +93,10 @@ public class BibleInstaller extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Installation Source:");
+        jLabel1.setText(bundle.getString("Installation_Source:")); // NOI18N
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-refresh.png"))); // NOI18N
-        btnRefresh.setText("Refresh All");
+        btnRefresh.setText(bundle.getString("Refresh_All")); // NOI18N
         btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRefreshActionPerformed(evt);
@@ -120,14 +121,14 @@ public class BibleInstaller extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tblInstalled);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDelete.setText("Uninstall Selected");
+        btnDelete.setText(bundle.getString("Uninstall_Selected")); // NOI18N
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Installed Bibles:");
+        jLabel3.setText(bundle.getString("Installed_Bibles:")); // NOI18N
 
         lblInstalledCount.setText("jLabel4");
 
@@ -172,10 +173,10 @@ public class BibleInstaller extends javax.swing.JFrame {
         tblAvailable.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tblAvailable);
 
-        jLabel2.setText("Bibles Available for Download:");
+        jLabel2.setText(bundle.getString("Bibles_Available_for_Download:")); // NOI18N
 
         btnInstallSelected.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-url.png"))); // NOI18N
-        btnInstallSelected.setText("Download Selected");
+        btnInstallSelected.setText(bundle.getString("Download_Selected")); // NOI18N
         btnInstallSelected.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInstallSelectedActionPerformed(evt);
@@ -212,7 +213,7 @@ public class BibleInstaller extends javax.swing.JFrame {
         jSplitPane1.setLeftComponent(jPanel1);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText("Close");
+        btnClose.setText(bundle.getString("Close")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -258,7 +259,7 @@ public class BibleInstaller extends javax.swing.JFrame {
         
         final ProgressDialog pd = new ProgressDialog(BibleInstaller.this, true);
         pd.isBibleDownload(false);
-        pd.setText("Updating Available Bibles");
+        pd.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_Available_Bibles"));
         pd.setLocationRelativeTo(this);
 
         Thread t = new Thread (){
@@ -274,7 +275,7 @@ public class BibleInstaller extends javax.swing.JFrame {
                  {
                      Map.Entry mapEntry = (Map.Entry) iter.next();
                     try {
-                        pd.setStatus("Updating "+mapEntry.getKey().toString()+"...");
+                        pd.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_")+mapEntry.getKey().toString()+"...");
                         ((Installer) mapEntry.getValue()).reloadBookList();
                     } catch (InstallException ex) {
                         System.out.println(ex.getMessage());
@@ -298,14 +299,14 @@ public class BibleInstaller extends javax.swing.JFrame {
 
         // Check if already installed
         if (Books.installed().getBook( book.getInitials() ) != null){
-            JOptionPane.showMessageDialog(this, book.getName()+" is already installed.");
+            JOptionPane.showMessageDialog(this, book.getName()+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("_is_already_installed."));
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(this, "Are you sure to download and install "+book.getName()+" ?", "Confirm Download and Install", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_download_and_install_")+book.getName()+" ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Download_and_Install"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             try {
                 ProgressDialog pd = new ProgressDialog(this, true);
-                pd.setText("Downloading...");
+                pd.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Downloading..."));
                 pd.isBibleDownload(true);
                 pd.setLocationRelativeTo(this);
 
@@ -331,7 +332,7 @@ public class BibleInstaller extends javax.swing.JFrame {
 
         Book selected = myInstalledModel.getBook(tblInstalled.getSelectedRow());
 
-        if (JOptionPane.showConfirmDialog(this, "Are you sure to uninstall "+selected.getName()+" ?", "Confirm Uninstall", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_uninstall_")+selected.getName()+" ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Uninstall"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             try {
                 Books.installed().removeBook(selected);
             } catch (BookException ex) {
@@ -478,9 +479,9 @@ public class BibleInstaller extends javax.swing.JFrame {
         public String getColumnName(int column){
             switch (column){
                 case 0:
-                    return "Language";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Language");
                 case 1:
-                    return "Bible";
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Bible");
             }
             return "";
         }

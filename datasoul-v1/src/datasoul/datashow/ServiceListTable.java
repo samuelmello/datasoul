@@ -386,7 +386,7 @@ public class ServiceListTable extends ListTable {
                             si.setDuration(aValue.toString());
                             updateStartTimes();
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_Value"));
+                            JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
                         }
                         break;
                     case COLUMN_NOTES:
