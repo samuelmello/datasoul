@@ -64,7 +64,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
 
-    private void actualizeValues(){
+    private void updateValues(){
         this.textServiceItem.setTitle(this.fieldTitle.getText());
         
         this.textServiceItem.setText(this.textText.getText());
@@ -227,7 +227,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        actualizeValues();
+        updateValues();
         
         if(this.textServiceItem.getTitle().equals("")){
             JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("You_must_field_the_Title"));
