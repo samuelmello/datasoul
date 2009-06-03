@@ -67,7 +67,7 @@ public class Splash extends javax.swing.JFrame {
         lblStatus.setSize(image.getIconWidth()-20,20);
         lblStatus.setLocation(11,image.getIconHeight());
        
-        getContentPane().setBackground(new Color(220,220,220));
+        getContentPane().setBackground(Color.white);
         lblStatus.setForeground(Color.BLACK);  
 
     }// </editor-fold>                        
