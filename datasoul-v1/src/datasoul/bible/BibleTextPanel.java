@@ -144,6 +144,8 @@ public class BibleTextPanel extends javax.swing.JPanel {
         cbRefType = new javax.swing.JComboBox();
         btnLoad = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(443, 101));
+
         jLabel3.setText("Bible:");
 
         cbBibles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -208,7 +210,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbBibles, 0, 213, Short.MAX_VALUE)
+                .add(cbBibles, 0, 204, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(btnManageBible))
             .add(layout.createSequentialGroup()
@@ -233,7 +235,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
                 .add(jLabel6)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbRefType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(btnLoad))
         );
         layout.setVerticalGroup(
