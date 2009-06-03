@@ -273,7 +273,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task_big.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnServiceList.setText(bundle.getString("Service_Plan")); // NOI18N
-        btnServiceList.setToolTipText(bundle.getString("Manage_Service_List")); // NOI18N
         btnServiceList.setBorderPainted(false);
         btnServiceList.setFocusPainted(false);
         btnServiceList.setFocusable(false);
@@ -286,7 +285,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound.png"))); // NOI18N
         btnSongs.setText("Song Library");
-        btnSongs.setToolTipText(bundle.getString("Song_manipulation_view")); // NOI18N
         btnSongs.setBorderPainted(false);
         btnSongs.setFocusPainted(false);
         btnSongs.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +296,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
         btnDatashow.setText(bundle.getString("Projector")); // NOI18N
-        btnDatashow.setToolTipText(bundle.getString("Manage_Service_List")); // NOI18N
         btnDatashow.setBorderPainted(false);
         btnDatashow.setFocusPainted(false);
         btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -315,7 +312,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
         btnTemplates.setText(bundle.getString("Templates")); // NOI18N
-        btnTemplates.setToolTipText(bundle.getString("Template_edit_view")); // NOI18N
         btnTemplates.setBorderPainted(false);
         btnTemplates.setFocusPainted(false);
         btnTemplates.setMaximumSize(new java.awt.Dimension(88, 44));
@@ -329,7 +325,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
         btnConfig.setText(bundle.getString("Configuration")); // NOI18N
-        btnConfig.setToolTipText(bundle.getString("Configuration_view")); // NOI18N
         btnConfig.setBorderPainted(false);
         btnConfig.setFocusPainted(false);
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -352,7 +347,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
-        btnClose.setToolTipText(bundle.getString("Close_the_program")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.setFocusPainted(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
