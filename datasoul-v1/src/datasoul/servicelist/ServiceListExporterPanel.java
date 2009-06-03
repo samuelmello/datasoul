@@ -82,7 +82,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         cbChordsComplete.setText(bundle.getString("Songs_Chords_Complete")); // NOI18N
 
         cbOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/dialog-apply.png"))); // NOI18N
-        cbOk.setText(bundle.getString("OK")); // NOI18N
+        cbOk.setText(bundle.getString("Ok")); // NOI18N
         cbOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbOkActionPerformed(evt);
@@ -90,7 +90,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel2.setText(bundle.getString("Format:")); // NOI18N
+        jLabel2.setText(bundle.getString("Format")); // NOI18N
 
         cbFormat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PDF", "RTF" }));
 

@@ -126,7 +126,7 @@ public class ServiceListExporterDocument {
         
         document.add(t);
         
-        p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Notes:"), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+        p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Notes"), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
         document.add(p);
         
         p = new Paragraph(slt.getNotes(), FontFactory.getFont(FontFactory.HELVETICA));
@@ -157,17 +157,17 @@ public class ServiceListExporterDocument {
         document.add(p);
         
         if (!s.getSongAuthor().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author:_")+s.getSongAuthor(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author")+s.getSongAuthor(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
         
         if (!s.getCopyright().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Copyright:_")+s.getCopyright(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Copyright")+s.getCopyright(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
 
         if (!s.getSongSource().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Source:_")+s.getSongSource(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Source")+s.getSongSource(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
         
@@ -181,7 +181,7 @@ public class ServiceListExporterDocument {
 
         Paragraph p;
 
-        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LYRICS")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Lyrics")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
         document.add(p);
         
         String text = s.getText().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "");
