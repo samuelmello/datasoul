@@ -352,23 +352,6 @@ public class BibleInstaller extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-
-        try{
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        }catch(Exception e){
-            //ignore and fall back to java look and feel
-        }
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BibleInstaller().setVisible(true);
-            }
-        });
-    }
-
     public void updateComboboxes(){
 
         cbSource.removeAllItems();
