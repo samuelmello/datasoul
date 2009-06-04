@@ -171,7 +171,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         jToolBar4.add(btnTimerProgress);
         jToolBar4.add(jSeparator1);
 
-        jLabel4.setText(bundle.getString("Selected_Item")); // NOI18N
+        jLabel4.setText(bundle.getString("Item")); // NOI18N
         jToolBar4.add(jLabel4);
 
         btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
@@ -219,7 +219,7 @@ public class TemplatePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .add(jLabel5)
                 .addContainerGap(619, Short.MAX_VALUE))
-            .add(jToolBar4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 824, Short.MAX_VALUE)
+            .add(jToolBar4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
             .add(panelTemplateEditorLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)

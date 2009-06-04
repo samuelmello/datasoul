@@ -275,7 +275,7 @@ public class BibleInstaller extends javax.swing.JFrame {
                  {
                      Map.Entry mapEntry = (Map.Entry) iter.next();
                     try {
-                        pd.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_")+mapEntry.getKey().toString()+"...");
+                        pd.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_")+" "+mapEntry.getKey().toString()+"...");
                         ((Installer) mapEntry.getValue()).reloadBookList();
                     } catch (InstallException ex) {
                         System.out.println(ex.getMessage());
@@ -299,7 +299,7 @@ public class BibleInstaller extends javax.swing.JFrame {
 
         // Check if already installed
         if (Books.installed().getBook( book.getInitials() ) != null){
-            JOptionPane.showMessageDialog(this, book.getName()+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("_is_already_installed."));
+            JOptionPane.showMessageDialog(this, book.getName()+" "+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("is_already_installed."));
             return;
         }
 

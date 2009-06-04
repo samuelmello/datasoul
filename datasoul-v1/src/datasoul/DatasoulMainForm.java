@@ -284,7 +284,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnServiceList);
 
         btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound.png"))); // NOI18N
-        btnSongs.setText("Song Library");
+        btnSongs.setText(bundle.getString("Song_Library")); // NOI18N
         btnSongs.setBorderPainted(false);
         btnSongs.setFocusPainted(false);
         btnSongs.addActionListener(new java.awt.event.ActionListener() {

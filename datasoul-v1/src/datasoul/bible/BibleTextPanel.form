@@ -24,9 +24,10 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="cbBibles" pref="204" max="32767" attributes="0"/>
+              <Component id="cbBibles" pref="298" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnManageBible" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -51,8 +52,9 @@
               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cbRefType" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="122" max="32767" attributes="0"/>
               <Component id="btnLoad" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,8 +62,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnManageBible" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbBibles" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnManageBible" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -76,10 +78,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLoad" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbHowToSplit" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbRefType" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLoad" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
           <Group type="102" alignment="0" attributes="0">
