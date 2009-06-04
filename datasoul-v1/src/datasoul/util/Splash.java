@@ -22,11 +22,12 @@ package datasoul.util;
 
 import datasoul.DatasoulMainForm;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 /**
  *
@@ -112,8 +113,11 @@ public class Splash extends javax.swing.JFrame {
     }
  
     public void center(){
-        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
         Rectangle frame = getBounds();
+        GraphicsDevice gd[];
+        gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        GraphicsConfiguration gc = gd[0].getDefaultConfiguration();
+        Rectangle screen = gc.getBounds();
         setLocation((screen.width - frame.width)/2, (screen.height - frame.height)/2);
     }
     
