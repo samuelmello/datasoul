@@ -1,7 +1,7 @@
 <project>
     <shortName>datasoul</shortName>
     <fullName>Datasoul</fullName>
-    <version>1.2BETA2</version>
+    <version>1.2.99</version>
     <preInstallationActionList>
         <autodetectJava>
             <promptUser>0</promptUser>
