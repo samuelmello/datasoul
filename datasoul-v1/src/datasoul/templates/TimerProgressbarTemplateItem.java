@@ -56,7 +56,7 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
         this.setPosition(0.8f);
         this.setWidth(100);
         this.setHeight(50);
-        this.setShowTimer("true");
+        this.showTimer = true;
         
         registerColorChooser("ColorGoAhead");
         registerColorChooser("ColorFinish");
@@ -93,8 +93,6 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
         registerDisplayString("AlphaUsedTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alpha_Used_Time"));
         properties.add("Position");
         registerDisplayString("Position", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Position"));
-        properties.add("ShowTimer");
-        registerDisplayString("ShowTimer", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Show_Timer"));
     }
 
     public void draw(Graphics2D g, float time) {
@@ -241,13 +239,12 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
     }
 
     public void setShowTimer(String show){
-        this.showTimer = !(show.equalsIgnoreCase("false"));
-        firePropChanged("ShowTimer");
+        // Ignore for backward compatibility
     }
+
     
     public void setShowTimer(boolean show){
         this.showTimer = show;
-        firePropChanged("ShowTimer");
     }
 
 }
