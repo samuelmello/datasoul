@@ -3,6 +3,8 @@
 DSVERSION=$(cat datasoul.xml | awk -F\< "/<version>/{ print \$2 }" | awk -F\> "{ print \$2}")
 rm -Rf datasoul-$DSVERSION
 
+##################################################
+
 # Clean up
 rm -Rf installers
 ant clean 
@@ -14,16 +16,21 @@ echo "version=$DSVERSION" > ../src/datasoul/version.properties
 # Compile
 ant jar
 
-# Build installers
-BUILDER_CMD=/opt/installbuilder-5.4.10/bin/builder
-${BUILDER_CMD} build datasoul.xml linux 
-${BUILDER_CMD} build datasoul.xml windows
-${BUILDER_CMD} build datasoul.xml osx 
-${BUILDER_CMD} build datasoul.xml rpm
-${BUILDER_CMD} build datasoul.xml deb
+##################################################
 
-# Clean up
-ant clean
+# Build windows 
+#BUILDER_CMD=/opt/installbuilder-5.4.10/bin/builder
+#${BUILDER_CMD} build datasoul.xml windows
+
+# Build MacOSX
+MACINSTDIR=installers/Datasoul-${DSVERSION}-MacOSX/Datasoul-${DSVERSION}.app
+mkdir -p ${MACINSTDIR}
+cp -r MacOSX/Contents ${MACINSTDIR}
+cp -r dist/* ${MACINSTDIR}/Contents/Resources/Java
+cd installers
+zip -r Datasoul-${DSVERSION}-MacOSX.zip Datasoul-${DSVERSION}-MacOSX
+cd ..
+rm -Rf installers/Datasoul-${DSVERSION}-MacOSX
 
 # Create source tarball
 mkdir datasoul-$DSVERSION
@@ -33,9 +40,8 @@ find datasoul-$DSVERSION/src -name "CVS" | xargs rm -Rf
 tar czvf installers/datasoul-$DSVERSION-source.tar.gz datasoul-$DSVERSION
 rm -Rf datasoul-$DSVERSION
 
-# Compress MacOS X installer
-cd installers
-OSX=$(ls -1 | grep osx)
-zip -r $OSX.zip $OSX
-rm -Rf $OSX
-cd ..
+###################################################
+# Clean up
+ant clean
+
+
