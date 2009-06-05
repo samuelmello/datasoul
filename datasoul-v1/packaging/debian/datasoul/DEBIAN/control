@@ -1,0 +1,7 @@
+Package: datasoul
+Version: 1.2.99
+Priority: optional
+Architecture: all
+Depends: java6-runtime
+Maintainer: Samuel Lucas Vaz de Mello <svmello@users.sourceforge.net> 
+Description: Datasoul is an application to manage and display song lyrics in worship services.

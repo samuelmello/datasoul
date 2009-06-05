@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Comment=Application to manage and display song lyrics in worship services.
+Icon=datasoul.png
+Exec=datasoul
+Name=Datasoul
+GenericName=Datasoul
+Terminal=false
+Type=Application
+Categories=Application;AudioVideo;
