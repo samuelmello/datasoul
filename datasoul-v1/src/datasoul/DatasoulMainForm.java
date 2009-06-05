@@ -57,7 +57,7 @@ import javax.swing.JFrame;
  * @author  Administrador
  */
 public class DatasoulMainForm extends javax.swing.JFrame {
-    
+
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
     public TemplatePanel templates = new TemplatePanel();
@@ -591,7 +591,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
         return "Unknown Private Build";
     }
-    
+
+    public static String getFileFormatVersion() {
+        return Integer.toString(FILE_FORMAT_VERSION);
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;

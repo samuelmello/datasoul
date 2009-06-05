@@ -160,7 +160,7 @@ public class ServiceListTable extends ListTable {
         nMinute.setTextContent(Integer.toString(startMinute));
         nodeOut.appendChild(doc.importNode(nMinute, true));
         Node nVersion = doc.createElement("DatasoulFileVersion");
-        nVersion.setTextContent(DatasoulMainForm.getVersion());
+        nVersion.setTextContent(DatasoulMainForm.getFileFormatVersion());
         nodeOut.appendChild(doc.importNode(nVersion, true));
 
         Node node;

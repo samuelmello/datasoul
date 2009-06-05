@@ -195,7 +195,7 @@ public class DisplayTemplate extends AttributedObject {
         if (getDatasoulFileVersion() < 1){
             setResolution(640, 480);
         }
-        setDatasoulFileVersion( DatasoulMainForm.getVersion() );
+        setDatasoulFileVersion(DatasoulMainForm.getFileFormatVersion());
     }
     
     private void setResolution(int fromWidth, int fromHeight){

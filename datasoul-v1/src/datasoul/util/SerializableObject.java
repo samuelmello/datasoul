@@ -73,7 +73,7 @@ public abstract class SerializableObject  implements Transferable, SerializableI
      public Node writeObject() throws Exception{
 
         // update version stamp
-        this.setDatasoulFileVersion(DatasoulMainForm.getVersion());
+        this.setDatasoulFileVersion(DatasoulMainForm.getFileFormatVersion());
          
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
