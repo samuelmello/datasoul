@@ -83,7 +83,6 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         btnGoLive.setToolTipText(bundle.getString("Send_slides_to_live")); // NOI18N
         btnGoLive.setBorderPainted(false);
         btnGoLive.setFocusPainted(false);
-        btnGoLive.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         btnGoLive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGoLiveActionPerformed(evt);
