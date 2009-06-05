@@ -24,7 +24,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jToolBar2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="split1" pref="119" max="32767" attributes="0"/>
+              <Component id="split1" pref="125" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,7 +52,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scroolSong" alignment="1" pref="119" max="32767" attributes="0"/>
+                  <Component id="scroolSong" alignment="1" pref="125" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -88,7 +88,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="scroolSongChords" alignment="1" pref="119" max="32767" attributes="0"/>
+                  <Component id="scroolSongChords" alignment="1" pref="125" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -170,14 +170,8 @@
             <Property name="toolTipText" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="Select_the_key_to_song" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[50, 32767]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[50, 18]"/>
-            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[50, 22]"/>
+              <Dimension value="[80, 22]"/>
             </Property>
           </Properties>
           <Events>

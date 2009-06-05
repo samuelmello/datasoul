@@ -524,7 +524,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongLayout.setVerticalGroup(
             panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
 
         split1.setLeftComponent(panelSong);
@@ -540,7 +540,7 @@ public class SongViewer extends javax.swing.JPanel {
         );
         panelSongChordsLayout.setVerticalGroup(
             panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
         );
 
         split1.setRightComponent(panelSongChords);
@@ -577,9 +577,7 @@ public class SongViewer extends javax.swing.JPanel {
 
         comboKey.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboKey.setToolTipText(bundle.getString("Select_the_key_to_song")); // NOI18N
-        comboKey.setMaximumSize(new java.awt.Dimension(50, 32767));
-        comboKey.setMinimumSize(new java.awt.Dimension(50, 18));
-        comboKey.setPreferredSize(new java.awt.Dimension(50, 22));
+        comboKey.setPreferredSize(new java.awt.Dimension(80, 22));
         comboKey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboKeyActionPerformed(evt);
@@ -599,7 +597,7 @@ public class SongViewer extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
