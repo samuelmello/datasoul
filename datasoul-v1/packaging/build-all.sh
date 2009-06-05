@@ -33,6 +33,11 @@ mv datasoul.deb ../installers/datasoul_${DSVERSION}_all.deb
 rm -Rf datasoul/usr/lib/datasoul/*
 cd ..
 
+# Build RPM
+cd installers
+alien -k --to-rpm datasoul_${DSVERSION}_all.deb
+cd ..
+
 # Build MacOSX
 MACINSTDIR=installers/Datasoul-${DSVERSION}-MacOSX/Datasoul-${DSVERSION}.app
 mkdir -p ${MACINSTDIR}
@@ -47,7 +52,7 @@ rm -Rf installers/Datasoul-${DSVERSION}-MacOSX
 mkdir datasoul-$DSVERSION
 mkdir datasoul-$DSVERSION/src
 cp  -r ../src/datasoul  datasoul-$DSVERSION/src
-find datasoul-$DSVERSION/src -name "CVS" | xargs rm -Rf
+cp  -r ../lib           datasoul-$DSVERSION/lib
 tar czvf installers/datasoul-$DSVERSION-source.tar.gz datasoul-$DSVERSION
 rm -Rf datasoul-$DSVERSION
 
