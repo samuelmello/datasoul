@@ -320,7 +320,7 @@ public class ConfigPanel extends javax.swing.JPanel {
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
 
-        jLabel24.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel24.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jLabel24.setText(bundle.getString("Main_output_is_used_for_displaying_information_for_the_public,_usually_connected_to_a_projector.")); // NOI18N
 
         jLabel3.setText(bundle.getString("Position")); // NOI18N
@@ -407,7 +407,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                     .add(jPanel5Layout.createSequentialGroup()
                         .add(jLabel23)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 459, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(jLabel24, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE))
                     .add(jPanel5Layout.createSequentialGroup()
                         .add(jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel5Layout.createSequentialGroup()
@@ -422,7 +422,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                                 .add(btnMainAdvanced)))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(pnlMainCoord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -464,7 +464,7 @@ public class ConfigPanel extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png"))); // NOI18N
 
-        jLabel21.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel21.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jLabel21.setText(bundle.getString("Monitor_output_is_used_to_display_information_in_monitors_on_stage,_providing_feedback_for_musicans_or_preachers.")); // NOI18N
 
         jLabel4.setText(bundle.getString("Position")); // NOI18N
@@ -552,7 +552,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jLabel20)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel21))
+                        .add(jLabel21, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE))
                     .add(jPanel4Layout.createSequentialGroup()
                         .add(jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel4Layout.createSequentialGroup()
@@ -567,7 +567,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                                 .add(btnMonitorAdvanced)))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(pnlMonitorCoord, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -765,7 +765,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                         .add(jLabel37)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(btnApply))
-                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .add(jPanel9, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
                     .add(jPanel8, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .add(jPanel10, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -783,7 +783,7 @@ public class ConfigPanel extends javax.swing.JPanel {
                 .add(jPanel8, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel10, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 140, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 168, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(btnApply)
                     .add(jLabel37))

@@ -121,6 +121,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         btnSave.setText(bundle.getString("Save")); // NOI18N
         btnSave.setToolTipText(bundle.getString("Save_template")); // NOI18N
+        btnSave.setBorderPainted(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -130,6 +131,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         btnProperties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
         btnProperties.setText(bundle.getString("Properties")); // NOI18N
+        btnProperties.setBorderPainted(false);
         btnProperties.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPropertiesActionPerformed(evt);
@@ -144,6 +146,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
         btnAddText.setText(bundle.getString("Text")); // NOI18N
         btnAddText.setToolTipText(bundle.getString("Add_a_text")); // NOI18N
+        btnAddText.setBorderPainted(false);
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTextActionPerformed(evt);
@@ -154,6 +157,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnAddImage.setText(bundle.getString("Image")); // NOI18N
         btnAddImage.setToolTipText(bundle.getString("Add_an_image_...")); // NOI18N
+        btnAddImage.setBorderPainted(false);
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImageActionPerformed(evt);
@@ -163,6 +167,7 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         btnTimerProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png"))); // NOI18N
         btnTimerProgress.setText(bundle.getString("Timer")); // NOI18N
+        btnTimerProgress.setBorderPainted(false);
         btnTimerProgress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimerProgressActionPerformed(evt);
@@ -177,10 +182,8 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDeleteItem.setText(bundle.getString("Remove")); // NOI18N
         btnDeleteItem.setToolTipText(bundle.getString("Delete_item")); // NOI18N
+        btnDeleteItem.setBorderPainted(false);
         btnDeleteItem.setFocusable(false);
-        btnDeleteItem.setMaximumSize(new java.awt.Dimension(91, 26));
-        btnDeleteItem.setMinimumSize(new java.awt.Dimension(91, 26));
-        btnDeleteItem.setPreferredSize(new java.awt.Dimension(91, 26));
         btnDeleteItem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDeleteItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,6 +195,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-behind.png"))); // NOI18N
         btnMoveUp.setText(bundle.getString("To_Front")); // NOI18N
         btnMoveUp.setToolTipText(bundle.getString("Move_the_item_to_the_upper_layer")); // NOI18N
+        btnMoveUp.setBorderPainted(false);
         btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoveUpActionPerformed(evt);
@@ -202,6 +206,7 @@ public class TemplatePanel extends javax.swing.JPanel {
         btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-infront.png"))); // NOI18N
         btnMoveDown.setText(bundle.getString("To_Back")); // NOI18N
         btnMoveDown.setToolTipText(bundle.getString("Move_the_item_to_the_lowest_layer")); // NOI18N
+        btnMoveDown.setBorderPainted(false);
         btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMoveDownActionPerformed(evt);

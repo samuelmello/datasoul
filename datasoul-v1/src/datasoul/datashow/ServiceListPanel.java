@@ -243,6 +243,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setToolTipText(bundle.getString("New")); // NOI18N
+        btnNew.setBorderPainted(false);
         btnNew.setFocusable(false);
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -255,6 +256,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
         btnOpen.setToolTipText(bundle.getString("Open")); // NOI18N
+        btnOpen.setBorderPainted(false);
         btnOpen.setFocusable(false);
         btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -267,6 +269,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         btnSave.setToolTipText(bundle.getString("Save")); // NOI18N
+        btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -279,6 +282,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
         btnSaveAs.setToolTipText(bundle.getString("Save_As")); // NOI18N
+        btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -291,6 +295,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
         btnExport.setToolTipText(bundle.getString("Export")); // NOI18N
+        btnExport.setBorderPainted(false);
         btnExport.setFocusable(false);
         btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

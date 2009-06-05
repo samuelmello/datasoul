@@ -39,7 +39,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnApply" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jPanel9" alignment="0" max="32767" attributes="2"/>
+                  <Component id="jPanel9" alignment="0" pref="774" max="32767" attributes="2"/>
                   <Component id="jPanel8" alignment="0" max="32767" attributes="2"/>
                   <Component id="jPanel10" alignment="0" max="32767" attributes="2"/>
               </Group>
@@ -60,7 +60,7 @@
               <Component id="jPanel8" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
-              <EmptySpace pref="140" max="32767" attributes="0"/>
+              <EmptySpace pref="168" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnApply" alignment="3" min="-2" max="-2" attributes="1"/>
                   <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -104,7 +104,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel24" min="-2" pref="459" max="-2" attributes="0"/>
+                          <Component id="jLabel24" pref="716" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -125,7 +125,7 @@
                           <Component id="pnlMainCoord" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="180" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -370,7 +370,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel21" pref="716" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -391,7 +391,7 @@
                           <Component id="pnlMonitorCoord" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="175" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
