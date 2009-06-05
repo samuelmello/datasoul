@@ -133,7 +133,7 @@ public class ContentManager {
         }
     }
     
-    public void slideChange (int transictionTime){
+    public synchronized void slideChange (int transictionTime){
         for (ContentRender r : liveRenderList){
             r.slideChange(transictionTime);
         }

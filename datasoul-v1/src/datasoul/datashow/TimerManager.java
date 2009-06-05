@@ -146,50 +146,52 @@ public class TimerManager extends Thread {
         ContentManager cm = ContentManager.getInstance();
         
         while (!stopThread){
-            
-            t1 = System.currentTimeMillis();
-            
-            // update the clock
-            cm.setClockLive( sdformat.format(new Date()) );
-            
+            try{
+                t1 = System.currentTimeMillis();
 
-            // update the timer
-            if (timerDirection == TIMER_DIRECTION_FORWARD || timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
-                timerForwardCounter += 1000;
-                cm.setTimerLive( formatTimer( timerForwardCounter ));
-                if (timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
-                    cm.setShowTimer( true );
-                }else{
-                    cm.setShowTimer( false );
+                // update the clock
+                cm.setClockLive( sdformat.format(new Date()) );
+
+
+                // update the timer
+                if (timerDirection == TIMER_DIRECTION_FORWARD || timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
+                    timerForwardCounter += 1000;
+                    cm.setTimerLive( formatTimer( timerForwardCounter ));
+                    if (timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
+                        cm.setShowTimer( true );
+                    }else{
+                        cm.setShowTimer( false );
+                    }
+                }else if (timerDirection == TIMER_DIRECTION_BACKWARD){
+                    timerBackwardCounter += 1000;
+                    if ( timerBackwardTotal - timerBackwardCounter <= 0 ){
+                        setTimerBackwardOverdue(0);
+                    }else{
+                        cm.setTimerLive( formatTimer(timerBackwardTotal - timerBackwardCounter ));
+                    }
+                    cm.setTimerProgress( (float) timerBackwardCounter / (float) timerBackwardTotal );
+                    cm.setShowTimer(true);
+
+                }else if (timerDirection == TIMER_DIRECTION_OFF){
+                    cm.setTimerLive("");
+                    cm.setShowTimer(false);
                 }
-            }else if (timerDirection == TIMER_DIRECTION_BACKWARD){
-                timerBackwardCounter += 1000;
-                if ( timerBackwardTotal - timerBackwardCounter <= 0 ){
-                    setTimerBackwardOverdue(0);
-                }else{
-                    cm.setTimerLive( formatTimer(timerBackwardTotal - timerBackwardCounter ));
+
+                // ok, changes done
+                cm.slideChange(-1);
+
+                // go sleep!
+                t2 = System.currentTimeMillis();
+                if ( (1000 - (t2 - t1)) > 1 ){
+                    try {
+                        Thread.sleep( 1000 - (t2 - t1) );
+                    } catch (InterruptedException ex) {
+                        //ignore
+                    }
                 }
-                cm.setTimerProgress( (float) timerBackwardCounter / (float) timerBackwardTotal );
-                cm.setShowTimer(true);
-                
-            }else if (timerDirection == TIMER_DIRECTION_OFF){
-                cm.setTimerLive("");
-                cm.setShowTimer(false);
+            }catch(Exception e){
+                // Do not stop thread if any error happens
             }
-            
-            // ok, changes done
-            cm.slideChange(-1);
-        
-            // go sleep!
-            t2 = System.currentTimeMillis();
-            if ( (1000 - (t2 - t1)) > 1 ){
-                try {
-                    Thread.sleep( 1000 - (t2 - t1) );
-                } catch (InterruptedException ex) {
-                    //ignore
-                }
-            }
-            
         }
         
     }
