@@ -30,7 +30,8 @@
                 <string>datasoul.DatasoulMainForm</string>
                 <key>WorkingDirectory</key>
                 <string>$APP_PACKAGE/Contents/Resources/</string>
-         </dict>
-
+	        <key>VMOptions</key>
+	        <string>-Xmx512m</string>
 	</dict>
+</dict>
  </plist>
