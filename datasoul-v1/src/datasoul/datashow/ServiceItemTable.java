@@ -195,6 +195,10 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         displayTable.changeSelection(x, 1, false, false);
     }
 
+    public void unselectSlide(){
+        displayTable.changeSelection(displayTable.getSelectedRow(), 1, true, false);
+    }
+
     public int getSlideCount(){
         return displayTable.getRowCount();
     }

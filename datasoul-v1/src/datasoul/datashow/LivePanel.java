@@ -83,6 +83,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         labelLive = new javax.swing.JLabel();
+        btnUnselect = new javax.swing.JButton();
 
         setDoubleBuffered(false);
 
@@ -126,6 +127,17 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         labelLive.setText(bundle.getString("LIVE")); // NOI18N
         jToolBar1.add(labelLive);
 
+        btnUnselect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
+        btnUnselect.setText(bundle.getString("Unselect_Slide")); // NOI18N
+        btnUnselect.setBorderPainted(false);
+        btnUnselect.setFocusable(false);
+        btnUnselect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnselectActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnUnselect);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -156,6 +168,26 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         
     }//GEN-LAST:event_cbAutoChangeActionPerformed
 
+    private void btnUnselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnselectActionPerformed
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTitleLive("");
+        cm.setSongAuthorLive("");
+        cm.setSongSourceLive("");
+        cm.setCopyrightLive("");
+        cm.setSlideLive("");
+        cm.setNextSlideLive("");
+        serviceItemTable1.unselectSlide();
+
+        // save the transition image just before changing the slide to avoid
+        // problem when changing to a item that uses a template with different
+        // alpha. This will cause a cut to the first slide, without any transition,
+        // but at least is not buggy
+        cm.saveTransitionImage();
+
+        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
+
+}//GEN-LAST:event_btnUnselectActionPerformed
+
     public void valueChanged(ListSelectionEvent e) {
 
         // when changing slides with mouse, two events are generated for
@@ -178,6 +210,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUnselect;
     private javax.swing.JCheckBox cbAutoChange;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
