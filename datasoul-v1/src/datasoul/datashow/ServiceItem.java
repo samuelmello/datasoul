@@ -252,12 +252,6 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         
     }
     
-    public void setZoom (int f){
-        for (ServiceItemRenderer r : slides){
-            r.setZoom(f);
-        }
-    }
-
     protected void fireTableChanged(){
         TableModelEvent e = new TableModelEvent(this);
         for (TableModelListener l : tableModelListeners){

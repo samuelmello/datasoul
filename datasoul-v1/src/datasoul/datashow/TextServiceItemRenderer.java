@@ -90,33 +90,6 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
         return area.getText();
     }
     
-    public void setZoom(int f) {
-
-        switch (f){
-            case ServiceItemRenderer.ZOOM_TINY:
-                area.setFont( area.getFont().deriveFont( (float) (defaultFontSize * 0.5) ) );
-                break;
-                
-            case ServiceItemRenderer.ZOOM_SMALL:
-                area.setFont( area.getFont().deriveFont( (float) (defaultFontSize * 0.75 )) );
-                break;
-                
-            case ServiceItemRenderer.ZOOM_NORMAL:
-                area.setFont( area.getFont().deriveFont( (float) (defaultFontSize * 1 )) );
-                break;
-                
-            case ServiceItemRenderer.ZOOM_LARGE:
-                area.setFont( area.getFont().deriveFont( (float) (defaultFontSize * 1.25 )) );
-                break;
-
-            case ServiceItemRenderer.ZOOM_HUGE:
-                area.setFont( area.getFont().deriveFont( (float) (defaultFontSize * 1.5 )) );
-                break;
-                
-        }
-        
-    }
-
     public boolean getShowMark() {
         return this.showMark;
     }

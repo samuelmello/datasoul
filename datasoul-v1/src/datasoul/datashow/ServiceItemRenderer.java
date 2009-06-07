@@ -37,14 +37,6 @@ public interface ServiceItemRenderer {
     
     public Component getComponent(boolean selected, boolean hasFocus);
     
-    public static final int ZOOM_TINY = 1;
-    public static final int ZOOM_SMALL = 2;
-    public static final int ZOOM_NORMAL = 3;
-    public static final int ZOOM_LARGE = 4;
-    public static final int ZOOM_HUGE = 5;
-    
-    public void setZoom(int f);
-    
     public boolean getShowMark();
     
     /**
