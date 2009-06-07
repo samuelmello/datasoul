@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-DSVERSION=$(cat datasoul.xml | awk -F\< "/<version>/{ print \$2 }" | awk -F\> "{ print \$2}")
+DSVERSION=$(awk -F= '/version/{ print $2 }' ../src/datasoul/version.properties)
 rm -Rf datasoul-$DSVERSION
 
 ##################################################
@@ -10,9 +10,6 @@ rm -Rf installers
 ant clean 
 find ../src -name "*#*" | xargs rm -f
 mkdir installers
-
-# Setup vesion
-echo "version=$DSVERSION" > ../src/datasoul/version.properties
 
 # Compile
 ant jar
@@ -47,6 +44,10 @@ cd installers
 zip -r Datasoul-${DSVERSION}-MacOSX.zip Datasoul-${DSVERSION}-MacOSX
 cd ..
 rm -Rf installers/Datasoul-${DSVERSION}-MacOSX
+
+# Windows
+makensis windows.nsi
+mv Datasoul-${DSVERSION}.exe installers
 
 # Create source tarball
 mkdir datasoul-$DSVERSION
