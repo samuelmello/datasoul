@@ -34,7 +34,6 @@ import javax.swing.JTable;
 public class TextServiceItemRenderer implements ServiceItemRenderer {
     
     private TextServiceItemTextArea area;
-    private float defaultFontSize;
     
     private boolean showMark;
 
@@ -58,7 +57,6 @@ public class TextServiceItemRenderer implements ServiceItemRenderer {
         area.setWrapStyleWord(true);
         area.setOpaque(true);
         area.setDoubleBuffered(true);
-        defaultFontSize = area.getFont().getSize2D();
     }
     
     public void setWidth(int width) {
