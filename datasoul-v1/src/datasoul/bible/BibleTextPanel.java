@@ -27,6 +27,10 @@ public class BibleTextPanel extends javax.swing.JPanel {
     private MyBooksListener listener;
     private JTextArea txtArea;
 
+    private int chapter;
+    private int versefrom;
+    private int verseto;
+
     /** Creates new form BibleTextPanel */
     public BibleTextPanel() {
         initComponents();
@@ -132,17 +136,18 @@ public class BibleTextPanel extends javax.swing.JPanel {
         cbBibles = new javax.swing.JComboBox();
         btnManageBible = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        cbHowToSplit = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        cbRefType = new javax.swing.JComboBox();
+        btnLoad = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         cbBook = new javax.swing.JComboBox();
         cbChapter = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         cbVersesFrom = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         cbVersesTo = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
-        cbHowToSplit = new javax.swing.JComboBox();
-        jLabel6 = new javax.swing.JLabel();
-        cbRefType = new javax.swing.JComboBox();
-        btnLoad = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(443, 101));
 
@@ -161,33 +166,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
         jLabel1.setText(bundle.getString("Verses:")); // NOI18N
 
-        cbBook.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbBook.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbBookActionPerformed(evt);
-            }
-        });
-
-        cbChapter.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbChapter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbChapterActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText(":");
-
-        cbVersesFrom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel5.setText("-");
-
-        cbVersesTo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbVersesTo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbVersesToActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText(bundle.getString("Put_verses_in")); // NOI18N
 
         cbHowToSplit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -204,68 +182,113 @@ public class BibleTextPanel extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
+
+        cbBook.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBookActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbBook);
+
+        cbChapter.setEditable(true);
+        cbChapter.setPreferredSize(new java.awt.Dimension(70, 25));
+        cbChapter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbChapterActionPerformed(evt);
+            }
+        });
+        cbChapter.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cbChapterFocusLost(evt);
+            }
+        });
+        jPanel1.add(cbChapter);
+
+        jLabel4.setText(":");
+        jPanel1.add(jLabel4);
+
+        cbVersesFrom.setEditable(true);
+        cbVersesFrom.setPreferredSize(new java.awt.Dimension(70, 25));
+        cbVersesFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbVersesFromActionPerformed(evt);
+            }
+        });
+        cbVersesFrom.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                cbVersesFromFocusGained(evt);
+            }
+        });
+        jPanel1.add(cbVersesFrom);
+
+        jLabel5.setText("-");
+        jPanel1.add(jLabel5);
+
+        cbVersesTo.setEditable(true);
+        cbVersesTo.setPreferredSize(new java.awt.Dimension(70, 25));
+        cbVersesTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbVersesToActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cbVersesTo);
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(jLabel3)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbBibles, 0, 298, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(btnManageBible)
-                .addContainerGap())
-            .add(layout.createSequentialGroup()
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbBook, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(cbChapter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel4)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbVersesFrom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel5)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbVersesTo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-            .add(layout.createSequentialGroup()
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbHowToSplit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(18, 18, 18)
-                .add(jLabel6)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbRefType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 122, Short.MAX_VALUE)
-                .add(btnLoad)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(jLabel2)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbHowToSplit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18)
+                        .add(jLabel6)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbRefType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(btnLoad))
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel3)
+                                .add(25, 25, 25))
+                            .add(layout.createSequentialGroup()
+                                .add(jLabel1)
+                                .add(18, 18, 18)))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(cbBibles, 0, 209, Short.MAX_VALUE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                                .add(btnManageBible))
+                            .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cbBibles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(btnManageBible))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(cbBibles, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(btnManageBible))
+                    .add(layout.createSequentialGroup()
+                        .add(8, 8, 8)
+                        .add(jLabel3)))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(jLabel1)
-                    .add(cbBook, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel4)
-                    .add(cbChapter, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(cbVersesFrom, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel5)
-                    .add(cbVersesTo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .add(8, 8, 8)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(jLabel2)
                     .add(cbHowToSplit, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel6)
                     .add(cbRefType, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(btnLoad)))
-            .add(layout.createSequentialGroup()
-                .add(8, 8, 8)
-                .add(jLabel3))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -292,6 +315,11 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private void cbChapterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChapterActionPerformed
 
+        if (cbChapter.getItemCount() > chapter && cbChapter.getSelectedIndex() < 0){
+            cbChapter.setSelectedIndex(chapter);
+            return;
+        }
+
         cbVersesFrom.removeAllItems();
         cbVersesTo.removeAllItems();
 
@@ -306,11 +334,17 @@ public class BibleTextPanel extends javax.swing.JPanel {
             } catch (NoSuchVerseException ex) {
                 ex.printStackTrace();
             }
+            chapter = cbChapter.getSelectedIndex();
         }
     }//GEN-LAST:event_cbChapterActionPerformed
 
     private void cbVersesToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVersesToActionPerformed
-        // TODO add your handling code here:
+        int index = cbVersesTo.getSelectedIndex();
+        if (cbVersesTo.getItemCount() > verseto && (index < 0 || index < cbVersesFrom.getSelectedIndex())) {
+            cbVersesTo.setSelectedIndex(verseto);
+        }else{
+            verseto = index;
+        }
 }//GEN-LAST:event_cbVersesToActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
@@ -377,6 +411,24 @@ public class BibleTextPanel extends javax.swing.JPanel {
         txtArea.setText(sb.toString());
     }//GEN-LAST:event_btnLoadActionPerformed
 
+    private void cbChapterFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbChapterFocusLost
+    }//GEN-LAST:event_cbChapterFocusLost
+
+    private void cbVersesFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVersesFromActionPerformed
+        if (cbVersesFrom.getItemCount() > versefrom && cbVersesFrom.getSelectedIndex() < 0) {
+            cbVersesFrom.setSelectedIndex(versefrom);
+        }else{
+            versefrom = cbVersesFrom.getSelectedIndex();
+            if (cbVersesTo.getItemCount() == cbVersesFrom.getItemCount() && 
+                    cbVersesTo.getSelectedIndex() < cbVersesFrom.getSelectedIndex()){
+                cbVersesTo.setSelectedIndex(cbVersesFrom.getSelectedIndex());
+            }
+        }
+    }//GEN-LAST:event_cbVersesFromActionPerformed
+
+    private void cbVersesFromFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbVersesFromFocusGained
+    }//GEN-LAST:event_cbVersesFromFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoad;
@@ -394,6 +446,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 
 }
