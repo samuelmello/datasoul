@@ -26,6 +26,7 @@ package datasoul.datashow;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Font;
 import javax.swing.JTextArea;
 
 /**
@@ -37,6 +38,11 @@ public class TextServiceItemTextArea extends JTextArea {
         public static final int SPACE_HEIGHT = 2;
         
         private boolean showMark;
+
+        public TextServiceItemTextArea(){
+            super();
+            setFont(new Font(Font.SANS_SERIF, Font.PLAIN, getFont().getSize() ));
+        }
         
         public void setShowMark(boolean showMark){
             this.showMark = showMark;

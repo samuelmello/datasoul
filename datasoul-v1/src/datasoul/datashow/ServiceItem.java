@@ -79,8 +79,10 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
             slideNumberField.setShowMark( slides.get(row).getMark() );
             if (isSelected){
                 slideNumberField.setBackground( table.getSelectionBackground() );
+                slideNumberField.setForeground( table.getSelectionForeground() );
             }else{
                 slideNumberField.setBackground( table.getBackground() );
+                slideNumberField.setForeground( table.getForeground() );
             }
             return slideNumberField;
         }
