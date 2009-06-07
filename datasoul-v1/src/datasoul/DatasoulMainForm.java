@@ -314,8 +314,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnTemplates.setText(bundle.getString("Templates")); // NOI18N
         btnTemplates.setBorderPainted(false);
         btnTemplates.setFocusPainted(false);
-        btnTemplates.setMaximumSize(new java.awt.Dimension(111, 40));
-        btnTemplates.setMinimumSize(new java.awt.Dimension(111, 40));
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTemplatesActionPerformed(evt);
