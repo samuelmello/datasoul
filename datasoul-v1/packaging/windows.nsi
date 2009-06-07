@@ -28,6 +28,8 @@ WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Datasoul-$
                  "DisplayName" "Datasoul ${VERSION}"
 WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Datasoul-${VERSION}" \
                  "UninstallString" "$INSTDIR\uninstaller.exe"
+WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Datasoul-${VERSION}" \
+                 "NoModify" 1
 
 createShortCut "$SMPROGRAMS\Datasoul ${VERSION}.lnk" "%SystemRoot%/system32/javaw.exe" "-Xmx512m -jar datasoul.jar" $INSTDIR\datasoul.ico
 
