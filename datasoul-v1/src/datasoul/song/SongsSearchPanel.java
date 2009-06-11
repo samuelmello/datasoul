@@ -253,7 +253,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         String filePath = song.getFilePath();
         
         File file = new File(filePath);
-        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_shure_that_you_want_to_delete_the_file_")+filePath+" ?",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_that_you_want_to_delete_the_file_")+filePath+" ?",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             if(file.delete()){
                 tableSongList.removeItem();
             }

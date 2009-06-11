@@ -314,7 +314,7 @@ public class BibleInstaller extends javax.swing.JFrame {
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_download_and_install_") + book.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Download_and_Install"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_download_and_install") + " " + book.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Download_and_Install"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 ProgressDialog pd = new ProgressDialog(this, true);
                 pd.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Downloading..."));
@@ -343,7 +343,7 @@ public class BibleInstaller extends javax.swing.JFrame {
 
         Book selected = myInstalledModel.getBook(tblInstalled.getSelectedRow());
 
-        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_uninstall_") + selected.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Uninstall"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_uninstall") + " " + selected.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Uninstall"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 Books.installed().removeBook(selected);
             } catch (BookException ex) {
