@@ -283,7 +283,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         txtHours.setColumns(2);
         txtHours.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtHours.setText("8");
+        txtHours.setText("00");
         txtHours.setMinimumSize(new java.awt.Dimension(30, 27));
         txtHours.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

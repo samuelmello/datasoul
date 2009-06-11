@@ -59,7 +59,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
         txtMaxSlideLines.setText("5");
 
         txtMaxLenght.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtMaxLenght.setText("80");
+        txtMaxLenght.setText("40");
 
         btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_view-details.png"))); // NOI18N
         btnOk.setText(bundle.getString("Split")); // NOI18N

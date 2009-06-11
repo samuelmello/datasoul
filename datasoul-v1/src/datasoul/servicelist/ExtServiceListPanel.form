@@ -344,7 +344,7 @@
                       <Properties>
                         <Property name="columns" type="int" value="2"/>
                         <Property name="horizontalAlignment" type="int" value="0"/>
-                        <Property name="text" type="java.lang.String" value="8"/>
+                        <Property name="text" type="java.lang.String" value="00"/>
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[30, 27]"/>
                         </Property>
