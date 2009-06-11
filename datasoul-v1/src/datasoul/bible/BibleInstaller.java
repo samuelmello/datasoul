@@ -41,6 +41,8 @@ public class BibleInstaller extends javax.swing.JFrame {
     protected MyBookTableModel myAvailableModel;
     protected MyBookTableModel myInstalledModel;
 
+    private static boolean downloadAllowed = false;
+
     /** Creates new form BibleInstaller */
     public BibleInstaller() {
         initComponents();
@@ -266,7 +268,25 @@ public class BibleInstaller extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private boolean checkDownloadAllowed(){
+        if (! BibleInstaller.downloadAllowed){
+            int allow = JOptionPane.showConfirmDialog(this,
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("This_operation_require_internet_access.") + "\n" +
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("If_you_live_in_a_country_where_christians_are_presecuted_and_do_not_wish_to_risk_detection_you_should_not_proceed.") + "\n" +
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Do_you_want_to_continue?"),
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Warning"), JOptionPane.YES_NO_OPTION);
+            if (allow == JOptionPane.YES_OPTION){
+                BibleInstaller.downloadAllowed = true;
+           }
+        }
+        return BibleInstaller.downloadAllowed;
+    }
+
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+
+        if (! checkDownloadAllowed()){
+            return;
+        }
 
         final ProgressDialog pd = new ProgressDialog(BibleInstaller.this, true);
         pd.isBibleDownload(false);
@@ -311,6 +331,10 @@ public class BibleInstaller extends javax.swing.JFrame {
         // Check if already installed
         if (Books.installed().getBook(book.getInitials()) != null) {
             JOptionPane.showMessageDialog(this, book.getName() + " " + java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("is_already_installed."));
+            return;
+        }
+
+        if (! checkDownloadAllowed()){
             return;
         }
 
