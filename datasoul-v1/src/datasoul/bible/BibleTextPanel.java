@@ -8,15 +8,23 @@
  *
  * Created on Apr 20, 2009, 10:10:17 AM
  */
-
 package datasoul.bible;
 
 import datasoul.datashow.TextServiceItem;
-import javax.swing.*;
 import org.crosswire.jsword.versification.BibleInfo;
-import org.crosswire.jsword.book.*;
-import org.crosswire.jsword.passage.*;
+import javax.swing.JTextArea;
 import java.util.List;
+import javax.swing.JOptionPane;
+import org.crosswire.jsword.book.Book;
+import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.BookFilters;
+import org.crosswire.jsword.book.BooksEvent;
+import org.crosswire.jsword.book.BooksListener;
+import org.crosswire.jsword.book.BookData;
+import org.crosswire.jsword.book.OSISUtil;
+import org.crosswire.jsword.passage.NoSuchVerseException;
+import org.crosswire.jsword.passage.Verse;
+
 
 /**
  *
@@ -26,7 +34,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private MyBooksListener listener;
     private JTextArea txtArea;
-
     private int chapter;
     private int versefrom;
     private int verseto;
@@ -58,9 +65,9 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
         // Setup bible books
         cbBook.removeAllItems();
-        for (int i = 0; i < BibleInfo.booksInBible(); i++){
+        for (int i = 0; i < BibleInfo.booksInBible(); i++) {
             try {
-                cbBook.addItem(BibleInfo.getPreferredBookName(i+1));
+                cbBook.addItem(BibleInfo.getPreferredBookName(i + 1));
             } catch (NoSuchVerseException ex) {
                 ex.printStackTrace();
             }
@@ -69,23 +76,23 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     }
 
-    public void registerTextArea(JTextArea area){
+    public void registerTextArea(JTextArea area) {
         this.txtArea = area;
     }
 
-    public void onClose(){
+    public void onClose() {
         Books.installed().removeBooksListener(listener);
-    }   
+    }
 
-    public void updateBibles(){
+    public void updateBibles() {
 
         cbBibles.removeAllItems();
 
         List installed = Books.installed().getBooks(BookFilters.getOnlyBibles());
 
-        for (Object o : installed){
-            if (o instanceof Book){
-                cbBibles.addItem(((Book)o).getName());
+        for (Object o : installed) {
+            if (o instanceof Book) {
+                cbBibles.addItem(((Book) o).getName());
             }
         }
 
@@ -102,26 +109,22 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     }
 
+    static class MyBooksListener implements BooksListener {
 
+        private BibleTextPanel orig;
 
-    static class MyBooksListener implements BooksListener
-    {
-         private BibleTextPanel orig;
+        public MyBooksListener(BibleTextPanel orig) {
+            this.orig = orig;
+        }
 
-         public MyBooksListener(BibleTextPanel orig){
-             this.orig = orig;
-         }
-         public void bookAdded(BooksEvent ev)
-         {
-             orig.updateBibles();
-         }
+        public void bookAdded(BooksEvent ev) {
+            orig.updateBibles();
+        }
 
-         public void bookRemoved(BooksEvent ev)
-         {
-             orig.updateBibles();
-         }
+        public void bookRemoved(BooksEvent ev) {
+            orig.updateBibles();
+        }
     }
-
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -300,12 +303,12 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private void cbBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBookActionPerformed
         cbChapter.removeAllItems();
-        if (cbBook.getSelectedIndex() >= 0){
+        if (cbBook.getSelectedIndex() >= 0) {
 
             try {
                 int max = BibleInfo.chaptersInBook(cbBook.getSelectedIndex() + 1);
                 for (int i = 0; i < max; i++) {
-                    cbChapter.addItem(Integer.toString(i+1));
+                    cbChapter.addItem(Integer.toString(i + 1));
                 }
             } catch (NoSuchVerseException ex) {
                 ex.printStackTrace();
@@ -315,7 +318,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private void cbChapterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChapterActionPerformed
 
-        if (cbChapter.getItemCount() > chapter && cbChapter.getSelectedIndex() < 0){
+        if (cbChapter.getItemCount() > chapter && cbChapter.getSelectedIndex() < 0) {
             cbChapter.setSelectedIndex(chapter);
             return;
         }
@@ -323,13 +326,13 @@ public class BibleTextPanel extends javax.swing.JPanel {
         cbVersesFrom.removeAllItems();
         cbVersesTo.removeAllItems();
 
-        if (cbBook.getSelectedIndex() >= 0 && cbChapter.getSelectedIndex() >= 0){
+        if (cbBook.getSelectedIndex() >= 0 && cbChapter.getSelectedIndex() >= 0) {
 
             try {
-                int max = BibleInfo.versesInChapter(cbBook.getSelectedIndex() + 1, cbChapter.getSelectedIndex()+1);
+                int max = BibleInfo.versesInChapter(cbBook.getSelectedIndex() + 1, cbChapter.getSelectedIndex() + 1);
                 for (int i = 0; i < max; i++) {
-                    cbVersesFrom.addItem(Integer.toString(i+1));
-                    cbVersesTo.addItem(Integer.toString(i+1));
+                    cbVersesFrom.addItem(Integer.toString(i + 1));
+                    cbVersesTo.addItem(Integer.toString(i + 1));
                 }
             } catch (NoSuchVerseException ex) {
                 ex.printStackTrace();
@@ -342,59 +345,63 @@ public class BibleTextPanel extends javax.swing.JPanel {
         int index = cbVersesTo.getSelectedIndex();
         if (cbVersesTo.getItemCount() > verseto && (index < 0 || index < cbVersesFrom.getSelectedIndex())) {
             cbVersesTo.setSelectedIndex(verseto);
-        }else{
+        } else {
             verseto = index;
         }
 }//GEN-LAST:event_cbVersesToActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
 
-        int begin = cbVersesFrom.getSelectedIndex()+1;
-        int end = cbVersesTo.getSelectedIndex()+1;
+        int begin = cbVersesFrom.getSelectedIndex() + 1;
+        int end = cbVersesTo.getSelectedIndex() + 1;
 
-        if (begin > end){
+        if (begin > end) {
             JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_verse_range"));
             return;
         }
 
         Book book = Books.installed().getBook(cbBibles.getSelectedItem().toString());
-        if (book == null) return;
+        if (book == null) {
+            return;
+        }
 
         StringBuffer sb = new StringBuffer();
 
-        if (txtArea.getText().length() > 0 ){
-            sb.append(txtArea.getText()+"\n");
+        if (txtArea.getText().length() > 0) {
+            sb.append(txtArea.getText() + "\n");
         }
 
         try {
-            for (int i = begin; i<=end; i++){
+            for (int i = begin; i <= end; i++) {
                 Verse temp = new Verse(cbBook.getSelectedIndex() + 1, cbChapter.getSelectedIndex() + 1, i);
                 BookData data = new BookData(book, temp);
                 String versetext = OSISUtil.getCanonicalText(data.getOsisFragment());
 
                 // Skip blank lines (this may happen if the selected bible does not
                 // contain the choosed text, it may be a New Testment only, for example)
-                if (versetext.trim().length() == 0 )
+                if (versetext.trim().length() == 0) {
                     continue;
+                }
 
                 // Add break if needed
-                if (sb.length() > 0){
-                    if (cbHowToSplit.getSelectedIndex() == 1)
-                        sb.append(TextServiceItem.SLIDE_BREAK+"\n");
-                    else if (cbHowToSplit.getSelectedIndex() == 0)
-                        sb.append(TextServiceItem.CHORUS_MARK+"\n");
+                if (sb.length() > 0) {
+                    if (cbHowToSplit.getSelectedIndex() == 1) {
+                        sb.append(TextServiceItem.SLIDE_BREAK + "\n");
+                    } else if (cbHowToSplit.getSelectedIndex() == 0) {
+                        sb.append(TextServiceItem.CHORUS_MARK + "\n");
+                    }
                 }
 
                 // Add the reference, if needed
-                switch(cbRefType.getSelectedIndex()){
+                switch (cbRefType.getSelectedIndex()) {
                     case 0: // Full
                         sb.append(cbBook.getSelectedItem().toString());
                         sb.append(" ");
-                        // do not break
+                    // do not break
                     case 1: // chapter + verse
                         sb.append(cbChapter.getSelectedItem().toString());
                         sb.append(":");
-                        // do not break
+                    // do not break
                     case 2: // verse only
                         sb.append(Integer.toString(i));
                         sb.append(" ");
@@ -402,7 +409,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
                 }
 
                 // Add the text
-                sb.append(versetext.trim()+"\n");
+                sb.append(versetext.trim() + "\n");
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -417,10 +424,10 @@ public class BibleTextPanel extends javax.swing.JPanel {
     private void cbVersesFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbVersesFromActionPerformed
         if (cbVersesFrom.getItemCount() > versefrom && cbVersesFrom.getSelectedIndex() < 0) {
             cbVersesFrom.setSelectedIndex(versefrom);
-        }else{
+        } else {
             versefrom = cbVersesFrom.getSelectedIndex();
-            if (cbVersesTo.getItemCount() == cbVersesFrom.getItemCount() && 
-                    cbVersesTo.getSelectedIndex() < cbVersesFrom.getSelectedIndex()){
+            if (cbVersesTo.getItemCount() == cbVersesFrom.getItemCount() &&
+                    cbVersesTo.getSelectedIndex() < cbVersesFrom.getSelectedIndex()) {
                 cbVersesTo.setSelectedIndex(cbVersesFrom.getSelectedIndex());
             }
         }
@@ -428,8 +435,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private void cbVersesFromFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbVersesFromFocusGained
     }//GEN-LAST:event_cbVersesFromFocusGained
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnManageBible;
@@ -448,5 +453,4 @@ public class BibleTextPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
-
 }

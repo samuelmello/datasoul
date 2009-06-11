@@ -21,7 +21,7 @@
 package datasoul.song;
 
 import datasoul.DatasoulMainForm;
-import datasoul.util.*;
+import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.JOptionPane;

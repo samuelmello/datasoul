@@ -23,7 +23,7 @@
 
 package datasoul.song;
 
-import datasoul.datashow.*;
+import datasoul.datashow.TextServiceItem;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;

@@ -23,7 +23,7 @@
 
 package datasoul.util;
 
-import datasoul.*;
+import datasoul.DatasoulMainForm;
 import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;

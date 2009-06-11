@@ -8,17 +8,28 @@
  *
  * Created on Apr 16, 2009, 11:08:10 PM
  */
-
 package datasoul.bible;
 
 import datasoul.DatasoulMainForm;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.crosswire.jsword.book.*;
-import org.crosswire.jsword.book.install.*;
-import java.util.*;
-import javax.swing.*;
-import javax.swing.table.*;
+import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Comparator;
+import java.util.Collections;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
+import org.crosswire.jsword.book.install.InstallManager;
+import org.crosswire.jsword.book.install.Installer;
+import org.crosswire.jsword.book.install.InstallException;
+import org.crosswire.jsword.book.Book;
+import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.BookException;
+import org.crosswire.jsword.book.BookFilters;
+
+
 
 /**
  *
@@ -34,7 +45,7 @@ public class BibleInstaller extends javax.swing.JFrame {
     public BibleInstaller() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
-        
+
         Logger.getLogger("").setLevel(Level.OFF);
 
         // An installer knows how to install books
@@ -256,32 +267,32 @@ public class BibleInstaller extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        
+
         final ProgressDialog pd = new ProgressDialog(BibleInstaller.this, true);
         pd.isBibleDownload(false);
         pd.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_Available_Bibles"));
         pd.setLocationRelativeTo(this);
 
-        Thread t = new Thread (){
+        Thread t = new Thread() {
+
             @Override
-            public void run(){
+            public void run() {
 
                 // Ask the Install Manager for a map of all known module sites
-                 Map installers = imanager.getInstallers();
+                Map installers = imanager.getInstallers();
 
-                 // Get all the installers one after the other
-                 Iterator iter = installers.entrySet().iterator();
-                 while (iter.hasNext())
-                 {
-                     Map.Entry mapEntry = (Map.Entry) iter.next();
+                // Get all the installers one after the other
+                Iterator iter = installers.entrySet().iterator();
+                while (iter.hasNext()) {
+                    Map.Entry mapEntry = (Map.Entry) iter.next();
                     try {
-                        pd.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_")+" "+mapEntry.getKey().toString()+"...");
+                        pd.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Updating_") + " " + mapEntry.getKey().toString() + "...");
                         ((Installer) mapEntry.getValue()).reloadBookList();
                     } catch (InstallException ex) {
                         System.out.println(ex.getMessage());
                     }
-                 }
-                 pd.dispose();
+                }
+                pd.dispose();
             }
         };
         t.start();
@@ -291,19 +302,19 @@ public class BibleInstaller extends javax.swing.JFrame {
 
     private void btnInstallSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInstallSelectedActionPerformed
 
-        if (tblAvailable.getSelectedRow() < 0){
+        if (tblAvailable.getSelectedRow() < 0) {
             return;
         }
 
         Book book = myAvailableModel.getBook(tblAvailable.getSelectedRow());
 
         // Check if already installed
-        if (Books.installed().getBook( book.getInitials() ) != null){
-            JOptionPane.showMessageDialog(this, book.getName()+" "+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("is_already_installed."));
+        if (Books.installed().getBook(book.getInitials()) != null) {
+            JOptionPane.showMessageDialog(this, book.getName() + " " + java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("is_already_installed."));
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_download_and_install_")+book.getName()+" ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Download_and_Install"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_download_and_install_") + book.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Download_and_Install"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 ProgressDialog pd = new ProgressDialog(this, true);
                 pd.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Downloading..."));
@@ -326,13 +337,13 @@ public class BibleInstaller extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
 
-        if (tblInstalled.getSelectedRow() < 0){
+        if (tblInstalled.getSelectedRow() < 0) {
             return;
         }
 
         Book selected = myInstalledModel.getBook(tblInstalled.getSelectedRow());
 
-        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_uninstall_")+selected.getName()+" ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Uninstall"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+        if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_to_uninstall_") + selected.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Uninstall"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
                 Books.installed().removeBook(selected);
             } catch (BookException ex) {
@@ -352,20 +363,19 @@ public class BibleInstaller extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    public void updateComboboxes(){
+    public void updateComboboxes() {
 
         cbSource.removeAllItems();
 
         // Ask the Install Manager for a map of all known module sites
-         Map installers = imanager.getInstallers();
+        Map installers = imanager.getInstallers();
 
-         // Get all the installers one after the other
-         Iterator iter = installers.entrySet().iterator();
-         while (iter.hasNext())
-         {
-             Map.Entry mapEntry = (Map.Entry) iter.next();
-             cbSource.addItem(mapEntry.getKey());
-         }
+        // Get all the installers one after the other
+        Iterator iter = installers.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry mapEntry = (Map.Entry) iter.next();
+            cbSource.addItem(mapEntry.getKey());
+        }
 
     }
 
@@ -389,33 +399,35 @@ public class BibleInstaller extends javax.swing.JFrame {
     private javax.swing.JTable tblInstalled;
     // End of variables declaration//GEN-END:variables
 
-    public void updateAvailable(){
-        if (cbSource.getSelectedIndex() >= 0){
+    public void updateAvailable() {
+        if (cbSource.getSelectedIndex() >= 0) {
             myAvailableModel.setNewList(imanager.getInstaller(cbSource.getSelectedItem().toString()).getBooks(BookFilters.getOnlyBibles()));
         }
-        lblAvailableCount.setText( "("+Integer.toString(tblAvailable.getRowCount())+")" );
+        lblAvailableCount.setText("(" + Integer.toString(tblAvailable.getRowCount()) + ")");
     }
 
-    public void updateInstalled(){
+    public void updateInstalled() {
         myInstalledModel.setNewList(Books.installed().getBooks(BookFilters.getOnlyBibles()));
-        lblInstalledCount.setText( "("+Integer.toString(tblInstalled.getRowCount())+")" );
+        lblInstalledCount.setText("(" + Integer.toString(tblInstalled.getRowCount()) + ")");
     }
 
-    public class MyBookTableModel extends DefaultTableModel{
+    public class MyBookTableModel extends DefaultTableModel {
 
         List<Book> list;
-        public MyBookTableModel(){
+
+        public MyBookTableModel() {
             this.list = new ArrayList<Book>();
         }
 
-        public Book getBook(int i){
+        public Book getBook(int i) {
             return list.get(i);
         }
 
         @SuppressWarnings("unchecked")
-        public void setNewList(List newlist){
+        public void setNewList(List newlist) {
             list = new ArrayList<Book>(newlist);
             Comparator<Book> langcomp = new Comparator<Book>() {
+
                 public int compare(Book arg0, Book arg1) {
                     return arg0.getLanguage().getName().compareTo(arg1.getLanguage().getName());
                 }
@@ -436,17 +448,17 @@ public class BibleInstaller extends javax.swing.JFrame {
 
         @Override
         public int getRowCount() {
-            if (list != null){
+            if (list != null) {
                 return list.size();
-            }else{
+            } else {
                 return 0;
             }
         }
 
         @Override
         public Object getValueAt(int row, int column) {
-            if (list != null){
-                switch (column){
+            if (list != null) {
+                switch (column) {
                     case 0:
                         return list.get(row).getLanguage();
                     case 1:
@@ -454,13 +466,14 @@ public class BibleInstaller extends javax.swing.JFrame {
                     default:
                         return null;
                 }
-            }else{
+            } else {
                 return "";
             }
         }
+
         @Override
-        public String getColumnName(int column){
-            switch (column){
+        public String getColumnName(int column) {
+            switch (column) {
                 case 0:
                     return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Language");
                 case 1:
@@ -468,8 +481,5 @@ public class BibleInstaller extends javax.swing.JFrame {
             }
             return "";
         }
-
-
     }
-
 }

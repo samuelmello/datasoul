@@ -23,8 +23,7 @@
 
 package datasoul.song;
 
-import datasoul.util.*;
-import datasoul.song.*;
+import datasoul.util.ListTable;
 import javax.swing.ImageIcon;
 
 /**
