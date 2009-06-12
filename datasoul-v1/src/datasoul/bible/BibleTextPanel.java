@@ -296,9 +296,12 @@ public class BibleTextPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBibleActionPerformed
-        BibleInstaller bi = new BibleInstaller();
-        bi.setLocationRelativeTo(this);
-        bi.setVisible(true);
+
+        if (BibleInstaller.checkDownloadAllowed(this)){
+            BibleInstaller bi = new BibleInstaller();
+            bi.setLocationRelativeTo(this);
+            bi.setVisible(true);
+        }
 }//GEN-LAST:event_btnManageBibleActionPerformed
 
     private void cbBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBookActionPerformed

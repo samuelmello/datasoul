@@ -21,6 +21,7 @@ import java.util.Comparator;
 import java.util.Collections;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import org.crosswire.jsword.book.install.InstallManager;
 import org.crosswire.jsword.book.install.Installer;
 import org.crosswire.jsword.book.install.InstallException;
@@ -268,9 +269,9 @@ public class BibleInstaller extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean checkDownloadAllowed(){
+    public static boolean checkDownloadAllowed(JPanel parent){
         if (! BibleInstaller.downloadAllowed){
-            int allow = JOptionPane.showConfirmDialog(this,
+            int allow = JOptionPane.showConfirmDialog(parent,
                     java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("This_operation_require_internet_access.") + "\n" +
                     java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("If_you_live_in_a_country_where_christians_are_presecuted_and_do_not_wish_to_risk_detection_you_should_not_proceed.") + "\n" +
                     java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Do_you_want_to_continue?"),
@@ -283,10 +284,6 @@ public class BibleInstaller extends javax.swing.JFrame {
     }
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-
-        if (! checkDownloadAllowed()){
-            return;
-        }
 
         final ProgressDialog pd = new ProgressDialog(BibleInstaller.this, true);
         pd.isBibleDownload(false);
@@ -331,10 +328,6 @@ public class BibleInstaller extends javax.swing.JFrame {
         // Check if already installed
         if (Books.installed().getBook(book.getInitials()) != null) {
             JOptionPane.showMessageDialog(this, book.getName() + " " + java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("is_already_installed."));
-            return;
-        }
-
-        if (! checkDownloadAllowed()){
             return;
         }
 
