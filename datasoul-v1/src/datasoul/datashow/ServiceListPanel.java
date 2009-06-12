@@ -387,16 +387,18 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         try{
             ObjectManager.getInstance().setBusyCursor();
 
-            ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
-            if (!(item instanceof ContentlessServiceItem)){
-                if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
-                    if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                        ObjectManager.getInstance().getPreviewPanel().previewItem(item);
-                }
-                if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
-                    if(item instanceof Song)
-                        if(ObjectManager.getInstance().getSongViewerPanel()!=null)
-                            ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+            if (tableServiceList.getSelectedRow() != -1){
+                ServiceItem item = (ServiceItem)tableServiceList.getModel().getValueAt(tableServiceList.getSelectedRow(),0);
+                if (!(item instanceof ContentlessServiceItem)){
+                    if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_PROJECTOR){
+                        if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                            ObjectManager.getInstance().getPreviewPanel().previewItem(item);
+                    }
+                    if(ObjectManager.getInstance().getViewActive()==ObjectManager.VIEW_SONGS){
+                        if(item instanceof Song)
+                            if(ObjectManager.getInstance().getSongViewerPanel()!=null)
+                                ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)item);
+                    }
                 }
             }
         }finally{
