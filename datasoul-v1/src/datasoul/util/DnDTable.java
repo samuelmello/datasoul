@@ -40,6 +40,8 @@ import java.io.IOException;
 import java.util.TooManyListenersException;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
+import java.awt.Container;
+import javax.swing.JViewport;
 
 /**
  *
@@ -193,5 +195,21 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
             model.removeItem(row);
         }
     }
-    
+
+    public boolean getScrollableTracksViewportHeight() {
+        // fetch the table's parent
+        Container viewport = getParent();
+
+        // if the parent is not a viewport, calling this isn't useful
+        if (!(viewport instanceof JViewport)) {
+            return false;
+        }
+
+        // return true if the table's preferred height is smaller
+        // than the viewport height, else false
+        return getPreferredSize().height < viewport.getHeight();
+    }
+
+
+
 }
