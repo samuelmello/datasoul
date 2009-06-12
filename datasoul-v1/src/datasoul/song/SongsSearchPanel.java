@@ -345,7 +345,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                     foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                 }else{
 
-                    if(((Song)allSongsListTable.getValueAt(i,songColumn)).getText().toUpperCase().contains(searchStr)){
+                    if(((Song)allSongsListTable.getValueAt(i,songColumn)).getSearchText().contains(searchStr)){
                         foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
                     }
                                 

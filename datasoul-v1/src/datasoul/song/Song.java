@@ -46,6 +46,7 @@ public class Song extends TextServiceItem implements Cloneable {
     private String filePath="";        
     //private String view=java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
     private String view="Title";
+    private String searchStr = null;
 
     private boolean isClone;
     
@@ -202,6 +203,25 @@ public class Song extends TextServiceItem implements Cloneable {
     
     public ArrayList<String> getChordsUsedComplete(){
         return getChordsUsed(chordsComplete);
+    }
+
+    public String getSearchText(){
+
+        if (searchStr == null){
+            StringBuffer sb = new StringBuffer();
+            sb.append(getText());
+            sb.append(" ");
+            sb.append(getCopyright());
+            sb.append(" ");
+            sb.append(getSongAuthor());
+            sb.append(" ");
+            sb.append(getSongSource());
+            sb.append(" ");
+            sb.append(getTitle());
+            searchStr = sb.toString().toUpperCase();
+        }
+        return searchStr;
+
     }
 
     private ArrayList<String> getChordsUsed(String source){
