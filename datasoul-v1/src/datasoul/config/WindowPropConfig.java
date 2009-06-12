@@ -75,6 +75,9 @@ public class WindowPropConfig extends AbstractConfig {
         properties.add("TemplateSplit2");
    }
 
+    private boolean checkStr(String str){
+        return !(str == null || str.length() == 0);
+    }
 
     public String getHMainForm() {
         return hMainForm;
@@ -99,10 +102,12 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getMainForm(JFrame m){
-        try{
-            m.setSize(Integer.parseInt(wMainForm), Integer.parseInt(hMainForm));
-        }catch(Exception e){
-            //ignore
+        if (checkStr(wMainForm) && checkStr(hMainForm)){
+            try{
+                m.setSize(Integer.parseInt(wMainForm), Integer.parseInt(hMainForm));
+            }catch(Exception e){
+                //ignore
+            }
         }
     }
 
@@ -130,10 +135,12 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getTextEditor(JFrame m){
-        try{
-            m.setSize(Integer.parseInt(wTextEditor), Integer.parseInt(hTextEditor));
-        }catch(Exception e){
-            //ignore
+        if (checkStr(wTextEditor) && checkStr(hTextEditor)){
+            try{
+                m.setSize(Integer.parseInt(wTextEditor), Integer.parseInt(hTextEditor));
+            }catch(Exception e){
+                //ignore
+            }
         }
     }
 
@@ -162,10 +169,12 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getSongEditor(JFrame m){
-        try{
-            m.setSize(Integer.parseInt(wSongEditor), Integer.parseInt(hSongEditor));
-        }catch(Exception e){
-            //ignore
+        if (checkStr(wSongEditor) && checkStr(hSongEditor)){
+            try{
+                m.setSize(Integer.parseInt(wSongEditor), Integer.parseInt(hSongEditor));
+            }catch(Exception e){
+                //ignore
+            }
         }
     }
 
@@ -193,10 +202,12 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getSongSearch(JPanel m){
-        try{
-            m.setSize(Integer.parseInt(wSongSearch), Integer.parseInt(hSongSearch));
-        }catch(Exception e){
-            //ignore
+        if (checkStr(wSongSearch) && checkStr(hSongSearch)){
+            try{
+                m.setSize(Integer.parseInt(wSongSearch), Integer.parseInt(hSongSearch));
+            }catch(Exception e){
+                //ignore
+            }
         }
     }
 
@@ -205,6 +216,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getDatashowSplit1(JSplitPane j){
+        if (!checkStr(datashowSplit1)) return;
         try{
             j.setDividerLocation(Integer.parseInt(datashowSplit1));
         }catch(Exception e){
@@ -221,6 +233,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getDatashowSplit2(JSplitPane j){
+        if (!checkStr(datashowSplit2)) return;
         try{
             j.setDividerLocation(Integer.parseInt(datashowSplit2));
         }catch(Exception e){
@@ -236,6 +249,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getDatashowSplit3(JSplitPane j){
+        if (!checkStr(datashowSplit3)) return;
         try{
             j.setDividerLocation(Integer.parseInt(datashowSplit3));
         }catch(Exception e){
@@ -252,6 +266,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getServiceSplit1(JSplitPane j){
+        if (!checkStr(serviceSplit1)) return;
         try{
             j.setDividerLocation(Integer.parseInt(serviceSplit1));
         }catch(Exception e){
@@ -268,6 +283,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getServiceSplit2(JSplitPane j){
+        if (!checkStr(serviceSplit2)) return;
         try{
             j.setDividerLocation(Integer.parseInt(serviceSplit2));
         }catch(Exception e){
@@ -283,6 +299,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getServiceSplit3(JSplitPane j){
+        if (!checkStr(serviceSplit3)) return;
         try{
             j.setDividerLocation(Integer.parseInt(serviceSplit3));
         }catch(Exception e){
@@ -298,6 +315,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getSongSplit1(JSplitPane j){
+        if (!checkStr(songSplit1)) return;
         try{
             j.setDividerLocation(Integer.parseInt(songSplit1));
         }catch(Exception e){
@@ -314,6 +332,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getSongSplit2(JSplitPane j){
+        if (!checkStr(songSplit2)) return;
         try{
             j.setDividerLocation(Integer.parseInt(songSplit2));
         }catch(Exception e){
@@ -330,6 +349,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getTemplateSplit1(JSplitPane j){
+        if (!checkStr(templateSplit1)) return;
         try{
             j.setDividerLocation(Integer.parseInt(templateSplit1));
         }catch(Exception e){
@@ -346,6 +366,7 @@ public class WindowPropConfig extends AbstractConfig {
     }
 
     public void getTemplateSplit2(JSplitPane j){
+        if (!checkStr(templateSplit2)) return;
         try{
             j.setDividerLocation(Integer.parseInt(templateSplit2));
         }catch(Exception e){
