@@ -83,6 +83,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         labelLive = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnUnselect = new javax.swing.JButton();
 
         setDoubleBuffered(false);
@@ -126,6 +127,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
         labelLive.setText(bundle.getString("LIVE")); // NOI18N
         jToolBar1.add(labelLive);
+        jToolBar1.add(jSeparator1);
 
         btnUnselect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnUnselect.setText(bundle.getString("Unselect_Slide")); // NOI18N
@@ -214,6 +216,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     private javax.swing.JCheckBox cbAutoChange;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelLive;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;

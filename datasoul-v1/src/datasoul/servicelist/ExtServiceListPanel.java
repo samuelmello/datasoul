@@ -110,6 +110,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtMinutes = new javax.swing.JTextField();
         toolBar1 = new javax.swing.JToolBar();
         jLabel8 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -346,6 +347,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel8.setText(bundle.getString("Service_Plan")); // NOI18N
         toolBar1.add(jLabel8);
+        toolBar1.add(jSeparator1);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
@@ -786,6 +788,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;

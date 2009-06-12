@@ -264,6 +264,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnTemplates = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -352,6 +353,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnHelp);
+        toolBarMain.add(jSeparator1);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
@@ -618,6 +620,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnServiceList;
     javax.swing.JButton btnSongs;
     javax.swing.JButton btnTemplates;
+    javax.swing.JToolBar.Separator jSeparator1;
     javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables
     

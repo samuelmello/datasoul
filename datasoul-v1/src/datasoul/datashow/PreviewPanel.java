@@ -67,6 +67,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
         jToolBar1 = new javax.swing.JToolBar();
         labelLive = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnGoLive = new javax.swing.JButton();
 
         setDoubleBuffered(false);
@@ -77,6 +78,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         labelLive.setText(bundle.getString("Preview")); // NOI18N
         jToolBar1.add(labelLive);
+        jToolBar1.add(jSeparator1);
 
         btnGoLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-start.png"))); // NOI18N
         btnGoLive.setText(bundle.getString("GO_LIVE")); // NOI18N
@@ -132,6 +134,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLive;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelLive;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;

@@ -94,6 +94,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         tableServiceList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -242,6 +243,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel1.setText(bundle.getString("Service_Plan")); // NOI18N
         jToolBar1.add(jLabel1);
+        jToolBar1.add(jSeparator1);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setToolTipText(bundle.getString("New")); // NOI18N
@@ -477,6 +479,7 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu ppmAddItem;
     private javax.swing.JScrollPane scroolServiceList;
