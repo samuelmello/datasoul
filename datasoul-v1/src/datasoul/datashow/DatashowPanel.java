@@ -22,6 +22,7 @@ package datasoul.datashow;
 
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
+import datasoul.config.WindowPropConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.SwingPanelContentRender;
 import datasoul.templates.DisplayTemplate;
@@ -34,7 +35,9 @@ import javax.swing.JPanel;
  * @author  Administrador
  */
 public class DatashowPanel extends javax.swing.JPanel {
-    
+
+    private boolean updateSize;
+
     /**
      * Creates new form DatashowPanel
      */
@@ -66,6 +69,12 @@ public class DatashowPanel extends javax.swing.JPanel {
             
         initPreview();
         initLive();
+
+        WindowPropConfig.getInstance().getDatashowSplit1(jSplitPane1);
+        WindowPropConfig.getInstance().getDatashowSplit2(jSplitPane2);
+        WindowPropConfig.getInstance().getDatashowSplit3(jSplitPane3);
+        updateSize = true;
+
     }
 
     private void initPreview(){
@@ -135,7 +144,7 @@ public class DatashowPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jSplitPane2 = new javax.swing.JSplitPane();
-        split3 = new javax.swing.JSplitPane();
+        jSplitPane3 = new javax.swing.JSplitPane();
         pnlPreview = new javax.swing.JPanel();
         pnlPreviewBox = new javax.swing.JPanel();
         previewDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
@@ -161,8 +170,32 @@ public class DatashowPanel extends javax.swing.JPanel {
         });
 
         jSplitPane2.setDividerLocation(320);
+        jSplitPane2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jSplitPane2ComponentResized(evt);
+            }
+        });
+        jSplitPane2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane2PropertyChange(evt);
+            }
+        });
+        jSplitPane2.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+                jSplitPane2AncestorMoved(evt);
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
-        split3.setDividerLocation(300);
+        jSplitPane3.setDividerLocation(300);
+        jSplitPane3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane3PropertyChange(evt);
+            }
+        });
 
         previewDisplayPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         previewDisplayPanel1.setPreferredSize(new java.awt.Dimension(160, 120));
@@ -206,7 +239,7 @@ public class DatashowPanel extends javax.swing.JPanel {
                         .add(jLabel10)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -226,17 +259,17 @@ public class DatashowPanel extends javax.swing.JPanel {
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(pnlPreviewBox, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        split3.setTopComponent(pnlPreview);
+        jSplitPane3.setTopComponent(pnlPreview);
 
         cbLiveSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Don't show", "Small", "Medium", "Large" }));
         cbLiveSize.setSelectedIndex(1);
@@ -311,7 +344,7 @@ public class DatashowPanel extends javax.swing.JPanel {
                         .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(btnShowMonitor)))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -334,23 +367,28 @@ public class DatashowPanel extends javax.swing.JPanel {
             .add(pnlLiveLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
         );
         pnlLiveLayout.setVerticalGroup(
             pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlLiveLayout.createSequentialGroup()
-                .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
 
-        split3.setRightComponent(pnlLive);
+        jSplitPane3.setRightComponent(pnlLive);
 
-        jSplitPane2.setRightComponent(split3);
+        jSplitPane2.setRightComponent(jSplitPane3);
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane1PropertyChange(evt);
+            }
+        });
         jSplitPane1.setLeftComponent(serviceList);
         jSplitPane1.setRightComponent(auxiliar);
 
@@ -483,6 +521,30 @@ public class DatashowPanel extends javax.swing.JPanel {
             cbLiveSizeActionPerformed(evt);
         }
 }//GEN-LAST:event_btnShowMonitorActionPerformed
+
+    private void jSplitPane2ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jSplitPane2ComponentResized
+    }//GEN-LAST:event_jSplitPane2ComponentResized
+
+    private void jSplitPane2AncestorMoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jSplitPane2AncestorMoved
+    }//GEN-LAST:event_jSplitPane2AncestorMoved
+
+    private void jSplitPane2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane2PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setDatashowSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane2PropertyChange
+
+    private void jSplitPane3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane3PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setDatashowSplit3(Integer.toString(jSplitPane3.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane3PropertyChange
+
+    private void jSplitPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane1PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setDatashowSplit1(Integer.toString(jSplitPane1.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane1PropertyChange
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -494,6 +556,7 @@ public class DatashowPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
+    private javax.swing.JSplitPane jSplitPane3;
     private datasoul.datashow.LivePanel live;
     private datasoul.render.SwingDisplayPanel liveDisplayPanel;
     private datasoul.render.SwingDisplayPanel monitorDisplayPanel;
@@ -504,7 +567,6 @@ public class DatashowPanel extends javax.swing.JPanel {
     private datasoul.datashow.PreviewPanel preview;
     private datasoul.render.SwingDisplayPanel previewDisplayPanel1;
     private datasoul.datashow.ServiceListPanel serviceList;
-    private javax.swing.JSplitPane split3;
     // End of variables declaration//GEN-END:variables
     
 }

@@ -24,6 +24,7 @@ import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.ConfigPanel;
 import datasoul.config.DisplayControlConfig;
+import datasoul.config.WindowPropConfig;
 import datasoul.datashow.DatashowPanel;
 import datasoul.help.HelpPanel;
 import datasoul.render.ContentManager;
@@ -64,7 +65,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public ConfigPanel config = new ConfigPanel();
     public HelpPanel help = new HelpPanel();
     public ExtServiceListPanel service = new ExtServiceListPanel();
-    
+
+    private boolean updateSize = false;
     
     GroupLayout songsLayout;
     GroupLayout datashowLayout;
@@ -181,6 +183,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         showPanel(ObjectManager.VIEW_SERVICE);
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
+        
+        WindowPropConfig.getInstance().getMainForm(this);
+        updateSize = true;
     }
 
     public static void setDatasoulIcon(JFrame frame){
@@ -264,6 +269,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Datasoul");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         toolBarMain.setFloatable(false);
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 36));
@@ -413,6 +423,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);
         showPanel(ObjectManager.VIEW_SERVICE); 
     }//GEN-LAST:event_btnDatashowActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        if (updateSize){
+            WindowPropConfig.getInstance().setMainForm(this);
+        }
+    }//GEN-LAST:event_formComponentResized
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();

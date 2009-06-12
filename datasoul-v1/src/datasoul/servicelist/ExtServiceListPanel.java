@@ -20,6 +20,7 @@
 
 package datasoul.servicelist;
 
+import datasoul.config.WindowPropConfig;
 import datasoul.datashow.ImportServiceItemForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
@@ -40,7 +41,9 @@ import javax.swing.JTable;
  * @author  samuel
  */
 public class ExtServiceListPanel extends javax.swing.JPanel {
-    
+
+    private boolean updateSize;
+
     /** Creates new form ExtServiceListPanel */
     public ExtServiceListPanel() {
         initComponents();
@@ -66,6 +69,11 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         tableServiceList.getColumnModel().getColumn(ServiceListTable.ExtendedServiceListTable.COLUMN_TIME).setPreferredWidth(20);
         tableServiceList.getColumnModel().getColumn(ServiceListTable.ExtendedServiceListTable.COLUMN_DURATION).setPreferredWidth(20);
         tableServiceList.getColumnModel().getColumn(ServiceListTable.ExtendedServiceListTable.COLUMN_TITLE).setPreferredWidth(200);
+
+        WindowPropConfig.getInstance().getServiceSplit1(jSplitPane1);
+        WindowPropConfig.getInstance().getServiceSplit2(jSplitPane2);
+        WindowPropConfig.getInstance().getServiceSplit3(jSplitPane3);
+        updateSize = true;
     }
     
     /** This method is called from within the constructor to
@@ -170,9 +178,19 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         ppmAddItem.add(actImportItem);
 
         jSplitPane1.setDividerLocation(600);
+        jSplitPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane1PropertyChange(evt);
+            }
+        });
 
         jSplitPane3.setDividerLocation(300);
         jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane3PropertyChange(evt);
+            }
+        });
 
         jLabel2.setText(bundle.getString("Start_Time:")); // NOI18N
 
@@ -466,6 +484,11 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
         jSplitPane2.setDividerLocation(350);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane2PropertyChange(evt);
+            }
+        });
 
         jScrollPane3.setViewportView(textSong);
 
@@ -688,6 +711,24 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         tsief.setBibleVisible(true);
         tsief.setVisible(true);
 }//GEN-LAST:event_actAddBibleActionPerformed
+
+    private void jSplitPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane1PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setServiceSplit1(Integer.toString(jSplitPane1.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane1PropertyChange
+
+    private void jSplitPane3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane3PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setServiceSplit3(Integer.toString(jSplitPane3.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane3PropertyChange
+
+    private void jSplitPane2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane2PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setServiceSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane2PropertyChange
     
     public JTable getTableServiceList(){
         return tableServiceList;

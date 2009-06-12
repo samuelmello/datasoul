@@ -21,6 +21,7 @@
 package datasoul.datashow;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.WindowPropConfig;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
@@ -36,11 +37,15 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     
     private TextServiceItem textServiceItem;
     private boolean isNewItem;
-    
+    private boolean updateSize;
+
     /** Creates new form EditTextItem */
     public TextServiceItemEditorForm(TextServiceItem textServiceItem) {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        WindowPropConfig.getInstance().getTextEditor(this);
+        updateSize = true;
+
         
         this.textServiceItem = textServiceItem;
     
@@ -104,6 +109,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
+            }
+        });
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
             }
         });
 
@@ -271,6 +281,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         bibleTextPanel1.onClose();
     }//GEN-LAST:event_formWindowClosed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        if (updateSize)
+            WindowPropConfig.getInstance().setTextEditor(this);
+    }//GEN-LAST:event_formComponentResized
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

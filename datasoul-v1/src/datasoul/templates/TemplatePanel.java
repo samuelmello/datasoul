@@ -20,6 +20,7 @@
 
 package datasoul.templates;
 
+import datasoul.config.WindowPropConfig;
 import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.JFileChooser;
@@ -30,7 +31,9 @@ import javax.swing.JOptionPane;
  * @author  samuelm
  */
 public class TemplatePanel extends javax.swing.JPanel {
-    
+
+    private boolean updateSize;
+
     /** Creates new form TemplatePanel */
     public TemplatePanel() {
         initComponents();
@@ -42,7 +45,10 @@ public class TemplatePanel extends javax.swing.JPanel {
         templateEditorPanel1.setPropertiesTable(jTableProperties);
         
         lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
-        
+
+        WindowPropConfig.getInstance().getTemplateSplit1(jSplitPane1);
+        WindowPropConfig.getInstance().getTemplateSplit2(jSplitPane2);
+        updateSize = true;
     }
     
     /** This method is called from within the constructor to
@@ -92,6 +98,11 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
+        jSplitPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane1PropertyChange(evt);
+            }
+        });
 
         panelTemplateEditor.setAutoscrolls(true);
 
@@ -257,6 +268,11 @@ public class TemplatePanel extends javax.swing.JPanel {
         jSplitPane2.setBorder(null);
         jSplitPane2.setDividerLocation(250);
         jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        jSplitPane2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jSplitPane2PropertyChange(evt);
+            }
+        });
 
         panelTemplates.setDoubleBuffered(false);
 
@@ -497,6 +513,18 @@ public class TemplatePanel extends javax.swing.JPanel {
     private void btnMoveDownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveDownActionPerformed
         templateEditorPanel1.moveDownSelectedItem();
     }//GEN-LAST:event_btnMoveDownActionPerformed
+
+    private void jSplitPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane1PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setTemplateSplit1(Integer.toString(jSplitPane1.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane1PropertyChange
+
+    private void jSplitPane2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane2PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setTemplateSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
+        }
+    }//GEN-LAST:event_jSplitPane2PropertyChange
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

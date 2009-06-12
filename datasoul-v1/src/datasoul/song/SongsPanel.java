@@ -20,6 +20,7 @@
 
 package datasoul.song;
 
+import datasoul.config.WindowPropConfig;
 import datasoul.util.ObjectManager;
 
 /**
@@ -27,7 +28,9 @@ import datasoul.util.ObjectManager;
  * @author  Administrador
  */
 public class SongsPanel extends javax.swing.JPanel {
-    
+
+    private boolean updateSize;
+
     /**
      * Creates new form SongsPanel
      */
@@ -39,6 +42,10 @@ public class SongsPanel extends javax.swing.JPanel {
         ObjectManager.getInstance().setSongsSearchPanel(songsSearch);
         
         songsSearch.setSourceView(ObjectManager.VIEW_SONGS);
+
+        WindowPropConfig.getInstance().getSongSplit1(split1);
+        WindowPropConfig.getInstance().getSongSplit2(split2);
+        updateSize = true;
     }
 
     /** This method is called from within the constructor to
@@ -57,6 +64,11 @@ public class SongsPanel extends javax.swing.JPanel {
 
         split1.setBorder(null);
         split1.setDividerLocation(300);
+        split1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                split1PropertyChange(evt);
+            }
+        });
 
         songViewer.setMinimumSize(new java.awt.Dimension(10, 10));
         split1.setRightComponent(songViewer);
@@ -65,6 +77,11 @@ public class SongsPanel extends javax.swing.JPanel {
         split2.setDividerLocation(350);
         split2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         split2.setMinimumSize(new java.awt.Dimension(10, 10));
+        split2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                split2PropertyChange(evt);
+            }
+        });
         split2.setBottomComponent(serviceList);
         split2.setLeftComponent(songsSearch);
 
@@ -78,11 +95,21 @@ public class SongsPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
-                .addContainerGap())
+            .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void split1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_split1PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setSongSplit1(Integer.toString(split1.getDividerLocation()));
+        }
+    }//GEN-LAST:event_split1PropertyChange
+
+    private void split2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_split2PropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+                WindowPropConfig.getInstance().setSongSplit2(Integer.toString(split2.getDividerLocation()));
+        }
+    }//GEN-LAST:event_split2PropertyChange
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

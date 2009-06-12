@@ -21,6 +21,7 @@
 package datasoul.song;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.WindowPropConfig;
 import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,6 +41,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
     private Song song;
     private boolean newSong;
+    boolean updateSize = false;
 
     /**
      * Creates new form SongEditorFrame
@@ -47,6 +49,8 @@ public class SongEditorForm extends javax.swing.JFrame {
     public SongEditorForm(File file) {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        WindowPropConfig.getInstance().getSongEditor(this);
+        updateSize = true;
         
         Document dom=null;
         Node node=null;
@@ -92,6 +96,8 @@ public class SongEditorForm extends javax.swing.JFrame {
     public SongEditorForm(Song songIn) {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        WindowPropConfig.getInstance().getSongEditor(this);
+        updateSize = true;
 
         song = songIn;
         this.setTitle(songIn.getFileName());
@@ -108,6 +114,8 @@ public class SongEditorForm extends javax.swing.JFrame {
     public SongEditorForm() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        WindowPropConfig.getInstance().getSongEditor(this);
+        updateSize = true;
 
         song = new Song();
 
@@ -185,6 +193,11 @@ public class SongEditorForm extends javax.swing.JFrame {
         cbUpdateSongLibrary = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         fieldName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -411,6 +424,11 @@ public class SongEditorForm extends javax.swing.JFrame {
     private void btnShowSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSplitActionPerformed
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
     }//GEN-LAST:event_btnShowSplitActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        if (updateSize)
+            WindowPropConfig.getInstance().setSongEditor(this);
+    }//GEN-LAST:event_formComponentResized
 
   private void saveFile(){
         actualizeValues();

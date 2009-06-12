@@ -20,6 +20,7 @@
 
 package datasoul.song;
 
+import datasoul.config.WindowPropConfig;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.util.ObjectManager;
@@ -40,12 +41,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private JFrame frameParent;
     private int songColumn;
     private int sourceView;
+    private boolean updateSize;
     
     /**
      * Creates new form SongsSearchPanel
      */
     public SongsSearchPanel() {
         initComponents();
+        WindowPropConfig.getInstance().getSongSearch(this);
+        updateSize = true;
 
         tableSongList.setDroppable(false);
         
@@ -85,6 +89,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         tableSongList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
         jLabel1 = new javax.swing.JLabel();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
 
         fieldString.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,6 +382,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private void fieldStringKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldStringKeyTyped
 
     }//GEN-LAST:event_fieldStringKeyTyped
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        if (updateSize)
+            WindowPropConfig.getInstance().setSongSearch(this);
+    }//GEN-LAST:event_formComponentResized
 
     public void tableChanged(TableModelEvent e) {
         this.repaint();
