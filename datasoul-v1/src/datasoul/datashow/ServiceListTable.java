@@ -436,6 +436,24 @@ public class ServiceListTable extends ListTable {
     }
 
     public void fileNew(){
+
+        File f = new File(fileName);
+        String name;
+        if (f.exists()){
+            name = f.getName();
+        }else{
+            name = "";
+        }
+        int resp = JOptionPane.showConfirmDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Do_you_want_to_save_")+name+ "?" );
+
+        switch(resp){
+            case JOptionPane.CANCEL_OPTION:
+                return;
+            case JOptionPane.YES_OPTION:
+                saveServiceList();
+                break;
+        }
+
         cleanup();
         fileName = "";
         tableModelChanged();
