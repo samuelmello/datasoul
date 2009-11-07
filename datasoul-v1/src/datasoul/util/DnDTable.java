@@ -23,6 +23,7 @@
 
 package datasoul.util;
 
+import datasoul.song.Song;
 import datasoul.song.SongListTable;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
@@ -120,7 +121,12 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
         if(this.droppable){        
             try {
                 Object obj = dtde.getTransferable().getTransferData(SerializableObject.serializableObjectFlavor);
-                ((ListTable)this.getModel()).addItem(obj);
+                if (obj instanceof Song){
+                    Song objclone = ((Song)obj).getClone();
+                    ((ListTable)this.getModel()).addItem(objclone);
+                }else{
+                    ((ListTable)this.getModel()).addItem(obj);
+                }
             } catch (UnsupportedFlavorException ex) {
                 ex.printStackTrace();
             } catch (IOException ex) {
