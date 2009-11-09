@@ -26,13 +26,13 @@ package datasoul.datashow;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
 
 /**
  *
  * @author samuelm
  */
-public class ServiceItemTextField extends JTextField {
+public class ServiceItemNumberLabel extends JLabel {
     
         public static final int SPACE_HEIGHT = 2;
         

@@ -25,6 +25,7 @@ package datasoul.datashow;
 
 import datasoul.config.ConfigObj;
 import datasoul.util.SerializableObject;
+import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -57,7 +58,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     protected String notes;
     protected int startHour;
     protected int startMinute;
-    protected ServiceItemTextField slideNumberField;
+    protected ServiceItemNumberLabel slideNumberField;
     protected SlideNumberCellRenderer slideNumberRenderer;
     
     /** Creates a new instance of ServiceItem */
@@ -67,9 +68,9 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         this.title = "";
         this.template = ConfigObj.getInstance().getTemplateText();
         this.slides = new ArrayList<ServiceItemRenderer>();
-        slideNumberField = new ServiceItemTextField();
-        slideNumberField.setHorizontalAlignment( ServiceItemTextField.TRAILING );
-        slideNumberField.setBorder(null);
+        slideNumberField = new ServiceItemNumberLabel();
+        slideNumberField.setHorizontalAlignment( ServiceItemNumberLabel.TRAILING );
+        slideNumberField.setOpaque(true);
         slideNumberRenderer = new SlideNumberCellRenderer();
     }
 
