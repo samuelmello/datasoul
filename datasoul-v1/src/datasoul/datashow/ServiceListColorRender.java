@@ -81,6 +81,9 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
         } else if (serviceItem instanceof ContentlessServiceItem) {
             setBackground(Color.decode("0xddffff"));
             setText(text);
+        } else if (serviceItem instanceof ImageListServiceItem) {
+            setBackground(Color.decode("0xffdddd"));
+            setText(text);
         } else {
             super.setValue(value);
         }
