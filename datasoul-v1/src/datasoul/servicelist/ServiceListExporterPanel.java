@@ -36,6 +36,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         singleSong = s;
         cbServicePlan.setSelected(false);
         cbServicePlan.setEnabled(false);
+        rbSlides.setEnabled(false);
         
     }
     
