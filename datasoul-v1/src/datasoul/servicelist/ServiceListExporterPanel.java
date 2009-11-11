@@ -6,10 +6,14 @@
 
 package datasoul.servicelist;
 
+import com.lowagie.text.DocumentException;
 import datasoul.DatasoulMainForm;
+import datasoul.config.BackgroundConfig;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
+import datasoul.render.ContentRender;
 import datasoul.song.Song;
+import java.io.FileNotFoundException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -23,6 +27,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     public ServiceListExporterPanel() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        pbProgress.setVisible(false);
     }
     
     private Song singleSong = null;
@@ -42,15 +47,20 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         cbServicePlan = new javax.swing.JCheckBox();
         cbLyrics = new javax.swing.JCheckBox();
         cbChordsSimple = new javax.swing.JCheckBox();
         cbChordsComplete = new javax.swing.JCheckBox();
         cbOk = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblFormat = new javax.swing.JLabel();
         cbFormat = new javax.swing.JComboBox();
         cbCancel = new javax.swing.JButton();
+        rbPrintout = new javax.swing.JRadioButton();
+        rbSlides = new javax.swing.JRadioButton();
+        pbProgress = new javax.swing.JProgressBar();
+        cbEmptySlide = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -89,8 +99,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel2.setText(bundle.getString("Format")); // NOI18N
+        lblFormat.setText(bundle.getString("Format")); // NOI18N
 
         cbFormat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PDF", "RTF" }));
 
@@ -102,40 +111,71 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(rbPrintout);
+        rbPrintout.setSelected(true);
+        rbPrintout.setText("Printouts");
+        rbPrintout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbPrintoutActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbSlides);
+        rbSlides.setText("Slides");
+        rbSlides.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbSlidesActionPerformed(evt);
+            }
+        });
+
+        cbEmptySlide.setSelected(true);
+        cbEmptySlide.setText("Add an empty slide between service items");
+        cbEmptySlide.setEnabled(false);
+        cbEmptySlide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbEmptySlideActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(297, Short.MAX_VALUE)
-                .add(cbCancel)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbOk)
-                .addContainerGap())
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(12, 12, 12)
+                        .add(cbEmptySlide))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(pbProgress, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+                        .add(12, 12, 12)
+                        .add(cbCancel)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cbOk))
                     .add(layout.createSequentialGroup()
                         .add(12, 12, 12)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(cbServicePlan)
                             .add(cbLyrics)
                             .add(cbChordsSimple)
-                            .add(cbChordsComplete)))
-                    .add(jLabel1))
-                .addContainerGap(217, Short.MAX_VALUE))
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel2)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(cbFormat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                            .add(cbChordsComplete)
+                            .add(layout.createSequentialGroup()
+                                .add(lblFormat)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(cbFormat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 103, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                    .add(rbPrintout)
+                    .add(jLabel1)
+                    .add(rbSlides))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(rbPrintout)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(cbServicePlan)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -146,12 +186,18 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 .add(cbChordsComplete)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel2)
+                    .add(lblFormat)
                     .add(cbFormat, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(rbSlides)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(cbEmptySlide)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cbOk)
-                    .add(cbCancel))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                        .add(cbOk)
+                        .add(cbCancel))
+                    .add(pbProgress, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -166,101 +212,265 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_cbLyricsActionPerformed
 
-    private void cbOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOkActionPerformed
+    private void exportSlides(String fileName) throws FileNotFoundException, DocumentException{
+
+        ServiceListExporterSlides sles = new ServiceListExporterSlides(fileName);
         try{
-            
-            String fileName = null;
-            
-            // Choose PDF or RTF
-            int type =  ServiceListExporterDocument.TYPE_PDF;
-            String fileextension = ".pdf";
-            if (cbFormat.getSelectedIndex() == 1){
-                type = ServiceListExporterDocument.TYPE_RTF;
-                fileextension = ".rtf";
+            ServiceListTable slt =  ServiceListTable.getActiveInstance();
+            ContentRender r = sles.getRender();
+            r.paintBackground( BackgroundConfig.getInstance().getMainBackgroundImg());
+            int slideCount = 0;
+
+            /* initial empty slide */
+            if (cbEmptySlide.isSelected()){
+                sles.addEmptySlide();
+                slideCount++;
             }
 
-            // Ask for file to save
-            JFileChooser fc = new JFileChooser();
-//            File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
-//            fc.setCurrentDirectory(dir);
-            fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
-            if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-                fileName = fc.getSelectedFile().getPath();
-                if (!fileName.contains(fileextension)) {
-                    fileName = fileName + fileextension;
-                }
-            }
-
-            
-            // Process it
-            if (fileName != null){
-
-                ServiceListExporterDocument sled = new ServiceListExporterDocument(type, fileName);
-                
-                if (singleSong == null){
-                
-                    if (cbServicePlan.isSelected()){
-                        sled.addServicePlan();
-                    }
-
-                    ServiceListTable slt =  ServiceListTable.getActiveInstance();
-                    for (int i=0; i<slt.getRowCount(); i++){
-                        Object o = slt.getServiceItem(i);
-                        if (o instanceof Song){
-                            if (cbLyrics.isSelected()){
-                                sled.addSongLyrics((Song)o);
+            pbProgress.setMaximum(slt.getRowCount());
+            for (int i=0; i<slt.getRowCount(); i++){
+                Object o = slt.getServiceItem(i);
+                pbProgress.setValue(i);
+                if (o instanceof Song){
+                    Song s = (Song) o;
+                    r.setTemplate(s.getTemplate());
+                    r.setTitle(s.getTitle());
+                    r.setSongAuthor(s.getSongAuthor());
+                    r.setSongSource(s.getSongSource());
+                    r.setCopyright(s.getCopyright());
+                    for (int k=0; k<s.getRowCount(); k++){
+                        slideCount++;
+                        r.setSlide(s.getSlideText(k));
+                        if (k < s.getRowCount()-1){
+                            r.setNextSlide(s.getSlideText(k+1));
+                        }else{
+                            r.setNextSlide("");
+                        }
+                        /* start rendering */
+                        r.slideChange(-1);
+                        /* wait render thread to render the slide */
+                        while (slideCount > sles.getSlideCount()){
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException ex) {
+                               // ignore
                             }
-                            if (cbChordsSimple.isSelected()){
-                                sled.addSongChordsSimple((Song)o);
-                            }
-                            if (cbChordsComplete.isSelected()){
-                                sled.addSongChordsComplete((Song)o);
-                            }
-                        }else if (o instanceof TextServiceItem){
-                            if (cbLyrics.isSelected()){
-                                sled.addTextItem((TextServiceItem)o);
+                            if (sles.getSlideCount() == -1){
+                                throw new DocumentException("Internal Error");
                             }
                         }
+                    }
+                    /* empty slide after songs */
+                    if (cbEmptySlide.isSelected()){
+                        sles.addEmptySlide();
+                        slideCount++;
+                    }
 
+                }else if (o instanceof TextServiceItem){
+                    TextServiceItem t = (TextServiceItem) o;
+                    r.setTemplate(t.getTemplate());
+                    r.setTitle(t.getTitle());
+                    for (int k=0; k<t.getRowCount(); k++){
+                        slideCount++;
+                        r.setSlide(t.getSlideText(k));
+                        if (k < t.getRowCount()-1){
+                            r.setNextSlide(t.getSlideText(k+1));
+                        }else{
+                            r.setNextSlide("");
+                        }
+                        /* start rendering */
+                        r.slideChange(-1);
+                        /* wait render thread to render the slide */
+                        while (slideCount > sles.getSlideCount()){
+                            try {
+                                Thread.sleep(200);
+                            } catch (InterruptedException ex) {
+                                // ignore
+                            }
+                            if (sles.getSlideCount() == -1){
+                                throw new DocumentException("Internal Error");
+                            }
+                        }
                     }
-                }else{
-                    if (cbLyrics.isSelected()){
-                        sled.addSongLyrics(singleSong);
-                    }
-                    if (cbChordsSimple.isSelected()){
-                        sled.addSongChordsSimple(singleSong);
-                    }
-                    if (cbChordsComplete.isSelected()){
-                        sled.addSongChordsComplete(singleSong);
+                    /* empty slide after text */
+                    if (cbEmptySlide.isSelected()){
+                        sles.addEmptySlide();
+                        slideCount++;
                     }
 
                 }
-                        
-                sled.write();
             }
-            
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Document_created_successfully"));
-            dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_creating_document:_")+e.getMessage());
+            pbProgress.setValue(slt.getRowCount());
+            sles.write();
+
+        }finally{
+            sles.cleanup();
         }
+
+    }
+
+    private void exportPrintout(int type, String fileName) throws DocumentException, FileNotFoundException{
+        ServiceListExporterDocument sled = new ServiceListExporterDocument(type, fileName);
+
+        if (singleSong == null){
+
+            if (cbServicePlan.isSelected()){
+                sled.addServicePlan();
+            }
+
+            ServiceListTable slt =  ServiceListTable.getActiveInstance();
+            pbProgress.setMaximum(slt.getRowCount());
+            for (int i=0; i<slt.getRowCount(); i++){
+                Object o = slt.getServiceItem(i);
+                pbProgress.setValue(i);
+                if (o instanceof Song){
+                    if (cbLyrics.isSelected()){
+                        sled.addSongLyrics((Song)o);
+                    }
+                    if (cbChordsSimple.isSelected()){
+                        sled.addSongChordsSimple((Song)o);
+                    }
+                    if (cbChordsComplete.isSelected()){
+                        sled.addSongChordsComplete((Song)o);
+                    }
+                }else if (o instanceof TextServiceItem){
+                    if (cbLyrics.isSelected()){
+                        sled.addTextItem((TextServiceItem)o);
+                    }
+                }
+            }
+            pbProgress.setValue(slt.getRowCount());
+
+        }else{
+            if (cbLyrics.isSelected()){
+                sled.addSongLyrics(singleSong);
+            }
+            if (cbChordsSimple.isSelected()){
+                sled.addSongChordsSimple(singleSong);
+            }
+            if (cbChordsComplete.isSelected()){
+                sled.addSongChordsComplete(singleSong);
+            }
+
+        }
+
+        sled.write();
+
+    }
+
+    private void cbOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbOkActionPerformed
+
+        String fileName = null;
+
+        // Choose PDF or RTF
+        int type =  ServiceListExporterDocument.TYPE_PDF;
+        String fileextension = ".pdf";
+
+        if (rbPrintout.isSelected() && cbFormat.getSelectedIndex() == 1){
+            type = ServiceListExporterDocument.TYPE_RTF;
+            fileextension = ".rtf";
+        }
+
+        // Ask for file to save
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            fileName = fc.getSelectedFile().getPath();
+            if (!fileName.contains(fileextension)) {
+                fileName = fileName + fileextension;
+            }
+        }
+
+
+        // Process it
+        if (fileName != null){
+
+            enablePrintoutControls(false);
+            enableSlideControls(false);
+            rbPrintout.setEnabled(false);
+            rbSlides.setEnabled(false);
+            cbCancel.setEnabled(false);
+            cbOk.setEnabled(false);
+
+            pbProgress.setVisible(true);
+            Thread t = new ProcessThread(type, fileName, rbSlides.isSelected());
+            t.start();
+        }
+            
 }//GEN-LAST:event_cbOkActionPerformed
 
        
     private void cbCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbCancelActionPerformed
         dispose();
     }//GEN-LAST:event_cbCancelActionPerformed
+
+    private void enablePrintoutControls(boolean b){
+        cbChordsComplete.setEnabled(b);
+        cbChordsSimple.setEnabled(b);
+        cbLyrics.setEnabled(b);
+        cbServicePlan.setEnabled(b);
+        lblFormat.setEnabled(b);
+        cbFormat.setEnabled(b);
+    }
+
+    private void enableSlideControls(boolean b){
+        cbEmptySlide.setEnabled(b);
+    }
+
+
+    private void rbPrintoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbPrintoutActionPerformed
+        enablePrintoutControls(true);
+        enableSlideControls(false);
+    }//GEN-LAST:event_rbPrintoutActionPerformed
+
+    private void rbSlidesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbSlidesActionPerformed
+        enablePrintoutControls(false);
+        enableSlideControls(true);
+    }//GEN-LAST:event_rbSlidesActionPerformed
+
+    private void cbEmptySlideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbEmptySlideActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbEmptySlideActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton cbCancel;
     private javax.swing.JCheckBox cbChordsComplete;
     private javax.swing.JCheckBox cbChordsSimple;
+    private javax.swing.JCheckBox cbEmptySlide;
     private javax.swing.JComboBox cbFormat;
     private javax.swing.JCheckBox cbLyrics;
     private javax.swing.JButton cbOk;
     private javax.swing.JCheckBox cbServicePlan;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblFormat;
+    private javax.swing.JProgressBar pbProgress;
+    private javax.swing.JRadioButton rbPrintout;
+    private javax.swing.JRadioButton rbSlides;
     // End of variables declaration//GEN-END:variables
-    
+
+    private class ProcessThread extends Thread {
+        private int type;
+        private String fileName;
+        private boolean slides;
+
+        public ProcessThread(int type, String fileName, boolean slides){
+            this.type = type;
+            this.fileName = fileName;
+            this.slides = slides;
+        }
+        public void run(){
+            try{
+                if (slides){
+                    exportSlides(fileName);
+                }else{
+                    exportPrintout(type, fileName);
+                }
+                JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Document_created_successfully"));
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_creating_document:_")+e.getMessage());
+            }
+            (ServiceListExporterPanel.this).dispose();
+        }
+    }
 }

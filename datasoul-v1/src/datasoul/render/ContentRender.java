@@ -86,6 +86,8 @@ public abstract class ContentRender {
     protected BufferedImage transitionImage;
     private BufferedImage templateImage;
     private BufferedImage alertImage;
+
+    private boolean run;
     
     /** Creates a new instance of ContentRender */
     public ContentRender() {
@@ -95,13 +97,20 @@ public abstract class ContentRender {
         slideTransition = TRANSITION_HIDE;
         slideTransTimerTotal = 1;
         slideTransTimer = 0;
+        run = true;
     }
     
     public abstract void paint(BufferedImage img, AlphaComposite rule);
     public abstract void clear();
     public abstract void flip();
     public abstract void setWindowTitle(String title);
-    
+
+    public void shutdown(){
+        run = false;
+        updSemaphore.release();
+        updThread.interrupt();
+    }
+
     public String getTitle() {
         return title;
     }
@@ -542,8 +551,6 @@ public abstract class ContentRender {
         alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
     }
     
-    public abstract void shutdown();
-    
     public abstract void paintBackground(BufferedImage bufferedImage);
     
     public abstract void setClear(int i);
@@ -553,7 +560,7 @@ public abstract class ContentRender {
     private class UpdateThread extends Thread {
         public void run(){
             long t1, t2, t3, sleepTime;
-            while (true){
+            while (run){
                 try{
                     updSemaphore.acquire();
                     
