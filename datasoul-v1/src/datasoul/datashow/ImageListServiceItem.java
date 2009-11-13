@@ -5,7 +5,7 @@
 
 package datasoul.datashow;
 
-import datasoul.config.BackgroundConfig;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -13,14 +13,16 @@ import datasoul.config.BackgroundConfig;
  */
 public class ImageListServiceItem extends ServiceItem {
 
-    public ImageListServiceItem(){
-
+    public void addImage(BufferedImage img){
         ImageListServiceRenderer r1 = new ImageListServiceRenderer();
-        r1.setImage(BackgroundConfig.getInstance().getMainBackgroundImg());
+        r1.setImage(img);
         slides.add(r1);
-        ImageListServiceRenderer r2 = new ImageListServiceRenderer();
-        r2.setImage(BackgroundConfig.getInstance().getMonitorBackgroundImg());
-        slides.add(r2);
+        this.fireTableChanged();
+    }
+
+    public void delImage(int index){
+        slides.remove(index);
+        this.fireTableChanged();
     }
 
 

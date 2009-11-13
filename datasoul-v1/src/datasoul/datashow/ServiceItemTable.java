@@ -34,12 +34,6 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     /** Creates new form ServiceItemTable */
     public ServiceItemTable() {
         initComponents();
-        /*
-        Hashtable<Integer, JLabel> labels = new Hashtable<Integer, JLabel>();
-        labels.put( 1, new JLabel("Small") );
-        labels.put( 5, new JLabel("Large") );
-        jSliderZoom.setLabelTable(labels);
-        */
         
         ServiceItem empty = new ServiceItem();
         setServiceItem(empty);
@@ -62,10 +56,12 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
 
         jScrollPane1 = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
+        pnlHeader = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblTemplate = new javax.swing.JLabel();
 
         setDoubleBuffered(false);
+        setLayout(new java.awt.BorderLayout());
 
         jScrollPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -91,32 +87,32 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         ));
         jScrollPane1.setViewportView(displayTable);
 
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel1.setText(bundle.getString("Template:")); // NOI18N
 
         lblTemplate.setText(bundle.getString("(none)")); // NOI18N
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+        org.jdesktop.layout.GroupLayout pnlHeaderLayout = new org.jdesktop.layout.GroupLayout(pnlHeader);
+        pnlHeader.setLayout(pnlHeaderLayout);
+        pnlHeaderLayout.setHorizontalGroup(
+            pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(lblTemplate)
-                .addContainerGap(210, Short.MAX_VALUE))
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(jLabel1)
-                    .add(lblTemplate))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
+        pnlHeaderLayout.setVerticalGroup(
+            pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+            .add(pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                .add(jLabel1)
+                .add(lblTemplate))
         );
+
+        add(pnlHeader, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
@@ -136,12 +132,12 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTemplate;
+    private javax.swing.JPanel pnlHeader;
     // End of variables declaration//GEN-END:variables
     
     public void setServiceItem(ServiceItem item){
         this.item = item;
         item.registerJTable(displayTable); 
-        //item.setZoom( jSliderZoom.getValue() );
         item.updateHeights(displayTable);        
         lblTemplate.setText( item.getTemplate() );
         setSlideIndex(0);
@@ -234,6 +230,10 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         // ensure that the actual slide is being shown
         displayTable.scrollRectToVisible( displayTable.getCellRect(x, 0, true) );
         
+    }
+
+    public void setHeaderVisible(boolean b){
+        pnlHeader.setVisible(b);
     }
     
     

@@ -21,6 +21,8 @@
 package datasoul.servicelist;
 
 import datasoul.config.WindowPropConfig;
+import datasoul.datashow.ImageListEditorForm;
+import datasoul.datashow.ImageListServiceItem;
 import datasoul.datashow.ImportServiceItemForm;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
@@ -89,6 +91,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         actAddText = new javax.swing.JMenuItem();
         actAddBible = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
+        actAddImageList = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
         jSplitPane1 = new javax.swing.JSplitPane();
         jSplitPane3 = new javax.swing.JSplitPane();
@@ -168,6 +171,14 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
             }
         });
         ppmAddItem.add(actAddContentlessItem);
+
+        actAddImageList.setText("Add Image List");
+        actAddImageList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddImageListActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddImageList);
 
         actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
         actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
@@ -418,7 +429,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                     .add(jPanel3Layout.createSequentialGroup()
                         .add(jLabel1)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(txtTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                        .add(txtTitle, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(jLabel2)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -731,6 +742,12 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 WindowPropConfig.getInstance().setServiceSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
         }
     }//GEN-LAST:event_jSplitPane2PropertyChange
+
+    private void actAddImageListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddImageListActionPerformed
+        ImageListServiceItem newitem = new ImageListServiceItem();
+        ImageListEditorForm form = new ImageListEditorForm(newitem);
+        form.setVisible(true);
+    }//GEN-LAST:event_actAddImageListActionPerformed
     
     public JTable getTableServiceList(){
         return tableServiceList;
@@ -760,6 +777,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem actAddBible;
     private javax.swing.JMenuItem actAddContentlessItem;
+    private javax.swing.JMenuItem actAddImageList;
     private javax.swing.JMenuItem actAddSong;
     private javax.swing.JMenuItem actAddText;
     private javax.swing.JMenuItem actImportItem;
