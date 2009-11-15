@@ -3,4 +3,6 @@ datasoul-v1/build
 datasoul-v1/dist
 datasoul-v1/nbproject/private
 datasoul-v1/packaging/installers
-
+datasoul-v1/nbproject/build-impl.xml
+datasoul-v1/nbproject/genfiles.properties
+datasoul-v1/nbproject/project.properties
