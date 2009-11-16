@@ -37,7 +37,13 @@ import java.io.InputStream;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -164,6 +170,7 @@ public abstract class AbstractConfig extends SerializableObject {
             Node node = this.writeObject();
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
+            /*
             FileOutputStream fos = new FileOutputStream(path);
             org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
             OutputFormat outFormat = new OutputFormat();
@@ -172,6 +179,18 @@ public abstract class AbstractConfig extends SerializableObject {
             xs.setOutputFormat(outFormat);
             xs.setOutputByteStream(fos);
             xs.serialize(doc);
+             */
+
+            Source source = new DOMSource(doc);
+
+            // Prepare the output file
+            File file = new File(path);
+            Result result = new StreamResult(file);
+
+            // Write the DOM document to the file
+            Transformer xformer = TransformerFactory.newInstance().newTransformer();
+            xformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            xformer.transform(source, result);
 
         } catch(Exception e){
             ShowDialog.showWriteFileError(path, e);

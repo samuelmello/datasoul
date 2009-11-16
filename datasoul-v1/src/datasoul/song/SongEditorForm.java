@@ -28,7 +28,13 @@ import java.io.FileOutputStream;
 import javax.swing.JOptionPane;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -438,6 +444,7 @@ public class SongEditorForm extends javax.swing.JFrame {
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
             FileOutputStream fos = new FileOutputStream(song.getFilePath());
+            /*
             org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
             OutputFormat outFormat = new OutputFormat();
             outFormat.setIndenting(true);
@@ -445,6 +452,18 @@ public class SongEditorForm extends javax.swing.JFrame {
             xs.setOutputFormat(outFormat);
             xs.setOutputByteStream(fos);
             xs.serialize(doc);
+             */
+
+            Source source = new DOMSource(doc);
+
+            // Prepare the output file
+            Result result = new StreamResult(fos);
+
+            // Write the DOM document to the file
+            Transformer xformer = TransformerFactory.newInstance().newTransformer();
+            xformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            xformer.transform(source, result);
+
             fos.close();
 
         } catch(Exception e){

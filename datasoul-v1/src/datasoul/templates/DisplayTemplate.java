@@ -37,7 +37,13 @@ import java.util.zip.GZIPOutputStream;
 import javax.swing.JComboBox;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import org.apache.xml.serialize.OutputFormat;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -382,7 +388,8 @@ public class DisplayTemplate extends AttributedObject {
         
         FileOutputStream fos = new FileOutputStream( filename );
         GZIPOutputStream zos = new GZIPOutputStream(fos);
-        
+
+        /*
         org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
         OutputFormat outFormat = new OutputFormat();
         outFormat.setIndenting(true);
@@ -390,6 +397,17 @@ public class DisplayTemplate extends AttributedObject {
         xs.setOutputFormat(outFormat);
         xs.setOutputByteStream(zos);
         xs.serialize(doc);
+         */
+
+        Source source = new DOMSource(doc);
+
+        // Prepare the output file
+        Result result = new StreamResult(zos);
+
+        // Write the DOM document to the file
+        Transformer xformer = TransformerFactory.newInstance().newTransformer();
+        xformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        xformer.transform(source, result);
         
         zos.close();
         
