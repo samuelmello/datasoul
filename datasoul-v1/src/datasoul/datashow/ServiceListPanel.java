@@ -93,8 +93,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         scroolServiceList = new javax.swing.JScrollPane();
         tableServiceList = new datasoul.util.DnDTable();
         jToolBar1 = new javax.swing.JToolBar();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
@@ -147,6 +145,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
         ppmAddItem.add(actImportItem);
+
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Service Plan"));
 
         toolBar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         toolBar.setFloatable(false);
@@ -240,11 +240,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
 
         jToolBar1.setFloatable(false);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
-        jLabel1.setText(bundle.getString("Service_Plan")); // NOI18N
-        jToolBar1.add(jLabel1);
-        jToolBar1.add(jSeparator1);
-
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         btnNew.setToolTipText(bundle.getString("New")); // NOI18N
         btnNew.setBorderPainted(false);
@@ -314,16 +309,16 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-            .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+            .add(toolBar, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+            .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(13, 13, 13)
-                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                .add(scroolServiceList, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(toolBar, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -480,8 +475,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu ppmAddItem;
     private javax.swing.JScrollPane scroolServiceList;

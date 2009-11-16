@@ -82,10 +82,9 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         spnTimer = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
-        labelLive = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnUnselect = new javax.swing.JButton();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Live"));
         setDoubleBuffered(false);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -112,7 +111,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 .add(spnTimer, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 37, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel1)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -123,11 +122,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         );
 
         jToolBar1.setFloatable(false);
-
-        labelLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
-        labelLive.setText(bundle.getString("LIVE")); // NOI18N
-        jToolBar1.add(labelLive);
-        jToolBar1.add(jSeparator1);
 
         btnUnselect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnUnselect.setText(bundle.getString("Unselect_Slide")); // NOI18N
@@ -145,15 +139,15 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-            .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+            .add(jToolBar1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+            .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .add(serviceItemTable1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
         );
@@ -216,9 +210,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     private javax.swing.JCheckBox cbAutoChange;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JLabel labelLive;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;
     private javax.swing.JSpinner spnTimer;
     // End of variables declaration//GEN-END:variables

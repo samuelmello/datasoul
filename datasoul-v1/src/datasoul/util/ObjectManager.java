@@ -39,14 +39,19 @@ import java.awt.Cursor;
  * @author Administrador
  */
 public class ObjectManager {
-    
-    public static final int VIEW_PROJECTOR = 0;
+
+    // make this match the tab index for simplicity
+    public static final int VIEW_SERVICE = 0;
     public static final int VIEW_SONGS = 1;
-    public static final int VIEW_TEMPLATES = 2;
-    public static final int VIEW_CONFIG = 3;
-    public static final int VIEW_ADD_SONGS = 4;    
+    public static final int VIEW_PROJECTOR = 2;
+    public static final int VIEW_TEMPLATES = 3;
+    public static final int VIEW_CONFIG = 4;
     public static final int VIEW_HELP = 5;
-    public static final int VIEW_SERVICE = 6;
+    public static final int VIEW_TAB_COUNT = 6;
+
+
+    // special not a tab
+    public static final int VIEW_ADD_SONGS = 6;
 
     private static ObjectManager instance;
     

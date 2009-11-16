@@ -182,7 +182,45 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
         
         
-        showPanel(ObjectManager.VIEW_SERVICE);
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        
+        tabbedInterface.addTab(
+                bundle.getString("Service_Plan"),
+                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png")),
+                service,
+                bundle.getString("Service_Plan_Tip"));
+
+        tabbedInterface.addTab(
+                bundle.getString("Song_Library"),
+                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound_small.png")),
+                songs,
+                bundle.getString("Song_Library_Tip"));
+
+        tabbedInterface.addTab(
+                bundle.getString("Projector"),
+                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png")),
+                datashow,
+                bundle.getString("Projector_Tip"));
+
+        
+        tabbedInterface.addTab(
+                bundle.getString("Templates"),
+                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png")),
+                templates,
+                bundle.getString("Templates_Tip"));
+
+        tabbedInterface.addTab(
+                bundle.getString("Configuration"),
+                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png")),
+                config,
+                bundle.getString("Configuration_Tip"));
+
+        tabbedInterface.addTab(
+                bundle.getString("Help"),
+                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_3d-light-on.png")),
+                help,
+                bundle.getString("Help_Tip"));
+
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
         
         WindowPropConfig.getInstance().getMainForm(this);
@@ -193,61 +231,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
-    
     public void showPanel(int panel){
-        
-        songs.setVisible(false);
-        datashow.setVisible(false);
-        templates.setVisible(false);
-        config.setVisible(false);
-        help.setVisible(false);
-        service.setVisible(false);
-        btnDatashow.setEnabled(true);
-        btnSongs.setEnabled(true);
-        btnTemplates.setEnabled(true);
-        btnConfig.setEnabled(true);
-        btnHelp.setEnabled(true);
-        btnServiceList.setEnabled(true);
-
-        switch (panel) {
-            case ObjectManager.VIEW_PROJECTOR:
-                datashow.setVisible(true);
-                getContentPane().setLayout(datashowLayout);
-                datashow.validate();
-                btnDatashow.setEnabled(false);
-                break;
-            case ObjectManager.VIEW_SONGS:
-                songs.setVisible(true);
-                getContentPane().setLayout(songsLayout);
-                songs.validate();
-                btnSongs.setEnabled(false);
-                break;        
-            case ObjectManager.VIEW_TEMPLATES:
-                templates.setVisible(true);
-                getContentPane().setLayout(templatesLayout);
-                templates.validate();
-                btnTemplates.setEnabled(false);
-                break;
-            case ObjectManager.VIEW_CONFIG:
-                config.setVisible(true);
-                getContentPane().setLayout(configLayout);
-                config.validate();
-                btnConfig.setEnabled(false);
-                break;
-            case ObjectManager.VIEW_HELP:
-                help.setVisible(true);
-                getContentPane().setLayout(helpLayout);
-                help.validate();
-                btnHelp.setEnabled(false);
-                break;
-            case ObjectManager.VIEW_SERVICE:
-                service.setVisible(true);
-                getContentPane().setLayout(serviceLayout);
-                service.validate();
-                btnServiceList.setEnabled(false);
-                break;
+        if ((panel >= 0) && (panel < ObjectManager.VIEW_TAB_COUNT)) {
+            tabbedInterface.setSelectedIndex(panel);
         }
-        
     }
     
     /** This method is called from within the constructor to
@@ -259,14 +246,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBarMain = new javax.swing.JToolBar();
-        btnServiceList = new javax.swing.JButton();
-        btnSongs = new javax.swing.JButton();
-        btnDatashow = new javax.swing.JButton();
-        btnTemplates = new javax.swing.JButton();
-        btnConfig = new javax.swing.JButton();
-        btnHelp = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnClose = new javax.swing.JButton();
+        tabbedInterface = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Datasoul");
@@ -282,84 +263,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 36));
 
-        btnServiceList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task_big.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnServiceList.setText(bundle.getString("Service_Plan")); // NOI18N
-        btnServiceList.setBorderPainted(false);
-        btnServiceList.setFocusPainted(false);
-        btnServiceList.setFocusable(false);
-        btnServiceList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnServiceListActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnServiceList);
-
-        btnSongs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound.png"))); // NOI18N
-        btnSongs.setText(bundle.getString("Song_Library")); // NOI18N
-        btnSongs.setBorderPainted(false);
-        btnSongs.setFocusPainted(false);
-        btnSongs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSongsActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnSongs);
-
-        btnDatashow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
-        btnDatashow.setText(bundle.getString("Projector")); // NOI18N
-        btnDatashow.setBorderPainted(false);
-        btnDatashow.setFocusPainted(false);
-        btnDatashow.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnDatashowMouseClicked(evt);
-            }
-        });
-        btnDatashow.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDatashowActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnDatashow);
-
-        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
-        btnTemplates.setText(bundle.getString("Templates")); // NOI18N
-        btnTemplates.setBorderPainted(false);
-        btnTemplates.setFocusPainted(false);
-        btnTemplates.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTemplatesActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnTemplates);
-
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
-        btnConfig.setText(bundle.getString("Configuration")); // NOI18N
-        btnConfig.setBorderPainted(false);
-        btnConfig.setFocusPainted(false);
-        btnConfig.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConfigActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnConfig);
-
-        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/help-browser.png"))); // NOI18N
-        btnHelp.setText(bundle.getString("Help")); // NOI18N
-        btnHelp.setBorderPainted(false);
-        btnHelp.setFocusPainted(false);
-        btnHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHelpActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnHelp);
-        toolBarMain.add(jSeparator1);
-
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnClose.setText(bundle.getString("Close")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.setFocusPainted(false);
+        btnClose.setFocusable(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -372,22 +281,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, tabbedInterface, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(671, Short.MAX_VALUE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(tabbedInterface, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_HELP);        
-        showPanel(ObjectManager.VIEW_HELP);
-
-    }//GEN-LAST:event_btnHelpActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
 
@@ -397,40 +302,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_btnCloseActionPerformed
-
-    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_CONFIG);        
-        showPanel(ObjectManager.VIEW_CONFIG);
-
-    }//GEN-LAST:event_btnConfigActionPerformed
-
-    private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
-
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_TEMPLATES);        
-        showPanel(ObjectManager.VIEW_TEMPLATES);
-        
-    }//GEN-LAST:event_btnTemplatesActionPerformed
-
-    private void btnDatashowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDatashowMouseClicked
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
-        showPanel(ObjectManager.VIEW_PROJECTOR);
-    }//GEN-LAST:event_btnDatashowMouseClicked
-
-    private void btnServiceListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiceListActionPerformed
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);        
-        showPanel(ObjectManager.VIEW_SERVICE);
-    }//GEN-LAST:event_btnServiceListActionPerformed
-
-    private void btnSongsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSongsActionPerformed
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SONGS);
-        showPanel(ObjectManager.VIEW_SONGS);
-    }//GEN-LAST:event_btnSongsActionPerformed
-
-    private void btnDatashowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatashowActionPerformed
-        ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_SERVICE);
-        showPanel(ObjectManager.VIEW_SERVICE); 
-    }//GEN-LAST:event_btnDatashowActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         if (updateSize){
@@ -620,13 +491,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;
-    javax.swing.JButton btnConfig;
-    javax.swing.JButton btnDatashow;
-    javax.swing.JButton btnHelp;
-    javax.swing.JButton btnServiceList;
-    javax.swing.JButton btnSongs;
-    javax.swing.JButton btnTemplates;
-    javax.swing.JToolBar.Separator jSeparator1;
+    javax.swing.JTabbedPane tabbedInterface;
     javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables
     
