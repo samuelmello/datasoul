@@ -516,15 +516,15 @@ public class SongViewer extends javax.swing.JPanel {
         editorSong.setEditable(false);
         scroolSong.setViewportView(editorSong);
 
-        org.jdesktop.layout.GroupLayout panelSongLayout = new org.jdesktop.layout.GroupLayout(panelSong);
+        javax.swing.GroupLayout panelSongLayout = new javax.swing.GroupLayout(panelSong);
         panelSong.setLayout(panelSongLayout);
         panelSongLayout.setHorizontalGroup(
-            panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong)
+            panelSongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scroolSong, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         panelSongLayout.setVerticalGroup(
-            panelSongLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSong, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+            panelSongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scroolSong, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
         );
 
         split1.setLeftComponent(panelSong);
@@ -534,15 +534,15 @@ public class SongViewer extends javax.swing.JPanel {
         editorSongChords.setRequestFocusEnabled(false);
         scroolSongChords.setViewportView(editorSongChords);
 
-        org.jdesktop.layout.GroupLayout panelSongChordsLayout = new org.jdesktop.layout.GroupLayout(panelSongChords);
+        javax.swing.GroupLayout panelSongChordsLayout = new javax.swing.GroupLayout(panelSongChords);
         panelSongChords.setLayout(panelSongChordsLayout);
         panelSongChordsLayout.setHorizontalGroup(
-            panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords)
+            panelSongChordsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scroolSongChords, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         panelSongChordsLayout.setVerticalGroup(
-            panelSongChordsLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, scroolSongChords, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+            panelSongChordsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(scroolSongChords, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
         );
 
         split1.setRightComponent(panelSongChords);
@@ -589,19 +589,19 @@ public class SongViewer extends javax.swing.JPanel {
         });
         jToolBar2.add(comboKey);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
-            .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addComponent(split1, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(split1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(split1, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -108,15 +108,15 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         lblTemplateName.setText("jLabel2");
 
-        org.jdesktop.layout.GroupLayout templateEditorPanel1Layout = new org.jdesktop.layout.GroupLayout(templateEditorPanel1);
+        javax.swing.GroupLayout templateEditorPanel1Layout = new javax.swing.GroupLayout(templateEditorPanel1);
         templateEditorPanel1.setLayout(templateEditorPanel1Layout);
         templateEditorPanel1Layout.setHorizontalGroup(
-            templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 796, Short.MAX_VALUE)
+            templateEditorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 796, Short.MAX_VALUE)
         );
         templateEditorPanel1Layout.setVerticalGroup(
-            templateEditorPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 596, Short.MAX_VALUE)
+            templateEditorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 596, Short.MAX_VALUE)
         );
 
         jLabel5.setFont(jLabel5.getFont().deriveFont((jLabel5.getFont().getStyle() | java.awt.Font.ITALIC), jLabel5.getFont().getSize()-2));
@@ -227,38 +227,38 @@ public class TemplatePanel extends javax.swing.JPanel {
 
         jLabel1.setText(bundle.getString("Template:")); // NOI18N
 
-        org.jdesktop.layout.GroupLayout panelTemplateEditorLayout = new org.jdesktop.layout.GroupLayout(panelTemplateEditor);
+        javax.swing.GroupLayout panelTemplateEditorLayout = new javax.swing.GroupLayout(panelTemplateEditor);
         panelTemplateEditor.setLayout(panelTemplateEditorLayout);
         panelTemplateEditorLayout.setHorizontalGroup(
-            panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelTemplateEditorLayout.createSequentialGroup()
+            panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTemplateEditorLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel5)
+                .addComponent(jLabel5)
                 .addContainerGap(619, Short.MAX_VALUE))
-            .add(jToolBar4, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
-            .add(panelTemplateEditorLayout.createSequentialGroup()
+            .addComponent(jToolBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
+            .addGroup(panelTemplateEditorLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel1)
-                .add(14, 14, 14)
-                .add(lblTemplateName, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 122, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addComponent(lblTemplateName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(590, Short.MAX_VALUE))
-            .add(panelTemplateEditorLayout.createSequentialGroup()
+            .addGroup(panelTemplateEditorLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(templateEditorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTemplateEditorLayout.setVerticalGroup(
-            panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelTemplateEditorLayout.createSequentialGroup()
-                .add(jToolBar4, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(panelTemplateEditorLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(lblTemplateName)
-                    .add(jLabel1))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(templateEditorPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jLabel5))
+            panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTemplateEditorLayout.createSequentialGroup()
+                .addComponent(jToolBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTemplateName)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(templateEditorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5))
         );
 
         jScrollPane3.setViewportView(panelTemplateEditor);
@@ -334,22 +334,22 @@ public class TemplatePanel extends javax.swing.JPanel {
         jLabel6.setText(bundle.getString("Templates")); // NOI18N
         jToolBar2.add(jLabel6);
 
-        org.jdesktop.layout.GroupLayout panelTemplatesLayout = new org.jdesktop.layout.GroupLayout(panelTemplates);
+        javax.swing.GroupLayout panelTemplatesLayout = new javax.swing.GroupLayout(panelTemplates);
         panelTemplates.setLayout(panelTemplatesLayout);
         panelTemplatesLayout.setHorizontalGroup(
-            panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            panelTemplatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         panelTemplatesLayout.setVerticalGroup(
-            panelTemplatesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelTemplatesLayout.createSequentialGroup()
-                .add(jToolBar2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jToolBar1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            panelTemplatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTemplatesLayout.createSequentialGroup()
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSplitPane2.setTopComponent(panelTemplates);
@@ -373,34 +373,34 @@ public class TemplatePanel extends javax.swing.JPanel {
         jLabel7.setText(bundle.getString("Properties")); // NOI18N
         jToolBar3.add(jLabel7);
 
-        org.jdesktop.layout.GroupLayout panelPropertiesLayout = new org.jdesktop.layout.GroupLayout(panelProperties);
+        javax.swing.GroupLayout panelPropertiesLayout = new javax.swing.GroupLayout(panelProperties);
         panelProperties.setLayout(panelPropertiesLayout);
         panelPropertiesLayout.setHorizontalGroup(
-            panelPropertiesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jToolBar3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            panelPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
         panelPropertiesLayout.setVerticalGroup(
-            panelPropertiesLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(panelPropertiesLayout.createSequentialGroup()
-                .add(jToolBar3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 25, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(jScrollPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+            panelPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPropertiesLayout.createSequentialGroup()
+                .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
         );
 
         jSplitPane2.setBottomComponent(panelProperties);
 
         jSplitPane1.setLeftComponent(jSplitPane2);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

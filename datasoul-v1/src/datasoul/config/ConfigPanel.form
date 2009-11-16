@@ -20,7 +20,7 @@
     <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
-    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="2"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
@@ -39,7 +39,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnApply" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jPanel9" alignment="0" pref="774" max="32767" attributes="2"/>
+                  <Component id="jPanel9" alignment="0" max="32767" attributes="2"/>
                   <Component id="jPanel8" alignment="0" max="32767" attributes="2"/>
                   <Component id="jPanel10" alignment="0" max="32767" attributes="2"/>
               </Group>
@@ -60,7 +60,7 @@
               <Component id="jPanel8" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
-              <EmptySpace pref="168" max="32767" attributes="0"/>
+              <EmptySpace pref="160" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnApply" alignment="3" min="-2" max="-2" attributes="1"/>
                   <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -891,7 +891,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtStorageLoc" pref="542" max="32767" attributes="0"/>
+                          <Component id="txtStorageLoc" pref="546" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                       </Group>

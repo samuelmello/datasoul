@@ -48,11 +48,11 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
-import org.jdesktop.layout.GroupLayout;
-import org.jdesktop.layout.LayoutStyle;
 import java.awt.GraphicsEnvironment;
+import javax.swing.GroupLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.LayoutStyle;
 
 /**
  *
@@ -94,91 +94,91 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         // Initialize datashow Layout
         datashowLayout = new GroupLayout(getContentPane());
         datashowLayout.setHorizontalGroup(
-            datashowLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(datashow, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
+            datashowLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(datashow, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(toolBarMain)
         );
         datashowLayout.setVerticalGroup(
-            datashowLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(GroupLayout.LEADING, datashowLayout.createSequentialGroup()
-                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.RELATED)
-                .add(datashow, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+            datashowLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.LEADING, datashowLayout.createSequentialGroup()
+                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(datashow, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
 
         // Initialize songs layout
         songsLayout = new GroupLayout(getContentPane());
         songsLayout.setHorizontalGroup(
-            songsLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(songs, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
+            songsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(songs, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(toolBarMain)
         );
         songsLayout.setVerticalGroup(
-            songsLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(GroupLayout.LEADING, songsLayout.createSequentialGroup()
-                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.RELATED)
-                .add(songs, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+            songsLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.LEADING, songsLayout.createSequentialGroup()
+                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(songs, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
         // Initialize templates layout
         templatesLayout = new GroupLayout(getContentPane());
         templatesLayout.setHorizontalGroup(
-            templatesLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(templates, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
+            templatesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(templates, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(toolBarMain)
         );
         templatesLayout.setVerticalGroup(
-            templatesLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(GroupLayout.LEADING, templatesLayout.createSequentialGroup()
-                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.RELATED)
-                .add(templates, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+            templatesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.LEADING, templatesLayout.createSequentialGroup()
+                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(templates, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
         // Initialize config layout
         configLayout = new GroupLayout(getContentPane());
         configLayout.setHorizontalGroup(
-            configLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(config, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
+            configLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(config, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(toolBarMain)
         );
         configLayout.setVerticalGroup(
-            configLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(GroupLayout.LEADING, configLayout.createSequentialGroup()
-                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.RELATED)
-                .add(config, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+            configLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.LEADING, configLayout.createSequentialGroup()
+                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(config, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
         // Initialize help layout
         helpLayout = new GroupLayout(getContentPane());
         helpLayout.setHorizontalGroup(
-            helpLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(help, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
+            helpLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(help, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(toolBarMain)
         );
         helpLayout.setVerticalGroup(
-            helpLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(GroupLayout.LEADING, helpLayout.createSequentialGroup()
-                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.RELATED)
-                .add(help, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+            helpLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.LEADING, helpLayout.createSequentialGroup()
+                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(help, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
 
         // Initialize service layout
         serviceLayout = new GroupLayout(getContentPane());
         serviceLayout.setHorizontalGroup(
-            serviceLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(service, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .add(toolBarMain)
+            serviceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addComponent(service, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
+            .addComponent(toolBarMain)
         );
         serviceLayout.setVerticalGroup(
-            serviceLayout.createParallelGroup(GroupLayout.LEADING)
-            .add(GroupLayout.LEADING, serviceLayout.createSequentialGroup()
-                .add(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.RELATED)
-                .add(service, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
+            serviceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.LEADING, serviceLayout.createSequentialGroup()
+                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(service, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
         
@@ -276,19 +276,19 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnClose);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(toolBarMain, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, tabbedInterface, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+            .addComponent(tabbedInterface, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(toolBarMain, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(tabbedInterface, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tabbedInterface, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
         );
 
         pack();

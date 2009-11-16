@@ -94,22 +94,22 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
 
         lblTemplate.setText(bundle.getString("(none)")); // NOI18N
 
-        org.jdesktop.layout.GroupLayout pnlHeaderLayout = new org.jdesktop.layout.GroupLayout(pnlHeader);
+        javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
         pnlHeader.setLayout(pnlHeaderLayout);
         pnlHeaderLayout.setHorizontalGroup(
-            pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlHeaderLayout.createSequentialGroup()
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(lblTemplate)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTemplate)
                 .addContainerGap(111, Short.MAX_VALUE))
         );
         pnlHeaderLayout.setVerticalGroup(
-            pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlHeaderLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                .add(jLabel1)
-                .add(lblTemplate))
+            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel1)
+                .addComponent(lblTemplate))
         );
 
         add(pnlHeader, java.awt.BorderLayout.PAGE_START);

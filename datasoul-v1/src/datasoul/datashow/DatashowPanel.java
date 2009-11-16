@@ -205,15 +205,15 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        org.jdesktop.layout.GroupLayout previewDisplayPanel1Layout = new org.jdesktop.layout.GroupLayout(previewDisplayPanel1);
+        javax.swing.GroupLayout previewDisplayPanel1Layout = new javax.swing.GroupLayout(previewDisplayPanel1);
         previewDisplayPanel1.setLayout(previewDisplayPanel1Layout);
         previewDisplayPanel1Layout.setHorizontalGroup(
-            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 156, Short.MAX_VALUE)
+            previewDisplayPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 156, Short.MAX_VALUE)
         );
         previewDisplayPanel1Layout.setVerticalGroup(
-            previewDisplayPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 116, Short.MAX_VALUE)
+            previewDisplayPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
         );
 
         cbPreviewSize.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Don't show", "Small", "Medium", "Large" }));
@@ -227,46 +227,46 @@ public class DatashowPanel extends javax.swing.JPanel {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel10.setText(bundle.getString("Preview_Size")); // NOI18N
 
-        org.jdesktop.layout.GroupLayout pnlPreviewBoxLayout = new org.jdesktop.layout.GroupLayout(pnlPreviewBox);
+        javax.swing.GroupLayout pnlPreviewBoxLayout = new javax.swing.GroupLayout(pnlPreviewBox);
         pnlPreviewBox.setLayout(pnlPreviewBoxLayout);
         pnlPreviewBoxLayout.setHorizontalGroup(
-            pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlPreviewBoxLayout.createSequentialGroup()
-                .add(12, 12, 12)
-                .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(pnlPreviewBoxLayout.createSequentialGroup()
-                        .add(jLabel10)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
+            pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbPreviewSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
-            pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlPreviewBoxLayout.createSequentialGroup()
-                .add(pnlPreviewBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cbPreviewSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel10))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(previewDisplayPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+            pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+                .addGroup(pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbPreviewSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         preview.setMinimumSize(new java.awt.Dimension(10, 10));
 
-        org.jdesktop.layout.GroupLayout pnlPreviewLayout = new org.jdesktop.layout.GroupLayout(pnlPreview);
+        javax.swing.GroupLayout pnlPreviewLayout = new javax.swing.GroupLayout(pnlPreview);
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
-            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlPreviewBox, 0, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlPreviewBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
-            pnlPreviewLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlPreviewLayout.createSequentialGroup()
-                .add(preview, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(pnlPreviewBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPreviewLayout.createSequentialGroup()
+                .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlPreviewBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSplitPane3.setTopComponent(pnlPreview);
@@ -289,15 +289,15 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        org.jdesktop.layout.GroupLayout liveDisplayPanelLayout = new org.jdesktop.layout.GroupLayout(liveDisplayPanel);
+        javax.swing.GroupLayout liveDisplayPanelLayout = new javax.swing.GroupLayout(liveDisplayPanel);
         liveDisplayPanel.setLayout(liveDisplayPanelLayout);
         liveDisplayPanelLayout.setHorizontalGroup(
-            liveDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 156, Short.MAX_VALUE)
+            liveDisplayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 156, Short.MAX_VALUE)
         );
         liveDisplayPanelLayout.setVerticalGroup(
-            liveDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 116, Short.MAX_VALUE)
+            liveDisplayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
         );
 
         monitorDisplayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -308,15 +308,15 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        org.jdesktop.layout.GroupLayout monitorDisplayPanelLayout = new org.jdesktop.layout.GroupLayout(monitorDisplayPanel);
+        javax.swing.GroupLayout monitorDisplayPanelLayout = new javax.swing.GroupLayout(monitorDisplayPanel);
         monitorDisplayPanel.setLayout(monitorDisplayPanelLayout);
         monitorDisplayPanelLayout.setHorizontalGroup(
-            monitorDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 156, Short.MAX_VALUE)
+            monitorDisplayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 156, Short.MAX_VALUE)
         );
         monitorDisplayPanelLayout.setVerticalGroup(
-            monitorDisplayPanelLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 116, Short.MAX_VALUE)
+            monitorDisplayPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
         );
 
         btnShowMonitor.setSelected(true);
@@ -327,54 +327,54 @@ public class DatashowPanel extends javax.swing.JPanel {
             }
         });
 
-        org.jdesktop.layout.GroupLayout pnlLiveBoxLayout = new org.jdesktop.layout.GroupLayout(pnlLiveBox);
+        javax.swing.GroupLayout pnlLiveBoxLayout = new javax.swing.GroupLayout(pnlLiveBox);
         pnlLiveBox.setLayout(pnlLiveBoxLayout);
         pnlLiveBoxLayout.setHorizontalGroup(
-            pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlLiveBoxLayout.createSequentialGroup()
+            pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLiveBoxLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(pnlLiveBoxLayout.createSequentialGroup()
-                        .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(monitorDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(pnlLiveBoxLayout.createSequentialGroup()
-                        .add(jLabel11)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(btnShowMonitor)))
+                .addGroup(pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlLiveBoxLayout.createSequentialGroup()
+                        .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlLiveBoxLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbLiveSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnShowMonitor)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
-            pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlLiveBoxLayout.createSequentialGroup()
-                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(cbLiveSize, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel11)
-                    .add(btnShowMonitor))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(pnlLiveBoxLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(liveDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(monitorDisplayPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLiveBoxLayout.createSequentialGroup()
+                .addGroup(pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbLiveSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11)
+                    .addComponent(btnShowMonitor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
-        org.jdesktop.layout.GroupLayout pnlLiveLayout = new org.jdesktop.layout.GroupLayout(pnlLive);
+        javax.swing.GroupLayout pnlLiveLayout = new javax.swing.GroupLayout(pnlLive);
         pnlLive.setLayout(pnlLiveLayout);
         pnlLiveLayout.setHorizontalGroup(
-            pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(pnlLiveLayout.createSequentialGroup()
+            pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlLiveLayout.createSequentialGroup()
                 .addContainerGap()
-                .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(live, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
         );
         pnlLiveLayout.setVerticalGroup(
-            pnlLiveLayout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, pnlLiveLayout.createSequentialGroup()
-                .add(live, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(pnlLiveBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+            pnlLiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLiveLayout.createSequentialGroup()
+                .addComponent(live, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jSplitPane3.setRightComponent(pnlLive);
@@ -394,15 +394,15 @@ public class DatashowPanel extends javax.swing.JPanel {
 
         jSplitPane2.setLeftComponent(jSplitPane1);
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jSplitPane2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSplitPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
