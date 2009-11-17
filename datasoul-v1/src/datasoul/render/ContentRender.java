@@ -104,6 +104,7 @@ public abstract class ContentRender {
     public abstract void clear();
     public abstract void flip();
     public abstract void setWindowTitle(String title);
+    public abstract boolean hasFocus();
 
     public void shutdown(){
         run = false;

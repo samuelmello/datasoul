@@ -458,6 +458,35 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     public void addItem(Object object){
         ((ListTable)tableServiceList.getModel()).addItem(object);
     }
+
+    public boolean nextServiceItem() {
+       int currentRow = tableServiceList.getSelectedRow();
+       int maxRow = tableServiceList.getRowCount();
+       while (currentRow < maxRow-1){
+           if (tableServiceList.getModel().getValueAt(currentRow+1, 0) instanceof ContentlessServiceItem){
+               currentRow++;
+           }else{
+               tableServiceList.setRowSelectionInterval(currentRow+1,currentRow+1);
+               showItem();
+               return true;
+           }
+        }
+        return false;
+    }
+
+    public boolean previousServiceItem() {
+        int currentRow = tableServiceList.getSelectedRow();
+        while (currentRow > 0) {
+           if (tableServiceList.getModel().getValueAt(currentRow-1, 0) instanceof ContentlessServiceItem){
+              currentRow--;
+           }else{
+               tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);
+               showItem();
+               return true;
+           }
+        }
+        return false;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem actAddBible;

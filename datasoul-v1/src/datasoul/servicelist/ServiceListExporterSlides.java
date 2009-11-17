@@ -145,6 +145,13 @@ public class ServiceListExporterSlides {
         }
 
         @Override
+        public boolean hasFocus() {
+            return false;
+            // ignore
+        }
+
+
+        @Override
         public void paintBackground(BufferedImage bufferedImage) {
             Graphics gd = background.getGraphics();
             gd.drawImage(bufferedImage, 0, 0, width, height, null);

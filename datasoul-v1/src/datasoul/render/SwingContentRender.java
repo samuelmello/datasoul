@@ -88,5 +88,7 @@ public class SwingContentRender extends ContentRender {
         display.setBounds(left, top, width, height);
     }
 
-    
+    public boolean hasFocus() {
+        return display.hasFocus();
+    }
 }

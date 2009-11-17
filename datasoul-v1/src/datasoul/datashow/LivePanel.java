@@ -15,7 +15,9 @@
 package datasoul.datashow;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
+import datasoul.render.ContentRender;
 import datasoul.song.Song;
+import datasoul.util.ObjectManager;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -204,7 +206,41 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         
     }
     
-    
+    public void serviceNextSlide() {
+        if (ContentManager.isMainDisplayActive()){
+            ContentRender mainDisplay = ContentManager.getMainDisplay();
+            if (mainDisplay != null && mainDisplay.hasFocus()) {
+                int count = serviceItemTable1.getSlideCount();
+                int index = serviceItemTable1.getSlideIndex();
+                if (index < count) serviceItemTable1.setSlideIndex(index+1);
+                else {
+                    ServiceListPanel slp = ObjectManager.getInstance().getServiceListPanel();
+                    if (slp.nextServiceItem()) {
+                        PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                        pp.goLive();
+                    }
+                }
+            }
+        }
+    }
+
+    public void servicePreviousSlide() {
+        if (ContentManager.isMainDisplayActive()){
+            ContentRender mainDisplay = ContentManager.getMainDisplay();
+            if (mainDisplay != null && mainDisplay.hasFocus()) {
+                int index = serviceItemTable1.getSlideIndex();
+                if (index > 0) serviceItemTable1.setSlideIndex(index-1);
+                else {
+                    ServiceListPanel slp = ObjectManager.getInstance().getServiceListPanel();
+                    if (slp.previousServiceItem()) {
+                        PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                        pp.goLive();
+                    }
+                }
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUnselect;
     private javax.swing.JCheckBox cbAutoChange;

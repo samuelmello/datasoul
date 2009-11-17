@@ -131,7 +131,14 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 break;                
             case KeyEvent.VK_F12:     
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayBlack();
-                break;                
+                break;
+            case KeyEvent.VK_PAGE_DOWN:
+                ObjectManager.getInstance().getLivePanel().serviceNextSlide();
+                break;
+            case KeyEvent.VK_PAGE_UP:
+                ObjectManager.getInstance().getLivePanel().servicePreviousSlide();
+                break;
+
         }
     }
 }

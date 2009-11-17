@@ -79,5 +79,8 @@ public class SwingPanelContentRender extends ContentRender {
 
     public void setWindowTitle(String title) {
     }
-    
+
+    public boolean hasFocus() {
+        return p.hasFocus();
+    }
 }
