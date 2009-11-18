@@ -471,16 +471,6 @@ public class ServiceListTable extends ListTable {
             Node node = this.writeObject();
             Document doc = node.getOwnerDocument();
             doc.appendChild(node);                        // Add Root to Document
-            /*
-            FileOutputStream fos = new FileOutputStream(fileName);
-            org.apache.xml.serialize.XMLSerializer xs = new org.apache.xml.serialize.XMLSerializer();
-            OutputFormat outFormat = new OutputFormat();
-            outFormat.setIndenting(true);
-            outFormat.setEncoding("ISO-8859-1");
-            xs.setOutputFormat(outFormat);
-            xs.setOutputByteStream(fos);
-            xs.serialize(doc);
-             */
 
             Source source = new DOMSource(doc);
 
