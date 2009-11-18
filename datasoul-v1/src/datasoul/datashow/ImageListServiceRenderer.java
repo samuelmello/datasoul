@@ -12,7 +12,6 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
@@ -94,6 +93,10 @@ public class ImageListServiceRenderer implements ServiceItemRenderer {
 
     public void setImage(BufferedImage bi){
         image.setImage(bi);
+    }
+
+    public BufferedImage getImage(){
+        return image.getImage();
     }
 
 }

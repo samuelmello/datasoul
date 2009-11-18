@@ -38,7 +38,7 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="182" max="32767" attributes="0"/>
+              <EmptySpace pref="142" max="32767" attributes="0"/>
               <Component id="btnCancel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnOk" min="-2" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnDelete" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="tblImages" pref="353" max="32767" attributes="0"/>
+                  <Component id="tblImages" pref="352" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -92,11 +92,20 @@
     </Container>
     <Component class="javax.swing.JButton" name="btnOk">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/v2/document-save.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Save and Close"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOkActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/datasoul/icons/v2/window-close.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Discard Changes"/>
       </Properties>
       <Events>

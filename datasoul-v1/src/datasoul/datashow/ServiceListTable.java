@@ -207,6 +207,10 @@ public class ServiceListTable extends ListTable {
                     ContentlessServiceItem csi = new ContentlessServiceItem();
                     csi.readObject(nodeList.item(i));
                     this.addItem(csi);
+                } else if (nodeList.item(i).getNodeName().equals("ImageListServiceItem")) {
+                    ImageListServiceItem ilsi = new ImageListServiceItem();
+                    ilsi.readObject(nodeList.item(i));
+                    this.addItem(ilsi);
                 } else if (nodeList.item(i).getNodeName().equals("title")) {
                     this.title = nodeList.item(i).getTextContent();
                 } else if (nodeList.item(i).getNodeName().equals("notes")) {

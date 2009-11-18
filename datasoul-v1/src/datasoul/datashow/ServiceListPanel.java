@@ -362,7 +362,11 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
                 item.setTitle(s);   
             }
             tableServiceList.repaint();
+        }else if (item instanceof ImageListServiceItem){
+            ImageListEditorForm ilsi = new ImageListEditorForm((ImageListServiceItem)item);
+            ilsi.setVisible(true);
         }
+
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed

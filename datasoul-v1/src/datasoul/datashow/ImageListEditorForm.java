@@ -11,10 +11,8 @@
 
 package datasoul.datashow;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 
 /**
@@ -28,13 +26,16 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         initComponents();
     }
     
-    private ImageListServiceItem item;
+    private ImageListServiceItem origitem;
+    private ImageListServiceItem edititem;
 
     public ImageListEditorForm(ImageListServiceItem item){
         initComponents();
         tblImages.setHeaderVisible(false);
-        this.item = item;
-        tblImages.setServiceItem(item);
+        this.origitem = item;
+        this.edititem = item.getEditableCopy();
+        tblImages.setServiceItem(this.edititem);
+        txtTitle.setText(item.getTitle());
     }
 
     /** This method is called from within the constructor to
@@ -64,8 +65,15 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         jLabel1.setText("Image List");
         jToolBar1.add(jLabel1);
 
+        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         btnOk.setText("Save and Close");
+        btnOk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkActionPerformed(evt);
+            }
+        });
 
+        btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
         btnCancel.setText("Discard Changes");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +116,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                     .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(182, Short.MAX_VALUE)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addComponent(btnCancel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOk)
@@ -128,7 +136,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                         .addComponent(btnAddImages)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDelete))
-                    .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))
+                    .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOk)
@@ -177,8 +185,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
             File selected[] = fc.getSelectedFiles();
             for (int i=0; i < selected.length; i++){
                 try {
-                    BufferedImage img = ImageIO.read(selected[i]);
-                    item.addImage(img);
+                    edititem.addImage(selected[i]);
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
@@ -190,20 +197,15 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int idx = tblImages.getSlideIndex();
         if (idx >= 0){
-            item.delImage(idx);
+            edititem.delImage(idx);
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    /**
-    * @param args the command line arguments
-    */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ImageListEditorForm().setVisible(true);
-            }
-        });
-    }
+    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+        origitem.setTitle(txtTitle.getText());
+        origitem.assignImages(edititem);
+        dispose();
+    }//GEN-LAST:event_btnOkActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImages;

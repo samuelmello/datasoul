@@ -639,7 +639,11 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
                 item.setTitle(s);
             }
             tableServiceList.repaint();
+        }else if (item instanceof ImageListServiceItem){
+            ImageListEditorForm ilsi = new ImageListEditorForm((ImageListServiceItem)item);
+            ilsi.setVisible(true);
         }
+
         
     }//GEN-LAST:event_btnEditActionPerformed
 
@@ -745,6 +749,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
 
     private void actAddImageListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddImageListActionPerformed
         ImageListServiceItem newitem = new ImageListServiceItem();
+        ServiceListTable.getActiveInstance().addItem(newitem);
         ImageListEditorForm form = new ImageListEditorForm(newitem);
         form.setVisible(true);
     }//GEN-LAST:event_actAddImageListActionPerformed

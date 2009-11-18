@@ -23,6 +23,7 @@
 
 package datasoul.templates;
 
+import datasoul.util.ImageSerializer;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
@@ -240,52 +241,13 @@ public class ImageTemplateItem extends TemplateItem {
     }
 
     public String getImageInStr() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try {
-            ImageIO.write( this.img, "png", baos);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
-        byte[] ba = baos.toByteArray();
-
-        int len=ba.length,j;
-        StringBuffer sb=new StringBuffer(len*2);
-        for (j=0;j<len;j++) {
-            String sByte=Integer.toHexString((int)(ba[j] & 0xFF));
-            sb.append(stringAlign2chars(sByte));
-        }
-        return sb.toString();
-
+        return ImageSerializer.imageToStr(this.img);
     }
 
-    private String stringAlign2chars(String str){
-        if (str.length()!=2)
-            return '0'+str;
-        else
-            return str;
-    }
-    
     public void setImageInStr(String strImage) {
-
-        String str="";
-        int intAux=0;
-        byte[] bytes = new byte[strImage.length()/2];
-        for(int i=0; i< strImage.length()-1;i=i+2){
-            str = strImage.substring(i,i+2);
-            intAux = Integer.parseInt(str,16);
-            bytes[i/2]=(byte)intAux;
-        }
-        
-        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
-        try {
-            this.img = ImageIO.read(bais);
-            assertImageSize();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
-    }        
+        img = ImageSerializer.strToImage(strImage);
+        assertImageSize();
+    }
     
      public Node writeObject() throws Exception{
 
