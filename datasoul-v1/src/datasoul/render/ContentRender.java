@@ -68,6 +68,8 @@ public abstract class ContentRender {
     private float timerProgress;
     private BufferedImage activeImage;
     private boolean activeImageChanged;
+    private BufferedImage nextImage;
+    private boolean nextImageChanged;
     private boolean showHideNeedUpdate;
     
     private Semaphore updSemaphore;
@@ -118,6 +120,11 @@ public abstract class ContentRender {
     public void setActiveImage(BufferedImage img){
         this.activeImage = img;
         this.activeImageChanged = true;
+    }
+
+    public void setNextImage(BufferedImage img){
+        this.nextImage = img;
+        this.nextImageChanged = true;
     }
 
     public String getTitle() {
@@ -375,14 +382,20 @@ public abstract class ContentRender {
                                 needUpdate = true;
                                 continue;
                             }
-                        }else if (t instanceof TimerProgressbarTemplateItem && timerChanged){
+                        }else if (t instanceof TimerProgressbarTemplateItem && (templateChanged || timerChanged)){
                             ((TimerProgressbarTemplateItem)t).setPosition(timerProgress);
                             ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
                             needUpdate = true;
                             continue;
-                        }else if (t instanceof ImageTemplateItem && activeImageChanged){
-                            if (((ImageTemplateItem)t).getContentIdx() == ImageTemplateItem.IMAGE_CONTENT_SLIDE){
+                        }else if (t instanceof ImageTemplateItem){
+                            content = ((ImageTemplateItem)t).getContentIdx();
+                            if ((templateChanged || activeImageChanged) && content == ImageTemplateItem.IMAGE_CONTENT_SLIDE){
                                 ((ImageTemplateItem)t).setImage(activeImage);
+                                needUpdate = true;
+                                continue;
+                            }
+                            if ((templateChanged || nextImageChanged) && content == ImageTemplateItem.IMAGE_CONTENT_NEXT_SLIDE){
+                                ((ImageTemplateItem)t).setImage(nextImage);
                                 needUpdate = true;
                                 continue;
                             }

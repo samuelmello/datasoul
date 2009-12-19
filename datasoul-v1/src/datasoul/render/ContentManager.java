@@ -332,6 +332,18 @@ public class ContentManager {
         }
     }
 
+    public void setNextImageLive(BufferedImage img){
+        for (ContentRender r : liveRenderList){
+            r.setNextImage(img);
+        }
+    }
+
+    public void setNextImagePreview(BufferedImage img){
+        for (ContentRender r : previewRenderList){
+            r.setNextImage(img);
+        }
+    }
+
     static private ContentRender mainDisplay;
     static private ContentRender monitorDisplay;
     static private String mainDisplayEngine = "SwingDisplay";

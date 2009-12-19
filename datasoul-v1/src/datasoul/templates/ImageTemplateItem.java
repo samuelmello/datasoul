@@ -53,7 +53,8 @@ public class ImageTemplateItem extends TemplateItem {
 
     public static final int IMAGE_CONTENT_STATIC = 0;
     public static final int IMAGE_CONTENT_SLIDE = 1;
-    public static final String[] IMAGE_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide")};
+    public static final int IMAGE_CONTENT_NEXT_SLIDE = 2;
+    public static final String[] IMAGE_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Next_Slide")};
     
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";

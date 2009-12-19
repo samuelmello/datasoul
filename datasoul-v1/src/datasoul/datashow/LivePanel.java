@@ -60,6 +60,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
         cm.setActiveImageLive(serviceItemTable1.getSlideImage());
+        cm.setNextImageLive(serviceItemTable1.getNextSlideImage());
         
         // save the transition image just before changing the slide to avoid
         // problem when changing to a item that uses a template with different
@@ -176,6 +177,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.setSlideLive("");
         cm.setNextSlideLive("");
         cm.setActiveImageLive(null);
+        cm.setNextImageLive(null);
         serviceItemTable1.unselectSlide();
 
         // save the transition image just before changing the slide to avoid
@@ -205,6 +207,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
         cm.setActiveImageLive(serviceItemTable1.getSlideImage());
+        cm.setNextImageLive(serviceItemTable1.getNextSlideImage());
         cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
         
     }
