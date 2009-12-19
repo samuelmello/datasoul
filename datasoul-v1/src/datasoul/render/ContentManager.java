@@ -319,8 +319,19 @@ public class ContentManager {
             r.setAlertActive(b);
         }
     }
+
+    public void setActiveImageLive(BufferedImage img){
+        for (ContentRender r : liveRenderList){
+            r.setActiveImage(img);
+        }
+    }
     
-    
+    public void setActiveImagePreview(BufferedImage img){
+        for (ContentRender r : previewRenderList){
+            r.setActiveImage(img);
+        }
+    }
+
     static private ContentRender mainDisplay;
     static private ContentRender monitorDisplay;
     static private String mainDisplayEngine = "SwingDisplay";

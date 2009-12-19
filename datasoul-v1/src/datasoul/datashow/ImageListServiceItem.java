@@ -51,6 +51,10 @@ public class ImageListServiceItem extends ServiceItem {
         this.fireTableChanged();
     }
 
+    public BufferedImage getImage(int index){
+        return ((ImageListServiceRenderer)slides.get(index)).getImage();
+    }
+
     @Override
     public Node writeObject() throws Exception {
         Node n = super.writeObject();

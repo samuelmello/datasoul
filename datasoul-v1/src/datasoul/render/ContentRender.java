@@ -25,6 +25,7 @@ package datasoul.render;
 
 import datasoul.config.ConfigObj;
 import datasoul.templates.DisplayTemplate;
+import datasoul.templates.ImageTemplateItem;
 import datasoul.templates.TemplateItem;
 import datasoul.templates.TextTemplateItem;
 import datasoul.templates.TimerProgressbarTemplateItem;
@@ -65,6 +66,8 @@ public abstract class ContentRender {
     private boolean alertActive;
     private boolean showTimer;
     private float timerProgress;
+    private BufferedImage activeImage;
+    private boolean activeImageChanged;
     private boolean showHideNeedUpdate;
     
     private Semaphore updSemaphore;
@@ -110,6 +113,11 @@ public abstract class ContentRender {
         run = false;
         updSemaphore.release();
         updThread.interrupt();
+    }
+
+    public void setActiveImage(BufferedImage img){
+        this.activeImage = img;
+        this.activeImageChanged = true;
     }
 
     public String getTitle() {
@@ -372,6 +380,12 @@ public abstract class ContentRender {
                             ((TimerProgressbarTemplateItem)t).setShowTimer( showTimer );
                             needUpdate = true;
                             continue;
+                        }else if (t instanceof ImageTemplateItem && activeImageChanged){
+                            if (((ImageTemplateItem)t).getContentIdx() == ImageTemplateItem.IMAGE_CONTENT_SLIDE){
+                                ((ImageTemplateItem)t).setImage(activeImage);
+                                needUpdate = true;
+                                continue;
+                            }
                         }// if is TextTemplateItem
                     }// for need update
                 }//synchornized
@@ -447,6 +461,7 @@ public abstract class ContentRender {
             copyrightChanged = false;
             songSourceChanged = false;
             showHideNeedUpdate = false;
+            activeImageChanged = false;
         }
             
             

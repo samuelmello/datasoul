@@ -47,6 +47,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         serviceItemTable1.setServiceItem(serviceItem);
         cm.setSlidePreview( serviceItemTable1.getSlideText() );
         cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
+        cm.setActiveImagePreview(serviceItemTable1.getSlideImage());
         if(serviceItem instanceof Song){
             cm.setSongAuthorPreview( ((Song)serviceItem).getSongAuthor() );
             cm.setSongSourcePreview( ((Song)serviceItem).getSongSource() );
@@ -122,6 +123,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         ContentManager cm = ContentManager.getInstance();
         cm.setSlidePreview( serviceItemTable1.getSlideText() );
         cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
+        cm.setActiveImagePreview(serviceItemTable1.getSlideImage());
         cm.updatePreview();
     }
     

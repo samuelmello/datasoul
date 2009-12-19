@@ -20,6 +20,7 @@
 
 package datasoul.datashow;
 
+import java.awt.image.BufferedImage;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -182,7 +183,20 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         
         return ((TextServiceItem)item).getSlideText(selectedRow+1);
     }
-    
+
+    public BufferedImage getSlideImage(){
+        int selectedRow = displayTable.getSelectedRow();
+        if (selectedRow == -1) {
+            selectedRow = 0;
+        }
+
+        if (! (item instanceof ImageListServiceItem)){
+            return null;
+        }
+
+        return ((ImageListServiceItem)item).getImage(selectedRow);
+    }
+
     public int getSlideIndex(){
         return displayTable.getSelectedRow();
     }

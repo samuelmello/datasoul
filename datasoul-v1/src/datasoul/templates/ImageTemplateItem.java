@@ -28,8 +28,6 @@ import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -43,16 +41,19 @@ import org.w3c.dom.Node;
 public class ImageTemplateItem extends TemplateItem {
     
     private BufferedImage img;
-    private String filename;
     private int stretch;
     private int alingment;
     private int vertAlign;
+    private int content;
     
     private static JComboBox cbStrecth;
     private static JComboBox cbAlignment;
     private static JComboBox cbVerticalAlignment;
-    
-    
+    private static JComboBox cbContent;
+
+    public static final int IMAGE_CONTENT_STATIC = 0;
+    public static final int IMAGE_CONTENT_SLIDE = 1;
+    public static final String[] IMAGE_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide")};
     
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";
@@ -67,7 +68,7 @@ public class ImageTemplateItem extends TemplateItem {
     public static final int STRETCH_NO = 0;
     public static final int STRETCH_YES = 1;
     public static final String[] STRETCH_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes")};
-    
+
     
     public ImageTemplateItem() {
         super();
@@ -100,6 +101,14 @@ public class ImageTemplateItem extends TemplateItem {
             }
         }
         registerEditorComboBox("StretchIdx", cbStrecth);
+
+        if (cbContent == null){
+            cbContent = new JComboBox();
+            for (i=0; i<IMAGE_CONTENT_TABLE.length; i++)
+                cbContent.addItem(IMAGE_CONTENT_TABLE[i]);
+        }
+        registerEditorComboBox("ContentIdx", cbContent);
+
     }
     
     public void assign(ImageTemplateItem from){
@@ -107,6 +116,7 @@ public class ImageTemplateItem extends TemplateItem {
         this.setStretchIdx(from.getStretchIdx());
         this.setAlignmentIdx(from.getAlignmentIdx());
         this.setVerticalAlignmentIdx(from.getVerticalAlignmentIdx());
+        this.setContentIdx(from.getContentIdx());
         
         // ok, here we are getting just a reference for the image.
         // this will cause the assignment to do not really clone the object
@@ -124,7 +134,6 @@ public class ImageTemplateItem extends TemplateItem {
 
     public void loadImage(String filename){
         if (filename != null){
-            this.filename = filename;
             try {
                 img = ImageIO.read( new File(filename) );
                 assertImageSize();
@@ -138,7 +147,9 @@ public class ImageTemplateItem extends TemplateItem {
     
     public void setImage(BufferedImage img){
         this.img = img;
-        assertImageSize();
+        if (img != null){
+            assertImageSize();
+        }
     }
     
     public BufferedImage getImage(){
@@ -150,7 +161,7 @@ public class ImageTemplateItem extends TemplateItem {
      * avoid running out of memory
      */
     private void assertImageSize(){
-        
+
         float fw = (float) this.img.getWidth() / (float) DisplayTemplate.TEMPLATE_WIDTH;
         float fh = (float) this.img.getHeight() / (float) DisplayTemplate.TEMPLATE_HEIGHT;
         
@@ -179,6 +190,8 @@ public class ImageTemplateItem extends TemplateItem {
     @Override
     protected void registerProperties(){
         super.registerProperties();
+        properties.add("ContentIdx");
+        registerDisplayString("ContentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Content"));
         properties.add("AlignmentIdx");
         registerDisplayString("AlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alignment"));
         properties.add("VerticalAlignmentIdx");
@@ -349,5 +362,31 @@ public class ImageTemplateItem extends TemplateItem {
     public void setVerticalAlignmentIdx(String x){
         setVerticalAlignmentIdx(Integer.parseInt(x));
     }
+
+    public int getContentIdx(){
+        return content;
+    }
+
+    public void setContentIdx(String content){
+        setContentIdx(Integer.parseInt(content));
+    }
+
+    public void setContentIdx(int content){
+        this.content = content;
+        firePropChanged("ContentIdx");
+    }
+
+    public String getContent(){
+        return IMAGE_CONTENT_TABLE[this.content];
+    }
+
+    public void setContent(String content){
+        for (int j=0; j<IMAGE_CONTENT_TABLE.length; j++){
+            if (content.equalsIgnoreCase(IMAGE_CONTENT_TABLE[j])){
+                setContentIdx(j);
+            }
+        }
+    }
+
      
 }
