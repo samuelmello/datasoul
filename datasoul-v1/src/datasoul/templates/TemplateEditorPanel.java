@@ -29,6 +29,8 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.awt.event.InputEvent;
+import java.util.ResourceBundle;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
@@ -45,6 +47,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     private Rectangle dragOrigSize;
     private JTable propTable;
     private DisplayTemplate template;
+    private JLabel activeItemLabel;
     
     /** Creates new form TemplateEditorPanel */
     public TemplateEditorPanel() {
@@ -204,6 +207,16 @@ public class TemplateEditorPanel extends javax.swing.JPanel
                 propTable.setDefaultEditor(Object.class, t.getTableCellEditor() );
                 propTable.setDefaultRenderer(AttributedObject.class, t.getColorTableCellRenderer() );
                 propTable.setModel(t);
+                ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+                if (t instanceof TextTemplateItem){
+                    activeItemLabel.setText(bundle.getString("Text"));
+                }else if (t instanceof ImageTemplateItem){
+                    activeItemLabel.setText(bundle.getString("Image"));
+                }else if (t instanceof TimerProgressbarTemplateItem){
+                    activeItemLabel.setText(bundle.getString("Timer"));
+                }else{
+                    activeItemLabel.setText("");
+                }
                 break;
             }
         }
@@ -224,17 +237,23 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
     }//GEN-LAST:event_formMouseClicked
     
-    public void setPropertiesTable(JTable prop){
-        this.propTable = prop;
+    public void setEditorPanel(TemplatePanel prop){
+        this.propTable = prop.getPropertiesTable();
+        this.activeItemLabel = prop.getActiveItemLabel();
         // NetBeans IDE does not works well when creating 
         // objects in the constructor. So, we allocate the first template here
         if (template == null){
             template = new DisplayTemplate();
-            template.setName(DisplayTemplate.findUnusedName());
         }
         propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
         propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
-        prop.setModel(template);
+        propTable.setModel(template);
+        if (template.getName() != null){
+            activeItemLabel.setText(template.getName());
+        }else{
+            activeItemLabel.setText("New Template");
+        }
+
     }
     
     
@@ -249,6 +268,11 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
         propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
         propTable.setModel(template);
+        if (template.getName() != null){
+            activeItemLabel.setText(template.getName());
+        }else{
+            activeItemLabel.setText("New Template");
+        }
         repaint();
     }
     
@@ -285,13 +309,26 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         // TODO: Adicionar Validacao de nome
         
         try{
-            template.save();
+            template.save(this);
         }catch(Exception e) {
             ShowDialog.showWriteFileError(template.getName(), e);
             e.printStackTrace();
         }        
     }
-    
+
+    public void saveAs(){
+
+        // TODO: Adicionar Validacao de nome
+
+        try{
+            template.saveAs(this);
+        }catch(Exception e) {
+            ShowDialog.showWriteFileError(template.getName(), e);
+            e.printStackTrace();
+        }
+    }
+
+
     public void open(String templatename){
         try{
             selectedItem = null;
@@ -317,6 +354,11 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             }
             
             propTable.setModel(template);
+            if (template.getName() != null){
+                activeItemLabel.setText(template.getName());
+            }else{
+                activeItemLabel.setText("New Template");
+            }
             this.repaint();
         }catch(Exception e) {
             ShowDialog.showReadFileError(template.getName(), e);
@@ -327,21 +369,15 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     public void openNewTemplate(){
         
         try{
-            // Save the old template, if the user want
-            int save = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_Template"), JOptionPane.YES_NO_CANCEL_OPTION);
-            switch (save){
-                case JOptionPane.CANCEL_OPTION:
-                    return;
-                case JOptionPane.YES_OPTION:
-                    template.save();
-                    break;
-            }
-            
             // Create a new one
             selectedItem = null;
             template = new DisplayTemplate();
-            template.setName(DisplayTemplate.findUnusedName());
             propTable.setModel(template);
+            if (template.getName() != null){
+                activeItemLabel.setText(template.getName());
+            }else{
+                activeItemLabel.setText("New Template");
+            }
             this.repaint();
             
         }catch(Exception e) {

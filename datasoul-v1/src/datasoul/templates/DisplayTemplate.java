@@ -25,6 +25,7 @@ package datasoul.templates;
 
 import datasoul.DatasoulMainForm;
 import datasoul.util.AttributedObject;
+import datasoul.util.ObjectManager;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,6 +36,8 @@ import java.util.TreeMap;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -100,37 +103,6 @@ public class DisplayTemplate extends AttributedObject {
         }
         
     }
-    
-    
-    public static String findUnusedName(){
-        
-        // try to find a Name
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-        int i = 0;
-        File file = new File(path);
-        String[] files = file.list();
-        
-        while (true){
-            
-            boolean exists = false;
-            String tmp = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Untitled")+i;
-            for (String s : files){
-                if (s.equals(tmp+".template")){
-                    exists = true;
-                    break; //for
-                }
-            }
-            
-            if (exists == false){
-                return tmp;
-            }else{
-                i++;
-            }
-
-        }
-        
-    }
-    
     
     public void assign(DisplayTemplate from){
         
@@ -229,8 +201,6 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     public void setName(String name){
-        
-        // TODO: Adicionar Validacao de nome aqui
         
         this.name = name;
         firePropChanged("Name");
@@ -375,33 +345,71 @@ public class DisplayTemplate extends AttributedObject {
         // just to conformance with super's readObject.
         // The TemplateItems will be readed lately by the overriden readObject
     }
+
+    public void saveAs(JComponent owner) throws Exception {
+
+        JFileChooser fc = new JFileChooser();
+        fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
+
+            public boolean accept(File f) {
+                if (f.isDirectory()) {
+                    return true;
+                }
+                String name = f.getName();
+                if (name.endsWith(".template")) {
+                    return true;
+                }
+                return false;
+            }
+
+            public String getDescription() {
+                return ".template";
+            }
+        });
+        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
+        fc.setCurrentDirectory(dir);
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        if (fc.showSaveDialog(owner) == JFileChooser.APPROVE_OPTION) {
+            String fileName = fc.getSelectedFile().getName();
+            fileName = fileName.replace(".template", "");
+            this.setName(fileName);
+            this.save(owner);
+        }
+        
+
+    }
+
     
-    
-    public void save() throws Exception {
-        
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-        String filename = path + System.getProperty("file.separator") + this.getName()+".template";
-        
-        Node node = this.writeObject();
-        Document doc = node.getOwnerDocument();
-        doc.appendChild( node);                        // Add Root to Document
-        
-        FileOutputStream fos = new FileOutputStream( filename );
-        GZIPOutputStream zos = new GZIPOutputStream(fos);
+    public void save(JComponent owner) throws Exception {
 
-        Source source = new DOMSource(doc);
+        if (this.getName() == null){
+            saveAs(owner);
+        }else{
 
-        // Prepare the output file
-        Result result = new StreamResult(zos);
+            String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
+            String filename = path + System.getProperty("file.separator") + this.getName()+".template";
 
-        // Write the DOM document to the file
-        Transformer xformer = TransformerFactory.newInstance().newTransformer();
-        xformer.setOutputProperty(OutputKeys.INDENT, "yes");
-        xformer.transform(source, result);
-        
-        zos.close();
-        
-        templateCache.put(name, this);
+            Node node = this.writeObject();
+            Document doc = node.getOwnerDocument();
+            doc.appendChild( node);                        // Add Root to Document
+
+            FileOutputStream fos = new FileOutputStream( filename );
+            GZIPOutputStream zos = new GZIPOutputStream(fos);
+
+            Source source = new DOMSource(doc);
+
+            // Prepare the output file
+            Result result = new StreamResult(zos);
+
+            // Write the DOM document to the file
+            Transformer xformer = TransformerFactory.newInstance().newTransformer();
+            xformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            xformer.transform(source, result);
+
+            zos.close();
+
+            templateCache.put(this.getName(), this);
+        }
     }
     
 

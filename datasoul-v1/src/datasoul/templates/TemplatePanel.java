@@ -21,10 +21,13 @@
 package datasoul.templates;
 
 import datasoul.config.WindowPropConfig;
-import datasoul.util.ObjectManager;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JTable;
 
 /**
  *
@@ -37,18 +40,42 @@ public class TemplatePanel extends javax.swing.JPanel {
     /** Creates new form TemplatePanel */
     public TemplatePanel() {
         initComponents();
-        
-        TemplateManager manager = TemplateManager.getInstance();
-        manager.refreshAvailableTemplates();
-        jTableTemplates.setModel( manager );
-        
-        templateEditorPanel1.setPropertiesTable(jTableProperties);
-        
-        lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
 
-        WindowPropConfig.getInstance().getTemplateSplit1(jSplitPane1);
-        WindowPropConfig.getInstance().getTemplateSplit2(jSplitPane2);
-        updateSize = true;
+        try{
+            templateEditorPanel1.setEditorPanel(this);
+
+            lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
+
+            WindowPropConfig.getInstance().getTemplateSplit1(jSplitPane1);
+            updateSize = true;
+
+            for (String s : TextTemplateItem.CONTENT_TABLE){
+                JMenuItem mi = new JMenuItem();
+                mi.setText(s);
+                mi.addActionListener(new java.awt.event.ActionListener() {
+                    @Override
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        addTextItem(evt);
+                    }
+                });
+                ppmNewText.add(mi);
+            }
+
+            for (String s : ImageTemplateItem.IMAGE_CONTENT_TABLE){
+                JMenuItem mi = new JMenuItem();
+                mi.setText(s);
+                mi.addActionListener(new java.awt.event.ActionListener() {
+                    @Override
+                    public void actionPerformed(java.awt.event.ActionEvent evt) {
+                        addTextImage(evt);
+                    }
+                });
+                ppmNewImage.add(mi);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
     }
     
     /** This method is called from within the constructor to
@@ -59,42 +86,32 @@ public class TemplatePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ppmNewText = new javax.swing.JPopupMenu();
+        ppmNewImage = new javax.swing.JPopupMenu();
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         panelTemplateEditor = new javax.swing.JPanel();
         lblTemplateName = new javax.swing.JLabel();
         templateEditorPanel1 = new datasoul.templates.TemplateEditorPanel();
         jLabel5 = new javax.swing.JLabel();
-        jToolBar4 = new javax.swing.JToolBar();
-        jLabel2 = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
-        btnProperties = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JToolBar.Separator();
-        jLabel8 = new javax.swing.JLabel();
-        btnAddText = new javax.swing.JButton();
-        btnAddImage = new javax.swing.JButton();
-        btnTimerProgress = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        jLabel4 = new javax.swing.JLabel();
-        btnDeleteItem = new javax.swing.JButton();
-        btnMoveUp = new javax.swing.JButton();
-        btnMoveDown = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        panelTemplates = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableTemplates = new javax.swing.JTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnLoad = new javax.swing.JButton();
-        btnNew = new javax.swing.JButton();
-        btnDeleteTemplate = new javax.swing.JButton();
-        jToolBar2 = new javax.swing.JToolBar();
-        jLabel6 = new javax.swing.JLabel();
         panelProperties = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableProperties = new javax.swing.JTable();
-        jToolBar3 = new javax.swing.JToolBar();
-        jLabel7 = new javax.swing.JLabel();
+        jToolBar5 = new javax.swing.JToolBar();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblActiveItem = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnDeleteItem = new javax.swing.JButton();
+        btnMoveDown = new javax.swing.JButton();
+        btnMoveUp = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnAddText = new javax.swing.JButton();
+        btnAddImage = new javax.swing.JButton();
+        btnTimerProgress = new javax.swing.JButton();
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(250);
@@ -123,108 +140,6 @@ public class TemplatePanel extends javax.swing.JPanel {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel5.setText(bundle.getString("Hold_Shift_down_for_resizing_items")); // NOI18N
 
-        jToolBar4.setFloatable(false);
-        jToolBar4.setRollover(true);
-
-        jLabel2.setText(bundle.getString("Template")); // NOI18N
-        jToolBar4.add(jLabel2);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setText(bundle.getString("Save")); // NOI18N
-        btnSave.setToolTipText(bundle.getString("Save_template")); // NOI18N
-        btnSave.setBorderPainted(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnSave);
-
-        btnProperties.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
-        btnProperties.setText(bundle.getString("Properties")); // NOI18N
-        btnProperties.setBorderPainted(false);
-        btnProperties.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPropertiesActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnProperties);
-        jToolBar4.add(jSeparator2);
-
-        jLabel8.setText(bundle.getString("Add")); // NOI18N
-        jToolBar4.add(jLabel8);
-
-        btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
-        btnAddText.setText(bundle.getString("Text")); // NOI18N
-        btnAddText.setToolTipText(bundle.getString("Add_a_text")); // NOI18N
-        btnAddText.setBorderPainted(false);
-        btnAddText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddTextActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnAddText);
-
-        btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
-        btnAddImage.setText(bundle.getString("Image")); // NOI18N
-        btnAddImage.setToolTipText(bundle.getString("Add_an_image_...")); // NOI18N
-        btnAddImage.setBorderPainted(false);
-        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddImageActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnAddImage);
-
-        btnTimerProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png"))); // NOI18N
-        btnTimerProgress.setText(bundle.getString("Timer")); // NOI18N
-        btnTimerProgress.setBorderPainted(false);
-        btnTimerProgress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTimerProgressActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnTimerProgress);
-        jToolBar4.add(jSeparator1);
-
-        jLabel4.setText(bundle.getString("Item")); // NOI18N
-        jToolBar4.add(jLabel4);
-
-        btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDeleteItem.setText(bundle.getString("Remove")); // NOI18N
-        btnDeleteItem.setToolTipText(bundle.getString("Delete_item")); // NOI18N
-        btnDeleteItem.setBorderPainted(false);
-        btnDeleteItem.setFocusable(false);
-        btnDeleteItem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnDeleteItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteItemActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnDeleteItem);
-
-        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-behind.png"))); // NOI18N
-        btnMoveUp.setText(bundle.getString("To_Front")); // NOI18N
-        btnMoveUp.setToolTipText(bundle.getString("Move_the_item_to_the_upper_layer")); // NOI18N
-        btnMoveUp.setBorderPainted(false);
-        btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveUpActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnMoveUp);
-
-        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-infront.png"))); // NOI18N
-        btnMoveDown.setText(bundle.getString("To_Back")); // NOI18N
-        btnMoveDown.setToolTipText(bundle.getString("Move_the_item_to_the_lowest_layer")); // NOI18N
-        btnMoveDown.setBorderPainted(false);
-        btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMoveDownActionPerformed(evt);
-            }
-        });
-        jToolBar4.add(btnMoveDown);
-
         jLabel1.setText(bundle.getString("Template:")); // NOI18N
 
         javax.swing.GroupLayout panelTemplateEditorLayout = new javax.swing.GroupLayout(panelTemplateEditor);
@@ -233,25 +148,19 @@ public class TemplatePanel extends javax.swing.JPanel {
             panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTemplateEditorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(619, Short.MAX_VALUE))
-            .addComponent(jToolBar4, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE)
-            .addGroup(panelTemplateEditorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(14, 14, 14)
-                .addComponent(lblTemplateName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(590, Short.MAX_VALUE))
-            .addGroup(panelTemplateEditorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(templateEditorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addGroup(panelTemplateEditorLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(14, 14, 14)
+                        .addComponent(lblTemplateName, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(templateEditorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTemplateEditorLayout.setVerticalGroup(
             panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTemplateEditorLayout.createSequentialGroup()
-                .addComponent(jToolBar4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addGroup(panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTemplateName)
                     .addComponent(jLabel1))
@@ -264,95 +173,6 @@ public class TemplatePanel extends javax.swing.JPanel {
         jScrollPane3.setViewportView(panelTemplateEditor);
 
         jSplitPane1.setRightComponent(jScrollPane3);
-
-        jSplitPane2.setBorder(null);
-        jSplitPane2.setDividerLocation(250);
-        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        jSplitPane2.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jSplitPane2PropertyChange(evt);
-            }
-        });
-
-        panelTemplates.setDoubleBuffered(false);
-
-        jTableTemplates.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTableTemplates);
-
-        jToolBar1.setFloatable(false);
-        jToolBar1.setOpaque(false);
-
-        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnLoad.setText(bundle.getString("Open")); // NOI18N
-        btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
-        btnLoad.setBorderPainted(false);
-        btnLoad.setFocusPainted(false);
-        btnLoad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnLoad);
-
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setText(bundle.getString("New")); // NOI18N
-        btnNew.setToolTipText(bundle.getString("Create_a_new_template")); // NOI18N
-        btnNew.setBorderPainted(false);
-        btnNew.setFocusPainted(false);
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnNew);
-
-        btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
-        btnDeleteTemplate.setToolTipText(bundle.getString("Delete_selected_template")); // NOI18N
-        btnDeleteTemplate.setBorderPainted(false);
-        btnDeleteTemplate.setFocusPainted(false);
-        btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteTemplateActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnDeleteTemplate);
-
-        jToolBar2.setFloatable(false);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png"))); // NOI18N
-        jLabel6.setText(bundle.getString("Templates")); // NOI18N
-        jToolBar2.add(jLabel6);
-
-        javax.swing.GroupLayout panelTemplatesLayout = new javax.swing.GroupLayout(panelTemplates);
-        panelTemplates.setLayout(panelTemplatesLayout);
-        panelTemplatesLayout.setHorizontalGroup(
-            panelTemplatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-        panelTemplatesLayout.setVerticalGroup(
-            panelTemplatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTemplatesLayout.createSequentialGroup()
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jSplitPane2.setTopComponent(panelTemplates);
 
         jTableProperties.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -367,143 +187,211 @@ public class TemplatePanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(jTableProperties);
 
-        jToolBar3.setFloatable(false);
+        jToolBar5.setFloatable(false);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
-        jLabel7.setText(bundle.getString("Properties")); // NOI18N
-        jToolBar3.add(jLabel7);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
+        jLabel9.setText(bundle.getString("Properties")); // NOI18N
+        jToolBar5.add(jLabel9);
+
+        jLabel3.setText("  -  ");
+        jToolBar5.add(jLabel3);
+
+        lblActiveItem.setText("jLabel4");
+        jToolBar5.add(lblActiveItem);
+
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
+
+        btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
+        btnDeleteItem.setText(bundle.getString("Remove")); // NOI18N
+        btnDeleteItem.setToolTipText(bundle.getString("Delete_item")); // NOI18N
+        btnDeleteItem.setBorderPainted(false);
+        btnDeleteItem.setFocusPainted(false);
+        btnDeleteItem.setFocusable(false);
+        btnDeleteItem.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDeleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteItemActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDeleteItem);
+
+        btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-infront.png"))); // NOI18N
+        btnMoveDown.setText(bundle.getString("To_Back")); // NOI18N
+        btnMoveDown.setToolTipText(bundle.getString("Move_the_item_to_the_lowest_layer")); // NOI18N
+        btnMoveDown.setBorderPainted(false);
+        btnMoveDown.setFocusPainted(false);
+        btnMoveDown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoveDownActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMoveDown);
+
+        btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-behind.png"))); // NOI18N
+        btnMoveUp.setText(bundle.getString("To_Front")); // NOI18N
+        btnMoveUp.setToolTipText(bundle.getString("Move_the_item_to_the_upper_layer")); // NOI18N
+        btnMoveUp.setBorderPainted(false);
+        btnMoveUp.setFocusPainted(false);
+        btnMoveUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoveUpActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnMoveUp);
+
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        jLabel2.setText("Add New Item");
+        jToolBar1.add(jLabel2);
+
+        jPanel2.setLayout(new java.awt.GridLayout(1, 0));
+
+        btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
+        btnAddText.setText(bundle.getString("Text")); // NOI18N
+        btnAddText.setToolTipText(bundle.getString("Add_a_text")); // NOI18N
+        btnAddText.setBorderPainted(false);
+        btnAddText.setFocusPainted(false);
+        btnAddText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddTextActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAddText);
+
+        btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
+        btnAddImage.setText(bundle.getString("Image")); // NOI18N
+        btnAddImage.setToolTipText(bundle.getString("Add_an_image_...")); // NOI18N
+        btnAddImage.setBorderPainted(false);
+        btnAddImage.setFocusPainted(false);
+        btnAddImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddImageActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnAddImage);
+
+        btnTimerProgress.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png"))); // NOI18N
+        btnTimerProgress.setText(bundle.getString("Timer")); // NOI18N
+        btnTimerProgress.setBorderPainted(false);
+        btnTimerProgress.setFocusPainted(false);
+        btnTimerProgress.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimerProgressActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnTimerProgress);
 
         javax.swing.GroupLayout panelPropertiesLayout = new javax.swing.GroupLayout(panelProperties);
         panelProperties.setLayout(panelPropertiesLayout);
         panelPropertiesLayout.setHorizontalGroup(
             panelPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+            .addComponent(jToolBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panelPropertiesLayout.setVerticalGroup(
             panelPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPropertiesLayout.createSequentialGroup()
-                .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
         );
 
-        jSplitPane2.setBottomComponent(panelProperties);
-
-        jSplitPane1.setLeftComponent(jSplitPane2);
+        jSplitPane1.setLeftComponent(panelProperties);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1054, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1082, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnPropertiesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPropertiesActionPerformed
-        templateEditorPanel1.unselectItem();
-    }//GEN-LAST:event_btnPropertiesActionPerformed
 
     private void btnTimerProgressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimerProgressActionPerformed
         TimerProgressbarTemplateItem timer = new TimerProgressbarTemplateItem();
         templateEditorPanel1.addItem(timer);
     }//GEN-LAST:event_btnTimerProgressActionPerformed
 
-    private void btnDeleteTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTemplateActionPerformed
-
-
-        if ( jTableTemplates.getSelectedRowCount() == 1){
-            Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
-            if (x instanceof String){
-                String str = (String) x;
-                int confirm = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Delete_template_")+x+"?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"), JOptionPane.YES_NO_OPTION);
-                if (confirm == JOptionPane.YES_OPTION){
-                    try{
-                        TemplateManager.getInstance().deleteTemplate(str);
-                    }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_delete_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
-                    }// try
-                }//if confirm
-            }// if instance of
-        }// if selected
-
-        
-    }//GEN-LAST:event_btnDeleteTemplateActionPerformed
-
-    private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
-
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Do_you_want_to_save_")+templateEditorPanel1.getTemplate().getName()+ "?" );
-        
-        switch(resp){
-            case JOptionPane.CANCEL_OPTION:
-                return;
-            case JOptionPane.YES_OPTION:
-                templateEditorPanel1.save();
-                break;
-        }
-        
-        try{
-            ObjectManager.getInstance().setBusyCursor();
-            if ( jTableTemplates.getSelectedRowCount() == 1){
-                Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
-                if (x instanceof String){
-                    String str = (String) x;
-                    templateEditorPanel1.open( str );
-                    lblTemplateName.setText( str );
-                }
-            }
-            TemplateManager.getInstance().refreshAvailableTemplates();
-        }finally{
-            ObjectManager.getInstance().setDefaultCursor();
-        }
-
-    }//GEN-LAST:event_btnLoadActionPerformed
-
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        templateEditorPanel1.openNewTemplate();
-        lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
-    }//GEN-LAST:event_btnNewActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-
-        try{
-            ObjectManager.getInstance().setBusyCursor();
-            templateEditorPanel1.save();
-            TemplateManager.getInstance().refreshAvailableTemplates();
-            lblTemplateName.setText( templateEditorPanel1.getTemplate().getName() );
-        }finally{
-            ObjectManager.getInstance().setDefaultCursor();
-        }
-        
-    }//GEN-LAST:event_btnSaveActionPerformed
-
     private void btnDeleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteItemActionPerformed
         templateEditorPanel1.deleteSelectedItem();
     }//GEN-LAST:event_btnDeleteItemActionPerformed
 
     private void btnAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTextActionPerformed
-        TextTemplateItem txt = new TextTemplateItem();
-        templateEditorPanel1.addItem(txt);
+        ppmNewText.show(btnAddText, 0, btnAddText.getHeight());
     }//GEN-LAST:event_btnAddTextActionPerformed
 
-    private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
-        JFileChooser fc = new JFileChooser();
-        File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
-        fc.setCurrentDirectory(dir);
-        fc.setDialogType(JFileChooser.OPEN_DIALOG);
-        fc.setMultiSelectionEnabled(false);
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fc.setControlButtonsAreShown(true);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
-        if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
-            String filename = fc.getSelectedFile().getAbsolutePath();
-            ImageTemplateItem img = new ImageTemplateItem( filename );
-            templateEditorPanel1.addItem(img);
+    private void addTextItem(java.awt.event.ActionEvent evt){
+        TextTemplateItem txt = new TextTemplateItem();
+        if (evt.getSource() instanceof JMenuItem){
+            txt.setText( ((JMenuItem)evt.getSource()).getText() );
+            txt.setContent(((JMenuItem)evt.getSource()).getText());
         }
+        templateEditorPanel1.addItem(txt);
+    }
+
+    private void addTextImage(java.awt.event.ActionEvent evt){
+
+        if (evt.getSource() instanceof JMenuItem){
+
+            String typestr = ((JMenuItem)evt.getSource()).getText();
+            int type = 0;
+            for (int x=0; x<ImageTemplateItem.IMAGE_CONTENT_TABLE.length; x++){
+                if (typestr.equals(ImageTemplateItem.IMAGE_CONTENT_TABLE[x])){
+                    type = x;
+                    break;
+                }
+            }
+            if (type == ImageTemplateItem.IMAGE_CONTENT_STATIC){
+                JFileChooser fc = new JFileChooser();
+                File dir = new File (System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
+                fc.setCurrentDirectory(dir);
+                fc.setDialogType(JFileChooser.OPEN_DIALOG);
+                fc.setMultiSelectionEnabled(false);
+                fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                fc.setControlButtonsAreShown(true);
+                fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
+                if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
+                    String filename = fc.getSelectedFile().getAbsolutePath();
+                    ImageTemplateItem img = new ImageTemplateItem( filename );
+                    templateEditorPanel1.addItem(img);
+                }
+            }else if (type == ImageTemplateItem.IMAGE_CONTENT_SLIDE){
+                ImageTemplateItem img = new ImageTemplateItem(getClass().getResource("/datasoul/icons/default-image.png").getFile());
+                img.setContentIdx(type);
+                templateEditorPanel1.addItem(img);
+            }else if (type == ImageTemplateItem.IMAGE_CONTENT_NEXT_SLIDE){
+                ImageTemplateItem img = new ImageTemplateItem(getClass().getResource("/datasoul/icons/default-image.png").getFile());
+                img.setContentIdx(type);
+                templateEditorPanel1.addItem(img);
+            }
+
+        }
+
+    }
+
+    public JTable getPropertiesTable(){
+        return jTableProperties;
+    }
+
+    public JLabel getActiveItemLabel(){
+        return lblActiveItem;
+    }
+
+    private void btnAddImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddImageActionPerformed
+        ppmNewImage.show(btnAddImage, 0, btnAddImage.getHeight());
     }//GEN-LAST:event_btnAddImageActionPerformed
 
     private void btnMoveUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoveUpActionPerformed
@@ -520,49 +408,53 @@ public class TemplatePanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jSplitPane1PropertyChange
 
-    private void jSplitPane2PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane2PropertyChange
-        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
-                WindowPropConfig.getInstance().setTemplateSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
-        }
-    }//GEN-LAST:event_jSplitPane2PropertyChange
-    
+    public void save(){
+        templateEditorPanel1.save();
+    }
+
+    public void saveAs(){
+        templateEditorPanel1.saveAs();
+    }
+
+    public DisplayTemplate getTemplate(){
+        return templateEditorPanel1.getTemplate();
+    }
+
+    public void open(String filename){
+        templateEditorPanel1.open(filename);
+    }
+
+    public void newTemplate(){
+        templateEditorPanel1.openNewTemplate();
+    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnAddText;
     private javax.swing.JButton btnDeleteItem;
-    private javax.swing.JButton btnDeleteTemplate;
-    private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnMoveDown;
     private javax.swing.JButton btnMoveUp;
-    private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnProperties;
-    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnTimerProgress;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JToolBar.Separator jSeparator1;
-    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JTable jTableProperties;
-    private javax.swing.JTable jTableTemplates;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
-    private javax.swing.JToolBar jToolBar3;
-    private javax.swing.JToolBar jToolBar4;
+    private javax.swing.JToolBar jToolBar5;
+    private javax.swing.JLabel lblActiveItem;
     private javax.swing.JLabel lblTemplateName;
     private javax.swing.JPanel panelProperties;
     private javax.swing.JPanel panelTemplateEditor;
-    private javax.swing.JPanel panelTemplates;
+    private javax.swing.JPopupMenu ppmNewImage;
+    private javax.swing.JPopupMenu ppmNewText;
     private datasoul.templates.TemplateEditorPanel templateEditorPanel1;
     // End of variables declaration//GEN-END:variables
     

@@ -35,6 +35,7 @@ import datasoul.templates.TemplatePanel;
 import datasoul.datashow.TimerManager;
 import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.templates.TemplateManager;
+import datasoul.templates.TemplateManagerForm;
 import datasoul.util.KeyListner;
 import datasoul.util.ObjectManager;
 import datasoul.util.Splash;
@@ -121,21 +122,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addComponent(songs, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
-        // Initialize templates layout
-        templatesLayout = new GroupLayout(getContentPane());
-        templatesLayout.setHorizontalGroup(
-            templatesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(templates, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .addComponent(toolBarMain)
-        );
-        templatesLayout.setVerticalGroup(
-            templatesLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.LEADING, templatesLayout.createSequentialGroup()
-                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(templates, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
-        );
-        
         // Initialize config layout
         configLayout = new GroupLayout(getContentPane());
         configLayout.setHorizontalGroup(
@@ -204,12 +190,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         
         tabbedInterface.addTab(
-                bundle.getString("Templates"),
-                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png")),
-                templates,
-                bundle.getString("Templates_Tip"));
-
-        tabbedInterface.addTab(
                 bundle.getString("Configuration"),
                 new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png")),
                 config,
@@ -246,6 +226,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBarMain = new javax.swing.JToolBar();
+        btnTemplates = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         tabbedInterface = new javax.swing.JTabbedPane();
 
@@ -262,6 +243,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setMinimumSize(new java.awt.Dimension(451, 36));
         toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 36));
+
+        btnTemplates.setText("Templates");
+        btnTemplates.setFocusable(false);
+        btnTemplates.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTemplates.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTemplates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemplatesActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnTemplates);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -308,6 +300,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             WindowPropConfig.getInstance().setMainForm(this);
         }
     }//GEN-LAST:event_formComponentResized
+
+    private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
+        TemplateManagerForm tmf = new TemplateManagerForm();
+        tmf.setVisible(true);
+    }//GEN-LAST:event_btnTemplatesActionPerformed
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
@@ -491,6 +488,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;
+    javax.swing.JButton btnTemplates;
     javax.swing.JTabbedPane tabbedInterface;
     javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables

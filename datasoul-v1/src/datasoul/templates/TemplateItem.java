@@ -48,8 +48,6 @@ public abstract class TemplateItem extends AttributedObject {
     @Override
     protected void registerProperties(){
         super.registerProperties();
-        properties.add("Name");
-        registerDisplayString("Name",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Name"));
         properties.add("Top");
         registerDisplayString("Top",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Top"));
         properties.add("Left");
