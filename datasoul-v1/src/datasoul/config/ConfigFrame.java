@@ -126,7 +126,8 @@ public class ConfigFrame extends javax.swing.JFrame {
         mainOutputPositionLeft = new javax.swing.JTextField();
         btnMainAdvanced = new javax.swing.JToggleButton();
         jLabel37 = new javax.swing.JLabel();
-        btnApply = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnDiscard = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Configuration");
@@ -579,14 +580,22 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addGap(22, 22, 22))
         );
 
-        jLabel37.setFont(new java.awt.Font("Dialog", 0, 10));
+        jLabel37.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jLabel37.setText(bundle.getString("Some_configurations_apply_only_after_application_restart")); // NOI18N
 
-        btnApply.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/dialog-apply.png"))); // NOI18N
-        btnApply.setText(bundle.getString("Apply")); // NOI18N
-        btnApply.addActionListener(new java.awt.event.ActionListener() {
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
+        btnSave.setText("Save and Close");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnApplyActionPerformed(evt);
+                btnSaveActionPerformed(evt);
+            }
+        });
+
+        btnDiscard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
+        btnDiscard.setText("Discard and Close");
+        btnDiscard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiscardActionPerformed(evt);
             }
         });
 
@@ -594,16 +603,17 @@ public class ConfigFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 798, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                        .addComponent(btnSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnApply))
+                        .addComponent(btnDiscard))
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -611,7 +621,6 @@ public class ConfigFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 618, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -623,10 +632,11 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnApply)
-                    .addComponent(jLabel37))
+                    .addComponent(jLabel37)
+                    .addComponent(btnDiscard)
+                    .addComponent(btnSave))
                 .addContainerGap())
         );
 
@@ -662,8 +672,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         pnlMainCoord.setVisible( btnMainAdvanced.isSelected() );
 }//GEN-LAST:event_btnMainAdvancedActionPerformed
 
-    private void btnApplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApplyActionPerformed
-
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         try{
             ObjectManager.getInstance().setBusyCursor();
             refreshObjectValues();
@@ -689,8 +698,12 @@ public class ConfigFrame extends javax.swing.JFrame {
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
+        dispose();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
-    }//GEN-LAST:event_btnApplyActionPerformed
+    private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnDiscardActionPerformed
 
     private void registerComponents(){
         registerComponent(mainOutput,"MainOutputIdx");
@@ -838,9 +851,10 @@ public class ConfigFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnApply;
+    private javax.swing.JButton btnDiscard;
     private javax.swing.JToggleButton btnMainAdvanced;
     private javax.swing.JToggleButton btnMonitorAdvanced;
+    private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSelectDeviceMain;
     private javax.swing.JButton btnSelectDeviceMonitor;
     private javax.swing.JButton btnStgloc;
