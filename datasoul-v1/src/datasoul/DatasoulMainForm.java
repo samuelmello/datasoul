@@ -21,8 +21,8 @@
 package datasoul;
 
 import datasoul.config.BackgroundConfig;
+import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
-import datasoul.config.ConfigPanel;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.datashow.DatashowPanel;
@@ -62,7 +62,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
-    public ConfigPanel config = new ConfigPanel();
     public ExtServiceListPanel service = new ExtServiceListPanel();
 
     private boolean updateSize = false;
@@ -119,21 +118,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addComponent(songs, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
-        // Initialize config layout
-        configLayout = new GroupLayout(getContentPane());
-        configLayout.setHorizontalGroup(
-            configLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(config, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .addComponent(toolBarMain)
-        );
-        configLayout.setVerticalGroup(
-            configLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.LEADING, configLayout.createSequentialGroup()
-                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(config, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
-        );
-        
         // Initialize service layout
         serviceLayout = new GroupLayout(getContentPane());
         serviceLayout.setHorizontalGroup(
@@ -171,12 +155,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 bundle.getString("Projector_Tip"));
 
         
-        tabbedInterface.addTab(
-                bundle.getString("Configuration"),
-                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png")),
-                config,
-                bundle.getString("Configuration_Tip"));
-
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
         
         WindowPropConfig.getInstance().getMainForm(this);
@@ -203,7 +181,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain = new javax.swing.JToolBar();
         btnTemplates = new javax.swing.JButton();
+        btnConfig = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnClose = new javax.swing.JButton();
         tabbedInterface = new javax.swing.JTabbedPane();
 
@@ -221,6 +201,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 36));
 
+        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
         btnTemplates.setText("Templates");
         btnTemplates.setFocusable(false);
         btnTemplates.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -232,6 +213,19 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnTemplates);
 
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
+        btnConfig.setText("Configuration");
+        btnConfig.setFocusable(false);
+        btnConfig.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnConfig.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfigActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnConfig);
+
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/help-browser.png"))); // NOI18N
         btnHelp.setText("Help");
         btnHelp.setFocusable(false);
         btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -242,13 +236,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnHelp);
+        toolBarMain.add(jSeparator1);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnClose.setText(bundle.getString("Close")); // NOI18N
-        btnClose.setBorderPainted(false);
-        btnClose.setFocusPainted(false);
+        btnClose.setText("Exit");
         btnClose.setFocusable(false);
+        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnClose.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
@@ -260,28 +254,19 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
             .addComponent(tabbedInterface, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedInterface, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE))
+                .addComponent(tabbedInterface, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Close")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
-
-        if (resp == JOptionPane.YES_OPTION){
-            System.exit(0);
-        }
-    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
         if (updateSize){
@@ -300,6 +285,20 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         hf.setLocationRelativeTo(this);
         hf.setVisible(true);
     }//GEN-LAST:event_btnHelpActionPerformed
+
+    private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
+        ConfigFrame cf = new ConfigFrame();
+        cf.setLocationRelativeTo(this);
+        cf.setVisible(true);
+    }//GEN-LAST:event_btnConfigActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Close")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
+
+        if (resp == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnCloseActionPerformed
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
@@ -483,8 +482,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;
+    javax.swing.JButton btnConfig;
     javax.swing.JButton btnHelp;
     javax.swing.JButton btnTemplates;
+    javax.swing.JToolBar.Separator jSeparator1;
     javax.swing.JTabbedPane tabbedInterface;
     javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables
