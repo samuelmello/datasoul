@@ -26,12 +26,12 @@ import datasoul.config.ConfigPanel;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.datashow.DatashowPanel;
-import datasoul.help.HelpPanel;
 import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;
 import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
 import datasoul.datashow.TimerManager;
+import datasoul.help.HelpFrame;
 import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.templates.TemplateManager;
 import datasoul.templates.TemplateManagerForm;
@@ -63,7 +63,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
     public ConfigPanel config = new ConfigPanel();
-    public HelpPanel help = new HelpPanel();
     public ExtServiceListPanel service = new ExtServiceListPanel();
 
     private boolean updateSize = false;
@@ -135,21 +134,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addComponent(config, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
         );
         
-        // Initialize help layout
-        helpLayout = new GroupLayout(getContentPane());
-        helpLayout.setHorizontalGroup(
-            helpLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addComponent(help, GroupLayout.DEFAULT_SIZE, 827, Short.MAX_VALUE)
-            .addComponent(toolBarMain)
-        );
-        helpLayout.setVerticalGroup(
-            helpLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-            .addGroup(GroupLayout.Alignment.LEADING, helpLayout.createSequentialGroup()
-                .addComponent(toolBarMain, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(help, GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE))
-        );
-
         // Initialize service layout
         serviceLayout = new GroupLayout(getContentPane());
         serviceLayout.setHorizontalGroup(
@@ -193,12 +177,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 config,
                 bundle.getString("Configuration_Tip"));
 
-        tabbedInterface.addTab(
-                bundle.getString("Help"),
-                new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_3d-light-on.png")),
-                help,
-                bundle.getString("Help_Tip"));
-
         ObjectManager.getInstance().setViewActive(ObjectManager.VIEW_PROJECTOR);        
         
         WindowPropConfig.getInstance().getMainForm(this);
@@ -225,6 +203,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         toolBarMain = new javax.swing.JToolBar();
         btnTemplates = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         tabbedInterface = new javax.swing.JTabbedPane();
 
@@ -252,6 +231,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnTemplates);
+
+        btnHelp.setText("Help");
+        btnHelp.setFocusable(false);
+        btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnHelp);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -301,8 +291,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
         TemplateManagerForm tmf = new TemplateManagerForm();
+        tmf.setLocationRelativeTo(this);
         tmf.setVisible(true);
     }//GEN-LAST:event_btnTemplatesActionPerformed
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        HelpFrame hf = new HelpFrame();
+        hf.setLocationRelativeTo(this);
+        hf.setVisible(true);
+    }//GEN-LAST:event_btnHelpActionPerformed
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
@@ -486,6 +483,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;
+    javax.swing.JButton btnHelp;
     javax.swing.JButton btnTemplates;
     javax.swing.JTabbedPane tabbedInterface;
     javax.swing.JToolBar toolBarMain;
