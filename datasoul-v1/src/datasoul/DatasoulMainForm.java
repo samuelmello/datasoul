@@ -31,7 +31,6 @@ import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;
 import datasoul.song.ChordsDB;
 import datasoul.song.SongsPanel;
-import datasoul.templates.TemplatePanel;
 import datasoul.datashow.TimerManager;
 import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.templates.TemplateManager;
@@ -63,7 +62,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     public SongsPanel songs = new SongsPanel();
     public DatashowPanel datashow = new DatashowPanel();
-    public TemplatePanel templates = new TemplatePanel();
     public ConfigPanel config = new ConfigPanel();
     public HelpPanel help = new HelpPanel();
     public ExtServiceListPanel service = new ExtServiceListPanel();

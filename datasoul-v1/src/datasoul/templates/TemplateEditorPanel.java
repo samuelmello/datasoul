@@ -237,7 +237,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
     }//GEN-LAST:event_formMouseClicked
     
-    public void setEditorPanel(TemplatePanel prop){
+    public void setEditorFrame(TemplateEditorFrame prop){
         this.propTable = prop.getPropertiesTable();
         this.activeItemLabel = prop.getActiveItemLabel();
         // NetBeans IDE does not works well when creating 
