@@ -26,6 +26,7 @@ import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.datashow.DatashowPanel;
+import datasoul.datashow.ServiceListTable;
 import datasoul.render.ContentManager;
 import datasoul.song.AllSongsListTable;
 import datasoul.song.ChordsDB;
@@ -33,6 +34,7 @@ import datasoul.song.SongsPanel;
 import datasoul.datashow.TimerManager;
 import datasoul.help.HelpFrame;
 import datasoul.servicelist.ExtServiceListPanel;
+import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.templates.TemplateManager;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.util.KeyListner;
@@ -180,6 +182,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         toolBarMain = new javax.swing.JToolBar();
+        btnNew = new javax.swing.JButton();
+        btnOpen = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
+        btnSaveAs = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         btnTemplates = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
@@ -201,7 +209,68 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
         toolBarMain.setPreferredSize(new java.awt.Dimension(442, 36));
 
-        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
+        btnNew.setText("New");
+        btnNew.setFocusable(false);
+        btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnNew);
+
+        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
+        btnOpen.setText("Open");
+        btnOpen.setFocusable(false);
+        btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOpenActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnOpen);
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
+        btnSave.setText("Save");
+        btnSave.setFocusable(false);
+        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnSave);
+
+        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
+        btnSaveAs.setText("Save As");
+        btnSaveAs.setFocusable(false);
+        btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveAsActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnSaveAs);
+
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
+        btnExport.setText("Export");
+        btnExport.setFocusable(false);
+        btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnExport);
+        toolBarMain.add(jSeparator2);
+
+        btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png"))); // NOI18N
         btnTemplates.setText("Templates");
         btnTemplates.setFocusable(false);
         btnTemplates.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -213,7 +282,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnTemplates);
 
-        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
+        btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system-small.png"))); // NOI18N
         btnConfig.setText("Configuration");
         btnConfig.setFocusable(false);
         btnConfig.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -225,7 +294,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnConfig);
 
-        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/help-browser.png"))); // NOI18N
+        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/help-browser-small.png"))); // NOI18N
         btnHelp.setText("Help");
         btnHelp.setFocusable(false);
         btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -238,7 +307,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnHelp);
         toolBarMain.add(jSeparator1);
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit-small.png"))); // NOI18N
         btnClose.setText("Exit");
         btnClose.setFocusable(false);
         btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -254,15 +323,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabbedInterface, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
             .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
+            .addComponent(tabbedInterface, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 991, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabbedInterface, javax.swing.GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE))
+                .addComponent(tabbedInterface, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE))
         );
 
         pack();
@@ -299,6 +368,28 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        ServiceListTable.getActiveInstance().fileNew();
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+        ServiceListTable.getActiveInstance().openServiceList();
+    }//GEN-LAST:event_btnOpenActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        ServiceListTable.getActiveInstance().saveServiceList();
+    }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
+        ServiceListTable.getActiveInstance().saveServiceListAs();
+    }//GEN-LAST:event_btnSaveAsActionPerformed
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        ServiceListExporterPanel p = new ServiceListExporterPanel();
+        p.setLocationRelativeTo(this);
+        p.setVisible(true);
+    }//GEN-LAST:event_btnExportActionPerformed
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
@@ -483,9 +574,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton btnClose;
     javax.swing.JButton btnConfig;
+    javax.swing.JButton btnExport;
     javax.swing.JButton btnHelp;
+    javax.swing.JButton btnNew;
+    javax.swing.JButton btnOpen;
+    javax.swing.JButton btnSave;
+    javax.swing.JButton btnSaveAs;
     javax.swing.JButton btnTemplates;
     javax.swing.JToolBar.Separator jSeparator1;
+    javax.swing.JToolBar.Separator jSeparator2;
     javax.swing.JTabbedPane tabbedInterface;
     javax.swing.JToolBar toolBarMain;
     // End of variables declaration//GEN-END:variables

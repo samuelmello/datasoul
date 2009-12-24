@@ -92,12 +92,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         btnDown = new javax.swing.JButton();
         scroolServiceList = new javax.swing.JScrollPane();
         tableServiceList = new datasoul.util.DnDTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnNew = new javax.swing.JButton();
-        btnOpen = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        btnSaveAs = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -238,87 +232,17 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         });
         scroolServiceList.setViewportView(tableServiceList);
 
-        jToolBar1.setFloatable(false);
-
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setToolTipText(bundle.getString("New")); // NOI18N
-        btnNew.setBorderPainted(false);
-        btnNew.setFocusable(false);
-        btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnNew);
-
-        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnOpen.setToolTipText(bundle.getString("Open")); // NOI18N
-        btnOpen.setBorderPainted(false);
-        btnOpen.setFocusable(false);
-        btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnOpen);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setToolTipText(bundle.getString("Save")); // NOI18N
-        btnSave.setBorderPainted(false);
-        btnSave.setFocusable(false);
-        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnSave);
-
-        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
-        btnSaveAs.setToolTipText(bundle.getString("Save_As")); // NOI18N
-        btnSaveAs.setBorderPainted(false);
-        btnSaveAs.setFocusable(false);
-        btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveAsActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnSaveAs);
-
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
-        btnExport.setToolTipText(bundle.getString("Export")); // NOI18N
-        btnExport.setBorderPainted(false);
-        btnExport.setFocusable(false);
-        btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnExport);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
             .addComponent(scroolServiceList, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
-                .addComponent(scroolServiceList, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(scroolServiceList, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -430,28 +354,6 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
         
     }//GEN-LAST:event_actAddContentlessItemActionPerformed
 
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        ServiceListTable.getActiveInstance().fileNew();
-    }//GEN-LAST:event_btnNewActionPerformed
-
-    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        ServiceListTable.getActiveInstance().openServiceList();
-    }//GEN-LAST:event_btnOpenActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        ServiceListTable.getActiveInstance().saveServiceList();
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
-        ServiceListTable.getActiveInstance().saveServiceListAs();
-    }//GEN-LAST:event_btnSaveAsActionPerformed
-
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        ServiceListExporterPanel p = new ServiceListExporterPanel();
-        p.setLocationRelativeTo(this);
-        p.setVisible(true);
-    }//GEN-LAST:event_btnExportActionPerformed
-
     private void actAddBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddBibleActionPerformed
         TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
         tsief.setLocationRelativeTo(this);
@@ -501,14 +403,8 @@ public class ServiceListPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnExport;
-    private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu ppmAddItem;
     private javax.swing.JScrollPane scroolServiceList;
     private datasoul.util.DnDTable tableServiceList;

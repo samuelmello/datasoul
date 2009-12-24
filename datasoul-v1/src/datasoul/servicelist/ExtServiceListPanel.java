@@ -113,12 +113,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtMinutes = new javax.swing.JTextField();
         toolBar1 = new javax.swing.JToolBar();
         jLabel8 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnNew = new javax.swing.JButton();
-        btnOpen = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
-        btnSaveAs = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JTextArea();
@@ -358,64 +352,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task.png"))); // NOI18N
         jLabel8.setText(bundle.getString("Service_Plan")); // NOI18N
         toolBar1.add(jLabel8);
-        toolBar1.add(jSeparator1);
-
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setText(bundle.getString("New")); // NOI18N
-        btnNew.setBorderPainted(false);
-        btnNew.setFocusPainted(false);
-        btnNew.setFocusable(false);
-        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-        toolBar1.add(btnNew);
-
-        btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnOpen.setText(bundle.getString("Open")); // NOI18N
-        btnOpen.setBorderPainted(false);
-        btnOpen.setFocusPainted(false);
-        btnOpen.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOpenActionPerformed(evt);
-            }
-        });
-        toolBar1.add(btnOpen);
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setText(bundle.getString("Save")); // NOI18N
-        btnSave.setBorderPainted(false);
-        btnSave.setFocusPainted(false);
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-        toolBar1.add(btnSave);
-
-        btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as.png"))); // NOI18N
-        btnSaveAs.setText(bundle.getString("Save_As")); // NOI18N
-        btnSaveAs.setBorderPainted(false);
-        btnSaveAs.setFocusPainted(false);
-        btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveAsActionPerformed(evt);
-            }
-        });
-        toolBar1.add(btnSaveAs);
-
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document.png"))); // NOI18N
-        btnExport.setText(bundle.getString("Export")); // NOI18N
-        btnExport.setBorderPainted(false);
-        btnExport.setFocusPainted(false);
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportActionPerformed(evt);
-            }
-        });
-        toolBar1.add(btnExport);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -604,18 +540,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         ServiceListTable.getActiveInstance().setTitle(txtTitle.getText());
     }//GEN-LAST:event_txtTitleFocusLost
 
-    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        ServiceListTable.getActiveInstance().openServiceList();
-    }//GEN-LAST:event_btnOpenActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        ServiceListTable.getActiveInstance().saveServiceList();
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
-        ServiceListTable.getActiveInstance().saveServiceListAs();
-    }//GEN-LAST:event_btnSaveAsActionPerformed
-
     private void btnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveMouseClicked
         tableServiceList.removeItem();
     }//GEN-LAST:event_btnRemoveMouseClicked
@@ -670,10 +594,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         txtMinutes.selectAll();
     }//GEN-LAST:event_txtMinutesFocusGained
 
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        ServiceListTable.getActiveInstance().fileNew();
-}//GEN-LAST:event_btnNewActionPerformed
-
     private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
         if (evt.getClickCount() > 1){
             btnEditActionPerformed(null);
@@ -715,12 +635,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private void txtHoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoursActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoursActionPerformed
-
-    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
-        ServiceListExporterPanel p = new ServiceListExporterPanel();
-        p.setLocationRelativeTo(this);
-        p.setVisible(true);
-    }//GEN-LAST:event_btnExportActionPerformed
 
     private void actAddBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddBibleActionPerformed
         TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
@@ -789,12 +703,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAddWizard;
     private javax.swing.JButton btnDown;
     private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnExport;
-    private javax.swing.JButton btnNew;
-    private javax.swing.JButton btnOpen;
     private javax.swing.JButton btnRemove;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSaveAs;
     private javax.swing.JButton btnUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -811,7 +720,6 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;
