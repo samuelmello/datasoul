@@ -247,12 +247,14 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         textChordsCompleted.setColumns(20);
         textChordsCompleted.setRows(5);
+        textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         jScrollPane3.setViewportView(textChordsCompleted);
 
         tabSong.addTab(bundle.getString("Chords_Complete"), jScrollPane3); // NOI18N
 
         textChordsSimplified.setColumns(20);
         textChordsSimplified.setRows(5);
+        textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
         jScrollPane2.setViewportView(textChordsSimplified);
 
         tabSong.addTab(bundle.getString("Chords_Simple"), jScrollPane2); // NOI18N
