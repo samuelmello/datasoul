@@ -40,20 +40,16 @@ public class TemplateManagerForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelTemplates = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTemplates = new javax.swing.JTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnLoad = new javax.swing.JButton();
         btnNew = new javax.swing.JButton();
+        btnLoad = new javax.swing.JButton();
         btnDeleteTemplate = new javax.swing.JButton();
-        jToolBar2 = new javax.swing.JToolBar();
-        jLabel6 = new javax.swing.JLabel();
+        btnClose = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Template Manager");
-
-        panelTemplates.setDoubleBuffered(false);
 
         jTableTemplates.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -68,24 +64,9 @@ public class TemplateManagerForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableTemplates);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setOpaque(false);
-
-        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnLoad.setText(bundle.getString("Open")); // NOI18N
-        btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
-        btnLoad.setBorderPainted(false);
-        btnLoad.setFocusPainted(false);
-        btnLoad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnLoad);
-
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setText(bundle.getString("New")); // NOI18N
+        btnNew.setText("New Template");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnNew.setToolTipText(bundle.getString("Create_a_new_template")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
@@ -94,7 +75,17 @@ public class TemplateManagerForm extends javax.swing.JFrame {
                 btnNewActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnNew);
+
+        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
+        btnLoad.setText(bundle.getString("Edit")); // NOI18N
+        btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
+        btnLoad.setBorderPainted(false);
+        btnLoad.setFocusPainted(false);
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
 
         btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
@@ -106,51 +97,50 @@ public class TemplateManagerForm extends javax.swing.JFrame {
                 btnDeleteTemplateActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnDeleteTemplate);
 
-        jToolBar2.setFloatable(false);
+        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseActionPerformed(evt);
+            }
+        });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png"))); // NOI18N
-        jLabel6.setText(bundle.getString("Templates")); // NOI18N
-        jToolBar2.add(jLabel6);
-
-        javax.swing.GroupLayout panelTemplatesLayout = new javax.swing.GroupLayout(panelTemplates);
-        panelTemplates.setLayout(panelTemplatesLayout);
-        panelTemplatesLayout.setHorizontalGroup(
-            panelTemplatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-        panelTemplatesLayout.setVerticalGroup(
-            panelTemplatesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTemplatesLayout.createSequentialGroup()
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.setText("Available Templates");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(panelTemplates, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(27, 27, 27)))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNew)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLoad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDeleteTemplate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                        .addComponent(btnClose))
+                    .addComponent(jLabel1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addComponent(panelTemplates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(25, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNew)
+                    .addComponent(btnLoad)
+                    .addComponent(btnDeleteTemplate)
+                    .addComponent(btnClose))
+                .addContainerGap())
         );
 
         pack();
@@ -202,16 +192,18 @@ public class TemplateManagerForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnDeleteTemplateActionPerformed
 
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnCloseActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDeleteTemplate;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnNew;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTemplates;
-    private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
-    private javax.swing.JPanel panelTemplates;
     // End of variables declaration//GEN-END:variables
 
 }
