@@ -65,6 +65,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         textSplitPanel1.registerTextArea(textText);
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
 
+        bibleTextPanel1.registerTitlefield(fieldTitle);
         bibleTextPanel1.registerTextArea(textText);
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
@@ -117,6 +118,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             }
         });
 
+        fieldTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldTitleActionPerformed(evt);
+            }
+        });
         fieldTitle.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldTitleKeyTyped(evt);
@@ -176,31 +182,31 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelTitle)
-                .addContainerGap(591, Short.MAX_VALUE))
+                .addContainerGap(668, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelTitle1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textSplitPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
-                    .addComponent(bibleTextPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE))
+                    .addComponent(textSplitPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                    .addComponent(bibleTextPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(fieldTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                .addComponent(fieldTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnShowBible)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -250,6 +256,10 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         }
 
         if(isNewItem){
+            if (btnShowBible.isSelected()) {
+                textServiceItem.setTemplate("bible");
+            }
+            textServiceItem.setTemplate("bible");
             ServiceListTable.getActiveInstance().addItem(this.textServiceItem);
             isNewItem = false;
         }
@@ -286,6 +296,10 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         if (updateSize)
             WindowPropConfig.getInstance().setTextEditor(this);
     }//GEN-LAST:event_formComponentResized
+
+    private void fieldTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTitleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fieldTitleActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

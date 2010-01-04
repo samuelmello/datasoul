@@ -28,36 +28,36 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" alignment="0" pref="629" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="708" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="labelTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="591" max="32767" attributes="0"/>
+              <EmptySpace pref="668" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="labelTitle1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="192" max="32767" attributes="0"/>
+              <EmptySpace pref="259" max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="textSplitPanel1" alignment="0" pref="605" max="32767" attributes="0"/>
-                  <Component id="bibleTextPanel1" alignment="0" pref="605" max="32767" attributes="2"/>
+                  <Component id="textSplitPanel1" alignment="0" pref="684" max="32767" attributes="0"/>
+                  <Component id="bibleTextPanel1" alignment="0" pref="684" max="32767" attributes="2"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="fieldTitle" pref="605" max="32767" attributes="0"/>
+              <Component id="fieldTitle" pref="684" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jScrollPane1" alignment="1" pref="605" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="1" pref="684" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnShowBible" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -106,6 +106,7 @@
   <SubComponents>
     <Component class="javax.swing.JTextField" name="fieldTitle">
       <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fieldTitleActionPerformed"/>
         <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="fieldTitleKeyTyped"/>
       </Events>
     </Component>

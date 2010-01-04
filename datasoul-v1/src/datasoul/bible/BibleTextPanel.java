@@ -15,6 +15,7 @@ import org.crosswire.jsword.versification.BibleInfo;
 import javax.swing.JTextArea;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.Books;
 import org.crosswire.jsword.book.BookFilters;
@@ -25,7 +26,6 @@ import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.passage.NoSuchVerseException;
 import org.crosswire.jsword.passage.Verse;
 
-
 /**
  *
  * @author samuel
@@ -34,6 +34,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private MyBooksListener listener;
     private JTextArea txtArea;
+    private JTextField titleField;
     private int chapter;
     private int versefrom;
     private int verseto;
@@ -74,6 +75,10 @@ public class BibleTextPanel extends javax.swing.JPanel {
         }
 
 
+    }
+
+    public void registerTitlefield(JTextField field) {
+        this.titleField = field;
     }
 
     public void registerTextArea(JTextArea area) {
@@ -419,6 +424,20 @@ public class BibleTextPanel extends javax.swing.JPanel {
         }
 
         txtArea.setText(sb.toString());
+
+        // Updating the Title field automatically (if it is empty)
+        if (titleField != null && titleField.getText().trim().length() == 0) {
+            String bookName = cbBook.getSelectedItem().toString();
+            String chap = cbChapter.getSelectedItem().toString();
+            String title;
+            if (begin != end) {
+                title = String.format("%s %s:%d-%d", bookName, chap, begin, end);
+            } else {
+                title = String.format("%s %s:%d", bookName, chap, begin);
+            }
+            titleField.setText(title);
+        }
+
     }//GEN-LAST:event_btnLoadActionPerformed
 
     private void cbChapterFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbChapterFocusLost
