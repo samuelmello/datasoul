@@ -40,6 +40,9 @@ public class ContentManager {
     private ArrayList<ContentRender> liveRenderList;
     private ArrayList<ContentRender> mainRenderList;
     private ArrayList<ContentRender> monitorRenderList;
+
+    private boolean monitorUseTimer;
+    private boolean mainUseTimer;
     
     
     /** Creates a new instance of ContentManager */
@@ -48,6 +51,8 @@ public class ContentManager {
         liveRenderList = new ArrayList<ContentRender>();
         mainRenderList = new ArrayList<ContentRender>();
         monitorRenderList = new ArrayList<ContentRender>();
+        monitorUseTimer = false;
+        mainUseTimer = false;
 
         if ( ConfigObj.getInstance().getMonitorOutput() ){
             liveRenderList.add( ContentManager.getMonitorDisplay() );
@@ -125,12 +130,38 @@ public class ContentManager {
         for (ContentRender r : mainRenderList){
             r.setTemplate(template);
         }
+
+        try {
+            /* update timerActive */
+            if (template != null && template.trim().length() > 0 ){
+                DisplayTemplate tmp = new DisplayTemplate(template);
+                mainUseTimer = tmp.useTimer();
+            }else{
+                mainUseTimer = false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     public void setTemplateMonitorLive(String template){
         for (ContentRender r : monitorRenderList){
             r.setTemplate(template);
         }
+
+        try {
+            /* update timerActive */
+            if (isMonitorDisplayActive() && template != null && template.trim().length() > 0 ){
+                DisplayTemplate tmp = new DisplayTemplate(template);
+                monitorUseTimer = tmp.useTimer();
+            }else{
+                monitorUseTimer = false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
     }
     
     public synchronized void slideChange (int transictionTime){
@@ -448,6 +479,21 @@ public class ContentManager {
     
     static public void setMonitorDisplayEngine(String engine) {
         monitorDisplayEngine = engine;
+    }
+
+    public void slideChangeFromTimerManager() {
+
+        if (mainUseTimer){
+            for (ContentRender r : mainRenderList){
+                r.slideChange(-1);
+            }
+        }
+
+        if (monitorUseTimer){
+            for (ContentRender r : monitorRenderList){
+                r.slideChange(-1);
+            }
+        }
     }
     
 }

@@ -454,5 +454,18 @@ public class DisplayTemplate extends AttributedObject {
     public String getTransitionKeepBG(){
         return KEEP_BG_TABLE[transitionKeepBG];
     }
-    
+
+    public boolean useTimer(){
+        for (TemplateItem ti : items){
+            if (ti instanceof TextTemplateItem){
+                switch (((TextTemplateItem)ti).getContentIdx()){
+                    case TextTemplateItem.CONTENT_CLOCK:
+                    case TextTemplateItem.CONTENT_TIMER:
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

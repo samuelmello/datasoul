@@ -178,7 +178,7 @@ public class TimerManager extends Thread {
                 }
 
                 // ok, changes done
-                cm.slideChange(-1);
+                cm.slideChangeFromTimerManager();
 
                 // go sleep!
                 t2 = System.currentTimeMillis();
