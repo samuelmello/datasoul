@@ -44,10 +44,7 @@ public class DatashowPanel extends javax.swing.JPanel {
     public DatashowPanel() {
         initComponents();
         
-        ObjectManager.getInstance().setAuxiliarPanel(auxiliar);
         ObjectManager.getInstance().setServiceListPanel(serviceList);
-        ObjectManager.getInstance().setPreviewPanel(preview);
-        ObjectManager.getInstance().setLivePanel(live);
         
         
         java.util.ResourceBundle intl = java.util.ResourceBundle.getBundle("datasoul/internationalize");
@@ -67,8 +64,6 @@ public class DatashowPanel extends javax.swing.JPanel {
             intl.getString("Large") }));        
         cbLiveSize.setSelectedIndex(1);
             
-        initPreview();
-        initLive();
 
         WindowPropConfig.getInstance().getDatashowSplit1(jSplitPane1);
         WindowPropConfig.getInstance().getDatashowSplit2(jSplitPane2);
@@ -77,63 +72,6 @@ public class DatashowPanel extends javax.swing.JPanel {
 
     }
 
-    private void initPreview(){
-        int width, height;
-        try{
-            width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
-        }catch(Exception e){
-            width = DisplayTemplate.TEMPLATE_WIDTH;
-        }
-        try{
-            height = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeHeight());
-        }catch(Exception e){
-            height = DisplayTemplate.TEMPLATE_HEIGHT;
-        }
-        
-        SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);
-        contentRender.initDisplay( width, height, 0, 0 );
-        
-        ContentManager.getInstance().registerPreviewPanel( contentRender );
-        
-    }
-    
-    private void initLive(){
-        int width, height;
-        try{
-            width = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeWidth());
-        }catch(Exception e){
-            width = 640;
-        }
-        try{
-            height = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeHeight());
-        }catch(Exception e){
-            height = 480;
-        }
-        
-        SwingPanelContentRender contentRender = new SwingPanelContentRender(liveDisplayPanel);
-        contentRender.initDisplay( width, height, 0, 0 );
-        
-        ContentManager.getInstance().registerMainLiveRender( contentRender );
-        contentRender.paintBackground(BackgroundConfig.getInstance().getMainBackgroundImg());
-
-
-        if (ConfigObj.getInstance().getMonitorOutput()){
-            SwingPanelContentRender contentRenderMon = new SwingPanelContentRender(monitorDisplayPanel);
-            contentRenderMon.initDisplay( width, height, 0, 0 );
-
-            ContentManager.getInstance().registerMonitorLiveRender( contentRenderMon );
-            contentRenderMon.paintBackground(BackgroundConfig.getInstance().getMonitorBackgroundImg());
-            String tmp = ContentManager.getMonitorDisplay().getTemplate();
-            if (tmp != null){
-                contentRenderMon.setTemplate(  tmp  );
-            }
-        }else{
-            btnShowMonitor.setSelected(false);
-            btnShowMonitor.setVisible(false);
-            monitorDisplayPanel.setVisible(false);
-        }
-    
-    }
     
     /** This method is called from within the constructor to
      * initialize the form.

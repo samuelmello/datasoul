@@ -53,8 +53,6 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
         Object serviceItem;
         if (table.getModel() instanceof ServiceListTable){
             serviceItem = ((ServiceListTable) table.getModel()).getServiceItem(row);
-        }else if (table.getModel() instanceof ServiceListTable.ExtendedServiceListTable){
-            serviceItem = ((ServiceListTable.ExtendedServiceListTable) table.getModel()).getServiceItem(row);
         }else{
             return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         }

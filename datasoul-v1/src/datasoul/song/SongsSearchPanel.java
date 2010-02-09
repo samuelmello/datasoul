@@ -87,8 +87,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnClose = new javax.swing.JButton();
         scroolSongList = new javax.swing.JScrollPane();
         tableSongList = new datasoul.util.DnDTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        jLabel1 = new javax.swing.JLabel();
 
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
@@ -207,36 +205,28 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         scroolSongList.setViewportView(tableSongList);
 
-        jToolBar1.setFloatable(false);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound_small2.png"))); // NOI18N
-        jLabel1.setText(bundle.getString("Song_Library")); // NOI18N
-        jToolBar1.add(jLabel1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(labelString)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldString, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
             .addComponent(scroolSongList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelString)
                     .addComponent(fieldString, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scroolSongList, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                .addComponent(scroolSongList, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -315,24 +305,19 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_tableSongListKeyPressed
 
     private void showItem(){
-        
-        
-        if(sourceView==ObjectManager.VIEW_PROJECTOR){
-            if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                ObjectManager.getInstance().getPreviewPanel().previewItem((ServiceItem)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+
+        if (tableSongList.getSelectedRow() != -1){
+
+            if(sourceView==ObjectManager.VIEW_ADD_SONGS){
+                if(ObjectManager.getInstance().getAddSongForm() != null)
+                    ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+            }else{
+                if (ObjectManager.getInstance().getDatasoulMainForm() != null){
+                    ObjectManager.getInstance().getDatasoulMainForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+                }
+            }
         }
-        if(sourceView==ObjectManager.VIEW_SONGS){
-            if(ObjectManager.getInstance().getSongViewerPanel()!=null)
-                ObjectManager.getInstance().getSongViewerPanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
-        }
-        if(sourceView==ObjectManager.VIEW_ADD_SONGS){        
-            if(ObjectManager.getInstance().getAddSongForm()!=null)
-                ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
-        }
-        if(sourceView==ObjectManager.VIEW_SERVICE){        
-            if(ObjectManager.getInstance().getExtServicePanel()!=null)
-                ObjectManager.getInstance().getExtServicePanel().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
-        }
+
     }    
     
     private void fieldStringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldStringKeyPressed
@@ -400,8 +385,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
     private javax.swing.JTextField fieldString;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelString;
     private javax.swing.JScrollPane scroolSongList;
     private datasoul.util.DnDTable tableSongList;

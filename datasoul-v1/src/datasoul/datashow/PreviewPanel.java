@@ -20,9 +20,13 @@
 
 package datasoul.datashow;
 
+import datasoul.config.ConfigObj;
 import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
+import datasoul.render.SwingPanelContentRender;
 import datasoul.song.Song;
+import datasoul.templates.DisplayTemplate;
+import java.awt.Dimension;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -38,7 +42,33 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     public PreviewPanel() {
         initComponents();
         serviceItemTable1.addTableListener(this);
+        serviceItemTable1.setHeaderVisible(false);
+
+        initPreview();
+
     }
+
+    private void initPreview(){
+        int width, height;
+        try{
+            width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
+        }catch(Exception e){
+            width = DisplayTemplate.TEMPLATE_WIDTH;
+        }
+        try{
+            height = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeHeight());
+        }catch(Exception e){
+            height = DisplayTemplate.TEMPLATE_HEIGHT;
+        }
+
+        SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);
+        contentRender.initDisplay( width, height, 0, 0 );
+
+        ContentManager.getInstance().registerPreviewPanel( contentRender );
+
+    }
+
+
 
     public void previewItem(ServiceItem serviceItem){
         ContentManager cm = ContentManager.getInstance();
@@ -54,6 +84,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             cm.setSongSourcePreview( ((Song)serviceItem).getSongSource() );
             cm.setCopyrightPreview( ((Song)serviceItem).getCopyright() );
         }
+        lblTemplate.setText(serviceItem.getTemplate());
         cm.updatePreview();
          
     }
@@ -67,48 +98,87 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     private void initComponents() {
 
         serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnGoLive = new javax.swing.JButton();
+        pnlPreviewBox = new javax.swing.JPanel();
+        previewDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblTemplate = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Preview"));
+        setBorder(null);
         setDoubleBuffered(false);
 
-        jToolBar1.setFloatable(false);
-
-        btnGoLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-start.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnGoLive.setText(bundle.getString("GO_LIVE")); // NOI18N
-        btnGoLive.setToolTipText(bundle.getString("Send_slides_to_live")); // NOI18N
-        btnGoLive.setBorderPainted(false);
-        btnGoLive.setFocusPainted(false);
-        btnGoLive.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoLiveActionPerformed(evt);
+        previewDisplayPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        previewDisplayPanel1.setPreferredSize(new java.awt.Dimension(160, 120));
+        previewDisplayPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                previewDisplayPanel1previewDisplayResized(evt);
             }
         });
-        jToolBar1.add(btnGoLive);
+
+        javax.swing.GroupLayout previewDisplayPanel1Layout = new javax.swing.GroupLayout(previewDisplayPanel1);
+        previewDisplayPanel1.setLayout(previewDisplayPanel1Layout);
+        previewDisplayPanel1Layout.setHorizontalGroup(
+            previewDisplayPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 156, Short.MAX_VALUE)
+        );
+        previewDisplayPanel1Layout.setVerticalGroup(
+            previewDisplayPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 116, Short.MAX_VALUE)
+        );
+
+        jLabel8.setText("Preview:");
+
+        jLabel1.setText("Template:");
+
+        lblTemplate.setText("     ");
+
+        javax.swing.GroupLayout pnlPreviewBoxLayout = new javax.swing.GroupLayout(pnlPreviewBox);
+        pnlPreviewBox.setLayout(pnlPreviewBoxLayout);
+        pnlPreviewBoxLayout.setHorizontalGroup(
+            pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel8)
+            .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTemplate))
+        );
+        pnlPreviewBoxLayout.setVerticalGroup(
+            pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPreviewBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblTemplate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlPreviewBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
+            .addComponent(pnlPreviewBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(serviceItemTable1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
-
-        goLive();
-        
-    }//GEN-LAST:event_btnGoLiveActionPerformed
+    private void previewDisplayPanel1previewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_previewDisplayPanel1previewDisplayResized
+        Dimension dim= previewDisplayPanel1.getSize();
+        int height = dim.height;
+        int width = (dim.height/3)*4 ;
+        dim.setSize(width,height);
+        previewDisplayPanel1.setSize(dim);
+}//GEN-LAST:event_previewDisplayPanel1previewDisplayResized
 
     public void goLive(){
         try{
@@ -131,8 +201,11 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGoLive;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblTemplate;
+    private javax.swing.JPanel pnlPreviewBox;
+    private datasoul.render.SwingDisplayPanel previewDisplayPanel1;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables
     

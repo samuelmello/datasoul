@@ -302,7 +302,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private void btnManageBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBibleActionPerformed
 
-        if (BibleInstaller.checkDownloadAllowed(this)){
+        if (BibleInstaller.checkDownloadAllowed(this)) {
             BibleInstaller bi = new BibleInstaller();
             bi.setLocationRelativeTo(this);
             bi.setVisible(true);

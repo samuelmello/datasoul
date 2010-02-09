@@ -49,6 +49,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
     /** Creates new form ExtServiceListPanel */
     public ExtServiceListPanel() {
         initComponents();
+        /*
         ServiceListTable.registerExtendedInstance(this);
         
         tableServiceList.setDraggable(false);
@@ -76,6 +77,7 @@ public class ExtServiceListPanel extends javax.swing.JPanel {
         WindowPropConfig.getInstance().getServiceSplit2(jSplitPane2);
         WindowPropConfig.getInstance().getServiceSplit3(jSplitPane3);
         updateSize = true;
+         */
     }
     
     /** This method is called from within the constructor to

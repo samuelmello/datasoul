@@ -24,16 +24,13 @@ package datasoul.datashow;
 
 import datasoul.DatasoulMainForm;
 import datasoul.servicelist.ContentlessServiceItem;
-import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.song.Song;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.ShowDialog;
 import java.io.File;
-import java.io.FileOutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.event.TableModelListener;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -54,59 +51,17 @@ import org.w3c.dom.NodeList;
 public class ServiceListTable extends ListTable {
 
     static ServiceListTable instance;
-    private ExtendedServiceListTable instanceExt;
     private int startHour;
     private int startMinute;
     private String title;
     private String notes;
     private String fileName = "";
-    private ExtServiceListPanel extPanel;
-
-    /** Creates a new instance of ServiceListTable */
-    public ServiceListTable() {
-        instanceExt = new ExtendedServiceListTable();
-    }
 
     public static ServiceListTable getActiveInstance() {
         if (instance == null) {
             instance = new ServiceListTable();
         }
         return instance;
-    }
-
-    public static void registerExtendedInstance(ExtServiceListPanel extPanel) {
-        ServiceListTable.getActiveInstance().setExtPanel(extPanel);
-        extPanel.getTableServiceList().setModel(ServiceListTable.getActiveInstance().getExtendedModel());
-    }
-
-    public void setExtPanel(ExtServiceListPanel panel) {
-        this.extPanel = panel;
-    }
-
-    public ExtendedServiceListTable getExtendedModel() {
-        return instanceExt;
-    }
-
-    public boolean isCellEditable(int rowIndex, int columnIndex) {
-        if (columnIndex == 1) {
-            if ( ! (getServiceItem(rowIndex) instanceof ContentlessServiceItem)){
-                return true;
-            }else{
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
-    public String getColumnName(int columnIndex) {
-        if (columnIndex == 0) {
-            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item");
-        } else if (columnIndex == 1) {
-            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
-        } else {
-            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Time");
-        }
     }
 
     public Object getServiceItem(int index){
@@ -117,34 +72,6 @@ public class ServiceListTable extends ListTable {
         }
     }
     
-    
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        if (columnIndex == 0) {
-            Object object = objectList.get(rowIndex);
-            return object;
-        } else if (columnIndex == 1) {
-            Object object = objectList.get(rowIndex);
-            return ((ServiceItem) object).getTemplate();
-        } else {
-            Object object = objectList.get(rowIndex);
-            return ((ServiceItem) object).getDuration();
-        }
-    }
-
-    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        if (columnIndex == 0) {
-            objectList.set(rowIndex, (String) aValue.toString());
-            tableModelChanged();
-        } else if (columnIndex == 1) {
-            ((ServiceItem) objectList.get(rowIndex)).setTemplate((String) aValue.toString());
-            tableModelChanged();
-        } 
-    }
-
-    public int getColumnCount() {
-        return 3;
-    }
-
     public Node writeObject() throws Exception {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -222,20 +149,9 @@ public class ServiceListTable extends ListTable {
                 }
             }
         }
-        updateExtPanel();
         
     }
 
-    public void updateExtPanel(){
-        if (extPanel != null) {
-            extPanel.setTitle(title);
-            extPanel.setStartHourMinute(Integer.toString(startHour), (startMinute>=10)?Integer.toString(startMinute):"0"+Integer.toString(startMinute));
-            extPanel.setNotes(notes);
-        }
-        updateStartTimes();
-        
-    }
-    
     public int getStartHour() {
         return startHour;
     }
@@ -311,18 +227,12 @@ public class ServiceListTable extends ListTable {
         updateStartTimes();
     }
 
-    public class ExtendedServiceListTable extends ListTable {
-
         public static final int COLUMN_TIME = 0;
         public static final int COLUMN_DURATION = 1;
         public static final int COLUMN_TITLE = 2;
         public static final int COLUMN_NOTES = 3;
         public static final int COLUMN_TEMPLATE = 4;
         public static final int COLUMN_COUNT = 5;
-
-        public int getRowCount() {
-            return ServiceListTable.this.getRowCount();
-        }
 
         public int getColumnCount() {
             return COLUMN_COUNT;
@@ -405,45 +315,11 @@ public class ServiceListTable extends ListTable {
                         si.setNotes(aValue.toString());
                         break;
                     case COLUMN_TEMPLATE:
-                    si.setTemplate(aValue.toString());                        
+                    si.setTemplate(aValue.toString());
                 }
             }
 
         }
-
-        public void addTableModelListener(TableModelListener l) {
-            ServiceListTable.this.addTableModelListener(l);
-        }
-
-        public void removeTableModelListener(TableModelListener l) {
-            ServiceListTable.this.removeTableModelListener(l);
-        }
-
-        public void addItem(Object item) {
-            ServiceListTable.this.addItem(item);
-        }
-
-        public void removeItem(int index) {
-            ServiceListTable.this.removeItem(index);
-        }
-
-        public void sortByName() {
-            ServiceListTable.this.sortByName();
-        }
-
-        public void upItem(int row) {
-            ServiceListTable.this.upItem(row);
-        }
-
-        public void downItem(int row) {
-            ServiceListTable.this.downItem(row);
-        }
-        
-        public Object getServiceItem(int row){
-            return ServiceListTable.this.getServiceItem(row);
-        }
-        
-    }
 
     public void fileNew(){
 
@@ -467,7 +343,6 @@ public class ServiceListTable extends ListTable {
         cleanup();
         fileName = "";
         tableModelChanged();
-        updateExtPanel();
     }
     
     private void saveFile() {
