@@ -1094,7 +1094,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_monitorDisplayPanelpreviewDisplayResized
 
     private void btnShowMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowMonitorActionPerformed
-
+        monitorDisplayPanel.setVisible(btnShowMonitor.isSelected());
 }//GEN-LAST:event_btnShowMonitorActionPerformed
 
     private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
