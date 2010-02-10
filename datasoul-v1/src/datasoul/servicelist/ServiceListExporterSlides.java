@@ -60,7 +60,6 @@ public class ServiceListExporterSlides {
         document.addCreationDate();
 
         render = new ExporterContentRender();
-        render.initDisplay(width, height, 0, 0);
 
     }
     
@@ -106,7 +105,6 @@ public class ServiceListExporterSlides {
 
     public class ExporterContentRender extends ContentRender {
 
-        @Override
         public void paint(BufferedImage img, AlphaComposite rule) {
             try{
                 buffer.setData(background.getData());
@@ -130,41 +128,9 @@ public class ServiceListExporterSlides {
         }
 
         @Override
-        public void clear() {
-            // Do nothing
-        }
-
-        @Override
-        public void flip() {
-            // ignore
-        }
-
-        @Override
-        public void setWindowTitle(String title) {
-            // ignore
-        }
-
-        @Override
-        public boolean hasFocus() {
-            return false;
-            // ignore
-        }
-
-
-        @Override
         public void paintBackground(BufferedImage bufferedImage) {
             Graphics gd = background.getGraphics();
             gd.drawImage(bufferedImage, 0, 0, width, height, null);
-        }
-
-        @Override
-        public void setClear(int i) {
-            // ignore
-        }
-
-        @Override
-        public void setBlack(int i) {
-            // ignore
         }
 
     }

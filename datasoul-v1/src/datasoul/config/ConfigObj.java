@@ -23,7 +23,6 @@
 
 package datasoul.config;
 
-import datasoul.render.ContentManager;
 import datasoul.templates.TemplateManager;
 import java.util.ArrayList;
 
@@ -46,8 +45,6 @@ public class ConfigObj extends AbstractConfig {
     private String monitorOutputSizeWidth;
     private String monitorOutputSizeHeight;
     private int clockMode;    
-    private String mainDisplayEngine;
-    private String monitorDisplayEngine;
     private String monitorTemplateFilter;
     private String alertTemplateFilter;
     private String generalTemplateFilter;
@@ -239,22 +236,12 @@ public class ConfigObj extends AbstractConfig {
         }
     }
     
-    public String getMainDisplayEngine(){
-        return this.mainDisplayEngine;
-    }
-    
     public void setMainDisplayEngine(String engine){
-        this.mainDisplayEngine = engine;
-        ContentManager.setMainDisplayEngine(engine);
-    }
-    
-    public String getMonitorDisplayEngine(){
-        return this.monitorDisplayEngine;
+        // keep for backward compatibility
     }
     
     public void setMonitorDisplayEngine(String engine){
-        this.monitorDisplayEngine = engine;
-        ContentManager.setMonitorDisplayEngine(engine);
+        // keep for backward compatibility
     }
 
     

@@ -38,13 +38,11 @@ import datasoul.song.AllSongsListTable;
 import datasoul.song.ChordsDB;
 import datasoul.datashow.TimerManager;
 import datasoul.help.HelpFrame;
-import datasoul.render.SwingPanelContentRender;
 import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.song.AddSongForm;
 import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
-import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateComboBox;
 import datasoul.templates.TemplateManager;
 import datasoul.templates.TemplateManagerForm;
@@ -133,23 +131,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             height = 480;
         }
 
-        SwingPanelContentRender contentRender = new SwingPanelContentRender(liveDisplayPanel);
-        contentRender.initDisplay( width, height, 0, 0 );
-
-        ContentManager.getInstance().registerMainLiveRender( contentRender );
-        contentRender.paintBackground(BackgroundConfig.getInstance().getMainBackgroundImg());
-
+        liveDisplayPanel.initDisplay(width, height);
+        ContentManager.getInstance().registerMainDisplay(liveDisplayPanel);
 
         if (ConfigObj.getInstance().getMonitorOutput()){
-            SwingPanelContentRender contentRenderMon = new SwingPanelContentRender(monitorDisplayPanel);
-            contentRenderMon.initDisplay( width, height, 0, 0 );
 
-            ContentManager.getInstance().registerMonitorLiveRender( contentRenderMon );
-            contentRenderMon.paintBackground(BackgroundConfig.getInstance().getMonitorBackgroundImg());
-            String tmp = ContentManager.getMonitorDisplay().getTemplate();
-            if (tmp != null){
-                contentRenderMon.setTemplate(  tmp  );
-            }
+            monitorDisplayPanel.initDisplay(width, height);
+            ContentManager.getInstance().registerMonitorDisplay(monitorDisplayPanel);
+
         }else{
             btnShowMonitor.setSelected(false);
             btnShowMonitor.setVisible(false);
@@ -1255,6 +1244,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }catch(Exception e){
             // Do nothing
         }
+
+        ContentManager.getMainDisplay();
+        ContentManager.getMonitorDisplay();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

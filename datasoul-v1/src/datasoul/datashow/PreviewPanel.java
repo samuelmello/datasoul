@@ -23,7 +23,6 @@ package datasoul.datashow;
 import datasoul.config.ConfigObj;
 import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
-import datasoul.render.SwingPanelContentRender;
 import datasoul.song.Song;
 import datasoul.templates.DisplayTemplate;
 import java.awt.Dimension;
@@ -61,10 +60,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             height = DisplayTemplate.TEMPLATE_HEIGHT;
         }
 
-        SwingPanelContentRender contentRender = new SwingPanelContentRender(previewDisplayPanel1);
-        contentRender.initDisplay( width, height, 0, 0 );
-
-        ContentManager.getInstance().registerPreviewPanel( contentRender );
+        previewDisplayPanel1.initDisplay(width, height);
+        ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1);
 
     }
 

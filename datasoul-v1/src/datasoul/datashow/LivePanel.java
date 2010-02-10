@@ -15,9 +15,9 @@
 package datasoul.datashow;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
-import datasoul.render.ContentRender;
 import datasoul.song.Song;
 import datasoul.util.ObjectManager;
+import javax.swing.JFrame;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -214,7 +214,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     
     public void serviceNextSlide() {
         if (ContentManager.isMainDisplayActive()){
-            ContentRender mainDisplay = ContentManager.getMainDisplay();
+            JFrame mainDisplay = ContentManager.getMainDisplay();
             if (mainDisplay != null && mainDisplay.hasFocus()) {
                 int count = serviceItemTable1.getSlideCount();
                 int index = serviceItemTable1.getSlideIndex();
@@ -232,7 +232,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
     public void servicePreviousSlide() {
         if (ContentManager.isMainDisplayActive()){
-            ContentRender mainDisplay = ContentManager.getMainDisplay();
+            JFrame mainDisplay = ContentManager.getMainDisplay();
             if (mainDisplay != null && mainDisplay.hasFocus()) {
                 int index = serviceItemTable1.getSlideIndex();
                 if (index > 0) serviceItemTable1.setSlideIndex(index-1);

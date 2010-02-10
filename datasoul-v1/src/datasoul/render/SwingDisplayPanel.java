@@ -33,7 +33,7 @@ import javax.swing.SwingUtilities;
  *
  * @author  root
  */
-public class SwingDisplayPanel extends javax.swing.JPanel {
+public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisplay {
     
     private BufferedImage img;
     private BufferedImage bgImg;
@@ -76,15 +76,13 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         super.paint (g);
 
         if (img != null && bgImg != null){
-            synchronized(img){
-                if (isBlack){
-                    g.setColor(Color.BLACK);
-                    g.fillRect(0, 0, this.getWidth(), this.getHeight());
-                }else{
-                    g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
-                    if (!isClear){
-                        g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
-                    }
+            if (isBlack){
+                g.setColor(Color.BLACK);
+                g.fillRect(0, 0, this.getWidth(), this.getHeight());
+            }else{
+                g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
+                if (!isClear){
+                    g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
                 }
             }
         }else{
@@ -120,7 +118,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
     }
     
     
-    public void initDisplay(int width, int height, int top, int left){
+    public void initDisplay(int width, int height){
         this.setSize(width, height);
         img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         bgImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
@@ -161,15 +159,11 @@ public class SwingDisplayPanel extends javax.swing.JPanel {
         }
     }
 
-    void paint(BufferedImage img, Composite rule){
-        synchronized(this.img){
+    @Override
+    public void paint(BufferedImage img, AlphaComposite rule){
             Graphics2D g = this.img.createGraphics();
             g.setComposite( rule );
             g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
-        }
-    }
-
-    void setBackgroundMode(int mode) {
     }
 
     private class UpdateThread extends Thread {

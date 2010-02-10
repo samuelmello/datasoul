@@ -29,8 +29,6 @@ import datasoul.util.ObjectManager;
  */
 public class AuxiliarPanel extends javax.swing.JPanel {
 
-    private DatashowPanel objectManager;
-    
     public static final int TAB_DISPLAY = 0;
     public static final int TAB_ALARM = 1;
     public static final int TAB_BACKGROUND = 2;

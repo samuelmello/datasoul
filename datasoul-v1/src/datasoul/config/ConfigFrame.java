@@ -12,7 +12,6 @@
 package datasoul.config;
 
 import datasoul.render.ContentManager;
-import datasoul.render.SwingContentRender;
 import datasoul.util.ObjectManager;
 import java.awt.Component;
 import java.awt.GraphicsConfiguration;
@@ -678,20 +677,20 @@ public class ConfigFrame extends javax.swing.JFrame {
             refreshObjectValues();
             configObj.save();
 
-            if (ContentManager.isMainDisplayActive() && ContentManager.getMainDisplay() instanceof SwingContentRender){
-                ((SwingContentRender)ContentManager.getMainDisplay()).updatePosition(
-                        Integer.parseInt(configObj.getMainOutputSizeWidth()),
-                        Integer.parseInt(configObj.getMainOutputSizeHeight()),
+            if (ContentManager.isMainDisplayActive()){
+                ContentManager.getMainDisplay().setBounds(
+                        Integer.parseInt(configObj.getMainOutputPositionLeft()),
                         Integer.parseInt(configObj.getMainOutputPositionTop()),
-                        Integer.parseInt(configObj.getMainOutputPositionLeft()));
+                        Integer.parseInt(configObj.getMainOutputSizeWidth()),
+                        Integer.parseInt(configObj.getMainOutputSizeHeight()));
             }
 
-            if (ContentManager.isMonitorDisplayActive() && ContentManager.getMonitorDisplay() instanceof SwingContentRender){
-                ((SwingContentRender)ContentManager.getMonitorDisplay()).updatePosition(
-                        Integer.parseInt(configObj.getMonitorOutputSizeWidth()),
-                        Integer.parseInt(configObj.getMonitorOutputSizeHeight()),
-                        Integer.parseInt(configObj.getMonitorOutputPositionTop()),
-                        Integer.parseInt(configObj.getMonitorOutputPositionLeft()));
+            if (ContentManager.isMonitorDisplayActive()){
+                ContentManager.getMonitorDisplay().setBounds(
+                        Integer.parseInt(configObj.getMainOutputPositionLeft()),
+                        Integer.parseInt(configObj.getMainOutputPositionTop()),
+                        Integer.parseInt(configObj.getMainOutputSizeWidth()),
+                        Integer.parseInt(configObj.getMainOutputSizeHeight()));
             }
 
 

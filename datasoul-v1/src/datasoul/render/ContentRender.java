@@ -33,13 +33,14 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
+import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 
 /**
  *
  * @author root
  */
-public abstract class ContentRender {
+public class ContentRender {
     
     private DisplayTemplate template;
     private boolean templateChanged;
@@ -62,7 +63,6 @@ public abstract class ContentRender {
     private String songSource;
     private boolean songSourceChanged;
     private DisplayTemplate alertTemplate;
-    private boolean alertTemplateChanged;
     private boolean alertActive;
     private boolean showTimer;
     private float timerProgress;
@@ -87,30 +87,32 @@ public abstract class ContentRender {
     private int alertTransTimerTotal;
     private int alertTransition;
     
-    protected int width, height, left, top;
     protected BufferedImage transitionImage;
     private BufferedImage templateImage;
     private BufferedImage alertImage;
 
+    private LinkedList<ContentDisplay> displays;
+
     private boolean run;
-    
+
+    private boolean templateNeedsTimer;
+    private boolean alertNeedsTimer;
+
     /** Creates a new instance of ContentRender */
     public ContentRender() {
         updSemaphore = new Semaphore(0);
-        updThread = new UpdateThread();
-        updThread.start();
         slideTransition = TRANSITION_HIDE;
         slideTransTimerTotal = 1;
         slideTransTimer = 0;
+        displays = new LinkedList<ContentDisplay>();
+        transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         run = true;
+        updThread = new UpdateThread();
+        updThread.start();
     }
     
-    public abstract void paint(BufferedImage img, AlphaComposite rule);
-    public abstract void clear();
-    public abstract void flip();
-    public abstract void setWindowTitle(String title);
-    public abstract boolean hasFocus();
-
     public void shutdown(){
         run = false;
         updSemaphore.release();
@@ -227,6 +229,9 @@ public abstract class ContentRender {
                 this.template = new DisplayTemplate( ConfigObj.getInstance().getTemplateText() );
             }
             this.templateChanged = true;
+
+            this.templateNeedsTimer = this.template.useTimer();
+
         }catch(Exception e){
             e.printStackTrace();
             this.template = null;
@@ -244,7 +249,7 @@ public abstract class ContentRender {
     public void setAlertTemplate(String template){
         try{
             this.alertTemplate = new DisplayTemplate(template);
-            this.alertTemplateChanged = true;
+            this.alertNeedsTimer = this.alertTemplate.useTimer();
         }catch(Exception e){
             e.printStackTrace();
             this.alertTemplate = null;
@@ -316,6 +321,10 @@ public abstract class ContentRender {
     
     private void update(){
         updSemaphore.release();
+    }
+
+    public void registerDisplay(ContentDisplay d){
+        displays.add(d);
     }
     
     /**
@@ -509,39 +518,30 @@ public abstract class ContentRender {
         
         
         //paint it
-        synchronized(this){
-            clear();
+        for (ContentDisplay d : displays){
+            synchronized(this){
+                d.clear();
 
-            if (slideTransition == TRANSITION_CHANGE){
-                
-                if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
-                    synchronized(transitionImage){
-                        paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                    }
-                    synchronized(templateImage){
-                        paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                if (slideTransition == TRANSITION_CHANGE){
+
+                    if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
+                            d.paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                            d.paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                    }else{
+                            d.paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
+                            d.paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
                     }
                 }else{
-                    synchronized(transitionImage){
-                        paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
-                    }
-                    synchronized(templateImage){
-                        paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
-                    }
+                        d.paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
                 }
-            }else{
-                synchronized(templateImage){
-                    paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
+
+                if (paintAlertLevel > 0){
+                    d.paint(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
                 }
-            }
 
-            if (paintAlertLevel > 0){
-                paint(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
+                d.flip();
             }
-
-            //System.out.println(this+" AlertActive="+alertActive+" paintSlideLevel="+paintSlideLevel+" paintAlertLevel="+paintAlertLevel);
             
-            flip();
         }
 
     }
@@ -565,26 +565,18 @@ public abstract class ContentRender {
     public void saveTransitionImage(){
         saveImage(transitionImage, template, 1.0f);
     }
-    
-    
-    /**
-     * this method MUST be overriden by super class
-     */
-    public void initDisplay(int width, int height, int top, int left){
-        this.width = width;
-        this.height = height;
-        this.top = top;
-        this.left = left;
-        transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+
+    void setBlack(int i) {
+        for (ContentDisplay d : displays){
+            d.setBlack(i);
+        }
     }
-    
-    public abstract void paintBackground(BufferedImage bufferedImage);
-    
-    public abstract void setClear(int i);
-    
-    public abstract void setBlack(int i);
+
+    public void paintBackground(BufferedImage img) {
+        for (ContentDisplay d : displays){
+            d.paintBackground(img);
+        }
+    }
     
     private class UpdateThread extends Thread {
         public void run(){
@@ -631,7 +623,10 @@ public abstract class ContentRender {
             }
         }
     }
-    
+
+    public boolean getNeedTimer(){
+        return (templateNeedsTimer || (alertActive && alertNeedsTimer));
+    }
     
 }
 
