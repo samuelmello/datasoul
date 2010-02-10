@@ -27,6 +27,9 @@ import java.awt.Composite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 
 /**
@@ -36,9 +39,6 @@ import javax.swing.SwingUtilities;
 public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisplay {
     
     private BufferedImage img;
-    private BufferedImage bgImg;
-    private boolean isClear;
-    private boolean isBlack;
     private UpdateThread updTh;
 
     /** Creates new form SwingDisplayPanel */
@@ -75,34 +75,10 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
 
         super.paint (g);
 
-        if (img != null && bgImg != null){
-            if (isBlack){
-                g.setColor(Color.BLACK);
-                g.fillRect(0, 0, this.getWidth(), this.getHeight());
-            }else{
-                g.drawImage(bgImg, 0,0, this.getWidth(), this.getHeight(), null);
-                if (!isClear){
-                    g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
-                }
-            }
+        if (img != null){
+            g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
         }else{
             System.out.println("Is null!");
-        }
-    }
-    
-    public void clear(){
-
-        synchronized(img){
-            Graphics2D g = img.createGraphics();
-
-            // Clear it first
-            Composite oldComp = g.getComposite();
-            try{
-                g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-                g.fillRect(0, 0, img.getWidth(), img.getHeight());
-            }finally{
-                g.setComposite(oldComp);
-            }
         }
     }
     
@@ -120,8 +96,6 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
     
     public void initDisplay(int width, int height){
         this.setSize(width, height);
-        img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        bgImg = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
         this.setVisible(true);
     }
     
@@ -133,37 +107,14 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
     // End of variables declaration//GEN-END:variables
 
 
-    public void setClear(int mode) {
-        if (mode == 0){
-            isClear = false;
-        }else{
-            isClear = true;
-        }
-        this.repaint();
-    }
-
-    public void setBlack(int mode) {
-        if (mode == 0){
-            isBlack = false;
-        }else{
-            isBlack = true;
-        }
-        this.repaint();
-    }
-
-    public void paintBackground(BufferedImage newimg) {
-        if (newimg != null && bgImg != null){
-            Graphics2D g = bgImg.createGraphics();
-            g.drawImage(newimg, 0, 0, this.getWidth(), this.getHeight(), null);
-            this.repaint();
-        }
-    }
-
     @Override
-    public void paint(BufferedImage img, AlphaComposite rule){
-            Graphics2D g = this.img.createGraphics();
-            g.setComposite( rule );
-            g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
+    public void paint(BufferedImage img) {
+        this.img = img;
+        try {
+            SwingUtilities.invokeAndWait(updTh);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     private class UpdateThread extends Thread {

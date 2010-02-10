@@ -30,6 +30,8 @@ import datasoul.templates.TemplateItem;
 import datasoul.templates.TextTemplateItem;
 import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
@@ -90,11 +92,14 @@ public class ContentRender {
     protected BufferedImage transitionImage;
     private BufferedImage templateImage;
     private BufferedImage alertImage;
+    private BufferedImage backgroundImage;
+    private BufferedImage outputImage;
 
     private LinkedList<ContentDisplay> displays;
 
     private boolean run;
 
+    private boolean isBlack;
     private boolean templateNeedsTimer;
     private boolean alertNeedsTimer;
 
@@ -108,6 +113,8 @@ public class ContentRender {
         transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        backgroundImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        outputImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
         run = true;
         updThread = new UpdateThread();
         updThread.start();
@@ -324,7 +331,10 @@ public class ContentRender {
     }
 
     public void registerDisplay(ContentDisplay d){
-        displays.add(d);
+        synchronized(this){
+            displays.add(d);
+        }
+        updSemaphore.release();
     }
     
     /**
@@ -515,33 +525,38 @@ public class ContentRender {
         if (slideTransition != TRANSITION_HIDE){
             paintSlideLevel = 1 - paintSlideLevel;
         }
-        
-        
-        //paint it
-        for (ContentDisplay d : displays){
-            synchronized(this){
-                d.clear();
 
-                if (slideTransition == TRANSITION_CHANGE){
 
-                    if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
-                            d.paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                            d.paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
-                    }else{
-                            d.paint(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
-                            d.paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
-                    }
+        if (isBlack){
+            paintOutputBlack();
+        }else{
+
+            //paint it
+            clearOutput();
+            paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+
+            if (slideTransition == TRANSITION_CHANGE){
+                if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
+                    paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                    paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
                 }else{
-                        d.paint(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
+                    paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
+                    paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
                 }
-
-                if (paintAlertLevel > 0){
-                    d.paint(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
-                }
-
-                d.flip();
+            }else{
+                paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
             }
-            
+
+            if (paintAlertLevel > 0){
+                paintOutput(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
+            }
+        }
+
+
+        synchronized(this){
+            for (ContentDisplay d : displays){
+                d.paint(outputImage);
+            }
         }
 
     }
@@ -566,15 +581,16 @@ public class ContentRender {
         saveImage(transitionImage, template, 1.0f);
     }
 
-    void setBlack(int i) {
-        for (ContentDisplay d : displays){
-            d.setBlack(i);
-        }
+    void setBlack(boolean b) {
+        this.isBlack = b;
+        updSemaphore.release();
     }
 
     public void paintBackground(BufferedImage img) {
-        for (ContentDisplay d : displays){
-            d.paintBackground(img);
+        if (img != null && backgroundImage != null){
+            Graphics2D g = backgroundImage.createGraphics();
+            g.drawImage(img, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight(), null);
+            updSemaphore.release();
         }
     }
     
@@ -627,6 +643,31 @@ public class ContentRender {
     public boolean getNeedTimer(){
         return (templateNeedsTimer || (alertActive && alertNeedsTimer));
     }
-    
+
+    private void paintOutput(BufferedImage img, AlphaComposite rule){
+        Graphics2D g = outputImage.createGraphics();
+        g.setComposite( rule );
+        g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
+    }
+
+    private void paintOutputBlack(){
+        Graphics2D g = outputImage.createGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, outputImage.getWidth(), outputImage.getHeight());
+    }
+
+    private void clearOutput(){
+        Graphics2D g = outputImage.createGraphics();
+
+        // Clear it first
+        Composite oldComp = g.getComposite();
+        try{
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+            g.fillRect(0, 0, outputImage.getWidth(), outputImage.getHeight());
+        }finally{
+            g.setComposite(oldComp);
+        }
+    }
+
 }
 

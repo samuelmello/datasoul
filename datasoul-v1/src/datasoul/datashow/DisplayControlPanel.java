@@ -77,11 +77,11 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     public void mainDisplayBlack(){
         
         if( !isMainOnBlack ){
-            ContentManager.getInstance().setMainBlack( 1 );
+            ContentManager.getInstance().setMainBlack( true );
             isMainOnBlack = true;
             btnMainBlack.setSelected(true);
         }else{
-            ContentManager.getInstance().setMainBlack( 0 );
+            ContentManager.getInstance().setMainBlack( false );
             isMainOnBlack = false;
             btnMainBlack.setSelected(false);
         }
@@ -473,9 +473,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     private void btnMonitorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorBlackActionPerformed
         if ( ConfigObj.getInstance().getMonitorOutput() ){
             if( btnMonitorBlack.isSelected() ){
-                ContentManager.getInstance().setMonitorBlack( 1 );
+                ContentManager.getInstance().setMonitorBlack( true );
             }else{
-                ContentManager.getInstance().setMonitorBlack( 0 );
+                ContentManager.getInstance().setMonitorBlack( false );
             }
         }
         

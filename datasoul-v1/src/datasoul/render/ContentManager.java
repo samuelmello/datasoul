@@ -142,13 +142,11 @@ public class ContentManager {
     }
 
     public void registerMainDisplay(ContentDisplay d){
-        d.paintBackground( BackgroundConfig.getInstance().getMainBackgroundImg() );
         mainRender.registerDisplay(d);
     }
 
     public void registerMonitorDisplay(ContentDisplay d){
         if ( ConfigObj.getInstance().getMonitorOutput() ){
-            d.paintBackground( BackgroundConfig.getInstance().getMonitorBackgroundImg() );
             monitorRender.registerDisplay(d);
         }
     }
@@ -215,10 +213,10 @@ public class ContentManager {
                     monitorRender.setShowTimer(b);
     }
 
-    public void setMainBlack(int i){
-		mainRender.setBlack(i);
-		if ( ConfigObj.getInstance().getMonitorOutput() )
-                    monitorRender.setBlack(i);
+    public void setMainBlack(boolean i){
+        mainRender.setBlack(i);
+        if ( ConfigObj.getInstance().getMonitorOutput() )
+            monitorRender.setBlack(i);
     }
     
     public void slideShowMain(int i){
@@ -241,9 +239,9 @@ public class ContentManager {
 		mainRender.setAlertActive(b);
     }
 
-    public void setMonitorBlack(int i){
-		if ( ConfigObj.getInstance().getMonitorOutput() )
-                    monitorRender.setBlack(i);
+    public void setMonitorBlack(boolean i){
+        if ( ConfigObj.getInstance().getMonitorOutput() )
+            monitorRender.setBlack(i);
     }
     
     public void slideShowMonitor(int i){
