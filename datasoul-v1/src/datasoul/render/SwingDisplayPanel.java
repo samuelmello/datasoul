@@ -20,16 +20,8 @@
 
 package datasoul.render;
 
-import datasoul.templates.DisplayTemplate;
-import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Composite;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 
 /**
@@ -39,12 +31,14 @@ import javax.swing.SwingUtilities;
 public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisplay {
     
     private BufferedImage img;
-    private UpdateThread updTh;
 
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {
         initComponents();
-        updTh = new UpdateThread();
+    }
+
+    public void registerOutputImage(BufferedImage img) {
+        this.img = img;
     }
     
 
@@ -76,21 +70,17 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
         super.paint (g);
 
         if (img != null){
-            g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+            synchronized(img){
+                g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+            }
         }else{
             System.out.println("Is null!");
         }
     }
     
+    @Override
     public void flip(){
-        try {
-            // update the screen
-            //this.paintImmediately(0, 0, this.getWidth(), this.getHeight());
-            //SwingUtilities.invokeLater(updTh);
-            SwingUtilities.invokeAndWait(updTh);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-       }
+        this.repaint();
     }
     
     
@@ -99,29 +89,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
         this.setVisible(true);
     }
     
-    public void shutdown(){
-        this.setVisible(false);
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-
-
-    @Override
-    public void paint(BufferedImage img) {
-        this.img = img;
-        try {
-            SwingUtilities.invokeAndWait(updTh);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private class UpdateThread extends Thread {
-        public void run(){
-            paintImmediately(0, 0, getWidth(), getHeight());
-        }
-    }
-    
     
 }

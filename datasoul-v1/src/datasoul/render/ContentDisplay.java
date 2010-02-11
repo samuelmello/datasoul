@@ -7,5 +7,6 @@ import java.awt.image.BufferedImage;
  * @author samuellucas
  */
 public interface ContentDisplay {
-    public void paint(BufferedImage img);
+    public void flip();
+    public void registerOutputImage(BufferedImage img);
 }

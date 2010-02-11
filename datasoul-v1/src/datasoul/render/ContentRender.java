@@ -33,6 +33,10 @@ import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -93,7 +97,7 @@ public class ContentRender {
     private BufferedImage templateImage;
     private BufferedImage alertImage;
     private BufferedImage backgroundImage;
-    private BufferedImage outputImage;
+    final private BufferedImage outputImage;
 
     private LinkedList<ContentDisplay> displays;
 
@@ -110,11 +114,16 @@ public class ContentRender {
         slideTransTimerTotal = 1;
         slideTransTimer = 0;
         displays = new LinkedList<ContentDisplay>();
-        transitionImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        templateImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        alertImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        backgroundImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
-        outputImage = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        GraphicsConfiguration gc = gd.getDefaultConfiguration();
+
+        transitionImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
+        templateImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
+        alertImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
+        backgroundImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
+        outputImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
+
         run = true;
         updThread = new UpdateThread();
         updThread.start();
@@ -333,6 +342,7 @@ public class ContentRender {
     public void registerDisplay(ContentDisplay d){
         synchronized(this){
             displays.add(d);
+            d.registerOutputImage(outputImage);
         }
         updSemaphore.release();
     }
@@ -531,31 +541,32 @@ public class ContentRender {
             paintOutputBlack();
         }else{
 
-            //paint it
-            clearOutput();
-            paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+            synchronized(outputImage){
+                //paint it
+                clearOutput();
+                paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 
-            if (slideTransition == TRANSITION_CHANGE){
-                if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
-                    paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                    paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                if (slideTransition == TRANSITION_CHANGE){
+                    if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
+                        paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                        paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                    }else{
+                        paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
+                        paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
+                    }
                 }else{
-                    paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
                     paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
                 }
-            }else{
-                paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
-            }
 
-            if (paintAlertLevel > 0){
-                paintOutput(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
+                if (paintAlertLevel > 0){
+                    paintOutput(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
+                }
             }
         }
 
-
         synchronized(this){
             for (ContentDisplay d : displays){
-                d.paint(outputImage);
+                d.flip();
             }
         }
 
