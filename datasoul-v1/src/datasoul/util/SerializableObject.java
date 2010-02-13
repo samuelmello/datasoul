@@ -69,8 +69,8 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     protected void registerProperties(){
     }
     
-    
-     public Node writeObject() throws Exception{
+    @Override
+    public Node writeObject(ZipWriter zip) throws Exception{
 
         // update version stamp
         this.setDatasoulFileVersion(DatasoulMainForm.getFileFormatVersion());
@@ -106,13 +106,13 @@ public abstract class SerializableObject  implements Transferable, SerializableI
               
         return nodeOut.cloneNode(true);
      }
-     
-     public void readObject(Node nodeIn)  {
+
+    @Override
+    public void readObject(Node nodeIn, ZipReader zip)  {
 
         NodeList nodeList= nodeIn.getChildNodes();
         String paramName;
         String paramValue;
-        String prop;
         for(int i=0;i<nodeList.getLength();i++){
             if(nodeList.item(i).getNodeType() == Node.ELEMENT_NODE ){
                 paramName = nodeList.item(i).getNodeName(); 

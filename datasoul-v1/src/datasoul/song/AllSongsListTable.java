@@ -87,7 +87,7 @@ public class AllSongsListTable extends SongListTable{
 
         song = new Song();
         try {
-            song.readObject(node);
+            song.readObject(node, null);
             song.setFilePath(songFile.getPath());
         } catch (Exception e) {
             ShowDialog.showReadFileError(songFile, e);

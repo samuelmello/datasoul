@@ -97,7 +97,7 @@ public class SongViewer extends javax.swing.JPanel {
                 //node = dom.getDocumentElement().getChildNodes().item(0);
                 node = dom.getElementsByTagName("SongTemplate").item(0);
 
-                songTemplate.readObject(node);
+                songTemplate.readObject(node, null);
                
             }catch(Exception e) {
                 ShowDialog.showReadFileError(songTemplateFile, e);

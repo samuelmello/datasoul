@@ -30,8 +30,8 @@ import org.w3c.dom.Node;
  * @author Administrador
  */
 public interface SerializableItf {
-     public Node writeObject() throws Exception;
+     public Node writeObject(ZipWriter zip) throws Exception;
      
-     public void readObject(Node nodeIn) throws Exception;
+     public void readObject(Node nodeIn, ZipReader zip) throws Exception;
     
 }

@@ -24,6 +24,8 @@
 package datasoul.song;
 
 import datasoul.util.SerializableItf;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -87,7 +89,8 @@ public class Chord implements SerializableItf{
         return this.shapes;
     }
     
-     public Node writeObject() throws Exception{
+    @Override
+    public Node writeObject(ZipWriter zip) throws Exception{
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -98,7 +101,6 @@ public class Chord implements SerializableItf{
         
         Node nodeOut = doc.createElement("Chord");
         Node node; 
-        String paramName;
         String paramValue;
 
         node = doc.createElement("name");
@@ -119,7 +121,8 @@ public class Chord implements SerializableItf{
          return name;
      }
      
-     public void readObject(Node nodeIn) {
+     @Override
+     public void readObject(Node nodeIn, ZipReader zip) {
 
         NodeList nodeList= nodeIn.getChildNodes();
         Node node;

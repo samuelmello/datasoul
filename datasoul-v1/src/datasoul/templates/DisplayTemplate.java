@@ -26,6 +26,8 @@ package datasoul.templates;
 import datasoul.DatasoulMainForm;
 import datasoul.util.AttributedObject;
 import datasoul.util.ObjectManager;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
@@ -130,7 +132,7 @@ public class DisplayTemplate extends AttributedObject {
     private void loadFromFile(String name) throws Exception{
         
         String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-        String filename = path + System.getProperty("file.separator") + name + ".template";
+        String filename = path + System.getProperty("file.separator") + name + ".templatez";
 
         Document dom=null;
         Node node=null;
@@ -141,32 +143,17 @@ public class DisplayTemplate extends AttributedObject {
         DocumentBuilder db = dbf.newDocumentBuilder();
 
         // Open the file
-        FileInputStream fis = new FileInputStream(filename);
-        
-        GZIPInputStream zis = null;
-        try{
-            zis = new GZIPInputStream(fis);
-        }catch(IOException e){
-            zis = null;
-        }
-        
-        //parse using builder to get DOM representation of the XML file
-        if (zis != null){
-            // file in GZIP format
-            dom = db.parse(zis);
-        }else{
-            // uncompressed file
-            dom = db.parse(filename);
-        }
+        ZipReader zip = new ZipReader(filename);
+        dom = db.parse(zip.getMainInputStream());
         
         //node = dom.getDocumentElement().getChildNodes().item(0);
         node = dom.getElementsByTagName("DisplayTemplate").item(0);
 
+        this.readObject(node, zip);
+        
         // Close the input stream
-        fis.close();
-        
-        this.readObject(node);
-        
+        zip.close();
+
         // upgrade from older versions
         
         // version up to 1.2 had fixed resolution at 640x480
@@ -276,15 +263,15 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     @Override
-            public Node writeObject() throws Exception{
+    public Node writeObject(ZipWriter zip) throws Exception{
         
-        Node n = super.writeObject();
+        Node n = super.writeObject(zip);
         
         Node nodeItems = n.getOwnerDocument().createElement("TemplateItems");
         
         for (int i=0; i< items.size(); i++){
             
-            Node ti =  items.get(i).writeObject();
+            Node ti =  items.get(i).writeObject(zip);
             
             nodeItems.appendChild( nodeItems.getOwnerDocument().importNode(ti, true) );
             
@@ -297,10 +284,10 @@ public class DisplayTemplate extends AttributedObject {
     }
     
     @Override
-            public void readObject(Node nodeIn) {
+    public void readObject(Node nodeIn, ZipReader zip) {
         
         // read the properties
-        super.readObject(nodeIn);
+        super.readObject(nodeIn, zip);
         
         // now, read the template Items
         NodeList nodeList= nodeIn.getChildNodes();
@@ -329,7 +316,7 @@ public class DisplayTemplate extends AttributedObject {
                         
                         // set the properties
                         if (ti instanceof TemplateItem){
-                            ((TemplateItem) ti).readObject( templateItemsNodes.item(j) );
+                            ((TemplateItem) ti).readObject( templateItemsNodes.item(j), zip );
                             this.addItem( (TemplateItem) ti );
                         }
                     }
@@ -356,14 +343,14 @@ public class DisplayTemplate extends AttributedObject {
                     return true;
                 }
                 String name = f.getName();
-                if (name.endsWith(".template")) {
+                if (name.endsWith(".templatez")) {
                     return true;
                 }
                 return false;
             }
 
             public String getDescription() {
-                return ".template";
+                return ".templatez";
             }
         });
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
@@ -371,7 +358,7 @@ public class DisplayTemplate extends AttributedObject {
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if (fc.showSaveDialog(owner) == JFileChooser.APPROVE_OPTION) {
             String fileName = fc.getSelectedFile().getName();
-            fileName = fileName.replace(".template", "");
+            fileName = fileName.replace(".templatez", "");
             this.setName(fileName);
             this.save(owner);
         }
@@ -387,26 +374,25 @@ public class DisplayTemplate extends AttributedObject {
         }else{
 
             String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-            String filename = path + System.getProperty("file.separator") + this.getName()+".template";
+            String filename = path + System.getProperty("file.separator") + this.getName()+".templatez";
 
-            Node node = this.writeObject();
+            ZipWriter zip = new ZipWriter(filename);
+            Node node = this.writeObject(zip);
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
 
-            FileOutputStream fos = new FileOutputStream( filename );
-            GZIPOutputStream zos = new GZIPOutputStream(fos);
 
             Source source = new DOMSource(doc);
 
             // Prepare the output file
-            Result result = new StreamResult(zos);
+            Result result = new StreamResult(zip.getOutputStream());
 
             // Write the DOM document to the file
             Transformer xformer = TransformerFactory.newInstance().newTransformer();
             xformer.setOutputProperty(OutputKeys.INDENT, "yes");
             xformer.transform(source, result);
 
-            zos.close();
+            zip.close();
 
             templateCache.put(this.getName(), this);
         }

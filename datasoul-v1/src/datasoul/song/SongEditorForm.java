@@ -79,7 +79,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         song = new Song();
         try {
-            song.readObject(node);
+            song.readObject(node, null);
         } catch (Exception e) {
             ShowDialog.showReadFileError(file, e);
         }
@@ -442,7 +442,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         actualizeValues();
         
         try{
-            Node node = song.writeObject();
+            Node node = song.writeObject(null);
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
             FileOutputStream fos = new FileOutputStream(song.getFilePath());

@@ -23,13 +23,17 @@
 
 package datasoul.templates;
 
-import datasoul.util.ImageSerializer;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import org.w3c.dom.Node;
@@ -70,6 +74,7 @@ public class ImageTemplateItem extends TemplateItem {
     public static final int STRETCH_YES = 1;
     public static final String[] STRETCH_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes")};
 
+    private ZipReader activeZipReader;
     
     public ImageTemplateItem() {
         super();
@@ -254,36 +259,60 @@ public class ImageTemplateItem extends TemplateItem {
         
     }
 
-    public String getImageInStr() {
-        return ImageSerializer.imageToStr(this.img);
+    public String getImageHash() {
+        return "img-"+Integer.toString(img.hashCode())+".png";
     }
 
-    public void setImageInStr(String strImage) {
-        img = ImageSerializer.strToImage(strImage);
-        assertImageSize();
-    }
-    
-     public Node writeObject() throws Exception{
+    public void setImageHash(String strImage) {
 
-        properties.add("ImageInStr");
+        if (activeZipReader != null){
+            InputStream is = null;
+            try {
+                is = activeZipReader.getInputStream(strImage);
+                img = ImageIO.read(is);
+                assertImageSize();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @Override
+    public Node writeObject(ZipWriter zip) throws Exception{
+
+        properties.add("ImageHash");
               
-        Node node = super.writeObject();
+        Node node = super.writeObject(zip);
+
+        zip.appendImage(img, getImageHash());
         
-        properties.remove("ImageInStr");
+        properties.remove("ImageHash");
         
         return node;
-     }
-     
-     public void readObject(Node nodeIn) {
+    }
 
-        properties.add("ImageInStr");
+
+    @Override
+    public synchronized void readObject(Node nodeIn, ZipReader zip) {
+
+        properties.add("ImageHash");
+
+        activeZipReader = zip;
               
-        super.readObject(nodeIn);
-        
-        properties.remove("ImageInStr");
+        super.readObject(nodeIn, zip);
+
+        activeZipReader = null;
+
+        properties.remove("ImageHash");
         
         return;
-     }
+    }
      
      public int getStretchIdx (){
          return stretch;

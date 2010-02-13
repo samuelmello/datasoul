@@ -28,6 +28,8 @@ import datasoul.song.Song;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.ShowDialog;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -71,8 +73,9 @@ public class ServiceListTable extends ListTable {
             return null;
         }
     }
-    
-    public Node writeObject() throws Exception {
+
+    @Override
+    public Node writeObject(ZipWriter zip) throws Exception {
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -100,7 +103,7 @@ public class ServiceListTable extends ListTable {
 
         Node node;
         for (int i = 0; i < objectList.size(); i++) {
-            node = ((SerializableItf) objectList.get(i)).writeObject();
+            node = ((SerializableItf) objectList.get(i)).writeObject(zip);
             nodeOut.appendChild(doc.importNode(node, true));
         }
 
@@ -115,8 +118,9 @@ public class ServiceListTable extends ListTable {
         title = "";
         notes = "";
     }
-    
-    public void readObject(Node nodeIn) {
+
+    @Override
+    public void readObject(Node nodeIn, ZipReader zip) {
         cleanup();
         
         NodeList nodeList = nodeIn.getChildNodes();
@@ -124,19 +128,19 @@ public class ServiceListTable extends ListTable {
             if (nodeList.item(i).getNodeType() == Node.ELEMENT_NODE) {
                 if (nodeList.item(i).getNodeName().equals("Song")) {
                     Song song = new Song();
-                    song.readObject(nodeList.item(i));
+                    song.readObject(nodeList.item(i), zip);
                     this.addItem(song);
                 } else if (nodeList.item(i).getNodeName().equals("TextServiceItem")) {
                     TextServiceItem tsi = new TextServiceItem();
-                    tsi.readObject(nodeList.item(i));
+                    tsi.readObject(nodeList.item(i), zip);
                     this.addItem(tsi);
                 } else if (nodeList.item(i).getNodeName().equals("ContentlessServiceItem")) {
                     ContentlessServiceItem csi = new ContentlessServiceItem();
-                    csi.readObject(nodeList.item(i));
+                    csi.readObject(nodeList.item(i), zip);
                     this.addItem(csi);
                 } else if (nodeList.item(i).getNodeName().equals("ImageListServiceItem")) {
                     ImageListServiceItem ilsi = new ImageListServiceItem();
-                    ilsi.readObject(nodeList.item(i));
+                    ilsi.readObject(nodeList.item(i), zip);
                     this.addItem(ilsi);
                 } else if (nodeList.item(i).getNodeName().equals("title")) {
                     this.title = nodeList.item(i).getTextContent();
@@ -347,20 +351,24 @@ public class ServiceListTable extends ListTable {
     
     private void saveFile() {
         try {
-            Node node = this.writeObject();
+
+            ZipWriter zip = new ZipWriter(fileName);
+
+            Node node = this.writeObject(zip);
             Document doc = node.getOwnerDocument();
             doc.appendChild(node);                        // Add Root to Document
 
             Source source = new DOMSource(doc);
 
             // Prepare the output file
-            File file = new File(fileName);
-            Result result = new StreamResult(file);
+            Result result = new StreamResult(zip.getOutputStream());
 
             // Write the DOM document to the file
             Transformer xformer = TransformerFactory.newInstance().newTransformer();
             xformer.setOutputProperty(OutputKeys.INDENT, "yes");
             xformer.transform(source, result);
+
+            zip.close();
 
         } catch (Exception e) {
             ShowDialog.showWriteFileError(fileName, e);
@@ -376,14 +384,14 @@ public class ServiceListTable extends ListTable {
                     return true;
                 }
                 String name = f.getName();
-                if (name.endsWith(".servicelist")) {
+                if (name.endsWith(".servicelistz")) {
                     return true;
                 }
                 return false;
             }
 
             public String getDescription() {
-                return ".servicelist";
+                return ".servicelistz";
             }
         });
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
@@ -391,31 +399,27 @@ public class ServiceListTable extends ListTable {
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
 
-            File file = new File(fileName);
-
             Document dom = null;
             Node node = null;
-            ServiceListTable slt;
             try {
+                ZipReader zip = new ZipReader(fileName);
+
                 DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
                 //Using factory get an instance of document builder
                 DocumentBuilder db = dbf.newDocumentBuilder();
 
                 //parse using builder to get DOM representation of the XML file
-                dom = db.parse(file);
+                dom = db.parse(zip.getMainInputStream());
 
                 //node = dom.getDocumentElement().getChildNodes().item(0);
                 node = dom.getElementsByTagName("ServiceListTable").item(0);
 
-            } catch (Exception e) {
-                ShowDialog.showReadFileError(file, e);
-            }
+                this.readObject(node, zip);
 
-            try {
-                this.readObject(node);
+                zip.close();
             } catch (Exception e) {
-                ShowDialog.showReadFileError(file, e);
+                ShowDialog.showReadFileError(fileName, e);
             }
 
             tableModelChanged();
@@ -431,14 +435,14 @@ public class ServiceListTable extends ListTable {
                     return true;
                 }
                 String name = f.getName();
-                if (name.endsWith(".servicelist")) {
+                if (name.endsWith(".servicelistz")) {
                     return true;
                 }
                 return false;
             }
 
             public String getDescription() {
-                return ".servicelist";
+                return ".servicelistz";
             }
         });
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
@@ -446,8 +450,8 @@ public class ServiceListTable extends ListTable {
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
-            if (!fileName.contains(".servicelist")) {
-                fileName = fileName + ".servicelist";
+            if (!fileName.contains(".servicelistz")) {
+                fileName = fileName + ".servicelistz";
             }
             saveFile();
         }
@@ -461,8 +465,8 @@ public class ServiceListTable extends ListTable {
             return;
         }
 
-        if (!fileName.contains(".servicelist")) {
-            fileName = fileName + ".servicelist";
+        if (!fileName.contains(".servicelistz")) {
+            fileName = fileName + ".servicelistz";
         }
 
 

@@ -113,8 +113,8 @@ public class TemplateManager implements TableModel {
             int size = files.length;
             
             for(int i=0; i<size;i++){
-                if(files[i].endsWith(".template")){
-                    availableTemplates.add( files[i].substring(0, files[i].indexOf(".template"))) ;
+                if(files[i].endsWith(".templatez")){
+                    availableTemplates.add( files[i].substring(0, files[i].indexOf(".templatez"))) ;
                 }
             }
         }
@@ -127,7 +127,7 @@ public class TemplateManager implements TableModel {
     public void deleteTemplate(String templateName) throws Exception {
 
         String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-        File f = new File(path + System.getProperty("file.separator") + templateName + ".template");
+        File f = new File(path + System.getProperty("file.separator") + templateName + ".templatez");
         f.delete();
         DisplayTemplate.deleteTemplate(templateName);
         refreshAvailableTemplates();

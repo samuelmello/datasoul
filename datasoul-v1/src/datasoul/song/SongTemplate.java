@@ -335,7 +335,7 @@ public class SongTemplate extends TemplateItem{
     }
 
     public void save(String filename) throws Exception {
-        Node node = this.writeObject();
+        Node node = this.writeObject(null);
         Document doc = node.getOwnerDocument();
         doc.appendChild( node);                        // Add Root to Document
         FileOutputStream fos = new FileOutputStream( filename );

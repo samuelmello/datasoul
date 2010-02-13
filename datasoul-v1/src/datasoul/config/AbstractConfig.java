@@ -124,7 +124,7 @@ public abstract class AbstractConfig extends SerializableObject {
         }        
 
         try {
-            this.readObject(node);
+            this.readObject(node, null);
         } catch (Exception e) {
             ShowDialog.showReadFileError(configFile, e);
             e.printStackTrace();
@@ -167,7 +167,7 @@ public abstract class AbstractConfig extends SerializableObject {
         
         try{
 
-            Node node = this.writeObject();
+            Node node = this.writeObject(null);
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
 

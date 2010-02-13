@@ -104,48 +104,9 @@ public class ListTable extends SerializableObject implements TableModel {
     
     public void sortByName() {
 
-        /*
-        ArrayList<Object> objectListSorted = new ArrayList<Object>();
-
-mainloop: for(int i=0;i<objectList.size();i++){
-            int j;
-            for(j=0;j<objectListSorted.size();j++){
-                if(isBefore(objectList.get(i),objectListSorted.get(j))){
-                    objectListSorted.add(j,objectList.get(i));
-                    continue mainloop;
-                }
-            }
-            objectListSorted.add(j,objectList.get(i));
-        }
-        
-        objectList = objectListSorted;
-         */
-        
         Collections.sort(objectList, stringComparator);
         
         tableModelChanged();
-    }
-    
-    private boolean isBefore(Object obj1, Object obj2){
-        String str1 = obj1.toString();
-        String str2 = obj2.toString();
-        
-        int max = str2.length();
-        if(str1.length()<str2.length()){
-            max = str1.length();
-        }
-        for(int i=0;i<max;i++){
-            if(Character.valueOf(str1.charAt(i))<Character.valueOf(str2.charAt(i))){
-                return true;
-            }
-            if(Character.valueOf(str1.charAt(i))>Character.valueOf(str2.charAt(i))){
-                return false;
-            }
-        }
-        if(str1.length()>str2.length())
-            return false;
-        else
-            return true;
     }
     
     public void upItem(int row){

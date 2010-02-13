@@ -27,6 +27,8 @@ import datasoul.config.AbstractConfig;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.ShowDialog;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -125,7 +127,7 @@ public class ChordsDB extends ListTable{
         }        
 
         try {
-            this.readObject(node);
+            this.readObject(node, null);
         } catch (Exception e) {
             ShowDialog.showReadFileError(chordsFile, e);
         }
@@ -164,7 +166,7 @@ public class ChordsDB extends ListTable{
         String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + fileName;
         try{
 
-            Node node = this.writeObject();
+            Node node = this.writeObject(null);
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
             FileOutputStream fos = new FileOutputStream(path);
@@ -185,8 +187,10 @@ public class ChordsDB extends ListTable{
             ShowDialog.showWriteFileError(path, e);
         }        
     }
-    
-     public Node writeObject() throws Exception{
+
+
+    @Override
+    public Node writeObject(ZipWriter zip) throws Exception{
 
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -200,14 +204,15 @@ public class ChordsDB extends ListTable{
         String paramName;
         String paramValue;
         for(int i=0;i<objectList.size();i++){
-            node = ((SerializableItf)objectList.get(i)).writeObject();
+            node = ((SerializableItf)objectList.get(i)).writeObject(zip);
             nodeOut.appendChild(doc.importNode(node,true));
         }
               
         return nodeOut.cloneNode(true);
      }
-     
-     public void readObject(Node nodeIn) {
+
+    @Override
+    public void readObject(Node nodeIn, ZipReader zip) {
 
         NodeList nodeList= nodeIn.getChildNodes();
         String paramName;
@@ -215,7 +220,7 @@ public class ChordsDB extends ListTable{
         for(int i=0;i<nodeList.getLength();i++){
             if(nodeList.item(i).getNodeType()==1){
                 Chord chord = new Chord();
-                chord.readObject(nodeList.item(i));
+                chord.readObject(nodeList.item(i), zip);
                 this.addItem(chord);
             }
         }

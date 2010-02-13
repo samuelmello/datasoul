@@ -5,10 +5,12 @@
 
 package datasoul.datashow;
 
-import datasoul.util.ImageSerializer;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import javax.imageio.ImageIO;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -56,8 +58,8 @@ public class ImageListServiceItem extends ServiceItem {
     }
 
     @Override
-    public Node writeObject() throws Exception {
-        Node n = super.writeObject();
+    public Node writeObject(ZipWriter zip) throws Exception {
+        Node n = super.writeObject(zip);
         Document doc = n.getOwnerDocument();
         Node nodeList = doc.createElement("ImageList");
 
@@ -65,7 +67,8 @@ public class ImageListServiceItem extends ServiceItem {
             ImageListServiceRenderer imgrend = (ImageListServiceRenderer) r;
             BufferedImage img = imgrend.getImage();
             Node nodeItem = doc.createElement("ImageItem");
-            nodeItem.setTextContent(ImageSerializer.imageToStr(img));
+            nodeItem.setTextContent("img-"+img.hashCode()+".png");
+            zip.appendImage(img, "img-"+img.hashCode()+".png");
             nodeList.appendChild(doc.importNode(nodeItem, true));
         }
 
@@ -76,8 +79,8 @@ public class ImageListServiceItem extends ServiceItem {
     }
 
     @Override
-    public void readObject(Node nodeIn)  {
-        super.readObject(nodeIn);
+    public void readObject(Node nodeIn, ZipReader zip)  {
+        super.readObject(nodeIn, zip);
 
 
         NodeList nodeList= nodeIn.getChildNodes();
@@ -91,8 +94,9 @@ public class ImageListServiceItem extends ServiceItem {
                          nodeImgList.item(j).getNodeName().equals("ImageItem")){
                         try{
                             ImageListServiceRenderer r = new ImageListServiceRenderer();
-                            String s = nodeImgList.item(j).getTextContent();
-                            BufferedImage img = ImageSerializer.strToImage(s);
+                            String imgname = nodeImgList.item(j).getTextContent();
+                            InputStream is = zip.getInputStream(imgname);
+                            BufferedImage img = ImageIO.read(is);
                             r.setImage(img);
                             slides.add(r);
                         }catch(Exception e){

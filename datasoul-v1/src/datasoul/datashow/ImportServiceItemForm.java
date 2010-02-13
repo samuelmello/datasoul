@@ -207,7 +207,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
             slt = new ServiceListTable();
             try {
-                slt.readObject(node);
+                slt.readObject(node, null);
             } catch (Exception e) {
                 ShowDialog.showReadFileError(file, e);
             }
