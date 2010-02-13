@@ -60,11 +60,11 @@ public class TimerManager extends Thread {
         switch(format){
             
             case ConfigObj.CLOCKMODE_24_SEC: 
-                sdformat = new SimpleDateFormat("k:mm:ss");
+                sdformat = new SimpleDateFormat("H:mm:ss");
                 break;
 
             case ConfigObj.CLOCKMODE_24_NOSEC: 
-                sdformat = new SimpleDateFormat("k:mm");
+                sdformat = new SimpleDateFormat("H:mm");
                 break;
                 
             case ConfigObj.CLOCKMODE_12_SEC: 
@@ -76,7 +76,7 @@ public class TimerManager extends Thread {
                 break;
                 
             default:    
-                sdformat = new SimpleDateFormat("k:mm:ss");
+                sdformat = new SimpleDateFormat("H:mm:ss");
                 
         }
         
