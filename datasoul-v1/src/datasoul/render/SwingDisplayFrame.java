@@ -11,6 +11,8 @@
 
 package datasoul.render;
 
+import datasoul.DatasoulMainForm;
+
 /**
  *
  * @author samuellucas
@@ -20,6 +22,7 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
     /** Creates new form SwingDisplayFrame */
     public SwingDisplayFrame() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
     }
 
     /** This method is called from within the constructor to

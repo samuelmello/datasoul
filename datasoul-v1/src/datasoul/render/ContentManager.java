@@ -23,7 +23,6 @@
 
 package datasoul.render;
 
-import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.templates.DisplayTemplate;
 import java.awt.image.BufferedImage;
@@ -298,7 +297,7 @@ public class ContentManager {
     
     static public SwingDisplayFrame getMainDisplay(){
 
-        if (mainDisplay == null ){
+        if (mainDisplay == null && ConfigObj.getInstance().getMainOutput()){
             mainDisplay = new SwingDisplayFrame();
             
             int width, height, top, left;
@@ -339,7 +338,7 @@ public class ContentManager {
     
     static public SwingDisplayFrame getMonitorDisplay(){
         
-        if (monitorDisplay == null  ){
+        if (monitorDisplay == null && ConfigObj.getInstance().getMonitorOutput() ){
 
             monitorDisplay = new SwingDisplayFrame();
             
