@@ -31,8 +31,13 @@ import datasoul.util.ShowDialog;
 import datasoul.util.ZipReader;
 import datasoul.util.ZipWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -352,7 +357,15 @@ public class ServiceListTable extends ListTable {
     private void saveFile() {
         try {
 
-            ZipWriter zip = new ZipWriter(fileName);
+            OutputStream os = null;
+            ZipWriter zip = null;
+
+            if (fileName.endsWith(".servicelist")){
+                os = new FileOutputStream(fileName);
+            }else{
+                zip = new ZipWriter(fileName);
+                os = zip.getOutputStream();
+            }
 
             Node node = this.writeObject(zip);
             Document doc = node.getOwnerDocument();
@@ -361,14 +374,18 @@ public class ServiceListTable extends ListTable {
             Source source = new DOMSource(doc);
 
             // Prepare the output file
-            Result result = new StreamResult(zip.getOutputStream());
+            Result result = new StreamResult(os);
 
             // Write the DOM document to the file
             Transformer xformer = TransformerFactory.newInstance().newTransformer();
             xformer.setOutputProperty(OutputKeys.INDENT, "yes");
             xformer.transform(source, result);
 
-            zip.close();
+            if (fileName.endsWith(".servicelist")){
+                os.close();
+            }else{
+                zip.close();
+            }
 
         } catch (Exception e) {
             ShowDialog.showWriteFileError(fileName, e);
@@ -377,83 +394,95 @@ public class ServiceListTable extends ListTable {
 
     public void openServiceList() {
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
-
-            public boolean accept(File f) {
-                if (f.isDirectory()) {
-                    return true;
-                }
-                String name = f.getName();
-                if (name.endsWith(".servicelistz")) {
-                    return true;
-                }
-                return false;
-            }
-
-            public String getDescription() {
-                return ".servicelistz";
-            }
-        });
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul 1.x Service Lists", "servicelist") );
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
         fc.setCurrentDirectory(dir);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
 
-            Document dom = null;
-            Node node = null;
-            try {
-                ZipReader zip = new ZipReader(fileName);
-
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-                //Using factory get an instance of document builder
-                DocumentBuilder db = dbf.newDocumentBuilder();
-
-                //parse using builder to get DOM representation of the XML file
-                dom = db.parse(zip.getMainInputStream());
-
-                //node = dom.getDocumentElement().getChildNodes().item(0);
-                node = dom.getElementsByTagName("ServiceListTable").item(0);
-
-                this.readObject(node, zip);
-
-                zip.close();
-            } catch (Exception e) {
-                ShowDialog.showReadFileError(fileName, e);
-            }
+            openFile(fileName);
 
             tableModelChanged();
         }
     }
 
+    private void openFile(String filename) {
+
+        try{
+            InputStream is = null;
+            ZipReader zip = null;
+
+            if (filename.endsWith(".servicelist")){
+                is = new FileInputStream(filename);
+            }else{
+                zip = new ZipReader(filename);
+                is = zip.getMainInputStream();
+            }
+
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+
+            //Using factory get an instance of document builder
+            DocumentBuilder db = dbf.newDocumentBuilder();
+
+            //parse using builder to get DOM representation of the XML file
+            Document dom = db.parse(is);
+
+            //node = dom.getDocumentElement().getChildNodes().item(0);
+            Node node = dom.getElementsByTagName("ServiceListTable").item(0);
+
+            this.readObject(node, zip);
+
+            if (filename.endsWith(".servicelist")){
+                is.close();
+            }else{
+                zip.close();
+            }
+        }catch (Exception e){
+            ShowDialog.showReadFileError(filename, e);
+        }
+
+    }
+
     public void saveServiceListAs() {
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
-
-            public boolean accept(File f) {
-                if (f.isDirectory()) {
-                    return true;
-                }
-                String name = f.getName();
-                if (name.endsWith(".servicelistz")) {
-                    return true;
-                }
-                return false;
-            }
-
-            public String getDescription() {
-                return ".servicelistz";
-            }
-        });
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul 1.x Service Lists", "servicelist") );
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
-            if (!fileName.contains(".servicelistz")) {
-                fileName = fileName + ".servicelistz";
+            FileNameExtensionFilter currentfilter = (FileNameExtensionFilter) fc.getFileFilter();
+
+            if (currentfilter.getExtensions()[0].equals("servicelist")){
+
+                /* Ask the user if he really wants to use the older format */
+                int resp = JOptionPane.showConfirmDialog(fc, 
+                        "You have choosed to save the file in the format supported by older versions of Datasoul." + "\n" +
+                        "The service list may contain items not supported by older versions and these items will not be saved."+ "\n" +
+                        "Do you want to continue?",
+                        "Datasoul: Save as an older version", JOptionPane.OK_CANCEL_OPTION);
+                if (resp == JOptionPane.CANCEL_OPTION){
+                    /* If user wants to change the format, give him back the file selection dialog */
+                    saveServiceListAs();
+                    return;
+                }
+
+                if (!fileName.endsWith(".servicelist")){
+                    fileName += ".servicelist";
+                }
+            }else{
+                // Default, newer version
+                if (!fileName.endsWith(".servicelistz")){
+                    fileName += ".servicelistz";
+                }
             }
+
             saveFile();
+
         }
 
     }
@@ -464,11 +493,6 @@ public class ServiceListTable extends ListTable {
             saveServiceListAs();
             return;
         }
-
-        if (!fileName.contains(".servicelistz")) {
-            fileName = fileName + ".servicelistz";
-        }
-
 
         saveFile();
     }

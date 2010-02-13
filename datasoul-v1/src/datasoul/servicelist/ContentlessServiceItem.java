@@ -20,11 +20,25 @@
 package datasoul.servicelist;
 
 import datasoul.datashow.ServiceItem;
+import datasoul.util.ZipWriter;
+import org.w3c.dom.Node;
 
 /**
  *
  * @author samuel
  */
 public class ContentlessServiceItem extends ServiceItem {
+
+    /**
+     * Used when saving a ServiceItem in a format that does not support it,
+     * for example, a ImageListServiceItem in Datasoul 1.x
+     */
+    public static Node writeNotSupportedObject(ServiceItem item, ZipWriter zip) throws Exception{
+
+        ContentlessServiceItem dummy = new ContentlessServiceItem();
+        item.assignTo(dummy);
+        return dummy.writeObject(zip);
+
+    }
 
 }

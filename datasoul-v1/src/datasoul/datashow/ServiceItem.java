@@ -25,7 +25,6 @@ package datasoul.datashow;
 
 import datasoul.config.ConfigObj;
 import datasoul.util.SerializableObject;
-import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -101,14 +100,21 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
     protected int getRowSize(int row){
         return 15;
     }
-    
-    
+
+
     protected void registerProperties() {
         super.registerProperties();
         properties.add("Title");
         properties.add("Template");
         properties.add("Duration");
         properties.add("Notes");
+    }
+
+    public void assignTo(ServiceItem item){
+        item.setTitle(title);
+        item.setTemplate(template);
+        item.setDuration(Integer.toString(duration));
+        item.setNotes(notes);
     }
 
     public int getDuration(){

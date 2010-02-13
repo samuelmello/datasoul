@@ -5,6 +5,7 @@
 
 package datasoul.datashow;
 
+import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.util.ZipReader;
 import datasoul.util.ZipWriter;
 import java.awt.image.BufferedImage;
@@ -59,7 +60,14 @@ public class ImageListServiceItem extends ServiceItem {
 
     @Override
     public Node writeObject(ZipWriter zip) throws Exception {
+
         Node n = super.writeObject(zip);
+
+        /* Support to older versions */
+        if (zip == null){
+            return ContentlessServiceItem.writeNotSupportedObject(this, zip);
+        }
+
         Document doc = n.getOwnerDocument();
         Node nodeList = doc.createElement("ImageList");
 

@@ -21,37 +21,30 @@
 package datasoul.datashow;
 
 import datasoul.DatasoulMainForm;
-import datasoul.util.ShowDialog;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
 
 /**
  *
  * @author  Administrador
  */
 public class ImportServiceItemForm extends javax.swing.JFrame {
-    
+
+    private ServiceListTable serviceListTable;
+
     /** Creates new form ImportServiceItemForm */
     public ImportServiceItemForm() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        serviceListTable = new ServiceListTable();
+        tableServiceList.setModel(serviceListTable);
         setColorRender();
     }
     
     private void setColorRender(){
         ServiceListColorRender cr = new ServiceListColorRender();
-        
-        this.tableServiceList.getColumnModel().getColumn(0).setCellRenderer(cr);
-        this.tableServiceList.getColumnModel().getColumn(0).setPreferredWidth(150);
-        this.tableServiceList.getColumnModel().getColumn(1).setCellRenderer(cr);        
-        this.tableServiceList.getColumnModel().getColumn(1).setPreferredWidth(100);
-        this.tableServiceList.getColumnModel().getColumn(2).setCellRenderer(cr);        
-        this.tableServiceList.getColumnModel().getColumn(2).setPreferredWidth(40);
-        
+
+        for (int i=0; i < this.tableServiceList.getColumnModel().getColumnCount(); i++){
+            this.tableServiceList.getColumnModel().getColumn(i).setCellRenderer(cr);
+        }
     }
     
     /** This method is called from within the constructor to
@@ -162,64 +155,14 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
-            public boolean accept(File f) {
-                if (f.isDirectory()) {
-                    return true;
-                }
-                String name = f.getName();
-                if (name.endsWith(".servicelist")) {
-                    return true;
-                }
-                return false;
-            }
 
-            public String getDescription() {
-                return ".servicelist";
-            }
-        });
-        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
-        fc.setCurrentDirectory(dir);
-        if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION){
-            String fileName = fc.getSelectedFile().getPath();
+        serviceListTable.openServiceList();
 
-            File file = new File(fileName);
-
-            Document dom=null;
-            Node node = null;
-            ServiceListTable slt;
-            try {
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-                //Using factory get an instance of document builder
-                DocumentBuilder db = dbf.newDocumentBuilder();
-
-                //parse using builder to get DOM representation of the XML file
-                dom = db.parse(file);
-
-                //node = dom.getDocumentElement().getChildNodes().item(0);
-                node = dom.getElementsByTagName("ServiceListTable").item(0);
-
-            }catch(Exception e) {
-                ShowDialog.showReadFileError(file, e);
-            }
-
-            slt = new ServiceListTable();
-            try {
-                slt.readObject(node, null);
-            } catch (Exception e) {
-                ShowDialog.showReadFileError(file, e);
-            }
-
-            tableServiceList.setModel(slt);
-            setColorRender();
-        }
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         for(int item:tableServiceList.getSelectedRows())
-            ServiceListTable.getActiveInstance().addItem(tableServiceList.getModel().getValueAt(item,0));        
+            ServiceListTable.getActiveInstance().addItem(serviceListTable.getServiceItem(item));
     }//GEN-LAST:event_btnImportActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
