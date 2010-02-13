@@ -21,12 +21,12 @@
 package datasoul.song;
 
 import datasoul.config.WindowPropConfig;
-import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableColumn;
 import javax.swing.SwingUtilities;
@@ -66,7 +66,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         TableColumn col1 = tableSongList.getColumnModel().getColumn(0);
         col1.setMaxWidth(30);
         col1.setMinWidth(30);
-//        tableSongList.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+
+        tableSongList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
     }
     
     /** This method is called from within the constructor to
