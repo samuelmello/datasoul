@@ -65,6 +65,8 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.SwingWorker;
 
 /**
  *
@@ -176,6 +178,19 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             ObjectManager.getInstance().setDefaultCursor();
         }
     }
+
+    private void goLiveItem(){
+
+        previewItem();
+
+        SwingUtilities.invokeLater(new Runnable(){ 
+            @Override
+            public void run(){
+                preview.goLive();
+            }});
+
+    }
+
 
     public void viewSong(Song song) {
         lblSongName.setText(song.getTitle());
@@ -1272,7 +1287,38 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public static String getFileFormatVersion() {
         return Integer.toString(FILE_FORMAT_VERSION);
     }
-    
+
+    public boolean goToNextServiceItem() {
+       int currentRow = tableServiceList.getSelectedRow();
+       int maxRow = tableServiceList.getRowCount();
+       while (currentRow < maxRow-1){
+           if (tableServiceList.getModel().getValueAt(currentRow+1, 0) instanceof ContentlessServiceItem){
+               currentRow++;
+           }else{
+               tableServiceList.setRowSelectionInterval(currentRow+1,currentRow+1);
+               goLiveItem();
+               return true;
+           }
+        }
+        return false;
+    }
+
+    public boolean goToPreviousServiceItem() {
+        int currentRow = tableServiceList.getSelectedRow();
+        while (currentRow > 0) {
+           if (tableServiceList.getModel().getValueAt(currentRow-1, 0) instanceof ContentlessServiceItem){
+              currentRow--;
+           }else{
+               tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);
+               goLiveItem();
+               return true;
+           }
+        }
+        return false;
+    }
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JMenuItem actAddBible;
     javax.swing.JMenuItem actAddContentlessItem;

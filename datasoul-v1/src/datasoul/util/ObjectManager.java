@@ -27,10 +27,7 @@ import datasoul.DatasoulMainForm;
 import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
-import datasoul.datashow.ServiceListPanel;
-import datasoul.servicelist.ExtServiceListPanel;
 import datasoul.song.AddSongForm;
-import datasoul.song.SongViewerPanel;
 import datasoul.song.SongsSearchPanel;
 import java.awt.Cursor;
 
@@ -55,8 +52,6 @@ public class ObjectManager {
 
     private static ObjectManager instance;
     
-    private ServiceListPanel serviceListPanel;
-    private SongViewerPanel songViewerPanel;
     private SongsSearchPanel songsSearchPanel;
 
     private AuxiliarPanel auxiliarPanel;
@@ -83,20 +78,8 @@ public class ObjectManager {
     
     
     //SONGS PANEL OBJECTS
-    public ServiceListPanel getPraiseListPanel(){
-        return serviceListPanel;
-    }
-    public SongViewerPanel getSongViewerPanel(){
-        return songViewerPanel;
-    }
     public SongsSearchPanel getSongsSearchPanel(){
         return songsSearchPanel;
-    }
-    public void setPraiseListPanel(ServiceListPanel serviceListPanel){
-        this.serviceListPanel = serviceListPanel;
-    }
-    public void setSongViewerPanel(SongViewerPanel songViewerPanel){
-        this.songViewerPanel = songViewerPanel;
     }
     public void setSongsSearchPanel(SongsSearchPanel songsSearchPanel){
         this.songsSearchPanel = songsSearchPanel;
@@ -112,9 +95,6 @@ public class ObjectManager {
     public PreviewPanel getPreviewPanel(){
         return previewPanel;
     }
-    public ServiceListPanel getServiceListPanel(){
-        return serviceListPanel;
-    }
     
     public void setAuxiliarPanel(AuxiliarPanel auxiliarPanel){
         this.auxiliarPanel = auxiliarPanel;
@@ -125,9 +105,6 @@ public class ObjectManager {
     public void setPreviewPanel(PreviewPanel previewPanel){
         this.previewPanel = previewPanel;
     }
-    public void setServiceListPanel(ServiceListPanel serviceListPanel){
-        this.serviceListPanel = serviceListPanel;
-    }    
 
     public int getViewActive() {
         return viewActive;

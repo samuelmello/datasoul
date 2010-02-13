@@ -35,7 +35,6 @@ import javax.swing.text.StyleContext;
  */
 public class ChordsManagerFrame extends javax.swing.JFrame {
     
-    private SongsPanel objectManager;
     private ChordsDB chordsDB;
     private Style chordShapeStyle;
       
@@ -51,14 +50,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         StyleContext sc = new StyleContext();
         Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
         chordShapeStyle = sc.addStyle("chordShapeStyle",null);        
-    }
-
-    public SongsPanel getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(SongsPanel objectManager) {
-        this.objectManager = objectManager;
     }
 
     private void showChord(){

@@ -13,6 +13,7 @@
  */
 
 package datasoul.datashow;
+import datasoul.DatasoulMainForm;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
@@ -220,8 +221,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 int index = serviceItemTable1.getSlideIndex();
                 if (index < count) serviceItemTable1.setSlideIndex(index+1);
                 else {
-                    ServiceListPanel slp = ObjectManager.getInstance().getServiceListPanel();
-                    if (slp.nextServiceItem()) {
+                    if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
                         PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
                         pp.goLive();
                     }
@@ -237,8 +237,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 int index = serviceItemTable1.getSlideIndex();
                 if (index > 0) serviceItemTable1.setSlideIndex(index-1);
                 else {
-                    ServiceListPanel slp = ObjectManager.getInstance().getServiceListPanel();
-                    if (slp.previousServiceItem()) {
+                    if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
                         PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
                         pp.goLive();
                     }

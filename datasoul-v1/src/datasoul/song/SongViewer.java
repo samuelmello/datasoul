@@ -51,7 +51,6 @@ import org.w3c.dom.Node;
  */
 public class SongViewer extends javax.swing.JPanel {
 
-    private SongsPanel objectManager;
     private ArrayList<String> chordsName;
     
     private Style nameStyle;
@@ -482,14 +481,6 @@ public class SongViewer extends javax.swing.JPanel {
     }
 
 
-    public SongsPanel getObjectManager() {
-        return objectManager;
-    }
-
-    public void setObjectManager(SongsPanel objectManager) {
-        this.objectManager = objectManager;
-    }
-    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
