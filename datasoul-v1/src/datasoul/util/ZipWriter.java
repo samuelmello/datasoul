@@ -22,24 +22,44 @@ public class ZipWriter {
 
     private LinkedList<ZipSerializerImage> images;
     private ZipOutputStream zos;
+    private int version;
 
-    public ZipWriter(String filename) throws IOException {
+    public ZipWriter(int version){
+        // Dummy constructor for versions that doesn't support zip yet
+        this.version = version;
+    }
+
+    public ZipWriter(String filename, int version) throws IOException {
         images = new LinkedList<ZipSerializerImage>();
         zos = new ZipOutputStream(new FileOutputStream(filename));
         ZipEntry mainEntry = new ZipEntry("maindata.xml");
         zos.putNextEntry(mainEntry);
+        this.version = version;
     }
 
     public void appendImage(BufferedImage im, String name){
+        if (version < 2){
+            return;
+        }
         ZipSerializerImage zsi = new ZipSerializerImage(im, name);
         images.add(zsi);
     }
 
     public OutputStream getOutputStream(){
-        return zos;
+        if (version < 2)
+            return null;
+        else
+            return zos;
+    }
+
+    public int getVersion(){
+        return version;
     }
 
     public void close() throws IOException {
+
+        if (version < 2)
+            return;
 
         for (ZipSerializerImage zsi : images){
             ZipEntry ze = new ZipEntry(zsi.name);

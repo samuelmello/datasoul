@@ -76,7 +76,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private boolean updateSize = false;
     
-    public static final int FILE_FORMAT_VERSION = 1;
+    public static final int FILE_FORMAT_VERSION = 2;
       
     /**
      * Creates new form DatasoulMainForm

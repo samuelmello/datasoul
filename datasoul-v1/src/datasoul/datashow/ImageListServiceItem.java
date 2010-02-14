@@ -64,7 +64,7 @@ public class ImageListServiceItem extends ServiceItem {
         Node n = super.writeObject(zip);
 
         /* Support to older versions */
-        if (zip == null){
+        if (zip.getVersion() < 2){
             return ContentlessServiceItem.writeNotSupportedObject(this, zip);
         }
 

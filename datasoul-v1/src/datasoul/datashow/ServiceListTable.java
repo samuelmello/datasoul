@@ -362,8 +362,9 @@ public class ServiceListTable extends ListTable {
 
             if (fileName.endsWith(".servicelist")){
                 os = new FileOutputStream(fileName);
+                zip = new ZipWriter(1);
             }else{
-                zip = new ZipWriter(fileName);
+                zip = new ZipWriter(fileName, DatasoulMainForm.FILE_FORMAT_VERSION);
                 os = zip.getOutputStream();
             }
 

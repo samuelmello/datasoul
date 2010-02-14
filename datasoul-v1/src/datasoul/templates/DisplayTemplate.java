@@ -376,7 +376,7 @@ public class DisplayTemplate extends AttributedObject {
             String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
             String filename = path + System.getProperty("file.separator") + this.getName()+".templatez";
 
-            ZipWriter zip = new ZipWriter(filename);
+            ZipWriter zip = new ZipWriter(filename, DatasoulMainForm.FILE_FORMAT_VERSION);
             Node node = this.writeObject(zip);
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
