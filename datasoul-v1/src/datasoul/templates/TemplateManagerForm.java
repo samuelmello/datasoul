@@ -12,7 +12,10 @@
 package datasoul.templates;
 
 import datasoul.util.ObjectManager;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -47,6 +50,7 @@ public class TemplateManagerForm extends javax.swing.JFrame {
         btnDeleteTemplate = new javax.swing.JButton();
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        btnImport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Template Manager");
@@ -108,6 +112,13 @@ public class TemplateManagerForm extends javax.swing.JFrame {
 
         jLabel1.setText("Available Templates");
 
+        btnImport.setText("Import");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,7 +133,9 @@ public class TemplateManagerForm extends javax.swing.JFrame {
                         .addComponent(btnLoad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDeleteTemplate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnImport)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                         .addComponent(btnClose))
                     .addComponent(jLabel1))
                 .addContainerGap())
@@ -139,7 +152,8 @@ public class TemplateManagerForm extends javax.swing.JFrame {
                     .addComponent(btnNew)
                     .addComponent(btnLoad)
                     .addComponent(btnDeleteTemplate)
-                    .addComponent(btnClose))
+                    .addComponent(btnClose)
+                    .addComponent(btnImport))
                 .addContainerGap())
         );
 
@@ -196,9 +210,27 @@ public class TemplateManagerForm extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        JFileChooser fc = new JFileChooser();
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Datasoul 1.x Templates (*.template)", "template"));
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
+        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
+        fc.setCurrentDirectory(dir);
+        fc.setMultiSelectionEnabled(true);
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            for (File f : fc.getSelectedFiles()){
+                DisplayTemplate.importTemplate(f.getAbsolutePath());
+            }
+            TemplateManager.getInstance().refreshAvailableTemplates();
+        }
+
+    }//GEN-LAST:event_btnImportActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDeleteTemplate;
+    private javax.swing.JButton btnImport;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnNew;
     private javax.swing.JLabel jLabel1;

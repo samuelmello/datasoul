@@ -417,8 +417,9 @@ public class ServiceListTable extends ListTable {
 
             if (filename.endsWith(".servicelist")){
                 is = new FileInputStream(filename);
+                zip = new ZipReader(null, 1);
             }else{
-                zip = new ZipReader(filename);
+                zip = new ZipReader(filename, DatasoulMainForm.FILE_FORMAT_VERSION);
                 is = zip.getMainInputStream();
             }
 

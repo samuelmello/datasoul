@@ -31,15 +31,14 @@ import datasoul.util.ZipWriter;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -100,12 +99,25 @@ public class DisplayTemplate extends AttributedObject {
         if (templateCache.containsKey(name)){
             this.assign(templateCache.get(name));
         }else{
-            this.loadFromFile(name);
+
+            String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
+            String filename = path + System.getProperty("file.separator") + name+ ".templatez";
+            this.loadFromFile(filename);
             templateCache.put(name, this);
         }
         
     }
-    
+
+    public static void importTemplate(String filename){
+        DisplayTemplate t = new DisplayTemplate();
+        try {
+            t.loadFromFile(filename);
+            t.save(ObjectManager.getInstance().getDatasoulMainForm().getRootPane());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void assign(DisplayTemplate from){
         
         this.setName(from.getName());
@@ -129,25 +141,44 @@ public class DisplayTemplate extends AttributedObject {
         
     }
     
-    private void loadFromFile(String name) throws Exception{
+    private void loadFromFile(String filename) throws Exception{
         
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-        String filename = path + System.getProperty("file.separator") + name + ".templatez";
-
-        Document dom=null;
-        Node node=null;
         
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         
         //Using factory get an instance of document builder
         DocumentBuilder db = dbf.newDocumentBuilder();
 
+        ZipReader zip;
+        Document dom;
+
         // Open the file
-        ZipReader zip = new ZipReader(filename);
-        dom = db.parse(zip.getMainInputStream());
+        if (filename.endsWith(".template")){
+            // Older version
+            zip = new ZipReader(null, 1);
+            FileInputStream fis = new FileInputStream(filename);
+            GZIPInputStream zis = null;
+            try{
+                zis = new GZIPInputStream(fis);
+            }catch(IOException e){
+                zis = null;
+            }
+            //parse using builder to get DOM representation of the XML file
+            if (zis != null){
+                // file in GZIP format
+                dom = db.parse(zis);
+            }else{
+                // uncompressed file
+                dom = db.parse(filename);
+            }
+
+        }else{
+            // Newer format, zip
+            zip = new ZipReader(filename, DatasoulMainForm.FILE_FORMAT_VERSION);
+            dom = db.parse(zip.getMainInputStream());
+        }
         
-        //node = dom.getDocumentElement().getChildNodes().item(0);
-        node = dom.getElementsByTagName("DisplayTemplate").item(0);
+        Node node = dom.getElementsByTagName("DisplayTemplate").item(0);
 
         this.readObject(node, zip);
         
@@ -162,7 +193,7 @@ public class DisplayTemplate extends AttributedObject {
         }
         setDatasoulFileVersion(DatasoulMainForm.getFileFormatVersion());
     }
-    
+
     private void setResolution(int fromWidth, int fromHeight){
         float fWidth = (float) TEMPLATE_WIDTH / (float) fromWidth;
         float fHeight = (float) TEMPLATE_HEIGHT / (float) fromHeight;
@@ -336,23 +367,7 @@ public class DisplayTemplate extends AttributedObject {
     public void saveAs(JComponent owner) throws Exception {
 
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new javax.swing.filechooser.FileFilter() {
-
-            public boolean accept(File f) {
-                if (f.isDirectory()) {
-                    return true;
-                }
-                String name = f.getName();
-                if (name.endsWith(".templatez")) {
-                    return true;
-                }
-                return false;
-            }
-
-            public String getDescription() {
-                return ".templatez";
-            }
-        });
+        fc.setFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));

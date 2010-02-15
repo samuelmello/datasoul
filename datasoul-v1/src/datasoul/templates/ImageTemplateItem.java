@@ -23,6 +23,7 @@
 
 package datasoul.templates;
 
+import datasoul.util.ImageSerializer;
 import datasoul.util.ZipReader;
 import datasoul.util.ZipWriter;
 import java.awt.AlphaComposite;
@@ -32,8 +33,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import org.w3c.dom.Node;
@@ -283,6 +282,17 @@ public class ImageTemplateItem extends TemplateItem {
         }
     }
 
+    public String getImageInStr() {
+        return ImageSerializer.imageToStr(this.img);
+     }
+
+    public void setImageInStr(String strImage) {
+        img = ImageSerializer.strToImage(strImage);
+        assertImageSize();
+    }
+
+
+
     @Override
     public Node writeObject(ZipWriter zip) throws Exception{
 
@@ -300,6 +310,17 @@ public class ImageTemplateItem extends TemplateItem {
 
     @Override
     public synchronized void readObject(Node nodeIn, ZipReader zip) {
+
+        if (zip.getVersion() < 2){
+
+            properties.add("ImageInStr");
+
+            super.readObject(nodeIn, zip);
+
+            properties.remove("ImageInStr");
+
+            return;
+        }
 
         properties.add("ImageHash");
 

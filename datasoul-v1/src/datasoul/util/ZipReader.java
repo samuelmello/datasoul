@@ -5,6 +5,7 @@
 
 package datasoul.util;
 
+import datasoul.DatasoulMainForm;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;
@@ -17,12 +18,21 @@ import java.util.zip.ZipFile;
 public class ZipReader {
 
     private ZipFile zf;
+    private int version;
 
-    public ZipReader(String filename) throws IOException{
-        zf = new ZipFile(filename);
+    public ZipReader(String filename, int version) throws IOException{
+
+        if (filename != null)
+            zf = new ZipFile(filename);
+
+        this.version = version;
     }
 
     public InputStream getInputStream(String name) throws IOException{
+
+        if (version < 2)
+            return null;
+
         ZipEntry ze = zf.getEntry(name);
 
         if (ze == null){
@@ -37,7 +47,13 @@ public class ZipReader {
     }
 
     public void close() throws IOException {
-        zf.close();
+        if (zf != null)
+            zf.close();
     }
+
+    public int getVersion(){
+        return version;
+    }
+
 
 }
