@@ -43,6 +43,7 @@ import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.song.AddSongForm;
 import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
+import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateComboBox;
 import datasoul.templates.TemplateManager;
 import datasoul.templates.TemplateManagerForm;
@@ -50,6 +51,7 @@ import datasoul.util.KeyListner;
 import datasoul.util.ObjectManager;
 import datasoul.util.Splash;
 import java.awt.AWTEvent;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.io.File;
@@ -61,12 +63,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
-import javax.swing.SwingWorker;
 
 /**
  *
@@ -98,8 +104,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         tableServiceList.setDraggable(false);
 
-        TemplateComboBox comboBox = new TemplateComboBox();
-        this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new DefaultCellEditor(comboBox));
+        //TemplateComboBox comboBox = new TemplateComboBox();
+        //this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new DefaultCellEditor(comboBox));
+        this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new TemplateCellEditor());
 
 
         ServiceListColorRender cr = new ServiceListColorRender();
@@ -1383,5 +1390,74 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JTextArea txtNotes;
     javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
-    
+
+
+    private class TemplateCellEditor extends DefaultCellEditor implements ActionListener {
+
+        private TemplateComboBox cbSong;
+        private TemplateComboBox cbText;
+        private TemplateComboBox cbImage;
+        private TemplateComboBox cbAll;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            Object source = e.getSource();
+            if (source instanceof JComboBox){
+                this.setValue( ((JComboBox) source).getSelectedItem() );
+            }
+
+        }
+
+        public TemplateCellEditor(){
+            super(new JTextField());
+
+            cbSong = new TemplateComboBox();
+            cbSong.setTargetContent(DisplayTemplate.TARGET_CONTENT_SONG);
+            cbSong.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
+            cbSong.addActionListener(this);
+
+            cbText = new TemplateComboBox();
+            cbText.setTargetContent(DisplayTemplate.TARGET_CONTENT_TEXT);
+            cbText.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
+            cbText.addActionListener(this);
+
+            cbImage = new TemplateComboBox();
+            cbImage.setTargetContent(DisplayTemplate.TARGET_CONTENT_IMAGES);
+            cbImage.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
+            cbImage.addActionListener(this);
+
+            cbAll = new TemplateComboBox();
+            cbAll.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
+            cbAll.addActionListener(this);
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column){
+            
+            TemplateComboBox cbRet;
+            ServiceItem item = (ServiceItem) ServiceListTable.getActiveInstance().getServiceItem(row);
+
+            if ( item instanceof ImageListServiceItem ){
+                cbRet = cbImage;
+            }else if ( item instanceof Song ){
+                cbRet = cbSong;
+            }else if ( item instanceof TextServiceItem ){
+                cbRet = cbText;
+            }else{
+                cbRet = cbAll;
+            }
+
+            cbRet.setSelectedItem(value);
+
+            return cbRet;
+        }
+
+        protected void setValue (Object o){
+            this.delegate.setValue(o);
+            stopCellEditing();
+        }
+
+    }
+
 }

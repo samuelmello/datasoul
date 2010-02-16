@@ -58,6 +58,11 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
             DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(i);
             if (targetContent == -1 || targetContent == meta.getTargetContentIdx())
                 this.addItem(meta.getName());
+
+            // special case: for Songs, show also all Text templates
+            if (targetContent == DisplayTemplate.TARGET_CONTENT_SONG &&
+                    meta.getTargetContentIdx() == DisplayTemplate.TARGET_CONTENT_TEXT)
+                this.addItem(meta.getName());
             
         }
         for(Object obj:objs){
