@@ -90,6 +90,8 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnAddText = new javax.swing.JButton();
         btnAddImage = new javax.swing.JButton();
         btnAddTimer = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        btnTemplate = new javax.swing.JButton();
         jSplitPane1 = new javax.swing.JSplitPane();
         panelProperties = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -190,6 +192,19 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnAddTimer);
+        jToolBar1.add(jSeparator2);
+
+        btnTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
+        btnTemplate.setText("Template Properties");
+        btnTemplate.setFocusable(false);
+        btnTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTemplate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTemplateActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnTemplate);
 
         jSplitPane1.setBorder(null);
         jSplitPane1.setDividerLocation(850);
@@ -413,6 +428,10 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         templateEditorPanel1.addItem(timer);
     }//GEN-LAST:event_btnAddTimerActionPerformed
 
+    private void btnTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplateActionPerformed
+        templateEditorPanel1.unselectItem();
+    }//GEN-LAST:event_btnTemplateActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImage;
     private javax.swing.JButton btnAddText;
@@ -423,6 +442,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSaveAs;
+    private javax.swing.JButton btnTemplate;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
@@ -430,6 +450,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JTable jTableProperties;
     private javax.swing.JToolBar jToolBar1;

@@ -74,7 +74,17 @@ public class DisplayTemplate extends AttributedObject {
     public static final int KEEP_BG_NO = 1;
     public static final String[] KEEP_BG_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No")};
     private static JComboBox cbKeepBG;
-    
+
+    private int targetContent;
+    public static final int TARGET_CONTENT_TEXT = 0;
+    public static final int TARGET_CONTENT_SONG = 1;
+    public static final int TARGET_CONTENT_MONITOR = 2;
+    public static final int TARGET_CONTENT_ALERT = 3;
+    public static final int TARGET_CONTENT_IMAGES = 4;
+    public static final String [] TARGET_CONTENT_TABLE = {"Text", "Song", "Monitor", "Alert", "Images" };
+    private static JComboBox cbTargetContent;
+
+
     /** Creates an empty DisplayTemplate */
     public DisplayTemplate() {
         super();
@@ -88,6 +98,14 @@ public class DisplayTemplate extends AttributedObject {
                 cbKeepBG.addItem(KEEP_BG_TABLE[i]);
         }
         registerEditorComboBox("TransitionKeepBGIdx", cbKeepBG);
+
+        if (cbTargetContent == null){
+            cbTargetContent = new JComboBox();
+            for (int i=0; i<TARGET_CONTENT_TABLE.length; i++)
+                cbTargetContent.addItem(TARGET_CONTENT_TABLE[i]);
+        }
+        registerEditorComboBox("TargetContentIdx", cbTargetContent);
+
     }
 
     /**
@@ -122,6 +140,7 @@ public class DisplayTemplate extends AttributedObject {
         
         this.setName(from.getName());
         this.setTransitionKeepBG(from.getTransitionKeepBG());
+        this.setTargetContentIdx(from.getTargetContentIdx());
         this.items.clear();
         for (TemplateItem t : from.getItems()){
             
@@ -191,6 +210,12 @@ public class DisplayTemplate extends AttributedObject {
         if (getDatasoulFileVersion() < 1){
             setResolution(640, 480);
         }
+
+        // version 1.x don't have target content
+        if (getDatasoulFileVersion() < 2){
+            guessTargetContent();
+        }
+
         setDatasoulFileVersion(DatasoulMainForm.getFileFormatVersion());
     }
 
@@ -212,6 +237,8 @@ public class DisplayTemplate extends AttributedObject {
         registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template_Name"));
         properties.add("TransitionKeepBGIdx");
         registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Transition_Keep_Background"));
+        properties.add("TargetContentIdx");
+        registerDisplayString("TargetContentIdx", "Target Content");
     }
     
     public String getName(){
@@ -396,7 +423,6 @@ public class DisplayTemplate extends AttributedObject {
             Document doc = node.getOwnerDocument();
             doc.appendChild( node);                        // Add Root to Document
 
-
             Source source = new DOMSource(doc);
 
             // Prepare the output file
@@ -407,23 +433,17 @@ public class DisplayTemplate extends AttributedObject {
             xformer.setOutputProperty(OutputKeys.INDENT, "yes");
             xformer.transform(source, result);
 
+            // Now, store meta data
+            DisplayTemplateMetadata meta = new DisplayTemplateMetadata(this);
+            zip.startMetadata();
+            meta.save(zip);
+
+
+            // Done, write images and close it
             zip.close();
 
             templateCache.put(this.getName(), this);
         }
-    }
-    
-
-    public void cleanUp(){
-        // clean up
-        for (TemplateItem t : items ){
-            if (t instanceof TextTemplateItem) {
-                if (! ((TextTemplateItem)t).getContent().equals(TextTemplateItem.CONTENT_STATIC) ){
-                    ((TextTemplateItem)t).setText(TextTemplateItem.DEFAULT_TEXT);
-                }
-            }                
-        }
-        
     }
     
     public static void deleteTemplate(String name){
@@ -447,7 +467,6 @@ public class DisplayTemplate extends AttributedObject {
         }
     }
     
-    
     public int getTransitionKeepBGIdx(){
         return transitionKeepBG;
     }
@@ -455,6 +474,59 @@ public class DisplayTemplate extends AttributedObject {
     public String getTransitionKeepBG(){
         return KEEP_BG_TABLE[transitionKeepBG];
     }
+
+    public void setTargetContentIdx(int i){
+        this.targetContent = i;
+        firePropChanged("TargetContentIdx");
+    }
+
+    public void setTargetContentIdx(String i){
+        setTargetContentIdx(Integer.parseInt(i));
+    }
+
+    public void setTargetContent(String str){
+        for (int i=0; i<TARGET_CONTENT_TABLE.length; i++){
+            if (str.equalsIgnoreCase(TARGET_CONTENT_TABLE[i])){
+                setTargetContentIdx(i);
+            }
+        }
+    }
+
+    public int getTargetContentIdx(){
+        return this.targetContent;
+    }
+
+    public String getTargetContent(){
+        return TARGET_CONTENT_TABLE[this.targetContent];
+    }
+
+    /* used to set target content for templates created with older versions of datasoul */
+    private void guessTargetContent(){
+        for (TemplateItem t : items){
+            if (t instanceof TextTemplateItem){
+                int content = ((TextTemplateItem) t).getContentIdx();
+
+                if (content == TextTemplateItem.CONTENT_ALERT){
+                    this.setTargetContentIdx(TARGET_CONTENT_ALERT);
+                    return;
+                }
+                if (content == TextTemplateItem.CONTENT_CLOCK ||
+                    content == TextTemplateItem.CONTENT_TIMER){
+                    this.setTargetContentIdx(TARGET_CONTENT_MONITOR);
+                    return;
+                }
+                if (content == TextTemplateItem.CONTENT_SONGAUTHOR ||
+                    content == TextTemplateItem.CONTENT_SONGSOURCE ||
+                    content == TextTemplateItem.CONTENT_COPYRIGHT){
+                    this.setTargetContentIdx(TARGET_CONTENT_SONG);
+                    return;
+                }
+            }
+        }
+        /* For format version < 2 we do not have Images templates yet */
+        /* If none of the above matched, leave it as text */
+    }
+
 
     public boolean useTimer(){
         for (TemplateItem ti : items){

@@ -21,7 +21,7 @@
 package datasoul.datashow;
 
 import datasoul.config.ConfigObj;
-import datasoul.templates.TemplateComboBox;
+import datasoul.templates.DisplayTemplate;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
@@ -39,8 +39,8 @@ public class AlertControlPanel extends javax.swing.JPanel {
     /** Creates new form AlertControlPanel */
     public AlertControlPanel() {
         initComponents();
-        cbMainTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
-        cbMonitorTemplate.setFilterType(TemplateComboBox.FILTER_ALERT);
+        cbMainTemplate.setTargetContent(DisplayTemplate.TARGET_CONTENT_ALERT);
+        cbMonitorTemplate.setTargetContent(DisplayTemplate.TARGET_CONTENT_ALERT);
         history = new ArrayList<String>();
         cbHistory.removeAllItems();
         if (!ConfigObj.getInstance().getMonitorOutput()){

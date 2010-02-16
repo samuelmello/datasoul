@@ -99,7 +99,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         tableServiceList.setDraggable(false);
 
         TemplateComboBox comboBox = new TemplateComboBox();
-        comboBox.setFilterType(TemplateComboBox.FILTER_GENERAL);
         this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new DefaultCellEditor(comboBox));
 
 

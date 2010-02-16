@@ -35,11 +35,15 @@ import javax.swing.table.TableModel;
  */
 public class TemplateManager implements TableModel {
     
-    private static ArrayList<String> availableTemplates = new ArrayList<String>();
+    private static ArrayList<DisplayTemplateMetadata> availableTemplates = new ArrayList<DisplayTemplateMetadata>();
     private static TemplateManager instance = null;
     private ArrayList<javax.swing.event.TableModelListener> listeners;
    
-    
+    public static final int COLUMN_NAME = 0;
+    public static final int COLUMN_TARGET_CONTENT = 1;
+    public static final int COLUMN_COUNT = 2;
+
+
     /** Creates a new instance of TemplateManager */
     private TemplateManager() {
         listeners = new ArrayList<javax.swing.event.TableModelListener>();
@@ -62,11 +66,17 @@ public class TemplateManager implements TableModel {
     }
 
     public int getColumnCount() {
-        return 1;
+        return COLUMN_COUNT;
     }
 
     public String getColumnName(int columnIndex) {
-        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
+        switch (columnIndex){
+            case COLUMN_NAME:
+                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
+            case COLUMN_TARGET_CONTENT:
+                return "Content";
+        }
+        return "";
     }
 
     public Class<?> getColumnClass(int columnIndex) {
@@ -78,7 +88,15 @@ public class TemplateManager implements TableModel {
     }
 
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return availableTemplates.get(rowIndex);
+        switch (columnIndex){
+            case COLUMN_NAME:
+                return availableTemplates.get(rowIndex).getName();
+            case COLUMN_TARGET_CONTENT:
+                return availableTemplates.get(rowIndex).getTargetContent();
+        }
+        return "";
+
+
     }
 
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
@@ -114,7 +132,11 @@ public class TemplateManager implements TableModel {
             
             for(int i=0; i<size;i++){
                 if(files[i].endsWith(".templatez")){
-                    availableTemplates.add( files[i].substring(0, files[i].indexOf(".templatez"))) ;
+                    try {
+                        availableTemplates.add(new DisplayTemplateMetadata(file.getAbsolutePath()+File.separator+files[i]));
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         }
@@ -132,6 +154,10 @@ public class TemplateManager implements TableModel {
         DisplayTemplate.deleteTemplate(templateName);
         refreshAvailableTemplates();
         
+    }
+
+    public DisplayTemplateMetadata getDisplayTemplateMetadata(int i){
+        return availableTemplates.get(i);
     }
    
     

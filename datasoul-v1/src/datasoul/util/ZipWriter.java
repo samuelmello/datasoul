@@ -37,6 +37,11 @@ public class ZipWriter {
         this.version = version;
     }
 
+    public void startMetadata() throws IOException{
+        ZipEntry metaEntry = new ZipEntry("metadata.xml");
+        zos.putNextEntry(metaEntry);
+    }
+
     public void appendImage(BufferedImage im, String name){
         if (version < 2){
             return;

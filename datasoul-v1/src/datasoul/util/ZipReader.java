@@ -46,6 +46,10 @@ public class ZipReader {
         return getInputStream("maindata.xml");
     }
 
+    public InputStream getMetadataInputStream() throws IOException{
+        return getInputStream("metadata.xml");
+    }
+
     public void close() throws IOException {
         if (zf != null)
             zf.close();

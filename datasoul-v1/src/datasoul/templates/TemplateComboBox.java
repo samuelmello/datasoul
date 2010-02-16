@@ -23,11 +23,9 @@
 
 package datasoul.templates;
 
-import datasoul.config.ConfigObj;
 import javax.swing.JComboBox;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
-import javax.swing.table.TableModel;
 
 /**
  *
@@ -35,28 +33,15 @@ import javax.swing.table.TableModel;
  */
 public class TemplateComboBox extends JComboBox implements TableModelListener{
     
-    private TableModel model;
-    
-    public static final int FILTER_NONE = 0;
-    public static final int FILTER_MONITOR = 1;
-    public static final int FILTER_ALERT = 2;
-    public static final int FILTER_GENERAL = 3;
-    
-    private int filterType;
+    private int targetContent;
     
     private boolean updating;
     
     /** Creates a new instance of templateComboBox */
     public TemplateComboBox() {
-        TemplateManager manager = TemplateManager.getInstance();
-        //manager.refreshAvailableTemplates();
-        this.setModel( manager );
+        targetContent = -1;
+        TemplateManager.getInstance().addTableModelListener(this);
         populateList();        
-    }
-
-    private void setModel(TableModel model){
-        this.model = model;
-        model.addTableModelListener(this);
     }
 
     public void tableChanged(TableModelEvent e) {
@@ -67,30 +52,12 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
         
         updating = true;
                 
-        String filter = null;
-        
-        switch (filterType){
-            case FILTER_MONITOR:
-                filter = ConfigObj.getInstance().getMonitorTemplateFilter().toLowerCase();
-                break;
-                
-            case FILTER_ALERT:
-                filter = ConfigObj.getInstance().getAlertTemplateFilter().toLowerCase();
-                break;
-
-            case FILTER_GENERAL:
-                filter = ConfigObj.getInstance().getGeneralTemplateFilter().toLowerCase();
-                break;
-
-        }
-        
         Object[]  objs = this.getSelectedObjects();
         this.removeAllItems();
-        for(int i=0; i<model.getRowCount(); i++){
-            String strItem = model.getValueAt(i,0).toString();
-            if ( filter == null || filter.equals("") || strItem.toLowerCase().contains(filter)){
-                this.addItem(strItem);
-            }
+        for(int i=0; i<TemplateManager.getInstance().getRowCount(); i++){
+            DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(i);
+            if (targetContent == -1 || targetContent == meta.getTargetContentIdx())
+                this.addItem(meta.getName());
             
         }
         for(Object obj:objs){
@@ -103,13 +70,13 @@ public class TemplateComboBox extends JComboBox implements TableModelListener{
         return updating;
     }
     
-    public void setFilterType(int filterType){
-        this.filterType = filterType;
+    public void setTargetContent(int content){
+        this.targetContent = content;
         populateList();
     }
     
-    public int getFilterType(){
-        return filterType;
+    public int getTargetContent(){
+        return targetContent;
     }
 }
 

@@ -13,15 +13,18 @@ package datasoul.templates;
 
 import datasoul.util.ObjectManager;
 import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
  * @author samuel
  */
-public class TemplateManagerForm extends javax.swing.JFrame {
+public class TemplateManagerForm extends javax.swing.JFrame implements ListSelectionListener {
 
     /** Creates new form TemplateManagerForm */
     public TemplateManagerForm() {
@@ -31,6 +34,7 @@ public class TemplateManagerForm extends javax.swing.JFrame {
         manager.refreshAvailableTemplates();
         jTableTemplates.setModel( manager );
 
+        jTableTemplates.getSelectionModel().addListSelectionListener(this);
 
     }
 
@@ -51,6 +55,8 @@ public class TemplateManagerForm extends javax.swing.JFrame {
         btnClose = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btnImport = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        lblPreview = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Template Manager");
@@ -119,6 +125,10 @@ public class TemplateManagerForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Preview:");
+
+        lblPreview.setText("      ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -126,7 +136,6 @@ public class TemplateManagerForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNew)
                         .addGap(18, 18, 18)
@@ -135,18 +144,29 @@ public class TemplateManagerForm extends javax.swing.JFrame {
                         .addComponent(btnDeleteTemplate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnImport)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
                         .addComponent(btnClose))
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPreview)
+                            .addComponent(jLabel2))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblPreview))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
@@ -234,8 +254,20 @@ public class TemplateManagerForm extends javax.swing.JFrame {
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnNew;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTemplates;
+    private javax.swing.JLabel lblPreview;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void valueChanged(ListSelectionEvent arg0) {
+        if (jTableTemplates.getSelectedRow() >= 0){
+
+            DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(jTableTemplates.getSelectedRow());
+            ImageIcon icon = new ImageIcon(meta.getMiniImage());
+            lblPreview.setIcon(icon);
+        }
+    }
 
 }
