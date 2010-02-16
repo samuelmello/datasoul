@@ -226,7 +226,6 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             String prop = properties.get(row);
             
             if ( propEditors.containsKey( prop ) ){
-                //super.getTableCellEditorComponent (table, value, isSelected, row, column);
                 Component c = propEditors.get( properties.get(row) );
                 if (c instanceof JComboBox){
                     ((JComboBox)c).setSelectedItem(value);

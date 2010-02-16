@@ -267,6 +267,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(jTableTemplates.getSelectedRow());
             ImageIcon icon = new ImageIcon(meta.getMiniImage());
             lblPreview.setIcon(icon);
+            lblPreview.setText("");
         }
     }
 

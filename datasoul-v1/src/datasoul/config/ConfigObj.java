@@ -45,9 +45,6 @@ public class ConfigObj extends AbstractConfig {
     private String monitorOutputSizeWidth;
     private String monitorOutputSizeHeight;
     private int clockMode;    
-    private String monitorTemplateFilter;
-    private String alertTemplateFilter;
-    private String generalTemplateFilter;
     private String templateText;
     private String storageLoc;
     
@@ -77,8 +74,6 @@ public class ConfigObj extends AbstractConfig {
 
     protected void registerProperties() {
         super.registerProperties();
-        //properties.add("MainDisplayEngine");
-        //properties.add("MonitorDisplayEngine");
         properties.add("MainOutputIdx");
         properties.add("MainOutputPositionLeft");
         properties.add("MainOutputPositionTop");
@@ -91,9 +86,6 @@ public class ConfigObj extends AbstractConfig {
         properties.add("MonitorOutputSizeHeight");
         properties.add("TemplateText");
         properties.add("ClockModeIdx");        
-        properties.add("MonitorTemplateFilter");
-        properties.add("AlertTemplateFilter");
-        properties.add("GeneralTemplateFilter");
         properties.add("StorageLoc");
     }
     
@@ -244,47 +236,18 @@ public class ConfigObj extends AbstractConfig {
         // keep for backward compatibility
     }
 
-    
-
     public void setMonitorTemplateFilter(String monitorTemplateFilter){
-        this.monitorTemplateFilter = monitorTemplateFilter;
-        TemplateManager.getInstance().tableModelChanged();
+        // keep for backward compatibility
     }
 
-    public String getMonitorTemplateFilter(){
-        if (monitorTemplateFilter == null){
-            return "";
-        }else{
-            return monitorTemplateFilter;
-        }
-    }
-    
     public void setAlertTemplateFilter(String alertTemplateFilter){
-        this.alertTemplateFilter = alertTemplateFilter;
-        TemplateManager.getInstance().tableModelChanged();
+        // keep for backward compatibility
     }
     
-    public String getAlertTemplateFilter(){
-        if (alertTemplateFilter == null){
-            return "";
-        }else{
-            return alertTemplateFilter;
-        }
-    }
-
     public void setGeneralTemplateFilter(String generalTemplateFilter){
-        this.generalTemplateFilter = generalTemplateFilter;
-        TemplateManager.getInstance().tableModelChanged();
+        // keep for backward compatibility
     }
     
-    public String getGeneralTemplateFilter(){
-        if (generalTemplateFilter == null){
-            return "";
-        }else{
-            return generalTemplateFilter;
-        }
-    }
-
     public String getTemplateText(){
         return templateText;
     }
