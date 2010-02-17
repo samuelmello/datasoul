@@ -24,6 +24,7 @@ import datasoul.util.AttributedObject;
 import datasoul.util.ShowDialog;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -48,6 +49,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     private JTable propTable;
     private DisplayTemplate template;
     private JLabel activeItemLabel;
+    private TemplateEditorFrame editorFrame;
     
     /** Creates new form TemplateEditorPanel */
     public TemplateEditorPanel() {
@@ -240,6 +242,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     public void setEditorFrame(TemplateEditorFrame prop){
         this.propTable = prop.getPropertiesTable();
         this.activeItemLabel = prop.getActiveItemLabel();
+        this.editorFrame = prop;
         // NetBeans IDE does not works well when creating 
         // objects in the constructor. So, we allocate the first template here
         if (template == null){
@@ -260,6 +263,15 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
     public void tableChanged(TableModelEvent e) {
+        if (template.getWidth() != this.getWidth() || 
+            template.getWidth() != this.getHeight() ){
+            Dimension d = new Dimension(template.getWidth(), template.getHeight());
+            this.setMaximumSize(d);
+            this.setMinimumSize(d);
+            this.setPreferredSize(d);
+            this.setSize(d);
+            this.editorFrame.getRootPane().revalidate();
+        }
         this.repaint();
     }
     
@@ -334,6 +346,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             selectedItem = null;
             
             template = TemplateManager.getInstance().newDisplayTemplate(templatename);
+            template.addTableModelListener(this);
            
             for (TemplateItem t : template.getItems()){
                 t.addTableModelListener(this);
@@ -358,6 +371,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             // Create a new one
             selectedItem = null;
             template = new DisplayTemplate();
+            template.addTableModelListener(this);
             propTable.setModel(template);
             if (template.getName() != null){
                 activeItemLabel.setText(template.getName());
@@ -370,6 +384,14 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             e.printStackTrace();
             JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_create_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
         }
+    }
+
+    public void close(){
+        template.removeTableModelListener(this);
+        for (TemplateItem t : template.getItems()){
+            t.removeTableModelListener(this);
+        }
+        editorFrame = null;
     }
     
 }
