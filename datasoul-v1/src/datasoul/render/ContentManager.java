@@ -49,11 +49,11 @@ public class ContentManager {
     /** Creates a new instance of ContentManager */
     private ContentManager() {
         if (ConfigObj.getInstance().getMainOutput() ){
-            mainRender = new ContentRender( ConfigObj.getInstance().getMainOutputSizeWidthAsInt(), ConfigObj.getInstance().getMainOutputSizeHeightAsInt());
+            mainRender = new ContentRender( ConfigObj.getInstance().getMainRenderWidth(), ConfigObj.getInstance().getMainRenderHeight());
         }
 
         if ( ConfigObj.getInstance().getMonitorOutput() ){
-            monitorRender = new ContentRender( ConfigObj.getInstance().getMonitorOutputSizeWidthAsInt(), ConfigObj.getInstance().getMonitorOutputSizeHeightAsInt());
+            monitorRender = new ContentRender( ConfigObj.getInstance().getMonitorRenderWidth(), ConfigObj.getInstance().getMonitorRenderHeight());
         }
 
         previewRender = new ContentRender(PREVIEW_WIDTH, getPreviewHeight());

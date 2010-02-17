@@ -23,6 +23,7 @@
 
 package datasoul.config;
 
+import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
 import java.util.ArrayList;
 
@@ -47,7 +48,9 @@ public class ConfigObj extends AbstractConfig {
     private int clockMode;    
     private String templateText;
     private String storageLoc;
-    
+
+    private int qualityMain;
+    private int qualityMonitor;
     
     public static final int CLOCKMODE_24_SEC = 0;
     public static final int CLOCKMODE_24_NOSEC = 1;
@@ -55,9 +58,18 @@ public class ConfigObj extends AbstractConfig {
     public static final int CLOCKMODE_12_NOSEC = 3;
     public static final String[] CLOCKMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24_Hours_with_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24_Hours_without_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM_with_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM_without_Seconds")};
 
+    public static final int QUALITY_640 = 0;
+    public static final int QUALITY_800 = 1;
+    public static final int QUALITY_1024 = 2;
+    public static final int QUALITY_ORIGINAL = 3;
+    public static final String[] QUALITY_TABLE = { "Fast (640 px)", "Normal (800 px)", "High (1024 px)", "Maximum" };
+
     
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
+        // Default quality:
+        this.qualityMain = QUALITY_800;
+        this.qualityMonitor = QUALITY_800;
         load("datasoul.config");
     }
     
@@ -87,6 +99,8 @@ public class ConfigObj extends AbstractConfig {
         properties.add("TemplateText");
         properties.add("ClockModeIdx");        
         properties.add("StorageLoc");
+        properties.add("QualityMainIdx");
+        properties.add("QualityMonitorIdx");
     }
     
     public ArrayList<String> getProperties(){
@@ -138,7 +152,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public int getMainOutputSizeWidthAsInt() {
-        int ret = 800;
+        int ret = DisplayTemplate.TEMPLATE_WIDTH;
         try {
             ret = Integer.parseInt(mainOutputSizeWidth);
         }catch(Exception e){
@@ -156,7 +170,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public int getMainOutputSizeHeightAsInt() {
-        int ret = 600;
+        int ret = DisplayTemplate.TEMPLATE_HEIGHT;
         try {
             ret = Integer.parseInt(mainOutputSizeHeight);
         }catch(Exception e){
@@ -214,7 +228,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public int getMonitorOutputSizeWidthAsInt() {
-        int ret = 800;
+        int ret = DisplayTemplate.TEMPLATE_WIDTH;
         try {
             ret = Integer.parseInt(monitorOutputSizeWidth);
         }catch(Exception e){
@@ -232,7 +246,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public int getMonitorOutputSizeHeightAsInt() {
-        int ret = 600;
+        int ret = DisplayTemplate.TEMPLATE_HEIGHT;
         try {
             ret = Integer.parseInt(monitorOutputSizeHeight);
         }catch(Exception e){
@@ -303,5 +317,120 @@ public class ConfigObj extends AbstractConfig {
     public void setStorageLoc(String storageLoc){
         this.storageLoc = storageLoc;
     }
-    
+
+    public void setQualityMainIdx(int i){
+        this.qualityMain = i;
+    }
+
+    public void setQualityMainIdx(String i){
+        setQualityMainIdx(Integer.parseInt(i));
+    }
+
+    public void setQualityMain(String str){
+        for (int i=0; i<QUALITY_TABLE.length; i++){
+            if (str.equalsIgnoreCase(QUALITY_TABLE[i])){
+                setQualityMainIdx(i);
+            }
+        }
+    }
+
+    public int getQualityMainIdx(){
+        return this.qualityMain;
+    }
+
+    public String getQualityMain(){
+        return QUALITY_TABLE[this.qualityMain];
+    }
+
+    public void setQualityMonitorIdx(int i){
+        this.qualityMonitor = i;
+    }
+
+    public void setQualityMonitorIdx(String i){
+        setQualityMonitorIdx(Integer.parseInt(i));
+    }
+
+    public void setQualityMonitor(String str){
+        for (int i=0; i<QUALITY_TABLE.length; i++){
+            if (str.equalsIgnoreCase(QUALITY_TABLE[i])){
+                setQualityMonitorIdx(i);
+            }
+        }
+    }
+
+    public int getQualityMonitorIdx(){
+        return this.qualityMonitor;
+    }
+
+    public String getQualityMonitor(){
+        return QUALITY_TABLE[this.qualityMonitor];
+    }
+
+    public int getMainRenderWidth(){
+
+        int ret = getMainOutputSizeWidthAsInt();
+
+        switch(qualityMain){
+            case QUALITY_640:
+                if (ret > 640)
+                    ret = 640;
+                break;
+            case QUALITY_800:
+                if (ret > 800)
+                    ret = 800;
+                break;
+            case QUALITY_1024:
+                if (ret > 1024)
+                    ret = 1024;
+                break;
+            case QUALITY_ORIGINAL:
+                break;
+        }
+
+        return ret;
+    }
+
+    public int getMainRenderHeight(){
+
+        float renderwidth = getMainRenderWidth();
+        float sizewidth = getMainOutputSizeWidthAsInt();
+        float sizeheight = getMainOutputSizeHeightAsInt();
+
+        return (int) (renderwidth * (sizeheight / sizewidth));
+    }
+
+    public int getMonitorRenderWidth(){
+
+        int ret = getMonitorOutputSizeWidthAsInt();
+
+        switch(qualityMonitor){
+            case QUALITY_640:
+                if (ret > 640)
+                    ret = 640;
+                break;
+            case QUALITY_800:
+                if (ret > 800)
+                    ret = 800;
+                break;
+            case QUALITY_1024:
+                if (ret > 1024)
+                    ret = 1024;
+                break;
+            case QUALITY_ORIGINAL:
+                break;
+        }
+
+        return ret;
+    }
+
+    public int getMonitorRenderHeight(){
+
+        float renderwidth = getMonitorRenderWidth();
+        float sizewidth = getMonitorOutputSizeWidthAsInt();
+        float sizeheight = getMonitorOutputSizeHeightAsInt();
+
+        return (int) (renderwidth * (sizeheight / sizewidth));
+    }
+
+
 }
