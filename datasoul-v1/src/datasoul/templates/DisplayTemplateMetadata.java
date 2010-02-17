@@ -183,4 +183,8 @@ public class DisplayTemplateMetadata extends SerializableObject {
 
     }
 
+    public void setFilename(String f){
+        this.filename = f;
+    }
+
 }

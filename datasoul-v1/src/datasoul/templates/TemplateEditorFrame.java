@@ -364,7 +364,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         try{
             ObjectManager.getInstance().setBusyCursor();
             save();
-            TemplateManager.getInstance().refreshAvailableTemplates();
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
@@ -380,7 +379,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         try{
             ObjectManager.getInstance().setBusyCursor();
             saveAs();
-            TemplateManager.getInstance().refreshAvailableTemplates();
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }

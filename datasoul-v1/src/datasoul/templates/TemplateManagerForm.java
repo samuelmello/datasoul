@@ -31,7 +31,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         initComponents();
 
         TemplateManager manager = TemplateManager.getInstance();
-        manager.refreshAvailableTemplates();
         jTableTemplates.setModel( manager );
 
         jTableTemplates.getSelectionModel().addListSelectionListener(this);
@@ -128,6 +127,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         jLabel2.setText("Preview:");
 
         lblPreview.setText("      ");
+        lblPreview.setMaximumSize(new java.awt.Dimension(100, 500));
+        lblPreview.setMinimumSize(new java.awt.Dimension(100, 15));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,7 +152,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPreview)
+                            .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
                 .addContainerGap())
         );
@@ -165,7 +166,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPreview))
+                        .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -194,7 +195,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                     f.setVisible(true);
                 }
             }
-            TemplateManager.getInstance().refreshAvailableTemplates();
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
@@ -242,7 +242,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             for (File f : fc.getSelectedFiles()){
                 DisplayTemplate.importTemplate(f.getAbsolutePath());
             }
-            TemplateManager.getInstance().refreshAvailableTemplates();
         }
 
     }//GEN-LAST:event_btnImportActionPerformed
@@ -268,6 +267,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             ImageIcon icon = new ImageIcon(meta.getMiniImage());
             lblPreview.setIcon(icon);
             lblPreview.setText("");
+        }else{
+            lblPreview.setIcon(null);
         }
     }
 

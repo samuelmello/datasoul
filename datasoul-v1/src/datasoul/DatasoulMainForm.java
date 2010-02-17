@@ -1241,8 +1241,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         TimerManager.getInstance();
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Creating_user_interface..."));
 
-        TemplateManager.getInstance().refreshAvailableTemplates();
-
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_application..."));

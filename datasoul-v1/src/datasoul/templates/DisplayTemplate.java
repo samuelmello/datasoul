@@ -24,6 +24,7 @@
 package datasoul.templates;
 
 import datasoul.DatasoulMainForm;
+import datasoul.render.ContentManager;
 import datasoul.util.AttributedObject;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipReader;
@@ -90,6 +91,8 @@ public class DisplayTemplate extends AttributedObject {
         items = new ArrayList<TemplateItem>();
         
         this.setTransitionKeepBGIdx(KEEP_BG_YES);
+        this.setWidth(TEMPLATE_WIDTH);
+        this.setHeight(TEMPLATE_HEIGHT);
         
         if (cbKeepBG == null){
             cbKeepBG = new JComboBox();
@@ -432,9 +435,11 @@ public class DisplayTemplate extends AttributedObject {
 
             // Now, store meta data
             DisplayTemplateMetadata meta = new DisplayTemplateMetadata(this);
+            meta.setFilename(filename);
             zip.startMetadata();
             meta.save(zip);
 
+            TemplateManager.getInstance().addTemplateMetadata(meta);
 
             // Done, write images and close it
             zip.close();

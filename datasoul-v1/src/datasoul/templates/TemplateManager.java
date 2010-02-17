@@ -48,6 +48,7 @@ public class TemplateManager implements TableModel {
     /** Creates a new instance of TemplateManager */
     private TemplateManager() {
         listeners = new ArrayList<javax.swing.event.TableModelListener>();
+        refreshAvailableTemplates();
     }
     
     public static synchronized TemplateManager getInstance(){
@@ -119,7 +120,7 @@ public class TemplateManager implements TableModel {
     }
     
     
-    public void refreshAvailableTemplates(){
+    private void refreshAvailableTemplates(){
         
         availableTemplates.clear();
         String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
@@ -152,8 +153,33 @@ public class TemplateManager implements TableModel {
         String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         File f = new File(path + System.getProperty("file.separator") + templateName + ".templatez");
         f.delete();
-        refreshAvailableTemplates();
-        
+        DisplayTemplateMetadata todelete = null;
+        for (DisplayTemplateMetadata meta : availableTemplates){
+            if (meta.getName().equals(templateName)){
+                todelete = meta;
+                break;
+            }
+        }
+        if (todelete != null){
+            availableTemplates.remove(todelete);
+        }
+        tableModelChanged();
+    }
+
+    public void addTemplateMetadata(DisplayTemplateMetadata m){
+        DisplayTemplateMetadata old = null;
+        for (DisplayTemplateMetadata meta : availableTemplates){
+            if (meta.getName().equals(m.getName())){
+                old = meta;
+                break;
+            }
+        }
+        if (old != null){
+            availableTemplates.remove(old);
+        }
+        availableTemplates.add(m);
+        tableModelChanged();
+
     }
 
     public DisplayTemplateMetadata getDisplayTemplateMetadata(int i){
