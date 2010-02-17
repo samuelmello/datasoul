@@ -243,10 +243,10 @@ public class BackgroundPanel extends javax.swing.JPanel {
         JColorChooser cc = new JColorChooser();
         Color color =  cc.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
-            BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+            BufferedImage img = new BufferedImage(ConfigObj.getInstance().getMonitorRenderWidth(), ConfigObj.getInstance().getMonitorRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
             g.setColor(color);
-            g.fillRect(0, 0, DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
+            g.fillRect(0, 0, img.getWidth(), img.getHeight());
             imageDisplayMonitor.getImageTemplateItem().setImage(img);
             BackgroundConfig.getInstance().setMonitorBackgroundImg(img);
             imageDisplayMonitor.updateSize();
@@ -260,10 +260,10 @@ public class BackgroundPanel extends javax.swing.JPanel {
         JColorChooser cc = new JColorChooser();
         Color color =  cc.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
-            BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+            BufferedImage img = new BufferedImage(ConfigObj.getInstance().getMainRenderWidth(), ConfigObj.getInstance().getMainRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
             g.setColor(color);
-            g.fillRect(0, 0, DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
+            g.fillRect(0, 0, img.getWidth(), img.getHeight());
             imageDisplayMain.getImageTemplateItem().setImage(img);
             BackgroundConfig.getInstance().setMainBackgroundImg(img);
             imageDisplayMain.updateSize();
