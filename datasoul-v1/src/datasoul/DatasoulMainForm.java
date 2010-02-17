@@ -28,7 +28,6 @@ import datasoul.config.WindowPropConfig;
 import datasoul.datashow.ImageListEditorForm;
 import datasoul.datashow.ImageListServiceItem;
 import datasoul.datashow.ImportServiceItemForm;
-import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
 import datasoul.datashow.ServiceListTable;
@@ -46,7 +45,6 @@ import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateComboBox;
-import datasoul.templates.TemplateManager;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.util.KeyListner;
 import datasoul.util.ObjectManager;
@@ -1145,15 +1143,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
     
     protected static void copySampleTemplates(String dir){
-        String files[] = {"alert-general.template",
-            "alert-nursery.template",
-            "alert-parking.template",
-            "bible.template",
-            "monitor-preaching.template",
-            "monitor-song.template",
-            "default.template",
-            "song.template",
-            "subtitle.template"
+        String files[] = {"alert-general.templatez",
+            "alert-nursery.templatez",
+            "alert-parking.templatez",
+            "bible.templatez",
+            "monitor-preaching.templatez",
+            "monitor-song.templatez",
+            "default.templatez",
+            "song.templatez",
+            "subtitle.templatez"
         };
         
         for (String f: files){
