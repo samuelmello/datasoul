@@ -27,6 +27,7 @@ import datasoul.config.ConfigObj;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.templates.TemplateItem;
+import datasoul.templates.TemplateManager;
 import datasoul.templates.TextTemplateItem;
 import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
@@ -239,10 +240,10 @@ public class ContentRender {
     public void setTemplate(String template){
         try{
             try{
-                this.template = new DisplayTemplate(template);
+                this.template = TemplateManager.getInstance().newDisplayTemplate(template);
             }catch(FileNotFoundException f){
                 // inexistent template, fallback to default
-                this.template = new DisplayTemplate( ConfigObj.getInstance().getTemplateText() );
+                this.template = TemplateManager.getInstance().newDisplayTemplate( ConfigObj.getInstance().getTemplateText() );
             }
             this.templateChanged = true;
 
@@ -264,7 +265,7 @@ public class ContentRender {
     
     public void setAlertTemplate(String template){
         try{
-            this.alertTemplate = new DisplayTemplate(template);
+            this.alertTemplate = TemplateManager.getInstance().newDisplayTemplate(template);
             this.alertNeedsTimer = this.alertTemplate.useTimer();
         }catch(Exception e){
             e.printStackTrace();

@@ -65,8 +65,6 @@ public class DisplayTemplate extends AttributedObject {
     
     static int defaultItemNameCount = 1;
     
-    static TreeMap<String, DisplayTemplate> templateCache = new TreeMap<String, DisplayTemplate>();
-    
     private String name;
     
     private int transitionKeepBG;
@@ -108,24 +106,6 @@ public class DisplayTemplate extends AttributedObject {
 
     }
 
-    /**
-     * Loads an existing DisplayTemplate
-     */
-    public DisplayTemplate(String name) throws Exception  {
-        this();
-        
-        if (templateCache.containsKey(name)){
-            this.assign(templateCache.get(name));
-        }else{
-
-            String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-            String filename = path + System.getProperty("file.separator") + name+ ".templatez";
-            this.loadFromFile(filename);
-            templateCache.put(name, this);
-        }
-        
-    }
-
     public static void importTemplate(String filename){
         DisplayTemplate t = new DisplayTemplate();
         try {
@@ -160,7 +140,7 @@ public class DisplayTemplate extends AttributedObject {
         
     }
     
-    private void loadFromFile(String filename) throws Exception{
+    public void loadFromFile(String filename) throws Exception{
         
         
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -442,14 +422,9 @@ public class DisplayTemplate extends AttributedObject {
             // Done, write images and close it
             zip.close();
 
-            templateCache.put(this.getName(), this);
         }
     }
     
-    public static void deleteTemplate(String name){
-        templateCache.remove(name);
-    }
-
     public void setTransitionKeepBGIdx(int i){
         this.transitionKeepBG = i;
         firePropChanged("TransitionKeepBGIdx");

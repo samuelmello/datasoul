@@ -24,6 +24,7 @@
 package datasoul.templates;
 
 import datasoul.config.ConfigObj;
+import datasoul.render.ContentRender;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.event.TableModelEvent;
@@ -151,7 +152,6 @@ public class TemplateManager implements TableModel {
         String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
         File f = new File(path + System.getProperty("file.separator") + templateName + ".templatez");
         f.delete();
-        DisplayTemplate.deleteTemplate(templateName);
         refreshAvailableTemplates();
         
     }
@@ -160,5 +160,14 @@ public class TemplateManager implements TableModel {
         return availableTemplates.get(i);
     }
    
-    
+    public DisplayTemplate newDisplayTemplate(String name) throws Exception{
+        for (DisplayTemplateMetadata meta : availableTemplates){
+            if (meta.getName().equals(name)){
+                return meta.newDisplayTemplate();
+            }
+        }
+        return null;
+    }
+
+
 }

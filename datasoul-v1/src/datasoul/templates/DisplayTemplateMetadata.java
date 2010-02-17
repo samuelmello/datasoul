@@ -62,6 +62,22 @@ public class DisplayTemplateMetadata extends SerializableObject {
         return ret;
     }
 
+    public DisplayTemplate newDisplayTemplate() throws Exception{
+
+        if (template == null){
+            // Load original copy in TemplateManager
+            template = new DisplayTemplate();
+            template.loadFromFile(filename);
+        }
+
+        // Return a copy
+        DisplayTemplate ret = new DisplayTemplate();
+        ret.assign(template);
+
+        return ret;
+
+    }
+
 
     @Override
     protected void registerProperties(){
