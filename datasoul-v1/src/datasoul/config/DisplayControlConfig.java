@@ -129,8 +129,6 @@ public class DisplayControlConfig extends AbstractConfig {
         save();
     }
 
-    
-    
     protected void registerProperties() {
         super.registerProperties();
         properties.add("SlideTransitionTime");

@@ -77,14 +77,14 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         Graphics2D g2 =  (Graphics2D) g;
         
         g2.setColor(gridColor);
-        for (int i=0; i<DisplayTemplate.TEMPLATE_WIDTH; i+=10){
-            g2.drawLine(i, 0, i, DisplayTemplate.TEMPLATE_HEIGHT);
+        for (int i=0; i<this.getSize().width; i+=10){
+            g2.drawLine(i, 0, i, this.getSize().height);
         }
-        for (int i=0; i<DisplayTemplate.TEMPLATE_HEIGHT; i+=10){
-            g2.drawLine(0, i, DisplayTemplate.TEMPLATE_WIDTH, i);
+        for (int i=0; i<this.getSize().height; i+=10){
+            g2.drawLine(0, i, this.getSize().width, i);
         }
         g2.setColor(Color.BLACK);
-        g2.drawRect(0,0,DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT );
+        g2.drawRect(0, 0, this.getSize().width, this.getSize().height );
 
         if (template != null){
             synchronized(template){

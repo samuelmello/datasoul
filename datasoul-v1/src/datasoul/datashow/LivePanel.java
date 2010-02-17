@@ -214,8 +214,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
     
     public void serviceNextSlide() {
-        if (ContentManager.isMainDisplayActive()){
-            JFrame mainDisplay = ContentManager.getMainDisplay();
+        if (ContentManager.getInstance().isMainDisplayActive()){
+            JFrame mainDisplay = ContentManager.getInstance().getMainDisplay();
             if (mainDisplay != null && mainDisplay.hasFocus()) {
                 int count = serviceItemTable1.getSlideCount();
                 int index = serviceItemTable1.getSlideIndex();
@@ -231,8 +231,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
 
     public void servicePreviousSlide() {
-        if (ContentManager.isMainDisplayActive()){
-            JFrame mainDisplay = ContentManager.getMainDisplay();
+        if (ContentManager.getInstance().isMainDisplayActive()){
+            JFrame mainDisplay = ContentManager.getInstance().getMainDisplay();
             if (mainDisplay != null && mainDisplay.hasFocus()) {
                 int index = serviceItemTable1.getSlideIndex();
                 if (index > 0) serviceItemTable1.setSlideIndex(index-1);

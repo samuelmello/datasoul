@@ -105,6 +105,10 @@ public class ServiceListExporterSlides {
 
     public class ExporterContentRender extends ContentRender {
 
+        public ExporterContentRender(){
+            super(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
+        }
+
         public void paint(BufferedImage img, AlphaComposite rule) {
             try{
                 buffer.setData(background.getData());

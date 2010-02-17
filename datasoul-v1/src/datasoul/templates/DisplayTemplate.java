@@ -33,7 +33,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.TreeMap;
 import java.util.zip.GZIPInputStream;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -82,6 +81,8 @@ public class DisplayTemplate extends AttributedObject {
     public static final String [] TARGET_CONTENT_TABLE = {"Text", "Song", "Monitor", "Alert", "Images" };
     private static JComboBox cbTargetContent;
 
+    private int width;
+    private int height;
 
     /** Creates an empty DisplayTemplate */
     public DisplayTemplate() {
@@ -121,6 +122,8 @@ public class DisplayTemplate extends AttributedObject {
         this.setName(from.getName());
         this.setTransitionKeepBG(from.getTransitionKeepBG());
         this.setTargetContentIdx(from.getTargetContentIdx());
+        this.setWidth(from.getWidth());
+        this.setHeight(from.getHeight());
         this.items.clear();
         for (TemplateItem t : from.getItems()){
             
@@ -188,7 +191,13 @@ public class DisplayTemplate extends AttributedObject {
         
         // version up to 1.2 had fixed resolution at 640x480
         if (getDatasoulFileVersion() < 1){
-            setResolution(640, 480);
+            setWidth(640);
+            setHeight(480);
+        }
+        // version 1.3 had fixed resolution at 800x600
+        if (getDatasoulFileVersion() == 1){
+            setWidth(800);
+            setHeight(600);
         }
 
         // version 1.x don't have target content
@@ -199,15 +208,21 @@ public class DisplayTemplate extends AttributedObject {
         setDatasoulFileVersion(DatasoulMainForm.getFileFormatVersion());
     }
 
-    private void setResolution(int fromWidth, int fromHeight){
-        float fWidth = (float) TEMPLATE_WIDTH / (float) fromWidth;
-        float fHeight = (float) TEMPLATE_HEIGHT / (float) fromHeight;
+    public void setResolution(int newWidth, int newHeight){
+        float fWidth = (float) newWidth / (float) width;
+        float fHeight = (float) newHeight / (float) height;
         for (TemplateItem it : items){
             it.setWidth((int) (fWidth * it.getWidth()));
             it.setHeight((int)(fHeight * it.getHeight()));
-            it.setTop((int) (fWidth * it.getTop()));
-            it.setLeft((int)(fHeight * it.getLeft()));
+            it.setTop((int) (fHeight * it.getTop()));
+            it.setLeft((int)(fWidth * it.getLeft()));
+            if (it instanceof TextTemplateItem){
+                TextTemplateItem text = ((TextTemplateItem)it);
+                text.setFontSize( text.getFontSize() * fHeight );
+            }
         }
+        setWidth(newWidth);
+        setHeight(newHeight);
     }
     
     @Override
@@ -219,6 +234,8 @@ public class DisplayTemplate extends AttributedObject {
         registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Transition_Keep_Background"));
         properties.add("TargetContentIdx");
         registerDisplayString("TargetContentIdx", "Target Content");
+        properties.add("Width");
+        properties.add("Height");
     }
     
     public String getName(){
@@ -514,6 +531,32 @@ public class DisplayTemplate extends AttributedObject {
             }
         }
         return false;
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
+    }
+
+    public void setWidth(int w){
+        this.width = w;
+        firePropChanged("Width");
+    }
+
+    public void setHeight(int h){
+        this.height = h;
+        firePropChanged("Height");
+    }
+
+    public void setWidth(String w){
+        setWidth(Integer.parseInt(w));
+    }
+
+    public void setHeight(String h){
+        setHeight(Integer.parseInt(h));
     }
 
 }

@@ -20,11 +20,9 @@
 
 package datasoul.datashow;
 
-import datasoul.config.ConfigObj;
 import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
-import datasoul.templates.DisplayTemplate;
 import java.awt.Dimension;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -43,28 +41,14 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         serviceItemTable1.addTableListener(this);
         serviceItemTable1.setHeaderVisible(false);
 
-        initPreview();
-
-    }
-
-    private void initPreview(){
-        int width, height;
-        try{
-            width = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeWidth());
-        }catch(Exception e){
-            width = DisplayTemplate.TEMPLATE_WIDTH;
-        }
-        try{
-            height = Integer.parseInt(ConfigObj.getInstance().getMonitorOutputSizeHeight());
-        }catch(Exception e){
-            height = DisplayTemplate.TEMPLATE_HEIGHT;
-        }
-
-        previewDisplayPanel1.initDisplay(width, height);
         ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1);
+        Dimension size = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewHeight());
+        previewDisplayPanel1.setSize(size);
+        previewDisplayPanel1.setPreferredSize(size);
+        previewDisplayPanel1.setMinimumSize(size);
+        previewDisplayPanel1.setMaximumSize(size);
 
     }
-
 
 
     public void previewItem(ServiceItem serviceItem){
@@ -170,11 +154,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     }// </editor-fold>//GEN-END:initComponents
 
     private void previewDisplayPanel1previewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_previewDisplayPanel1previewDisplayResized
-        Dimension dim= previewDisplayPanel1.getSize();
-        int height = dim.height;
-        int width = (dim.height/3)*4 ;
-        dim.setSize(width,height);
-        previewDisplayPanel1.setSize(dim);
+
 }//GEN-LAST:event_previewDisplayPanel1previewDisplayResized
 
     public void goLive(){
@@ -195,8 +175,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         cm.setNextImagePreview(serviceItemTable1.getNextSlideImage());
         cm.updatePreview();
     }
-    
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;

@@ -137,12 +137,32 @@ public class ConfigObj extends AbstractConfig {
         return mainOutputSizeWidth;
     }
 
+    public int getMainOutputSizeWidthAsInt() {
+        int ret = 800;
+        try {
+            ret = Integer.parseInt(mainOutputSizeWidth);
+        }catch(Exception e){
+            // ignore
+        }
+        return ret;
+    }
+
     public void setMainOutputSizeWidth(String mainOutputSizeWidth) {
         this.mainOutputSizeWidth = mainOutputSizeWidth;
     }
 
     public String getMainOutputSizeHeight() {
         return mainOutputSizeHeight;
+    }
+
+    public int getMainOutputSizeHeightAsInt() {
+        int ret = 600;
+        try {
+            ret = Integer.parseInt(mainOutputSizeHeight);
+        }catch(Exception e){
+            // ignore
+        }
+        return ret;
     }
 
     public void setMainOutputSizeHeight(String mainOutputSizeHeight) {
@@ -193,12 +213,32 @@ public class ConfigObj extends AbstractConfig {
         return monitorOutputSizeWidth;
     }
 
+    public int getMonitorOutputSizeWidthAsInt() {
+        int ret = 800;
+        try {
+            ret = Integer.parseInt(monitorOutputSizeWidth);
+        }catch(Exception e){
+            // ignore
+        }
+        return ret;
+    }
+
     public void setMonitorOutputSizeWidth(String monitorOutputSizeWidth) {
         this.monitorOutputSizeWidth = monitorOutputSizeWidth;
     }
 
     public String getMonitorOutputSizeHeight() {
         return monitorOutputSizeHeight;
+    }
+
+    public int getMonitorOutputSizeHeightAsInt() {
+        int ret = 600;
+        try {
+            ret = Integer.parseInt(monitorOutputSizeHeight);
+        }catch(Exception e){
+            // ignore
+        }
+        return ret;
     }
 
     public void setMonitorOutputSizeHeight(String monitorOutputSizeHeight) {

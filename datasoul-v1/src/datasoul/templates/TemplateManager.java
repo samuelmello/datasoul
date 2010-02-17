@@ -169,5 +169,15 @@ public class TemplateManager implements TableModel {
         return null;
     }
 
+    public DisplayTemplate newDisplayTemplate(String name, ContentRender render) throws Exception{
+        DisplayTemplate newdt = newDisplayTemplate(name);
+
+        if (newdt != null && render != null){
+            newdt.setResolution(render.getWidth(), render.getHeight());
+        }
+
+        return newdt;
+    }
+
 
 }

@@ -108,22 +108,27 @@ public class ContentRender {
     private boolean templateNeedsTimer;
     private boolean alertNeedsTimer;
 
+    private int width;
+    private int height;
+
     /** Creates a new instance of ContentRender */
-    public ContentRender() {
+    public ContentRender(int width, int height) {
         updSemaphore = new Semaphore(0);
         slideTransition = TRANSITION_HIDE;
         slideTransTimerTotal = 1;
         slideTransTimer = 0;
         displays = new LinkedList<ContentDisplay>();
+        this.width = width;
+        this.height = height;
 
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
 
-        transitionImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
-        templateImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
-        alertImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
-        backgroundImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
-        outputImage = gc.createCompatibleImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, Transparency.TRANSLUCENT);
+        transitionImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        templateImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        alertImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        backgroundImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        outputImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
 
         run = true;
         updThread = new UpdateThread();
@@ -134,6 +139,14 @@ public class ContentRender {
         run = false;
         updSemaphore.release();
         updThread.interrupt();
+    }
+
+    public int getWidth(){
+        return width;
+    }
+
+    public int getHeight(){
+        return height;
     }
 
     public void setActiveImage(BufferedImage img){
@@ -240,10 +253,10 @@ public class ContentRender {
     public void setTemplate(String template){
         try{
             try{
-                this.template = TemplateManager.getInstance().newDisplayTemplate(template);
+                this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
             }catch(FileNotFoundException f){
                 // inexistent template, fallback to default
-                this.template = TemplateManager.getInstance().newDisplayTemplate( ConfigObj.getInstance().getTemplateText() );
+                this.template = TemplateManager.getInstance().newDisplayTemplate( ConfigObj.getInstance().getTemplateText(), this );
             }
             this.templateChanged = true;
 
@@ -265,7 +278,7 @@ public class ContentRender {
     
     public void setAlertTemplate(String template){
         try{
-            this.alertTemplate = TemplateManager.getInstance().newDisplayTemplate(template);
+            this.alertTemplate = TemplateManager.getInstance().newDisplayTemplate(template, this);
             this.alertNeedsTimer = this.alertTemplate.useTimer();
         }catch(Exception e){
             e.printStackTrace();

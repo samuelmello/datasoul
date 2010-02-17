@@ -28,6 +28,7 @@ import datasoul.config.WindowPropConfig;
 import datasoul.datashow.ImageListEditorForm;
 import datasoul.datashow.ImageListServiceItem;
 import datasoul.datashow.ImportServiceItemForm;
+import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
 import datasoul.datashow.ServiceListTable;
@@ -69,7 +70,6 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
@@ -127,25 +127,23 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
     private void initLive(){
-        int width, height;
-        try{
-            width = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeWidth());
-        }catch(Exception e){
-            width = 640;
-        }
-        try{
-            height = Integer.parseInt(ConfigObj.getInstance().getMainOutputSizeHeight());
-        }catch(Exception e){
-            height = 480;
-        }
 
-        liveDisplayPanel.initDisplay(width, height);
+
         ContentManager.getInstance().registerMainDisplay(liveDisplayPanel);
+        Dimension liveSize = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewHeight());
+        liveDisplayPanel.setSize(liveSize);
+        liveDisplayPanel.setPreferredSize(liveSize);
+        liveDisplayPanel.setMaximumSize(liveSize);
+        liveDisplayPanel.setMinimumSize(liveSize);
 
         if (ConfigObj.getInstance().getMonitorOutput()){
 
-            monitorDisplayPanel.initDisplay(width, height);
             ContentManager.getInstance().registerMonitorDisplay(monitorDisplayPanel);
+            Dimension monitorSize = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewMonitorHeight());
+            monitorDisplayPanel.setSize(monitorSize);
+            monitorDisplayPanel.setPreferredSize(monitorSize);
+            monitorDisplayPanel.setMaximumSize(monitorSize);
+            monitorDisplayPanel.setMinimumSize(monitorSize);
 
         }else{
             btnShowMonitor.setSelected(false);
@@ -1079,16 +1077,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         isif.setVisible(true);
 }//GEN-LAST:event_actImportItemActionPerformed
 
-
-    private void applySizePanel(JPanel p, int width, int height){
-        p.setVisible(true);
-        Dimension d = new Dimension(width, height);
-        p.setSize(d);
-        p.setPreferredSize(d);
-        p.setMinimumSize(d);
-        p.setMaximumSize(d);
-    }
-
     private void jSplitPane4PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane4PropertyChange
         if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
             WindowPropConfig.getInstance().setServiceSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
@@ -1239,10 +1227,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_configuration..."));
         ConfigObj.getInstance();
+        ContentManager.getInstance();
         checkStorageLocation();
         
         BackgroundConfig.getInstance();
-        TemplateManager.getInstance().refreshAvailableTemplates();
         DisplayControlConfig.getInstance();
 
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_songs..."));
@@ -1250,9 +1238,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_chords_database..."));
         ChordsDB.getInstance();
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_content_manager..."));
-        ContentManager.getInstance();
         TimerManager.getInstance();
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Creating_user_interface..."));
+
+        TemplateManager.getInstance().refreshAvailableTemplates();
+
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_application..."));
@@ -1266,9 +1256,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             // Do nothing
         }
 
-        ContentManager.getMainDisplay();
-        ContentManager.getMonitorDisplay();
-
+        ContentManager.getInstance().getMainDisplay();
+        ContentManager.getInstance().getMonitorDisplay();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 mainForm.setVisible(true);

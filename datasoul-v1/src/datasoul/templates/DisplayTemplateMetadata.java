@@ -130,13 +130,13 @@ public class DisplayTemplateMetadata extends SerializableObject {
     private void createExampleImage(ZipWriter zip){
 
         // Paint the template
-        BufferedImage img = new BufferedImage(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, BufferedImage.TYPE_4BYTE_ABGR);
+        BufferedImage img = new BufferedImage(template.getWidth(), template.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g = img.createGraphics();
         template.paint(g, 1.0f);
 
         // Resize it
         int newWidth = 100;
-        int newHeight = (int) (100.0f * ((float)DisplayTemplate.TEMPLATE_HEIGHT / (float) DisplayTemplate.TEMPLATE_WIDTH));
+        int newHeight = (int) (100.0f * ((float) template.getHeight() / (float) template.getWidth()));
         BufferedImage miniimg = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_4BYTE_ABGR);
         Graphics2D g2 = miniimg.createGraphics();
         g2.drawImage(img, 0, 0, newWidth, newHeight, null);
