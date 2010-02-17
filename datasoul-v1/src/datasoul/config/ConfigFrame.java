@@ -630,23 +630,6 @@ public class ConfigFrame extends javax.swing.JFrame {
             refreshObjectValues();
             configObj.save();
 
-            if (ContentManager.getInstance().isMainDisplayActive()){
-                ContentManager.getInstance().getMainDisplay().setBounds(
-                        Integer.parseInt(configObj.getMainOutputPositionLeft()),
-                        Integer.parseInt(configObj.getMainOutputPositionTop()),
-                        Integer.parseInt(configObj.getMainOutputSizeWidth()),
-                        Integer.parseInt(configObj.getMainOutputSizeHeight()));
-            }
-
-            if (ContentManager.getInstance().isMonitorDisplayActive()){
-                ContentManager.getInstance().getMonitorDisplay().setBounds(
-                        Integer.parseInt(configObj.getMainOutputPositionLeft()),
-                        Integer.parseInt(configObj.getMainOutputPositionTop()),
-                        Integer.parseInt(configObj.getMainOutputSizeWidth()),
-                        Integer.parseInt(configObj.getMainOutputSizeHeight()));
-            }
-
-
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
