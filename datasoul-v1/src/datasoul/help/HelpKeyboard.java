@@ -54,20 +54,6 @@ public class HelpKeyboard extends javax.swing.JPanel {
         sb.append("\n");
         sb.append("");
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+1:_Show_Service_Plan"));
-        sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+2:_Show_Songs"));
-        sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+3:_Show_Projector"));
-        sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+4:_Show_Templates"));
-        sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+5:_Show_Config"));
-        sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Ctrl+6:_Show_Help"));
-        sb.append("\n");
-        sb.append("");
-        sb.append("\n");
         sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("<Num>+Enter,_with_focus_on_Preview_or_Live_Item:_Jump_to_slide_<Num>"));
         sb.append("\n");
 

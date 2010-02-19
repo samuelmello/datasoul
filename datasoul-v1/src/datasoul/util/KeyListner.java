@@ -36,12 +36,11 @@ import java.awt.event.KeyListener;
  */
 public class KeyListner implements KeyListener, AWTEventListener{
     
-    private boolean ctrlPressed = false;
-    
     /** Creates a new instance of KeyListner */
     public KeyListner() {
     }
 
+    @Override
     public void eventDispatched(AWTEvent e) {
         switch (e.getID()) {
             case KeyEvent.KEY_PRESSED:
@@ -56,71 +55,46 @@ public class KeyListner implements KeyListener, AWTEventListener{
         }
     }
 
-    public void keyTyped(KeyEvent e) {
-    }
 
+    @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode()==KeyEvent.VK_CONTROL)
-            ctrlPressed = true;
+        // to conform with KeyListner
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // to conform with KeyListner
+    }
+
+    @Override
     public void keyReleased(KeyEvent e) {
-        if(ctrlPressed){
-            switch(e.getKeyCode()){ 
-                case KeyEvent.VK_CONTROL:
-                    ctrlPressed = false;
-                    break;
-                case KeyEvent.VK_1:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SERVICE);
-                    break;
-                case KeyEvent.VK_2:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_SONGS);
-                    break;
-                case KeyEvent.VK_3:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
-                    break;
-                case KeyEvent.VK_4:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_TEMPLATES);
-                    break;
-                case KeyEvent.VK_5:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_CONFIG);
-                    break;
-                case KeyEvent.VK_6:     
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_HELP);
-                    break;
-            }
-        }
 
         switch(e.getKeyCode()){ 
-            case KeyEvent.VK_F1: 
-                break;
-            case KeyEvent.VK_F2:
-                break;
             case KeyEvent.VK_F3: 
                 ObjectManager.getInstance().getPreviewPanel().goLive();
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
             case KeyEvent.VK_F4: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
             case KeyEvent.VK_F5: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_DISPLAY);
                 break;
             case KeyEvent.VK_F6: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
                 break;
             case KeyEvent.VK_F7: 
                 if (ConfigObj.getInstance().getMonitorOutput()){
-                    ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                    ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                     ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
                 }
                 break;                
             case KeyEvent.VK_F8: 
-                ObjectManager.getInstance().getDatasoulMainForm().showPanel(ObjectManager.VIEW_PROJECTOR);
+                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_BACKGROUND);
                 break;                
             case KeyEvent.VK_F9: 

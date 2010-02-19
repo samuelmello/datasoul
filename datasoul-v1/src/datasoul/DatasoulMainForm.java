@@ -156,14 +156,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
-    public void showPanel(int panel){
-        /*
-        if ((panel >= 0) && (panel < ObjectManager.VIEW_TAB_COUNT)) {
-            tabbedInterface.setSelectedIndex(panel);
-        }
-         */
-    }
-
     private void previewItem(){
 
         try{
@@ -255,7 +247,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         txtHours = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtMinutes = new javax.swing.JTextField();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedRightSide = new javax.swing.JTabbedPane();
         jSplitPane4 = new javax.swing.JSplitPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -265,7 +257,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         lblSongName = new javax.swing.JLabel();
         lblAuthor = new javax.swing.JLabel();
         songsSearchPanel1 = new datasoul.song.SongsSearchPanel();
-        jSplitPane5 = new javax.swing.JSplitPane();
+        splDisplayControl = new javax.swing.JSplitPane();
         live = new datasoul.datashow.LivePanel();
         jPanel3 = new javax.swing.JPanel();
         auxiliar = new datasoul.datashow.AuxiliarPanel();
@@ -477,7 +469,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
                     .addComponent(jLabel4))
                 .addContainerGap())
         );
@@ -487,7 +479,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -499,11 +491,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
         );
 
         jSplitPane3.setTopComponent(pnlPreview);
@@ -675,15 +667,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         pnlServiceList.setLayout(pnlServiceListLayout);
         pnlServiceListLayout.setHorizontalGroup(
             pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(toolBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
             .addGroup(pnlServiceListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -700,7 +692,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                         .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -740,8 +732,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(519, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addContainerGap(507, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -754,16 +746,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
         );
 
         jSplitPane4.setRightComponent(jPanel6);
         jSplitPane4.setLeftComponent(songsSearchPanel1);
 
-        jTabbedPane1.addTab("Song Library", jSplitPane4);
+        tabbedRightSide.addTab("Song Library", jSplitPane4);
 
-        jSplitPane5.setDividerLocation(250);
-        jSplitPane5.setLeftComponent(live);
+        splDisplayControl.setDividerLocation(250);
+        splDisplayControl.setLeftComponent(live);
 
         liveDisplayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         liveDisplayPanel.setPreferredSize(new java.awt.Dimension(160, 120));
@@ -821,7 +813,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -840,21 +832,21 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jSplitPane5.setRightComponent(jPanel3);
+        splDisplayControl.setRightComponent(jPanel3);
 
-        jTabbedPane1.addTab("Display Controls", jSplitPane5);
+        tabbedRightSide.addTab("Display Controls", splDisplayControl);
 
-        jSplitPane1.setRightComponent(jTabbedPane1);
+        jSplitPane1.setRightComponent(tabbedRightSide);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1095,6 +1087,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
         preview.goLive();
+        showDisplayControls();
     }//GEN-LAST:event_btnGoLiveActionPerformed
     
     public static void checkStorageLocation(){
@@ -1310,6 +1303,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
 
+    public void showDisplayControls(){
+        tabbedRightSide.setSelectedComponent(splDisplayControl);
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JMenuItem actAddBible;
@@ -1354,8 +1351,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JSplitPane jSplitPane2;
     javax.swing.JSplitPane jSplitPane3;
     javax.swing.JSplitPane jSplitPane4;
-    javax.swing.JSplitPane jSplitPane5;
-    javax.swing.JTabbedPane jTabbedPane1;
     javax.swing.JLabel lblAuthor;
     javax.swing.JLabel lblSongName;
     datasoul.datashow.LivePanel live;
@@ -1367,6 +1362,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JPopupMenu ppmAddItem;
     datasoul.datashow.PreviewPanel preview;
     datasoul.song.SongsSearchPanel songsSearchPanel1;
+    javax.swing.JSplitPane splDisplayControl;
+    javax.swing.JTabbedPane tabbedRightSide;
     datasoul.util.DnDTable tableServiceList;
     javax.swing.JTextPane textSong;
     javax.swing.JToolBar toolBar;
