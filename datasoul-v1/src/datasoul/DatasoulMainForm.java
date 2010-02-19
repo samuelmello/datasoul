@@ -60,6 +60,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -523,6 +524,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         tableServiceList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableServiceListMouseClicked(evt);
+            }
+        });
+        tableServiceList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tableServiceListKeyPressed(evt);
             }
         });
         jScrollPane2.setViewportView(tableServiceList);
@@ -1081,6 +1087,24 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         preview.goLive();
         showDisplayControls();
     }//GEN-LAST:event_btnGoLiveActionPerformed
+
+    private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_UP ||
+            evt.getKeyCode() == KeyEvent.VK_DOWN ||
+            evt.getKeyCode() == KeyEvent.VK_PAGE_UP ||
+            evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
+
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    previewItem();
+                }
+            });
+            
+        }
+
+    }//GEN-LAST:event_tableServiceListKeyPressed
     
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getInstance().getStorageLoc();
