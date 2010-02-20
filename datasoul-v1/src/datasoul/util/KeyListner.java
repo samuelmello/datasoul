@@ -23,6 +23,7 @@
 
 package datasoul.util;
 
+import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
 import java.awt.AWTEvent;
@@ -107,12 +108,19 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayBlack();
                 break;
             case KeyEvent.VK_PAGE_DOWN:
+            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_DOWN:
                 ObjectManager.getInstance().getLivePanel().serviceNextSlide();
                 break;
             case KeyEvent.VK_PAGE_UP:
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_LEFT:
                 ObjectManager.getInstance().getLivePanel().servicePreviousSlide();
                 break;
 
+            case KeyEvent.VK_ESCAPE:
+                ObjectManager.getInstance().getDatasoulMainForm().closeOutputs();
+                break;
         }
     }
 }

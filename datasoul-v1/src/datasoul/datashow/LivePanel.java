@@ -214,33 +214,27 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
     
     public void serviceNextSlide() {
-        if (ContentManager.getInstance().isMainDisplayActive()){
-            JFrame mainDisplay = ContentManager.getInstance().getMainDisplay();
-            if (mainDisplay != null && mainDisplay.hasFocus()) {
-                int count = serviceItemTable1.getSlideCount();
-                int index = serviceItemTable1.getSlideIndex();
-                if (index < count) serviceItemTable1.setSlideIndex(index+1);
-                else {
-                    if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
-                        PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                        pp.goLive();
-                    }
+        if (ContentManager.getInstance().getOutputHasFocus()) {
+            int count = serviceItemTable1.getSlideCount();
+            int index = serviceItemTable1.getSlideIndex();
+            if (index < count) serviceItemTable1.setSlideIndex(index+1);
+            else {
+                if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
+                    PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                    pp.goLive();
                 }
             }
         }
     }
 
     public void servicePreviousSlide() {
-        if (ContentManager.getInstance().isMainDisplayActive()){
-            JFrame mainDisplay = ContentManager.getInstance().getMainDisplay();
-            if (mainDisplay != null && mainDisplay.hasFocus()) {
-                int index = serviceItemTable1.getSlideIndex();
-                if (index > 0) serviceItemTable1.setSlideIndex(index-1);
-                else {
-                    if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
-                        PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                        pp.goLive();
-                    }
+        if (ContentManager.getInstance().getOutputHasFocus()) {
+            int index = serviceItemTable1.getSlideIndex();
+            if (index > 0) serviceItemTable1.setSlideIndex(index-1);
+            else {
+                if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
+                    PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                    pp.goLive();
                 }
             }
         }

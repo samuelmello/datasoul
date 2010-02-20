@@ -13,16 +13,13 @@ package datasoul.config;
 
 import datasoul.util.ObjectManager;
 import java.awt.Component;
-import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
-import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 /**
@@ -40,16 +37,13 @@ public class ConfigFrame extends javax.swing.JFrame {
     public ConfigFrame() {
         initComponents();
 
-        initDevicePopupMenu();
+        initDeviceMenu();
 
         components = new ArrayList<Component>();
         registerComponents();
 
         configObj = ConfigObj.getInstance();
         refreshScreenValues();
-
-        pnlMainCoord.setVisible(false);
-        pnlMonitorCoord.setVisible(false);
 
     }
 
@@ -62,8 +56,6 @@ public class ConfigFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPpMenuMain = new javax.swing.JPopupMenu();
-        jPpMenuMonitor = new javax.swing.JPopupMenu();
         jPanel10 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         btnStgloc = new javax.swing.JButton();
@@ -82,44 +74,18 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         monitorOutput = new javax.swing.JCheckBox();
         jLabel29 = new javax.swing.JLabel();
-        btnSelectDeviceMonitor = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        pnlMonitorCoord = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        monitorOutputPositionTop = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        monitorOutputSizeHeight = new javax.swing.JTextField();
-        jLabel18 = new javax.swing.JLabel();
-        monitorOutputSizeWidth = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        monitorOutputPositionLeft = new javax.swing.JTextField();
-        btnMonitorAdvanced = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
         cbQualityMonitor = new javax.swing.JComboBox();
+        cbMonitorDevice = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
-        mainOutput = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        btnSelectDeviceMain = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        pnlMainCoord = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        mainOutputPositionTop = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        mainOutputSizeHeight = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
-        mainOutputSizeWidth = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        mainOutputPositionLeft = new javax.swing.JTextField();
-        btnMainAdvanced = new javax.swing.JToggleButton();
         jLabel7 = new javax.swing.JLabel();
         cbQualityMain = new javax.swing.JComboBox();
+        cbMainDevice = new javax.swing.JComboBox();
         jLabel37 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         btnDiscard = new javax.swing.JButton();
@@ -256,98 +222,17 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         jLabel29.setText(bundle.getString("Output_Device")); // NOI18N
 
-        btnSelectDeviceMonitor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png"))); // NOI18N
-        btnSelectDeviceMonitor.setText(bundle.getString("Select")); // NOI18N
-        btnSelectDeviceMonitor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectDeviceMonitorActionPerformed(evt);
-            }
-        });
-
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png"))); // NOI18N
 
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel21.setText(bundle.getString("Monitor_output_is_used_to_display_information_in_monitors_on_stage,_providing_feedback_for_musicans_or_preachers.")); // NOI18N
 
-        jLabel4.setText(bundle.getString("Position")); // NOI18N
-
-        jLabel14.setText(bundle.getString("left")); // NOI18N
-
-        monitorOutputPositionTop.setText("jTextField1");
-
-        jLabel15.setText(bundle.getString("top")); // NOI18N
-
-        jLabel19.setText(bundle.getString("height")); // NOI18N
-
-        monitorOutputSizeHeight.setText("jTextField1");
-
-        jLabel18.setText(bundle.getString("width")); // NOI18N
-
-        monitorOutputSizeWidth.setText("jTextField1");
-
-        jLabel5.setText(bundle.getString("Size")); // NOI18N
-
-        monitorOutputPositionLeft.setText("jTextField1");
-
-        javax.swing.GroupLayout pnlMonitorCoordLayout = new javax.swing.GroupLayout(pnlMonitorCoord);
-        pnlMonitorCoord.setLayout(pnlMonitorCoordLayout);
-        pnlMonitorCoordLayout.setHorizontalGroup(
-            pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMonitorCoordLayout.createSequentialGroup()
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMonitorCoordLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(monitorOutputPositionLeft, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlMonitorCoordLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(monitorOutputSizeWidth, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(monitorOutputPositionTop, 0, 0, Short.MAX_VALUE)
-                    .addComponent(monitorOutputSizeHeight, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel19))
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
-        pnlMonitorCoordLayout.setVerticalGroup(
-            pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMonitorCoordLayout.createSequentialGroup()
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(monitorOutputPositionTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel4)
-                    .addComponent(monitorOutputPositionLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMonitorCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(monitorOutputSizeHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel5)
-                    .addComponent(monitorOutputSizeWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19)))
-        );
-
-        btnMonitorAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
-        btnMonitorAdvanced.setText(bundle.getString("Advanced")); // NOI18N
-        btnMonitorAdvanced.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMonitorAdvancedActionPerformed(evt);
-            }
-        });
-
         jLabel11.setText("Rendering Quality");
 
         cbQualityMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbMonitorDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -360,24 +245,19 @@ public class ConfigFrame extends javax.swing.JFrame {
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbQualityMonitor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(4, 4, 4)
-                                .addComponent(monitorOutput))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel29)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSelectDeviceMonitor)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnMonitorAdvanced)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlMonitorCoord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel11)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbQualityMonitor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel2)
+                            .addGap(4, 4, 4)
+                            .addComponent(monitorOutput))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel29)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbMonitorDevice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -388,121 +268,33 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(monitorOutput))
-                        .addGap(7, 7, 7)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel29)
-                            .addComponent(btnSelectDeviceMonitor)
-                            .addComponent(btnMonitorAdvanced)))
-                    .addComponent(pnlMonitorCoord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel2)
+                    .addComponent(monitorOutput))
+                .addGap(7, 7, 7)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(cbMonitorDevice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(cbQualityMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Main_Output"))); // NOI18N
 
-        mainOutput.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-
-        jLabel1.setText(bundle.getString("Enable_main_output")); // NOI18N
-
         jLabel28.setText(bundle.getString("Output_Device")); // NOI18N
-
-        btnSelectDeviceMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png"))); // NOI18N
-        btnSelectDeviceMain.setText(bundle.getString("Select")); // NOI18N
-        btnSelectDeviceMain.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectDeviceMainActionPerformed(evt);
-            }
-        });
 
         jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
 
         jLabel24.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel24.setText(bundle.getString("Main_output_is_used_for_displaying_information_for_the_public,_usually_connected_to_a_projector.")); // NOI18N
 
-        jLabel3.setText(bundle.getString("Position")); // NOI18N
-
-        jLabel12.setText(bundle.getString("left")); // NOI18N
-
-        mainOutputPositionTop.setText("jTextField1");
-
-        jLabel13.setText(bundle.getString("top")); // NOI18N
-
-        jLabel17.setText(bundle.getString("height")); // NOI18N
-
-        mainOutputSizeHeight.setText("jTextField1");
-
-        jLabel16.setText(bundle.getString("width")); // NOI18N
-
-        mainOutputSizeWidth.setText("jTextField1");
-
-        jLabel6.setText(bundle.getString("Size")); // NOI18N
-
-        mainOutputPositionLeft.setText("jTextField1");
-
-        javax.swing.GroupLayout pnlMainCoordLayout = new javax.swing.GroupLayout(pnlMainCoord);
-        pnlMainCoord.setLayout(pnlMainCoordLayout);
-        pnlMainCoordLayout.setHorizontalGroup(
-            pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMainCoordLayout.createSequentialGroup()
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(mainOutputSizeWidth, 0, 0, Short.MAX_VALUE)
-                    .addComponent(mainOutputPositionLeft, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(mainOutputSizeHeight, 0, 0, Short.MAX_VALUE)
-                    .addComponent(mainOutputPositionTop, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel13))
-                .addGap(24, 24, 24))
-        );
-        pnlMainCoordLayout.setVerticalGroup(
-            pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlMainCoordLayout.createSequentialGroup()
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(mainOutputPositionLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(mainOutputPositionTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(mainOutputSizeHeight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlMainCoordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(mainOutputSizeWidth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17))
-                .addContainerGap())
-        );
-
-        btnMainAdvanced.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
-        btnMainAdvanced.setText(bundle.getString("Advanced")); // NOI18N
-        btnMainAdvanced.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMainAdvancedActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Rendering Quality");
 
         cbQualityMain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cbMainDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -515,24 +307,15 @@ public class ConfigFrame extends javax.swing.JFrame {
                         .addComponent(jLabel23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbQualityMain, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(mainOutput))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
-                                .addComponent(jLabel28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSelectDeviceMain)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnMainAdvanced)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlMainCoord, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbQualityMain, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel5Layout.createSequentialGroup()
+                            .addComponent(jLabel28)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(cbMainDevice, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -542,22 +325,13 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel23)
                     .addComponent(jLabel24))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(mainOutput))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel28)
-                            .addComponent(btnSelectDeviceMain)
-                            .addComponent(btnMainAdvanced)))
-                    .addComponent(pnlMainCoord, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(cbMainDevice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(cbQualityMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(cbQualityMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jLabel37.setFont(new java.awt.Font("Dialog", 0, 10));
@@ -583,29 +357,29 @@ public class ConfigFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                         .addComponent(btnSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDiscard))
-                    .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -636,22 +410,6 @@ public class ConfigFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnStglocActionPerformed
 
-    private void btnSelectDeviceMonitorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectDeviceMonitorActionPerformed
-        jPpMenuMonitor.show(btnSelectDeviceMonitor, btnSelectDeviceMonitor.getWidth(), 0);
-}//GEN-LAST:event_btnSelectDeviceMonitorActionPerformed
-
-    private void btnMonitorAdvancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorAdvancedActionPerformed
-        pnlMonitorCoord.setVisible( btnMonitorAdvanced.isSelected() );
-}//GEN-LAST:event_btnMonitorAdvancedActionPerformed
-
-    private void btnSelectDeviceMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectDeviceMainActionPerformed
-        jPpMenuMain.show(btnSelectDeviceMain, btnSelectDeviceMain.getWidth(), 0);
-}//GEN-LAST:event_btnSelectDeviceMainActionPerformed
-
-    private void btnMainAdvancedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMainAdvancedActionPerformed
-        pnlMainCoord.setVisible( btnMainAdvanced.isSelected() );
-}//GEN-LAST:event_btnMainAdvancedActionPerformed
-
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         try{
             ObjectManager.getInstance().setBusyCursor();
@@ -669,16 +427,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDiscardActionPerformed
 
     private void registerComponents(){
-        registerComponent(mainOutput,"MainOutputIdx");
-        registerComponent(mainOutputPositionLeft,"MainOutputPositionLeft");
-        registerComponent(mainOutputPositionTop,"MainOutputPositionTop");
-        registerComponent(mainOutputSizeHeight,"MainOutputSizeHeight");
-        registerComponent(mainOutputSizeWidth,"MainOutputSizeWidth");
         registerComponent(monitorOutput,"MonitorOutputIdx");
-        registerComponent(monitorOutputPositionLeft,"MonitorOutputPositionLeft");
-        registerComponent(monitorOutputPositionTop,"MonitorOutputPositionTop");
-        registerComponent(monitorOutputSizeHeight,"MonitorOutputSizeHeight");
-        registerComponent(monitorOutputSizeWidth,"MonitorOutputSizeWidth");
         registerComponent(templateText,"TemplateText");
         registerComponent(txtStorageLoc, "StorageLoc");
 
@@ -700,70 +449,21 @@ public class ConfigFrame extends javax.swing.JFrame {
             cbQualityMonitor.addItem(ConfigObj.QUALITY_TABLE[i]);
         }
 
-    }
-
-    private void initDevicePopupMenu(){
-        GraphicsDevice gd[];
-        gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-
-        for (int i=0; i<gd.length; i++){
-
-            GraphicsConfiguration gc = gd[i].getDefaultConfiguration();
-
-            Rectangle r = gc.getBounds();
-
-            JMenuItemDevice jmi1 = new JMenuItemDevice(gd[i].getIDstring(), (int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight(), JMenuItemDevice.TARGET_MAIN);
-            jPpMenuMain.add(jmi1);
-
-            JMenuItemDevice jmi2 = new JMenuItemDevice(gd[i].getIDstring(), (int) r.getX(), (int) r.getY(), (int) r.getWidth(), (int) r.getHeight(), JMenuItemDevice.TARGET_MONITOR);
-            jPpMenuMonitor.add(jmi2);
-
-        }
+        registerComponent(cbMainDevice, "MainOutputDevice");
+        registerComponent(cbMonitorDevice, "MonitorOutputDevice");
 
     }
 
-    private class JMenuItemDevice extends JMenuItem {
+    private void initDeviceMenu(){
 
-        private int width, height, x, y;
+        cbMainDevice.removeAllItems();
+        cbMonitorDevice.removeAllItems();
 
-        private int target;
-        public static final int TARGET_MAIN = 0;
-        public static final int TARGET_MONITOR = 1;
-        public JMenuItemDevice(String deviceId, int x, int y, int width, int height, int target ){
-            super("Display:"+" \""+deviceId+"\" ("+width+"x"+height+" @ "+x+","+y+")");
-            this.width = width;
-            this.height = height;
-            this.x = x;
-            this.y = y;
-            this.target = target;
-
-            this.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    action();
-                }
-            });
-
+        for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()){
+            cbMainDevice.addItem(gd.getIDstring());
+            cbMonitorDevice.addItem(gd.getIDstring());
         }
 
-        public void action(){
-
-            if (target == TARGET_MAIN){
-
-                mainOutputPositionLeft.setText( Integer.toString(x) );
-                mainOutputPositionTop.setText( Integer.toString(y) );
-                mainOutputSizeWidth.setText( Integer.toString(width) );
-                mainOutputSizeHeight.setText( Integer.toString(height) );
-
-            }else if (target == TARGET_MONITOR){
-
-                monitorOutputPositionLeft.setText( Integer.toString(x) );
-                monitorOutputPositionTop.setText( Integer.toString(y) );
-                monitorOutputSizeWidth.setText( Integer.toString(width) );
-                monitorOutputSizeHeight.setText( Integer.toString(height) );
-
-            }
-
-        }
     }
 
     private void registerComponent(Component component, String string){
@@ -824,26 +524,15 @@ public class ConfigFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDiscard;
-    private javax.swing.JToggleButton btnMainAdvanced;
-    private javax.swing.JToggleButton btnMonitorAdvanced;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSelectDeviceMain;
-    private javax.swing.JButton btnSelectDeviceMonitor;
     private javax.swing.JButton btnStgloc;
+    private javax.swing.JComboBox cbMainDevice;
+    private javax.swing.JComboBox cbMonitorDevice;
     private javax.swing.JComboBox cbQualityMain;
     private javax.swing.JComboBox cbQualityMonitor;
     private javax.swing.JComboBox clockMode;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -851,15 +540,11 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -868,20 +553,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPopupMenu jPpMenuMain;
-    private javax.swing.JPopupMenu jPpMenuMonitor;
-    private javax.swing.JCheckBox mainOutput;
-    private javax.swing.JTextField mainOutputPositionLeft;
-    private javax.swing.JTextField mainOutputPositionTop;
-    private javax.swing.JTextField mainOutputSizeHeight;
-    private javax.swing.JTextField mainOutputSizeWidth;
     private javax.swing.JCheckBox monitorOutput;
-    private javax.swing.JTextField monitorOutputPositionLeft;
-    private javax.swing.JTextField monitorOutputPositionTop;
-    private javax.swing.JTextField monitorOutputSizeHeight;
-    private javax.swing.JTextField monitorOutputSizeWidth;
-    private javax.swing.JPanel pnlMainCoord;
-    private javax.swing.JPanel pnlMonitorCoord;
     private datasoul.templates.TemplateComboBox templateText;
     private javax.swing.JTextField txtStorageLoc;
     // End of variables declaration//GEN-END:variables

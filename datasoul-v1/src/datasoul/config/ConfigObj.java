@@ -23,8 +23,8 @@
 
 package datasoul.config;
 
+import datasoul.render.OutputDevice;
 import datasoul.templates.DisplayTemplate;
-import datasoul.templates.TemplateManager;
 import java.util.ArrayList;
 
 /**
@@ -35,19 +35,13 @@ public class ConfigObj extends AbstractConfig {
     
     static ConfigObj instance;
     
-    private boolean mainOutput;
-    private String mainOutputPositionLeft;
-    private String mainOutputPositionTop;
-    private String mainOutputSizeWidth;
-    private String mainOutputSizeHeight;
     private boolean monitorOutput;
-    private String monitorOutputPositionLeft;
-    private String monitorOutputPositionTop;
-    private String monitorOutputSizeWidth;
-    private String monitorOutputSizeHeight;
     private int clockMode;    
     private String templateText;
     private String storageLoc;
+
+    private OutputDevice mainOutputDevice;
+    private OutputDevice monitorOutputDevice;
 
     private int qualityMain;
     private int qualityMonitor;
@@ -87,100 +81,39 @@ public class ConfigObj extends AbstractConfig {
     protected void registerProperties() {
         super.registerProperties();
         properties.add("MainOutputIdx");
-        properties.add("MainOutputPositionLeft");
-        properties.add("MainOutputPositionTop");
-        properties.add("MainOutputSizeWidth");
-        properties.add("MainOutputSizeHeight");
         properties.add("MonitorOutputIdx");
-        properties.add("MonitorOutputPositionLeft");
-        properties.add("MonitorOutputPositionTop");
-        properties.add("MonitorOutputSizeWidth");
-        properties.add("MonitorOutputSizeHeight");
         properties.add("TemplateText");
         properties.add("ClockModeIdx");        
         properties.add("StorageLoc");
         properties.add("QualityMainIdx");
         properties.add("QualityMonitorIdx");
+        properties.add("MainOutputDevice");
+        properties.add("MonitorOutputDevice");
     }
     
     public ArrayList<String> getProperties(){
         return properties;
     }
 
-    public boolean getMainOutput() {
-        return mainOutput;
-    }
-
-    public String getMainOutputIdx() {
-        if (mainOutput==false){
-            return "0";
-        }else{
-            return "1";
-        }
-    }
 
     public void setMainOutput(boolean mainOutput) {
-        this.mainOutput = mainOutput;
-    }
-
-    public void setMainOutputIdx(String mainOutput) {
-        if (mainOutput.equals("0")){
-            this.mainOutput = false;
-        }else{
-            this.mainOutput = true;
-        }
-    }
-    
-    public String getMainOutputPositionLeft() {
-        return mainOutputPositionLeft;
+        // keep for backward compatibility
     }
 
     public void setMainOutputPositionLeft(String mainOutputPositionLeft) {
-        this.mainOutputPositionLeft = mainOutputPositionLeft;
-    }
-
-    public String getMainOutputPositionTop() {
-        return mainOutputPositionTop;
+        // Keep for backward compatibility
     }
 
     public void setMainOutputPositionTop(String mainOutputPositionTop) {
-        this.mainOutputPositionTop = mainOutputPositionTop;
-    }
-
-    public String getMainOutputSizeWidth() {
-        return mainOutputSizeWidth;
-    }
-
-    public int getMainOutputSizeWidthAsInt() {
-        int ret = DisplayTemplate.TEMPLATE_WIDTH;
-        try {
-            ret = Integer.parseInt(mainOutputSizeWidth);
-        }catch(Exception e){
-            // ignore
-        }
-        return ret;
+        // Keep for backward compatibility
     }
 
     public void setMainOutputSizeWidth(String mainOutputSizeWidth) {
-        this.mainOutputSizeWidth = mainOutputSizeWidth;
-    }
-
-    public String getMainOutputSizeHeight() {
-        return mainOutputSizeHeight;
-    }
-
-    public int getMainOutputSizeHeightAsInt() {
-        int ret = DisplayTemplate.TEMPLATE_HEIGHT;
-        try {
-            ret = Integer.parseInt(mainOutputSizeHeight);
-        }catch(Exception e){
-            // ignore
-        }
-        return ret;
+        // Keep for backward compatibility
     }
 
     public void setMainOutputSizeHeight(String mainOutputSizeHeight) {
-        this.mainOutputSizeHeight = mainOutputSizeHeight;
+        // Keep for backward compatibility
     }
 
     public boolean getMonitorOutput() {
@@ -207,56 +140,20 @@ public class ConfigObj extends AbstractConfig {
         }
     }
 
-    public String getMonitorOutputPositionLeft() {
-        return monitorOutputPositionLeft;
-    }
-
     public void setMonitorOutputPositionLeft(String monitorOutputPositionLeft) {
-        this.monitorOutputPositionLeft = monitorOutputPositionLeft;
-    }
-
-    public String getMonitorOutputPositionTop() {
-        return monitorOutputPositionTop;
+        // Keep for backward compatibility
     }
 
     public void setMonitorOutputPositionTop(String monitorOutputPositionTop) {
-        this.monitorOutputPositionTop = monitorOutputPositionTop;
+        // Keep for backward compatibility
     }
     
-    public String getMonitorOutputSizeWidth() {
-        return monitorOutputSizeWidth;
-    }
-
-    public int getMonitorOutputSizeWidthAsInt() {
-        int ret = DisplayTemplate.TEMPLATE_WIDTH;
-        try {
-            ret = Integer.parseInt(monitorOutputSizeWidth);
-        }catch(Exception e){
-            // ignore
-        }
-        return ret;
-    }
-
     public void setMonitorOutputSizeWidth(String monitorOutputSizeWidth) {
-        this.monitorOutputSizeWidth = monitorOutputSizeWidth;
-    }
-
-    public String getMonitorOutputSizeHeight() {
-        return monitorOutputSizeHeight;
-    }
-
-    public int getMonitorOutputSizeHeightAsInt() {
-        int ret = DisplayTemplate.TEMPLATE_HEIGHT;
-        try {
-            ret = Integer.parseInt(monitorOutputSizeHeight);
-        }catch(Exception e){
-            // ignore
-        }
-        return ret;
+        // Keep for backward compatibility
     }
 
     public void setMonitorOutputSizeHeight(String monitorOutputSizeHeight) {
-        this.monitorOutputSizeHeight = monitorOutputSizeHeight;
+        // Keep for backward compatibility
     }
 
     public int getClockModeIdx() {
@@ -368,7 +265,7 @@ public class ConfigObj extends AbstractConfig {
 
     public int getMainRenderWidth(){
 
-        int ret = getMainOutputSizeWidthAsInt();
+        int ret = mainOutputDevice.getWidth();
 
         switch(qualityMain){
             case QUALITY_640:
@@ -392,16 +289,12 @@ public class ConfigObj extends AbstractConfig {
 
     public int getMainRenderHeight(){
 
-        float renderwidth = getMainRenderWidth();
-        float sizewidth = getMainOutputSizeWidthAsInt();
-        float sizeheight = getMainOutputSizeHeightAsInt();
-
-        return (int) (renderwidth * (sizeheight / sizewidth));
+        return mainOutputDevice.getProportionalHeight(mainOutputDevice.getWidth());
     }
 
     public int getMonitorRenderWidth(){
 
-        int ret = getMonitorOutputSizeWidthAsInt();
+        int ret = monitorOutputDevice.getWidth();
 
         switch(qualityMonitor){
             case QUALITY_640:
@@ -424,12 +317,39 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public int getMonitorRenderHeight(){
+        return monitorOutputDevice.getProportionalHeight(monitorOutputDevice.getWidth());
+    }
 
-        float renderwidth = getMonitorRenderWidth();
-        float sizewidth = getMonitorOutputSizeWidthAsInt();
-        float sizeheight = getMonitorOutputSizeHeightAsInt();
+    public String getMainOutputDevice(){
+        if (mainOutputDevice != null){
+            return mainOutputDevice.getName();
+        }else{
+            return "";
+        }
+    }
 
-        return (int) (renderwidth * (sizeheight / sizewidth));
+    public void setMainOutputDevice(String s){
+        this.mainOutputDevice = new OutputDevice(s);
+    }
+
+    public String getMonitorOutputDevice(){
+        if (monitorOutputDevice != null){
+            return monitorOutputDevice.getName();
+        }else{
+            return "";
+        }
+    }
+
+    public void setMonitorOutputDevice(String s){
+        this.monitorOutputDevice = new OutputDevice(s);
+    }
+
+    public OutputDevice getMainOutputDeviceObj(){
+        return mainOutputDevice;
+    }
+
+    public OutputDevice getMonitorOutputDeviceObj(){
+        return monitorOutputDevice;
     }
 
 
