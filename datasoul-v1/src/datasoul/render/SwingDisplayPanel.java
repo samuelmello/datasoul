@@ -22,7 +22,6 @@ package datasoul.render;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -30,17 +29,33 @@ import javax.swing.SwingUtilities;
  */
 public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisplay {
     
-    private BufferedImage img;
+    private BufferedImage img0;
+    private BufferedImage img1;
+    private int activeImage;
+
 
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {
         initComponents();
     }
 
-    public void registerOutputImage(BufferedImage img) {
-        this.img = img;
+    @Override
+    public void registerOutputImage0(BufferedImage img) {
+        this.img0 = img;
     }
     
+    @Override
+    public void registerOutputImage1(BufferedImage img) {
+        this.img1 = img;
+    }
+
+    private BufferedImage getActiveImage(){
+        if (activeImage == 0){
+            return img0;
+        }else{
+            return img1;
+        }
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -69,6 +84,8 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
 
         super.paint (g);
 
+        BufferedImage img = getActiveImage();
+
         if (img != null){
             synchronized(img){
                 g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
@@ -79,14 +96,14 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
     }
     
     @Override
-    public void flip(){
+    public void flip(int i){
+        activeImage = i;
         this.repaint();
     }
     
     
     public void initDisplay(int width, int height){
         this.setSize(width, height);
-        this.setVisible(true);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -39,6 +39,12 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
 
+        swingDisplayPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                swingDisplayPanel1KeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout swingDisplayPanel1Layout = new javax.swing.GroupLayout(swingDisplayPanel1);
         swingDisplayPanel1.setLayout(swingDisplayPanel1Layout);
         swingDisplayPanel1Layout.setHorizontalGroup(
@@ -63,6 +69,10 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void swingDisplayPanel1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_swingDisplayPanel1KeyTyped
+        
+    }//GEN-LAST:event_swingDisplayPanel1KeyTyped
 
     public void registerAsMain(){
         swingDisplayPanel1.initDisplay(getWidth(), getHeight());

@@ -55,7 +55,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplatePreview(serviceItem.getTemplate());
         cm.setTitlePreview(serviceItem.getTitle());
-        serviceItemTable1.setServiceItem(serviceItem);
+        serviceItemTable1.setServiceItem(serviceItem, 0);
         cm.setSlidePreview( serviceItemTable1.getSlideText() );
         cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
         cm.setActiveImagePreview(serviceItemTable1.getSlideImage());
@@ -161,12 +161,22 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         try{
             ObjectManager.getInstance().setBusyCursor();
             ServiceItem previewItem = ObjectManager.getInstance().getPreviewPanel().serviceItemTable1.getServiceItem();
-            ObjectManager.getInstance().getLivePanel().showItem(previewItem);
+            ObjectManager.getInstance().getLivePanel().showItem(previewItem, false);
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }        
     }
-    
+
+    public void goLiveBackwards(){
+        try{
+            ObjectManager.getInstance().setBusyCursor();
+            ServiceItem previewItem = ObjectManager.getInstance().getPreviewPanel().serviceItemTable1.getServiceItem();
+            ObjectManager.getInstance().getLivePanel().showItem(previewItem, true);
+        }finally{
+            ObjectManager.getInstance().setDefaultCursor();
+        }
+    }
+
     public void valueChanged(ListSelectionEvent e) {
         ContentManager cm = ContentManager.getInstance();
         cm.setSlidePreview( serviceItemTable1.getSlideText() );

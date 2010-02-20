@@ -98,7 +98,9 @@ public class ContentRender {
     private BufferedImage templateImage;
     private BufferedImage alertImage;
     private BufferedImage backgroundImage;
-    final private BufferedImage outputImage;
+    final private BufferedImage outputImage0;
+    final private BufferedImage outputImage1;
+    private int nextOutputImage;
 
     private LinkedList<ContentDisplay> displays;
 
@@ -120,6 +122,7 @@ public class ContentRender {
         displays = new LinkedList<ContentDisplay>();
         this.width = width;
         this.height = height;
+        nextOutputImage = 0;
 
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
@@ -128,13 +131,14 @@ public class ContentRender {
         templateImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
         alertImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
         backgroundImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
-        outputImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        outputImage0 = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        outputImage1 = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
 
         run = true;
         updThread = new UpdateThread();
         updThread.start();
     }
-    
+
     public void shutdown(){
         run = false;
         updSemaphore.release();
@@ -148,6 +152,14 @@ public class ContentRender {
     public int getHeight(){
         return height;
     }
+
+    private BufferedImage getNextOutputImage(){
+        if (nextOutputImage == 0)
+            return outputImage0;
+        else
+            return outputImage1;
+    }
+
 
     public void setActiveImage(BufferedImage img){
         this.activeImage = img;
@@ -356,7 +368,8 @@ public class ContentRender {
     public void registerDisplay(ContentDisplay d){
         synchronized(this){
             displays.add(d);
-            d.registerOutputImage(outputImage);
+            d.registerOutputImage0(outputImage0);
+            d.registerOutputImage1(outputImage1);
         }
         updSemaphore.release();
     }
@@ -555,7 +568,7 @@ public class ContentRender {
             paintOutputBlack();
         }else{
 
-            synchronized(outputImage){
+            synchronized(getNextOutputImage()){
                 //paint it
                 clearOutput();
                 paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
@@ -580,7 +593,12 @@ public class ContentRender {
 
         synchronized(this){
             for (ContentDisplay d : displays){
-                d.flip();
+                d.flip(nextOutputImage);
+            }
+            if (nextOutputImage == 0){
+                nextOutputImage = 1;
+            }else{
+                nextOutputImage = 0;
             }
         }
 
@@ -603,6 +621,7 @@ public class ContentRender {
     }
     
     public void saveTransitionImage(){
+        updateDisplayValues();
         saveImage(transitionImage, template, 1.0f);
     }
 
@@ -670,25 +689,25 @@ public class ContentRender {
     }
 
     private void paintOutput(BufferedImage img, AlphaComposite rule){
-        Graphics2D g = outputImage.createGraphics();
+        Graphics2D g = getNextOutputImage().createGraphics();
         g.setComposite( rule );
         g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
     }
 
     private void paintOutputBlack(){
-        Graphics2D g = outputImage.createGraphics();
+        Graphics2D g = getNextOutputImage().createGraphics();
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, outputImage.getWidth(), outputImage.getHeight());
+        g.fillRect(0, 0, getNextOutputImage().getWidth(), getNextOutputImage().getHeight());
     }
 
     private void clearOutput(){
-        Graphics2D g = outputImage.createGraphics();
+        Graphics2D g = getNextOutputImage().createGraphics();
 
         // Clear it first
         Composite oldComp = g.getComposite();
         try{
             g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, outputImage.getWidth(), outputImage.getHeight());
+            g.fillRect(0, 0, getNextOutputImage().getWidth(), getNextOutputImage().getHeight());
         }finally{
             g.setComposite(oldComp);
         }

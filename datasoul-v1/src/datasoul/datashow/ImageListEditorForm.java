@@ -34,7 +34,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         tblImages.setHeaderVisible(false);
         this.origitem = item;
         this.edititem = item.getEditableCopy();
-        tblImages.setServiceItem(this.edititem);
+        tblImages.setServiceItem(this.edititem, 0);
         txtTitle.setText(item.getTitle());
     }
 

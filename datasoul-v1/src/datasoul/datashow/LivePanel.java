@@ -13,13 +13,12 @@
  */
 
 package datasoul.datashow;
-import datasoul.DatasoulMainForm;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
 import datasoul.util.ObjectManager;
-import javax.swing.JFrame;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -46,10 +45,9 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         serviceItemTable1.setFocusInTable();
     }
     
-    public void showItem(ServiceItem serviceItem){
+    public void showItem(ServiceItem serviceItem, boolean backwards){
 
         ContentManager cm = ContentManager.getInstance();
-        //cm.saveTransitionImage();
         cm.setTemplateLive(serviceItem.getTemplate());
         cm.setTitleLive(serviceItem.getTitle());
         if(serviceItem instanceof Song) {
@@ -57,7 +55,13 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             cm.setSongSourceLive( ((Song)serviceItem).getSongSource() );
             cm.setCopyrightLive( ((Song)serviceItem).getCopyright() );
         }
-        this.serviceItemTable1.setServiceItem(serviceItem);
+
+        if (backwards){
+            this.serviceItemTable1.setServiceItem(serviceItem, serviceItem.getRowCount()-1);
+        }else{
+            this.serviceItemTable1.setServiceItem(serviceItem, 0);
+        }
+
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
         cm.setActiveImageLive(serviceItemTable1.getSlideImage());
@@ -69,7 +73,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         // but at least is not buggy
         cm.saveTransitionImage();
         
-        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
+        cm.slideChange(0);
         
     }
 
@@ -187,7 +191,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         // but at least is not buggy
         cm.saveTransitionImage();
 
-        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
+        cm.slideChange(0);
 
 }//GEN-LAST:event_btnUnselectActionPerformed
 
@@ -217,7 +221,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         if (ContentManager.getInstance().getOutputHasFocus()) {
             int count = serviceItemTable1.getSlideCount();
             int index = serviceItemTable1.getSlideIndex();
-            if (index < count) serviceItemTable1.setSlideIndex(index+1);
+            if (index < count-1) serviceItemTable1.setSlideIndex(index+1);
             else {
                 if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
                     PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
@@ -233,8 +237,13 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             if (index > 0) serviceItemTable1.setSlideIndex(index-1);
             else {
                 if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
-                    PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                    pp.goLive();
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                            pp.goLiveBackwards();
+                        }
+                    });
                 }
             }
         }

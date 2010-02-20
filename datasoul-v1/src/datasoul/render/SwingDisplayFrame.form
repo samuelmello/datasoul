@@ -34,6 +34,9 @@
   </Layout>
   <SubComponents>
     <Container class="datasoul.render.SwingDisplayPanel" name="swingDisplayPanel1">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="swingDisplayPanel1KeyTyped"/>
+      </Events>
 
       <Layout>
         <DimensionLayout dim="0">

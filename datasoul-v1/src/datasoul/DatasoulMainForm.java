@@ -1319,7 +1319,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
        int currentRow = tableServiceList.getSelectedRow();
        int maxRow = tableServiceList.getRowCount();
        while (currentRow < maxRow-1){
-           if (tableServiceList.getModel().getValueAt(currentRow+1, 0) instanceof ContentlessServiceItem){
+           if (ServiceListTable.getActiveInstance().getServiceItem(currentRow+1) instanceof ContentlessServiceItem){
                currentRow++;
            }else{
                tableServiceList.setRowSelectionInterval(currentRow+1,currentRow+1);
@@ -1333,7 +1333,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public boolean goToPreviousServiceItem() {
         int currentRow = tableServiceList.getSelectedRow();
         while (currentRow > 0) {
-           if (tableServiceList.getModel().getValueAt(currentRow-1, 0) instanceof ContentlessServiceItem){
+           if (ServiceListTable.getActiveInstance().getServiceItem(currentRow-1) instanceof ContentlessServiceItem){
               currentRow--;
            }else{
                tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);

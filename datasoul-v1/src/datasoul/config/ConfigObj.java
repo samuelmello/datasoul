@@ -24,7 +24,6 @@
 package datasoul.config;
 
 import datasoul.render.OutputDevice;
-import datasoul.templates.DisplayTemplate;
 import java.util.ArrayList;
 
 /**
@@ -80,7 +79,6 @@ public class ConfigObj extends AbstractConfig {
 
     protected void registerProperties() {
         super.registerProperties();
-        properties.add("MainOutputIdx");
         properties.add("MonitorOutputIdx");
         properties.add("TemplateText");
         properties.add("ClockModeIdx");        
@@ -96,7 +94,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
 
-    public void setMainOutput(boolean mainOutput) {
+    public void setMainOutputIdx(String mainOutput) {
         // keep for backward compatibility
     }
 

@@ -24,8 +24,6 @@
 package datasoul.render;
 
 import datasoul.config.ConfigObj;
-import datasoul.datashow.PreviewPanel;
-import datasoul.templates.DisplayTemplate;
 import java.awt.image.BufferedImage;
 
 /**

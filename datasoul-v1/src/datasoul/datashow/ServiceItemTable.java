@@ -21,6 +21,10 @@
 package datasoul.datashow;
 
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -37,7 +41,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         initComponents();
         
         ServiceItem empty = new ServiceItem();
-        setServiceItem(empty);
+        setServiceItem(empty, 0);
         
         this.displayTable.addKeyListener(new ServiceItemTableKeyListner(this));
         addTableListener(this);
@@ -136,12 +140,12 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     private javax.swing.JPanel pnlHeader;
     // End of variables declaration//GEN-END:variables
     
-    public void setServiceItem(ServiceItem item){
+    public void setServiceItem(ServiceItem item, int initialslide){
         this.item = item;
         item.registerJTable(displayTable); 
         item.updateHeights(displayTable);        
         lblTemplate.setText( item.getTemplate() );
-        setSlideIndex(0);
+        setSlideIndex(initialslide);
     }
 
     public ServiceItem getServiceItem(){
