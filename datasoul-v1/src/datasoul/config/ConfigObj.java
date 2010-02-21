@@ -43,7 +43,6 @@ public class ConfigObj extends AbstractConfig {
     private OutputDevice monitorOutputDevice;
 
     private int qualityMain;
-    private int qualityMonitor;
     
     public static final int CLOCKMODE_24_SEC = 0;
     public static final int CLOCKMODE_24_NOSEC = 1;
@@ -62,7 +61,6 @@ public class ConfigObj extends AbstractConfig {
     private ConfigObj() {
         // Default quality:
         this.qualityMain = QUALITY_800;
-        this.qualityMonitor = QUALITY_800;
         load("datasoul.config");
     }
     
@@ -237,30 +235,6 @@ public class ConfigObj extends AbstractConfig {
         return QUALITY_TABLE[this.qualityMain];
     }
 
-    public void setQualityMonitorIdx(int i){
-        this.qualityMonitor = i;
-    }
-
-    public void setQualityMonitorIdx(String i){
-        setQualityMonitorIdx(Integer.parseInt(i));
-    }
-
-    public void setQualityMonitor(String str){
-        for (int i=0; i<QUALITY_TABLE.length; i++){
-            if (str.equalsIgnoreCase(QUALITY_TABLE[i])){
-                setQualityMonitorIdx(i);
-            }
-        }
-    }
-
-    public int getQualityMonitorIdx(){
-        return this.qualityMonitor;
-    }
-
-    public String getQualityMonitor(){
-        return QUALITY_TABLE[this.qualityMonitor];
-    }
-
     public int getMainRenderWidth(){
 
         int ret = mainOutputDevice.getWidth();
@@ -294,7 +268,7 @@ public class ConfigObj extends AbstractConfig {
 
         int ret = monitorOutputDevice.getWidth();
 
-        switch(qualityMonitor){
+        switch(qualityMain){
             case QUALITY_640:
                 if (ret > 640)
                     ret = 640;

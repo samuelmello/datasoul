@@ -76,8 +76,6 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        cbQualityMonitor = new javax.swing.JComboBox();
         cbMonitorDevice = new javax.swing.JComboBox();
         jPanel5 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
@@ -228,10 +226,6 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel21.setFont(new java.awt.Font("Dialog", 0, 10));
         jLabel21.setText(bundle.getString("Monitor_output_is_used_to_display_information_in_monitors_on_stage,_providing_feedback_for_musicans_or_preachers.")); // NOI18N
 
-        jLabel11.setText("Rendering Quality");
-
-        cbQualityMonitor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         cbMonitorDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -245,19 +239,14 @@ public class ConfigFrame extends javax.swing.JFrame {
                         .addComponent(jLabel20)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 727, Short.MAX_VALUE))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cbQualityMonitor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(4, 4, 4)
-                            .addComponent(monitorOutput))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                            .addComponent(jLabel29)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cbMonitorDevice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(4, 4, 4)
+                        .addComponent(monitorOutput))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbMonitorDevice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -274,11 +263,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(cbMonitorDevice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(cbQualityMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Main_Output"))); // NOI18N
@@ -443,12 +428,6 @@ public class ConfigFrame extends javax.swing.JFrame {
             cbQualityMain.addItem(ConfigObj.QUALITY_TABLE[i]);
         }
 
-        registerComponent(cbQualityMonitor, "QualityMonitor");
-        cbQualityMonitor.removeAllItems();
-        for (int i=0; i<ConfigObj.QUALITY_TABLE.length; i++){
-            cbQualityMonitor.addItem(ConfigObj.QUALITY_TABLE[i]);
-        }
-
         registerComponent(cbMainDevice, "MainOutputDevice");
         registerComponent(cbMonitorDevice, "MonitorOutputDevice");
 
@@ -529,10 +508,8 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cbMainDevice;
     private javax.swing.JComboBox cbMonitorDevice;
     private javax.swing.JComboBox cbQualityMain;
-    private javax.swing.JComboBox cbQualityMonitor;
     private javax.swing.JComboBox clockMode;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
