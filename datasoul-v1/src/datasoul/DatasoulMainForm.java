@@ -1107,7 +1107,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     public void closeOutputs(){
 
-        if (btnShow.isSelected() && ContentManager.getInstance().getOutputHasFocus()){
+        if (btnShow.isSelected()){
             ContentManager.getInstance().setOutputVisible( false );
             btnShow.setSelected(false);
         }

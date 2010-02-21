@@ -218,33 +218,29 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
     
     public void serviceNextSlide() {
-        if (ContentManager.getInstance().getOutputHasFocus()) {
-            int count = serviceItemTable1.getSlideCount();
-            int index = serviceItemTable1.getSlideIndex();
-            if (index < count-1) serviceItemTable1.setSlideIndex(index+1);
-            else {
-                if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
-                    PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                    pp.goLive(false);
-                }
+        int count = serviceItemTable1.getSlideCount();
+        int index = serviceItemTable1.getSlideIndex();
+        if (index < count-1) serviceItemTable1.setSlideIndex(index+1);
+        else {
+            if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
+                PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                pp.goLive(false);
             }
         }
     }
 
     public void servicePreviousSlide() {
-        if (ContentManager.getInstance().getOutputHasFocus()) {
-            int index = serviceItemTable1.getSlideIndex();
-            if (index > 0) serviceItemTable1.setSlideIndex(index-1);
-            else {
-                if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                            pp.goLive(true);
-                        }
-                    });
-                }
+        int index = serviceItemTable1.getSlideIndex();
+        if (index > 0) serviceItemTable1.setSlideIndex(index-1);
+        else {
+            if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
+                        pp.goLive(true);
+                    }
+                });
             }
         }
     }
