@@ -173,7 +173,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         SwingUtilities.invokeLater(new Runnable(){ 
             @Override
             public void run(){
-                preview.goLive();
+                preview.goLive(false);
             }});
 
     }
@@ -237,7 +237,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnUp = new javax.swing.JButton();
         btnDown = new javax.swing.JButton();
-        btnGoLive = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtHours = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -618,19 +617,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBar.add(btnDown);
-
-        btnGoLive.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-start.png"))); // NOI18N
-        btnGoLive.setText(bundle.getString("GO_LIVE")); // NOI18N
-        btnGoLive.setToolTipText(bundle.getString("Send_slides_to_live")); // NOI18N
-        btnGoLive.setBorderPainted(false);
-        btnGoLive.setFocusPainted(false);
-        btnGoLive.setFocusable(false);
-        btnGoLive.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGoLiveActionPerformed(evt);
-            }
-        });
-        toolBar.add(btnGoLive);
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -1097,11 +1083,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         monitorDisplayPanel.setVisible(btnShowMonitor.isSelected());
 }//GEN-LAST:event_btnShowMonitorActionPerformed
 
-    private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
-        preview.goLive();
-        showDisplayControls();
-    }//GEN-LAST:event_btnGoLiveActionPerformed
-
     private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_UP ||
@@ -1364,7 +1345,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnDown;
     javax.swing.JButton btnEdit;
     javax.swing.JButton btnExport;
-    javax.swing.JButton btnGoLive;
     javax.swing.JButton btnHelp;
     javax.swing.JButton btnNew;
     javax.swing.JButton btnOpen;

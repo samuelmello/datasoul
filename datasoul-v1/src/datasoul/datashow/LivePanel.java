@@ -225,7 +225,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             else {
                 if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
                     PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                    pp.goLive();
+                    pp.goLive(false);
                 }
             }
         }
@@ -241,7 +241,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                         @Override
                         public void run() {
                             PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
-                            pp.goLiveBackwards();
+                            pp.goLive(true);
                         }
                     });
                 }

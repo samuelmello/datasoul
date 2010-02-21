@@ -72,7 +72,7 @@ public class KeyListner implements KeyListener, AWTEventListener{
 
         switch(e.getKeyCode()){ 
             case KeyEvent.VK_F3: 
-                ObjectManager.getInstance().getPreviewPanel().goLive();
+                ObjectManager.getInstance().getPreviewPanel().goLive(false);
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;

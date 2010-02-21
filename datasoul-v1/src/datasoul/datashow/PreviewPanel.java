@@ -20,6 +20,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.DisplayControlConfig;
 import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
 import datasoul.song.Song;
@@ -40,6 +41,9 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         initComponents();
         serviceItemTable1.addTableListener(this);
         serviceItemTable1.setHeaderVisible(false);
+
+        cbAutoLive.setSelected(DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
+        btnGoLive.setVisible(!DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
 
         ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1);
         Dimension size = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewHeight());
@@ -67,7 +71,10 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         }
         lblTemplate.setText(serviceItem.getTemplate());
         cm.updatePreview();
-         
+
+        if (cbAutoLive.isSelected()){
+            goLive(false);
+        }
     }
     
     /** This method is called from within the constructor to
@@ -84,6 +91,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lblTemplate = new javax.swing.JLabel();
+        cbAutoLive = new javax.swing.JCheckBox();
+        btnGoLive = new javax.swing.JButton();
 
         setBorder(null);
         setDoubleBuffered(false);
@@ -113,6 +122,20 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
         lblTemplate.setText("     ");
 
+        cbAutoLive.setText("Present automatically");
+        cbAutoLive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbAutoLiveActionPerformed(evt);
+            }
+        });
+
+        btnGoLive.setText("Start Presentation");
+        btnGoLive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGoLiveActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlPreviewBoxLayout = new javax.swing.GroupLayout(pnlPreviewBox);
         pnlPreviewBox.setLayout(pnlPreviewBoxLayout);
         pnlPreviewBoxLayout.setHorizontalGroup(
@@ -123,15 +146,23 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTemplate))
+            .addComponent(cbAutoLive)
+            .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnGoLive))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlPreviewBoxLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(cbAutoLive)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGoLive)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblTemplate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -142,7 +173,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlPreviewBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -157,24 +188,26 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
 }//GEN-LAST:event_previewDisplayPanel1previewDisplayResized
 
-    public void goLive(){
+    private void cbAutoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbAutoLiveActionPerformed
+
+        btnGoLive.setVisible(! cbAutoLive.isSelected());
+        DisplayControlConfig.getInstance().setAutomaticGoLive(cbAutoLive.isSelected());
+
+    }//GEN-LAST:event_cbAutoLiveActionPerformed
+
+    private void btnGoLiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoLiveActionPerformed
+        goLive(false);
+    }//GEN-LAST:event_btnGoLiveActionPerformed
+
+    public void goLive(boolean startAtLastSlide){
         try{
             ObjectManager.getInstance().setBusyCursor();
             ServiceItem previewItem = ObjectManager.getInstance().getPreviewPanel().serviceItemTable1.getServiceItem();
-            ObjectManager.getInstance().getLivePanel().showItem(previewItem, false);
+            ObjectManager.getInstance().getLivePanel().showItem(previewItem, startAtLastSlide);
+            ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }        
-    }
-
-    public void goLiveBackwards(){
-        try{
-            ObjectManager.getInstance().setBusyCursor();
-            ServiceItem previewItem = ObjectManager.getInstance().getPreviewPanel().serviceItemTable1.getServiceItem();
-            ObjectManager.getInstance().getLivePanel().showItem(previewItem, true);
-        }finally{
-            ObjectManager.getInstance().setDefaultCursor();
-        }
     }
 
     public void valueChanged(ListSelectionEvent e) {
@@ -187,6 +220,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGoLive;
+    private javax.swing.JCheckBox cbAutoLive;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblTemplate;

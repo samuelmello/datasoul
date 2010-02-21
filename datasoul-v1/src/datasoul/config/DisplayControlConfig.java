@@ -53,6 +53,8 @@ public class DisplayControlConfig extends AbstractConfig {
     private boolean monitorFollowMainControls;
     private String templateMonitor;
 
+    private boolean automaticGoLive;
+
     public int getSlideTransitionTime() {
         return slideTransitionTime;
     }
@@ -129,12 +131,33 @@ public class DisplayControlConfig extends AbstractConfig {
         save();
     }
 
+    public String getAutomaticGoLive(){
+        if (automaticGoLive)
+            return "1";
+        else
+            return "0";
+    }
+
+    public boolean getAutomaticGoLiveBool(){
+        return automaticGoLive;
+    }
+
+    public void setAutomaticGoLive(boolean b){
+        this.automaticGoLive = b;
+        save();
+    }
+
+    public void setAutomaticGoLive(String str){
+        setAutomaticGoLive( str.equals("1") );
+    }
+
     protected void registerProperties() {
         super.registerProperties();
         properties.add("SlideTransitionTime");
         properties.add("SlideShowHideTime");
         properties.add("MonitorFollowMainControlsIdx");
         properties.add("TemplateMonitor");
+        properties.add("AutomaticGoLive");
     }
 
     

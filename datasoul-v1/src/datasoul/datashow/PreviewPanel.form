@@ -23,7 +23,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Component id="serviceItemTable1" pref="223" max="32767" attributes="0"/>
+              <Component id="serviceItemTable1" pref="220" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlPreviewBox" min="-2" max="-2" attributes="1"/>
           </Group>
@@ -51,17 +51,26 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTemplate" min="-2" max="-2" attributes="0"/>
               </Group>
+              <Component id="cbAutoLive" alignment="0" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnGoLive" min="-2" max="-2" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbAutoLive" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnGoLive" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblTemplate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="114" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="previewDisplayPanel1" min="-2" max="-2" attributes="0"/>
@@ -112,6 +121,22 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="     "/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbAutoLive">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Present automatically"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbAutoLiveActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnGoLive">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Start Presentation"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoLiveActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
