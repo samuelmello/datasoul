@@ -11,6 +11,7 @@
 
 package datasoul.templates;
 
+import datasoul.config.DisplayControlConfig;
 import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -35,6 +36,20 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
         jTableTemplates.getSelectionModel().addListSelectionListener(this);
 
+        cbDefaultImages.setTargetContent(DisplayTemplate.TARGET_CONTENT_IMAGES);
+        cbDefaultImages.setSelectedItem(DisplayControlConfig.getInstance().getDefaultTemplateImage());
+        cbDefaultText.setTargetContent(DisplayTemplate.TARGET_CONTENT_TEXT);
+        cbDefaultText.setSelectedItem(DisplayControlConfig.getInstance().getDefaultTemplateText());
+        cbDefaultSong.setTargetContent(DisplayTemplate.TARGET_CONTENT_SONG);
+        cbDefaultSong.setSelectedItem(DisplayControlConfig.getInstance().getDefaultTemplateSong());
+
+        cbMonitorImages.setTargetContent(DisplayTemplate.TARGET_CONTENT_MONITOR);
+        cbMonitorImages.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateImage());
+        cbMonitorText.setTargetContent(DisplayTemplate.TARGET_CONTENT_MONITOR);
+        cbMonitorText.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateText());
+        cbMonitorSong.setTargetContent(DisplayTemplate.TARGET_CONTENT_MONITOR);
+        cbMonitorSong.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateSong());
+
     }
 
     /** This method is called from within the constructor to
@@ -56,6 +71,20 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         btnImport = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblPreview = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cbMonitorSong = new datasoul.templates.TemplateComboBox();
+        cbMonitorText = new datasoul.templates.TemplateComboBox();
+        cbMonitorImages = new datasoul.templates.TemplateComboBox();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        cbDefaultSong = new datasoul.templates.TemplateComboBox();
+        cbDefaultText = new datasoul.templates.TemplateComboBox();
+        cbDefaultImages = new datasoul.templates.TemplateComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Template Manager");
@@ -130,6 +159,140 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         lblPreview.setMaximumSize(new java.awt.Dimension(100, 500));
         lblPreview.setMinimumSize(new java.awt.Dimension(100, 15));
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Monitor Templates"));
+
+        jLabel3.setText("Song:");
+
+        jLabel4.setText("Text:");
+
+        jLabel5.setText("Images:");
+
+        cbMonitorSong.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbMonitorSong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMonitorSongActionPerformed(evt);
+            }
+        });
+
+        cbMonitorText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbMonitorText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMonitorTextActionPerformed(evt);
+            }
+        });
+
+        cbMonitorImages.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbMonitorImages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMonitorImagesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(cbMonitorImages, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(cbMonitorText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(cbMonitorSong, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cbMonitorSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cbMonitorText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cbMonitorImages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Default Templates"));
+
+        jLabel6.setText("Song:");
+
+        jLabel7.setText("Text:");
+
+        jLabel8.setText("Images:");
+
+        cbDefaultSong.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDefaultSong.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDefaultSongActionPerformed(evt);
+            }
+        });
+
+        cbDefaultText.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDefaultText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDefaultTextActionPerformed(evt);
+            }
+        });
+
+        cbDefaultImages.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbDefaultImages.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDefaultImagesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addComponent(cbDefaultImages, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addComponent(cbDefaultText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(cbDefaultSong, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cbDefaultSong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cbDefaultText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(cbDefaultImages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,6 +300,16 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblPreview, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNew)
                         .addGap(18, 18, 18)
@@ -145,15 +318,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                         .addComponent(btnDeleteTemplate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnImport)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
-                        .addComponent(btnClose))
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                        .addComponent(btnClose)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -166,15 +332,19 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE))
+                        .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNew)
                     .addComponent(btnLoad)
                     .addComponent(btnDeleteTemplate)
-                    .addComponent(btnClose)
-                    .addComponent(btnImport))
+                    .addComponent(btnImport)
+                    .addComponent(btnClose))
                 .addContainerGap())
         );
 
@@ -246,14 +416,64 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
     }//GEN-LAST:event_btnImportActionPerformed
 
+    private void cbMonitorSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorSongActionPerformed
+        if (cbMonitorSong.getSelectedItem() != null && ! cbMonitorSong.isUpdating()){
+            DisplayControlConfig.getInstance().setMonitorTemplateSong(cbMonitorSong.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbMonitorSongActionPerformed
+
+    private void cbMonitorTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorTextActionPerformed
+        if (cbMonitorText.getSelectedItem() != null && ! cbMonitorText.isUpdating()){
+            DisplayControlConfig.getInstance().setMonitorTemplateText(cbMonitorText.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbMonitorTextActionPerformed
+
+    private void cbMonitorImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorImagesActionPerformed
+        if (cbMonitorImages.getSelectedItem() != null && ! cbMonitorImages.isUpdating()){
+            DisplayControlConfig.getInstance().setMonitorTemplateImage(cbMonitorImages.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbMonitorImagesActionPerformed
+
+    private void cbDefaultSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDefaultSongActionPerformed
+        if (cbDefaultSong.getSelectedItem() != null && ! cbDefaultSong.isUpdating()){
+            DisplayControlConfig.getInstance().setDefaultTemplateSong(cbDefaultSong.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbDefaultSongActionPerformed
+
+    private void cbDefaultTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDefaultTextActionPerformed
+        if (cbDefaultText.getSelectedItem() != null && ! cbDefaultText.isUpdating()){
+            DisplayControlConfig.getInstance().setDefaultTemplateText(cbDefaultText.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbDefaultTextActionPerformed
+
+    private void cbDefaultImagesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDefaultImagesActionPerformed
+        if (cbDefaultImages.getSelectedItem() != null && ! cbDefaultImages.isUpdating()){
+            DisplayControlConfig.getInstance().setDefaultTemplateImage(cbDefaultImages.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbDefaultImagesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDeleteTemplate;
     private javax.swing.JButton btnImport;
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnNew;
+    private datasoul.templates.TemplateComboBox cbDefaultImages;
+    private datasoul.templates.TemplateComboBox cbDefaultSong;
+    private datasoul.templates.TemplateComboBox cbDefaultText;
+    private datasoul.templates.TemplateComboBox cbMonitorImages;
+    private datasoul.templates.TemplateComboBox cbMonitorSong;
+    private datasoul.templates.TemplateComboBox cbMonitorText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTemplates;
     private javax.swing.JLabel lblPreview;

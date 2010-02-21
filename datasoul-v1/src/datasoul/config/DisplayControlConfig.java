@@ -55,6 +55,14 @@ public class DisplayControlConfig extends AbstractConfig {
 
     private boolean automaticGoLive;
 
+    private String defaultTemplateText;
+    private String defaultTemplateSong;
+    private String defaultTemplateImage;
+    private String monitorTemplateText;
+    private String monitorTemplateSong;
+    private String monitorTemplateImage;
+
+
     public int getSlideTransitionTime() {
         return slideTransitionTime;
     }
@@ -151,6 +159,62 @@ public class DisplayControlConfig extends AbstractConfig {
         setAutomaticGoLive( str.equals("1") );
     }
 
+    public String getDefaultTemplateText() {
+        return defaultTemplateText;
+    }
+
+    public void setDefaultTemplateText(String defaultTemplateText) {
+        this.defaultTemplateText = defaultTemplateText;
+        save();
+    }
+
+    public String getDefaultTemplateSong() {
+        return defaultTemplateSong;
+    }
+
+    public void setDefaultTemplateSong(String defaultTemplateSong) {
+        this.defaultTemplateSong = defaultTemplateSong;
+        save();
+    }
+
+    public String getDefaultTemplateImage() {
+        return defaultTemplateImage;
+    }
+
+    public void setDefaultTemplateImage(String defaultTemplateImage) {
+        this.defaultTemplateImage = defaultTemplateImage;
+        save();
+    }
+
+    public String getMonitorTemplateText() {
+        return monitorTemplateText;
+    }
+
+    public void setMonitorTemplateText(String monitorTemplateText) {
+        this.monitorTemplateText = monitorTemplateText;
+        save();
+    }
+
+    public String getMonitorTemplateSong() {
+        return monitorTemplateSong;
+    }
+
+    public void setMonitorTemplateSong(String monitorTemplateSong) {
+        this.monitorTemplateSong = monitorTemplateSong;
+        save();
+    }
+
+    public String getMonitorTemplateImage() {
+        return monitorTemplateImage;
+    }
+
+    public void setMonitorTemplateImage(String monitorTemplateImage) {
+        this.monitorTemplateImage = monitorTemplateImage;
+        save();
+    }
+
+
+    @Override
     protected void registerProperties() {
         super.registerProperties();
         properties.add("SlideTransitionTime");
@@ -158,7 +222,12 @@ public class DisplayControlConfig extends AbstractConfig {
         properties.add("MonitorFollowMainControlsIdx");
         properties.add("TemplateMonitor");
         properties.add("AutomaticGoLive");
+        properties.add("DefaultTemplateText");
+        properties.add("DefaultTemplateSong");
+        properties.add("DefaultTemplateImage");
+        properties.add("MonitorTemplateText");
+        properties.add("MonitorTemplateSong");
+        properties.add("MonitorTemplateImage");
     }
-
     
 }
