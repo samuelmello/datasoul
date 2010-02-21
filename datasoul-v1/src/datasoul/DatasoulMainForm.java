@@ -242,7 +242,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtMinutes = new javax.swing.JTextField();
         tabbedRightSide = new javax.swing.JTabbedPane();
-        jSplitPane4 = new javax.swing.JSplitPane();
+        splSongLibrary = new javax.swing.JSplitPane();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         textSong = new javax.swing.JTextPane();
@@ -699,11 +699,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jSplitPane1.setLeftComponent(jSplitPane2);
 
-        jSplitPane4.setDividerLocation(350);
-        jSplitPane4.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-        jSplitPane4.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        splSongLibrary.setDividerLocation(350);
+        splSongLibrary.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splSongLibrary.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jSplitPane4PropertyChange(evt);
+                splSongLibraryPropertyChange(evt);
             }
         });
 
@@ -747,10 +747,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
         );
 
-        jSplitPane4.setRightComponent(jPanel6);
-        jSplitPane4.setLeftComponent(songsSearchPanel1);
+        splSongLibrary.setRightComponent(jPanel6);
+        splSongLibrary.setLeftComponent(songsSearchPanel1);
 
-        tabbedRightSide.addTab("Song Library", jSplitPane4);
+        tabbedRightSide.addTab("Song Library", splSongLibrary);
 
         splDisplayControl.setDividerLocation(250);
         splDisplayControl.setLeftComponent(live);
@@ -1024,9 +1024,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_txtNotesFocusLost
 
     private void actAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddSongActionPerformed
-        AddSongForm asf = new AddSongForm();
-        asf.setLocationRelativeTo(this);
-        asf.setVisible(true);
+        showDisplayControls();
+        tabbedRightSide.setSelectedComponent(splSongLibrary);
+        songsSearchPanel1.requestFocusForSearch();
+
 }//GEN-LAST:event_actAddSongActionPerformed
 
     private void actAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddTextActionPerformed
@@ -1065,11 +1066,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         isif.setVisible(true);
 }//GEN-LAST:event_actImportItemActionPerformed
 
-    private void jSplitPane4PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jSplitPane4PropertyChange
+    private void splSongLibraryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splSongLibraryPropertyChange
         if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
             WindowPropConfig.getInstance().setServiceSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
         }
-}//GEN-LAST:event_jSplitPane4PropertyChange
+}//GEN-LAST:event_splSongLibraryPropertyChange
 
     private void liveDisplayPanelpreviewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_liveDisplayPanelpreviewDisplayResized
 
@@ -1375,7 +1376,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JSplitPane jSplitPane1;
     javax.swing.JSplitPane jSplitPane2;
     javax.swing.JSplitPane jSplitPane3;
-    javax.swing.JSplitPane jSplitPane4;
     javax.swing.JLabel lblAuthor;
     javax.swing.JLabel lblSongName;
     datasoul.datashow.LivePanel live;
@@ -1388,6 +1388,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     datasoul.datashow.PreviewPanel preview;
     datasoul.song.SongsSearchPanel songsSearchPanel1;
     javax.swing.JSplitPane splDisplayControl;
+    javax.swing.JSplitPane splSongLibrary;
     javax.swing.JTabbedPane tabbedRightSide;
     datasoul.util.DnDTable tableServiceList;
     javax.swing.JTextPane textSong;

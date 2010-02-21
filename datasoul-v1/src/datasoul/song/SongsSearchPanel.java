@@ -379,6 +379,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         this.repaint();
     }
 
+    public void requestFocusForSearch(){
+        fieldString.requestFocus();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToList;
