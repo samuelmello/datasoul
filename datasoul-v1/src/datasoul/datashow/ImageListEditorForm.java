@@ -11,6 +11,7 @@
 
 package datasoul.datashow;
 
+import datasoul.util.ObjectManager;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
@@ -57,7 +58,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         tblImages = new datasoul.datashow.ServiceItemTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
@@ -204,6 +205,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         origitem.setTitle(txtTitle.getText());
         origitem.assignImages(edititem);
+        ObjectManager.getInstance().getDatasoulMainForm().repaint();
         dispose();
     }//GEN-LAST:event_btnOkActionPerformed
 

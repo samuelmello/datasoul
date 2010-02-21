@@ -191,10 +191,14 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     public BufferedImage getSlideImage(){
         int selectedRow = displayTable.getSelectedRow();
         if (selectedRow == -1) {
-            selectedRow = 0;
+            return null;
         }
 
         if (! (item instanceof ImageListServiceItem)){
+            return null;
+        }
+        
+        if (item.getRowCount() < 1){
             return null;
         }
 
