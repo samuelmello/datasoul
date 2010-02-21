@@ -52,7 +52,7 @@ public class TimerManager extends Thread {
     /** Creates a new instance of TimerManager */
     private TimerManager() {
 
-        int format = ConfigObj.getInstance().getClockModeIdx();
+        int format = ConfigObj.getActiveInstance().getClockModeIdx();
         
         sdformatTimer = new SimpleDateFormat("H:mm:ss");
         

@@ -57,7 +57,7 @@ public class TemplateManager implements TableModel {
             // Ensure ConfigObj already loaded.
             // If any template combo box register to the TemplateManager before 
             // ConfigObj, it will cause a dead lock
-            ConfigObj.getInstance();
+            ConfigObj.getActiveInstance();
         }
         return instance;
     }

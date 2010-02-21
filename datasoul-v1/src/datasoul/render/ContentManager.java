@@ -46,10 +46,10 @@ public class ContentManager {
 
     /** Creates a new instance of ContentManager */
     private ContentManager() {
-        mainRender = new ContentRender( ConfigObj.getInstance().getMainRenderWidth(), ConfigObj.getInstance().getMainRenderHeight());
+        mainRender = new ContentRender( ConfigObj.getActiveInstance().getMainRenderWidth(), ConfigObj.getActiveInstance().getMainRenderHeight());
 
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
-            monitorRender = new ContentRender( ConfigObj.getInstance().getMonitorRenderWidth(), ConfigObj.getInstance().getMonitorRenderHeight());
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() ){
+            monitorRender = new ContentRender( ConfigObj.getActiveInstance().getMonitorRenderWidth(), ConfigObj.getActiveInstance().getMonitorRenderHeight());
         }
 
         previewRender = new ContentRender(PREVIEW_WIDTH, getPreviewHeight());
@@ -64,13 +64,13 @@ public class ContentManager {
     }
 
     public int getPreviewHeight(){
-        return ConfigObj.getInstance().getMainOutputDeviceObj().getProportionalHeight(PREVIEW_WIDTH);
+        return ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(PREVIEW_WIDTH);
     }
 
     public int getPreviewMonitorHeight(){
 
-        if (ConfigObj.getInstance().getMonitorOutput()){
-            return ConfigObj.getInstance().getMonitorOutputDeviceObj().getProportionalHeight(PREVIEW_WIDTH);
+        if (ConfigObj.getActiveInstance().getMonitorOutput()){
+            return ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(PREVIEW_WIDTH);
         }else{
             return getPreviewHeight();
         }
@@ -78,55 +78,55 @@ public class ContentManager {
 
     public void setTitleLive(String title){
         mainRender.setTitle(title);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setTitle(title);
     }
     
     public void saveTransitionImage(){
         mainRender.saveTransitionImage();
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.saveTransitionImage();
     }
     
     public void setSlideLive(String slide){
         mainRender.setSlide(slide);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setSlide(slide);
     }
     
     public void setNextSlideLive(String slide){
         mainRender.setNextSlide(slide);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setNextSlide(slide);
     }
     
     public void setClockLive(String text){
         mainRender.setClock(text);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setClock(text);
     }
     
     public void setTimerLive(String timer){
         mainRender.setTimer(timer);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setTimer(timer);
     }
 
     public void setSongAuthorLive(String songAuthor){
         mainRender.setSongAuthor(songAuthor);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setSongAuthor(songAuthor);
     }
 
     public void setSongSourceLive(String songSource){
         mainRender.setSongSource(songSource);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setSongSource(songSource);
     }
     
     public void setCopyrightLive(String copyright){
         mainRender.setCopyright(copyright);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setCopyright(copyright);
     }
     
@@ -135,7 +135,7 @@ public class ContentManager {
     }
 
     public void setTemplateMonitorLive(String template){
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() ){
             monitorRender.setTemplate(template);
         }
 
@@ -143,19 +143,19 @@ public class ContentManager {
     
     public synchronized void slideChange (int transictionTime){
         mainRender.slideChange(transictionTime);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.slideChange(transictionTime);
     }
     
     public void alertShow (int transictionTime){
         mainRender.alertShow(transictionTime);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.alertShow(transictionTime);
     }
     
     public void alertHide (int transictionTime){
         mainRender.alertHide(transictionTime);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.alertHide(transictionTime);
     }
 
@@ -164,7 +164,7 @@ public class ContentManager {
     }
 
     public void registerMonitorDisplay(ContentDisplay d){
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() ){
             monitorRender.registerDisplay(d);
         }
     }
@@ -215,25 +215,25 @@ public class ContentManager {
 
     public void setAlertText(String t){
         mainRender.setAlert(t);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setAlert(t);
     }
     
     public void setTimerProgress(float f){
         mainRender.setTimerProgress(f);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setTimerProgress(f);
     }
     
     public void setShowTimer(boolean b){
         mainRender.setShowTimer(b);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setShowTimer(b);
     }
 
     public void setMainBlack(boolean i){
         mainRender.setBlack(i);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setBlack(i);
     }
     
@@ -258,38 +258,38 @@ public class ContentManager {
     }
 
     public void setMonitorBlack(boolean i){
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setBlack(i);
     }
     
     public void slideShowMonitor(int i){
-		if ( ConfigObj.getInstance().getMonitorOutput() )
+		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                     monitorRender.slideShow(i);
     }
     
     public void slideHideMonitor(int i){
-		if ( ConfigObj.getInstance().getMonitorOutput() )
+		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                     monitorRender.slideHide(i);
     }
 
     public void paintBackgroundMonitor(BufferedImage img){
-		if ( ConfigObj.getInstance().getMonitorOutput() )
+		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                     monitorRender.paintBackground(img);
     }
     
     public void setAlertTemplateMonitor(String template){
-		if ( ConfigObj.getInstance().getMonitorOutput() )
+		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                     monitorRender.setAlertTemplate(template);
     }
     
     public void setAlertActiveMonitor(Boolean b){
-		if ( ConfigObj.getInstance().getMonitorOutput() )
+		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                     monitorRender.setAlertActive(b);
     }
 
     public void setActiveImageLive(BufferedImage img){
         mainRender.setActiveImage(img);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
             monitorRender.setActiveImage(img);
     }
     
@@ -299,7 +299,7 @@ public class ContentManager {
 
     public void setNextImageLive(BufferedImage img){
         mainRender.setNextImage(img);
-        if ( ConfigObj.getInstance().getMonitorOutput() )
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                 monitorRender.setNextImage(img);
     }
 
@@ -324,7 +324,7 @@ public class ContentManager {
     
     public void initMonitorDisplay(){
         
-        if (ConfigObj.getInstance().getMonitorOutput() ){
+        if (ConfigObj.getActiveInstance().getMonitorOutput() ){
             monitorDisplay = new SwingDisplayFrame();
             monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Monitor_Display"));
             monitorDisplay.registerAsMonitor();
@@ -337,7 +337,7 @@ public class ContentManager {
             mainRender.slideChange(-1);
         }
 
-        if ( ConfigObj.getInstance().getMonitorOutput() && monitorRender.getNeedTimer() ){
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() && monitorRender.getNeedTimer() ){
             monitorRender.slideChange(-1);
         }
     }
@@ -346,13 +346,13 @@ public class ContentManager {
 
 
         if (b){
-            ConfigObj.getInstance().getMainOutputDeviceObj().setWindowFullScreen(mainDisplay);
-            if (ConfigObj.getInstance().getMonitorOutput())
-                ConfigObj.getInstance().getMonitorOutputDeviceObj().setWindowFullScreen(monitorDisplay);
+            ConfigObj.getActiveInstance().getMainOutputDeviceObj().setWindowFullScreen(mainDisplay);
+            if (ConfigObj.getActiveInstance().getMonitorOutput())
+                ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().setWindowFullScreen(monitorDisplay);
         }else{
-            ConfigObj.getInstance().getMainOutputDeviceObj().closeFullScreen();
-            if (ConfigObj.getInstance().getMonitorOutput())
-                ConfigObj.getInstance().getMonitorOutputDeviceObj().closeFullScreen();
+            ConfigObj.getActiveInstance().getMainOutputDeviceObj().closeFullScreen();
+            if (ConfigObj.getActiveInstance().getMonitorOutput())
+                ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().closeFullScreen();
         }
 
     }
@@ -361,7 +361,7 @@ public class ContentManager {
         if (mainDisplay.hasFocus())
             return true;
 
-        if (ConfigObj.getInstance().getMonitorOutput())
+        if (ConfigObj.getActiveInstance().getMonitorOutput())
             return monitorDisplay.hasFocus();
 
         return false;

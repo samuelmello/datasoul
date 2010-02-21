@@ -32,7 +32,8 @@ import java.util.ArrayList;
  */
 public class ConfigObj extends AbstractConfig {
     
-    static ConfigObj instance;
+    static ConfigObj activeInstance;
+    static ConfigObj nextInstance;
     
     private boolean monitorOutput;
     private int clockMode;    
@@ -68,11 +69,18 @@ public class ConfigObj extends AbstractConfig {
         save("datasoul.config");
     }
     
-    public static synchronized ConfigObj getInstance(){
-        if(instance==null){
-            instance = new ConfigObj();
+    public static synchronized ConfigObj getActiveInstance(){
+        if(activeInstance==null){
+            activeInstance = new ConfigObj();
         }
-        return instance;
+        return activeInstance;
+    }
+
+    public static synchronized ConfigObj getNextInstance(){
+        if(nextInstance==null){
+            nextInstance = new ConfigObj();
+        }
+        return nextInstance;
     }
 
     protected void registerProperties() {
@@ -82,7 +90,6 @@ public class ConfigObj extends AbstractConfig {
         properties.add("ClockModeIdx");        
         properties.add("StorageLoc");
         properties.add("QualityMainIdx");
-        properties.add("QualityMonitorIdx");
         properties.add("MainOutputDevice");
         properties.add("MonitorOutputDevice");
     }

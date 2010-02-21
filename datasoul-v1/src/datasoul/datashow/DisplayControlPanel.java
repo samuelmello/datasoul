@@ -35,7 +35,6 @@ import javax.swing.JLabel;
 public class DisplayControlPanel extends javax.swing.JPanel {
     
     private boolean isMainOnBlack = false;
-    private boolean isMainOnClean = false;
     
     /**
      * Creates new form DisplayControlPanel
@@ -67,7 +66,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         pnlSpeed.setVisible( jSpeedCb.isSelected() );
         pnlMonitor.setVisible( jMonitorCb.isSelected() );
         
-        if (!ConfigObj.getInstance().getMonitorOutput()){
+        if (!ConfigObj.getActiveInstance().getMonitorOutput()){
             pnlMonitor.setVisible(false);
             jMonitorCb.setVisible(false);
         }
@@ -472,7 +471,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jSliderShowHideSpeedStateChanged
 
     private void btnMonitorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMonitorBlackActionPerformed
-        if ( ConfigObj.getInstance().getMonitorOutput() ){
+        if ( ConfigObj.getActiveInstance().getMonitorOutput() ){
             if( btnMonitorBlack.isSelected() ){
                 ContentManager.getInstance().setMonitorBlack( true );
             }else{

@@ -127,7 +127,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         liveDisplayPanel.setMaximumSize(liveSize);
         liveDisplayPanel.setMinimumSize(liveSize);
 
-        if (ConfigObj.getInstance().getMonitorOutput()){
+        if (ConfigObj.getActiveInstance().getMonitorOutput()){
 
             ContentManager.getInstance().registerMonitorDisplay(monitorDisplayPanel);
             Dimension monitorSize = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewMonitorHeight());
@@ -1116,11 +1116,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
     public static void checkStorageLocation(){
-        String stgloc = ConfigObj.getInstance().getStorageLoc();
+        String stgloc = ConfigObj.getActiveInstance().getStorageLoc();
         if (stgloc == null || stgloc.trim().equals("")){
             stgloc = System.getProperty("user.home")+System.getProperty("file.separator")+".datasoul"+System.getProperty("file.separator")+"data";
-            ConfigObj.getInstance().setStorageLoc(stgloc);
-            ConfigObj.getInstance().save();
+            ConfigObj.getActiveInstance().setStorageLoc(stgloc);
+            ConfigObj.getActiveInstance().save();
         }
         System.setProperty("datasoul.stgloc", stgloc);
         
@@ -1242,7 +1242,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         splash.setVisible(true);
         
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Loading_configuration..."));
-        ConfigObj.getInstance();
+        ConfigObj.getActiveInstance();
         ContentManager.getInstance();
         checkStorageLocation();
         

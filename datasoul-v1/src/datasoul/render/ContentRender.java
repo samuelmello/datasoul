@@ -268,7 +268,7 @@ public class ContentRender {
                 this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
             }catch(FileNotFoundException f){
                 // inexistent template, fallback to default
-                this.template = TemplateManager.getInstance().newDisplayTemplate( ConfigObj.getInstance().getTemplateText(), this );
+                this.template = TemplateManager.getInstance().newDisplayTemplate( ConfigObj.getActiveInstance().getTemplateText(), this );
             }
             this.templateChanged = true;
 

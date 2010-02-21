@@ -43,7 +43,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbMonitorTemplate.setTargetContent(DisplayTemplate.TARGET_CONTENT_ALERT);
         history = new ArrayList<String>();
         cbHistory.removeAllItems();
-        if (!ConfigObj.getInstance().getMonitorOutput()){
+        if (!ConfigObj.getActiveInstance().getMonitorOutput()){
             cbShowOnMonitor1.setVisible(false);
             cbMonitorTemplate.setVisible(false);
             lblTemplateMonitor.setVisible(false);

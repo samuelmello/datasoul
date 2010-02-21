@@ -97,7 +97,7 @@ public class AllSongsListTable extends SongListTable{
         // in the the song list
         song.setDuration("0");
         song.setNotes("");
-        song.setTemplate(ConfigObj.getInstance().getTemplateText());
+        song.setTemplate(ConfigObj.getActiveInstance().getTemplateText());
 
         // If already exists, remove old entry
         ArrayList<Song> toRemove = new ArrayList<Song>();

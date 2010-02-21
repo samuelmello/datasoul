@@ -91,7 +91,7 @@ public class KeyListner implements KeyListener, AWTEventListener{
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
                 break;
             case KeyEvent.VK_F7: 
-                if (ConfigObj.getInstance().getMonitorOutput()){
+                if (ConfigObj.getActiveInstance().getMonitorOutput()){
                     ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                     ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
                 }

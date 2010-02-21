@@ -58,7 +58,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         imageDisplayMain.getImageTemplateItem().setImage(img1);
         imageDisplayMonitor.getImageTemplateItem().setImage(img2);
         
-        pnlMonitor.setVisible( ConfigObj.getInstance().getMonitorOutput() );
+        pnlMonitor.setVisible( ConfigObj.getActiveInstance().getMonitorOutput() );
 
     }
     
@@ -243,7 +243,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         JColorChooser cc = new JColorChooser();
         Color color =  cc.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
-            BufferedImage img = new BufferedImage(ConfigObj.getInstance().getMonitorRenderWidth(), ConfigObj.getInstance().getMonitorRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+            BufferedImage img = new BufferedImage(ConfigObj.getActiveInstance().getMonitorRenderWidth(), ConfigObj.getActiveInstance().getMonitorRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
             g.setColor(color);
             g.fillRect(0, 0, img.getWidth(), img.getHeight());
@@ -260,7 +260,7 @@ public class BackgroundPanel extends javax.swing.JPanel {
         JColorChooser cc = new JColorChooser();
         Color color =  cc.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
-            BufferedImage img = new BufferedImage(ConfigObj.getInstance().getMainRenderWidth(), ConfigObj.getInstance().getMainRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+            BufferedImage img = new BufferedImage(ConfigObj.getActiveInstance().getMainRenderWidth(), ConfigObj.getActiveInstance().getMainRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
             g.setColor(color);
             g.fillRect(0, 0, img.getWidth(), img.getHeight());
