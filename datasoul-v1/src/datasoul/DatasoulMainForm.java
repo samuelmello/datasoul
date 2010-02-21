@@ -1276,6 +1276,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 mainForm.setVisible(true);
                 splash.setVisible(false);
                 splash.dispose();
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
             }
         });
         
