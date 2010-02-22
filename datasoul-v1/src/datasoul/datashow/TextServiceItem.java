@@ -23,6 +23,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.DisplayControlConfig;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
@@ -44,6 +45,7 @@ public class TextServiceItem extends ServiceItem {
     public TextServiceItem() {
         super();
         this.text = "";
+        this.template = DisplayControlConfig.getInstance().getDefaultTemplateText();
         cellEditor = new TextAreaCellEditor();
     }
     

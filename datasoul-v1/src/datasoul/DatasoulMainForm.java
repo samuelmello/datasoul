@@ -1058,6 +1058,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ImageListServiceItem newitem = new ImageListServiceItem();
         ServiceListTable.getActiveInstance().addItem(newitem);
         ImageListEditorForm form = new ImageListEditorForm(newitem);
+        form.setLocationRelativeTo(this);
         form.setVisible(true);
 }//GEN-LAST:event_actAddImageListActionPerformed
 

@@ -5,6 +5,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.DisplayControlConfig;
 import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.util.ZipReader;
 import datasoul.util.ZipWriter;
@@ -22,6 +23,11 @@ import org.w3c.dom.NodeList;
  * @author samuel
  */
 public class ImageListServiceItem extends ServiceItem {
+
+    public ImageListServiceItem(){
+        super();
+        this.template = DisplayControlConfig.getInstance().getDefaultTemplateImage();
+    }
 
     public void addImage(File f) throws IOException{
         BufferedImage img = ImageIO.read(f);

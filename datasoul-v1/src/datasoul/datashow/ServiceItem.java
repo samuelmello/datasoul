@@ -65,7 +65,6 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         slides = new ArrayList<ServiceItemRenderer>();
         tableModelListeners = new LinkedList<TableModelListener>();
         this.title = "";
-        this.template = ConfigObj.getActiveInstance().getTemplateText();
         this.slides = new ArrayList<ServiceItemRenderer>();
         slideNumberField = new ServiceItemNumberLabel();
         slideNumberField.setHorizontalAlignment( ServiceItemNumberLabel.TRAILING );

@@ -24,6 +24,7 @@
 package datasoul.song;
 
 import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
 import datasoul.util.ShowDialog;
 import java.io.File;
 import javax.xml.parsers.DocumentBuilder;
@@ -97,7 +98,7 @@ public class AllSongsListTable extends SongListTable{
         // in the the song list
         song.setDuration("0");
         song.setNotes("");
-        song.setTemplate(ConfigObj.getActiveInstance().getTemplateText());
+        song.setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateSong());
 
         // If already exists, remove old entry
         ArrayList<Song> toRemove = new ArrayList<Song>();

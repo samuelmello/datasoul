@@ -264,12 +264,7 @@ public class ContentRender {
     
     public void setTemplate(String template){
         try{
-            try{
-                this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
-            }catch(FileNotFoundException f){
-                // inexistent template, fallback to default
-                this.template = TemplateManager.getInstance().newDisplayTemplate( ConfigObj.getActiveInstance().getTemplateText(), this );
-            }
+            this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
             this.templateChanged = true;
 
             this.templateNeedsTimer = this.template.useTimer();

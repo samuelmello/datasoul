@@ -397,6 +397,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     }//GEN-LAST:event_btnDeleteTemplateActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+
+
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed
 

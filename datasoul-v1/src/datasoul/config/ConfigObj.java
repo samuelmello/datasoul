@@ -37,7 +37,6 @@ public class ConfigObj extends AbstractConfig {
     
     private boolean monitorOutput;
     private int clockMode;    
-    private String templateText;
     private String storageLoc;
 
     private OutputDevice mainOutputDevice;
@@ -86,7 +85,6 @@ public class ConfigObj extends AbstractConfig {
     protected void registerProperties() {
         super.registerProperties();
         properties.add("MonitorOutputIdx");
-        properties.add("TemplateText");
         properties.add("ClockModeIdx");        
         properties.add("StorageLoc");
         properties.add("QualityMainIdx");
@@ -202,12 +200,8 @@ public class ConfigObj extends AbstractConfig {
         // keep for backward compatibility
     }
     
-    public String getTemplateText(){
-        return templateText;
-    }
-
     public void setTemplateText(String templateText){
-        this.templateText = templateText;
+        // keep for backward compatibility
     }
 
     public String getStorageLoc(){

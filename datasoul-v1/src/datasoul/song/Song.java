@@ -23,6 +23,7 @@
 
 package datasoul.song;
 
+import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.TextServiceItem;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -53,6 +54,7 @@ public class Song extends TextServiceItem implements Cloneable {
     /** Creates a new instance of Song */
     public Song() {
         super();
+        this.template = DisplayControlConfig.getInstance().getDefaultTemplateSong();
         isClone = false;
     }
 
