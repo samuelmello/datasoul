@@ -62,6 +62,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         rbSlides = new javax.swing.JRadioButton();
         pbProgress = new javax.swing.JProgressBar();
         cbEmptySlide = new javax.swing.JCheckBox();
+        cbGuitarTabs = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -138,6 +139,9 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
             }
         });
 
+        cbGuitarTabs.setSelected(true);
+        cbGuitarTabs.setText("Guitar Tabs");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,7 +168,8 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblFormat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cbFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbGuitarTabs)))
                     .addComponent(rbPrintout)
                     .addComponent(jLabel1)
                     .addComponent(rbSlides))
@@ -185,6 +190,8 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 .addComponent(cbChordsSimple)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbChordsComplete)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbGuitarTabs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFormat)
@@ -311,7 +318,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     }
 
     private void exportPrintout(int type, String fileName) throws DocumentException, FileNotFoundException{
-        ServiceListExporterDocument sled = new ServiceListExporterDocument(type, fileName);
+        ServiceListExporterDocument sled = new ServiceListExporterDocument(type, fileName, cbGuitarTabs.isSelected());
 
         if (singleSong == null){
 
@@ -355,6 +362,9 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
 
         }
 
+        if (cbGuitarTabs.isSelected()){
+            sled.addGuitarTabs();
+        }
         sled.write();
 
     }
@@ -440,6 +450,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbChordsSimple;
     private javax.swing.JCheckBox cbEmptySlide;
     private javax.swing.JComboBox cbFormat;
+    private javax.swing.JCheckBox cbGuitarTabs;
     private javax.swing.JCheckBox cbLyrics;
     private javax.swing.JButton cbOk;
     private javax.swing.JCheckBox cbServicePlan;

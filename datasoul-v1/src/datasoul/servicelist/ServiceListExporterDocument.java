@@ -46,8 +46,11 @@ public class ServiceListExporterDocument {
     private Document document;
     public static final int TYPE_PDF = 0;
     public static final int TYPE_RTF = 1;
+
+    private boolean exportGuitarTabs;
+    private LinkedList<Paragraph> guitarTabs;
     
-    public ServiceListExporterDocument(int type, String filename) throws FileNotFoundException, DocumentException{
+    public ServiceListExporterDocument(int type, String filename, boolean exportGuitarTabs) throws FileNotFoundException, DocumentException{
         document = new Document();
         
         // ensure file do not exist to avoid garbage at the end of the file
@@ -59,11 +62,17 @@ public class ServiceListExporterDocument {
         if (type == TYPE_RTF){
             RtfWriter2.getInstance(document, new FileOutputStream(filename));
         }else{
-            PdfWriter.getInstance(document, new FileOutputStream(filename));
+            PdfWriter w = PdfWriter.getInstance(document, new FileOutputStream(filename));
+            w.setStrictImageSequence(true);
         }
         document.open();
         document.addCreator("Datasoul "+DatasoulMainForm.getVersion());
         document.addCreationDate();
+
+        this.exportGuitarTabs = exportGuitarTabs;
+        if (exportGuitarTabs){
+            guitarTabs = new LinkedList<Paragraph>();
+        }
     }
     
     public void write() {
@@ -237,8 +246,16 @@ public class ServiceListExporterDocument {
         
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
-        addChordsShape(s.getChordsUsedSimple());
-        document.add(p);
+
+        if (exportGuitarTabs){
+            p = new Paragraph(s.getTitle(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            guitarTabs.add(p);
+
+            p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+            guitarTabs.add(p);
+
+            guitarTabs.addAll(addChordsShape(s.getChordsUsedSimple()));
+        }
 
         document.newPage();
         
@@ -268,17 +285,26 @@ public class ServiceListExporterDocument {
         
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
         document.add(p);
-        addChordsShape(s.getChordsUsedComplete());
-        document.add(p);
+
+        if (exportGuitarTabs){
+            p = new Paragraph(s.getTitle(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            guitarTabs.add(p);
+            p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+            guitarTabs.add(p);
+            
+            guitarTabs.addAll(addChordsShape(s.getChordsUsedComplete()));
+        }
                 
         document.newPage();
         
     }
 
-    private void addChordsShape(ArrayList<String> chordsName) throws DocumentException{
+    private LinkedList<Paragraph> addChordsShape(ArrayList<String> chordsName) throws DocumentException{
         ChordsDB chordsDB = ChordsDB.getInstance();
         String notCatalogued = "";
         LinkedList<Chunk> images = new LinkedList<Chunk>();
+        LinkedList<File> filesToDelete = new LinkedList<File>();
+        LinkedList<Paragraph> ret = new LinkedList<Paragraph>();
 
         for(int i=0; i<chordsName.size();i++){
             Chord chord = chordsDB.getChordByName(chordsName.get(i));
@@ -286,12 +312,12 @@ public class ServiceListExporterDocument {
                 ChordShapePanel csp = new ChordShapePanel(2, chord.getName(),chord.getShape());
                 BufferedImage im = csp.createImage();
                 try{
-                    File tmp = File.createTempFile("datasoul-img", ".jpg");
+                    File tmp = File.createTempFile("datasoul-img", ".png");
                     tmp.deleteOnExit();
+                    filesToDelete.add(tmp);
                     
-                    ImageIO.write(im, "jpeg", tmp);
-                    Chunk c = new Chunk(Image.getInstance(tmp.getAbsolutePath()), 0, 0, true);
-                    
+                    ImageIO.write(im, "png", tmp);
+                    Chunk c = new Chunk(Image.getInstance(tmp.getAbsolutePath()), 0, 0, false);
                     images.add(c);
                 }catch(IOException e){
                     JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Internal_error:_")+e.getMessage());
@@ -301,22 +327,32 @@ public class ServiceListExporterDocument {
             }
         }
         
-        Paragraph p;
+        Paragraph p = new Paragraph();
 
         if (!images.isEmpty()){
-            p = new Paragraph();
             for (Chunk c : images){
                 p.add(c);
             }
-            document.add(p);
+            p.setLeading(images.getFirst().getImage().getScaledHeight());
+            p.setKeepTogether(true);
         }
+
+        ret.add(p);
         
         if (!notCatalogued.equals("") ){
             p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("The_following_chords_are_not_cataloged:_")+notCatalogued, FontFactory.getFont(FontFactory.HELVETICA, 8));
-            document.add(p);
+            ret.add(p);
         }
 
-        
+        for (File f : filesToDelete){
+            try{
+                f.delete();
+            }catch(Exception e){
+                //ignore, it will be deleted on exit
+            }
+        }
+
+        return ret;
     }
     
 
@@ -335,6 +371,19 @@ public class ServiceListExporterDocument {
             document.add(p);
         }
         
+    }
+
+    public void addGuitarTabs() throws DocumentException{
+
+        document.newPage();
+
+        Paragraph p = new Paragraph("Guitar Tabs", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16));
+        document.add(p);
+
+        for (Paragraph p2 : guitarTabs){
+            document.add(p2);
+        }
+
     }
     
 }

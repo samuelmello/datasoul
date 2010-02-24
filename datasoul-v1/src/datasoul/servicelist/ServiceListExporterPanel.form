@@ -55,6 +55,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cbFormat" min="-2" pref="103" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="cbGuitarTabs" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="rbPrintout" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -80,6 +81,8 @@
               <Component id="cbChordsSimple" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cbChordsComplete" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="cbGuitarTabs" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblFormat" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -230,6 +233,12 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbEmptySlideActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="cbGuitarTabs">
+      <Properties>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="Guitar Tabs"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
