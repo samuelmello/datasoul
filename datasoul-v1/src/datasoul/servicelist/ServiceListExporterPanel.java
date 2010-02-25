@@ -9,10 +9,14 @@ package datasoul.servicelist;
 import com.lowagie.text.DocumentException;
 import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
+import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
 import datasoul.render.ContentRender;
+import datasoul.servicelist.ServiceListExporterSlides;
 import datasoul.song.Song;
+import datasoul.templates.DisplayTemplate;
+import datasoul.templates.TemplateManager;
 import java.io.FileNotFoundException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -220,9 +224,20 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_cbLyricsActionPerformed
 
-    private void exportSlides(String fileName) throws FileNotFoundException, DocumentException{
+    private void exportSlides(String fileName) throws FileNotFoundException, DocumentException, Exception{
 
-        ServiceListExporterSlides sles = new ServiceListExporterSlides(fileName);
+        // Determine width and height. Use from the template for the first item
+        ServiceItem item = ServiceListTable.getActiveInstance().getServiceItem(0);
+        if (item == null)
+            return;
+
+        DisplayTemplate firstTemplate = TemplateManager.getInstance().newDisplayTemplate(item.getTemplate());
+        int width = firstTemplate.getWidth();
+        int height = firstTemplate.getHeight();
+
+
+        // Create output
+        ServiceListExporterSlides sles = new ServiceListExporterSlides(fileName, width, height);
         try{
             ServiceListTable slt =  ServiceListTable.getActiveInstance();
             ContentRender r = sles.getRender();

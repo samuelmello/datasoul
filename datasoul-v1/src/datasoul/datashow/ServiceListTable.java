@@ -71,9 +71,13 @@ public class ServiceListTable extends ListTable {
         return instance;
     }
 
-    public Object getServiceItem(int index){
+    public ServiceItem getServiceItem(int index){
         if (index >= 0 && index < objectList.size()){
-            return objectList.get(index);
+            Object o = objectList.get(index);
+            if (o instanceof ServiceItem)
+                return (ServiceItem) o;
+            else
+                return null;
         }else{
             return null;
         }

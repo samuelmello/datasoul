@@ -49,7 +49,7 @@ import java.util.concurrent.Semaphore;
  */
 public class ContentRender {
     
-    private DisplayTemplate template;
+    protected DisplayTemplate template;
     private boolean templateChanged;
     private String title;
     private boolean titleChanged;
@@ -94,12 +94,12 @@ public class ContentRender {
     private int alertTransTimerTotal;
     private int alertTransition;
     
-    protected BufferedImage transitionImage;
-    private BufferedImage templateImage;
-    private BufferedImage alertImage;
-    private BufferedImage backgroundImage;
-    final private BufferedImage outputImage0;
-    final private BufferedImage outputImage1;
+    final protected BufferedImage transitionImage;
+    final protected BufferedImage templateImage;
+    final protected BufferedImage alertImage;
+    final protected BufferedImage backgroundImage;
+    final protected BufferedImage outputImage0;
+    final protected BufferedImage outputImage1;
     private int nextOutputImage;
 
     private LinkedList<ContentDisplay> displays;
@@ -601,7 +601,7 @@ public class ContentRender {
     
     
 
-    private void saveImage(BufferedImage dst, DisplayTemplate tpl, float alpha){
+    protected void saveImage(BufferedImage dst, DisplayTemplate tpl, float alpha){
         synchronized(dst){
             Graphics2D g = dst.createGraphics();
 
