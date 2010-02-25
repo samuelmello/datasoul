@@ -398,6 +398,34 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
 
+        // Consistency check
+        DisplayControlConfig d = DisplayControlConfig.getInstance();
+        String defImage = cbDefaultImages.getSelectedItem()==null?"":cbDefaultImages.getSelectedItem().toString();
+        String defText = cbDefaultText.getSelectedItem()==null?"":cbDefaultText.getSelectedItem().toString();
+        String defSong = cbDefaultSong.getSelectedItem()==null?"":cbDefaultSong.getSelectedItem().toString();
+        String monImage = cbMonitorImages.getSelectedItem()==null?"":cbMonitorImages.getSelectedItem().toString();
+        String monText = cbMonitorText.getSelectedItem()==null?"":cbMonitorText.getSelectedItem().toString();
+        String monSong = cbMonitorSong.getSelectedItem()==null?"":cbMonitorSong.getSelectedItem().toString();
+
+        if (!d.getDefaultTemplateImage().equals(defImage) ){
+            d.setDefaultTemplateImage(defImage);
+        }
+        if (!d.getDefaultTemplateText().equals(defText) ){
+            d.setDefaultTemplateText(defText);
+        }
+        if (!d.getDefaultTemplateSong().equals(defSong) ){
+            d.setDefaultTemplateSong(defSong);
+        }
+        if (!d.getMonitorTemplateImage().equals(monImage) ){
+            d.setMonitorTemplateImage(monImage);
+        }
+        if (!d.getMonitorTemplateText().equals(monText) ){
+            d.setMonitorTemplateText(monText);
+        }
+        if (!d.getMonitorTemplateSong().equals(monSong) ){
+            d.setMonitorTemplateSong(monSong);
+        }
+
 
         dispose();
     }//GEN-LAST:event_btnCloseActionPerformed

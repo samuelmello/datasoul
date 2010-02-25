@@ -160,7 +160,10 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public String getDefaultTemplateText() {
-        return defaultTemplateText;
+        if (defaultTemplateText != null)
+            return defaultTemplateText;
+        else
+            return "";
     }
 
     public void setDefaultTemplateText(String defaultTemplateText) {
@@ -169,7 +172,10 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public String getDefaultTemplateSong() {
-        return defaultTemplateSong;
+        if (defaultTemplateSong != null)
+            return defaultTemplateSong;
+        else
+            return "";
     }
 
     public void setDefaultTemplateSong(String defaultTemplateSong) {
@@ -178,7 +184,10 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public String getDefaultTemplateImage() {
-        return defaultTemplateImage;
+        if (defaultTemplateImage != null)
+            return defaultTemplateImage;
+        else
+            return "";
     }
 
     public void setDefaultTemplateImage(String defaultTemplateImage) {
@@ -187,7 +196,11 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public String getMonitorTemplateText() {
-        return monitorTemplateText;
+        if (monitorTemplateText != null){
+            return monitorTemplateText;
+        }else{
+            return "";
+        }
     }
 
     public void setMonitorTemplateText(String monitorTemplateText) {
@@ -196,7 +209,11 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public String getMonitorTemplateSong() {
-        return monitorTemplateSong;
+        if (monitorTemplateSong != null){
+            return monitorTemplateSong;
+        }else{
+            return "";
+        }
     }
 
     public void setMonitorTemplateSong(String monitorTemplateSong) {
@@ -205,7 +222,11 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public String getMonitorTemplateImage() {
-        return monitorTemplateImage;
+        if (monitorTemplateImage != null){
+            return monitorTemplateImage;
+        }else{
+            return "";
+        }
     }
 
     public void setMonitorTemplateImage(String monitorTemplateImage) {
