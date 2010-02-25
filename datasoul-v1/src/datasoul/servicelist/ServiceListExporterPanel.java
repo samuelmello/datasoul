@@ -13,11 +13,14 @@ import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.datashow.TextServiceItem;
 import datasoul.render.ContentRender;
-import datasoul.servicelist.ServiceListExporterSlides;
 import datasoul.song.Song;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
+import java.awt.Desktop;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.URI;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -26,7 +29,11 @@ import javax.swing.JOptionPane;
  * @author  samuel
  */
 public class ServiceListExporterPanel extends javax.swing.JFrame {
-    
+
+    public static final int MODE_EXPORT = 0;
+    public static final int MODE_PRINT = 1;
+    public static final int MODE_SEND_MAIL = 2;
+
     /** Creates new form ServiceListExporterPanel */
     public ServiceListExporterPanel() {
         initComponents();
@@ -35,14 +42,50 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     }
     
     private Song singleSong = null;
+    private int mode;
     
     public void setSingleSong(Song s){
         singleSong = s;
         cbServicePlan.setSelected(false);
         cbServicePlan.setEnabled(false);
         rbSlides.setEnabled(false);
-        
     }
+
+    public boolean setMode(int mode){
+        String action = "";
+        switch (mode){
+            case MODE_EXPORT:
+                action = "Export";
+                break;
+            case MODE_PRINT:
+                action = "Print";
+                if (! Desktop.isDesktopSupported() || ! Desktop.getDesktop().isSupported(Desktop.Action.PRINT) ){
+                    JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Print support is not enabled by Java in your platform."
+                            +"\n"+ "Please use export function and print it manually.");
+                    return false;
+                }
+                break;
+            case MODE_SEND_MAIL:
+                action = "Send";
+                if (! Desktop.isDesktopSupported() || ! Desktop.getDesktop().isSupported(Desktop.Action.MAIL) ){
+                    JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Mail support is not enabled by Java in your platform."
+                            +"\n"+ "Please use export function and send it manually.");
+                    return false;
+                }
+                break;
+        }
+
+        if (singleSong == null){
+            lblTitle.setText(action+" "+"Service List");
+        }else{
+            lblTitle.setText(action+" "+"Song");
+        }
+
+        this.mode = mode;
+
+        return true;
+    }
+
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -53,7 +96,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         cbServicePlan = new javax.swing.JCheckBox();
         cbLyrics = new javax.swing.JCheckBox();
         cbChordsSimple = new javax.swing.JCheckBox();
@@ -72,8 +115,8 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         setTitle(bundle.getString("Export_Service_List")); // NOI18N
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD));
-        jLabel1.setText(bundle.getString("Select_sessions_to_export:")); // NOI18N
+        lblTitle.setFont(lblTitle.getFont().deriveFont(lblTitle.getFont().getStyle() | java.awt.Font.BOLD));
+        lblTitle.setText("Print Service List");
 
         cbServicePlan.setSelected(true);
         cbServicePlan.setText(bundle.getString("Service_Plan")); // NOI18N
@@ -175,7 +218,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                                 .addComponent(cbFormat, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(cbGuitarTabs)))
                     .addComponent(rbPrintout)
-                    .addComponent(jLabel1)
+                    .addComponent(lblTitle)
                     .addComponent(rbSlides))
                 .addContainerGap())
         );
@@ -183,7 +226,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbPrintout)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,13 +440,25 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
             fileextension = ".rtf";
         }
 
-        // Ask for file to save
-        JFileChooser fc = new JFileChooser();
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
-        if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-            fileName = fc.getSelectedFile().getPath();
-            if (!fileName.contains(fileextension)) {
-                fileName = fileName + fileextension;
+        if (mode == MODE_EXPORT){
+            // Ask for file to save
+            JFileChooser fc = new JFileChooser();
+            fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+            if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+                fileName = fc.getSelectedFile().getPath();
+                if (!fileName.contains(fileextension)) {
+                    fileName = fileName + fileextension;
+                }
+            }
+
+        }else{
+            try {
+                // Just create a temporary file
+                File tmp = File.createTempFile("datasoul-exp-", fileextension);
+                tmp.deleteOnExit();
+                fileName = tmp.getAbsolutePath();
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
         }
 
@@ -437,6 +492,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         cbServicePlan.setEnabled(b);
         lblFormat.setEnabled(b);
         cbFormat.setEnabled(b);
+        cbGuitarTabs.setEnabled(b);
     }
 
     private void enableSlideControls(boolean b){
@@ -469,8 +525,8 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbLyrics;
     private javax.swing.JButton cbOk;
     private javax.swing.JCheckBox cbServicePlan;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblFormat;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JProgressBar pbProgress;
     private javax.swing.JRadioButton rbPrintout;
     private javax.swing.JRadioButton rbSlides;
@@ -493,11 +549,50 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 }else{
                     exportPrintout(type, fileName);
                 }
-                JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Document_created_successfully"));
+                done();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_creating_document:_")+e.getMessage());
             }
             (ServiceListExporterPanel.this).dispose();
         }
+
+        public void done(){
+
+            switch (mode){
+                case MODE_EXPORT:
+                    JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Document_created_successfully"));
+                    try{
+                        Desktop.getDesktop().open(new File(fileName));
+                        return;
+                    }catch (Exception e){
+                        // ignore and just show the message
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case MODE_PRINT:
+                    try{
+                        Desktop.getDesktop().print(new File(fileName));
+                        return;
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Unable to Print Document");
+                        e.printStackTrace();
+                    }
+                    break;
+
+                case MODE_SEND_MAIL:
+                    try{
+                        Desktop.getDesktop().mail(new URI("mailto:?attachment="+fileName));
+                        return;
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Unable to Print Document");
+                        e.printStackTrace();
+                    }
+                    break;
+
+            }
+
+        }
+
     }
 }

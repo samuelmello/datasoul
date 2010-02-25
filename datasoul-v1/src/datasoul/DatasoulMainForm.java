@@ -208,6 +208,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         btnSaveAs = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
+        btnMail = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnShow = new javax.swing.JToggleButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
@@ -387,6 +389,28 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnExport);
+
+        btnPrint.setText("Print");
+        btnPrint.setFocusable(false);
+        btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnPrint);
+
+        btnMail.setText("Send Mail");
+        btnMail.setFocusable(false);
+        btnMail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMail.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnMail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMailActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnMail);
         toolBarMain.add(jSeparator2);
 
         btnShow.setText("Show!");
@@ -674,7 +698,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -731,7 +755,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(519, Short.MAX_VALUE))
+                .addContainerGap(541, Short.MAX_VALUE))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
@@ -916,6 +940,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         ServiceListExporterPanel p = new ServiceListExporterPanel();
         p.setLocationRelativeTo(this);
+        p.setMode(ServiceListExporterPanel.MODE_EXPORT);
         p.setVisible(true);
     }//GEN-LAST:event_btnExportActionPerformed
 
@@ -1107,6 +1132,26 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
         ContentManager.getInstance().setOutputVisible( btnShow.isSelected() );
     }//GEN-LAST:event_btnShowActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        ServiceListExporterPanel p = new ServiceListExporterPanel();
+        p.setLocationRelativeTo(this);
+        if (p.setMode(ServiceListExporterPanel.MODE_PRINT) == false){
+            p.dispose();
+        }else{
+            p.setVisible(true);
+        }
+    }//GEN-LAST:event_btnPrintActionPerformed
+
+    private void btnMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMailActionPerformed
+        ServiceListExporterPanel p = new ServiceListExporterPanel();
+        p.setLocationRelativeTo(this);
+        if (p.setMode(ServiceListExporterPanel.MODE_SEND_MAIL) == false){
+            p.dispose();
+        }else{
+            p.setVisible(true);
+        }
+    }//GEN-LAST:event_btnMailActionPerformed
 
     public void closeOutputs(){
 
@@ -1350,8 +1395,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnEdit;
     javax.swing.JButton btnExport;
     javax.swing.JButton btnHelp;
+    javax.swing.JButton btnMail;
     javax.swing.JButton btnNew;
     javax.swing.JButton btnOpen;
+    javax.swing.JButton btnPrint;
     javax.swing.JButton btnRemove;
     javax.swing.JButton btnSave;
     javax.swing.JButton btnSaveAs;
