@@ -209,7 +209,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnSaveAs = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
-        btnMail = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnShow = new javax.swing.JToggleButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
@@ -400,17 +399,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnPrint);
-
-        btnMail.setText("Send Mail");
-        btnMail.setFocusable(false);
-        btnMail.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnMail.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnMail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMailActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnMail);
         toolBarMain.add(jSeparator2);
 
         btnShow.setText("Show!");
@@ -1143,16 +1131,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
-    private void btnMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMailActionPerformed
-        ServiceListExporterPanel p = new ServiceListExporterPanel();
-        p.setLocationRelativeTo(this);
-        if (p.setMode(ServiceListExporterPanel.MODE_SEND_MAIL) == false){
-            p.dispose();
-        }else{
-            p.setVisible(true);
-        }
-    }//GEN-LAST:event_btnMailActionPerformed
-
     public void closeOutputs(){
 
         if (btnShow.isSelected()){
@@ -1395,7 +1373,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnEdit;
     javax.swing.JButton btnExport;
     javax.swing.JButton btnHelp;
-    javax.swing.JButton btnMail;
     javax.swing.JButton btnNew;
     javax.swing.JButton btnOpen;
     javax.swing.JButton btnPrint;

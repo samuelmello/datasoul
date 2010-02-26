@@ -32,7 +32,6 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
 
     public static final int MODE_EXPORT = 0;
     public static final int MODE_PRINT = 1;
-    public static final int MODE_SEND_MAIL = 2;
 
     /** Creates new form ServiceListExporterPanel */
     public ServiceListExporterPanel() {
@@ -62,14 +61,6 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 if (! Desktop.isDesktopSupported() || ! Desktop.getDesktop().isSupported(Desktop.Action.PRINT) ){
                     JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Print support is not enabled by Java in your platform."
                             +"\n"+ "Please use export function and print it manually.");
-                    return false;
-                }
-                break;
-            case MODE_SEND_MAIL:
-                action = "Send";
-                if (! Desktop.isDesktopSupported() || ! Desktop.getDesktop().isSupported(Desktop.Action.MAIL) ){
-                    JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Mail support is not enabled by Java in your platform."
-                            +"\n"+ "Please use export function and send it manually.");
                     return false;
                 }
                 break;
@@ -573,16 +564,6 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 case MODE_PRINT:
                     try{
                         Desktop.getDesktop().print(new File(fileName));
-                        return;
-                    }catch (Exception e){
-                        JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Unable to Print Document");
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case MODE_SEND_MAIL:
-                    try{
-                        Desktop.getDesktop().mail(new URI("mailto:?attachment="+fileName));
                         return;
                     }catch (Exception e){
                         JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Unable to Print Document");
