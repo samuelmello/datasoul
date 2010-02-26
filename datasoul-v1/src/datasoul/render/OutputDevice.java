@@ -16,21 +16,53 @@ public class OutputDevice {
     private GraphicsConfiguration gconfig;
     private JFrame window;
 
+    public static final int USAGE_MAIN = 0;
+    public static final int USAGE_MONITOR = 1;
+
     /**
      * Creates a new OutputDevice
      * Try to find a device with IDstring equal to hintID
      * @param hintID
      */
-    public OutputDevice(String hintID){
-        for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()){
+    public OutputDevice(String hintID, int usage){
+        
+        GraphicsEnvironment local = GraphicsEnvironment.getLocalGraphicsEnvironment();
+
+        for (GraphicsDevice gd : local.getScreenDevices()){
             if (gd.getIDstring().equals(hintID)){
                 this.device= gd;
                 break;
             }
         }
-        // if not found, fallback to default
-        if (this.device == null){
-            this.device = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+
+        /*
+         * If not found, determine default monitor
+         */
+        try{
+            if (this.device == null){
+                if (usage == USAGE_MAIN){
+                    /* main, get first monitor that is not the default */
+                    for (GraphicsDevice gd : local.getScreenDevices()){
+                        if (!gd.getIDstring().equals( local.getDefaultScreenDevice().getIDstring() )){
+                            this.device= gd;
+                            break;
+                        }
+                    }
+                }else{
+                    /* monitor, use default device if system has up to 2 monitor, otherwise try the 3rd */
+                    if ( local.getScreenDevices().length <= 2 ){
+                        this.device = local.getDefaultScreenDevice();
+                    }else{
+                        this.device = local.getScreenDevices()[2];
+                    }
+                }
+            }
+            // just to double check...
+            if (this.device == null){
+                this.device = local.getDefaultScreenDevice();
+            }
+        }catch(Exception e){
+            this.device = local.getDefaultScreenDevice();
         }
 
         this.gconfig = device.getDefaultConfiguration();

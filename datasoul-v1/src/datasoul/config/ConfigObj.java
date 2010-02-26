@@ -85,13 +85,13 @@ public class ConfigObj extends AbstractConfig {
 
     protected void registerProperties() {
         super.registerProperties();
+        properties.add("DetectMonitorsIdx"); // keep as first
         properties.add("MonitorOutputIdx");
         properties.add("ClockModeIdx");        
         properties.add("StorageLoc");
         properties.add("QualityMainIdx");
         properties.add("MainOutputDevice");
         properties.add("MonitorOutputDevice");
-        properties.add("DetectMonitorsIdx");
     }
     
     public ArrayList<String> getProperties(){
@@ -321,7 +321,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public String getMainOutputDevice(){
-        if (mainOutputDevice != null){
+        if (mainOutputDevice != null && ! detectMonitors){
             return mainOutputDevice.getName();
         }else{
             return "";
@@ -329,11 +329,11 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public void setMainOutputDevice(String s){
-        this.mainOutputDevice = new OutputDevice(s);
+        this.mainOutputDevice = new OutputDevice(s, OutputDevice.USAGE_MAIN);
     }
 
     public String getMonitorOutputDevice(){
-        if (monitorOutputDevice != null){
+        if (monitorOutputDevice != null && ! detectMonitors){
             return monitorOutputDevice.getName();
         }else{
             return "";
@@ -341,7 +341,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public void setMonitorOutputDevice(String s){
-        this.monitorOutputDevice = new OutputDevice(s);
+        this.monitorOutputDevice = new OutputDevice(s, OutputDevice.USAGE_MONITOR);
     }
 
     public OutputDevice getMainOutputDeviceObj(){

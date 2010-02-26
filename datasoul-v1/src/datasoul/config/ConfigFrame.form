@@ -76,7 +76,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtStorageLoc" pref="348" max="32767" attributes="0"/>
+                          <Component id="txtStorageLoc" pref="294" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -172,8 +172,8 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cbQualityMain" alignment="1" pref="416" max="32767" attributes="2"/>
-                                      <Component id="clockMode" alignment="1" pref="416" max="32767" attributes="2"/>
+                                      <Component id="cbQualityMain" alignment="1" pref="362" max="32767" attributes="2"/>
+                                      <Component id="clockMode" alignment="1" pref="362" max="32767" attributes="2"/>
                                   </Group>
                               </Group>
                               <Component id="cbDetectMonitors" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -285,14 +285,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel28" min="-2" pref="96" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbMonitorDevice" pref="432" max="32767" attributes="1"/>
-                          <Component id="cbMainDevice" alignment="0" pref="432" max="32767" attributes="1"/>
+                          <Component id="jLabel28" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                          <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="cbMonitorDevice" pref="378" max="32767" attributes="1"/>
+                          <Component id="cbMainDevice" alignment="0" pref="378" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -329,16 +329,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
               <Properties>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="datasoul/internationalize.properties" key="Output_Device" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Main Output"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel29">
               <Properties>
-                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                  <ResourceString bundle="datasoul/internationalize.properties" key="Output_Device" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Monitor Output"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbMonitorDevice">
