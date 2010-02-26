@@ -40,7 +40,6 @@ import datasoul.datashow.TimerManager;
 import datasoul.help.HelpFrame;
 import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.servicelist.ServiceListExporterPanel;
-import datasoul.song.AddSongForm;
 import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
 import datasoul.templates.TemplateManagerForm;
@@ -1244,7 +1243,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         // Enable anti-aliasing
         System.setProperty("swing.aatext","true");
-        
+
+        // JVM is broken for windows Vista and 7
+        // Disable Direct3D to avoid problems with Swing
+        if (System.getProperty("os.name").contains("Windows")){
+            System.setProperty("sun.java2d.d3d","false");
+        }
+
+
         
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
