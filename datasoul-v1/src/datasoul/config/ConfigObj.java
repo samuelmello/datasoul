@@ -120,11 +120,11 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public boolean getMonitorOutput() {
-        return monitorOutput;
+        return monitorOutput && OutputDevice.isMonitorAllowed();
     }
 
     public String getMonitorOutputIdx() {
-        if (monitorOutput==false){
+        if (getMonitorOutput()==false){
             return "0";
         }else{
             return "1";
@@ -166,7 +166,6 @@ public class ConfigObj extends AbstractConfig {
             this.detectMonitors = true;
         }
     }
-
 
     public void setMonitorOutputPositionLeft(String monitorOutputPositionLeft) {
         // Keep for backward compatibility
@@ -333,7 +332,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public String getMonitorOutputDevice(){
-        if (monitorOutputDevice != null && ! detectMonitors){
+        if (monitorOutputDevice != null && ! detectMonitors && OutputDevice.isMonitorAllowed()){
             return monitorOutputDevice.getName();
         }else{
             return "";
@@ -341,7 +340,9 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public void setMonitorOutputDevice(String s){
-        this.monitorOutputDevice = new OutputDevice(s, OutputDevice.USAGE_MONITOR);
+        if (OutputDevice.isMonitorAllowed()){
+            this.monitorOutputDevice = new OutputDevice(s, OutputDevice.USAGE_MONITOR);
+        }
     }
 
     public OutputDevice getMainOutputDeviceObj(){

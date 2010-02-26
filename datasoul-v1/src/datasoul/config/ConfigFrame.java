@@ -11,6 +11,7 @@
 
 package datasoul.config;
 
+import datasoul.render.OutputDevice;
 import datasoul.util.ObjectManager;
 import java.awt.Component;
 import java.awt.GraphicsDevice;
@@ -65,7 +66,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         cbQualityMain = new javax.swing.JComboBox();
-        monitorOutput = new javax.swing.JCheckBox();
+        cbMonitorOutput = new javax.swing.JCheckBox();
         jLabel9 = new javax.swing.JLabel();
         clockMode = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
@@ -75,6 +76,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         cbMonitorDevice = new javax.swing.JComboBox();
+        lblMonitorDisabled = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         btnDiscard = new javax.swing.JButton();
 
@@ -110,7 +112,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtStorageLoc, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
+                        .addComponent(txtStorageLoc, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnStgloc))
                     .addComponent(jLabel1))
@@ -128,13 +130,13 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Output Configuration"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Display Configuration"));
 
         jLabel7.setText("Rendering Quality");
 
         cbQualityMain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        monitorOutput.setText("Enable Monitor Output");
+        cbMonitorOutput.setText("Enable Monitor Display");
 
         jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
 
@@ -142,9 +144,9 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(jLabel3.getFont().deriveFont(jLabel3.getFont().getSize()-2f));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
-        jLabel3.setText("Output Devices and Rendering Properties");
+        jLabel3.setText("Display Devices and Rendering Properties");
 
-        cbDetectMonitors.setText("Automatically Detect Monitors");
+        cbDetectMonitors.setText("Automatically Detect Displays");
         cbDetectMonitors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbDetectMonitorsActionPerformed(evt);
@@ -153,9 +155,9 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbMainDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel28.setText("Main Output");
+        jLabel28.setText("Main Display");
 
-        jLabel29.setText("Monitor Output");
+        jLabel29.setText("Monitor Display");
 
         cbMonitorDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -165,13 +167,13 @@ public class ConfigFrame extends javax.swing.JFrame {
             pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMonitorsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel29))
-                .addGap(12, 12, 12)
-                .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbMonitorDevice, 0, 378, Short.MAX_VALUE)
-                    .addComponent(cbMainDevice, 0, 378, Short.MAX_VALUE))
+                .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cbMonitorDevice, 0, 312, Short.MAX_VALUE)
+                    .addComponent(cbMainDevice, 0, 312, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlMonitorsLayout.setVerticalGroup(
@@ -186,38 +188,42 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29)))
         );
 
+        lblMonitorDisabled.setText("(You need at least 2 displays to enable Monitor Display)");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pnlMonitors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel9))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbQualityMain, javax.swing.GroupLayout.Alignment.TRAILING, 0, 388, Short.MAX_VALUE)
-                    .addComponent(clockMode, javax.swing.GroupLayout.Alignment.TRAILING, 0, 388, Short.MAX_VALUE))
-                .addContainerGap(10, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(jLabel3)
-                .addGap(303, 303, 303))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbDetectMonitors)
-                    .addComponent(monitorOutput))
-                .addGap(327, 327, 327))
+                    .addComponent(pnlMonitors, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(cbDetectMonitors)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(cbMonitorOutput)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblMonitorDisabled))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(clockMode, 0, 309, Short.MAX_VALUE)
+                                    .addComponent(cbQualityMain, 0, 309, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(monitorOutput)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbMonitorOutput)
+                    .addComponent(lblMonitorDisabled))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbDetectMonitors)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -229,8 +235,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(clockMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                    .addComponent(clockMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
@@ -317,7 +322,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_cbDetectMonitorsActionPerformed
 
     private void registerComponents(){
-        registerComponent(monitorOutput,"MonitorOutputIdx");
+        registerComponent(cbMonitorOutput,"MonitorOutputIdx");
         registerComponent(cbDetectMonitors, "DetectMonitorsIdx");
         registerComponent(txtStorageLoc, "StorageLoc");
 
@@ -394,6 +399,12 @@ public class ConfigFrame extends javax.swing.JFrame {
             }
         }
         pnlMonitors.setVisible(!cbDetectMonitors.isSelected());
+
+        boolean allowMonitor = OutputDevice.isMonitorAllowed();
+        lblMonitorDisabled.setVisible(!allowMonitor);
+        cbMonitorDevice.setEnabled(allowMonitor);
+        cbMonitorOutput.setEnabled(allowMonitor);
+
     }
 
     private void refreshObjectValues(){
@@ -414,6 +425,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbDetectMonitors;
     private javax.swing.JComboBox cbMainDevice;
     private javax.swing.JComboBox cbMonitorDevice;
+    private javax.swing.JCheckBox cbMonitorOutput;
     private javax.swing.JComboBox cbQualityMain;
     private javax.swing.JComboBox clockMode;
     private javax.swing.JLabel jLabel1;
@@ -425,7 +437,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JCheckBox monitorOutput;
+    private javax.swing.JLabel lblMonitorDisabled;
     private javax.swing.JPanel pnlMonitors;
     private javax.swing.JTextField txtStorageLoc;
     // End of variables declaration//GEN-END:variables

@@ -76,7 +76,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtStorageLoc" pref="322" max="32767" attributes="0"/>
+                          <Component id="txtStorageLoc" pref="241" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -144,7 +144,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Output Configuration"/>
+            <TitledBorder title="Display Configuration"/>
           </Border>
         </Property>
       </Properties>
@@ -152,32 +152,34 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pnlMonitors" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="10" pref="10" max="10" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbQualityMain" alignment="1" pref="388" max="32767" attributes="2"/>
-                      <Component id="clockMode" alignment="1" pref="388" max="32767" attributes="2"/>
-                  </Group>
-                  <EmptySpace pref="10" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="12" pref="12" max="12" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="303" pref="303" max="303" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbDetectMonitors" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="monitorOutput" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="pnlMonitors" alignment="0" max="32767" attributes="1"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbDetectMonitors" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="cbMonitorOutput" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="lblMonitorDisabled" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="clockMode" pref="309" max="32767" attributes="3"/>
+                                      <Component id="cbQualityMain" alignment="0" pref="309" max="32767" attributes="3"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="327" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -186,7 +188,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="monitorOutput" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbMonitorOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMonitorDisabled" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cbDetectMonitors" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -201,7 +206,6 @@
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="clockMode" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -224,9 +228,9 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="monitorOutput">
+        <Component class="javax.swing.JCheckBox" name="cbMonitorOutput">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enable Monitor Output"/>
+            <Property name="text" type="java.lang.String" value="Enable Monitor Display"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -258,12 +262,12 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/v2/stock_effects-preview_small.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Output Devices and Rendering Properties"/>
+            <Property name="text" type="java.lang.String" value="Display Devices and Rendering Properties"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbDetectMonitors">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Automatically Detect Monitors"/>
+            <Property name="text" type="java.lang.String" value="Automatically Detect Displays"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetectMonitorsActionPerformed"/>
@@ -275,17 +279,17 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel28" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="jLabel29" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel28" max="32767" attributes="1"/>
+                          <Component id="jLabel29" alignment="0" max="32767" attributes="1"/>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbMonitorDevice" pref="378" max="32767" attributes="1"/>
-                          <Component id="cbMainDevice" alignment="0" pref="378" max="32767" attributes="1"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="cbMonitorDevice" pref="312" max="32767" attributes="2"/>
+                          <Component id="cbMainDevice" alignment="1" pref="312" max="32767" attributes="2"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -320,12 +324,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Main Output"/>
+                <Property name="text" type="java.lang.String" value="Main Display"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel29">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Monitor Output"/>
+                <Property name="text" type="java.lang.String" value="Monitor Display"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbMonitorDevice">
@@ -342,6 +346,11 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="lblMonitorDisabled">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="(You need at least 2 displays to enable Monitor Display)"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="btnSave">

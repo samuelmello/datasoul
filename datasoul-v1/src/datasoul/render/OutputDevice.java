@@ -73,6 +73,14 @@ public class OutputDevice {
         return device.getIDstring();
     }
 
+    /**
+     * Monitor is allowed only in systems with at least 2 monitors
+     * @return
+     */
+    public static boolean isMonitorAllowed(){
+        return (GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length > 1);
+    }
+
     public void setWindowFullScreen(JFrame frame){
         if (device.isFullScreenSupported()){
             device.setFullScreenWindow(frame);
