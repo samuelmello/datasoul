@@ -131,12 +131,14 @@ public class ContentManager {
     }
     
     public void setTemplateLive(String template){
-        mainRender.setTemplate(template);
+        if (template != null && !template.equals(""))
+            mainRender.setTemplate(template);
     }
 
     public void setTemplateMonitorLive(String template){
         if ( ConfigObj.getActiveInstance().getMonitorOutput() ){
-            monitorRender.setTemplate(template);
+            if (template != null && !template.equals(""))
+                monitorRender.setTemplate(template);
         }
 
     }
@@ -205,8 +207,9 @@ public class ContentManager {
 		previewRender.setCopyright(copyright);
     }
     
-    public void setTemplatePreview(String t){
-		previewRender.setTemplate(t);
+    public void setTemplatePreview(String template){
+        if (template != null && !template.equals(""))
+		previewRender.setTemplate(template);
     }
     
     public void updatePreview(){

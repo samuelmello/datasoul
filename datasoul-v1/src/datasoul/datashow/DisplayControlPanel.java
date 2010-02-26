@@ -44,8 +44,10 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         
         String x = DisplayControlConfig.getInstance().getTemplateMonitor();
         templateMonitor.setSelectedItem(x);
-        ContentManager.getInstance().setTemplateMonitorLive( x );
-        ContentManager.getInstance().slideChange(-1);
+        if (x != null){
+            ContentManager.getInstance().setTemplateMonitorLive( x );
+            ContentManager.getInstance().slideChange(-1);
+        }
 
         
         jSliderShowHideSpeed.setValue( DisplayControlConfig.getInstance().getSlideShowHideTime() / 100 );

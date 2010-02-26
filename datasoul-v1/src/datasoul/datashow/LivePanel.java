@@ -49,6 +49,17 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplateLive(serviceItem.getTemplate());
+
+        // Update monitor template
+        if (serviceItem instanceof Song){
+            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateSong() );
+        }else if (serviceItem instanceof ImageListServiceItem){
+            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateImage() );
+        }else if (serviceItem instanceof TextServiceItem){
+            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateText() );
+        }
+
+
         cm.setTitleLive(serviceItem.getTitle());
         if(serviceItem instanceof Song) {
             cm.setSongAuthorLive( ((Song)serviceItem).getSongAuthor() );
