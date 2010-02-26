@@ -36,6 +36,7 @@ public class ConfigObj extends AbstractConfig {
     static ConfigObj nextInstance;
     
     private boolean monitorOutput;
+    private boolean detectMonitors;
     private int clockMode;    
     private String storageLoc;
 
@@ -90,6 +91,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("QualityMainIdx");
         properties.add("MainOutputDevice");
         properties.add("MonitorOutputDevice");
+        properties.add("DetectMonitorsIdx");
     }
     
     public ArrayList<String> getProperties(){
@@ -140,6 +142,31 @@ public class ConfigObj extends AbstractConfig {
             this.monitorOutput = true;
         }
     }
+
+    public boolean getDetectMonitors() {
+        return detectMonitors;
+    }
+
+    public String getDetectMonitorsIdx() {
+        if (detectMonitors==false){
+            return "0";
+        }else{
+            return "1";
+        }
+    }
+
+    public void setDetectMonitors(boolean detectMonitors) {
+        this.detectMonitors = detectMonitors;
+    }
+
+    public void setDetectMonitorsIdx(String detectMonitors) {
+        if (detectMonitors.equals("0")){
+            this.detectMonitors = false;
+        }else{
+            this.detectMonitors = true;
+        }
+    }
+
 
     public void setMonitorOutputPositionLeft(String monitorOutputPositionLeft) {
         // Keep for backward compatibility
