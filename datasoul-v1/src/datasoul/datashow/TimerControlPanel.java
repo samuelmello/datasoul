@@ -20,6 +20,8 @@
 
 package datasoul.datashow;
 
+import datasoul.util.ObjectManager;
+
 /**
  *
  * @author  samuelm
@@ -32,6 +34,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         btnTimerOff.setSelected(true);
         pnlTimerStart.setVisible(false);
         pnlTimerTotal.setVisible(false);
+        ObjectManager.getInstance().setTimerControlPanel(this);
         
     }
     
@@ -304,6 +307,16 @@ public class TimerControlPanel extends javax.swing.JPanel {
         }
     }
 
+    public void setTimerFromServiceItem(int minutes){
+        btnTimerBackward.setSelected(true);
+        btnTimerBackwardActionPerformed(null);
+        edtTimerTotalMin.setText(Integer.toString(minutes));
+        edtTimerTotalSec.setText("00");
+        edtTimerStartMin.setText("00");
+        edtTimerStartSec.setText("00");
+        btnApplyTimerActionPerformed(null);
+
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

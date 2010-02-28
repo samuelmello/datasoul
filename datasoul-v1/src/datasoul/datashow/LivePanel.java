@@ -13,6 +13,7 @@
  */
 
 package datasoul.datashow;
+import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.servicelist.ContentlessServiceItem;
@@ -51,15 +52,20 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         ContentManager cm = ContentManager.getInstance();
         cm.setTemplateLive(serviceItem.getTemplate());
 
-        // Update monitor template
-        if (serviceItem instanceof Song){
-            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateSong() );
-        }else if (serviceItem instanceof ImageListServiceItem){
-            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateImage() );
-        }else if (serviceItem instanceof TextServiceItem){
-            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateText() );
-        }else if (serviceItem instanceof ContentlessServiceItem){
-            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateContentless() );
+        if (ConfigObj.getActiveInstance().getMonitorOutput()){
+            // Update monitor template
+            if (serviceItem instanceof Song){
+                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateSong() );
+            }else if (serviceItem instanceof ImageListServiceItem){
+                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateImage() );
+            }else if (serviceItem instanceof TextServiceItem){
+                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateText() );
+            }else if (serviceItem instanceof ContentlessServiceItem){
+                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateContentless() );
+            }
+            
+            // Setup timer
+            ObjectManager.getInstance().getTimerControlPanel().setTimerFromServiceItem(serviceItem.getDuration());
         }
 
 

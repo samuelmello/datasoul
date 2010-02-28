@@ -27,6 +27,7 @@ import datasoul.DatasoulMainForm;
 import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
+import datasoul.datashow.TimerControlPanel;
 import datasoul.song.AddSongForm;
 import datasoul.song.SongsSearchPanel;
 import java.awt.Cursor;
@@ -57,6 +58,7 @@ public class ObjectManager {
     private AuxiliarPanel auxiliarPanel;
     private LivePanel livePanel;
     private PreviewPanel previewPanel;
+    private TimerControlPanel timerControlPanel;
     
     private int viewActive;
     
@@ -134,6 +136,14 @@ public class ObjectManager {
     
     public void setDatasoulMainForm(DatasoulMainForm datasoulMainForm) {
         this.datasoulMainForm = datasoulMainForm;
+    }
+
+    public void setTimerControlPanel(TimerControlPanel pnl){
+        this.timerControlPanel = pnl;
+    }
+
+    public TimerControlPanel getTimerControlPanel(){
+        return timerControlPanel;
     }
     
 }
