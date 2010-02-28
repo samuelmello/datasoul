@@ -264,10 +264,16 @@ public class ContentRender {
     
     public void setTemplate(String template){
         try{
-            this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
-            this.templateChanged = true;
+            if (template != null && !template.equals("")){
+                this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
+                this.templateChanged = true;
 
-            this.templateNeedsTimer = this.template.useTimer();
+                this.templateNeedsTimer = this.template.useTimer();
+            }else{
+                this.template = null;
+                this.templateChanged = true;
+                this.templateNeedsTimer = false;
+            }
 
         }catch(Exception e){
             e.printStackTrace();
@@ -568,16 +574,18 @@ public class ContentRender {
                 clearOutput();
                 paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 
-                if (slideTransition == TRANSITION_CHANGE){
-                    if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
-                        paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                        paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                if (template != null){
+                    if (slideTransition == TRANSITION_CHANGE){
+                        if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
+                            paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
+                            paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
+                        }else{
+                            paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
+                            paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
+                        }
                     }else{
-                        paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
                         paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
                     }
-                }else{
-                    paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
                 }
 
                 if (paintAlertLevel > 0){

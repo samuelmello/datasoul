@@ -61,6 +61,7 @@ public class DisplayControlConfig extends AbstractConfig {
     private String monitorTemplateText;
     private String monitorTemplateSong;
     private String monitorTemplateImage;
+    private String monitorTemplateContentless;
 
 
     public int getSlideTransitionTime() {
@@ -234,6 +235,19 @@ public class DisplayControlConfig extends AbstractConfig {
         save();
     }
 
+    public String getMonitorTemplateContentless() {
+        if (monitorTemplateContentless != null){
+            return monitorTemplateContentless;
+        }else{
+            return "";
+        }
+    }
+
+    public void setMonitorTemplateContentless(String monitorTemplateContentless) {
+        this.monitorTemplateContentless = monitorTemplateContentless;
+        save();
+    }
+
 
     @Override
     protected void registerProperties() {
@@ -249,6 +263,7 @@ public class DisplayControlConfig extends AbstractConfig {
         properties.add("MonitorTemplateText");
         properties.add("MonitorTemplateSong");
         properties.add("MonitorTemplateImage");
+        properties.add("MonitorTemplateContentless");
     }
     
 }

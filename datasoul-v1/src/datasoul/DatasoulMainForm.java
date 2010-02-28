@@ -155,10 +155,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
             if (tableServiceList.getSelectedRow() != -1){
                 ServiceItem item = (ServiceItem) ServiceListTable.getActiveInstance().getServiceItem(tableServiceList.getSelectedRow());
-                if (!(item instanceof ContentlessServiceItem)){
-                    if(ObjectManager.getInstance().getPreviewPanel()!=null)
-                        ObjectManager.getInstance().getPreviewPanel().previewItem(item);
-                }
+                if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                    ObjectManager.getInstance().getPreviewPanel().previewItem(item);
             }
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
@@ -1333,13 +1331,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
        int currentRow = tableServiceList.getSelectedRow();
        int maxRow = tableServiceList.getRowCount();
        while (currentRow < maxRow-1){
-           if (ServiceListTable.getActiveInstance().getServiceItem(currentRow+1) instanceof ContentlessServiceItem){
-               currentRow++;
-           }else{
-               tableServiceList.setRowSelectionInterval(currentRow+1,currentRow+1);
-               goLiveItem();
-               return true;
-           }
+           tableServiceList.setRowSelectionInterval(currentRow+1,currentRow+1);
+           goLiveItem();
+           return true;
         }
         return false;
     }
@@ -1347,13 +1341,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public boolean goToPreviousServiceItem() {
         int currentRow = tableServiceList.getSelectedRow();
         while (currentRow > 0) {
-           if (ServiceListTable.getActiveInstance().getServiceItem(currentRow-1) instanceof ContentlessServiceItem){
-              currentRow--;
-           }else{
-               tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);
-               goLiveItem();
-               return true;
-           }
+           tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);
+           goLiveItem();
+           return true;
         }
         return false;
     }

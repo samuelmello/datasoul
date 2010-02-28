@@ -50,6 +50,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         cbMonitorText.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateText());
         cbMonitorSong.setTargetContent(DisplayTemplate.TARGET_CONTENT_MONITOR);
         cbMonitorSong.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateSong());
+        cbMonitorContentless.setTargetContent(DisplayTemplate.TARGET_CONTENT_MONITOR);
+        cbMonitorContentless.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateContentless());
 
         pnlMonitor.setVisible(OutputDevice.isMonitorAllowed());
 
@@ -81,6 +83,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         cbMonitorSong = new datasoul.templates.TemplateComboBox();
         cbMonitorText = new datasoul.templates.TemplateComboBox();
         cbMonitorImages = new datasoul.templates.TemplateComboBox();
+        jLabel9 = new javax.swing.JLabel();
+        cbMonitorContentless = new datasoul.templates.TemplateComboBox();
         jPanel3 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -192,6 +196,15 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             }
         });
 
+        jLabel9.setText("Contentless:");
+
+        cbMonitorContentless.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbMonitorContentless.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMonitorContentlessActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlMonitorLayout = new javax.swing.GroupLayout(pnlMonitor);
         pnlMonitor.setLayout(pnlMonitorLayout);
         pnlMonitorLayout.setHorizontalGroup(
@@ -200,17 +213,21 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                 .addContainerGap()
                 .addGroup(pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMonitorLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                        .addComponent(cbMonitorImages, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlMonitorLayout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(cbMonitorText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlMonitorLayout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                        .addComponent(cbMonitorSong, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addComponent(cbMonitorSong, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMonitorLayout.createSequentialGroup()
+                        .addGroup(pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbMonitorContentless, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbMonitorImages, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         pnlMonitorLayout.setVerticalGroup(
@@ -227,7 +244,11 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                 .addGroup(pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cbMonitorImages, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(cbMonitorContentless, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Default Templates"));
@@ -268,15 +289,15 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addComponent(cbDefaultImages, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(cbDefaultText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(cbDefaultSong, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -303,15 +324,16 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNew)
                         .addGap(18, 18, 18)
@@ -320,11 +342,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                         .addComponent(btnDeleteTemplate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnImport)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnClose))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 393, Short.MAX_VALUE)
-                        .addComponent(pnlMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
+                        .addComponent(btnClose)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -338,22 +357,19 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
                         .addComponent(pnlMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(btnDeleteTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(btnLoad, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-                    .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                    .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDeleteTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnClose))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(495, 495, 495)
-                .addComponent(btnClose)
-                .addGap(11, 11, 11))
         );
 
         pack();
@@ -414,6 +430,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         String monImage = cbMonitorImages.getSelectedItem()==null?"":cbMonitorImages.getSelectedItem().toString();
         String monText = cbMonitorText.getSelectedItem()==null?"":cbMonitorText.getSelectedItem().toString();
         String monSong = cbMonitorSong.getSelectedItem()==null?"":cbMonitorSong.getSelectedItem().toString();
+        String monContentless = cbMonitorContentless.getSelectedItem()==null?"":cbMonitorContentless.getSelectedItem().toString();
 
         if (!d.getDefaultTemplateImage().equals(defImage) ){
             d.setDefaultTemplateImage(defImage);
@@ -432,6 +449,9 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         }
         if (!d.getMonitorTemplateSong().equals(monSong) ){
             d.setMonitorTemplateSong(monSong);
+        }
+        if (!d.getMonitorTemplateContentless().equals(monContentless)){
+            d.setMonitorTemplateContentless(monContentless);
         }
 
 
@@ -490,6 +510,12 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         }
     }//GEN-LAST:event_cbDefaultImagesActionPerformed
 
+    private void cbMonitorContentlessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMonitorContentlessActionPerformed
+        if (cbMonitorContentless.getSelectedItem() != null && ! cbMonitorContentless.isUpdating()){
+            DisplayControlConfig.getInstance().setMonitorTemplateContentless(cbMonitorContentless.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbMonitorContentlessActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDeleteTemplate;
@@ -499,6 +525,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     private datasoul.templates.TemplateComboBox cbDefaultImages;
     private datasoul.templates.TemplateComboBox cbDefaultSong;
     private datasoul.templates.TemplateComboBox cbDefaultText;
+    private datasoul.templates.TemplateComboBox cbMonitorContentless;
     private datasoul.templates.TemplateComboBox cbMonitorImages;
     private datasoul.templates.TemplateComboBox cbMonitorSong;
     private datasoul.templates.TemplateComboBox cbMonitorText;
@@ -510,6 +537,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTemplates;

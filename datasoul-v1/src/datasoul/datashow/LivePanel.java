@@ -15,6 +15,7 @@
 package datasoul.datashow;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
+import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.song.Song;
 import datasoul.util.ObjectManager;
 import javax.swing.SpinnerNumberModel;
@@ -57,6 +58,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateImage() );
         }else if (serviceItem instanceof TextServiceItem){
             cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateText() );
+        }else if (serviceItem instanceof ContentlessServiceItem){
+            cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateContentless() );
         }
 
 
@@ -101,8 +104,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         cbAutoChange = new javax.swing.JCheckBox();
         spnTimer = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        btnUnselect = new javax.swing.JButton();
 
         setBorder(null);
         setDoubleBuffered(false);
@@ -141,33 +142,17 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
                 .addComponent(jLabel1))
         );
 
-        jToolBar1.setFloatable(false);
-
-        btnUnselect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnUnselect.setText(bundle.getString("Unselect_Slide")); // NOI18N
-        btnUnselect.setBorderPainted(false);
-        btnUnselect.setFocusable(false);
-        btnUnselect.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUnselectActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(btnUnselect);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
             .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -183,28 +168,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         
     }//GEN-LAST:event_cbAutoChangeActionPerformed
-
-    private void btnUnselectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnselectActionPerformed
-        ContentManager cm = ContentManager.getInstance();
-        cm.setTitleLive("");
-        cm.setSongAuthorLive("");
-        cm.setSongSourceLive("");
-        cm.setCopyrightLive("");
-        cm.setSlideLive("");
-        cm.setNextSlideLive("");
-        cm.setActiveImageLive(null);
-        cm.setNextImageLive(null);
-        serviceItemTable1.unselectSlide();
-
-        // save the transition image just before changing the slide to avoid
-        // problem when changing to a item that uses a template with different
-        // alpha. This will cause a cut to the first slide, without any transition,
-        // but at least is not buggy
-        cm.saveTransitionImage();
-
-        cm.slideChange(0);
-
-}//GEN-LAST:event_btnUnselectActionPerformed
 
     public void valueChanged(ListSelectionEvent e) {
 
@@ -257,11 +220,9 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnUnselect;
     private javax.swing.JCheckBox cbAutoChange;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToolBar jToolBar1;
     private datasoul.datashow.ServiceItemTable serviceItemTable1;
     private javax.swing.JSpinner spnTimer;
     // End of variables declaration//GEN-END:variables
