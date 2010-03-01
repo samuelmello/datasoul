@@ -912,6 +912,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         ServiceListTable.getActiveInstance().openServiceList();
+        txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
+        txtMinutes.setText(String.format("%02d", ServiceListTable.getActiveInstance().getStartMinute()));
+        txtTitle.setText(ServiceListTable.getActiveInstance().getTitle());
+        txtNotes.setText(ServiceListTable.getActiveInstance().getNotes());
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
