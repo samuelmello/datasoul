@@ -386,6 +386,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnExport);
 
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
         btnPrint.setText("Print");
         btnPrint.setFocusable(false);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -398,6 +399,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnPrint);
         toolBarMain.add(jSeparator2);
 
+        btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
         btnShow.setText("Show!");
         btnShow.setFocusable(false);
         btnShow.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
