@@ -20,8 +20,17 @@
 
 package datasoul.render;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Transparency;
 import java.awt.image.BufferedImage;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -29,9 +38,13 @@ import java.awt.image.BufferedImage;
  */
 public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisplay {
     
-    private BufferedImage img0;
-    private BufferedImage img1;
     private int activeImage;
+    private BufferedImage transitionImage;
+    private BufferedImage outputImage0;
+    private BufferedImage backgroundImage;
+    private BufferedImage alertImage;
+    private BufferedImage templateImage;
+    private BufferedImage outputImage1;
 
 
     /** Creates new form SwingDisplayPanel */
@@ -39,23 +52,22 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
         initComponents();
     }
 
-    @Override
-    public void registerOutputImage0(BufferedImage img) {
-        this.img0 = img;
-    }
-    
-    @Override
-    public void registerOutputImage1(BufferedImage img) {
-        this.img1 = img;
-    }
-
     private BufferedImage getActiveImage(){
         if (activeImage == 0){
-            return img0;
+            return outputImage0;
         }else{
-            return img1;
+            return outputImage1;
         }
     }
+
+    private BufferedImage getNextOutputImage(){
+        if (activeImage == 0){
+            return outputImage1;
+        }else{
+            return outputImage0;
+        }
+    }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -64,8 +76,6 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
      */
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        setDoubleBuffered(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,31 +91,118 @@ public class SwingDisplayPanel extends javax.swing.JPanel implements ContentDisp
 
     @Override
     public void paint (Graphics g){
-
-        super.paint (g);
-
         BufferedImage img = getActiveImage();
 
         if (img != null){
             synchronized(img){
-                g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+                g.drawImage(img, 0,0, img.getWidth(), img.getHeight(), null);
             }
         }else{
             System.out.println("Is null!");
         }
     }
     
-    @Override
-    public void flip(int i){
-        activeImage = i;
-        this.repaint();
-    }
-    
-    
     public void initDisplay(int width, int height){
         this.setSize(width, height);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        GraphicsConfiguration gc = gd.getDefaultConfiguration();
+
+        transitionImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        templateImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        alertImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        backgroundImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        outputImage0 = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+        outputImage1 = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
+
+        activeImage = 0;
     }
     
+    private void paintImage(BufferedImage dst, BufferedImage src){
+        Graphics2D g = dst.createGraphics();
+        g.drawImage(src, 0, 0, dst.getWidth(), dst.getHeight(), null);        
+        g.dispose();
+    }
+
+    @Override
+    public void paintBackground(BufferedImage im) {
+        paintImage(backgroundImage, im);
+    }
+
+    @Override
+    public void paintTransition(BufferedImage im) {
+        paintImage(transitionImage, im);
+    }
+
+    @Override
+    public void paintTemplate(BufferedImage im) {
+        paintImage(templateImage, im);
+    }
+
+    @Override
+    public void paintAlert(BufferedImage im) {
+        paintImage(alertImage, im);
+    }
+
+    @Override
+    public synchronized void updateScreen(boolean isBlack, float background, float transition, float template, float alert) {
+        if (isBlack){
+            paintOutputBlack();
+        }else{
+            System.out.println("bg="+background+" trans="+transition+" templ="+template);
+            synchronized(getNextOutputImage()){
+                clearOutput();
+                if (background > 0.0f)
+                    paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, background));
+                if (transition > 0.0f)
+                    paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, transition));
+                if (template > 0.0f)
+                    paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, template));
+                if (alert > 0.0f)
+                    paintOutput(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alert));
+            }
+        }
+
+        if (activeImage == 0)
+            activeImage = 1;
+        else
+            activeImage = 0;
+
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                SwingDisplayPanel.this.repaint();
+            }
+        });
+        
+    }
+
+    private void paintOutput(BufferedImage img, AlphaComposite rule){
+        Graphics2D g = getNextOutputImage().createGraphics();
+        g.setComposite( rule );
+        g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
+        g.dispose();
+    }
+
+    private void paintOutputBlack(){
+        Graphics2D g = getNextOutputImage().createGraphics();
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, getNextOutputImage().getWidth(), getNextOutputImage().getHeight());
+        g.dispose();
+    }
+
+    private void clearOutput(){
+        Graphics2D g = getNextOutputImage().createGraphics();
+
+        // Clear it first
+        Composite oldComp = g.getComposite();
+        try{
+            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
+            g.fillRect(0, 0, getNextOutputImage().getWidth(), getNextOutputImage().getHeight());
+        }finally{
+            g.setComposite(oldComp);
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
     

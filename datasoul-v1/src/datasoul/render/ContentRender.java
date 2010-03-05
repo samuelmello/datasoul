@@ -98,9 +98,6 @@ public class ContentRender {
     final protected BufferedImage templateImage;
     final protected BufferedImage alertImage;
     final protected BufferedImage backgroundImage;
-    final protected BufferedImage outputImage0;
-    final protected BufferedImage outputImage1;
-    private int nextOutputImage;
 
     private LinkedList<ContentDisplay> displays;
 
@@ -122,7 +119,6 @@ public class ContentRender {
         displays = new LinkedList<ContentDisplay>();
         this.width = width;
         this.height = height;
-        nextOutputImage = 0;
 
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
         GraphicsConfiguration gc = gd.getDefaultConfiguration();
@@ -131,8 +127,6 @@ public class ContentRender {
         templateImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
         alertImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
         backgroundImage = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
-        outputImage0 = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
-        outputImage1 = gc.createCompatibleImage(width, height, Transparency.TRANSLUCENT);
 
         run = true;
         updThread = new UpdateThread();
@@ -152,14 +146,6 @@ public class ContentRender {
     public int getHeight(){
         return height;
     }
-
-    private BufferedImage getNextOutputImage(){
-        if (nextOutputImage == 0)
-            return outputImage0;
-        else
-            return outputImage1;
-    }
-
 
     public void setActiveImage(BufferedImage img){
         this.activeImage = img;
@@ -312,7 +298,10 @@ public class ContentRender {
             slideTransTimerTotal = transictionTime;
             showHideNeedUpdate = true;
             updateDisplayValues();
-            saveImage(templateImage, template, 1.0f);   
+            saveImage(templateImage, template, 1.0f);
+            for (ContentDisplay d : displays){
+                d.paintTemplate(templateImage);
+            }
         }
         update();
     }
@@ -324,9 +313,15 @@ public class ContentRender {
             slideTransTimerTotal = transictionTime;
             updateDisplayValues();
             saveImage(templateImage, template, 1.0f);   
+            for (ContentDisplay d : displays){
+                d.paintTemplate(templateImage);
+            }
         }else if (transictionTime < 0){
             updateDisplayValues();
             saveImage(templateImage, template, 1.0f);   
+            for (ContentDisplay d : displays){
+                d.paintTemplate(templateImage);
+            }
         }
         update();
     }
@@ -348,6 +343,10 @@ public class ContentRender {
             alertTransTimerTotal = transictionTime;
             updateDisplayValues();
             saveImage(alertImage, alertTemplate, 1.0f);
+            for (ContentDisplay d : displays){
+                d.paintAlert(alertImage);
+            }
+
         }
         update();
     }
@@ -369,8 +368,7 @@ public class ContentRender {
     public void registerDisplay(ContentDisplay d){
         synchronized(this){
             displays.add(d);
-            d.registerOutputImage0(outputImage0);
-            d.registerOutputImage1(outputImage1);
+            d.paintBackground(backgroundImage);
         }
         updSemaphore.release();
     }
@@ -565,14 +563,24 @@ public class ContentRender {
         }
 
 
-        if (isBlack){
-            paintOutputBlack();
-        }else{
 
-            synchronized(getNextOutputImage()){
-                //paint it
-                clearOutput();
-                paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
+        if (isBlack){
+            for (ContentDisplay d : displays){
+                d.updateScreen(true, 0, 0, 0, 0);
+            }
+        }else{
+            for (ContentDisplay d : displays){
+                
+                if (slideTransition == TRANSITION_CHANGE){
+                    d.updateScreen(false, 1.0f, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
+                }else{
+                    d.updateScreen(false, 1.0f, 0.0f, paintSlideLevel, paintAlertLevel);
+                }
+            }
+
+
+            /*
+            paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
 
                 if (template != null){
                     if (slideTransition == TRANSITION_CHANGE){
@@ -592,17 +600,8 @@ public class ContentRender {
                     paintOutput(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
                 }
             }
-        }
-
-        synchronized(this){
-            for (ContentDisplay d : displays){
-                d.flip(nextOutputImage);
-            }
-            if (nextOutputImage == 0){
-                nextOutputImage = 1;
-            }else{
-                nextOutputImage = 0;
-            }
+             *
+             */
         }
 
     }
@@ -626,6 +625,9 @@ public class ContentRender {
     public void saveTransitionImage(){
         updateDisplayValues();
         saveImage(transitionImage, template, 1.0f);
+        for (ContentDisplay d : displays){
+            d.paintTransition(transitionImage);
+        }
     }
 
     void setBlack(boolean b) {
@@ -637,6 +639,11 @@ public class ContentRender {
         if (img != null && backgroundImage != null){
             Graphics2D g = backgroundImage.createGraphics();
             g.drawImage(img, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight(), null);
+            g.dispose();
+            for (ContentDisplay d : displays){
+                d.paintBackground(backgroundImage);
+            }
+
             updSemaphore.release();
         }
     }
@@ -689,31 +696,6 @@ public class ContentRender {
 
     public boolean getNeedTimer(){
         return (templateNeedsTimer || (alertActive && alertNeedsTimer));
-    }
-
-    private void paintOutput(BufferedImage img, AlphaComposite rule){
-        Graphics2D g = getNextOutputImage().createGraphics();
-        g.setComposite( rule );
-        g.drawImage(img, 0, 0, img.getWidth(), img.getHeight(), null);
-    }
-
-    private void paintOutputBlack(){
-        Graphics2D g = getNextOutputImage().createGraphics();
-        g.setColor(Color.BLACK);
-        g.fillRect(0, 0, getNextOutputImage().getWidth(), getNextOutputImage().getHeight());
-    }
-
-    private void clearOutput(){
-        Graphics2D g = getNextOutputImage().createGraphics();
-
-        // Clear it first
-        Composite oldComp = g.getComposite();
-        try{
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, getNextOutputImage().getWidth(), getNextOutputImage().getHeight());
-        }finally{
-            g.setComposite(oldComp);
-        }
     }
 
 }

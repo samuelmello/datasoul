@@ -12,6 +12,7 @@
 package datasoul.render;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
 
 /**
  *
@@ -75,11 +76,15 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_swingDisplayPanel1KeyTyped
 
     public void registerAsMain(){
-        swingDisplayPanel1.initDisplay(getWidth(), getHeight());
+        int w = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getWidth();
+        int h = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(w);
+        swingDisplayPanel1.initDisplay(w, h);
         ContentManager.getInstance().registerMainDisplay(swingDisplayPanel1);
     }
 
     public void registerAsMonitor(){
+        int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
+        int h = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(w);
         swingDisplayPanel1.initDisplay(getWidth(), getHeight());
         ContentManager.getInstance().registerMonitorDisplay(swingDisplayPanel1);
     }

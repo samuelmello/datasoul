@@ -45,12 +45,13 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         cbAutoLive.setSelected(DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
         btnGoLive.setVisible(!DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
 
-        ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1);
         Dimension size = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewHeight());
         previewDisplayPanel1.setSize(size);
         previewDisplayPanel1.setPreferredSize(size);
         previewDisplayPanel1.setMinimumSize(size);
         previewDisplayPanel1.setMaximumSize(size);
+        previewDisplayPanel1.initDisplay((int) size.getWidth(), (int) size.getHeight());
+        ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1);
 
     }
 

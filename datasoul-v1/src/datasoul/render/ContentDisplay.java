@@ -7,7 +7,11 @@ import java.awt.image.BufferedImage;
  * @author samuellucas
  */
 public interface ContentDisplay {
-    public void flip(int i);
-    public void registerOutputImage0(BufferedImage img);
-    public void registerOutputImage1(BufferedImage img);
+
+    public void paintBackground(BufferedImage im);
+    public void paintTransition(BufferedImage im);
+    public void paintTemplate(BufferedImage im);
+    public void paintAlert(BufferedImage im);
+    public void updateScreen(boolean isBlack, float background, float transition, float template, float alert);
+
 }
