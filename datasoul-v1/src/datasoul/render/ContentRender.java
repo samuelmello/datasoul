@@ -563,10 +563,9 @@ public class ContentRender {
                 d.updateScreen(true, false, 0, 0, 0, 0);
             }
         }else{
+            boolean keepbg = (template != null && template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
             for (ContentDisplay d : displays){
-                
                 if (slideTransition == TRANSITION_CHANGE){
-                    boolean keepbg = (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
                     d.updateScreen(false, keepbg, 1.0f, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
                 }else{
                     d.updateScreen(false, false, 1.0f, 0.0f, paintSlideLevel, paintAlertLevel);
