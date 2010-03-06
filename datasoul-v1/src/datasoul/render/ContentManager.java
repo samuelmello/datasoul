@@ -376,20 +376,4 @@ public class ContentManager {
         }
     }
 
-    public boolean getOutputHasFocus(){
-
-        return false;
-
-        /*
-        if (mainDisplay.hasFocus())
-            return true;
-
-        if (ConfigObj.getActiveInstance().getMonitorOutput())
-            return monitorDisplay.hasFocus();
-
-        return false;
-         *
-         */
-    }
-
 }

@@ -79,6 +79,9 @@ public class GstManagerServer {
             try {
                 while (true){
                     Object o = input.readObject();
+                    if (o instanceof GstEventNotification){
+                        ((GstEventNotification)o).run();
+                    }
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();

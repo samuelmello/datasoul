@@ -7,8 +7,12 @@ package datasoul.render.gstreamer;
 
 import datasoul.render.ContentDisplay;
 import datasoul.render.OutputDevice;
+import java.awt.AWTEvent;
+import java.awt.Toolkit;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintStream;
 import java.net.ConnectException;
 import java.net.Socket;
 import org.gstreamer.Element;
@@ -102,6 +106,7 @@ public class GstManagerClient {
 
     public static void main(String[] args) {
         args = Gst.init("Datasoul", args);
+        Toolkit.getDefaultToolkit().addAWTEventListener( GstKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
         GstManagerClient.getInstance().run();
         System.exit(0);
     }
@@ -129,13 +134,21 @@ public class GstManagerClient {
             if (isMonitorEnabled){
                 monitorDevice.setWindowFullScreen(monitorFrame);
             }
-            pipe.setState(State.PLAYING);
         }else{
             mainDevice.closeFullScreen();
             if (isMonitorEnabled){
                 monitorDevice.closeFullScreen();
             }
-            pipe.setState(State.NULL);
+        }
+    }
+
+    void sendNotification(GstEventNotification evt) {
+        try{
+            if (output != null){
+                output.writeObject(evt);
+            }
+        }catch (IOException e){
+            e.printStackTrace(new PrintStream(System.out));
         }
     }
 

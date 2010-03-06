@@ -13,7 +13,7 @@
  */
 
 /*
- * KeyListner.java
+ * DatasoulKeyListener.java
  *
  * Created on 25 de Junho de 2006, 23:06
  *
@@ -23,25 +23,33 @@
 
 package datasoul.util;
 
-import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
 import datasoul.render.ContentManager;
+import datasoul.render.SwingDisplayFrame;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.text.AbstractDocument.Content;
 
 /**
  *
  * @author Administrador
  */
-public class KeyListner implements KeyListener, AWTEventListener{
+public class DatasoulKeyListener implements KeyListener, AWTEventListener{
     
-    /** Creates a new instance of KeyListner */
-    public KeyListner() {
+    private static DatasoulKeyListener instance;
+
+    private DatasoulKeyListener(){
+
     }
+
+    public static DatasoulKeyListener getInstance(){
+        if (instance == null)
+            instance = new DatasoulKeyListener();
+        return instance;
+    }
+
 
     @Override
     public void eventDispatched(AWTEvent e) {
@@ -61,57 +69,48 @@ public class KeyListner implements KeyListener, AWTEventListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // to conform with KeyListner
-    }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // to conform with KeyListner
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-        switch(e.getKeyCode()){ 
-            case KeyEvent.VK_F3: 
+        switch(e.getKeyCode()){
+            case KeyEvent.VK_F3:
                 ObjectManager.getInstance().getPreviewPanel().goLive(false);
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
-            case KeyEvent.VK_F4: 
+            case KeyEvent.VK_F4:
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
-            case KeyEvent.VK_F5: 
+            case KeyEvent.VK_F5:
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_DISPLAY);
                 break;
-            case KeyEvent.VK_F6: 
+            case KeyEvent.VK_F6:
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
                 break;
-            case KeyEvent.VK_F7: 
+            case KeyEvent.VK_F7:
                 if (ConfigObj.getActiveInstance().getMonitorOutput()){
                     ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                     ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
                 }
-                break;                
-            case KeyEvent.VK_F8: 
+                break;
+            case KeyEvent.VK_F8:
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_BACKGROUND);
-                break;                
-            case KeyEvent.VK_F9: 
+                break;
+            case KeyEvent.VK_F9:
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutHideMain();
-                break;                
-            case KeyEvent.VK_F10: 
+                break;
+            case KeyEvent.VK_F10:
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
-                break;                
-            case KeyEvent.VK_F12:     
+                break;
+            case KeyEvent.VK_F12:
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayBlack();
                 break;
         }
 
-        if (ContentManager.getInstance().getOutputHasFocus()){
+        if (e.getSource() instanceof SwingDisplayFrame ||
+                (ConfigObj.isGstreamerActive() && e.getSource() == null) ){
             switch( e.getKeyCode()){
                 case KeyEvent.VK_PAGE_DOWN:
                 case KeyEvent.VK_RIGHT:
@@ -129,5 +128,15 @@ public class KeyListner implements KeyListener, AWTEventListener{
                     break;
             }
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // to conform with DatasoulKeyListener
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // to conform with DatasoulKeyListener
     }
 }

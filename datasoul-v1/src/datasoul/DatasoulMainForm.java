@@ -44,7 +44,7 @@ import datasoul.song.Song;
 import datasoul.song.SongEditorForm;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.templates.TemplateCellEditor;
-import datasoul.util.KeyListner;
+import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.Splash;
 import java.awt.AWTEvent;
@@ -1297,7 +1297,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_application..."));
 
-        Toolkit.getDefaultToolkit().addAWTEventListener( new KeyListner(), AWTEvent.KEY_EVENT_MASK);        
+        Toolkit.getDefaultToolkit().addAWTEventListener( DatasoulKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
 
         // Join the FontFamily cache thread
         try{
