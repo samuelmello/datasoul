@@ -1,6 +1,6 @@
 package datasoul.render;
 
-import java.awt.image.BufferedImage;
+import java.awt.Image;
 
 /**
  *
@@ -8,10 +8,10 @@ import java.awt.image.BufferedImage;
  */
 public interface ContentDisplay {
 
-    public void paintBackground(BufferedImage im);
-    public void paintTransition(BufferedImage im);
-    public void paintTemplate(BufferedImage im);
-    public void paintAlert(BufferedImage im);
-    public void updateScreen(boolean isBlack, float background, float transition, float template, float alert);
+    public void paintBackground(Image im);
+    public void paintTransition(Image im);
+    public void paintTemplate(Image im);
+    public void paintAlert(Image im);
+    public void updateScreen(boolean isBlack, boolean keepBG, float background, float transition, float template, float alert);
 
 }

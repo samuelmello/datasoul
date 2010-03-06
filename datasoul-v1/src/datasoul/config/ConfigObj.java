@@ -353,5 +353,8 @@ public class ConfigObj extends AbstractConfig {
         return monitorOutputDevice;
     }
 
+    public static boolean isGstreamerActive(){
+        return false;
+    }
 
 }

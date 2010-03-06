@@ -125,7 +125,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         liveDisplayPanel.setMaximumSize(liveSize);
         liveDisplayPanel.setMinimumSize(liveSize);
         liveDisplayPanel.initDisplay((int) liveSize.getWidth(), (int) liveSize.getHeight());
-        ContentManager.getInstance().registerMainDisplay(liveDisplayPanel);
+        ContentManager.getInstance().registerMainDisplay(liveDisplayPanel.getContentDisplay());
 
         if (ConfigObj.getActiveInstance().getMonitorOutput()){
 
@@ -135,7 +135,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             monitorDisplayPanel.setMaximumSize(monitorSize);
             monitorDisplayPanel.setMinimumSize(monitorSize);
             monitorDisplayPanel.initDisplay((int) liveSize.getWidth(), (int) liveSize.getHeight());
-            ContentManager.getInstance().registerMonitorDisplay(monitorDisplayPanel);
+            ContentManager.getInstance().registerMonitorDisplay(monitorDisplayPanel.getContentDisplay());
 
         }else{
             btnShowMonitor.setSelected(false);

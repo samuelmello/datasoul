@@ -24,6 +24,9 @@
 package datasoul.render;
 
 import datasoul.config.ConfigObj;
+import datasoul.render.gstreamer.GstDisplay;
+import datasoul.render.gstreamer.GstDisplayCmd;
+import datasoul.render.gstreamer.GstManagerServer;
 import java.awt.image.BufferedImage;
 
 /**
@@ -53,7 +56,16 @@ public class ContentManager {
         }
 
         previewRender = new ContentRender(PREVIEW_WIDTH, getPreviewHeight());
-        
+
+        if (ConfigObj.isGstreamerActive()){
+            GstManagerServer.getInstance().start();
+            GstDisplayCmd cmd = new GstDisplayCmd(GstDisplayCmd.CMD_INIT,
+                    ConfigObj.getActiveInstance().getMonitorOutput(),
+                    ConfigObj.getActiveInstance().getMainOutputDevice(),
+                    ConfigObj.getActiveInstance().getMonitorOutputDevice());
+
+            GstManagerServer.getInstance().sendCommand(cmd);
+        }
     }
     
     static public ContentManager getInstance(){
@@ -310,20 +322,18 @@ public class ContentManager {
 		previewRender.setNextImage(img);
     }
 
-    public boolean isMainDisplayActive(){
-        return mainDisplay != null;
-    }
-    
     public void initMainDisplay(){
-        mainDisplay = new SwingDisplayFrame();
-        mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
-        mainDisplay.registerAsMain();
+
+        if (ConfigObj.isGstreamerActive()){
+            GstDisplay gstdisplay = new GstDisplay();
+            registerMainDisplay(gstdisplay);
+        }else{
+            mainDisplay = new SwingDisplayFrame();
+            mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
+            mainDisplay.registerAsMain();
+        }
+
     }
-    
-    public boolean isMonitorDisplayActive(){
-        return monitorDisplay != null;
-    }
-    
     
     public void initMonitorDisplay(){
         
@@ -347,20 +357,30 @@ public class ContentManager {
 
     public void setOutputVisible(boolean b){
 
+        if (ConfigObj.isGstreamerActive()){
 
-        if (b){
-            ConfigObj.getActiveInstance().getMainOutputDeviceObj().setWindowFullScreen(mainDisplay);
-            if (ConfigObj.getActiveInstance().getMonitorOutput())
-                ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().setWindowFullScreen(monitorDisplay);
+            GstDisplayCmd cmd = new GstDisplayCmd(GstDisplayCmd.CMD_SHOW_HIDE, b);
+            GstManagerServer.getInstance().sendCommand(cmd);
+
         }else{
-            ConfigObj.getActiveInstance().getMainOutputDeviceObj().closeFullScreen();
-            if (ConfigObj.getActiveInstance().getMonitorOutput())
-                ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().closeFullScreen();
-        }
 
+            if (b){
+                ConfigObj.getActiveInstance().getMainOutputDeviceObj().setWindowFullScreen(mainDisplay);
+                if (ConfigObj.getActiveInstance().getMonitorOutput())
+                    ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().setWindowFullScreen(monitorDisplay);
+            }else{
+                ConfigObj.getActiveInstance().getMainOutputDeviceObj().closeFullScreen();
+                if (ConfigObj.getActiveInstance().getMonitorOutput())
+                    ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().closeFullScreen();
+            }
+        }
     }
 
     public boolean getOutputHasFocus(){
+
+        return false;
+
+        /*
         if (mainDisplay.hasFocus())
             return true;
 
@@ -368,6 +388,8 @@ public class ContentManager {
             return monitorDisplay.hasFocus();
 
         return false;
+         *
+         */
     }
 
 }

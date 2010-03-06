@@ -51,7 +51,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         previewDisplayPanel1.setMinimumSize(size);
         previewDisplayPanel1.setMaximumSize(size);
         previewDisplayPanel1.initDisplay((int) size.getWidth(), (int) size.getHeight());
-        ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1);
+        ContentManager.getInstance().registerPreviewDisplay(previewDisplayPanel1.getContentDisplay());
 
     }
 

@@ -91,7 +91,7 @@ public class OutputDevice {
         this.window = frame;
     }
 
-    void closeFullScreen() {
+    public void closeFullScreen() {
         if (window != null){
             if (device.isFullScreenSupported()){
                 device.setFullScreenWindow(null);
@@ -113,6 +113,10 @@ public class OutputDevice {
 
     public int getWidth(){
         return (int) gconfig.getBounds().getWidth();
+    }
+
+    public int getHeight(){
+        return (int) gconfig.getBounds().getHeight();
     }
 
 

@@ -23,7 +23,6 @@
 
 package datasoul.render;
 
-import datasoul.config.ConfigObj;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.templates.TemplateItem;
@@ -31,15 +30,12 @@ import datasoul.templates.TemplateManager;
 import datasoul.templates.TextTemplateItem;
 import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
-import java.awt.Color;
-import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 
@@ -365,11 +361,9 @@ public class ContentRender {
         updSemaphore.release();
     }
 
-    public void registerDisplay(ContentDisplay d){
-        synchronized(this){
-            displays.add(d);
-            d.paintBackground(backgroundImage);
-        }
+    public synchronized void registerDisplay(ContentDisplay d){
+        displays.add(d);
+        d.paintBackground(backgroundImage);
         updSemaphore.release();
     }
     
@@ -538,7 +532,7 @@ public class ContentRender {
     }
     
     
-    private void updateScreen(){
+    private synchronized void updateScreen(){
         
         float paintSlideLevel;
         float paintAlertLevel;
@@ -566,15 +560,16 @@ public class ContentRender {
 
         if (isBlack){
             for (ContentDisplay d : displays){
-                d.updateScreen(true, 0, 0, 0, 0);
+                d.updateScreen(true, false, 0, 0, 0, 0);
             }
         }else{
             for (ContentDisplay d : displays){
                 
                 if (slideTransition == TRANSITION_CHANGE){
-                    d.updateScreen(false, 1.0f, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
+                    boolean keepbg = (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
+                    d.updateScreen(false, keepbg, 1.0f, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
                 }else{
-                    d.updateScreen(false, 1.0f, 0.0f, paintSlideLevel, paintAlertLevel);
+                    d.updateScreen(false, false, 1.0f, 0.0f, paintSlideLevel, paintAlertLevel);
                 }
             }
 
@@ -618,7 +613,8 @@ public class ContentRender {
 
             if (tpl != null){
                 tpl.paint(g, alpha);
-            }   
+            }
+            g.dispose();
         }
     }
     
