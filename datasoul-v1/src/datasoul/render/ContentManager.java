@@ -60,13 +60,18 @@ public class ContentManager {
         previewRender = new ContentRender(PREVIEW_WIDTH, getPreviewHeight());
 
         if (ConfigObj.isGstreamerActive()){
-            GstManagerServer.getInstance().start();
-            GstDisplayCmd cmd = new GstDisplayCmdInit(
-                    ConfigObj.getActiveInstance().getMonitorOutput(),
-                    ConfigObj.getActiveInstance().getMainOutputDevice(),
-                    ConfigObj.getActiveInstance().getMonitorOutputDevice());
+            Thread t = new Thread(){
+                public void run(){
+                    GstManagerServer.getInstance().start();
+                    GstDisplayCmd cmd = new GstDisplayCmdInit(
+                            ConfigObj.getActiveInstance().getMonitorOutput(),
+                            ConfigObj.getActiveInstance().getMainOutputDevice(),
+                            ConfigObj.getActiveInstance().getMonitorOutputDevice());
 
-            GstManagerServer.getInstance().sendCommand(cmd);
+                    GstManagerServer.getInstance().sendCommand(cmd);
+                }
+            };
+            t.start();
         }
     }
     

@@ -69,6 +69,10 @@ public class GstManagerServer {
 
     public void sendCommand(GstDisplayCmd obj) {
         try {
+            if (output == null){
+                System.err.println("Rejecting command "+obj);
+                return;
+            }
             output.writeObject(obj);
         } catch (IOException e){
             e.printStackTrace();
