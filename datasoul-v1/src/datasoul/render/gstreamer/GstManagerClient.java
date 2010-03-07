@@ -5,6 +5,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.ContentDisplay;
 import datasoul.render.OutputDevice;
 import java.awt.AWTEvent;
@@ -66,7 +67,7 @@ public class GstManagerClient {
                 }
                 if (o instanceof GstDisplayCmd){
                     try{
-                        ((GstDisplayCmd)o).runCmd();
+                        ((GstDisplayCmd)o).run();
                     }catch(Exception e){
                         System.out.println(">>>>> ERROR:"+e.getLocalizedMessage());
                     }

@@ -5,6 +5,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;

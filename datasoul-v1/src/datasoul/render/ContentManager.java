@@ -25,8 +25,10 @@ package datasoul.render;
 
 import datasoul.config.ConfigObj;
 import datasoul.render.gstreamer.GstDisplay;
-import datasoul.render.gstreamer.GstDisplayCmd;
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
+import datasoul.render.gstreamer.commands.GstDisplayCmdShowHide;
 import java.awt.image.BufferedImage;
 
 /**
@@ -59,7 +61,7 @@ public class ContentManager {
 
         if (ConfigObj.isGstreamerActive()){
             GstManagerServer.getInstance().start();
-            GstDisplayCmd cmd = new GstDisplayCmd(GstDisplayCmd.CMD_INIT,
+            GstDisplayCmd cmd = new GstDisplayCmdInit(
                     ConfigObj.getActiveInstance().getMonitorOutput(),
                     ConfigObj.getActiveInstance().getMainOutputDevice(),
                     ConfigObj.getActiveInstance().getMonitorOutputDevice());
@@ -359,7 +361,7 @@ public class ContentManager {
 
         if (ConfigObj.isGstreamerActive()){
 
-            GstDisplayCmd cmd = new GstDisplayCmd(GstDisplayCmd.CMD_SHOW_HIDE, b);
+            GstDisplayCmd cmd = new GstDisplayCmdShowHide(b);
             GstManagerServer.getInstance().sendCommand(cmd);
 
         }else{
