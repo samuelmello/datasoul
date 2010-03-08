@@ -23,6 +23,7 @@
 
 package datasoul.render;
 
+import datasoul.config.BackgroundConfig;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.templates.TemplateItem;
@@ -563,12 +564,13 @@ public class ContentRender {
                 d.updateScreen(true, false, 0, 0, 0, 0);
             }
         }else{
+            float bglevel = (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC) ? 1.0f : 0.0f;
             boolean keepbg = (template != null && template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
             for (ContentDisplay d : displays){
                 if (slideTransition == TRANSITION_CHANGE){
-                    d.updateScreen(false, keepbg, 1.0f, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
+                    d.updateScreen(false, keepbg, bglevel, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
                 }else{
-                    d.updateScreen(false, false, 1.0f, 0.0f, paintSlideLevel, paintAlertLevel);
+                    d.updateScreen(false, false, bglevel, 0.0f, paintSlideLevel, paintAlertLevel);
                 }
             }
 

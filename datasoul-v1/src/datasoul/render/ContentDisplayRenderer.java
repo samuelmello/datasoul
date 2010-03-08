@@ -136,15 +136,8 @@ public abstract class ContentDisplayRenderer implements ContentDisplay {
 
     private void clearImage(BufferedImage img){
         Graphics2D g = img.createGraphics();
-
-        // Clear it first
-        Composite oldComp = g.getComposite();
-        try{
-            g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 0) );
-            g.fillRect(0, 0, img.getWidth(), img.getHeight());
-        }finally{
-            g.setComposite(oldComp);
-        }
+        g.setComposite( AlphaComposite.getInstance(AlphaComposite.CLEAR, 1) );
+        g.fillRect(0, 0, img.getWidth(), img.getHeight());
         g.dispose();
     }
 

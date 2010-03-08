@@ -275,7 +275,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         try{
             ServiceListTable slt =  ServiceListTable.getActiveInstance();
             ContentRender r = sles.getRender();
-            r.paintBackground( BackgroundConfig.getInstance().getMainBackgroundImg());
+            r.paintBackground( BackgroundConfig.getInstance().getBackgroundImg());
             int slideCount = 0;
 
             /* initial empty slide */

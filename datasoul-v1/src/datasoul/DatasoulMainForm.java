@@ -25,6 +25,7 @@ import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
+import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.datashow.ImageListEditorForm;
 import datasoul.datashow.ImageListServiceItem;
 import datasoul.datashow.ImportServiceItemForm;
@@ -214,6 +215,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnShow = new javax.swing.JToggleButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
+        btnBackground = new javax.swing.JButton();
         btnTemplates = new javax.swing.JButton();
         btnConfig = new javax.swing.JButton();
         btnHelp = new javax.swing.JButton();
@@ -416,6 +418,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnShow);
         toolBarMain.add(jSeparator3);
+
+        btnBackground.setText("Background");
+        btnBackground.setFocusable(false);
+        btnBackground.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnBackground.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnBackground.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackgroundActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnBackground);
 
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics_small.png"))); // NOI18N
         btnTemplates.setText("Templates");
@@ -747,8 +760,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(541, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addContainerGap(533, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -761,7 +774,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -828,7 +841,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addContainerGap(178, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -847,12 +860,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1139,6 +1152,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 
+    private void btnBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackgroundActionPerformed
+        BackgroundConfigFrame bcf = new BackgroundConfigFrame();
+        bcf.setLocationRelativeTo(bcf);
+        bcf.setVisible(true);
+    }//GEN-LAST:event_btnBackgroundActionPerformed
+
     public void closeOutputs(){
 
         if (btnShow.isSelected()){
@@ -1384,6 +1403,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actImportItem;
     datasoul.datashow.AuxiliarPanel auxiliar;
     javax.swing.JButton btnAddWizard;
+    javax.swing.JButton btnBackground;
     javax.swing.JButton btnClose;
     javax.swing.JButton btnConfig;
     javax.swing.JButton btnDown;

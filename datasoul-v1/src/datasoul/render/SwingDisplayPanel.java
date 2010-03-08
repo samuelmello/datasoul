@@ -20,6 +20,7 @@
 
 package datasoul.render;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -75,13 +76,11 @@ public class SwingDisplayPanel extends javax.swing.JPanel  {
     @Override
     public void paint (Graphics g){
         BufferedImage img = contentDisplay.getActiveImage();
-
         if (img != null){
+            g.clearRect(0, 0, img.getWidth(), img.getHeight());
             synchronized(img){
                 g.drawImage(img, 0,0, img.getWidth(), img.getHeight(), null);
             }
-        }else{
-            System.out.println("Is null!");
         }
     }
 

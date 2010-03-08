@@ -94,10 +94,6 @@ public class DatasoulKeyListener implements KeyListener, AWTEventListener{
                     ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);
                 }
                 break;
-            case KeyEvent.VK_F8:
-                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_BACKGROUND);
-                break;
             case KeyEvent.VK_F9:
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutHideMain();
                 break;

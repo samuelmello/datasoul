@@ -253,8 +253,10 @@ public class ContentManager {
         mainRender.slideHide(i);
     }
 
-    public void paintBackgroundMain(BufferedImage img){
+    public void paintBackground(BufferedImage img){
         mainRender.paintBackground(img);
+        if (ConfigObj.getActiveInstance().getMonitorOutput())
+            monitorRender.paintBackground(img);
     }
     
     public void setAlertTemplateMain(String template){
@@ -280,11 +282,6 @@ public class ContentManager {
                     monitorRender.slideHide(i);
     }
 
-    public void paintBackgroundMonitor(BufferedImage img){
-		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
-                    monitorRender.paintBackground(img);
-    }
-    
     public void setAlertTemplateMonitor(String template){
 		if ( ConfigObj.getActiveInstance().getMonitorOutput() )
                     monitorRender.setAlertTemplate(template);

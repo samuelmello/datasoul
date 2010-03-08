@@ -70,18 +70,17 @@ public abstract class AbstractConfig extends SerializableObject {
         boolean detectMonitor = false;
 
         /* Find the configuration file. If its not in ~/.datasoul/config, copy it there */
-        String fs = System.getProperty("file.separator");
-        String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + fileName;
+        String path = getConfigPath() + fileName;
         File configFile = new File(path);
         
         if (!configFile.exists()){
             // Ensure directory exists
-            String dirpath = System.getProperty("user.home") + fs + ".datasoul"+fs+"config";
+            String dirpath = System.getProperty("user.home") + File.separator + ".datasoul"+File.separator+"config";
             File configdir = new File(dirpath);
             configdir.mkdirs();
             
             // check if there is old config file
-            String oldpath = System.getProperty("user.dir") + fs + "config" + System.getProperty("file.separator") + fileName;
+            String oldpath = System.getProperty("user.dir") + File.separator + "config" + File.separator + fileName;
             File oldfile = new File(oldpath);
             if (oldfile.exists()){
                 try {
@@ -161,10 +160,15 @@ public abstract class AbstractConfig extends SerializableObject {
         }
     }
     
+    protected String getConfigPath(){
+        String path = System.getProperty("user.home") + File.separator + ".datasoul"+File.separator+"config" + File.separator;
+        return path;
+    }
+
     protected void save(String nodeName){
-        String fs = System.getProperty("file.separator");
-        String path = System.getProperty("user.home") + fs + ".datasoul"+fs+"config" + System.getProperty("file.separator") + nodeName;
-        
+
+        String path = getConfigPath() + nodeName;
+
         try{
 
             Node node = this.writeObject(null);

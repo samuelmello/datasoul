@@ -31,8 +31,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
 
     public static final int TAB_DISPLAY = 0;
     public static final int TAB_ALARM = 1;
-    public static final int TAB_BACKGROUND = 2;
-    public static final int TAB_CLOCK = 3;
+    public static final int TAB_CLOCK = 2;
     /**
      * Creates new form AuxiliarPanel
      */
@@ -51,16 +50,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     }
     
     public void setVisibleTab(int tab) {
-        switch(tab){
-            case TAB_DISPLAY:
-                break;
-            case TAB_ALARM:
-                break;
-            case TAB_CLOCK:
-                break;
-            case TAB_BACKGROUND:
-                break;
-        }
         this.tabAuxiliar.setSelectedIndex(tab);
     }
 
@@ -76,7 +65,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         tabAuxiliar = new javax.swing.JTabbedPane();
         displayControlPanel1 = new datasoul.datashow.DisplayControlPanel();
         alertControlPanel1 = new datasoul.datashow.AlertControlPanel();
-        backgroundPanel1 = new datasoul.datashow.BackgroundPanel();
         timerControlPanel1 = new datasoul.datashow.TimerControlPanel();
 
         tabAuxiliar.setToolTipText("");
@@ -85,7 +73,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         tabAuxiliar.addTab(bundle.getString("Display"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png")), displayControlPanel1); // NOI18N
         tabAuxiliar.addTab(bundle.getString("Alert"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bell.png")), alertControlPanel1); // NOI18N
-        tabAuxiliar.addTab(bundle.getString("Background"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-desktop-wallpaper.png")), backgroundPanel1); // NOI18N
         tabAuxiliar.addTab(bundle.getString("Timer"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png")), timerControlPanel1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -110,7 +97,6 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.datashow.AlertControlPanel alertControlPanel1;
-    private datasoul.datashow.BackgroundPanel backgroundPanel1;
     private datasoul.datashow.DisplayControlPanel displayControlPanel1;
     private javax.swing.JTabbedPane tabAuxiliar;
     private datasoul.datashow.TimerControlPanel timerControlPanel1;

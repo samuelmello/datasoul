@@ -288,7 +288,7 @@ public class ConfigObj extends AbstractConfig {
 
     public int getMainRenderHeight(){
 
-        return mainOutputDevice.getProportionalHeight(mainOutputDevice.getWidth());
+        return mainOutputDevice.getProportionalHeight(getMainRenderWidth());
     }
 
     public int getMonitorRenderWidth(){
@@ -316,7 +316,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public int getMonitorRenderHeight(){
-        return monitorOutputDevice.getProportionalHeight(monitorOutputDevice.getWidth());
+        return monitorOutputDevice.getProportionalHeight(getMonitorRenderWidth());
     }
 
     public String getMainOutputDevice(){
