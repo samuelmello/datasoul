@@ -1304,6 +1304,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ContentManager.getInstance();
         checkStorageLocation();
         
+        if (ConfigObj.isGstreamerActive()){
+            GstManagerServer.getInstance().start();
+            GstDisplayCmd cmd = new GstDisplayCmdInit(
+                    ConfigObj.getActiveInstance().getMonitorOutput(),
+                    ConfigObj.getActiveInstance().getMainOutputDevice(),
+                    ConfigObj.getActiveInstance().getMonitorOutputDevice());
+
+            GstManagerServer.getInstance().sendCommand(cmd);
+        }
+
         BackgroundConfig.getInstance();
         DisplayControlConfig.getInstance();
 
@@ -1320,16 +1330,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         splash.setStatusText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Starting_application..."));
 
         Toolkit.getDefaultToolkit().addAWTEventListener( DatasoulKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
-
-        if (ConfigObj.isGstreamerActive()){
-            GstManagerServer.getInstance().start();
-            GstDisplayCmd cmd = new GstDisplayCmdInit(
-                    ConfigObj.getActiveInstance().getMonitorOutput(),
-                    ConfigObj.getActiveInstance().getMainOutputDevice(),
-                    ConfigObj.getActiveInstance().getMonitorOutputDevice());
-
-            GstManagerServer.getInstance().sendCommand(cmd);
-        }
 
         // Join the FontFamily cache thread
         try{

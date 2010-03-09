@@ -24,11 +24,13 @@
 package datasoul.config;
 
 import datasoul.render.ContentManager;
+import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.commands.GstDisplayCmdSetStaticBG;
+import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -117,11 +119,26 @@ public class BackgroundConfig extends AbstractConfig {
     }
 
     public void setMode(String s){
-        mode = Integer.parseInt(s);
+        setMode(Integer.parseInt(s));
     }
 
     public void setMode(int m){
         mode = m;
+        GstDisplayCmd cmd = null;
+        
+        switch(mode){
+            case MODE_STATIC:
+                cmd = new GstDisplayCmdSetStaticBG();
+                break;
+
+            case MODE_VIDEO:
+                cmd = new GstDisplayCmdSetVideoBG(getVideoFile());
+                break;
+        }
+        if (cmd != null){
+            GstManagerServer.getInstance().sendCommand(cmd);
+        }
+
     }
 
     public String getVideoFile(){
@@ -130,6 +147,9 @@ public class BackgroundConfig extends AbstractConfig {
 
     public void setVideoFile(String s){
         videofile = s;
+        if (mode == MODE_VIDEO){
+            GstManagerServer.getInstance().sendCommand( new GstDisplayCmdSetVideoBG(getVideoFile()) );
+        }
     }
 
 }

@@ -5,13 +5,14 @@
 
 package datasoul.render.gstreamer.commands;
 
+import datasoul.render.gstreamer.GstManagerBgVideoPipeline;
 import datasoul.render.gstreamer.GstManagerClient;
 
 /**
  *
  * @author samuel
  */
-public class GstDisplayCmdSetVideoBG {
+public class GstDisplayCmdSetVideoBG extends GstDisplayCmd {
 
     private String filename;
 
@@ -20,7 +21,8 @@ public class GstDisplayCmdSetVideoBG {
     }
 
     public void run(){
-        GstManagerClient.getInstance().updatePipeline();
+        if (filename != null)
+            GstManagerClient.getInstance().setBgPipeline(new GstManagerBgVideoPipeline(filename));
     }
 
 }

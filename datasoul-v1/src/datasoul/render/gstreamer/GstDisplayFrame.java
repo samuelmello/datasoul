@@ -13,9 +13,11 @@ package datasoul.render.gstreamer;
 
 import datasoul.render.ContentDisplayRenderer;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import javax.swing.SwingUtilities;
 import org.gstreamer.Element;
 import org.gstreamer.swing.VideoComponent;
 
@@ -27,32 +29,25 @@ public class GstDisplayFrame extends javax.swing.JFrame {
 
     private MyVideoComponent vcomp;
     private ContentDisplayRenderer render;
-    private boolean isPipelineActive;
 
     /** Creates new form GstDisplayFrame */
     public GstDisplayFrame() {
-        //initComponents();
+        initComponents();
         render = new ContentDisplayRenderer() {
             @Override
             public void repaint() {
-                if (!isPipelineActive){
-                    GstDisplayFrame.this.repaint();
-                }
+                SwingUtilities.invokeLater(new Runnable(){
+                    public void run(){
+                        GstDisplayFrame.this.repaint();
+                    }
+                });
+
             }
         };
-        this.setIgnoreRepaint(true);
-        this.setUndecorated(true);
     }
 
     public ContentDisplayRenderer getContentDisplay(){
         return render;
-    }
-
-    public void setPipelineActive(boolean b){
-        isPipelineActive = b;
-        if ( b == false ){
-            this.repaint();
-        }
     }
 
     public Element getVideoSink(){
@@ -63,9 +58,11 @@ public class GstDisplayFrame extends javax.swing.JFrame {
         vcomp = new MyVideoComponent();
         render.initDisplay(width, height);
         vcomp.setOpaque(false);
-        GstDisplayFrame.this.add( vcomp,  BorderLayout.CENTER );
+        vcomp.setBackground(Color.BLACK);
+        this.setBackground(Color.BLACK);
         vcomp.setPreferredSize(new Dimension(width, height));
         this.setPreferredSize(new Dimension(width, height));
+        this.add( vcomp,  BorderLayout.CENTER );
     }
 
     /** This method is called from within the constructor to
@@ -78,17 +75,9 @@ public class GstDisplayFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setBackground(java.awt.Color.black);
+        setResizable(false);
+        setUndecorated(true);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -101,15 +90,14 @@ public class GstDisplayFrame extends javax.swing.JFrame {
     public class MyVideoComponent extends VideoComponent {
             @Override
             public void paint(Graphics g){
+                    g.setColor(Color.BLACK);
+                    g.fillRect(0,0, GstDisplayFrame.this.getWidth(), GstDisplayFrame.this.getHeight());
                     super.paint (g);
                     BufferedImage img = render.getActiveImage();
-
                     if (img != null){
                         synchronized(img){
-                            g.drawImage(img, 0,0, this.getWidth(), this.getHeight(), null);
+                            g.drawImage(img, 0,0, GstDisplayFrame.this.getWidth(), GstDisplayFrame.this.getHeight(), null);
                         }
-                    }else{
-                        System.out.println("Is null!");
                     }
             }
     }

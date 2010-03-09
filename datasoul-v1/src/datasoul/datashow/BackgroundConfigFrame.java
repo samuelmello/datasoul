@@ -13,6 +13,9 @@ package datasoul.datashow;
 
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
+import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
 import datasoul.templates.ImageTemplateItem;
 import java.awt.Color;
 import java.awt.Graphics2D;

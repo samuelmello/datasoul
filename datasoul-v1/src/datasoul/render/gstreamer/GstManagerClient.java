@@ -17,10 +17,7 @@ import java.io.PrintStream;
 import java.net.ConnectException;
 import java.net.Socket;
 import org.gstreamer.Element;
-import org.gstreamer.ElementFactory;
 import org.gstreamer.Gst;
-import org.gstreamer.Pipeline;
-import org.gstreamer.State;
 
 /**
  *
@@ -70,6 +67,7 @@ public class GstManagerClient {
                         ((GstDisplayCmd)o).run();
                     }catch(Exception e){
                         System.out.println(">>>>> ERROR:"+e.getLocalizedMessage());
+                        e.printStackTrace( new PrintStream(System.out));
                     }
                 }
             }
@@ -84,7 +82,7 @@ public class GstManagerClient {
     private boolean isMonitorEnabled;
     private OutputDevice mainDevice;
     private OutputDevice monitorDevice;
-
+    private GstManagerBgPipeline bgpipeline;
     
     public void init ( String mainDevice, String monitorDevice, boolean monitorEnabled ) {
 
@@ -93,12 +91,18 @@ public class GstManagerClient {
         mainFrame = new GstDisplayFrame();
         mainFrame.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
         mainFrame.init(this.mainDevice.getWidth(), this.mainDevice.getHeight());
+        mainFrame.getVideoSink().setName("MainVideoSink");
         if (isMonitorEnabled){
             this.monitorDevice = new OutputDevice(monitorDevice, OutputDevice.USAGE_MONITOR);
             monitorFrame = new GstDisplayFrame();
             monitorFrame.init(this.monitorDevice.getWidth(), this.monitorDevice.getHeight());
+            monitorFrame.getVideoSink().setName("MonitorVideoSink");
         }
 
+    }
+
+    public boolean isMonitorEnabled(){
+        return this.isMonitorEnabled;
     }
 
     public ContentDisplay getMainContentDisplay(){
@@ -106,6 +110,7 @@ public class GstManagerClient {
     }
 
     public static void main(String[] args) {
+        System.setProperty("sun.java2d.opengl", "true");
         args = Gst.init("Datasoul", args);
         Toolkit.getDefaultToolkit().addAWTEventListener( GstKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
         GstManagerClient.getInstance().run();
@@ -116,16 +121,8 @@ public class GstManagerClient {
         return mainFrame.getVideoSink();
     }
 
-    private Pipeline pipe;
-    private Element videosrc;
-
-    public void updatePipeline(){
-        pipe = new Pipeline("Datasoul");
-        videosrc = ElementFactory.make("videotestsrc", "source");
-        pipe.addMany(videosrc, getMainVideoSink());
-        Element.linkMany(videosrc, getMainVideoSink());
-        pipe.setState(State.PLAYING);
-        mainFrame.setPipelineActive(true);
+    protected Element getMonitorVideoSink(){
+        return monitorFrame.getVideoSink();
     }
 
     public void setOutputVisible(boolean b){
@@ -150,6 +147,21 @@ public class GstManagerClient {
             }
         }catch (IOException e){
             e.printStackTrace(new PrintStream(System.out));
+        }
+    }
+
+    public void setBgPipeline(GstManagerBgPipeline pipe){
+        if (this.bgpipeline != null){
+            this.bgpipeline.stop();
+        }
+        this.bgpipeline = pipe;
+        this.bgpipeline.start();
+    }
+
+    public void setBgStatic(){
+        if (this.bgpipeline != null){
+            this.bgpipeline.stop();
+            this.bgpipeline = null;
         }
     }
 
