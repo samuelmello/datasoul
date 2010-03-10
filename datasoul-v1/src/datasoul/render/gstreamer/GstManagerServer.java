@@ -67,13 +67,14 @@ public class GstManagerServer {
         
     }
 
-    public void sendCommand(GstDisplayCmd obj) {
+    public synchronized void sendCommand(GstDisplayCmd obj) {
         try {
             if (output == null){
                 System.err.println("Rejecting command "+obj);
                 return;
             }
             output.writeObject(obj);
+            output.reset();
         } catch (IOException e){
             e.printStackTrace();
         }
