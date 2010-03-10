@@ -83,6 +83,7 @@ public class GstManagerClient {
     private OutputDevice mainDevice;
     private OutputDevice monitorDevice;
     private GstManagerBgPipeline bgpipeline;
+    private boolean isOutputVisible;
     
     public void init ( String mainDevice, String monitorDevice, boolean monitorEnabled ) {
 
@@ -127,12 +128,15 @@ public class GstManagerClient {
 
     public void setOutputVisible(boolean b){
 
+        this.isOutputVisible = b;
         if (b){
+            resumeBgPipeline();
             mainDevice.setWindowFullScreen(mainFrame);
             if (isMonitorEnabled){
                 monitorDevice.setWindowFullScreen(monitorFrame);
             }
         }else{
+            stopBgPipeline();
             mainDevice.closeFullScreen();
             if (isMonitorEnabled){
                 monitorDevice.closeFullScreen();
@@ -155,13 +159,27 @@ public class GstManagerClient {
             this.bgpipeline.stop();
         }
         this.bgpipeline = pipe;
-        this.bgpipeline.start();
+        if (isOutputVisible){
+            this.bgpipeline.start();
+        }
     }
 
     public void setBgStatic(){
         if (this.bgpipeline != null){
             this.bgpipeline.stop();
             this.bgpipeline = null;
+        }
+    }
+
+    public void stopBgPipeline(){
+        if (this.bgpipeline != null){
+            this.bgpipeline.stop();
+        }
+    }
+
+    public void resumeBgPipeline(){
+        if (this.bgpipeline != null){
+            this.bgpipeline.start();
         }
     }
 

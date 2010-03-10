@@ -18,8 +18,10 @@ import org.gstreamer.State;
  */
 public class GstManagerBgPipeline {
 
-    protected Element tee;
     protected Pipeline pipe;
+    protected Element tee;
+    protected Element queue;
+    protected Element queue2;
 
     public GstManagerBgPipeline(){
         pipe = new Pipeline("main pipeline");
@@ -45,12 +47,12 @@ public class GstManagerBgPipeline {
         });
 
         tee = ElementFactory.make("tee", "t1");
-        Element queue = ElementFactory.make("queue", "q1");
+        queue = ElementFactory.make("queue", "q1");
         pipe.addMany(tee, queue, GstManagerClient.getInstance().getMainVideoSink());
         Element.linkMany(tee, queue, GstManagerClient.getInstance().getMainVideoSink());
 
         if (GstManagerClient.getInstance().isMonitorEnabled()){
-            Element queue2 = ElementFactory.make("queue", "q2");
+            queue2 = ElementFactory.make("queue", "q2");
             pipe.addMany(queue2, GstManagerClient.getInstance().getMonitorVideoSink());
             Element.linkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
         }
@@ -60,7 +62,14 @@ public class GstManagerBgPipeline {
     }
 
     public void stop(){
-        pipe.stop();
+        pipe.setState(State.NULL);
+        Element.unlinkMany(tee, queue, GstManagerClient.getInstance().getMainVideoSink());
+        pipe.removeMany(queue, tee, GstManagerClient.getInstance().getMainVideoSink());
+        if (GstManagerClient.getInstance().isMonitorEnabled()){
+            Element.unlinkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
+            pipe.removeMany(queue2, GstManagerClient.getInstance().getMonitorVideoSink());
+        }
+
     }
 
 }
