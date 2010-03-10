@@ -138,6 +138,9 @@ public class BackgroundConfig extends AbstractConfig {
         if (cmd != null){
             GstManagerServer.getInstance().sendCommand(cmd);
         }
+        
+        // Update display
+        ContentManager.getInstance().slideChange(-1);
 
     }
 
