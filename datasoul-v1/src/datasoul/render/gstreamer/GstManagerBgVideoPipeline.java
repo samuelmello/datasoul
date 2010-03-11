@@ -20,6 +20,10 @@ public class GstManagerBgVideoPipeline extends GstManagerBgPipeline {
 
     protected String filename;
 
+    protected Element src;
+    protected DecodeBin decodeBin;
+    protected Element decodeQueue;
+
     public GstManagerBgVideoPipeline(String filename){
         super();
         this.filename = filename;
@@ -27,11 +31,11 @@ public class GstManagerBgVideoPipeline extends GstManagerBgPipeline {
 
     public void start(){
 
-        Element src = ElementFactory.make("filesrc", "Input File");
+        src = ElementFactory.make("filesrc", "Input File");
         src.set("location", this.filename);
 
-        DecodeBin decodeBin = new DecodeBin("Decode Bin");
-        Element decodeQueue = ElementFactory.make("queue", "Decode Queue");
+        decodeBin = new DecodeBin("Decode Bin");
+        decodeQueue = ElementFactory.make("queue", "Decode Queue");
         pipe.addMany(src, decodeQueue, decodeBin);
         Element.linkMany(src, decodeQueue,  decodeBin);
 
@@ -54,6 +58,22 @@ public class GstManagerBgVideoPipeline extends GstManagerBgPipeline {
         });
 
         super.start();
+    }
+
+    @Override
+    public void stop(){
+        super.stop();
+        pipe.removeMany(src, decodeQueue, decodeBin);
+        Element.unlinkMany(src, decodeQueue,  decodeBin);
+    }
+
+    @Override
+    public void dispose(){
+        super.dispose();
+        if (src != null) src.dispose();
+        if (decodeBin != null) decodeBin.dispose();
+        if (decodeQueue != null) decodeQueue.dispose();
+        System.out.println("Limpei!");
     }
 
 }

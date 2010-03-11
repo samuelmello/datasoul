@@ -14,7 +14,6 @@ public class OutputDevice {
 
     private GraphicsDevice device;
     private GraphicsConfiguration gconfig;
-    private JFrame window;
 
     public static final int USAGE_MAIN = 0;
     public static final int USAGE_MONITOR = 1;
@@ -82,23 +81,12 @@ public class OutputDevice {
     }
 
     public void setWindowFullScreen(JFrame frame){
-        if (device.isFullScreenSupported()){
-            device.setFullScreenWindow(frame);
-        }else{
-            frame.setBounds(gconfig.getBounds());
-            frame.setVisible(true);
-        }
-        this.window = frame;
+        frame.setBounds(gconfig.getBounds());
+        frame.setVisible(true);
     }
 
-    public void closeFullScreen() {
-        if (window != null){
-            if (device.isFullScreenSupported()){
-                device.setFullScreenWindow(null);
-            }
-            window.setVisible(false);
-        }
-        window = null;
+    public void closeFullScreen(JFrame frame) {
+        frame.setVisible(false);
     }
 
     public int getProportionalHeight(int width){

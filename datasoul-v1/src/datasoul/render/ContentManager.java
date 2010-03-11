@@ -359,9 +359,9 @@ public class ContentManager {
                 if (ConfigObj.getActiveInstance().getMonitorOutput())
                     ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().setWindowFullScreen(monitorDisplay);
             }else{
-                ConfigObj.getActiveInstance().getMainOutputDeviceObj().closeFullScreen();
+                ConfigObj.getActiveInstance().getMainOutputDeviceObj().closeFullScreen(mainDisplay);
                 if (ConfigObj.getActiveInstance().getMonitorOutput())
-                    ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().closeFullScreen();
+                    ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().closeFullScreen(monitorDisplay);
             }
         }
     }

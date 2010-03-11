@@ -129,18 +129,22 @@ public class GstManagerClient {
     public void setOutputVisible(boolean b){
 
         this.isOutputVisible = b;
+
         if (b){
             resumeBgPipeline();
+            
             mainDevice.setWindowFullScreen(mainFrame);
+            /*
             if (isMonitorEnabled){
                 monitorDevice.setWindowFullScreen(monitorFrame);
-            }
+            }*/
         }else{
-            stopBgPipeline();
-            mainDevice.closeFullScreen();
+            pauseBgPipeline();
+            mainDevice.closeFullScreen(mainFrame);
+            /*
             if (isMonitorEnabled){
                 monitorDevice.closeFullScreen();
-            }
+            }*/
         }
     }
 
@@ -157,6 +161,7 @@ public class GstManagerClient {
     public void setBgPipeline(GstManagerBgPipeline pipe){
         if (this.bgpipeline != null){
             this.bgpipeline.stop();
+            this.bgpipeline.dispose();
         }
         this.bgpipeline = pipe;
         if (isOutputVisible){
@@ -167,11 +172,12 @@ public class GstManagerClient {
     public void setBgStatic(){
         if (this.bgpipeline != null){
             this.bgpipeline.stop();
+            this.bgpipeline.dispose();
             this.bgpipeline = null;
         }
     }
 
-    public void stopBgPipeline(){
+    public void pauseBgPipeline(){
         if (this.bgpipeline != null){
             this.bgpipeline.stop();
         }

@@ -25,6 +25,7 @@ public class GstManagerBgPipeline {
 
     public GstManagerBgPipeline(){
         pipe = new Pipeline("main pipeline");
+        pipe.setAutoFlushBus(true);
     }
 
     public void start(){
@@ -69,7 +70,23 @@ public class GstManagerBgPipeline {
             Element.unlinkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
             pipe.removeMany(queue2, GstManagerClient.getInstance().getMonitorVideoSink());
         }
+    }
 
+    public void pause(){
+        pipe.setState(State.PAUSED);
+    }
+
+    public void resume(){
+        pipe.setState(State.PLAYING);
+    }
+
+    public void dispose(){
+        if (pipe != null) pipe.dispose();
+        if (tee != null)  tee.dispose();
+        if (queue != null) queue.dispose();
+        if (GstManagerClient.getInstance().isMonitorEnabled()){
+            if (queue2 != null) queue2.dispose();
+        }
     }
 
 }
