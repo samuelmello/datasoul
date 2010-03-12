@@ -57,25 +57,9 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
 
     public void previewItem(ServiceItem serviceItem){
-        ContentManager cm = ContentManager.getInstance();
-        cm.setTemplatePreview(serviceItem.getTemplate());
-        cm.setTitlePreview(serviceItem.getTitle());
-        serviceItemTable1.setServiceItem(serviceItem, 0);
-        cm.setSlidePreview( serviceItemTable1.getSlideText() );
-        cm.setNextSlidePreview( serviceItemTable1.getNextSlideText() );
-        cm.setActiveImagePreview(serviceItemTable1.getSlideImage());
-        cm.setNextImagePreview(serviceItemTable1.getNextSlideImage());
-        if(serviceItem instanceof Song){
-            cm.setSongAuthorPreview( ((Song)serviceItem).getSongAuthor() );
-            cm.setSongSourcePreview( ((Song)serviceItem).getSongSource() );
-            cm.setCopyrightPreview( ((Song)serviceItem).getCopyright() );
-        }else{
-            cm.setSongAuthorPreview("");
-            cm.setSongSourcePreview("");
-            cm.setCopyrightPreview("");
-        }
         lblTemplate.setText(serviceItem.getTemplate());
-        cm.updatePreview();
+        serviceItemTable1.setServiceItem(serviceItem, 0);
+        valueChanged(null);
 
         if (cbAutoLive.isSelected()){
             goLive(false);

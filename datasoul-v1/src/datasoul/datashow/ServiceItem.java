@@ -23,8 +23,9 @@
 
 package datasoul.datashow;
 
-import datasoul.config.ConfigObj;
+import datasoul.render.ContentManager;
 import datasoul.util.SerializableObject;
+import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -270,7 +271,39 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         }
 
     }
-    
-    
+
+    public boolean isTemplateEditEnabled(){
+        return true;
+    }
+
+    public String getDefaultMonitorTemplate(){
+        return "";
+    }
+
+    public Color getBackgroundColor(){
+        return null;
+    }
+
+    public void edit(){
+
+    }
+
+    public void previewItem(){
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTemplatePreview(this.getTemplate());
+        cm.setTitlePreview(this.getTitle());
+        cm.setSongAuthorPreview("");
+        cm.setSongSourcePreview("");
+        cm.setCopyrightPreview("");
+    }
+
+    public void showItem(){
+        ContentManager cm = ContentManager.getInstance();
+        cm.setTemplateLive(this.getTemplate());
+        cm.setTitleLive(this.getTitle());
+        cm.setSongAuthorLive("");
+        cm.setSongSourceLive("");
+        cm.setCopyrightLive("");
+    }
     
 }

@@ -277,11 +277,7 @@ public class ServiceListTable extends ListTable {
                 case COLUMN_NOTES:
                     return true;
                 case COLUMN_TEMPLATE:
-                    if ( ! (getServiceItem(rowIndex) instanceof ContentlessServiceItem)){
-                        return true;
-                    }else{
-                        return false;
-                    }
+                    return getServiceItem(rowIndex).isTemplateEditEnabled(); 
                 default:
                     return false;
             }

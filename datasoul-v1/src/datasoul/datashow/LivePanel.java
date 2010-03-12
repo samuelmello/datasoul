@@ -50,30 +50,14 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     public void showItem(ServiceItem serviceItem, boolean backwards){
 
         ContentManager cm = ContentManager.getInstance();
-        cm.setTemplateLive(serviceItem.getTemplate());
+
+        serviceItem.showItem();
 
         if (ConfigObj.getActiveInstance().getMonitorOutput()){
             // Update monitor template
-            if (serviceItem instanceof Song){
-                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateSong() );
-            }else if (serviceItem instanceof ImageListServiceItem){
-                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateImage() );
-            }else if (serviceItem instanceof TextServiceItem){
-                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateText() );
-            }else if (serviceItem instanceof ContentlessServiceItem){
-                cm.setTemplateMonitorLive( DisplayControlConfig.getInstance().getMonitorTemplateContentless() );
-            }
-            
+            cm.setTemplateMonitorLive( serviceItem.getDefaultMonitorTemplate() );
             // Setup timer
             ObjectManager.getInstance().getTimerControlPanel().setTimerFromServiceItem(serviceItem.getDuration());
-        }
-
-
-        cm.setTitleLive(serviceItem.getTitle());
-        if(serviceItem instanceof Song) {
-            cm.setSongAuthorLive( ((Song)serviceItem).getSongAuthor() );
-            cm.setSongSourceLive( ((Song)serviceItem).getSongSource() );
-            cm.setCopyrightLive( ((Song)serviceItem).getCopyright() );
         }
 
         if (backwards){
@@ -82,10 +66,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             this.serviceItemTable1.setServiceItem(serviceItem, 0);
         }
 
-        cm.setSlideLive( serviceItemTable1.getSlideText() );
-        cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
-        cm.setActiveImageLive(serviceItemTable1.getSlideImage());
-        cm.setNextImageLive(serviceItemTable1.getNextSlideImage());
+        updateContentValues();
         
         // save the transition image just before changing the slide to avoid
         // problem when changing to a item that uses a template with different
@@ -189,12 +170,17 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         
         ContentManager cm = ContentManager.getInstance();
         cm.saveTransitionImage();
+        updateContentValues();
+        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
+        
+    }
+
+    public void updateContentValues(){
+        ContentManager cm = ContentManager.getInstance();
         cm.setSlideLive( serviceItemTable1.getSlideText() );
         cm.setNextSlideLive( serviceItemTable1.getNextSlideText() );
         cm.setActiveImageLive(serviceItemTable1.getSlideImage());
         cm.setNextImageLive(serviceItemTable1.getNextSlideImage());
-        cm.slideChange(DisplayControlConfig.getInstance().getSlideTransitionTime());
-        
     }
     
     public void serviceNextSlide() {

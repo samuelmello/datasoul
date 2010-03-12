@@ -24,6 +24,8 @@
 package datasoul.datashow;
 
 import datasoul.config.DisplayControlConfig;
+import datasoul.util.ObjectManager;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
@@ -125,5 +127,21 @@ public class TextServiceItem extends ServiceItem {
         
     }
     
+    @Override
+    public String getDefaultMonitorTemplate(){
+        return DisplayControlConfig.getInstance().getMonitorTemplateText();
+    }
+
+    @Override
+    public Color getBackgroundColor(){
+        return Color.decode("0xffffdd");
+    }
+
+    @Override
+    public void edit(){
+        TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(this);
+        tsief.setLocationRelativeTo(ObjectManager.getInstance().getDatasoulMainForm());
+        tsief.setVisible(true);
+    }
     
 }

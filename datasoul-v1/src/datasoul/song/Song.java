@@ -25,6 +25,9 @@ package datasoul.song;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.TextServiceItem;
+import datasoul.render.ContentManager;
+import datasoul.util.ObjectManager;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -246,6 +249,42 @@ public class Song extends TextServiceItem implements Cloneable {
         }
         
         return result;
+   }
 
+    @Override
+    public String getDefaultMonitorTemplate(){
+        return DisplayControlConfig.getInstance().getMonitorTemplateSong();
     }
+
+    @Override
+    public Color getBackgroundColor(){
+        return Color.decode("0xddddff");
+    }
+
+    @Override
+    public void edit(){
+        SongEditorForm sef = new SongEditorForm(this);
+        sef.setLocationRelativeTo(ObjectManager.getInstance().getDatasoulMainForm());
+        sef.setVisible(true);
+    }
+
+    @Override
+    public void previewItem(){
+        super.previewItem();
+        ContentManager cm = ContentManager.getInstance();
+        cm.setSongAuthorPreview(this.getSongAuthor());
+        cm.setSongSourcePreview(this.getSongSource());
+        cm.setCopyrightPreview(this.getCopyright());
+    }
+
+    @Override
+    public void showItem(){
+        super.showItem();
+        ContentManager cm = ContentManager.getInstance();
+        cm.setSongAuthorLive(this.getSongAuthor());
+        cm.setSongSourceLive(this.getSongSource());
+        cm.setCopyrightLive(this.getCopyright());
+    }
+
+
 }

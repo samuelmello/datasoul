@@ -45,7 +45,6 @@ import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
 import datasoul.servicelist.ContentlessServiceItem;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.song.Song;
-import datasoul.song.SongEditorForm;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.templates.TemplateCellEditor;
 import datasoul.util.DatasoulKeyListener;
@@ -983,23 +982,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
 
         ServiceItem item = (ServiceItem)ServiceListTable.getActiveInstance().getServiceItem( tableServiceList.getSelectedRow() );
-        if(item instanceof Song){
-            SongEditorForm sef = new SongEditorForm((Song)item);
-            sef.setVisible(true);
-        }else if(item instanceof TextServiceItem){
-            TextServiceItemEditorForm tsief = new TextServiceItemEditorForm((TextServiceItem)item);
-            tsief.setLocationRelativeTo(this);
-            tsief.setVisible(true);
-        }else if(item instanceof ContentlessServiceItem){
-            String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), item.getTitle());
-            if (s != null && !s.trim().equals("")){
-                item.setTitle(s);
-            }
-            tableServiceList.repaint();
-        }else if (item instanceof ImageListServiceItem){
-            ImageListEditorForm ilsi = new ImageListEditorForm((ImageListServiceItem)item);
-            ilsi.setVisible(true);
-        }
+        item.edit();
 
     }//GEN-LAST:event_btnEditActionPerformed
 

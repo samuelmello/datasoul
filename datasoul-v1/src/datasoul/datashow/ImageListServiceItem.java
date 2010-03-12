@@ -7,8 +7,10 @@ package datasoul.datashow;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.servicelist.ContentlessServiceItem;
+import datasoul.util.ObjectManager;
 import datasoul.util.ZipReader;
 import datasoul.util.ZipWriter;
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -124,7 +126,24 @@ public class ImageListServiceItem extends ServiceItem {
 
     public void setImageList(String s){
         // ignore, will read it afterwards
-
     }
+
+    @Override
+    public String getDefaultMonitorTemplate(){
+        return DisplayControlConfig.getInstance().getMonitorTemplateImage();
+    }
+
+    @Override
+    public Color getBackgroundColor(){
+        return Color.decode("0xffdddd");
+    }
+
+    @Override
+    public void edit(){
+        ImageListEditorForm ilsi = new ImageListEditorForm(this);
+        ilsi.setLocationRelativeTo(ObjectManager.getInstance().getDatasoulMainForm());
+        ilsi.setVisible(true);
+    }
+
 
 }

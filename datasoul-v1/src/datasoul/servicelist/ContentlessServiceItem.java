@@ -19,8 +19,12 @@
 
 package datasoul.servicelist;
 
+import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.ServiceItem;
+import datasoul.util.ObjectManager;
 import datasoul.util.ZipWriter;
+import java.awt.Color;
+import javax.swing.JOptionPane;
 import org.w3c.dom.Node;
 
 /**
@@ -41,4 +45,28 @@ public class ContentlessServiceItem extends ServiceItem {
 
     }
 
+
+    @Override
+    public boolean isTemplateEditEnabled(){
+        return false;
+    }
+
+    @Override
+    public String getDefaultMonitorTemplate(){
+        return DisplayControlConfig.getInstance().getMonitorTemplateContentless();
+    }
+
+    @Override
+    public Color getBackgroundColor(){
+        return Color.decode("0xddffff");
+    }
+
+    @Override
+    public void edit(){
+        String s = JOptionPane.showInputDialog(ObjectManager.getInstance().getDatasoulMainForm(), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), getTitle());
+        if (s != null && !s.trim().equals("")){
+            this.setTitle(s);
+        }
+        ObjectManager.getInstance().getDatasoulMainForm().repaint();        
+    }
 }

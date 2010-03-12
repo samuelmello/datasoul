@@ -43,14 +43,8 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
     public Component getTableCellRendererComponent(JTable table, Object value,
                           boolean isSelected, boolean hasFocus, int row, int column) {
 
-        /*
-        Object serviceItem = ServiceListTable.getActiveInstance().getServiceItem(row);
-        if (serviceItem == null){
-            return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        }
-         */
         
-        Object serviceItem;
+        ServiceItem serviceItem;
         if (table.getModel() instanceof ServiceListTable){
             serviceItem = ((ServiceListTable) table.getModel()).getServiceItem(row);
         }else{
@@ -70,17 +64,10 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
             return this;
         }
 
-        if (serviceItem instanceof Song) {
-            setBackground(Color.decode("0xddddff"));
-            setText(text);
-        } else if (serviceItem instanceof TextServiceItem) {
-            setBackground(Color.decode("0xffffdd"));
-            setText(text);
-        } else if (serviceItem instanceof ContentlessServiceItem) {
-            setBackground(Color.decode("0xddffff"));
-            setText(text);
-        } else if (serviceItem instanceof ImageListServiceItem) {
-            setBackground(Color.decode("0xffdddd"));
+        Color c = serviceItem.getBackgroundColor();
+
+        if (c != null) {
+            setBackground(c);
             setText(text);
         } else {
             super.setValue(value);
