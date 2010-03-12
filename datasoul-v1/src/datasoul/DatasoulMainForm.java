@@ -42,6 +42,7 @@ import datasoul.help.HelpFrame;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
+import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.serviceitems.song.Song;
@@ -63,6 +64,8 @@ import java.util.logging.Logger;
 import javax.swing.UIManager;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -204,6 +207,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         actAddContentlessItem = new javax.swing.JMenuItem();
         actAddImageList = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
+        actAddAttachment = new javax.swing.JMenuItem();
         toolBarMain = new javax.swing.JToolBar();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
@@ -317,6 +321,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         ppmAddItem.add(actImportItem);
+
+        actAddAttachment.setText("Add Attachment");
+        actAddAttachment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddAttachmentActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddAttachment);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Datasoul");
@@ -1141,6 +1153,24 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         bcf.setVisible(true);
     }//GEN-LAST:event_btnBackgroundActionPerformed
 
+    private void actAddAttachmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddAttachmentActionPerformed
+
+        JFileChooser fc = new JFileChooser();
+        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            FileInputStream fis;
+            try {
+                fis = new FileInputStream(fc.getSelectedFile());
+                AttachmentServiceItem asi = new AttachmentServiceItem(fc.getSelectedFile().getName(), fis);
+                ServiceListTable.getActiveInstance().addItem(asi);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
+                    "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+            }
+        }
+
+        
+    }//GEN-LAST:event_actAddAttachmentActionPerformed
+
     public void closeOutputs(){
 
         if (btnShow.isSelected()){
@@ -1378,6 +1408,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JMenuItem actAddAttachment;
     javax.swing.JMenuItem actAddBible;
     javax.swing.JMenuItem actAddContentlessItem;
     javax.swing.JMenuItem actAddImageList;

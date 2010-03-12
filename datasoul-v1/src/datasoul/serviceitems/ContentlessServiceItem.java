@@ -45,7 +45,6 @@ public class ContentlessServiceItem extends ServiceItem {
 
     }
 
-
     @Override
     public boolean isTemplateEditEnabled(){
         return false;
@@ -63,7 +62,7 @@ public class ContentlessServiceItem extends ServiceItem {
 
     @Override
     public void edit(){
-        String s = JOptionPane.showInputDialog(ObjectManager.getInstance().getDatasoulMainForm(), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), getTitle());
+        String s = JOptionPane.showInputDialog(ObjectManager.getInstance().getDatasoulMainForm(), "Service Item Title:", getTitle());
         if (s != null && !s.trim().equals("")){
             this.setTitle(s);
         }

@@ -305,5 +305,9 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         cm.setSongSourceLive("");
         cm.setCopyrightLive("");
     }
-    
+
+    public void dispose(){
+        
+    }
+
 }

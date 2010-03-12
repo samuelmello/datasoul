@@ -25,6 +25,7 @@ package datasoul.datashow;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.DatasoulMainForm;
+import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.song.Song;
 import datasoul.util.ListTable;
@@ -123,6 +124,11 @@ public class ServiceListTable extends ListTable {
 
     protected void cleanup(){
         // clean up
+        for (Object o : objectList){
+            if (o instanceof ServiceItem){
+                ((ServiceItem)o).dispose();
+            }
+        }
         this.objectList.clear();
         startHour = 8;
         startMinute = 0;
@@ -149,6 +155,10 @@ public class ServiceListTable extends ListTable {
                     ContentlessServiceItem csi = new ContentlessServiceItem();
                     csi.readObject(nodeList.item(i), zip);
                     this.addItem(csi);
+                } else if (nodeList.item(i).getNodeName().equals("AttachmentServiceItem")) {
+                    AttachmentServiceItem asi = new AttachmentServiceItem();
+                    asi.readObject(nodeList.item(i), zip);
+                    this.addItem(asi);
                 } else if (nodeList.item(i).getNodeName().equals("ImageListServiceItem")) {
                     ImageListServiceItem ilsi = new ImageListServiceItem();
                     ilsi.readObject(nodeList.item(i), zip);

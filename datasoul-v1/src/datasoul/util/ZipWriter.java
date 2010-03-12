@@ -6,6 +6,7 @@
 package datasoul.util;
 
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -21,6 +22,7 @@ import javax.imageio.ImageIO;
 public class ZipWriter {
 
     private LinkedList<ZipSerializerImage> images;
+    private LinkedList<ZipSerializerFile> files;
     private ZipOutputStream zos;
     private int version;
 
@@ -31,6 +33,7 @@ public class ZipWriter {
 
     public ZipWriter(String filename, int version) throws IOException {
         images = new LinkedList<ZipSerializerImage>();
+        files = new LinkedList<ZipSerializerFile>();
         zos = new ZipOutputStream(new FileOutputStream(filename));
         ZipEntry mainEntry = new ZipEntry("maindata.xml");
         zos.putNextEntry(mainEntry);
@@ -48,6 +51,14 @@ public class ZipWriter {
         }
         ZipSerializerImage zsi = new ZipSerializerImage(im, name);
         images.add(zsi);
+    }
+
+    public void appendFile(String internalname, String filename){
+        if (version < 2){
+            return;
+        }
+        ZipSerializerFile zsf = new ZipSerializerFile(internalname, filename);
+        files.add(zsf);
     }
 
     public OutputStream getOutputStream(){
@@ -72,6 +83,18 @@ public class ZipWriter {
             ImageIO.write( zsi.im , "png", zos);
         }
 
+        for (ZipSerializerFile zsf : files){
+            ZipEntry ze = new ZipEntry(zsf.internalname);
+            zos.putNextEntry(ze);
+            byte[] buf = new byte[1024];
+            int i = 0;
+            FileInputStream is = new FileInputStream(zsf.filename);
+            while ((i = is.read(buf)) != -1) {
+                zos.write(buf, 0, i);
+            }
+            is.close();
+        }
+
         zos.close();
 
     }
@@ -82,6 +105,15 @@ public class ZipWriter {
         public ZipSerializerImage (BufferedImage im, String name){
             this.im = im;
             this.name = name;
+        }
+    }
+
+    private class ZipSerializerFile {
+        String internalname;
+        String filename;
+        public ZipSerializerFile (String internalname, String filename){
+            this.internalname = internalname;
+            this.filename = filename;
         }
     }
 
