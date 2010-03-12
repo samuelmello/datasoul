@@ -18,10 +18,11 @@
  * Created on 9 de Marco de 2006, 21:04
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems.text;
 
 import datasoul.DatasoulMainForm;
 import datasoul.config.WindowPropConfig;
+import datasoul.datashow.ServiceListTable;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;

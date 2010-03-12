@@ -1,10 +1,10 @@
 package datasoul.templates;
 
-import datasoul.datashow.ImageListServiceItem;
+import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.datashow.ServiceItem;
 import datasoul.datashow.ServiceListTable;
-import datasoul.datashow.TextServiceItem;
-import datasoul.song.Song;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.serviceitems.song.Song;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

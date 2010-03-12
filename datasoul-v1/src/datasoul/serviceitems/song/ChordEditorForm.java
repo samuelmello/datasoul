@@ -18,7 +18,7 @@
  * Created on 23 de Janeiro de 2006, 20:34
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.DatasoulMainForm;
 import java.util.ArrayList;
@@ -74,12 +74,12 @@ public class ChordEditorForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        chordShapePanel1 = new datasoul.song.ChordShapePanel();
-        chordShapePanel2 = new datasoul.song.ChordShapePanel();
-        chordShapePanel3 = new datasoul.song.ChordShapePanel();
-        chordShapePanel4 = new datasoul.song.ChordShapePanel();
-        chordShapePanel5 = new datasoul.song.ChordShapePanel();
-        chordShapePanel6 = new datasoul.song.ChordShapePanel();
+        chordShapePanel1 = new datasoul.serviceitems.song.ChordShapePanel();
+        chordShapePanel2 = new datasoul.serviceitems.song.ChordShapePanel();
+        chordShapePanel3 = new datasoul.serviceitems.song.ChordShapePanel();
+        chordShapePanel4 = new datasoul.serviceitems.song.ChordShapePanel();
+        chordShapePanel5 = new datasoul.serviceitems.song.ChordShapePanel();
+        chordShapePanel6 = new datasoul.serviceitems.song.ChordShapePanel();
         fieldName = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         btnApply = new javax.swing.JButton();
@@ -299,12 +299,12 @@ public class ChordEditorForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApply;
     private javax.swing.JButton btnCancel;
-    private datasoul.song.ChordShapePanel chordShapePanel1;
-    private datasoul.song.ChordShapePanel chordShapePanel2;
-    private datasoul.song.ChordShapePanel chordShapePanel3;
-    private datasoul.song.ChordShapePanel chordShapePanel4;
-    private datasoul.song.ChordShapePanel chordShapePanel5;
-    private datasoul.song.ChordShapePanel chordShapePanel6;
+    private datasoul.serviceitems.song.ChordShapePanel chordShapePanel1;
+    private datasoul.serviceitems.song.ChordShapePanel chordShapePanel2;
+    private datasoul.serviceitems.song.ChordShapePanel chordShapePanel3;
+    private datasoul.serviceitems.song.ChordShapePanel chordShapePanel4;
+    private datasoul.serviceitems.song.ChordShapePanel chordShapePanel5;
+    private datasoul.serviceitems.song.ChordShapePanel chordShapePanel6;
     private javax.swing.JTextField fieldName;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

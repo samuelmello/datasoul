@@ -18,7 +18,7 @@
  * Created on 11 November 2006, 13:47
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;

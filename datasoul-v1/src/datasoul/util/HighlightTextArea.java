@@ -5,7 +5,7 @@
 
 package datasoul.util;
 
-import datasoul.datashow.TextServiceItem;
+import datasoul.serviceitems.text.TextServiceItem;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.text.Highlighter;

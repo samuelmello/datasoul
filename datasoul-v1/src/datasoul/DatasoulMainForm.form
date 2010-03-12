@@ -790,7 +790,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="datasoul.song.SongsSearchPanel" name="songsSearchPanel1">
+                <Component class="datasoul.serviceitems.song.SongsSearchPanel" name="songsSearchPanel1">
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
                       <JSplitPaneConstraints position="left"/>

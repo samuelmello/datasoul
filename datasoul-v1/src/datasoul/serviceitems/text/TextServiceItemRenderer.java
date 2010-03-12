@@ -21,8 +21,9 @@
  * and open the template in the editor.
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems.text;
 
+import datasoul.datashow.ServiceItemRenderer;
 import java.awt.Component;
 import java.awt.Color;
 import javax.swing.JTable;

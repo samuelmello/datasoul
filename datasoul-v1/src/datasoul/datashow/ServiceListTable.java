@@ -22,9 +22,11 @@
  */
 package datasoul.datashow;
 
+import datasoul.serviceitems.imagelist.ImageListServiceItem;
+import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.DatasoulMainForm;
-import datasoul.servicelist.ContentlessServiceItem;
-import datasoul.song.Song;
+import datasoul.serviceitems.ContentlessServiceItem;
+import datasoul.serviceitems.song.Song;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
 import datasoul.util.ShowDialog;

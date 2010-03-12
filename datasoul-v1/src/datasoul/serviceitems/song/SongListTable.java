@@ -21,7 +21,7 @@
  * and open the template in the editor.
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.util.ListTable;
 import javax.swing.ImageIcon;

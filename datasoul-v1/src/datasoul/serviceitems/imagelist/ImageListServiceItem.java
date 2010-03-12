@@ -3,10 +3,12 @@
  * and open the template in the editor.
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems.imagelist;
 
 import datasoul.config.DisplayControlConfig;
-import datasoul.servicelist.ContentlessServiceItem;
+import datasoul.datashow.ServiceItem;
+import datasoul.datashow.ServiceItemRenderer;
+import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipReader;
 import datasoul.util.ZipWriter;

@@ -28,8 +28,8 @@ import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
-import datasoul.song.AddSongForm;
-import datasoul.song.SongsSearchPanel;
+import datasoul.serviceitems.song.AddSongForm;
+import datasoul.serviceitems.song.SongsSearchPanel;
 import java.awt.Cursor;
 
 /**

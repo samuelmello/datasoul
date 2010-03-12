@@ -18,7 +18,7 @@
  * Created on 9 de Marco de 2006, 20:41
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.DatasoulMainForm;
 import datasoul.util.ObjectManager;
@@ -52,7 +52,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     private void initComponents() {
 
         jSplitPane1 = new javax.swing.JSplitPane();
-        songsSearchPanel = new datasoul.song.SongsSearchPanel();
+        songsSearchPanel = new datasoul.serviceitems.song.SongsSearchPanel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textSong = new javax.swing.JTextPane();
@@ -165,7 +165,7 @@ public class AddSongForm extends javax.swing.JFrame  implements javax.swing.even
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblAuthor;
     private javax.swing.JLabel lblSongName;
-    private datasoul.song.SongsSearchPanel songsSearchPanel;
+    private datasoul.serviceitems.song.SongsSearchPanel songsSearchPanel;
     private javax.swing.JTextPane textSong;
     // End of variables declaration//GEN-END:variables
     

@@ -18,7 +18,7 @@
  * Created on 14 de Dezembro de 2005, 22:09
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.util.ShowDialog;

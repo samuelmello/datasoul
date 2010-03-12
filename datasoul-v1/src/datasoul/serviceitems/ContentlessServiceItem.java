@@ -17,7 +17,7 @@
  * and open the template in the editor.
  */
 
-package datasoul.servicelist;
+package datasoul.serviceitems;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.ServiceItem;

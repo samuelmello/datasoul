@@ -21,9 +21,10 @@
  * and open the template in the editor.
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems.text;
 
 import datasoul.config.DisplayControlConfig;
+import datasoul.datashow.ServiceItem;
 import datasoul.util.ObjectManager;
 import java.awt.Color;
 import java.awt.Component;

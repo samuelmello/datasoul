@@ -18,7 +18,7 @@
  * Created on 22 de Dezembro de 2005, 21:32
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.config.WindowPropConfig;
 import datasoul.datashow.ServiceListTable;

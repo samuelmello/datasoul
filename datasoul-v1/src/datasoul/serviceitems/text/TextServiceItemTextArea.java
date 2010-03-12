@@ -21,7 +21,7 @@
  * and open the template in the editor.
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems.text;
 
 import java.awt.Color;
 import java.awt.Dimension;

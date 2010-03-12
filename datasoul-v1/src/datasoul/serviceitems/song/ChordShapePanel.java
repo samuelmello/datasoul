@@ -18,7 +18,7 @@
  * Created on 21 de Janeiro de 2006, 19:10
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import java.awt.Color;
 import java.awt.Font;

@@ -18,7 +18,7 @@
  * Created on 26 de Dezembro de 2005, 21:14
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.DatasoulMainForm;
 import datasoul.config.WindowPropConfig;
@@ -247,14 +247,14 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         textChordsCompleted.setColumns(20);
         textChordsCompleted.setRows(5);
-        textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 13));
         jScrollPane3.setViewportView(textChordsCompleted);
 
         tabSong.addTab(bundle.getString("Chords_Complete"), jScrollPane3); // NOI18N
 
         textChordsSimplified.setColumns(20);
         textChordsSimplified.setRows(5);
-        textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 13)); // NOI18N
+        textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 13));
         jScrollPane2.setViewportView(textChordsSimplified);
 
         tabSong.addTab(bundle.getString("Chords_Simple"), jScrollPane2); // NOI18N

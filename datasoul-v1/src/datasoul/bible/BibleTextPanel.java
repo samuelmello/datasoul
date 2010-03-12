@@ -10,7 +10,7 @@
  */
 package datasoul.bible;
 
-import datasoul.datashow.TextServiceItem;
+import datasoul.serviceitems.text.TextServiceItem;
 import org.crosswire.jsword.versification.BibleInfo;
 import javax.swing.JTextArea;
 import java.util.List;

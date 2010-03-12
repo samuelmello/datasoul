@@ -9,7 +9,7 @@
  * Created on Nov 12, 2009, 9:23:42 PM
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems.imagelist;
 
 import datasoul.util.ObjectManager;
 import java.io.File;

@@ -20,6 +20,8 @@
 
 package datasoul.datashow;
 
+import datasoul.serviceitems.imagelist.ImageListServiceItem;
+import datasoul.serviceitems.text.TextServiceItem;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;

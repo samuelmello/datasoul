@@ -23,8 +23,8 @@
 
 package datasoul.util;
 
-import datasoul.song.Song;
-import datasoul.song.SongListTable;
+import datasoul.serviceitems.song.Song;
+import datasoul.serviceitems.song.SongListTable;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;

@@ -21,7 +21,7 @@
  * and open the template in the editor.
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.config.AbstractConfig;
 import datasoul.util.ListTable;

@@ -23,7 +23,7 @@ package datasoul.datashow;
 import datasoul.config.DisplayControlConfig;
 import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
-import datasoul.song.Song;
+import datasoul.serviceitems.song.Song;
 import java.awt.Dimension;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;

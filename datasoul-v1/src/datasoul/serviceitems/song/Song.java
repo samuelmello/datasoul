@@ -21,10 +21,10 @@
  * and open the template in the editor.
  */
 
-package datasoul.song;
+package datasoul.serviceitems.song;
 
 import datasoul.config.DisplayControlConfig;
-import datasoul.datashow.TextServiceItem;
+import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import java.awt.Color;
