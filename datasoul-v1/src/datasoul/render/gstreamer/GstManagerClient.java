@@ -187,4 +187,10 @@ public class GstManagerClient {
         setBgPipeline(item);
     }
 
+    public void stopVideoItem() {
+        if (bgpipeline instanceof GstManagerVideoItemPipeline){
+            ((GstManagerVideoItemPipeline)bgpipeline).eos();
+        }
+    }
+
 }

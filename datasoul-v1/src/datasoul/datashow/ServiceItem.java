@@ -24,6 +24,8 @@
 package datasoul.datashow;
 
 import datasoul.render.ContentManager;
+import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;
 import datasoul.util.SerializableObject;
 import java.awt.Color;
 import java.awt.Component;
@@ -307,6 +309,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         cm.setSongAuthorLive("");
         cm.setSongSourceLive("");
         cm.setCopyrightLive("");
+        GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoStop());
     }
 
     public void dispose(){
