@@ -6,23 +6,20 @@
 package datasoul.render.gstreamer.commands;
 
 import datasoul.render.gstreamer.GstManagerClient;
-import datasoul.render.gstreamer.GstManagerVideoBackgroundPipeline;
 
 /**
  *
  * @author samuel
  */
-public class GstDisplayCmdSetVideoBG extends GstDisplayCmd {
-
+public class GstDisplayCmdVideoItem extends GstDisplayCmd {
     private String filename;
 
-    public GstDisplayCmdSetVideoBG(String filename){
+    public GstDisplayCmdVideoItem(String filename){
         this.filename = filename;
     }
 
     public void run(){
         if (filename != null)
-            GstManagerClient.getInstance().setBgPipeline(new GstManagerVideoBackgroundPipeline(filename));
+            GstManagerClient.getInstance().setVideoItem(filename);
     }
-
 }

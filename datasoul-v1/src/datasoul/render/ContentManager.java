@@ -27,7 +27,6 @@ import datasoul.config.ConfigObj;
 import datasoul.render.gstreamer.GstDisplay;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
 import datasoul.render.gstreamer.commands.GstDisplayCmdShowHide;
 import java.awt.image.BufferedImage;
 
@@ -311,6 +310,15 @@ public class ContentManager {
     public void setNextImagePreview(BufferedImage img){
 		previewRender.setNextImage(img);
     }
+
+    public void setMainShowBackground(boolean b){
+        mainRender.setShowBackground(b);
+    }
+
+    public void setMainShowTemplate(boolean b){
+        mainRender.setShowTemplate(b);
+    }
+
 
     public void initMainDisplay(){
 

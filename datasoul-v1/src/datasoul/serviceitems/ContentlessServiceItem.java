@@ -21,6 +21,7 @@ package datasoul.serviceitems;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.datashow.ServiceItem;
+import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipWriter;
 import java.awt.Color;
@@ -68,4 +69,5 @@ public class ContentlessServiceItem extends ServiceItem {
         }
         ObjectManager.getInstance().getDatasoulMainForm().repaint();        
     }
+
 }

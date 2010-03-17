@@ -20,13 +20,12 @@
 
 package datasoul.datashow;
 
+import datasoul.render.ContentManager;
+import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmdVideoPause;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
 import java.awt.image.BufferedImage;
-import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -37,13 +36,15 @@ import javax.swing.event.ListSelectionListener;
 public class ServiceItemTable extends javax.swing.JPanel implements ListSelectionListener {
     
     ServiceItem item;
+    private boolean videoEnded;
     
     /** Creates new form ServiceItemTable */
     public ServiceItemTable() {
         initComponents();
-        
+        lblPrefix.setText("");
         ServiceItem empty = new ServiceItem();
         setServiceItem(empty, 0);
+        videoEnded = false;
         
         this.displayTable.addKeyListener(new ServiceItemTableKeyListner(this));
         addTableListener(this);
@@ -51,6 +52,14 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
 
     public void setFocusInTable(){
         this.displayTable.requestFocus();
+    }
+
+    public void setTitlePrefix(String s){
+        lblPrefix.setText(s);
+    }
+
+    public void setMediaControlsEnabled(boolean b){
+        btnPause.setEnabled(b);
     }
     
     /** This method is called from within the constructor to
@@ -61,23 +70,23 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrSlideTable = new javax.swing.JScrollPane();
         displayTable = new javax.swing.JTable();
         pnlHeader = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblTemplate = new javax.swing.JLabel();
+        lblPrefix = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
+        btnPause = new javax.swing.JToggleButton();
 
         setDoubleBuffered(false);
-        setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
+        scrSlideTable.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
-                jScrollPane1ComponentResized(evt);
+                scrSlideTableComponentResized(evt);
             }
         });
-        jScrollPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        scrSlideTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jScrollPane1PropertyChange(evt);
+                scrSlideTablePropertyChange(evt);
             }
         });
 
@@ -92,62 +101,93 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(displayTable);
+        scrSlideTable.setViewportView(displayTable);
 
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        lblPrefix.setText("jLabel1");
+        pnlHeader.add(lblPrefix);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel1.setText(bundle.getString("Template:")); // NOI18N
+        lblTitle.setText("jLabel1");
+        pnlHeader.add(lblTitle);
 
-        lblTemplate.setText(bundle.getString("(none)")); // NOI18N
+        btnPause.setText("Pause");
+        btnPause.setFocusPainted(false);
+        btnPause.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPauseActionPerformed(evt);
+            }
+        });
+        pnlHeader.add(btnPause);
 
-        javax.swing.GroupLayout pnlHeaderLayout = new javax.swing.GroupLayout(pnlHeader);
-        pnlHeader.setLayout(pnlHeaderLayout);
-        pnlHeaderLayout.setHorizontalGroup(
-            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeaderLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTemplate)
-                .addContainerGap(111, Short.MAX_VALUE))
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(scrSlideTable, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
         );
-        pnlHeaderLayout.setVerticalGroup(
-            pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(jLabel1)
-                .addComponent(lblTemplate))
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scrSlideTable, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
-        add(pnlHeader, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jScrollPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane1PropertyChange
+    private void scrSlideTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_scrSlideTablePropertyChange
 
-    }//GEN-LAST:event_jScrollPane1PropertyChange
+    }//GEN-LAST:event_scrSlideTablePropertyChange
 
-    private void jScrollPane1ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jScrollPane1ComponentResized
+    private void scrSlideTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_scrSlideTableComponentResized
         if (item != null){
             item.updateHeights(displayTable);
         }
         
-    }//GEN-LAST:event_jScrollPane1ComponentResized
-    
+    }//GEN-LAST:event_scrSlideTableComponentResized
+
+    private void btnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauseActionPerformed
+        if (videoEnded){
+            item.showItem();
+            ContentManager.getInstance().slideChange(-1);
+        }else{
+            GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoPause(btnPause.isSelected()));
+        }
+        
+        
+        if (!btnPause.isSelected()){
+            btnPause.setText("Pause");
+        }else{
+            btnPause.setText("Play");
+        }
+
+    }//GEN-LAST:event_btnPauseActionPerformed
+
+    public void notifyVideoEnd(){
+        btnPause.setText("Play");
+        videoEnded = true;
+    }
+
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnPause;
     private javax.swing.JTable displayTable;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblTemplate;
+    private javax.swing.JLabel lblPrefix;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JPanel pnlHeader;
+    private javax.swing.JScrollPane scrSlideTable;
     // End of variables declaration//GEN-END:variables
     
     public void setServiceItem(ServiceItem item, int initialslide){
         this.item = item;
+        videoEnded = false;
         item.registerJTable(displayTable); 
-        item.updateHeights(displayTable);        
-        lblTemplate.setText( item.getTemplate() );
+        item.updateHeights(displayTable);
+        lblTitle.setText(item.getTitle() );
+        lblTitle.setIcon(item.getIcon());
+        scrSlideTable.setVisible(item.getShowSlideTable());
+        btnPause.setVisible(item.getShowMediaControls());
         setSlideIndex(initialslide);
+        revalidate();
     }
 
     public ServiceItem getServiceItem(){

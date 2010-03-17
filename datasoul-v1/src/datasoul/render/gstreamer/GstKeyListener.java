@@ -5,6 +5,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.render.gstreamer.notifications.GstNotificationKeyboard;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
@@ -35,7 +36,7 @@ public class GstKeyListener implements KeyListener, AWTEventListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-       GstEventNotification evt = new GstEventNotification(GstEventNotification.EVT_KEY, e);
+       GstNotificationKeyboard evt = new GstNotificationKeyboard(e);
        GstManagerClient.getInstance().sendNotification(evt);
     }
 

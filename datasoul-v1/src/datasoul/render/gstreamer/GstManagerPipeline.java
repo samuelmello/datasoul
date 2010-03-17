@@ -16,20 +16,25 @@ import org.gstreamer.State;
  *
  * @author samuel
  */
-public class GstManagerBgPipeline {
+public class GstManagerPipeline {
 
     protected Pipeline pipe;
     protected Element tee;
     protected Element queue;
     protected Element queue2;
 
-    public GstManagerBgPipeline(){
-        pipe = new Pipeline("main pipeline");
-        pipe.setAutoFlushBus(true);
+    public GstManagerPipeline(){
     }
 
-    public void start(){
+    public void eos(){
+        pipe.setState(State.NULL);
+    }
 
+    public void prepareForStart(){
+
+        pipe = new Pipeline("main pipeline");
+        pipe.setAutoFlushBus(true);
+        
         Bus bus = pipe.getBus();
 
         bus.connect(new Bus.ERROR() {
@@ -41,9 +46,7 @@ public class GstManagerBgPipeline {
         bus.connect(new Bus.EOS() {
             @Override
             public void endOfStream(GstObject source) {
-                /* Play in loop */
-                pipe.setState(State.NULL);
-                pipe.setState(State.PLAYING);
+                eos();
             }
         });
 
@@ -58,8 +61,11 @@ public class GstManagerBgPipeline {
             Element.linkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
         }
 
-        pipe.play();
+    }
 
+    public void start(){
+        prepareForStart();
+        pipe.play();
     }
 
     public void stop(){

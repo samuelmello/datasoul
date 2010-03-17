@@ -14,7 +14,7 @@ import datasoul.render.gstreamer.GstManagerClient;
 public class GstDisplayCmdSetStaticBG extends GstDisplayCmd {
 
     public void run(){
-        GstManagerClient.getInstance().setBgStatic();
+        GstManagerClient.getInstance().setBgPipeline(null);
     }
 
 }

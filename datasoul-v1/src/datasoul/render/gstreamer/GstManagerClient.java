@@ -8,6 +8,7 @@ package datasoul.render.gstreamer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.ContentDisplay;
 import datasoul.render.OutputDevice;
+import datasoul.render.gstreamer.notifications.GstNotification;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -82,7 +83,7 @@ public class GstManagerClient {
     private boolean isMonitorEnabled;
     private OutputDevice mainDevice;
     private OutputDevice monitorDevice;
-    private GstManagerBgPipeline bgpipeline;
+    private GstManagerPipeline bgpipeline;
     private boolean isOutputVisible;
     
     public void init ( String mainDevice, String monitorDevice, boolean monitorEnabled ) {
@@ -148,7 +149,7 @@ public class GstManagerClient {
         }
     }
 
-    void sendNotification(GstEventNotification evt) {
+    void sendNotification(GstNotification evt) {
         try{
             if (output != null){
                 output.writeObject(evt);
@@ -158,22 +159,14 @@ public class GstManagerClient {
         }
     }
 
-    public void setBgPipeline(GstManagerBgPipeline pipe){
+    public void setBgPipeline(GstManagerPipeline pipe){
         if (this.bgpipeline != null){
             this.bgpipeline.stop();
             this.bgpipeline.dispose();
         }
         this.bgpipeline = pipe;
-        if (isOutputVisible){
+        if (isOutputVisible && this.bgpipeline != null){
             this.bgpipeline.start();
-        }
-    }
-
-    public void setBgStatic(){
-        if (this.bgpipeline != null){
-            this.bgpipeline.stop();
-            this.bgpipeline.dispose();
-            this.bgpipeline = null;
         }
     }
 
@@ -187,6 +180,11 @@ public class GstManagerClient {
         if (this.bgpipeline != null){
             this.bgpipeline.start();
         }
+    }
+
+    public void setVideoItem(String filename) {
+        GstManagerVideoItemPipeline item = new GstManagerVideoItemPipeline(filename, bgpipeline);
+        setBgPipeline(item);
     }
 
 }

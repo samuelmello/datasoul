@@ -211,6 +211,10 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         }
     }
 
+    public void notifyVideoEnd(){
+        serviceItemTable1.notifyVideoEnd();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cbAutoChange;
     private javax.swing.JLabel jLabel1;

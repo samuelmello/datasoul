@@ -40,7 +40,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     public PreviewPanel() {
         initComponents();
         serviceItemTable1.addTableListener(this);
-        serviceItemTable1.setHeaderVisible(false);
+        serviceItemTable1.setTitlePrefix("Preview:");
+        serviceItemTable1.setMediaControlsEnabled(false);
 
         cbAutoLive.setSelected(DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
         btnGoLive.setVisible(!DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
@@ -162,7 +163,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlPreviewBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

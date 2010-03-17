@@ -29,6 +29,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import javax.swing.Icon;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelEvent;
@@ -299,6 +300,8 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     public void showItem(){
         ContentManager cm = ContentManager.getInstance();
+        cm.setMainShowBackground(true);
+        cm.setMainShowTemplate(true);
         cm.setTemplateLive(this.getTemplate());
         cm.setTitleLive(this.getTitle());
         cm.setSongAuthorLive("");
@@ -308,6 +311,18 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     public void dispose(){
         
+    }
+
+    public Icon getIcon(){
+        return null;
+    }
+
+    public boolean getShowSlideTable(){
+        return true;
+    }
+
+    public boolean getShowMediaControls(){
+        return false;
     }
 
 }

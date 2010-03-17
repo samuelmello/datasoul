@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileSystemView;
 import org.w3c.dom.Node;
 
 /**
@@ -23,20 +25,27 @@ import org.w3c.dom.Node;
  */
 public class AttachmentServiceItem extends ContentlessServiceItem {
 
-    private String filename;
-    private String internalfilename;
-    private File file;
+    protected String filename;
+    protected String internalfilename;
+    protected File file;
     protected static File tmpdir;
 
     public AttachmentServiceItem() {
         super();
     }
+
     public AttachmentServiceItem(String filename, InputStream is) throws IOException{
         this();
         this.filename = filename;
         this.internalfilename = "att-"+filename;
         copyFile(filename, is);
-        setTitle(filename);
+        int lastdot = filename.lastIndexOf(".");
+        if (lastdot > 0){
+            setTitle(filename.substring(0, lastdot));
+        }else{
+            setTitle(filename);
+        }
+        
     }
 
     protected void copyFile(String filename, InputStream is) throws IOException {
@@ -142,6 +151,16 @@ public class AttachmentServiceItem extends ContentlessServiceItem {
     @Override
     public void dispose(){
         file.delete();
+    }
+
+    @Override
+    public Icon getIcon(){
+        return FileSystemView.getFileSystemView().getSystemIcon(file);
+    }
+
+    @Override
+    public boolean getShowSlideTable(){
+        return false;
     }
 
 }

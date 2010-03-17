@@ -44,6 +44,7 @@ import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
+import datasoul.serviceitems.VideoServiceItem;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.serviceitems.song.Song;
 import datasoul.templates.TemplateManagerForm;
@@ -208,6 +209,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         actAddImageList = new javax.swing.JMenuItem();
         actImportItem = new javax.swing.JMenuItem();
         actAddAttachment = new javax.swing.JMenuItem();
+        actAddVideo = new javax.swing.JMenuItem();
         toolBarMain = new javax.swing.JToolBar();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
@@ -329,6 +331,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         ppmAddItem.add(actAddAttachment);
+
+        actAddVideo.setText("Add Video");
+        actAddVideo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddVideoActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddVideo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Datasoul");
@@ -714,7 +724,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -771,8 +781,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(533, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .addContainerGap(515, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -785,7 +795,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -852,7 +862,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -871,12 +881,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1171,6 +1181,24 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_actAddAttachmentActionPerformed
 
+    private void actAddVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddVideoActionPerformed
+
+        JFileChooser fc = new JFileChooser();
+        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            FileInputStream fis;
+            try {
+                fis = new FileInputStream(fc.getSelectedFile());
+                VideoServiceItem vsi = new VideoServiceItem(fc.getSelectedFile().getName(), fis);
+                ServiceListTable.getActiveInstance().addItem(vsi);
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
+                    "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+            }
+        }
+
+
+    }//GEN-LAST:event_actAddVideoActionPerformed
+
     public void closeOutputs(){
 
         if (btnShow.isSelected()){
@@ -1414,6 +1442,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actAddImageList;
     javax.swing.JMenuItem actAddSong;
     javax.swing.JMenuItem actAddText;
+    javax.swing.JMenuItem actAddVideo;
     javax.swing.JMenuItem actImportItem;
     datasoul.datashow.AuxiliarPanel auxiliar;
     javax.swing.JButton btnAddWizard;

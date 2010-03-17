@@ -6,6 +6,7 @@
 package datasoul.render.gstreamer;
 
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.notifications.GstNotification;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -85,8 +86,8 @@ public class GstManagerServer {
             try {
                 while (true){
                     Object o = input.readObject();
-                    if (o instanceof GstEventNotification){
-                        ((GstEventNotification)o).run();
+                    if (o instanceof GstNotification){
+                        ((GstNotification)o).run();
                     }
                 }
             } catch (Exception ex) {

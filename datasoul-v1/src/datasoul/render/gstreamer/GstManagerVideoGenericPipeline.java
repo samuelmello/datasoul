@@ -16,7 +16,7 @@ import org.gstreamer.elements.DecodeBin;
  *
  * @author samuel
  */
-public class GstManagerBgVideoPipeline extends GstManagerBgPipeline {
+public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
 
     protected String filename;
 
@@ -24,12 +24,15 @@ public class GstManagerBgVideoPipeline extends GstManagerBgPipeline {
     protected DecodeBin decodeBin;
     protected Element decodeQueue;
 
-    public GstManagerBgVideoPipeline(String filename){
+    public GstManagerVideoGenericPipeline(String filename){
         super();
         this.filename = filename;
     }
 
-    public void start(){
+    @Override
+    public void prepareForStart(){
+
+        super.prepareForStart();
 
         src = ElementFactory.make("filesrc", "Input File");
         src.set("location", this.filename);
@@ -57,7 +60,6 @@ public class GstManagerBgVideoPipeline extends GstManagerBgPipeline {
             }
         });
 
-        super.start();
     }
 
     @Override

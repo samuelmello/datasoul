@@ -104,6 +104,9 @@ public class ContentRender {
     private boolean templateNeedsTimer;
     private boolean alertNeedsTimer;
 
+    private boolean showTemplate;
+    private boolean showBackground;
+
     private int width;
     private int height;
 
@@ -113,6 +116,8 @@ public class ContentRender {
         slideTransition = TRANSITION_HIDE;
         slideTransTimerTotal = 1;
         slideTransTimer = 0;
+        showTemplate = true;
+        showBackground = true;
         displays = new LinkedList<ContentDisplay>();
         this.width = width;
         this.height = height;
@@ -564,14 +569,31 @@ public class ContentRender {
                 d.updateScreen(true, false, 0, 0, 0, 0);
             }
         }else{
-            float bglevel = (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC) ? 1.0f : 0.0f;
+            float bglevel, slidelevel, transitionlevel;
             boolean keepbg = (template != null && template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
-            for (ContentDisplay d : displays){
+
+            if (showBackground){
+                bglevel = (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC) ? 1.0f : 0.0f;
+            }else{
+                bglevel = 0.0f;
+            }
+
+            if (showTemplate){
+                slidelevel = paintSlideLevel;
                 if (slideTransition == TRANSITION_CHANGE){
-                    d.updateScreen(false, keepbg, bglevel, 1-paintSlideLevel, paintSlideLevel, paintAlertLevel);
+                    transitionlevel = 1-paintSlideLevel;
                 }else{
-                    d.updateScreen(false, false, bglevel, 0.0f, paintSlideLevel, paintAlertLevel);
+                    keepbg = false;
+                    transitionlevel = 0.0f;
                 }
+
+            }else{
+                slidelevel = 0.0f;
+                transitionlevel = 0.0f;
+            }
+
+            for (ContentDisplay d : displays){
+                d.updateScreen(false, keepbg, bglevel, transitionlevel, slidelevel, paintAlertLevel);
             }
 
 
@@ -643,6 +665,14 @@ public class ContentRender {
 
             updSemaphore.release();
         }
+    }
+
+    void setShowTemplate(boolean b) {
+        this.showTemplate = b;
+    }
+
+    void setShowBackground(boolean b) {
+        this.showBackground = b;
     }
     
     private class UpdateThread extends Thread {
