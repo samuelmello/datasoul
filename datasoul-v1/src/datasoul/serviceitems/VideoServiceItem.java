@@ -5,6 +5,7 @@
 
 package datasoul.serviceitems;
 
+import datasoul.datashow.ServiceItem;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoItem;

@@ -37,6 +37,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     
     ServiceItem item;
     private boolean videoEnded;
+    private boolean isPaused;
     
     /** Creates new form ServiceItemTable */
     public ServiceItemTable() {
@@ -59,7 +60,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     }
 
     public void setMediaControlsEnabled(boolean b){
-        btnPause.setEnabled(b);
+        btnPlayPause.setEnabled(b);
     }
     
     /** This method is called from within the constructor to
@@ -75,7 +76,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         pnlHeader = new javax.swing.JPanel();
         lblPrefix = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
-        btnPause = new javax.swing.JToggleButton();
+        btnPlayPause = new javax.swing.JButton();
 
         setDoubleBuffered(false);
 
@@ -109,14 +110,13 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         lblTitle.setText("jLabel1");
         pnlHeader.add(lblTitle);
 
-        btnPause.setText("Pause");
-        btnPause.setFocusPainted(false);
-        btnPause.addActionListener(new java.awt.event.ActionListener() {
+        btnPlayPause.setText("Pause");
+        btnPlayPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPauseActionPerformed(evt);
+                btnPlayPauseActionPerformed(evt);
             }
         });
-        pnlHeader.add(btnPause);
+        pnlHeader.add(btnPlayPause);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -145,31 +145,39 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         
     }//GEN-LAST:event_scrSlideTableComponentResized
 
-    private void btnPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauseActionPerformed
+    private void btnPlayPauseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlayPauseActionPerformed
+
+
+        if (isPaused){
+            btnPlayPause.setText("Pause");
+            isPaused = false;
+        }else{
+            btnPlayPause.setText("Play");
+            isPaused = true;
+        }
+
+        System.out.println(isPaused);
+
         if (videoEnded){
             item.showItem();
             ContentManager.getInstance().slideChange(-1);
+            videoEnded = false;
         }else{
-            GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoPause(btnPause.isSelected()));
-        }
-        
-        
-        if (!btnPause.isSelected()){
-            btnPause.setText("Pause");
-        }else{
-            btnPause.setText("Play");
+            GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoPause(isPaused));
         }
 
-    }//GEN-LAST:event_btnPauseActionPerformed
+
+    }//GEN-LAST:event_btnPlayPauseActionPerformed
 
     public void notifyVideoEnd(){
-        btnPause.setText("Play");
+        btnPlayPause.setText("Play");
+        isPaused = true;
         videoEnded = true;
     }
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton btnPause;
+    private javax.swing.JButton btnPlayPause;
     private javax.swing.JTable displayTable;
     private javax.swing.JLabel lblPrefix;
     private javax.swing.JLabel lblTitle;
@@ -180,12 +188,13 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     public void setServiceItem(ServiceItem item, int initialslide){
         this.item = item;
         videoEnded = false;
+        isPaused = false;
         item.registerJTable(displayTable); 
         item.updateHeights(displayTable);
         lblTitle.setText(item.getTitle() );
         lblTitle.setIcon(item.getIcon());
         scrSlideTable.setVisible(item.getShowSlideTable());
-        btnPause.setVisible(item.getShowMediaControls());
+        btnPlayPause.setVisible(item.getShowMediaControls());
         setSlideIndex(initialslide);
         revalidate();
     }

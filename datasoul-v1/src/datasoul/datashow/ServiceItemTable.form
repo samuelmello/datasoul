@@ -73,13 +73,12 @@
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btnPause">
+        <Component class="javax.swing.JButton" name="btnPlayPause">
           <Properties>
             <Property name="text" type="java.lang.String" value="Pause"/>
-            <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPauseActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPlayPauseActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
