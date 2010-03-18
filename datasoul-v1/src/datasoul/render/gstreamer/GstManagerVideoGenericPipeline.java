@@ -54,7 +54,6 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
                 Caps caps = pad.getCaps();
                 Structure struct = caps.getStructure(0);
                 if (struct.getName().startsWith("video/")) {
-                    System.out.println("Linking video pad: " + struct.getName());
                     pad.link(tee.getStaticPad("sink"));
                 }
             }
@@ -65,8 +64,10 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     @Override
     public void stop(){
         super.stop();
-        pipe.removeMany(src, decodeQueue, decodeBin);
-        Element.unlinkMany(src, decodeQueue,  decodeBin);
+        if (pipe != null){
+            pipe.removeMany(src, decodeQueue, decodeBin);
+            Element.unlinkMany(src, decodeQueue,  decodeBin);
+        }
     }
 
     @Override
@@ -75,7 +76,6 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
         if (src != null) src.dispose();
         if (decodeBin != null) decodeBin.dispose();
         if (decodeQueue != null) decodeQueue.dispose();
-        System.out.println("Limpei!");
     }
 
 }

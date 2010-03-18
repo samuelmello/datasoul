@@ -69,12 +69,14 @@ public class GstManagerPipeline {
     }
 
     public void stop(){
-        pipe.setState(State.NULL);
-        Element.unlinkMany(tee, queue, GstManagerClient.getInstance().getMainVideoSink());
-        pipe.removeMany(queue, tee, GstManagerClient.getInstance().getMainVideoSink());
-        if (GstManagerClient.getInstance().isMonitorEnabled()){
-            Element.unlinkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
-            pipe.removeMany(queue2, GstManagerClient.getInstance().getMonitorVideoSink());
+        if (pipe != null){
+            pipe.setState(State.NULL);
+            Element.unlinkMany(tee, queue, GstManagerClient.getInstance().getMainVideoSink());
+            pipe.removeMany(queue, tee, GstManagerClient.getInstance().getMainVideoSink());
+            if (GstManagerClient.getInstance().isMonitorEnabled()){
+                Element.unlinkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
+                pipe.removeMany(queue2, GstManagerClient.getInstance().getMonitorVideoSink());
+            }
         }
     }
 
