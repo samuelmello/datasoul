@@ -15,7 +15,7 @@ import java.io.InputStream;
  *
  * @author samuellucas
  */
-public class VideoServiceItem extends AttachmentServiceItem {
+public class VideoServiceItem extends GenericAttachmentServiceItem {
 
     public VideoServiceItem(){
         super();
@@ -32,6 +32,7 @@ public class VideoServiceItem extends AttachmentServiceItem {
 
     @Override
     public void showItem(){
+        super.showItem();
         ContentManager.getInstance().setMainShowBackground(false);
         ContentManager.getInstance().setMainShowTemplate(false);
         GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoItem(file.getAbsolutePath()));

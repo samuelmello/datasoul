@@ -5,6 +5,7 @@
 
 package datasoul.serviceitems;
 
+import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class AttachmentServiceItem extends GenericAttachmentServiceItem {
 
     @Override
     public void showItem(){
+        super.showItem();
+        ContentManager.getInstance().setMainShowTemplate(false);
         try {
             Desktop.getDesktop().open(file);
         } catch (IOException ex) {
