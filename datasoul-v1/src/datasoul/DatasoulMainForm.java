@@ -29,7 +29,7 @@ import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.serviceitems.imagelist.ImageListEditorForm;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.datashow.ImportServiceItemForm;
-import datasoul.datashow.ServiceItem;
+import datasoul.serviceitems.ServiceItem;
 import datasoul.datashow.ServiceListColorRender;
 import datasoul.datashow.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;

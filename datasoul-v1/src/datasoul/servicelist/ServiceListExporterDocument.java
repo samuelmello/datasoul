@@ -19,7 +19,7 @@ import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.rtf.RtfWriter2;
 import datasoul.DatasoulMainForm;
-import datasoul.datashow.ServiceItem;
+import datasoul.serviceitems.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.serviceitems.song.Chord;

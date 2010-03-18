@@ -22,6 +22,7 @@
  */
 package datasoul.datashow;
 
+import datasoul.serviceitems.ServiceItem;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.DatasoulMainForm;

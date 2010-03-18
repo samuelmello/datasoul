@@ -9,7 +9,7 @@ package datasoul.servicelist;
 import com.lowagie.text.DocumentException;
 import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
-import datasoul.datashow.ServiceItem;
+import datasoul.serviceitems.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.render.ContentRender;

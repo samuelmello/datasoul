@@ -13,6 +13,7 @@
  */
 
 package datasoul.datashow;
+import datasoul.serviceitems.ServiceItem;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;

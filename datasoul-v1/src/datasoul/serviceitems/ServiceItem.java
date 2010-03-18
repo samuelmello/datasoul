@@ -21,8 +21,10 @@
  * and open the template in the editor.
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems;
 
+import datasoul.datashow.ServiceItemNumberLabel;
+import datasoul.datashow.ServiceItemRenderer;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;

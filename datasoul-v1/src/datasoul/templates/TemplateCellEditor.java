@@ -1,7 +1,7 @@
 package datasoul.templates;
 
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
-import datasoul.datashow.ServiceItem;
+import datasoul.serviceitems.ServiceItem;
 import datasoul.datashow.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.serviceitems.song.Song;
