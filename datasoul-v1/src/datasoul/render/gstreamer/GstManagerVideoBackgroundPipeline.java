@@ -5,6 +5,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.render.gstreamer.notifications.GstNotificationBackgroundVideoError;
 import org.gstreamer.State;
 
 /**
@@ -16,6 +17,13 @@ public class GstManagerVideoBackgroundPipeline extends GstManagerVideoGenericPip
     public GstManagerVideoBackgroundPipeline(String filename){
         super(filename);
     }
+
+    @Override
+    public void error(int code, String msg){
+        GstManagerClient.getInstance().sendNotification(new GstNotificationBackgroundVideoError("("+code+") "+msg));
+        pipe.setState(State.NULL);
+    }
+
     
     @Override
     public void eos(){

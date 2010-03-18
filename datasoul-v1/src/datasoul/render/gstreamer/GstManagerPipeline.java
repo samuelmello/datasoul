@@ -30,6 +30,10 @@ public class GstManagerPipeline {
         pipe.setState(State.NULL);
     }
 
+    public void error(int code, String msg){
+
+    }
+
     public void prepareForStart(){
 
         pipe = new Pipeline("main pipeline");
@@ -40,7 +44,7 @@ public class GstManagerPipeline {
         bus.connect(new Bus.ERROR() {
             @Override
             public void errorMessage(GstObject source, int code, String message) {
-                System.out.println("Error: code=" + code + " message=" + message);
+                error(code, message);
             }
         });
         bus.connect(new Bus.EOS() {

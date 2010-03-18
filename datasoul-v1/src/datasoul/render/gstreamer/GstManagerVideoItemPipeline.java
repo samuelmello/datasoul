@@ -6,6 +6,7 @@
 package datasoul.render.gstreamer;
 
 import datasoul.render.gstreamer.notifications.GstNotificationVideoItemEnd;
+import datasoul.render.gstreamer.notifications.GstNotificationVideoItemError;
 import org.gstreamer.Bin;
 import org.gstreamer.Caps;
 import org.gstreamer.Element;
@@ -29,6 +30,12 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
     public GstManagerVideoItemPipeline(String filename, GstManagerPipeline oldpipeline){
         super(filename);
         this.oldpipeline = oldpipeline;
+    }
+
+    @Override
+    public void error(int code, String msg){
+        GstManagerClient.getInstance().sendNotification(new GstNotificationVideoItemError("("+code+") "+msg));
+        eos();
     }
 
     @Override
