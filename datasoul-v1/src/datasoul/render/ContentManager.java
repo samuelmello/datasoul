@@ -47,6 +47,7 @@ public class ContentManager {
 
     public static final int PREVIEW_WIDTH = 160;
 
+    private boolean isOutputVisible;
 
     /** Creates a new instance of ContentManager */
     private ContentManager() {
@@ -353,7 +354,13 @@ public class ContentManager {
         }
     }
 
+    public boolean isOutputVisible(){
+        return isOutputVisible;
+    }
+
     public void setOutputVisible(boolean b){
+
+        isOutputVisible = b;
 
         if (ConfigObj.isGstreamerActive()){
 
