@@ -11,6 +11,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.DatasoulMainForm;
 import datasoul.render.ContentDisplayRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -33,6 +34,7 @@ public class GstDisplayFrame extends javax.swing.JFrame {
     /** Creates new form GstDisplayFrame */
     public GstDisplayFrame() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
         render = new ContentDisplayRenderer() {
             @Override
             public void repaint() {

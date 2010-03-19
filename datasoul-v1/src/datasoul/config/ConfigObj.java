@@ -354,7 +354,7 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public boolean isGstreamerActive(){
-        return false;
+        return true;
     }
 
 }

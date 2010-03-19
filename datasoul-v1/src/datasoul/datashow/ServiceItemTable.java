@@ -27,6 +27,7 @@ import datasoul.render.gstreamer.commands.GstDisplayCmdVideoPause;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
 import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -39,6 +40,9 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     ServiceItem item;
     private boolean videoEnded;
     private boolean isPaused;
+
+    private ImageIcon iconPlay;
+    private ImageIcon iconPause;
     
     /** Creates new form ServiceItemTable */
     public ServiceItemTable() {
@@ -47,6 +51,12 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         ServiceItem empty = new ServiceItem();
         setServiceItem(empty, 0);
         videoEnded = false;
+
+        iconPlay = new ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-start.png"));
+        iconPause = new ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-pause.png"));
+
+        btnPlayPause.setText("");
+        btnPlayPause.setIcon(iconPause);
         
         this.displayTable.addKeyListener(new ServiceItemTableKeyListner(this));
         addTableListener(this);
@@ -112,6 +122,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         pnlHeader.add(lblTitle);
 
         btnPlayPause.setText("Pause");
+        btnPlayPause.setFocusPainted(false);
         btnPlayPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlayPauseActionPerformed(evt);
@@ -130,8 +141,8 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(scrSlideTable, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrSlideTable, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -150,10 +161,10 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
 
 
         if (isPaused){
-            btnPlayPause.setText("Pause");
+            btnPlayPause.setIcon(iconPause);
             isPaused = false;
         }else{
-            btnPlayPause.setText("Play");
+            btnPlayPause.setIcon(iconPlay);
             isPaused = true;
         }
 
@@ -171,7 +182,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     }//GEN-LAST:event_btnPlayPauseActionPerformed
 
     public void notifyVideoEnd(){
-        btnPlayPause.setText("Play");
+        btnPlayPause.setIcon(iconPause);
         isPaused = true;
         videoEnded = true;
     }

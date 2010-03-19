@@ -11,6 +11,7 @@
 
 package datasoul.datashow;
 
+import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.templates.ImageTemplateItem;
@@ -30,6 +31,8 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     /** Creates new form BackgroundConfigFrame */
     public BackgroundConfigFrame() {
         initComponents();
+
+        DatasoulMainForm.setDatasoulIcon(this);
 
         BufferedImage img1 = BackgroundConfig.getInstance().getBackgroundImg();
 
@@ -79,6 +82,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         btnChangeVideo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Datasoul Background");
 
         imageDisplay.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         imageDisplay.setPreferredSize(new java.awt.Dimension(160, 120));
@@ -163,11 +167,9 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnColorMain)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnChangeMain)
-                                .addContainerGap(233, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(rbStatic)
-                        .addContainerGap(327, Short.MAX_VALUE))))
+                                .addComponent(btnChangeMain))))
+                    .addComponent(rbStatic))
+                .addContainerGap(216, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
