@@ -28,6 +28,7 @@ import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.DatasoulMainForm;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
+import datasoul.serviceitems.VideoServiceItem;
 import datasoul.serviceitems.song.Song;
 import datasoul.util.ListTable;
 import datasoul.util.SerializableItf;
@@ -160,6 +161,10 @@ public class ServiceListTable extends ListTable {
                     AttachmentServiceItem asi = new AttachmentServiceItem();
                     asi.readObject(nodeList.item(i), zip);
                     this.addItem(asi);
+                } else if (nodeList.item(i).getNodeName().equals("VideoServiceItem")) {
+                    VideoServiceItem vsi = new VideoServiceItem();
+                    vsi.readObject(nodeList.item(i), zip);
+                    this.addItem(vsi);
                 } else if (nodeList.item(i).getNodeName().equals("ImageListServiceItem")) {
                     ImageListServiceItem ilsi = new ImageListServiceItem();
                     ilsi.readObject(nodeList.item(i), zip);
