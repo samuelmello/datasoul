@@ -2,7 +2,7 @@ package datasoul.templates;
 
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.ServiceItem;
-import datasoul.datashow.ServiceListTable;
+import datasoul.servicelist.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.serviceitems.song.Song;
 import java.awt.Component;

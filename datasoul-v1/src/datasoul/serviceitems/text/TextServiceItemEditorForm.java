@@ -22,7 +22,7 @@ package datasoul.serviceitems.text;
 
 import datasoul.DatasoulMainForm;
 import datasoul.config.WindowPropConfig;
-import datasoul.datashow.ServiceListTable;
+import datasoul.servicelist.ServiceListTable;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
