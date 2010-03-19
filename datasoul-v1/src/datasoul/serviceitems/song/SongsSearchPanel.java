@@ -41,15 +41,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private JFrame frameParent;
     private int songColumn;
     private int sourceView;
-    private boolean updateSize;
     
     /**
      * Creates new form SongsSearchPanel
      */
     public SongsSearchPanel() {
         initComponents();
-        WindowPropConfig.getInstance().getSongSearch(this);
-        updateSize = true;
 
         tableSongList.setDroppable(false);
         
@@ -309,14 +306,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private void showItem(){
 
         if (tableSongList.getSelectedRow() != -1){
-
-            if(sourceView==ObjectManager.VIEW_ADD_SONGS){
-                if(ObjectManager.getInstance().getAddSongForm() != null)
-                    ObjectManager.getInstance().getAddSongForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
-            }else{
-                if (ObjectManager.getInstance().getDatasoulMainForm() != null){
-                    ObjectManager.getInstance().getDatasoulMainForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
-                }
+            if (ObjectManager.getInstance().getDatasoulMainForm() != null){
+                ObjectManager.getInstance().getDatasoulMainForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
             }
         }
 
@@ -371,8 +362,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_fieldStringKeyTyped
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        if (updateSize)
-            WindowPropConfig.getInstance().setSongSearch(this);
+
     }//GEN-LAST:event_formComponentResized
 
     public void tableChanged(TableModelEvent e) {

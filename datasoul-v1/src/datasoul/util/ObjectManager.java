@@ -28,8 +28,6 @@ import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
-import datasoul.serviceitems.song.AddSongForm;
-import datasoul.serviceitems.song.SongsSearchPanel;
 import java.awt.Cursor;
 
 /**
@@ -38,37 +36,17 @@ import java.awt.Cursor;
  */
 public class ObjectManager {
 
-    // make this match the tab index for simplicity
-    public static final int VIEW_SERVICE = 0;
-    public static final int VIEW_SONGS = 1;
-    public static final int VIEW_PROJECTOR = 2;
-    public static final int VIEW_TEMPLATES = 3;
-    public static final int VIEW_CONFIG = 4;
-    public static final int VIEW_HELP = 5;
-    public static final int VIEW_TAB_COUNT = 6;
-
-
-    // special not a tab
-    public static final int VIEW_ADD_SONGS = 6;
-
     private static ObjectManager instance;
     
-    private SongsSearchPanel songsSearchPanel;
-
     private AuxiliarPanel auxiliarPanel;
     private LivePanel livePanel;
     private PreviewPanel previewPanel;
     private TimerControlPanel timerControlPanel;
     
-    private int viewActive;
-    
-    private AddSongForm addSongForm;
-    
     private DatasoulMainForm datasoulMainForm;
     
     /** Creates a new instance of ObjectManager */
     private ObjectManager() {
-        setViewActive(this.VIEW_PROJECTOR);
     }
     
     public static ObjectManager getInstance(){
@@ -76,15 +54,6 @@ public class ObjectManager {
             instance = new ObjectManager();
         }
         return instance;
-    }
-    
-    
-    //SONGS PANEL OBJECTS
-    public SongsSearchPanel getSongsSearchPanel(){
-        return songsSearchPanel;
-    }
-    public void setSongsSearchPanel(SongsSearchPanel songsSearchPanel){
-        this.songsSearchPanel = songsSearchPanel;
     }
     
     //DATASHOW PANEL OBJECTS
@@ -97,7 +66,6 @@ public class ObjectManager {
     public PreviewPanel getPreviewPanel(){
         return previewPanel;
     }
-    
     public void setAuxiliarPanel(AuxiliarPanel auxiliarPanel){
         this.auxiliarPanel = auxiliarPanel;
     }
@@ -106,20 +74,6 @@ public class ObjectManager {
     }
     public void setPreviewPanel(PreviewPanel previewPanel){
         this.previewPanel = previewPanel;
-    }
-
-    public int getViewActive() {
-        return viewActive;
-    }
-    public void setViewActive(int viewActive) {
-        this.viewActive = viewActive;
-    }
-
-    public AddSongForm getAddSongForm() {
-        return addSongForm;
-    }
-    public void setAddSongForm(AddSongForm addSongForm) {
-        this.addSongForm = addSongForm;
     }
 
     public DatasoulMainForm getDatasoulMainForm() {
