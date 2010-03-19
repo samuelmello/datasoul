@@ -41,6 +41,12 @@ public class WindowPropConfig extends AbstractConfig {
     private String hSongEditor;
     private String wSongEditor;
     private String templateSplit1;
+    private String splMain;
+    private String splService;
+    private String splPreview;
+    private String splSongLibrary;
+    private String splDisplayControl;
+
 
     protected void registerProperties() {
         super.registerProperties();
@@ -51,6 +57,11 @@ public class WindowPropConfig extends AbstractConfig {
         properties.add("HSongEditor");
         properties.add("WSongEditor");
         properties.add("TemplateSplit1");
+        properties.add("SplMain");
+        properties.add("SplService");
+        properties.add("SplPreview");
+        properties.add("SplSongLibrary");
+        properties.add("SplDisplayControl");
    }
 
     private boolean checkStr(String str){
@@ -196,6 +207,10 @@ public class WindowPropConfig extends AbstractConfig {
         //backward compatibility
     }
 
+    public void setTemplateSplit2(String templateSplit2) {
+        //backward compatibility
+    }
+
     public String getTemplateSplit1() {
         return templateSplit1;
     }
@@ -213,8 +228,89 @@ public class WindowPropConfig extends AbstractConfig {
         save();
     }
 
-    public void setTemplateSplit2(String templateSplit2) {
-        //backward compatibility
+    public String getSplMain() {
+        return splMain;
+    }
+
+    public void getSplMain(JSplitPane j){
+        if (!checkStr(splMain)) return;
+        try{
+            j.setDividerLocation(Integer.parseInt(splMain));
+        }catch(Exception e){
+        }
+    }
+
+    public void setSplMain(String str) {
+        this.splMain = str;
+        save();
+    }
+
+    public String getSplService() {
+        return splService;
+    }
+
+    public void getSplService(JSplitPane j){
+        if (!checkStr(splService)) return;
+        try{
+            j.setDividerLocation(Integer.parseInt(splService));
+        }catch(Exception e){
+        }
+    }
+
+    public void setSplService(String str) {
+        this.splService = str;
+        save();
+    }
+
+    public String getSplPreview() {
+        return splPreview;
+    }
+
+    public void getSplPreview(JSplitPane j){
+        if (!checkStr(splPreview)) return;
+        try{
+            j.setDividerLocation(Integer.parseInt(splPreview));
+        }catch(Exception e){
+        }
+    }
+
+    public void setSplPreview(String str) {
+        this.splPreview = str;
+        save();
+    }
+
+    public String getSplSongLibrary() {
+        return splSongLibrary;
+    }
+
+    public void getSplSongLibrary(JSplitPane j){
+        if (!checkStr(splSongLibrary)) return;
+        try{
+            j.setDividerLocation(Integer.parseInt(splSongLibrary));
+        }catch(Exception e){
+        }
+    }
+
+    public void setSplSongLibrary(String str) {
+        this.splSongLibrary = str;
+        save();
+    }
+
+    public String getSplDisplayControl() {
+        return splDisplayControl;
+    }
+
+    public void getSplDisplayControl(JSplitPane j){
+        if (!checkStr(splDisplayControl)) return;
+        try{
+            j.setDividerLocation(Integer.parseInt(splDisplayControl));
+        }catch(Exception e){
+        }
+    }
+
+    public void setSplDisplayControl(String str) {
+        this.splDisplayControl = str;
+        save();
     }
 
 

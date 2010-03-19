@@ -121,7 +121,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         setGstreamerEnabled(ConfigObj.getActiveInstance().isGstreamerActive());
 
-        WindowPropConfig.getInstance().getMainForm(this);
+        WindowPropConfig wpc = WindowPropConfig.getInstance();
+        wpc.getMainForm(this);
+        wpc.getSplMain(splMain);
+        wpc.getSplPreview(splPreview);
+        wpc.getSplService(splService);
+        wpc.getSplSongLibrary(splSongLibrary);
+        wpc.getSplDisplayControl(splDisplayControl);
+
         updateSize = true;
     }
 
@@ -228,9 +235,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnHelp = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnClose = new javax.swing.JButton();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jSplitPane3 = new javax.swing.JSplitPane();
+        splMain = new javax.swing.JSplitPane();
+        splService = new javax.swing.JSplitPane();
+        splPreview = new javax.swing.JSplitPane();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JTextArea();
@@ -504,13 +511,28 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnClose);
 
-        jSplitPane1.setDividerLocation(500);
+        splMain.setDividerLocation(500);
+        splMain.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                splMainPropertyChange(evt);
+            }
+        });
 
-        jSplitPane2.setDividerLocation(200);
-        jSplitPane2.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splService.setDividerLocation(200);
+        splService.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splService.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                splServicePropertyChange(evt);
+            }
+        });
 
-        jSplitPane3.setDividerLocation(250);
-        jSplitPane3.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splPreview.setDividerLocation(250);
+        splPreview.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splPreview.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                splPreviewPropertyChange(evt);
+            }
+        });
 
         txtNotes.setColumns(20);
         txtNotes.setRows(5);
@@ -544,7 +566,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jSplitPane3.setRightComponent(jPanel2);
+        splPreview.setRightComponent(jPanel2);
 
         preview.setMinimumSize(new java.awt.Dimension(10, 10));
 
@@ -559,9 +581,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
         );
 
-        jSplitPane3.setTopComponent(pnlPreview);
+        splPreview.setTopComponent(pnlPreview);
 
-        jSplitPane2.setBottomComponent(jSplitPane3);
+        splService.setBottomComponent(splPreview);
 
         jLabel2.setText(bundle.getString("Start_Time:")); // NOI18N
 
@@ -750,9 +772,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jSplitPane2.setLeftComponent(pnlServiceList);
+        splService.setLeftComponent(pnlServiceList);
 
-        jSplitPane1.setLeftComponent(jSplitPane2);
+        splMain.setLeftComponent(splService);
 
         splSongLibrary.setDividerLocation(350);
         splSongLibrary.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
@@ -808,6 +830,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         tabbedRightSide.addTab("Song Library", splSongLibrary);
 
         splDisplayControl.setDividerLocation(250);
+        splDisplayControl.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                splDisplayControlPropertyChange(evt);
+            }
+        });
         splDisplayControl.setLeftComponent(live);
 
         liveDisplayPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -899,21 +926,21 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         tabbedRightSide.addTab("Display Controls", splDisplayControl);
 
-        jSplitPane1.setRightComponent(tabbedRightSide);
+        splMain.setRightComponent(tabbedRightSide);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
+            .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
+                .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
         );
 
         pack();
@@ -1113,7 +1140,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void splSongLibraryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splSongLibraryPropertyChange
         if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
-            WindowPropConfig.getInstance().setServiceSplit2(Integer.toString(jSplitPane2.getDividerLocation()));
+            WindowPropConfig.getInstance().setSplSongLibrary(Integer.toString(splSongLibrary.getDividerLocation()));
         }
 }//GEN-LAST:event_splSongLibraryPropertyChange
 
@@ -1202,6 +1229,30 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_actAddVideoActionPerformed
+
+    private void splMainPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splMainPropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+            WindowPropConfig.getInstance().setSplMain(Integer.toString(splMain.getDividerLocation()));
+        }
+    }//GEN-LAST:event_splMainPropertyChange
+
+    private void splServicePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splServicePropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+            WindowPropConfig.getInstance().setSplService(Integer.toString(splService.getDividerLocation()));
+        }
+    }//GEN-LAST:event_splServicePropertyChange
+
+    private void splDisplayControlPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splDisplayControlPropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+            WindowPropConfig.getInstance().setSplDisplayControl(Integer.toString(splDisplayControl.getDividerLocation()));
+        }
+    }//GEN-LAST:event_splDisplayControlPropertyChange
+
+    private void splPreviewPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splPreviewPropertyChange
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+            WindowPropConfig.getInstance().setSplPreview(Integer.toString(splPreview.getDividerLocation()));
+        }
+    }//GEN-LAST:event_splPreviewPropertyChange
 
     public void closeOutputs(){
 
@@ -1483,9 +1534,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JToolBar.Separator jSeparator1;
     javax.swing.JToolBar.Separator jSeparator2;
     javax.swing.JToolBar.Separator jSeparator3;
-    javax.swing.JSplitPane jSplitPane1;
-    javax.swing.JSplitPane jSplitPane2;
-    javax.swing.JSplitPane jSplitPane3;
     javax.swing.JLabel lblAuthor;
     javax.swing.JLabel lblSongName;
     datasoul.datashow.LivePanel live;
@@ -1498,6 +1546,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     datasoul.datashow.PreviewPanel preview;
     datasoul.serviceitems.song.SongsSearchPanel songsSearchPanel1;
     javax.swing.JSplitPane splDisplayControl;
+    javax.swing.JSplitPane splMain;
+    javax.swing.JSplitPane splPreview;
+    javax.swing.JSplitPane splService;
     javax.swing.JSplitPane splSongLibrary;
     javax.swing.JTabbedPane tabbedRightSide;
     datasoul.util.DnDTable tableServiceList;

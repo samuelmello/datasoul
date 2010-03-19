@@ -137,7 +137,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="toolBarMain" alignment="0" pref="1136" max="32767" attributes="0"/>
-          <Component id="jSplitPane1" alignment="0" pref="1136" max="32767" attributes="0"/>
+          <Component id="splMain" alignment="0" pref="1136" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -145,7 +145,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="toolBarMain" min="-2" pref="58" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSplitPane1" pref="632" max="32767" attributes="0"/>
+              <Component id="splMain" pref="632" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -335,18 +335,24 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JSplitPane" name="jSplitPane1">
+    <Container class="javax.swing.JSplitPane" name="splMain">
       <Properties>
         <Property name="dividerLocation" type="int" value="500"/>
       </Properties>
+      <Events>
+        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="splMainPropertyChange"/>
+      </Events>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JSplitPane" name="jSplitPane2">
+        <Container class="javax.swing.JSplitPane" name="splService">
           <Properties>
             <Property name="dividerLocation" type="int" value="200"/>
             <Property name="orientation" type="int" value="0"/>
           </Properties>
+          <Events>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="splServicePropertyChange"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="left"/>
@@ -355,11 +361,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JSplitPane" name="jSplitPane3">
+            <Container class="javax.swing.JSplitPane" name="splPreview">
               <Properties>
                 <Property name="dividerLocation" type="int" value="250"/>
                 <Property name="orientation" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="splPreviewPropertyChange"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
                   <JSplitPaneConstraints position="bottom"/>
@@ -825,6 +834,9 @@
               <Properties>
                 <Property name="dividerLocation" type="int" value="250"/>
               </Properties>
+              <Events>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="splDisplayControlPropertyChange"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                   <JTabbedPaneConstraints tabName="Display Controls">
