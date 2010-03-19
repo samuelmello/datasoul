@@ -106,7 +106,7 @@ public class DatasoulKeyListener implements KeyListener, AWTEventListener{
         }
 
         if (e.getSource() instanceof SwingDisplayFrame ||
-                (ConfigObj.isGstreamerActive() && e.getSource() == null) ){
+                (ConfigObj.getActiveInstance().isGstreamerActive() && e.getSource() == null) ){
             switch( e.getKeyCode()){
                 case KeyEvent.VK_PAGE_DOWN:
                 case KeyEvent.VK_RIGHT:

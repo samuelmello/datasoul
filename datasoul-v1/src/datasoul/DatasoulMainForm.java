@@ -119,6 +119,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         initLive();
 
+        setGstreamerEnabled(ConfigObj.getActiveInstance().isGstreamerActive());
+
         WindowPropConfig.getInstance().getMainForm(this);
         updateSize = true;
     }
@@ -1345,7 +1347,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ContentManager.getInstance();
         checkStorageLocation();
         
-        if (ConfigObj.isGstreamerActive()){
+        if (ConfigObj.getActiveInstance().isGstreamerActive()){
             GstManagerServer.getInstance().start();
             GstDisplayCmd cmd = new GstDisplayCmdInit(
                     ConfigObj.getActiveInstance().getMonitorOutput(),
@@ -1506,5 +1508,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 
+
+    public void setGstreamerEnabled(boolean b){
+        actAddVideo.setEnabled(b);
+        live.setMediaControlsEnabled(b);
+    }
 
 }

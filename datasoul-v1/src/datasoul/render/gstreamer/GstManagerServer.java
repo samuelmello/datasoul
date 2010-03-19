@@ -5,6 +5,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.config.ConfigObj;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.notifications.GstNotification;
 import java.io.File;
@@ -69,7 +70,13 @@ public class GstManagerServer {
     }
 
     public synchronized void sendCommand(GstDisplayCmd obj) {
+        /* Ignore for swing output */
+        if (!ConfigObj.getActiveInstance().isGstreamerActive()){
+            return;
+        }
+
         try {
+
             if (output == null){
                 System.err.println("Rejecting command "+obj);
                 return;

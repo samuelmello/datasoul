@@ -154,8 +154,11 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
             automaticChanger.stopChanging();
         }
 
-        
     }//GEN-LAST:event_cbAutoChangeActionPerformed
+
+    public void setMediaControlsEnabled(boolean b){
+        serviceItemTable1.setMediaControlsEnabled(b);
+    }
 
     public void valueChanged(ListSelectionEvent e) {
 

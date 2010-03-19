@@ -81,9 +81,11 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
     @Override
     public void stop(){
         super.stop();
-        audioBin.removeMany(conv, sink);
-        Element.unlinkMany(conv, sink);
-        pipe.remove(audioBin);
+        if (pipe != null){
+            audioBin.removeMany(conv, sink);
+            Element.unlinkMany(conv, sink);
+            pipe.remove(audioBin);
+        }
     }
 
     @Override

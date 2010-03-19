@@ -323,7 +323,7 @@ public class ContentManager {
 
     public void initMainDisplay(){
 
-        if (ConfigObj.isGstreamerActive()){
+        if (ConfigObj.getActiveInstance().isGstreamerActive()){
             GstDisplay gstdisplay = new GstDisplay();
             registerMainDisplay(gstdisplay);
         }else{
@@ -362,7 +362,7 @@ public class ContentManager {
 
         isOutputVisible = b;
 
-        if (ConfigObj.isGstreamerActive()){
+        if (ConfigObj.getActiveInstance().isGstreamerActive()){
 
             GstDisplayCmd cmd = new GstDisplayCmdShowHide(b);
             GstManagerServer.getInstance().sendCommand(cmd);

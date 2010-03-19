@@ -13,9 +13,6 @@ package datasoul.datashow;
 
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
 import datasoul.templates.ImageTemplateItem;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -51,6 +48,12 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
 
         lblVideo.setText(BackgroundConfig.getInstance().getVideoFile());
 
+        if (!ConfigObj.getActiveInstance().isGstreamerActive()){
+            rbVideo.setEnabled(false);
+            lblVideo.setEnabled(false);
+            btnChangeVideo.setEnabled(false);
+            rbStatic.setSelected(true);
+        }
 
     }
 
