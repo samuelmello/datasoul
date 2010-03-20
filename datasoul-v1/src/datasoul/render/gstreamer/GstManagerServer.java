@@ -67,7 +67,7 @@ public class GstManagerServer {
             workerThread = new WorkerThread();
             workerThread.start();
 
-            for (int retries = 0; retries < 5; retries ++){
+            for (int retries = 0; retries < 10; retries ++){
                 if (connectSemaphore.tryAcquire(1, TimeUnit.SECONDS)){
                     return true;
                 }else{
