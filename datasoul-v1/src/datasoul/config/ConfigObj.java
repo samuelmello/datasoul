@@ -65,6 +65,10 @@ public class ConfigObj extends AbstractConfig {
         // Default quality:
         this.qualityMain = QUALITY_800;
         this.isGstreamerActive = true;
+        // Default output devices
+        setMainOutputDevice("");
+        setMonitorOutputDevice("");
+        // Now load
         load("datasoul.config");
     }
     
