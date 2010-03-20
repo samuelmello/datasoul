@@ -44,6 +44,8 @@ public class GstManagerServer {
     protected ObjectOutputStream output;
     protected ObjectInputStream input;
     protected Semaphore connectSemaphore;
+    protected StdoutDumpThread stdoutDumpThread;
+    protected WorkerThread workerThread;
 
     public boolean start(){
         try {
@@ -54,25 +56,26 @@ public class GstManagerServer {
                         "datasoul.render.gstreamer.GstManagerClient"
             };
             ProcessBuilder pb = new ProcessBuilder(cmd);
-            pb.redirectErrorStream();
+            pb.redirectErrorStream(true);
             proc = pb.start();
 
+            stdoutDumpThread = new StdoutDumpThread();
+            stdoutDumpThread.start();
+            
             connectSemaphore = new Semaphore(0);
             
-            new WorkerThread().start();
-
+            workerThread = new WorkerThread();
+            workerThread.start();
 
             for (int retries = 0; retries < 5; retries ++){
                 if (connectSemaphore.tryAcquire(1, TimeUnit.SECONDS)){
-                    System.out.println("Got connection");
                     return true;
                 }else{
                     try{
                         int ret = proc.exitValue(); // should raise an exception if not terminated
-                        System.out.println("Process returned "+ret);
-                        return false;
-                    }catch(IllegalStateException e){
-                        System.out.println("Try again");
+                        System.out.println("Gstreamer process returned "+ret);
+                        break;
+                    }catch(IllegalThreadStateException e){
                         continue; // ignore and try again
                     }
                 }
@@ -82,9 +85,9 @@ public class GstManagerServer {
              * Kill it and return false
              */
 
-            System.out.println("Timeout, destroying");
             proc.destroy();
-
+            workerThread.interrupt();
+            stdoutDumpThread.interrupt();
             return false;
 
         } catch (Exception ex) {
@@ -120,8 +123,6 @@ public class GstManagerServer {
                 s.setTcpNoDelay(true);
                 output = new ObjectOutputStream(s.getOutputStream());
                 input = new ObjectInputStream(s.getInputStream());
-
-                new StdoutDumpThread().start();
 
                 while (true){
                     Object o = input.readObject();
