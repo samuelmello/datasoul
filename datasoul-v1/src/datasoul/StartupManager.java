@@ -171,13 +171,16 @@ public class StartupManager {
         checkStorageLocation();
 
         if (ConfigObj.getActiveInstance().isGstreamerActive()){
-            GstManagerServer.getInstance().start();
-            GstDisplayCmd cmd = new GstDisplayCmdInit(
+            boolean gst = GstManagerServer.getInstance().start();
+            if (gst){
+                GstDisplayCmd cmd = new GstDisplayCmdInit(
                     ConfigObj.getActiveInstance().getMonitorOutput(),
                     ConfigObj.getActiveInstance().getMainOutputDevice(),
                     ConfigObj.getActiveInstance().getMonitorOutputDevice());
-
-            GstManagerServer.getInstance().sendCommand(cmd);
+                GstManagerServer.getInstance().sendCommand(cmd);
+            }else{
+                ConfigObj.getActiveInstance().setGstreamerActive(gst);
+            }
         }
 
         BackgroundConfig.getInstance();

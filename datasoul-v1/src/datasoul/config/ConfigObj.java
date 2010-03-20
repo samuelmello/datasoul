@@ -43,6 +43,8 @@ public class ConfigObj extends AbstractConfig {
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
 
+    private boolean isGstreamerActive;
+
     private int qualityMain;
     
     public static final int CLOCKMODE_24_SEC = 0;
@@ -62,6 +64,7 @@ public class ConfigObj extends AbstractConfig {
     private ConfigObj() {
         // Default quality:
         this.qualityMain = QUALITY_800;
+        this.isGstreamerActive = true;
         load("datasoul.config");
     }
     
@@ -354,7 +357,11 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public boolean isGstreamerActive(){
-        return true;
+        return isGstreamerActive;
+    }
+
+    public void setGstreamerActive(boolean b){
+        this.isGstreamerActive = b;
     }
 
 }

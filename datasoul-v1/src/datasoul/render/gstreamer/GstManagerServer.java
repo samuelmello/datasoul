@@ -14,6 +14,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,8 +43,9 @@ public class GstManagerServer {
     protected Socket s;
     protected ObjectOutputStream output;
     protected ObjectInputStream input;
+    protected Semaphore connectSemaphore;
 
-    public void start(){
+    public boolean start(){
         try {
             ss = new ServerSocket(34912);
             String[] cmd = { System.getProperty("java.home")+File.separator+"bin"+File.separator+"java",
@@ -54,19 +57,40 @@ public class GstManagerServer {
             pb.redirectErrorStream();
             proc = pb.start();
 
-            new StdoutDumpThread().start();
-
-            s = ss.accept();
-            s.setTcpNoDelay(true);
-            output = new ObjectOutputStream(s.getOutputStream());
-            input = new ObjectInputStream(s.getInputStream());
-
+            connectSemaphore = new Semaphore(0);
+            
             new WorkerThread().start();
+
+
+            for (int retries = 0; retries < 5; retries ++){
+                if (connectSemaphore.tryAcquire(1, TimeUnit.SECONDS)){
+                    System.out.println("Got connection");
+                    return true;
+                }else{
+                    try{
+                        int ret = proc.exitValue(); // should raise an exception if not terminated
+                        System.out.println("Process returned "+ret);
+                        return false;
+                    }catch(IllegalStateException e){
+                        System.out.println("Try again");
+                        continue; // ignore and try again
+                    }
+                }
+            }
+
+            /* If reach here, the program didn't connected neither exited
+             * Kill it and return false
+             */
+
+            System.out.println("Timeout, destroying");
+            proc.destroy();
+
+            return false;
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+        return false;
     }
 
     public synchronized void sendCommand(GstDisplayCmd obj) {
@@ -89,8 +113,16 @@ public class GstManagerServer {
     }
 
     public class WorkerThread extends Thread {
+        @Override
         public void run(){
             try {
+                s = ss.accept();
+                s.setTcpNoDelay(true);
+                output = new ObjectOutputStream(s.getOutputStream());
+                input = new ObjectInputStream(s.getInputStream());
+
+                new StdoutDumpThread().start();
+
                 while (true){
                     Object o = input.readObject();
                     if (o instanceof GstNotification){
