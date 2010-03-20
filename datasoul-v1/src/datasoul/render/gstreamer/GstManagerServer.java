@@ -124,6 +124,8 @@ public class GstManagerServer {
                 output = new ObjectOutputStream(s.getOutputStream());
                 input = new ObjectInputStream(s.getInputStream());
 
+                connectSemaphore.release();
+
                 while (true){
                     Object o = input.readObject();
                     if (o instanceof GstNotification){
