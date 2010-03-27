@@ -20,10 +20,8 @@
 
 package datasoul;
 
-import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
-import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.serviceitems.imagelist.ImageListEditorForm;
@@ -35,13 +33,7 @@ import datasoul.servicelist.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.serviceitems.text.TextServiceItemEditorForm;
 import datasoul.render.ContentManager;
-import datasoul.serviceitems.song.AllSongsListTable;
-import datasoul.serviceitems.song.ChordsDB;
-import datasoul.datashow.TimerManager;
 import datasoul.help.HelpFrame;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.VideoServiceItem;
@@ -49,21 +41,12 @@ import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.serviceitems.song.Song;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.templates.TemplateCellEditor;
-import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
-import datasoul.util.Splash;
-import java.awt.AWTEvent;
 import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.UIManager;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import javax.swing.JFileChooser;
@@ -352,9 +335,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         ppmAddItem.add(actAddVideo);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Datasoul");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -1253,6 +1241,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             WindowPropConfig.getInstance().setSplPreview(Integer.toString(splPreview.getDividerLocation()));
         }
     }//GEN-LAST:event_splPreviewPropertyChange
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        btnCloseActionPerformed(null);
+    }//GEN-LAST:event_formWindowClosing
 
     public void closeOutputs(){
 
