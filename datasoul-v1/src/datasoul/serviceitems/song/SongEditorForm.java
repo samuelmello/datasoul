@@ -131,6 +131,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         initTextAreas();
         cbUpdateSongLibrary.setVisible(song.isClone());
+
     }
     
     private void initTextAreas(){
@@ -141,6 +142,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
         textChordsCompleted.setChords(true);
         textChordsSimplified.setChords(true);
+        btnShowChordsActionPerformed(null);
     }
 
 
@@ -193,10 +195,14 @@ public class SongEditorForm extends javax.swing.JFrame {
         textSplitPanel1 = new datasoul.util.TextSplitPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textLyrics = new datasoul.util.HighlightTextArea();
+        pnlChordsComplete = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         textChordsCompleted = new datasoul.util.HighlightTextArea();
+        chordsTransposePanel1 = new datasoul.serviceitems.song.ChordsTransposePanel();
+        pnlChordsSimple = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         textChordsSimplified = new datasoul.util.HighlightTextArea();
+        chordsTransposePanel2 = new datasoul.serviceitems.song.ChordsTransposePanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -206,6 +212,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         btnShowSplit = new javax.swing.JToggleButton();
+        btnShowChords = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -246,32 +253,42 @@ public class SongEditorForm extends javax.swing.JFrame {
         pnlLyricsTab.setLayout(pnlLyricsTabLayout);
         pnlLyricsTabLayout.setHorizontalGroup(
             pnlLyricsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textSplitPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+            .addComponent(textSplitPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
         );
         pnlLyricsTabLayout.setVerticalGroup(
             pnlLyricsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLyricsTabLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
+            .addGroup(pnlLyricsTabLayout.createSequentialGroup()
+                .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
         );
 
         tabSong.addTab(bundle.getString("Lyrics"), pnlLyricsTab); // NOI18N
+
+        pnlChordsComplete.setLayout(new java.awt.BorderLayout());
 
         textChordsCompleted.setColumns(20);
         textChordsCompleted.setRows(5);
         textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 13));
         jScrollPane3.setViewportView(textChordsCompleted);
 
-        tabSong.addTab(bundle.getString("Chords_Complete"), jScrollPane3); // NOI18N
+        pnlChordsComplete.add(jScrollPane3, java.awt.BorderLayout.CENTER);
+        pnlChordsComplete.add(chordsTransposePanel1, java.awt.BorderLayout.PAGE_START);
+
+        tabSong.addTab(bundle.getString("Chords_Complete"), pnlChordsComplete); // NOI18N
+
+        pnlChordsSimple.setLayout(new java.awt.BorderLayout());
 
         textChordsSimplified.setColumns(20);
         textChordsSimplified.setRows(5);
         textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 13));
         jScrollPane2.setViewportView(textChordsSimplified);
 
-        tabSong.addTab(bundle.getString("Chords_Simple"), jScrollPane2); // NOI18N
+        pnlChordsSimple.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        pnlChordsSimple.add(chordsTransposePanel2, java.awt.BorderLayout.PAGE_START);
+
+        tabSong.addTab(bundle.getString("Chords_Simple"), pnlChordsSimple); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 10));
         jLabel3.setText(bundle.getString("*_Use_a_line_with_==_to_split_slides_and_a_line_with_===_to_split_sessions")); // NOI18N
@@ -315,6 +332,18 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
         jToolBar1.add(btnShowSplit);
 
+        btnShowChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound.png"))); // NOI18N
+        btnShowChords.setText("Transposition");
+        btnShowChords.setFocusable(false);
+        btnShowChords.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowChords.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnShowChords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowChordsActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnShowChords);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -332,14 +361,14 @@ public class SongEditorForm extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-                            .addComponent(fieldAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-                            .addComponent(txtCopyright, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
-                            .addComponent(txtSongSource, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)))
+                            .addComponent(fieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                            .addComponent(fieldAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                            .addComponent(txtCopyright, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+                            .addComponent(txtSongSource, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))
                     .addComponent(jLabel3)
-                    .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
+                    .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 475, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +391,7 @@ public class SongEditorForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtSongSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -451,6 +480,11 @@ public class SongEditorForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnShowChordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowChordsActionPerformed
+        chordsTransposePanel1.setVisible(btnShowChords.isSelected());
+        chordsTransposePanel2.setVisible(btnShowChords.isSelected());
+    }//GEN-LAST:event_btnShowChordsActionPerformed
+
   private void saveFile(){
         updateValues();
         
@@ -486,8 +520,11 @@ public class SongEditorForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSave;
+    private javax.swing.JToggleButton btnShowChords;
     private javax.swing.JToggleButton btnShowSplit;
     private javax.swing.JCheckBox cbUpdateSongLibrary;
+    private datasoul.serviceitems.song.ChordsTransposePanel chordsTransposePanel1;
+    private datasoul.serviceitems.song.ChordsTransposePanel chordsTransposePanel2;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
     private javax.swing.JLabel jLabel3;
@@ -499,6 +536,8 @@ public class SongEditorForm extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelAuthor;
     private javax.swing.JLabel labelName;
+    private javax.swing.JPanel pnlChordsComplete;
+    private javax.swing.JPanel pnlChordsSimple;
     private javax.swing.JPanel pnlLyricsTab;
     private javax.swing.JTabbedPane tabSong;
     private datasoul.util.HighlightTextArea textChordsCompleted;
