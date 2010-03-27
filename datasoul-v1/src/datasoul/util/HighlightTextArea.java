@@ -5,6 +5,7 @@
 
 package datasoul.util;
 
+import datasoul.serviceitems.song.Song;
 import datasoul.serviceitems.text.TextServiceItem;
 import javax.swing.JTextArea;
 import java.awt.Color;
@@ -32,7 +33,7 @@ public class HighlightTextArea extends JTextArea {
         super();
         slidePattern = Pattern.compile("^"+TextServiceItem.SLIDE_BREAK+"$");
         chorusPattern = Pattern.compile("^"+TextServiceItem.CHORUS_MARK+"$");
-        chordsPattern = Pattern.compile("^= ");
+        chordsPattern = Pattern.compile(Song.CHORDS_REGEX);
         addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {

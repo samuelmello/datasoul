@@ -39,7 +39,9 @@ import javax.swing.ImageIcon;
  * @author Administrador
  */
 public class Song extends TextServiceItem implements Cloneable {
-  
+
+    public static final String CHORDS_REGEX = "^=?[ ]*([A-G]{1}[a-z0-9#+]*(/[A-G]{1}[a-z0-9#+]*)?[ ]*)+$";
+
     private String songAuthor="";
     private String chordsComplete="";
     private String chordsSimplified="";
@@ -48,7 +50,6 @@ public class Song extends TextServiceItem implements Cloneable {
     private String songSource = "";
 
     private String filePath="";        
-    //private String view=java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
     private String view="Title";
     private String searchStr = null;
 
