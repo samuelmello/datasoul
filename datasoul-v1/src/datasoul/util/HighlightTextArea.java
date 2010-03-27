@@ -8,10 +8,12 @@ package datasoul.util;
 import datasoul.serviceitems.text.TextServiceItem;
 import javax.swing.JTextArea;
 import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.text.Highlighter;
 import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.BadLocationException;
 import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
 
 /**
  *
@@ -20,9 +22,17 @@ import javax.swing.SwingUtilities;
 public class HighlightTextArea extends JTextArea {
 
     private boolean chords;
+    private Pattern slidePattern;
+    private Pattern chorusPattern;
+    private Pattern chordsPattern;
+
+
 
     public HighlightTextArea() {
         super();
+        slidePattern = Pattern.compile("^"+TextServiceItem.SLIDE_BREAK+"$");
+        chorusPattern = Pattern.compile("^"+TextServiceItem.CHORUS_MARK+"$");
+        chordsPattern = Pattern.compile("^= ");
         addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -43,40 +53,41 @@ public class HighlightTextArea extends JTextArea {
 
     protected void updateHighlight(){
         SwingUtilities.invokeLater( new Runnable(){
+            @Override
             public void run(){
                 removeHighlights();
-                highlight("\n"+TextServiceItem.SLIDE_BREAK+"\n",Color.ORANGE);
-                highlight("\n"+TextServiceItem.CHORUS_MARK+"\n",Color.PINK);
+                highlight(slidePattern, Color.ORANGE);
+                highlight(chorusPattern, Color.PINK);
                 if (chords){
-                    highlight("\n=",Color.LIGHT_GRAY);
+                    highlight(chordsPattern, Color.LIGHT_GRAY);
                 }
             }
         });
     }
 
     // Creates highlights around all occurrences of pattern in textComp
-    protected void highlight(String pattern, Color color) {
+    protected void highlight(Pattern pattern, Color color) {
         Highlighter.HighlightPainter highlightPainter = new MyHighlightPainter(color);
 
+        Highlighter hilite = getHighlighter();
+
         try {
-            Highlighter hilite = getHighlighter();
-            String text = getText();
-            int pos = 0;
 
-            // Check for the pattern in the beggining of the string
-            if (text.startsWith( pattern.substring(1) )){
-                hilite.addHighlight(0, pattern.length()-1, highlightPainter);
+            int start = 0;
+
+            for (String line : getText().split("\n")){
+                Matcher matcher = pattern.matcher(line);
+                while(matcher.find()){
+                    hilite.addHighlight(start + matcher.start(), start + matcher.end(), highlightPainter);
+                }
+                start += line.length() + 1;
             }
 
-            // Search for pattern
-            while ((pos = text.indexOf(pattern, pos)) >= 0) {
-                // Create highlighter using private painter and apply around pattern
-                hilite.addHighlight(pos+1, pos+pattern.length(), highlightPainter);
-                pos += pattern.length();
-            }
         } catch (BadLocationException e) {
+            e.printStackTrace();
 
         }
+
     }
 
     // Removes only our private highlights
