@@ -154,7 +154,18 @@ public class SongEditorForm extends javax.swing.JFrame {
         txtSongSource.setText(song.getSongSource());
     }
 
-    private void actualizeValues(){
+    private boolean hasChanged(){
+        return
+            !song.getTitle().equals(fieldName.getText()) ||
+            !song.getSongAuthor().equals(fieldAuthor.getText()) ||
+            !song.getText().equals(textLyrics.getText()) ||
+            !song.getChordsComplete().equals(textChordsCompleted.getText()) ||
+            !song.getChordsSimplified().equals(textChordsSimplified.getText()) ||
+            !song.getCopyright().equals(txtCopyright.getText()) ||
+            !song.getSongSource().equals(txtSongSource.getText());
+    }
+
+    private void updateValues(){
         song.setTitle(fieldName.getText());
         song.setSongAuthor(fieldAuthor.getText());
         song.setText(textLyrics.getText());
@@ -186,19 +197,22 @@ public class SongEditorForm extends javax.swing.JFrame {
         textChordsCompleted = new datasoul.util.HighlightTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         textChordsSimplified = new datasoul.util.HighlightTextArea();
-        btnClose = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtCopyright = new javax.swing.JTextField();
         txtSongSource = new javax.swing.JTextField();
-        btnShowSplit = new javax.swing.JToggleButton();
         cbUpdateSongLibrary = new javax.swing.JCheckBox();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnSave = new javax.swing.JButton();
+        btnShowSplit = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 formComponentResized(evt);
@@ -232,13 +246,13 @@ public class SongEditorForm extends javax.swing.JFrame {
         pnlLyricsTab.setLayout(pnlLyricsTabLayout);
         pnlLyricsTabLayout.setHorizontalGroup(
             pnlLyricsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(textSplitPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addComponent(textSplitPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE)
         );
         pnlLyricsTabLayout.setVerticalGroup(
             pnlLyricsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLyricsTabLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -259,30 +273,8 @@ public class SongEditorForm extends javax.swing.JFrame {
 
         tabSong.addTab(bundle.getString("Chords_Simple"), jScrollPane2); // NOI18N
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText(bundle.getString("Discard_and_Close")); // NOI18N
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setText(bundle.getString("Save_and_Close")); // NOI18N
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 10));
         jLabel3.setText(bundle.getString("*_Use_a_line_with_==_to_split_slides_and_a_line_with_===_to_split_sessions")); // NOI18N
-
-        jToolBar1.setFloatable(false);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
-        jLabel4.setText(bundle.getString("Edit_Song")); // NOI18N
-        jToolBar1.add(jLabel4);
 
         jLabel5.setText(bundle.getString("Copyright")); // NOI18N
 
@@ -294,37 +286,45 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
 
-        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_toggle-info.png"))); // NOI18N
-        btnShowSplit.setText(bundle.getString("Show_Split_Options")); // NOI18N
+        cbUpdateSongLibrary.setText(bundle.getString("Update_Song_Library")); // NOI18N
+
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
+        btnSave.setText(bundle.getString("Save")); // NOI18N
+        btnSave.setFocusable(false);
+        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnSave);
+
+        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/format-justify-center.png"))); // NOI18N
+        btnShowSplit.setText("Split Options");
+        btnShowSplit.setFocusable(false);
+        btnShowSplit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowSplit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowSplitActionPerformed(evt);
             }
         });
-
-        cbUpdateSongLibrary.setText(bundle.getString("Update_Song_Library")); // NOI18N
+        jToolBar1.add(btnShowSplit);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addContainerGap(633, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(cbUpdateSongLibrary)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbUpdateSongLibrary)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(btnShowSplit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClose))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(labelName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -336,18 +336,16 @@ public class SongEditorForm extends javax.swing.JFrame {
                             .addComponent(fieldAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                             .addComponent(txtCopyright, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)
                             .addComponent(txtSongSource, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 593, Short.MAX_VALUE)))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel3)
+                    .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelName)
                     .addComponent(fieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -364,35 +362,28 @@ public class SongEditorForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(txtSongSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addComponent(tabSong, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClose)
-                    .addComponent(btnSave)
-                    .addComponent(btnShowSplit)
-                    .addComponent(cbUpdateSongLibrary))
+                .addComponent(cbUpdateSongLibrary)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
+    private boolean save(){
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if(this.fieldName.getText().equals("")){
             JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Please_fill_the_field_\"Song_Name\""));
-            return;
+            return false;
         }
 
         // if editing a Clone (from the ServiceList), just update the values
         // if editing from the Song library, write the .song file.
         if (song.isClone() && !cbUpdateSongLibrary.isSelected()){
-            actualizeValues();
+            updateValues();
         }else{
             String filename = this.fieldName.getText();
             if(!filename.contains(".song"))
@@ -409,7 +400,11 @@ public class SongEditorForm extends javax.swing.JFrame {
             AllSongsListTable.getInstance().refreshSong(filename);
         }
 
-        dispose();
+        return true;
+    }
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void textChordsCompleteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textChordsCompleteKeyPressed
@@ -438,8 +433,26 @@ public class SongEditorForm extends javax.swing.JFrame {
             WindowPropConfig.getInstance().setSongEditor(this);
     }//GEN-LAST:event_formComponentResized
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+        if (hasChanged()){
+            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
+
+            if (resp == JOptionPane.YES_OPTION){
+                if (save()){
+                    this.dispose();
+                }
+            }else if (resp == JOptionPane.NO_OPTION){
+                this.dispose();
+            }
+        }else{
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_formWindowClosing
+
   private void saveFile(){
-        actualizeValues();
+        updateValues();
         
         try{
             Node node = song.writeObject(null);
@@ -472,14 +485,12 @@ public class SongEditorForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
     private javax.swing.JToggleButton btnShowSplit;
     private javax.swing.JCheckBox cbUpdateSongLibrary;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;

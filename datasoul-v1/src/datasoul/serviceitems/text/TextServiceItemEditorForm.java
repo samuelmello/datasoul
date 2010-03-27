@@ -21,6 +21,7 @@
 package datasoul.serviceitems.text;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.servicelist.ServiceListTable;
 import java.awt.Color;
@@ -76,9 +77,12 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
 
+    private boolean hasChanged(){
+        return !textServiceItem.getText().equals(textText.getText()) || !textServiceItem.getTitle().equals(fieldTitle.getText());
+    }
+
     private void updateValues(){
         this.textServiceItem.setTitle(this.fieldTitle.getText());
-        
         this.textServiceItem.setText(this.textText.getText());
     }
     
@@ -93,22 +97,23 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         fieldTitle = new javax.swing.JTextField();
         labelTitle = new javax.swing.JLabel();
         labelTitle1 = new javax.swing.JLabel();
-        btnClose = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jToolBar1 = new javax.swing.JToolBar();
-        jLabel4 = new javax.swing.JLabel();
-        btnShowSplit = new javax.swing.JToggleButton();
         textSplitPanel1 = new datasoul.util.TextSplitPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textText = new datasoul.util.HighlightTextArea();
         bibleTextPanel1 = new datasoul.bible.BibleTextPanel();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnSave = new javax.swing.JButton();
         btnShowBible = new javax.swing.JToggleButton();
+        btnShowSplit = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         setTitle(bundle.getString("Edit_Text")); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
             }
@@ -134,95 +139,79 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
         labelTitle1.setText(bundle.getString("Text")); // NOI18N
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText(bundle.getString("Discard_and_Close")); // NOI18N
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
-        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setText(bundle.getString("Save_and_Close")); // NOI18N
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 10));
         jLabel3.setText(bundle.getString("*_Use_a_line_with_==_to_split_slides_and_a_line_with_===_to_split_sessions")); // NOI18N
-
-        jToolBar1.setFloatable(false);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
-        jLabel4.setText(bundle.getString("Edit_Text")); // NOI18N
-        jToolBar1.add(jLabel4);
-
-        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_toggle-info.png"))); // NOI18N
-        btnShowSplit.setText(bundle.getString("Show_Split_Options")); // NOI18N
-        btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowSplitActionPerformed(evt);
-            }
-        });
 
         textText.setColumns(20);
         textText.setRows(5);
         jScrollPane1.setViewportView(textText);
 
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
+        btnSave.setText(bundle.getString("Save")); // NOI18N
+        btnSave.setFocusable(false);
+        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnSave);
+
         btnShowBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/accessories-dictionary.png"))); // NOI18N
-        btnShowBible.setText(bundle.getString("Show_Bible_Options")); // NOI18N
+        btnShowBible.setText("Bible Options");
+        btnShowBible.setFocusable(false);
+        btnShowBible.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowBible.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnShowBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowBibleActionPerformed(evt);
             }
         });
+        jToolBar1.add(btnShowBible);
+
+        btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/format-justify-center.png"))); // NOI18N
+        btnShowSplit.setText("Split Options");
+        btnShowSplit.setFocusable(false);
+        btnShowSplit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowSplit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowSplitActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnShowSplit);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelTitle)
-                .addContainerGap(668, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelTitle1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(textSplitPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(textSplitPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                    .addComponent(bibleTextPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(fieldTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnShowBible)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowSplit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClose)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                    .addComponent(labelTitle, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(labelTitle1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
+                        .addComponent(jLabel3))
+                    .addComponent(bibleTextPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE)
+                    .addComponent(fieldTitle, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 684, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addComponent(bibleTextPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTitle)
@@ -233,43 +222,35 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                     .addComponent(labelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnClose)
-                    .addComponent(btnSave)
-                    .addComponent(btnShowSplit)
-                    .addComponent(btnShowBible))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        updateValues();
-        
+    private boolean save(){
         if(this.textServiceItem.getTitle().equals("")){
             JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("You_must_field_the_Title"));
-            return;
+            return false;
         }
 
+        updateValues();
+
         if(isNewItem){
-            if (btnShowBible.isSelected()) {
-                textServiceItem.setTemplate("bible");
-            }
-            textServiceItem.setTemplate("bible");
+            textServiceItem.setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateText());
             ServiceListTable.getActiveInstance().addItem(this.textServiceItem);
             isNewItem = false;
         }
-        this.dispose();
-    }//GEN-LAST:event_btnSaveActionPerformed
 
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
+        return true;
+    }
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        save();
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     private void fieldTitleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldTitleKeyTyped
         if(evt.getKeyCode()==16)
@@ -301,17 +282,33 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private void fieldTitleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldTitleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldTitleActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+        if (hasChanged()){
+            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
+
+            if (resp == JOptionPane.YES_OPTION){
+                if (save()){
+                    this.dispose();
+                }
+            }else if (resp == JOptionPane.NO_OPTION){
+                this.dispose();
+            }
+        }else{
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_formWindowClosing
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.bible.BibleTextPanel bibleTextPanel1;
-    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
     private javax.swing.JToggleButton btnShowBible;
     private javax.swing.JToggleButton btnShowSplit;
     private javax.swing.JTextField fieldTitle;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelTitle;
