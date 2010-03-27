@@ -32,6 +32,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
 
 /**
@@ -40,7 +42,9 @@ import javax.swing.ImageIcon;
  */
 public class Song extends TextServiceItem implements Cloneable {
 
-    public static final String CHORDS_REGEX = "^=?[ ]*([A-G]{1}[a-z0-9#+]*(/[A-G]{1}[a-z0-9#+]*)?[ ]*)+$";
+    private static final String CHORDS_REGEX = "^=?[ ]*([A-G]{1}[a-z0-9#+]*(/[A-G]{1}[a-z0-9#+]*)?[ ]*)+$";
+
+    public static final Pattern CHORDS_REGEX_PATTERN = Pattern.compile(CHORDS_REGEX);
 
     private String songAuthor="";
     private String chordsComplete="";
@@ -251,6 +255,35 @@ public class Song extends TextServiceItem implements Cloneable {
         
         return result;
    }
+
+    public static ArrayList<String> getUsedChords(String text){
+        
+        ArrayList<String> usedChords = new ArrayList<String>();
+
+        for (String line : text.split("\n")){
+            Matcher matcher = CHORDS_REGEX_PATTERN.matcher(line);
+            /* Check if this is a chords line */
+            if (matcher.find()){
+                /* Backward compatibility */
+                if (line.charAt(0) == '='){
+                    line = line.substring(1);
+                }
+
+
+                /* Split in tokens */
+                for (String tok1 : line.split(" ")){
+                    for (String tok2 : tok1.split("/")){
+                        if (tok2.length() > 0 && !usedChords.contains(tok2) && !tok2.equals("=")){
+                            usedChords.add(tok2);
+                        }
+                    }
+                }
+            }
+        }
+
+        return usedChords;
+
+    }
 
     @Override
     public String getDefaultMonitorTemplate(){

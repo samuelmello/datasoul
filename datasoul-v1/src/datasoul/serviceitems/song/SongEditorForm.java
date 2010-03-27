@@ -25,7 +25,10 @@ import datasoul.config.WindowPropConfig;
 import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -135,34 +138,33 @@ public class SongEditorForm extends javax.swing.JFrame {
     }
     
     private void initTextAreas(){
-        textChordsSimplified.setCaretPosition(0);
-        textChordsCompleted.setCaretPosition(0);
+        songChordEditorComplete.init();
+        songChordEditorSimple.init();
         textLyrics.setCaretPosition(0);
         textSplitPanel1.registerTextArea(textLyrics);
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
-        textChordsCompleted.setChords(true);
-        textChordsSimplified.setChords(true);
         btnShowChordsActionPerformed(null);
+        btnShowTabsActionPerformed(null);
     }
-
 
     private void fillGuiValues(){
         fieldName.setText(song.getTitle());
         fieldAuthor.setText(song.getSongAuthor());
         textLyrics.setText(song.getText());
-        textChordsCompleted.setText(song.getChordsComplete());
-        textChordsSimplified.setText(song.getChordsSimplified());
+        songChordEditorComplete.setText(song.getChordsComplete());
+        songChordEditorSimple.setText(song.getChordsSimplified());
         txtCopyright.setText(song.getCopyright());
         txtSongSource.setText(song.getSongSource());
     }
+
 
     private boolean hasChanged(){
         return
             !song.getTitle().equals(fieldName.getText()) ||
             !song.getSongAuthor().equals(fieldAuthor.getText()) ||
             !song.getText().equals(textLyrics.getText()) ||
-            !song.getChordsComplete().equals(textChordsCompleted.getText()) ||
-            !song.getChordsSimplified().equals(textChordsSimplified.getText()) ||
+            !song.getChordsComplete().equals(songChordEditorComplete.getText()) ||
+            !song.getChordsSimplified().equals(songChordEditorSimple.getText()) ||
             !song.getCopyright().equals(txtCopyright.getText()) ||
             !song.getSongSource().equals(txtSongSource.getText());
     }
@@ -171,8 +173,8 @@ public class SongEditorForm extends javax.swing.JFrame {
         song.setTitle(fieldName.getText());
         song.setSongAuthor(fieldAuthor.getText());
         song.setText(textLyrics.getText());
-        song.setChordsComplete(textChordsCompleted.getText());
-        song.setChordsSimplified(textChordsSimplified.getText());
+        song.setChordsComplete(songChordEditorComplete.getText());
+        song.setChordsSimplified(songChordEditorSimple.getText());
         song.setCopyright(txtCopyright.getText());
         song.setSongSource(txtSongSource.getText());
     }
@@ -195,14 +197,8 @@ public class SongEditorForm extends javax.swing.JFrame {
         textSplitPanel1 = new datasoul.util.TextSplitPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textLyrics = new datasoul.util.HighlightTextArea();
-        pnlChordsComplete = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        textChordsCompleted = new datasoul.util.HighlightTextArea();
-        chordsTransposePanel1 = new datasoul.serviceitems.song.ChordsTransposePanel();
-        pnlChordsSimple = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        textChordsSimplified = new datasoul.util.HighlightTextArea();
-        chordsTransposePanel2 = new datasoul.serviceitems.song.ChordsTransposePanel();
+        songChordEditorComplete = new datasoul.serviceitems.song.SongChordEditorPanel();
+        songChordEditorSimple = new datasoul.serviceitems.song.SongChordEditorPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -211,8 +207,12 @@ public class SongEditorForm extends javax.swing.JFrame {
         cbUpdateSongLibrary = new javax.swing.JCheckBox();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
+        btnPrint = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnShowSplit = new javax.swing.JToggleButton();
         btnShowChords = new javax.swing.JToggleButton();
+        btnShowTabs = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -265,30 +265,8 @@ public class SongEditorForm extends javax.swing.JFrame {
         );
 
         tabSong.addTab(bundle.getString("Lyrics"), pnlLyricsTab); // NOI18N
-
-        pnlChordsComplete.setLayout(new java.awt.BorderLayout());
-
-        textChordsCompleted.setColumns(20);
-        textChordsCompleted.setRows(5);
-        textChordsCompleted.setFont(new java.awt.Font("Courier New", 0, 13));
-        jScrollPane3.setViewportView(textChordsCompleted);
-
-        pnlChordsComplete.add(jScrollPane3, java.awt.BorderLayout.CENTER);
-        pnlChordsComplete.add(chordsTransposePanel1, java.awt.BorderLayout.PAGE_START);
-
-        tabSong.addTab(bundle.getString("Chords_Complete"), pnlChordsComplete); // NOI18N
-
-        pnlChordsSimple.setLayout(new java.awt.BorderLayout());
-
-        textChordsSimplified.setColumns(20);
-        textChordsSimplified.setRows(5);
-        textChordsSimplified.setFont(new java.awt.Font("Courier New", 0, 13));
-        jScrollPane2.setViewportView(textChordsSimplified);
-
-        pnlChordsSimple.add(jScrollPane2, java.awt.BorderLayout.CENTER);
-        pnlChordsSimple.add(chordsTransposePanel2, java.awt.BorderLayout.PAGE_START);
-
-        tabSong.addTab(bundle.getString("Chords_Simple"), pnlChordsSimple); // NOI18N
+        tabSong.addTab("Chords Complete", songChordEditorComplete);
+        tabSong.addTab("Chords Simplified", songChordEditorSimple);
 
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 10));
         jLabel3.setText(bundle.getString("*_Use_a_line_with_==_to_split_slides_and_a_line_with_===_to_split_sessions")); // NOI18N
@@ -320,6 +298,21 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
         jToolBar1.add(btnSave);
 
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document_big.png"))); // NOI18N
+        btnExport.setText("Export");
+        btnExport.setFocusable(false);
+        btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnExport);
+
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
+        btnPrint.setText("Print");
+        btnPrint.setFocusable(false);
+        btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnPrint);
+        jToolBar1.add(jSeparator1);
+
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/format-justify-center.png"))); // NOI18N
         btnShowSplit.setText("Split Options");
         btnShowSplit.setFocusable(false);
@@ -343,6 +336,17 @@ public class SongEditorForm extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnShowChords);
+
+        btnShowTabs.setText("Guitar Tabs");
+        btnShowTabs.setFocusable(false);
+        btnShowTabs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnShowTabs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnShowTabs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowTabsActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnShowTabs);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -481,9 +485,14 @@ public class SongEditorForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnShowChordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowChordsActionPerformed
-        chordsTransposePanel1.setVisible(btnShowChords.isSelected());
-        chordsTransposePanel2.setVisible(btnShowChords.isSelected());
+        songChordEditorComplete.setTransposeVisible(btnShowChords.isSelected());
+        songChordEditorSimple.setTransposeVisible(btnShowChords.isSelected());
     }//GEN-LAST:event_btnShowChordsActionPerformed
+
+    private void btnShowTabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTabsActionPerformed
+        songChordEditorComplete.setTabsVisible(btnShowTabs.isSelected());
+        songChordEditorSimple.setTabsVisible(btnShowTabs.isSelected());
+    }//GEN-LAST:event_btnShowTabsActionPerformed
 
   private void saveFile(){
         updateValues();
@@ -519,29 +528,27 @@ public class SongEditorForm extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExport;
+    private javax.swing.JButton btnPrint;
     private javax.swing.JButton btnSave;
     private javax.swing.JToggleButton btnShowChords;
     private javax.swing.JToggleButton btnShowSplit;
+    private javax.swing.JToggleButton btnShowTabs;
     private javax.swing.JCheckBox cbUpdateSongLibrary;
-    private datasoul.serviceitems.song.ChordsTransposePanel chordsTransposePanel1;
-    private datasoul.serviceitems.song.ChordsTransposePanel chordsTransposePanel2;
     private javax.swing.JTextField fieldAuthor;
     private javax.swing.JTextField fieldName;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelAuthor;
     private javax.swing.JLabel labelName;
-    private javax.swing.JPanel pnlChordsComplete;
-    private javax.swing.JPanel pnlChordsSimple;
     private javax.swing.JPanel pnlLyricsTab;
+    private datasoul.serviceitems.song.SongChordEditorPanel songChordEditorComplete;
+    private datasoul.serviceitems.song.SongChordEditorPanel songChordEditorSimple;
     private javax.swing.JTabbedPane tabSong;
-    private datasoul.util.HighlightTextArea textChordsCompleted;
-    private datasoul.util.HighlightTextArea textChordsSimplified;
     private datasoul.util.HighlightTextArea textLyrics;
     private datasoul.util.TextSplitPanel textSplitPanel1;
     private javax.swing.JTextField txtCopyright;

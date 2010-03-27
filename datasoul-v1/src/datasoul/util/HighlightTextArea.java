@@ -33,7 +33,7 @@ public class HighlightTextArea extends JTextArea {
         super();
         slidePattern = Pattern.compile("^"+TextServiceItem.SLIDE_BREAK+"$");
         chorusPattern = Pattern.compile("^"+TextServiceItem.CHORUS_MARK+"$");
-        chordsPattern = Pattern.compile(Song.CHORDS_REGEX);
+        chordsPattern = Song.CHORDS_REGEX_PATTERN;
         addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt) {
