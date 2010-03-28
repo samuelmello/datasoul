@@ -22,6 +22,7 @@ package datasoul.serviceitems.song;
 
 import datasoul.DatasoulMainForm;
 import datasoul.config.WindowPropConfig;
+import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -303,6 +304,11 @@ public class SongEditorForm extends javax.swing.JFrame {
         btnExport.setFocusable(false);
         btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnExport);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
@@ -310,6 +316,11 @@ public class SongEditorForm extends javax.swing.JFrame {
         btnPrint.setFocusable(false);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
         jToolBar1.add(btnPrint);
         jToolBar1.add(jSeparator1);
 
@@ -493,6 +504,36 @@ public class SongEditorForm extends javax.swing.JFrame {
         songChordEditorComplete.setTabsVisible(btnShowTabs.isSelected());
         songChordEditorSimple.setTabsVisible(btnShowTabs.isSelected());
     }//GEN-LAST:event_btnShowTabsActionPerformed
+
+    private void exportPrintSong(int mode){
+        if (hasChanged()){
+            int resp = JOptionPane.showConfirmDialog(this, "The song will be saved. Continue?", "Datasoul", JOptionPane.YES_NO_OPTION );
+
+            if (resp == JOptionPane.YES_OPTION){
+                if (!save()){
+                    return;
+                }
+            }else {
+                return;
+            }
+
+        }
+
+        ServiceListExporterPanel slep = new ServiceListExporterPanel();
+        slep.setLocationRelativeTo(this);
+        slep.setSingleSong(song);
+        slep.setMode(mode);
+        slep.setVisible(true);
+    }
+
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        exportPrintSong(ServiceListExporterPanel.MODE_EXPORT);
+
+    }//GEN-LAST:event_btnExportActionPerformed
+
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        exportPrintSong(ServiceListExporterPanel.MODE_PRINT);
+    }//GEN-LAST:event_btnPrintActionPerformed
 
   private void saveFile(){
         updateValues();

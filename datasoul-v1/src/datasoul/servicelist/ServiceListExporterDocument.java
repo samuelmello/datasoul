@@ -366,6 +366,9 @@ public class ServiceListExporterDocument {
             Matcher matcher = Song.CHORDS_REGEX_PATTERN.matcher(line);
 
             if (matcher.find()){
+                if (line.startsWith("=")){
+                    line = line.replaceFirst("=", " ");
+                }
                 p = new Paragraph(line, chordfont);
             }else{
                 p = new Paragraph(line, lyricfont);
