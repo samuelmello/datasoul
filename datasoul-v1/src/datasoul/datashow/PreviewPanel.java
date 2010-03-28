@@ -156,11 +156,11 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContentLayout.createSequentialGroup()
                 .addGroup(pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                    .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addGroup(pnlContentLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnGoLive)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -178,6 +178,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
         pnlContent.setVisible(! cbAutoLive.isSelected());
         DisplayControlConfig.getInstance().setAutomaticGoLive(cbAutoLive.isSelected());
+        ObjectManager.getInstance().getDatasoulMainForm().updatePreviewHeight();
 
     }//GEN-LAST:event_cbAutoLiveActionPerformed
 
@@ -203,6 +204,14 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         cm.setActiveImagePreview(serviceItemTable1.getSlideImage());
         cm.setNextImagePreview(serviceItemTable1.getNextSlideImage());
         cm.updatePreview();
+    }
+
+    public int getPreferedHeight(){
+        if (cbAutoLive.isSelected()){
+            return pnlPreviewBox.getHeight();
+        }else{
+            return pnlPreviewBox.getHeight() + (int) pnlContent.getPreferredSize().getHeight();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

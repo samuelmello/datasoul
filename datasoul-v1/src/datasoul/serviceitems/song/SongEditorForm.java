@@ -56,53 +56,6 @@ public class SongEditorForm extends javax.swing.JFrame {
     /**
      * Creates new form SongEditorFrame
      */
-    public SongEditorForm(File file) {
-        initComponents();
-        DatasoulMainForm.setDatasoulIcon(this);
-        WindowPropConfig.getInstance().getSongEditor(this);
-        updateSize = true;
-        
-        Document dom=null;
-        Node node=null;
-
-        try {
-                DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-
-                //Using factory get an instance of document builder
-                DocumentBuilder db = dbf.newDocumentBuilder();
-
-                //parse using builder to get DOM representation of the XML file
-                dom = db.parse(file);
-
-                //node = dom.getDocumentElement().getChildNodes().item(0);
-                node = dom.getElementsByTagName("Song").item(0);
-                
-        }catch(Exception e) {
-            ShowDialog.showReadFileError(file, e);
-        }        
-
-        song = new Song();
-        try {
-            song.readObject(node, null);
-        } catch (Exception e) {
-            ShowDialog.showReadFileError(file, e);
-        }
-
-        this.setTitle(song.getFileName());
-        
-        //fill object
-        fillGuiValues();
-        
-        newSong = false;
-        
-        initTextAreas();
-
-        cbUpdateSongLibrary.setVisible(song.isClone());
-    }
-
-    /**
-     * Creates new form SongEditorFrame
-     */
     public SongEditorForm(Song songIn) {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

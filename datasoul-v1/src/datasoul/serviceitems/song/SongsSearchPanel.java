@@ -70,13 +70,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fieldString = new javax.swing.JTextField();
-        labelString = new javax.swing.JLabel();
         toolBar = new javax.swing.JToolBar();
         btnNew = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        btnAddToList = new javax.swing.JButton();
+        labelString = new javax.swing.JLabel();
+        fieldString = new javax.swing.JTextField();
         scroolSongList = new javax.swing.JScrollPane();
         tableSongList = new datasoul.util.DnDTable();
 
@@ -86,29 +85,13 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
 
-        fieldString.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fieldStringActionPerformed(evt);
-            }
-        });
-        fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldStringKeyTyped(evt);
-            }
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldStringKeyPressed(evt);
-            }
-        });
-
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        labelString.setText(bundle.getString("Search")); // NOI18N
-
         toolBar.setBorder(null);
         toolBar.setFloatable(false);
         toolBar.setMinimumSize(new java.awt.Dimension(150, 32));
         toolBar.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
         btnNew.setToolTipText(bundle.getString("Create_a_new_song_...")); // NOI18N
         btnNew.setAlignmentY(0.0F);
@@ -133,6 +116,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 btnEditMouseClicked(evt);
             }
         });
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
         toolBar.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
@@ -146,20 +134,32 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 btnDeletebtnRemoveMouseClicked(evt);
             }
         });
-        toolBar.add(btnDelete);
-
-        btnAddToList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
-        btnAddToList.setText(bundle.getString("Add")); // NOI18N
-        btnAddToList.setToolTipText(bundle.getString("Add_song_to_the_service_list")); // NOI18N
-        btnAddToList.setAlignmentY(0.0F);
-        btnAddToList.setBorderPainted(false);
-        btnAddToList.setFocusPainted(false);
-        btnAddToList.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddToListActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
-        toolBar.add(btnAddToList);
+        toolBar.add(btnDelete);
+
+        labelString.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_zoom-object.png"))); // NOI18N
+        labelString.setText(bundle.getString("Search")); // NOI18N
+        toolBar.add(labelString);
+
+        fieldString.setColumns(15);
+        fieldString.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fieldStringActionPerformed(evt);
+            }
+        });
+        fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldStringKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldStringKeyPressed(evt);
+            }
+        });
+        toolBar.add(fieldString);
 
         tableSongList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -172,14 +172,14 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tableSongList.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tableSongListKeyPressed(evt);
-            }
-        });
         tableSongList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableSongListMouseClicked(evt);
+            }
+        });
+        tableSongList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tableSongListKeyPressed(evt);
             }
         });
         scroolSongList.setViewportView(tableSongList);
@@ -188,26 +188,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelString)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldString, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(scroolSongList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+            .addComponent(scroolSongList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelString)
-                    .addComponent(fieldString, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scroolSongList, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(scroolSongList, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -218,40 +207,21 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }//GEN-LAST:event_btnNewMouseClicked
 
     private void btnEditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditMouseClicked
-        SongEditorForm songEditor = new SongEditorForm((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
-        songEditor.setVisible(true);
+
     }//GEN-LAST:event_btnEditMouseClicked
 
     private void btnDeletebtnRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeletebtnRemoveMouseClicked
-        Song song = (Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn);
-        String filePath = song.getFilePath();
-        
-        File file = new File(filePath);
-        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_that_you_want_to_delete_the_file_")+filePath+" ?",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
-            if(file.delete()){
-                tableSongList.removeItem();
-            }
-        }
-        this.repaint();
+
     }//GEN-LAST:event_btnDeletebtnRemoveMouseClicked
 
-    private void btnAddToListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToListActionPerformed
-        for(int item:tableSongList.getSelectedRows()){
-            Object obj = tableSongList.getModel().getValueAt(item,songColumn);
-            if (obj instanceof Song){
-                Song s = ((Song)obj).getClone();
-                ServiceListTable.getActiveInstance().addItem(s);
-            }
-        }
-    }//GEN-LAST:event_btnAddToListActionPerformed
-
-    public void addItem(java.awt.event.ActionEvent evt) {                                          
-        btnAddToListActionPerformed(evt);
-    }
-    
-   
     private void tableSongListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSongListMouseClicked
-        showItem();
+
+        if (evt.getClickCount() > 1){
+            btnEditActionPerformed(null);
+        }else{
+            showItem();
+        }
+
     }//GEN-LAST:event_tableSongListMouseClicked
 
     private void tableSongListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableSongListKeyPressed
@@ -324,6 +294,28 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     }//GEN-LAST:event_formComponentResized
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        if (tableSongList.getSelectedRow() >= 0){
+
+            Song song = (Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn);
+            String filePath = song.getFilePath();
+
+            File file = new File(filePath);
+            if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_that_you_want_to_delete_the_file_")+filePath+" ?",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+                if(file.delete()){
+                    tableSongList.removeItem();
+                }
+            }
+            this.repaint();
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        if (tableSongList.getSelectedRow() >= 0){
+            ((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn)).edit();
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
     public void tableChanged(TableModelEvent e) {
         this.repaint();
     }
@@ -334,7 +326,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddToList;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
