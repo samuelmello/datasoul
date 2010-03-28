@@ -42,7 +42,9 @@ import javax.swing.ImageIcon;
  */
 public class Song extends TextServiceItem implements Cloneable {
 
-    private static final String CHORDS_REGEX = "^=?[ ]*([A-G]{1}[a-z0-9#+]*(/[A-G]{1}[a-z0-9#+]*)?[ ]*)+$";
+    private static final String SINGLE_CHORD_REGEX = "[A-G]{1}([a-z0-9#+-]*\\(*\\)*)*";
+    private static final String CHORDS_REGEX = "^=?[ ]*("+SINGLE_CHORD_REGEX+"(/"+SINGLE_CHORD_REGEX+")?[ ]*)+$";
+
 
     public static final Pattern CHORDS_REGEX_PATTERN = Pattern.compile(CHORDS_REGEX);
 
@@ -269,13 +271,10 @@ public class Song extends TextServiceItem implements Cloneable {
                     line = line.substring(1);
                 }
 
-
                 /* Split in tokens */
-                for (String tok1 : line.split(" ")){
-                    for (String tok2 : tok1.split("/")){
-                        if (tok2.length() > 0 && !usedChords.contains(tok2) && !tok2.equals("=")){
-                            usedChords.add(tok2);
-                        }
+                for (String tok : line.split(" ")){
+                    if (tok.length() > 0 && !usedChords.contains(tok) && !tok.equals("=")){
+                        usedChords.add(tok);
                     }
                 }
             }

@@ -38,7 +38,12 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         pnlTabs = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         pnlGridTabs = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        pnlTabsNotFound = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblNotFound = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnRefreshTabs = new javax.swing.JButton();
+        btnTabsCatalog = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         textChords = new datasoul.util.HighlightTextArea();
         chordsTransposePanel = new javax.swing.JPanel();
@@ -50,35 +55,44 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         pnlTabs.setPreferredSize(new java.awt.Dimension(100, 221));
+        pnlTabs.setLayout(new java.awt.BorderLayout());
 
         jScrollPane4.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         pnlGridTabs.setLayout(new java.awt.GridLayout(0, 1));
         jScrollPane4.setViewportView(pnlGridTabs);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        pnlTabs.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        pnlTabsNotFound.setLayout(new java.awt.GridLayout(2, 1));
+
+        jLabel2.setText("Not Found:");
+        pnlTabsNotFound.add(jLabel2);
+
+        lblNotFound.setText("jLabel3");
+        pnlTabsNotFound.add(lblNotFound);
+
+        pnlTabs.add(pnlTabsNotFound, java.awt.BorderLayout.PAGE_END);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        btnRefreshTabs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-refresh.png"))); // NOI18N
+        btnRefreshTabs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRefreshTabsActionPerformed(evt);
             }
         });
+        jPanel2.add(btnRefreshTabs, java.awt.BorderLayout.LINE_START);
 
-        javax.swing.GroupLayout pnlTabsLayout = new javax.swing.GroupLayout(pnlTabs);
-        pnlTabs.setLayout(pnlTabsLayout);
-        pnlTabsLayout.setHorizontalGroup(
-            pnlTabsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-            .addGroup(pnlTabsLayout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addContainerGap())
-        );
-        pnlTabsLayout.setVerticalGroup(
-            pnlTabsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlTabsLayout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
-        );
+        btnTabsCatalog.setText("Catalog");
+        btnTabsCatalog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTabsCatalogActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnTabsCatalog, java.awt.BorderLayout.CENTER);
+
+        pnlTabs.add(jPanel2, java.awt.BorderLayout.NORTH);
 
         add(pnlTabs, java.awt.BorderLayout.EAST);
 
@@ -101,7 +115,6 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         chordsTransposePanel.setLayout(chordsTransposePanelLayout);
         chordsTransposePanelLayout.setHorizontalGroup(
             chordsTransposePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
             .addGroup(chordsTransposePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
@@ -115,7 +128,6 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         );
         chordsTransposePanelLayout.setVerticalGroup(
             chordsTransposePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 51, Short.MAX_VALUE)
             .addGroup(chordsTransposePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(chordsTransposePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -129,9 +141,15 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         add(chordsTransposePanel, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        updateTabs(pnlGridTabs, textChords.getText());
-}//GEN-LAST:event_jButton1ActionPerformed
+    private void btnRefreshTabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTabsActionPerformed
+        updateTabs();
+}//GEN-LAST:event_btnRefreshTabsActionPerformed
+
+    private void btnTabsCatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTabsCatalogActionPerformed
+        ChordsManagerFrame cmf = new ChordsManagerFrame();
+        cmf.setLocationRelativeTo(this);
+        cmf.setVisible(true);
+    }//GEN-LAST:event_btnTabsCatalogActionPerformed
 
 
     public void init(){
@@ -152,41 +170,64 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
 
     public void setTabsVisible(boolean b){
         pnlTabs.setVisible(b);
+        if (b){
+            updateTabs();
+        }
     }
 
-    private void updateTabs(JPanel gridPanel, String songChords){
+    private void updateTabs(){
 
         /* clean up */
-        gridPanel.removeAll();
+        pnlGridTabs.removeAll();
 
         /* get used chords */
-        ArrayList<String> usedChords = Song.getUsedChords(songChords);
+        ArrayList<String> usedChords = Song.getUsedChords(textChords.getText());
 
         /* Process it */
+        ArrayList<String> notFound = new ArrayList<String>();
         ChordsDB chordsDB = ChordsDB.getInstance();
         for(String chordStr : usedChords){
             Chord chord = chordsDB.getChordByName(chordStr);
             if(chord!=null){
                 ChordShapePanel csp = new ChordShapePanel(2, chord.getName(),chord.getShape());
-                gridPanel.add(csp);
+                csp.setEditable(false);
+                pnlGridTabs.add(csp);
+            }else{
+                if (!notFound.contains(chordStr)){
+                    notFound.add(chordStr);
+                }
             }
         }
-        gridPanel.revalidate();
+
+        pnlTabsNotFound.setVisible(notFound.size() > 0);
+        StringBuffer sb = new StringBuffer();
+        for (String nf : notFound){
+            sb.append(nf);
+            sb.append(" ");
+        }
+        lblNotFound.setText(sb.toString());
+
+        pnlGridTabs.revalidate();
 
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefreshTabs;
+    private javax.swing.JButton btnTabsCatalog;
     private javax.swing.JPanel chordsTransposePanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JLabel lblNotFound;
     private javax.swing.JPanel pnlGridTabs;
     private javax.swing.JPanel pnlTabs;
+    private javax.swing.JPanel pnlTabsNotFound;
     private datasoul.util.HighlightTextArea textChords;
     // End of variables declaration//GEN-END:variables
 
