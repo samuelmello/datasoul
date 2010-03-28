@@ -301,6 +301,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         });
         jToolBar1.add(btnShowChords);
 
+        btnShowTabs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_example.png"))); // NOI18N
         btnShowTabs.setText("Guitar Tabs");
         btnShowTabs.setFocusable(false);
         btnShowTabs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

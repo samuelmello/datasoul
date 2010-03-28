@@ -105,9 +105,9 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "#", "b" }));
 
-        jButton2.setText("-1");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-descending.png"))); // NOI18N
 
-        jButton3.setText("+1");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-ascending.png"))); // NOI18N
 
         jLabel1.setText("Transpose using");
 
