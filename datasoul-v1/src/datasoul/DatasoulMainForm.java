@@ -1256,14 +1256,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        StartupManager sm = new StartupManager();
-        sm.run();
-    }
-
     public static String getVersion(){
         try {
             Properties prop = new Properties();

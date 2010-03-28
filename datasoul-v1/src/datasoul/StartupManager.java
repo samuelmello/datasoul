@@ -33,6 +33,14 @@ import javax.swing.UIManager;
  */
 public class StartupManager {
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        StartupManager sm = new StartupManager();
+        sm.run();
+    }
+
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getActiveInstance().getStorageLoc();
         if (stgloc == null || stgloc.trim().equals("")){
