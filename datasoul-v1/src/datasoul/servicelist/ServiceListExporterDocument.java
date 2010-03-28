@@ -33,6 +33,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.regex.Matcher;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
@@ -253,7 +254,7 @@ public class ServiceListExporterDocument {
             p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
             guitarTabs.add(p);
 
-            guitarTabs.addAll(addChordsShape(s.getChordsUsedSimple()));
+            guitarTabs.addAll(addChordsShape(Song.getUsedChords(s.getChordsSimplified())));
         }
 
         document.newPage();
@@ -291,7 +292,7 @@ public class ServiceListExporterDocument {
             p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
             guitarTabs.add(p);
             
-            guitarTabs.addAll(addChordsShape(s.getChordsUsedComplete()));
+            guitarTabs.addAll(addChordsShape(Song.getUsedChords(s.getChordsComplete())));
         }
                 
         document.newPage();
@@ -360,12 +361,14 @@ public class ServiceListExporterDocument {
         Font lyricfont  = new Font(Font.COURIER, 12, Font.NORMAL);
         Paragraph p;
 
-                
-        for (int i=0; i<text.length; i++){
-            if (text[i].startsWith("=")){
-                p = new Paragraph(text[i].substring(1), chordfont);
+        for (String line : text){
+
+            Matcher matcher = Song.CHORDS_REGEX_PATTERN.matcher(line);
+
+            if (matcher.find()){
+                p = new Paragraph(line, chordfont);
             }else{
-                p = new Paragraph(text[i], lyricfont);
+                p = new Paragraph(line, lyricfont);
             }
             document.add(p);
         }

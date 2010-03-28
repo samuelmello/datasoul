@@ -203,18 +203,10 @@ public class Song extends TextServiceItem implements Cloneable {
         try {
             ret = (String)this.getClass().getMethod("get"+this.view).invoke(this);  
         } catch (Exception ex) {
-            System.out.println("Error in getValueAt!\nError:"+ex.getMessage());
+            ex.printStackTrace();
         }
         
         return ret;
-    }
-    
-    public ArrayList<String> getChordsUsedSimple(){
-        return getChordsUsed(chordsSimplified);
-    }
-    
-    public ArrayList<String> getChordsUsedComplete(){
-        return getChordsUsed(chordsComplete);
     }
 
     public String getSearchText(){
@@ -235,28 +227,6 @@ public class Song extends TextServiceItem implements Cloneable {
         return searchStr;
 
     }
-
-    private ArrayList<String> getChordsUsed(String source){
-            ArrayList<String> result = new ArrayList<String>();
-        
-        String lines[] = source.split("\n");
-        for (String l : lines){
-            
-            if (l.trim().equals(CHORUS_MARK) || l.trim().equals(SLIDE_BREAK))
-                continue;
-            
-            if (l.startsWith("=")){
-                String tokens[] = l.substring(1).trim().split("[ \\t]+");
-                for (String t : tokens){
-                    if (!result.contains(t) && !t.equals("=")){
-                        result.add(t);
-                    }
-                }
-            }
-        }
-        
-        return result;
-   }
 
     public static ArrayList<String> getUsedChords(String text){
         

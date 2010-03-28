@@ -20,11 +20,9 @@
 
 package datasoul.serviceitems.song;
 
-import datasoul.config.WindowPropConfig;
 import datasoul.servicelist.ServiceListTable;
 import datasoul.util.ObjectManager;
 import java.io.File;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.TableModelEvent;
@@ -38,9 +36,7 @@ import javax.swing.SwingUtilities;
 public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
     private AllSongsListTable allSongsListTable;
-    private JFrame frameParent;
     private int songColumn;
-    private int sourceView;
     
     /**
      * Creates new form SongsSearchPanel
@@ -54,8 +50,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         tableSongList.setModel(allSongsListTable);
 
-        this.btnClose.setVisible(false);
-        
         songColumn = allSongsListTable.getSongColumn();
 
         tableSongList.setShowVerticalLines(false);
@@ -83,7 +77,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnAddToList = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
         scroolSongList = new javax.swing.JScrollPane();
         tableSongList = new datasoul.util.DnDTable();
 
@@ -168,19 +161,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnAddToList);
 
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText(bundle.getString("Close")); // NOI18N
-        btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
-        btnClose.setAlignmentY(0.0F);
-        btnClose.setBorderPainted(false);
-        btnClose.setFocusPainted(false);
-        btnClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCloseMouseClicked(evt);
-            }
-        });
-        toolBar.add(btnClose);
-
         tableSongList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -231,11 +211,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCloseMouseClicked
-        if(frameParent!=null)
-            frameParent.dispose();
-    }//GEN-LAST:event_btnCloseMouseClicked
-
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
         SongEditorForm songEditor = new SongEditorForm();
         
@@ -270,27 +245,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         }
     }//GEN-LAST:event_btnAddToListActionPerformed
 
-    public void usingInAddSongItemPanel(JFrame frameParent){
-        this.btnClose.setVisible(true);
-        this.frameParent = frameParent;
-        /*
-        this.btnDelete.setVisible(false);
-        this.btnEdit.setVisible(false);
-        this.btnNew.setVisible(false);
-         */
-        toolBar.remove(btnDelete);
-        toolBar.remove(btnEdit);
-        toolBar.remove(btnNew);
-        this.btnAddToList.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Add"));
-    }
     public void addItem(java.awt.event.ActionEvent evt) {                                          
         btnAddToListActionPerformed(evt);
     }
     
-    public void setSourceView(int i){
-        sourceView = i;
-    }
-    
+   
     private void tableSongListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableSongListMouseClicked
         showItem();
     }//GEN-LAST:event_tableSongListMouseClicked
@@ -376,7 +335,6 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddToList;
-    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;
