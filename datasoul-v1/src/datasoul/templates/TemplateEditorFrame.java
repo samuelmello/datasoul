@@ -123,8 +123,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new_big.png"))); // NOI18N
         btnNew.setText("New");
         btnNew.setFocusable(false);
-        btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -135,8 +133,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
         btnSave.setText("Save");
         btnSave.setFocusable(false);
-        btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -147,8 +143,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as_big.png"))); // NOI18N
         btnSaveAs.setText("Save As");
         btnSaveAs.setFocusable(false);
-        btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveAsActionPerformed(evt);
@@ -160,8 +154,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
         btnAddText.setText("Add Text");
         btnAddText.setFocusable(false);
-        btnAddText.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAddText.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTextActionPerformed(evt);
@@ -172,8 +164,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnAddImage.setText("Add Image");
         btnAddImage.setFocusable(false);
-        btnAddImage.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAddImage.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImageActionPerformed(evt);
@@ -184,8 +174,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnAddTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png"))); // NOI18N
         btnAddTimer.setText("Add Timer Bar");
         btnAddTimer.setFocusable(false);
-        btnAddTimer.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAddTimer.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAddTimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddTimerActionPerformed(evt);
@@ -197,8 +185,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         btnTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
         btnTemplate.setText("Template Properties");
         btnTemplate.setFocusable(false);
-        btnTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTemplate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTemplateActionPerformed(evt);
@@ -294,7 +280,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(panelProperties);
@@ -324,7 +310,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 .addGroup(panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(templateEditorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         panelTemplateEditorLayout.setVerticalGroup(
             panelTemplateEditorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +318,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(templateEditorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(panelTemplateEditor);
@@ -351,7 +337,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE))
         );
 
         pack();
