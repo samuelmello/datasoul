@@ -96,8 +96,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
 
         // adjust columns
-        tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TIME).setPreferredWidth(30);
-        tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_DURATION).setPreferredWidth(20);
+        tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TIME).setPreferredWidth(40);
+        tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_DURATION).setPreferredWidth(70);
         tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TITLE).setPreferredWidth(200);
 
         initLive();

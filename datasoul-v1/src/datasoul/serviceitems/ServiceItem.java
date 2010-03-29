@@ -106,6 +106,9 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         return 15;
     }
 
+    public ArrayList<ServiceItemRenderer> getSlides(){
+        return slides;
+    }
 
     protected void registerProperties() {
         super.registerProperties();

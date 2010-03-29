@@ -68,12 +68,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableTemplates = new javax.swing.JTable();
-        btnNew = new javax.swing.JButton();
-        btnLoad = new javax.swing.JButton();
-        btnDeleteTemplate = new javax.swing.JButton();
-        btnClose = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnImport = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblPreview = new javax.swing.JLabel();
         pnlMonitor = new javax.swing.JPanel();
@@ -92,9 +86,19 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         cbDefaultSong = new datasoul.templates.TemplateComboBox();
         cbDefaultText = new datasoul.templates.TemplateComboBox();
         cbDefaultImages = new datasoul.templates.TemplateComboBox();
+        jToolBar1 = new javax.swing.JToolBar();
+        btnNew = new javax.swing.JButton();
+        btnLoad = new javax.swing.JButton();
+        btnDeleteTemplate = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Template Manager");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTableTemplates.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,58 +112,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             }
         ));
         jScrollPane1.setViewportView(jTableTemplates);
-
-        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setText("New Template");
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnNew.setToolTipText(bundle.getString("Create_a_new_template")); // NOI18N
-        btnNew.setBorderPainted(false);
-        btnNew.setFocusPainted(false);
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-
-        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnLoad.setText(bundle.getString("Edit")); // NOI18N
-        btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
-        btnLoad.setBorderPainted(false);
-        btnLoad.setFocusPainted(false);
-        btnLoad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadActionPerformed(evt);
-            }
-        });
-
-        btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
-        btnDeleteTemplate.setToolTipText(bundle.getString("Delete_selected_template")); // NOI18N
-        btnDeleteTemplate.setBorderPainted(false);
-        btnDeleteTemplate.setFocusPainted(false);
-        btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteTemplateActionPerformed(evt);
-            }
-        });
-
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText("Close");
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Available Templates");
-
-        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        btnImport.setText("Import");
-        btnImport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnImportActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Preview:");
 
@@ -318,57 +270,98 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new_big.png"))); // NOI18N
+        btnNew.setText("New");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnNew.setToolTipText(bundle.getString("Create_a_new_template")); // NOI18N
+        btnNew.setBorderPainted(false);
+        btnNew.setFocusPainted(false);
+        btnNew.setFocusable(false);
+        btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnNew);
+
+        btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open_big.png"))); // NOI18N
+        btnLoad.setText(bundle.getString("Open")); // NOI18N
+        btnLoad.setToolTipText(bundle.getString("Load_selected_template")); // NOI18N
+        btnLoad.setBorderPainted(false);
+        btnLoad.setFocusPainted(false);
+        btnLoad.setFocusable(false);
+        btnLoad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLoad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnLoad);
+
+        btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
+        btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
+        btnDeleteTemplate.setToolTipText(bundle.getString("Delete_selected_template")); // NOI18N
+        btnDeleteTemplate.setBorderPainted(false);
+        btnDeleteTemplate.setFocusPainted(false);
+        btnDeleteTemplate.setFocusable(false);
+        btnDeleteTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeleteTemplate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTemplateActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnDeleteTemplate);
+
+        btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned_big.png"))); // NOI18N
+        btnImport.setText("Import");
+        btnImport.setFocusable(false);
+        btnImport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnImport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnImport);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNew)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLoad)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDeleteTemplate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnImport)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 294, Short.MAX_VALUE)
-                        .addComponent(btnClose)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPreview, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                         .addComponent(pnlMonitor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnImport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDeleteTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLoad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNew, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnClose))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -419,44 +412,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         }// if selected
 
     }//GEN-LAST:event_btnDeleteTemplateActionPerformed
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-
-        // Consistency check
-        DisplayControlConfig d = DisplayControlConfig.getInstance();
-        String defImage = cbDefaultImages.getSelectedItem()==null?"":cbDefaultImages.getSelectedItem().toString();
-        String defText = cbDefaultText.getSelectedItem()==null?"":cbDefaultText.getSelectedItem().toString();
-        String defSong = cbDefaultSong.getSelectedItem()==null?"":cbDefaultSong.getSelectedItem().toString();
-        String monImage = cbMonitorImages.getSelectedItem()==null?"":cbMonitorImages.getSelectedItem().toString();
-        String monText = cbMonitorText.getSelectedItem()==null?"":cbMonitorText.getSelectedItem().toString();
-        String monSong = cbMonitorSong.getSelectedItem()==null?"":cbMonitorSong.getSelectedItem().toString();
-        String monContentless = cbMonitorContentless.getSelectedItem()==null?"":cbMonitorContentless.getSelectedItem().toString();
-
-        if (!d.getDefaultTemplateImage().equals(defImage) ){
-            d.setDefaultTemplateImage(defImage);
-        }
-        if (!d.getDefaultTemplateText().equals(defText) ){
-            d.setDefaultTemplateText(defText);
-        }
-        if (!d.getDefaultTemplateSong().equals(defSong) ){
-            d.setDefaultTemplateSong(defSong);
-        }
-        if (!d.getMonitorTemplateImage().equals(monImage) ){
-            d.setMonitorTemplateImage(monImage);
-        }
-        if (!d.getMonitorTemplateText().equals(monText) ){
-            d.setMonitorTemplateText(monText);
-        }
-        if (!d.getMonitorTemplateSong().equals(monSong) ){
-            d.setMonitorTemplateSong(monSong);
-        }
-        if (!d.getMonitorTemplateContentless().equals(monContentless)){
-            d.setMonitorTemplateContentless(monContentless);
-        }
-
-
-        dispose();
-    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         JFileChooser fc = new JFileChooser();
@@ -516,8 +471,43 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         }
     }//GEN-LAST:event_cbMonitorContentlessActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // Consistency check
+        DisplayControlConfig d = DisplayControlConfig.getInstance();
+        String defImage = cbDefaultImages.getSelectedItem()==null?"":cbDefaultImages.getSelectedItem().toString();
+        String defText = cbDefaultText.getSelectedItem()==null?"":cbDefaultText.getSelectedItem().toString();
+        String defSong = cbDefaultSong.getSelectedItem()==null?"":cbDefaultSong.getSelectedItem().toString();
+        String monImage = cbMonitorImages.getSelectedItem()==null?"":cbMonitorImages.getSelectedItem().toString();
+        String monText = cbMonitorText.getSelectedItem()==null?"":cbMonitorText.getSelectedItem().toString();
+        String monSong = cbMonitorSong.getSelectedItem()==null?"":cbMonitorSong.getSelectedItem().toString();
+        String monContentless = cbMonitorContentless.getSelectedItem()==null?"":cbMonitorContentless.getSelectedItem().toString();
+
+        if (!d.getDefaultTemplateImage().equals(defImage) ){
+            d.setDefaultTemplateImage(defImage);
+        }
+        if (!d.getDefaultTemplateText().equals(defText) ){
+            d.setDefaultTemplateText(defText);
+        }
+        if (!d.getDefaultTemplateSong().equals(defSong) ){
+            d.setDefaultTemplateSong(defSong);
+        }
+        if (!d.getMonitorTemplateImage().equals(monImage) ){
+            d.setMonitorTemplateImage(monImage);
+        }
+        if (!d.getMonitorTemplateText().equals(monText) ){
+            d.setMonitorTemplateText(monText);
+        }
+        if (!d.getMonitorTemplateSong().equals(monSong) ){
+            d.setMonitorTemplateSong(monSong);
+        }
+        if (!d.getMonitorTemplateContentless().equals(monContentless)){
+            d.setMonitorTemplateContentless(monContentless);
+        }
+
+
+    }//GEN-LAST:event_formWindowClosing
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDeleteTemplate;
     private javax.swing.JButton btnImport;
     private javax.swing.JButton btnLoad;
@@ -529,7 +519,6 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     private datasoul.templates.TemplateComboBox cbMonitorImages;
     private datasoul.templates.TemplateComboBox cbMonitorSong;
     private datasoul.templates.TemplateComboBox cbMonitorText;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -541,6 +530,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableTemplates;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblPreview;
     private javax.swing.JPanel pnlMonitor;
     // End of variables declaration//GEN-END:variables
