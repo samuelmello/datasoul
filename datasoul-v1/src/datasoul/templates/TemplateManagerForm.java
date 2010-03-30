@@ -280,6 +280,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
         btnNew.setFocusable(false);
+        btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -293,6 +295,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         btnLoad.setBorderPainted(false);
         btnLoad.setFocusPainted(false);
         btnLoad.setFocusable(false);
+        btnLoad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnLoad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -306,6 +310,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         btnDeleteTemplate.setBorderPainted(false);
         btnDeleteTemplate.setFocusPainted(false);
         btnDeleteTemplate.setFocusable(false);
+        btnDeleteTemplate.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDeleteTemplate.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDeleteTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteTemplateActionPerformed(evt);
@@ -316,6 +322,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned_big.png"))); // NOI18N
         btnImport.setText("Import");
         btnImport.setFocusable(false);
+        btnImport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnImport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);
@@ -327,8 +335,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -338,12 +345,13 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                     .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 742, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
