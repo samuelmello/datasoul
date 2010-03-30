@@ -22,6 +22,7 @@ package datasoul;
 
 import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.serviceitems.imagelist.ImageListEditorForm;
@@ -168,12 +169,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         previewItem();
 
-        SwingUtilities.invokeLater(new Runnable(){ 
-            @Override
-            public void run(){
-                preview.goLive(false);
-            }});
+        if (!DisplayControlConfig.getInstance().getAutomaticGoLiveBool()){
+            SwingUtilities.invokeLater(new Runnable(){
+                @Override
+                public void run(){
+                    preview.goLive(false);
+                }});
 
+        }
     }
 
 

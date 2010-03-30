@@ -26,6 +26,7 @@ import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoPause;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionEvent;
@@ -293,10 +294,6 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         displayTable.changeSelection(x, 1, false, false);
     }
 
-    public void unselectSlide(){
-        displayTable.changeSelection(displayTable.getSelectedRow(), 1, true, false);
-    }
-
     public int getSlideCount(){
         return displayTable.getRowCount();
     }
@@ -337,6 +334,9 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     public void setHeaderVisible(boolean b){
         pnlHeader.setVisible(b);
     }
-    
-    
+
+    public void addTableKeyListener(KeyListener key){
+        displayTable.addKeyListener(key);
+    }
+
 }

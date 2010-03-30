@@ -17,9 +17,9 @@ import datasoul.serviceitems.ServiceItem;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
-import datasoul.serviceitems.ContentlessServiceItem;
-import datasoul.serviceitems.song.Song;
 import datasoul.util.ObjectManager;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
@@ -42,6 +42,24 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         initComponents();
         serviceItemTable1.addTableListener(this);
         automaticChanger = new AutomaticChanger();
+        serviceItemTable1.addTableKeyListener(new KeyListener(){
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // ignore
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                evtKeyPressed(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // ignore
+            }
+
+        });
     }
 
     public void setFocusInTable(){
@@ -190,9 +208,16 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     public void serviceNextSlide() {
         int count = serviceItemTable1.getSlideCount();
         int index = serviceItemTable1.getSlideIndex();
-        if (index < count-1) serviceItemTable1.setSlideIndex(index+1);
-        else {
-            if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
+        if (index < count-1){
+            serviceItemTable1.setSlideIndex(index+1);
+        } else {
+            goToNextServiceItem();
+        }
+    }
+
+    private void goToNextServiceItem(){
+        if (ObjectManager.getInstance().getDatasoulMainForm().goToNextServiceItem()) {
+            if (!DisplayControlConfig.getInstance().getAutomaticGoLiveBool()){
                 PreviewPanel pp = ObjectManager.getInstance().getPreviewPanel();
                 pp.goLive(false);
             }
@@ -201,9 +226,16 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
     public void servicePreviousSlide() {
         int index = serviceItemTable1.getSlideIndex();
-        if (index > 0) serviceItemTable1.setSlideIndex(index-1);
-        else {
-            if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
+        if (index > 0) {
+            serviceItemTable1.setSlideIndex(index-1);
+        } else {
+            goToPreviousServiceItem();
+        }
+    }
+
+    private void goToPreviousServiceItem(){
+        if (ObjectManager.getInstance().getDatasoulMainForm().goToPreviousServiceItem()) {
+            if (!DisplayControlConfig.getInstance().getAutomaticGoLiveBool()){
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -218,6 +250,17 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     public void notifyVideoEnd(){
         serviceItemTable1.notifyVideoEnd();
     }
+
+    public void evtKeyPressed(KeyEvent e){
+        if (e.getKeyCode() == KeyEvent.VK_DOWN && serviceItemTable1.getSlideIndex()+1 >= serviceItemTable1.getSlideCount()){
+            goToNextServiceItem();
+        }
+        if (e.getKeyCode() == KeyEvent.VK_UP && serviceItemTable1.getSlideIndex() == 0){
+            goToPreviousServiceItem();
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox cbAutoChange;

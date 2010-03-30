@@ -26,6 +26,7 @@ import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
 import datasoul.serviceitems.song.Song;
 import java.awt.Dimension;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -63,7 +64,12 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         valueChanged(null);
 
         if (cbAutoLive.isSelected()){
-            goLive(false);
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    goLive(false);
+                }
+            });
         }
     }
     
