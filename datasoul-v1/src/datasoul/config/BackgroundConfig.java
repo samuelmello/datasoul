@@ -26,6 +26,7 @@ package datasoul.config;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.commands.GstDisplayCmdSetLiveBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetStaticBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
 import java.awt.image.BufferedImage;
@@ -43,6 +44,7 @@ public class BackgroundConfig extends AbstractConfig {
 
     public static final int MODE_STATIC = 0;
     public static final int MODE_VIDEO = 1;
+    public static final int MODE_LIVE = 2;
 
     private BufferedImage image;
     private int mode;
@@ -133,6 +135,10 @@ public class BackgroundConfig extends AbstractConfig {
 
             case MODE_VIDEO:
                 cmd = new GstDisplayCmdSetVideoBG(getVideoFile());
+                break;
+
+            case MODE_LIVE:
+                cmd = new GstDisplayCmdSetLiveBG();
                 break;
         }
         if (cmd != null){

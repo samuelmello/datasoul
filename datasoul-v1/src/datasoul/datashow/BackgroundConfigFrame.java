@@ -80,6 +80,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         lblVideo = new javax.swing.JLabel();
         btnChangeVideo = new javax.swing.JButton();
+        rbLive = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Background");
@@ -153,6 +154,9 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(rbLive);
+        rbLive.setText("Live Video");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,24 +172,20 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
                                 .addComponent(btnColorMain)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnChangeMain))))
-                    .addComponent(rbStatic))
-                .addContainerGap(216, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbStatic)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(btnChangeVideo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblVideo))
-                    .addComponent(rbVideo))
-                .addContainerGap(257, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDiscard)
+                    .addComponent(rbVideo)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(rbLive)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(btnSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDiscard)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -198,20 +198,26 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(imageDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnChangeMain)
-                    .addComponent(btnColorMain))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnChangeMain, 0, 0, Short.MAX_VALUE)
+                    .addComponent(btnColorMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
                 .addComponent(rbVideo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnChangeVideo)
                     .addComponent(lblVideo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDiscard)
-                    .addComponent(btnSave))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDiscard)
+                            .addComponent(btnSave))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbLive)
+                        .addContainerGap())))
         );
 
         pack();
@@ -266,6 +272,8 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             bg.setMode(BackgroundConfig.MODE_STATIC);
         }else if (rbVideo.isSelected()){
             bg.setMode(BackgroundConfig.MODE_VIDEO);
+        }else if (rbLive.isSelected()){
+            bg.setMode(BackgroundConfig.MODE_LIVE);
         }
         bg.save();
         dispose();
@@ -298,6 +306,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     private datasoul.util.ImageDisplay imageDisplay;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblVideo;
+    private javax.swing.JRadioButton rbLive;
     private javax.swing.JRadioButton rbStatic;
     private javax.swing.JRadioButton rbVideo;
     // End of variables declaration//GEN-END:variables

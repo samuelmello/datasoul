@@ -5,10 +5,12 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.render.gstreamer.notifications.GstNotificationBackgroundVideoError;
 import org.gstreamer.Caps;
 import org.gstreamer.Element;
 import org.gstreamer.ElementFactory;
 import org.gstreamer.Pad;
+import org.gstreamer.State;
 import org.gstreamer.Structure;
 import org.gstreamer.elements.DecodeBin;
 
@@ -16,18 +18,15 @@ import org.gstreamer.elements.DecodeBin;
  *
  * @author samuel
  */
-public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
-
-    protected String filename;
+public class GstManagerVideoLiveBgPipeline extends GstManagerPipeline {
 
     protected Element src;
     protected DecodeBin decodeBin;
     protected Element decodeQueue;
     protected Element colorSpace;
 
-    public GstManagerVideoGenericPipeline(String filename){
+    public GstManagerVideoLiveBgPipeline(){
         super();
-        this.filename = filename;
     }
 
     @Override
@@ -35,8 +34,7 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
 
         super.prepareForStart();
 
-        src = ElementFactory.make("filesrc", "Input File");
-        src.set("location", this.filename);
+        src = ElementFactory.make("autovideosrc", "Input Source");
         colorSpace = ElementFactory.make("ffmpegcolorspace", "Color Space");
         decodeBin = new DecodeBin("Decode Bin");
         decodeQueue = ElementFactory.make("queue", "Decode Queue");
@@ -79,5 +77,20 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
         if (decodeQueue != null) decodeQueue.dispose();
         if (colorSpace != null) colorSpace.dispose();
     }
+
+    @Override
+    public void error(int code, String msg){
+        GstManagerClient.getInstance().sendNotification(new GstNotificationBackgroundVideoError("("+code+") "+msg));
+        pipe.setState(State.NULL);
+    }
+
+
+    @Override
+    public void eos(){
+        super.eos();
+        /* play in loop */
+        pipe.setState(State.PLAYING);
+    }
+
 
 }
