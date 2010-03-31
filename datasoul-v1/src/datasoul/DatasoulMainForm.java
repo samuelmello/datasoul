@@ -105,6 +105,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         setGstreamerEnabled(ConfigObj.getActiveInstance().isGstreamerActive());
 
+        tbInfo.setVisible(false);
+
         WindowPropConfig wpc = WindowPropConfig.getInstance();
         wpc.getMainForm(this);
         wpc.getSplMain(splMain);
@@ -264,6 +266,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         liveDisplayPanel = new datasoul.render.SwingDisplayPanel();
         monitorDisplayPanel = new datasoul.render.SwingDisplayPanel();
         btnShowMonitor = new javax.swing.JToggleButton();
+        tbInfo = new javax.swing.JToolBar();
+        lblInfo = new javax.swing.JLabel();
+        btnCloseInfo = new javax.swing.JButton();
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -543,7 +548,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                     .addComponent(jLabel4))
                 .addContainerGap())
         );
@@ -553,7 +558,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -565,11 +570,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
         );
 
         splPreview.setTopComponent(pnlPreview);
@@ -736,12 +741,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(pnlServiceListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -800,8 +805,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(533, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE)
+                .addContainerGap(359, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,7 +819,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -886,7 +891,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(178, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -905,12 +910,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -921,19 +926,40 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         splMain.setRightComponent(tabbedRightSide);
 
+        tbInfo.setFloatable(false);
+        tbInfo.setRollover(true);
+
+        lblInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/system-software-update.png"))); // NOI18N
+        lblInfo.setText("jLabel5");
+        tbInfo.add(lblInfo);
+
+        btnCloseInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
+        btnCloseInfo.setFocusable(false);
+        btnCloseInfo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCloseInfo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnCloseInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCloseInfoActionPerformed(evt);
+            }
+        });
+        tbInfo.add(btnCloseInfo);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
-            .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 1136, Short.MAX_VALUE)
+            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+            .addComponent(tbInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+            .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 632, Short.MAX_VALUE))
+                .addComponent(tbInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
         );
 
         pack();
@@ -959,7 +985,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
         ConfigFrame cf = new ConfigFrame();
-        cf.setLocationRelativeTo(this);
+        //cf.setLocationRelativeTo(this);
         cf.setVisible(true);
     }//GEN-LAST:event_btnConfigActionPerformed
 
@@ -1251,6 +1277,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnCloseActionPerformed(null);
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnCloseInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseInfoActionPerformed
+        tbInfo.setVisible(false);
+    }//GEN-LAST:event_btnCloseInfoActionPerformed
+
     public void closeOutputs(){
 
         if (btnShow.isSelected()){
@@ -1314,6 +1344,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnAddWizard;
     javax.swing.JButton btnBackground;
     javax.swing.JButton btnClose;
+    javax.swing.JButton btnCloseInfo;
     javax.swing.JButton btnConfig;
     javax.swing.JButton btnDown;
     javax.swing.JButton btnEdit;
@@ -1346,6 +1377,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JToolBar.Separator jSeparator2;
     javax.swing.JToolBar.Separator jSeparator3;
     javax.swing.JLabel lblAuthor;
+    javax.swing.JLabel lblInfo;
     javax.swing.JLabel lblSongName;
     datasoul.datashow.LivePanel live;
     datasoul.render.SwingDisplayPanel liveDisplayPanel;
@@ -1363,6 +1395,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JSplitPane splSongLibrary;
     javax.swing.JTabbedPane tabbedRightSide;
     datasoul.util.DnDTable tableServiceList;
+    javax.swing.JToolBar tbInfo;
     javax.swing.JTextPane textSong;
     javax.swing.JToolBar toolBar;
     javax.swing.JToolBar toolBarMain;
@@ -1380,6 +1413,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     public void updatePreviewHeight(){
         splPreview.setDividerLocation(preview.getPreferedHeight());
+    }
+
+    public void setInfoText(String txt){
+        lblInfo.setText(txt);
+        tbInfo.setVisible(true);
     }
 
 }

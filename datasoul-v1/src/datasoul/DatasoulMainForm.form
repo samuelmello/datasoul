@@ -137,16 +137,19 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="toolBarMain" alignment="0" pref="1136" max="32767" attributes="0"/>
-          <Component id="splMain" alignment="0" pref="1136" max="32767" attributes="0"/>
+          <Component id="toolBarMain" alignment="0" pref="916" max="32767" attributes="0"/>
+          <Component id="tbInfo" alignment="0" pref="916" max="32767" attributes="0"/>
+          <Component id="splMain" alignment="0" pref="916" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="toolBarMain" min="-2" pref="58" max="-2" attributes="1"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="splMain" pref="632" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="tbInfo" min="-2" pref="25" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="splMain" pref="456" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -391,7 +394,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane1" alignment="0" pref="476" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="430" max="32767" attributes="0"/>
                                   <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -404,7 +407,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" pref="125" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="89" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -448,12 +451,12 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="preview" alignment="0" pref="500" max="32767" attributes="2"/>
+                          <Component id="preview" alignment="0" pref="454" max="32767" attributes="2"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="preview" alignment="0" pref="250" max="32767" attributes="0"/>
+                          <Component id="preview" alignment="0" pref="110" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
@@ -482,12 +485,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="toolBar" alignment="0" pref="476" max="32767" attributes="1"/>
-                              <Component id="jScrollPane2" alignment="0" pref="476" max="32767" attributes="0"/>
+                              <Component id="toolBar" alignment="0" pref="430" max="32767" attributes="1"/>
+                              <Component id="jScrollPane2" alignment="0" pref="430" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtTitle" pref="212" max="32767" attributes="0"/>
+                                  <Component id="txtTitle" pref="166" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel2" min="-2" max="-2" attributes="1"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -762,9 +765,9 @@
                                   <Component id="lblSongName" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAuthor" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="533" max="32767" attributes="0"/>
+                              <EmptySpace pref="359" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane3" alignment="1" pref="618" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="1" pref="444" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -780,7 +783,7 @@
                                   <Component id="lblAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="193" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="89" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -873,13 +876,13 @@
                               <Component id="pnlLiveBox" max="32767" attributes="0"/>
                               <EmptySpace min="12" pref="12" max="12" attributes="0"/>
                           </Group>
-                          <Component id="auxiliar" alignment="0" pref="362" max="32767" attributes="0"/>
+                          <Component id="auxiliar" alignment="0" pref="196" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="auxiliar" pref="306" max="32767" attributes="0"/>
+                              <Component id="auxiliar" pref="130" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pnlLiveBox" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -901,7 +904,7 @@
                                       <Component id="liveDisplayPanel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="btnShowMonitor" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="178" max="32767" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -993,6 +996,37 @@
             </Container>
           </SubComponents>
         </Container>
+      </SubComponents>
+    </Container>
+    <Container class="javax.swing.JToolBar" name="tbInfo">
+      <Properties>
+        <Property name="floatable" type="boolean" value="false"/>
+        <Property name="rollover" type="boolean" value="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JLabel" name="lblInfo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/v2/system-software-update.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="jLabel5"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnCloseInfo">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/v2/window-close.png"/>
+            </Property>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCloseInfoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

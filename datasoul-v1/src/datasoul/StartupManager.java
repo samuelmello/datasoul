@@ -17,6 +17,7 @@ import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.serviceitems.song.ChordsDB;
 import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
+import datasoul.util.OnlineUpdateCheck;
 import datasoul.util.Splash;
 import java.awt.AWTEvent;
 import java.awt.GraphicsEnvironment;
@@ -142,6 +143,9 @@ public class StartupManager {
 
     void run() {
 
+        // Use IPv4, needed by http-commons
+        System.getProperties().setProperty("java.net.preferIPv4Stack", "true");
+
         // Enable anti-aliasing
         System.setProperty("swing.aatext","true");
 
@@ -228,6 +232,12 @@ public class StartupManager {
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
             }
         });
+
+        // Check for online updates
+        if (ConfigObj.getActiveInstance().getOnlineCheckUpdateBool()){
+            OnlineUpdateCheck ouc = new OnlineUpdateCheck();
+            ouc.start();
+        }
 
     }
 

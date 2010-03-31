@@ -45,6 +45,8 @@ public class ConfigObj extends AbstractConfig {
 
     private boolean isGstreamerActive;
 
+    private boolean onlineCheckUpdate;
+
     private int qualityMain;
     
     public static final int CLOCKMODE_24_SEC = 0;
@@ -65,6 +67,7 @@ public class ConfigObj extends AbstractConfig {
         // Default quality:
         this.qualityMain = QUALITY_800;
         this.isGstreamerActive = true;
+        this.onlineCheckUpdate = true;
         // Default output devices
         setMainOutputDevice("");
         setMonitorOutputDevice("");
@@ -99,6 +102,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("QualityMainIdx");
         properties.add("MainOutputDevice");
         properties.add("MonitorOutputDevice");
+        properties.add("OnlineCheckUpdate");
     }
     
     public ArrayList<String> getProperties(){
@@ -367,5 +371,26 @@ public class ConfigObj extends AbstractConfig {
     public void setGstreamerActive(boolean b){
         this.isGstreamerActive = b;
     }
+
+    public String getOnlineCheckUpdate(){
+        if (onlineCheckUpdate){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public void setOnlineCheckUpdate(String s){
+        if (s.equals("0")){
+            onlineCheckUpdate = false;
+        }else{
+            onlineCheckUpdate = true;
+        }
+    }
+
+    public boolean getOnlineCheckUpdateBool(){
+        return onlineCheckUpdate;
+    }
+
 
 }
