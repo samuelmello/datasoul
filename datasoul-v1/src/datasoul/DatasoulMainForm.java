@@ -855,7 +855,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
 
         btnShowMonitor.setSelected(true);
-        btnShowMonitor.setText(bundle.getString("Show_Monitor")); // NOI18N
+        btnShowMonitor.setText("Show Stage");
         btnShowMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowMonitorActionPerformed(evt);

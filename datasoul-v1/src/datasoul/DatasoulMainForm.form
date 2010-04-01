@@ -1061,9 +1061,7 @@
                         <Component class="javax.swing.JToggleButton" name="btnShowMonitor">
                           <Properties>
                             <Property name="selected" type="boolean" value="true"/>
-                            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-                              <ResourceString bundle="datasoul/internationalize.properties" key="Show_Monitor" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-                            </Property>
+                            <Property name="text" type="java.lang.String" value="Show Stage"/>
                           </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowMonitorActionPerformed"/>

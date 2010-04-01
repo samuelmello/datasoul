@@ -48,7 +48,7 @@
               <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -233,7 +233,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbMonitorOutput">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enable Monitor Display"/>
+            <Property name="text" type="java.lang.String" value="Enable Stage Display"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -289,8 +289,8 @@
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cbMonitorDevice" pref="432" max="32767" attributes="2"/>
-                          <Component id="cbMainDevice" alignment="1" pref="432" max="32767" attributes="2"/>
+                          <Component id="cbMonitorDevice" pref="442" max="32767" attributes="2"/>
+                          <Component id="cbMainDevice" alignment="1" pref="442" max="32767" attributes="2"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -332,7 +332,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel29">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Monitor Display"/>
+                <Property name="text" type="java.lang.String" value="Stage Display"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbMonitorDevice">
@@ -351,7 +351,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lblMonitorDisabled">
           <Properties>
-            <Property name="text" type="java.lang.String" value="(You need at least 2 displays to enable Monitor Display)"/>
+            <Property name="text" type="java.lang.String" value="(You need at least 2 displays to enable Stage Display)"/>
           </Properties>
         </Component>
       </SubComponents>

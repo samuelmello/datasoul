@@ -142,7 +142,7 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbQualityMain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbMonitorOutput.setText("Enable Monitor Display");
+        cbMonitorOutput.setText("Enable Stage Display");
 
         jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
 
@@ -163,7 +163,7 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         jLabel28.setText("Main Display");
 
-        jLabel29.setText("Monitor Display");
+        jLabel29.setText("Stage Display");
 
         cbMonitorDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -178,8 +178,8 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbMonitorDevice, 0, 432, Short.MAX_VALUE)
-                    .addComponent(cbMainDevice, 0, 432, Short.MAX_VALUE))
+                    .addComponent(cbMonitorDevice, 0, 442, Short.MAX_VALUE)
+                    .addComponent(cbMainDevice, 0, 442, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlMonitorsLayout.setVerticalGroup(
@@ -194,7 +194,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29)))
         );
 
-        lblMonitorDisabled.setText("(You need at least 2 displays to enable Monitor Display)");
+        lblMonitorDisabled.setText("(You need at least 2 displays to enable Stage Display)");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -337,7 +337,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDiscard)
                     .addComponent(btnSave))

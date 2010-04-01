@@ -24,7 +24,6 @@
 package datasoul.templates;
 
 import datasoul.DatasoulMainForm;
-import datasoul.render.ContentManager;
 import datasoul.util.AttributedObject;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipReader;
@@ -76,10 +75,10 @@ public class DisplayTemplate extends AttributedObject {
     private int targetContent;
     public static final int TARGET_CONTENT_TEXT = 0;
     public static final int TARGET_CONTENT_SONG = 1;
-    public static final int TARGET_CONTENT_MONITOR = 2;
+    public static final int TARGET_CONTENT_STAGE = 2;
     public static final int TARGET_CONTENT_ALERT = 3;
     public static final int TARGET_CONTENT_IMAGES = 4;
-    public static final String [] TARGET_CONTENT_TABLE = {"Text", "Song", "Monitor", "Alert", "Images" };
+    public static final String [] TARGET_CONTENT_TABLE = {"Text", "Song", "Stage", "Alert", "Images" };
     private static JComboBox cbTargetContent;
 
     private int width;
@@ -509,7 +508,7 @@ public class DisplayTemplate extends AttributedObject {
                 }
                 if (content == TextTemplateItem.CONTENT_CLOCK ||
                     content == TextTemplateItem.CONTENT_TIMER){
-                    this.setTargetContentIdx(TARGET_CONTENT_MONITOR);
+                    this.setTargetContentIdx(TARGET_CONTENT_STAGE);
                     return;
                 }
                 if (content == TextTemplateItem.CONTENT_SONGAUTHOR ||

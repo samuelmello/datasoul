@@ -87,7 +87,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbShowOnMain1.setText(bundle.getString("Show_on_Main_Output")); // NOI18N
         cbShowOnMain1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        cbShowOnMonitor1.setText(bundle.getString("Show_on_Monitor_Output")); // NOI18N
+        cbShowOnMonitor1.setText("Show on Stage Output");
         cbShowOnMonitor1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         jLabel1.setText(bundle.getString("Template")); // NOI18N

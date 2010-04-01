@@ -63,7 +63,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSliderShowHideSpeed.setLabelTable(labels);
         jSliderSlideChangeSpeed.setLabelTable(labels);
 
-        templateMonitor.setTargetContent(DisplayTemplate.TARGET_CONTENT_MONITOR);
+        templateMonitor.setTargetContent(DisplayTemplate.TARGET_CONTENT_STAGE);
         
         pnlSpeed.setVisible( jSpeedCb.isSelected() );
         pnlMonitor.setVisible( jMonitorCb.isSelected() );
@@ -266,7 +266,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnMonitorShow);
 
-        cbMonitorFollowMain.setText(bundle.getString("Monitor_follows_Main_Output_controls")); // NOI18N
+        cbMonitorFollowMain.setText("Stage follows Main Output controls");
         cbMonitorFollowMain.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbMonitorFollowMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +288,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             .addGroup(pnlMonitorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbMonitorFollowMain)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         pnlMonitorLayout.setVerticalGroup(
             pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +303,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMonitorCb.setText(bundle.getString("Show_Monitor_Controls")); // NOI18N
+        jMonitorCb.setText("Show Stage Controls");
         jMonitorCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jMonitorCb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
