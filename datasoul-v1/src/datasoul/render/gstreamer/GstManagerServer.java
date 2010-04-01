@@ -115,6 +115,10 @@ public class GstManagerServer {
         }
     }
 
+    public boolean isRunning(){
+        return (output != null);
+    }
+
     public class WorkerThread extends Thread {
         @Override
         public void run(){

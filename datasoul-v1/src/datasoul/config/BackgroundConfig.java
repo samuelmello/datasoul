@@ -126,27 +126,31 @@ public class BackgroundConfig extends AbstractConfig {
 
     public void setMode(int m){
         mode = m;
-        GstDisplayCmd cmd = null;
-        
-        switch(mode){
-            case MODE_STATIC:
-                cmd = new GstDisplayCmdSetStaticBG();
-                break;
 
-            case MODE_VIDEO:
-                cmd = new GstDisplayCmdSetVideoBG(getVideoFile());
-                break;
+        if (GstManagerServer.getInstance().isRunning()){
 
-            case MODE_LIVE:
-                cmd = new GstDisplayCmdSetLiveBG();
-                break;
+            GstDisplayCmd cmd = null;
+
+            switch(mode){
+                case MODE_STATIC:
+                    cmd = new GstDisplayCmdSetStaticBG();
+                    break;
+
+                case MODE_VIDEO:
+                    cmd = new GstDisplayCmdSetVideoBG(getVideoFile());
+                    break;
+
+                case MODE_LIVE:
+                    cmd = new GstDisplayCmdSetLiveBG();
+                    break;
+            }
+            if (cmd != null){
+                GstManagerServer.getInstance().sendCommand(cmd);
+            }
+
+            // Update display
+            ContentManager.getInstance().slideChange(-1);
         }
-        if (cmd != null){
-            GstManagerServer.getInstance().sendCommand(cmd);
-        }
-        
-        // Update display
-        ContentManager.getInstance().slideChange(-1);
 
     }
 
