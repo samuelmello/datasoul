@@ -414,8 +414,7 @@ public class ServiceListTable extends ListTable {
     public void openServiceList() {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul 1.x Service Lists", "servicelist") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz", "servicelist") );
         File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
         fc.setCurrentDirectory(dir);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
