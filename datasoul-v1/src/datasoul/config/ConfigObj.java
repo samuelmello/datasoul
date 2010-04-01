@@ -25,6 +25,7 @@ package datasoul.config;
 
 import datasoul.render.OutputDevice;
 import java.util.ArrayList;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -370,6 +371,9 @@ public class ConfigObj extends AbstractConfig {
 
     public void setGstreamerActive(boolean b){
         this.isGstreamerActive = b;
+        if (ObjectManager.getInstance().getDatasoulMainForm() != null){
+            ObjectManager.getInstance().getDatasoulMainForm().setGstreamerEnabled(b);
+        }
     }
 
     public String getOnlineCheckUpdate(){
