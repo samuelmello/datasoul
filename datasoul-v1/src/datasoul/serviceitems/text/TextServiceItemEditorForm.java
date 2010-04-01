@@ -104,6 +104,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         bibleTextPanel1 = new datasoul.bible.BibleTextPanel();
         jToolBar1 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnShowBible = new javax.swing.JToggleButton();
         btnShowSplit = new javax.swing.JToggleButton();
 
@@ -150,7 +151,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setText(bundle.getString("Save")); // NOI18N
+        btnSave.setToolTipText("Save");
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -160,12 +161,11 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
             }
         });
         jToolBar1.add(btnSave);
+        jToolBar1.add(jSeparator1);
 
         btnShowBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/accessories-dictionary.png"))); // NOI18N
         btnShowBible.setText("Bible Options");
         btnShowBible.setFocusable(false);
-        btnShowBible.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnShowBible.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnShowBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowBibleActionPerformed(evt);
@@ -176,8 +176,6 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/format-justify-center.png"))); // NOI18N
         btnShowSplit.setText("Split Options");
         btnShowSplit.setFocusable(false);
-        btnShowSplit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnShowSplit.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowSplitActionPerformed(evt);
@@ -224,7 +222,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -310,6 +308,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JTextField fieldTitle;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;

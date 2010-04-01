@@ -73,8 +73,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         jToolBar2.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnSave.setText(bundle.getString("Save")); // NOI18N
+        btnSave.setToolTipText("Save");
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -89,8 +88,6 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnAddImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnAddImages.setText("Add");
         btnAddImages.setFocusPainted(false);
-        btnAddImages.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAddImages.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAddImages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImagesActionPerformed(evt);
@@ -101,8 +98,6 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setFocusPainted(false);
-        btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDelete.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -134,7 +129,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

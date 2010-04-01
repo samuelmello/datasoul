@@ -15,10 +15,10 @@ package datasoul.help;
  *
  * @author samuel
  */
-public class HelpFrame extends javax.swing.JFrame {
+public class HelpFrameAbout extends javax.swing.JFrame {
 
     /** Creates new form HelpFrame */
-    public HelpFrame() {
+    public HelpFrameAbout() {
         initComponents();
     }
 
@@ -34,31 +34,27 @@ public class HelpFrame extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         helpAbout1 = new datasoul.help.HelpAbout();
         helpLicense1 = new datasoul.help.HelpLicense();
-        helpKeyboard1 = new datasoul.help.HelpKeyboard();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul Help");
 
         jTabbedPane1.addTab("About", helpAbout1);
         jTabbedPane1.addTab("License Agreement", helpLicense1);
-        jTabbedPane1.addTab("Keyboard Shortcuts", helpKeyboard1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 444, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -67,7 +63,6 @@ public class HelpFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private datasoul.help.HelpAbout helpAbout1;
-    private datasoul.help.HelpKeyboard helpKeyboard1;
     private datasoul.help.HelpLicense helpLicense1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables

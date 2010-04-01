@@ -15,11 +15,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jLabel1" alignment="1" pref="1316" max="32767" attributes="0"/>
-          <Component id="lblVersion" alignment="1" pref="1316" max="32767" attributes="0"/>
-          <Component id="jLabel3" alignment="1" pref="1316" max="32767" attributes="0"/>
-          <Component id="jLabel4" alignment="1" pref="1316" max="32767" attributes="0"/>
-          <Component id="jPanel1" alignment="1" pref="1316" max="32767" attributes="0"/>
+          <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
+          <Component id="lblVersion" alignment="1" pref="400" max="32767" attributes="0"/>
+          <Component id="jLabel3" alignment="1" pref="400" max="32767" attributes="0"/>
+          <Component id="jLabel4" alignment="1" pref="400" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="1" pref="400" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -35,7 +35,7 @@
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" pref="240" max="-2" attributes="0"/>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

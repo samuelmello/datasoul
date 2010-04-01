@@ -40,18 +40,18 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="fieldName" pref="402" max="32767" attributes="0"/>
-                          <Component id="fieldAuthor" pref="402" max="32767" attributes="0"/>
-                          <Component id="txtCopyright" alignment="0" pref="402" max="32767" attributes="0"/>
-                          <Component id="txtSongSource" alignment="0" pref="402" max="32767" attributes="0"/>
+                          <Component id="fieldName" pref="468" max="32767" attributes="0"/>
+                          <Component id="fieldAuthor" pref="468" max="32767" attributes="0"/>
+                          <Component id="txtCopyright" alignment="0" pref="468" max="32767" attributes="0"/>
+                          <Component id="txtSongSource" alignment="0" pref="468" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="tabSong" alignment="0" pref="475" max="32767" attributes="0"/>
+                  <Component id="tabSong" alignment="0" pref="541" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jToolBar1" alignment="0" pref="499" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="565" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -79,7 +79,7 @@
                   <Component id="txtSongSource" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tabSong" pref="267" max="32767" attributes="0"/>
+              <Component id="tabSong" pref="286" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -134,8 +134,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textSplitPanel1" alignment="0" pref="463" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" pref="463" max="32767" attributes="0"/>
+                  <Component id="textSplitPanel1" alignment="0" pref="529" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="529" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -143,7 +143,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="textSplitPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="164" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="183" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -239,15 +239,27 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/v2/document-save_big.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="datasoul/internationalize.properties" key="Save" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Save"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaveActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPrint">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/datasoul/icons/v2/document-print.png"/>
+            </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Print"/>
+            <Property name="focusable" type="boolean" value="false"/>
+            <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="verticalTextPosition" type="int" value="3"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnExport">
@@ -257,25 +269,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Export"/>
             <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExportActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPrint">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/datasoul/icons/v2/document-print.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Print"/>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPrintActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JToolBar$Separator" name="jSeparator1">
@@ -287,8 +283,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Split Options"/>
             <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowSplitActionPerformed"/>
@@ -301,8 +295,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Transposition"/>
             <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowChordsActionPerformed"/>
@@ -315,8 +307,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Guitar Tabs"/>
             <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowTabsActionPerformed"/>

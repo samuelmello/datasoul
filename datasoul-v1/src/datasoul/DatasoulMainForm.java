@@ -34,7 +34,8 @@ import datasoul.servicelist.ServiceListTable;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.serviceitems.text.TextServiceItemEditorForm;
 import datasoul.render.ContentManager;
-import datasoul.help.HelpFrame;
+import datasoul.help.HelpFrameAbout;
+import datasoul.help.HelpFrameKeyboard;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.VideoServiceItem;
@@ -212,17 +213,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnOpen = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         btnSaveAs = new javax.swing.JButton();
-        btnExport = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnShow = new javax.swing.JToggleButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
         btnBackground = new javax.swing.JButton();
         btnTemplates = new javax.swing.JButton();
-        btnConfig = new javax.swing.JButton();
-        btnHelp = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
-        btnClose = new javax.swing.JButton();
+        btnConfig = new javax.swing.JButton();
         splMain = new javax.swing.JSplitPane();
         splService = new javax.swing.JSplitPane();
         splPreview = new javax.swing.JSplitPane();
@@ -269,6 +268,22 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         tbInfo = new javax.swing.JToolBar();
         lblInfo = new javax.swing.JLabel();
         btnCloseInfo = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        actFileNew = new javax.swing.JMenuItem();
+        actFileOpen = new javax.swing.JMenuItem();
+        actFileSave = new javax.swing.JMenuItem();
+        actFileSaveAs = new javax.swing.JMenuItem();
+        actFileExport = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        actFileExit = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        actEditBackground = new javax.swing.JMenuItem();
+        actEditTemplates = new javax.swing.JMenuItem();
+        actEditConfig = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        actHelpAbout = new javax.swing.JMenuItem();
+        actHelpKeyboard = new javax.swing.JMenuItem();
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -361,7 +376,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new_big.png"))); // NOI18N
-        btnNew.setText("New");
+        btnNew.setToolTipText("New");
         btnNew.setFocusable(false);
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnNew.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -373,7 +388,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnNew);
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open_big.png"))); // NOI18N
-        btnOpen.setText("Open");
+        btnOpen.setToolTipText("Open");
         btnOpen.setFocusable(false);
         btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnOpen.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -385,7 +400,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnOpen);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setText("Save");
+        btnSave.setToolTipText("Save");
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSave.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -397,7 +412,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as_big.png"))); // NOI18N
-        btnSaveAs.setText("Save As");
+        btnSaveAs.setToolTipText("Save As");
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSaveAs.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -408,20 +423,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnSaveAs);
 
-        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document_big.png"))); // NOI18N
-        btnExport.setText("Export");
-        btnExport.setFocusable(false);
-        btnExport.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnExport.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnExport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExportActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnExport);
-
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
-        btnPrint.setText("Print");
+        btnPrint.setToolTipText("Print");
         btnPrint.setFocusable(false);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPrint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -431,13 +434,21 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnPrint);
+
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document_big.png"))); // NOI18N
+        btnExport.setText("Export");
+        btnExport.setFocusable(false);
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnExport);
         toolBarMain.add(jSeparator2);
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
         btnShow.setText("Show!");
         btnShow.setFocusable(false);
-        btnShow.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnShow.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowActionPerformed(evt);
@@ -449,8 +460,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-desktop-wallpaper.png"))); // NOI18N
         btnBackground.setText("Background");
         btnBackground.setFocusable(false);
-        btnBackground.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnBackground.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackgroundActionPerformed(evt);
@@ -461,51 +470,23 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
         btnTemplates.setText("Templates");
         btnTemplates.setFocusable(false);
-        btnTemplates.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnTemplates.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTemplatesActionPerformed(evt);
             }
         });
         toolBarMain.add(btnTemplates);
+        toolBarMain.add(jSeparator1);
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
         btnConfig.setText("Configuration");
         btnConfig.setFocusable(false);
-        btnConfig.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnConfig.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfigActionPerformed(evt);
             }
         });
         toolBarMain.add(btnConfig);
-
-        btnHelp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/help-browser.png"))); // NOI18N
-        btnHelp.setText("Help");
-        btnHelp.setFocusable(false);
-        btnHelp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnHelp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnHelp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHelpActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnHelp);
-        toolBarMain.add(jSeparator1);
-
-        btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/application-exit.png"))); // NOI18N
-        btnClose.setText("Exit");
-        btnClose.setFocusable(false);
-        btnClose.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnClose.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
-            }
-        });
-        toolBarMain.add(btnClose);
 
         splMain.setDividerLocation(500);
         splMain.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -548,7 +529,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addComponent(jLabel4))
                 .addContainerGap())
         );
@@ -558,7 +539,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -570,11 +551,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         pnlPreview.setLayout(pnlPreviewLayout);
         pnlPreviewLayout.setHorizontalGroup(
             pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         pnlPreviewLayout.setVerticalGroup(
             pnlPreviewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+            .addComponent(preview, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
         );
 
         splPreview.setTopComponent(pnlPreview);
@@ -741,12 +722,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(pnlServiceListLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+                    .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -805,8 +786,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(359, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
+                .addContainerGap(313, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -819,7 +800,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -915,7 +896,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -944,22 +925,127 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         tbInfo.add(btnCloseInfo);
 
+        jMenu1.setText("File");
+
+        actFileNew.setText("New");
+        actFileNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actFileNewActionPerformed(evt);
+            }
+        });
+        jMenu1.add(actFileNew);
+
+        actFileOpen.setText("Open");
+        actFileOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actFileOpenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(actFileOpen);
+
+        actFileSave.setText("Save");
+        actFileSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actFileSaveActionPerformed(evt);
+            }
+        });
+        jMenu1.add(actFileSave);
+
+        actFileSaveAs.setText("Save As");
+        actFileSaveAs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actFileSaveAsActionPerformed(evt);
+            }
+        });
+        jMenu1.add(actFileSaveAs);
+
+        actFileExport.setText("Export");
+        actFileExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actFileExportActionPerformed(evt);
+            }
+        });
+        jMenu1.add(actFileExport);
+        jMenu1.add(jSeparator4);
+
+        actFileExit.setText("Exit");
+        actFileExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actFileExitActionPerformed(evt);
+            }
+        });
+        jMenu1.add(actFileExit);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+
+        actEditBackground.setText("Background");
+        actEditBackground.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actEditBackgroundActionPerformed(evt);
+            }
+        });
+        jMenu2.add(actEditBackground);
+
+        actEditTemplates.setText("Templates");
+        actEditTemplates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actEditTemplatesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(actEditTemplates);
+
+        actEditConfig.setText("Configuration");
+        actEditConfig.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actEditConfigActionPerformed(evt);
+            }
+        });
+        jMenu2.add(actEditConfig);
+
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Help");
+
+        actHelpAbout.setText("About");
+        actHelpAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actHelpAboutActionPerformed(evt);
+            }
+        });
+        jMenu3.add(actHelpAbout);
+
+        actHelpKeyboard.setText("Keyboard Shortcuts");
+        actHelpKeyboard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actHelpKeyboardActionPerformed(evt);
+            }
+        });
+        jMenu3.add(actHelpKeyboard);
+
+        jMenuBar1.add(jMenu3);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
-            .addComponent(tbInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tbInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 904, Short.MAX_VALUE))
             .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(toolBarMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
+                .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE))
         );
 
         pack();
@@ -977,25 +1063,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         tmf.setVisible(true);
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
-    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
-        HelpFrame hf = new HelpFrame();
-        hf.setLocationRelativeTo(this);
-        hf.setVisible(true);
-    }//GEN-LAST:event_btnHelpActionPerformed
-
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
         ConfigFrame cf = new ConfigFrame();
         //cf.setLocationRelativeTo(this);
         cf.setVisible(true);
     }//GEN-LAST:event_btnConfigActionPerformed
-
-    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Close")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
-
-        if (resp == JOptionPane.YES_OPTION){
-            System.exit(0);
-        }
-    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         ServiceListTable.getActiveInstance().fileNew();
@@ -1274,12 +1346,64 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_splPreviewPropertyChange
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        btnCloseActionPerformed(null);
+        actFileExitActionPerformed(null);
     }//GEN-LAST:event_formWindowClosing
 
     private void btnCloseInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseInfoActionPerformed
         tbInfo.setVisible(false);
     }//GEN-LAST:event_btnCloseInfoActionPerformed
+
+    private void actFileNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileNewActionPerformed
+        btnNewActionPerformed(evt);
+    }//GEN-LAST:event_actFileNewActionPerformed
+
+    private void actFileOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileOpenActionPerformed
+        btnOpenActionPerformed(evt);
+    }//GEN-LAST:event_actFileOpenActionPerformed
+
+    private void actFileSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileSaveActionPerformed
+        btnSaveActionPerformed(evt);
+    }//GEN-LAST:event_actFileSaveActionPerformed
+
+    private void actFileSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileSaveAsActionPerformed
+        btnSaveAsActionPerformed(evt);
+    }//GEN-LAST:event_actFileSaveAsActionPerformed
+
+    private void actFileExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExportActionPerformed
+        btnExportActionPerformed(evt);
+    }//GEN-LAST:event_actFileExportActionPerformed
+
+    private void actEditBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actEditBackgroundActionPerformed
+        btnBackgroundActionPerformed(evt);
+    }//GEN-LAST:event_actEditBackgroundActionPerformed
+
+    private void actEditTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actEditTemplatesActionPerformed
+        btnTemplatesActionPerformed(evt);
+    }//GEN-LAST:event_actEditTemplatesActionPerformed
+
+    private void actEditConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actEditConfigActionPerformed
+        btnEditActionPerformed(evt);
+    }//GEN-LAST:event_actEditConfigActionPerformed
+
+    private void actFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExitActionPerformed
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Close")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
+
+        if (resp == JOptionPane.YES_OPTION){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_actFileExitActionPerformed
+
+    private void actHelpAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actHelpAboutActionPerformed
+        HelpFrameAbout about = new HelpFrameAbout();
+        about.setLocationRelativeTo(this);
+        about.setVisible(true);
+    }//GEN-LAST:event_actHelpAboutActionPerformed
+
+    private void actHelpKeyboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actHelpKeyboardActionPerformed
+        HelpFrameKeyboard key = new HelpFrameKeyboard();
+        key.setLocationRelativeTo(this);
+        key.setVisible(true);
+    }//GEN-LAST:event_actHelpKeyboardActionPerformed
 
     public void closeOutputs(){
 
@@ -1339,17 +1463,26 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actAddSong;
     javax.swing.JMenuItem actAddText;
     javax.swing.JMenuItem actAddVideo;
+    javax.swing.JMenuItem actEditBackground;
+    javax.swing.JMenuItem actEditConfig;
+    javax.swing.JMenuItem actEditTemplates;
+    javax.swing.JMenuItem actFileExit;
+    javax.swing.JMenuItem actFileExport;
+    javax.swing.JMenuItem actFileNew;
+    javax.swing.JMenuItem actFileOpen;
+    javax.swing.JMenuItem actFileSave;
+    javax.swing.JMenuItem actFileSaveAs;
+    javax.swing.JMenuItem actHelpAbout;
+    javax.swing.JMenuItem actHelpKeyboard;
     javax.swing.JMenuItem actImportItem;
     datasoul.datashow.AuxiliarPanel auxiliar;
     javax.swing.JButton btnAddWizard;
     javax.swing.JButton btnBackground;
-    javax.swing.JButton btnClose;
     javax.swing.JButton btnCloseInfo;
     javax.swing.JButton btnConfig;
     javax.swing.JButton btnDown;
     javax.swing.JButton btnEdit;
     javax.swing.JButton btnExport;
-    javax.swing.JButton btnHelp;
     javax.swing.JButton btnNew;
     javax.swing.JButton btnOpen;
     javax.swing.JButton btnPrint;
@@ -1366,6 +1499,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JLabel jLabel4;
     javax.swing.JLabel jLabel6;
     javax.swing.JLabel jLabel7;
+    javax.swing.JMenu jMenu1;
+    javax.swing.JMenu jMenu2;
+    javax.swing.JMenu jMenu3;
+    javax.swing.JMenuBar jMenuBar1;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
@@ -1376,6 +1513,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JToolBar.Separator jSeparator1;
     javax.swing.JToolBar.Separator jSeparator2;
     javax.swing.JToolBar.Separator jSeparator3;
+    javax.swing.JPopupMenu.Separator jSeparator4;
     javax.swing.JLabel lblAuthor;
     javax.swing.JLabel lblInfo;
     javax.swing.JLabel lblSongName;

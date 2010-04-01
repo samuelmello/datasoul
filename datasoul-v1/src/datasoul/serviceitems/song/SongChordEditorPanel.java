@@ -46,11 +46,13 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         btnTabsCatalog = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         textChords = new datasoul.util.HighlightTextArea();
-        chordsTransposePanel = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        transposeToolbar = new javax.swing.JToolBar();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -84,7 +86,8 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         });
         jPanel2.add(btnRefreshTabs, java.awt.BorderLayout.LINE_START);
 
-        btnTabsCatalog.setText("Catalog");
+        btnTabsCatalog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
+        btnTabsCatalog.setText("Edit");
         btnTabsCatalog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTabsCatalogActionPerformed(evt);
@@ -103,42 +106,34 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
 
         add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "#", "b" }));
+        transposeToolbar.setFloatable(false);
+        transposeToolbar.setRollover(true);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-descending.png"))); // NOI18N
-
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-ascending.png"))); // NOI18N
+        jLabel3.setText("  ");
+        transposeToolbar.add(jLabel3);
 
         jLabel1.setText("Transpose using");
+        transposeToolbar.add(jLabel1);
 
-        javax.swing.GroupLayout chordsTransposePanelLayout = new javax.swing.GroupLayout(chordsTransposePanel);
-        chordsTransposePanel.setLayout(chordsTransposePanelLayout);
-        chordsTransposePanelLayout.setHorizontalGroup(
-            chordsTransposePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(chordsTransposePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addContainerGap(246, Short.MAX_VALUE))
-        );
-        chordsTransposePanelLayout.setVerticalGroup(
-            chordsTransposePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(chordsTransposePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(chordsTransposePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jLabel4.setText("  ");
+        transposeToolbar.add(jLabel4);
 
-        add(chordsTransposePanel, java.awt.BorderLayout.PAGE_START);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "#", "b" }));
+        transposeToolbar.add(jComboBox1);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-ascending.png"))); // NOI18N
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        transposeToolbar.add(jButton3);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-descending.png"))); // NOI18N
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        transposeToolbar.add(jButton2);
+
+        add(transposeToolbar, java.awt.BorderLayout.NORTH);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshTabsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTabsActionPerformed
@@ -165,7 +160,7 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
     }
 
     public void setTransposeVisible(boolean b){
-        chordsTransposePanel.setVisible(b);
+        transposeToolbar.setVisible(b);
     }
 
     public void setTabsVisible(boolean b){
@@ -215,12 +210,13 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRefreshTabs;
     private javax.swing.JButton btnTabsCatalog;
-    private javax.swing.JPanel chordsTransposePanel;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -229,6 +225,7 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
     private javax.swing.JPanel pnlTabs;
     private javax.swing.JPanel pnlTabsNotFound;
     private datasoul.util.HighlightTextArea textChords;
+    private javax.swing.JToolBar transposeToolbar;
     // End of variables declaration//GEN-END:variables
 
 }
