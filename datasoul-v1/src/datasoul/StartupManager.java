@@ -154,6 +154,7 @@ public class StartupManager {
 
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
         }catch(Exception e){
             //ignore and fall back to java look and feel
         }

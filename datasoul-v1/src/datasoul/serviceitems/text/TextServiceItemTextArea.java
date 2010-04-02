@@ -25,8 +25,9 @@ package datasoul.serviceitems.text;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.Font;
+import java.awt.Graphics;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /**
@@ -39,9 +40,16 @@ public class TextServiceItemTextArea extends JTextArea {
         
         private boolean showMark;
 
+        private static Font font;
+
+        static {
+            JLabel lbl = new JLabel();
+            font = lbl.getFont();
+        }
+
         public TextServiceItemTextArea(){
             super();
-            setFont(new Font(Font.SANS_SERIF, Font.PLAIN, getFont().getSize() ));
+            setFont(font);
         }
         
         public void setShowMark(boolean showMark){

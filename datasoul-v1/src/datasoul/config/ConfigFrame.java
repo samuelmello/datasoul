@@ -11,6 +11,7 @@
 
 package datasoul.config;
 
+import datasoul.DatasoulMainForm;
 import datasoul.render.OutputDevice;
 import datasoul.util.ObjectManager;
 import java.awt.Component;
@@ -38,6 +39,8 @@ public class ConfigFrame extends javax.swing.JFrame {
     /** Creates new form ConfigFrame */
     public ConfigFrame() {
         initComponents();
+
+        DatasoulMainForm.setDatasoulIcon(this);
 
         initDeviceMenu();
 
@@ -83,7 +86,6 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbOnlineUpdate = new javax.swing.JCheckBox();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -118,7 +120,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtStorageLoc, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                        .addComponent(txtStorageLoc, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnStgloc))
                     .addComponent(jLabel1))
@@ -136,13 +138,13 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Display Configuration"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Output Configuration"));
 
         jLabel7.setText("Rendering Quality");
 
         cbQualityMain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbMonitorOutput.setText("Enable Stage Display");
+        cbMonitorOutput.setText("Enable Stage Output");
 
         jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
 
@@ -152,7 +154,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
         jLabel3.setText("Display Devices and Rendering Properties");
 
-        cbDetectMonitors.setText("Automatically Detect Displays");
+        cbDetectMonitors.setText("Automatically Detect Outputs");
         cbDetectMonitors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbDetectMonitorsActionPerformed(evt);
@@ -161,9 +163,9 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbMainDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel28.setText("Main Display");
+        jLabel28.setText("Main Output");
 
-        jLabel29.setText("Stage Display");
+        jLabel29.setText("Stage Output");
 
         cbMonitorDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -194,7 +196,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29)))
         );
 
-        lblMonitorDisabled.setText("(You need at least 2 displays to enable Stage Display)");
+        lblMonitorDisabled.setText("(You need at least 2 displays to enable Stage Output)");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -218,8 +220,8 @@ public class ConfigFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(clockMode, 0, 430, Short.MAX_VALUE)
-                                    .addComponent(cbQualityMain, 0, 430, Short.MAX_VALUE))))
+                                    .addComponent(clockMode, 0, 431, Short.MAX_VALUE)
+                                    .addComponent(cbQualityMain, 0, 431, Short.MAX_VALUE))))
                         .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
@@ -264,17 +266,15 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getSize()-2f));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
-        jLabel2.setText("Allow these actions to access internet");
+        jLabel2.setText("Allow these functions to access internet");
 
         cbOnlineUpdate.setText("Notify when a new version of Datasoul is available");
 
-        jCheckBox1.setText("jCheckBox1");
-
-        jCheckBox2.setText("jCheckBox2");
+        jCheckBox1.setText("Send anonymous usage statistics");
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(jTextArea1.getFont().deriveFont(jTextArea1.getFont().getStyle() | java.awt.Font.BOLD));
+        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setText("If you live in a country where christians are persecuted and do not wish to risk detection you should not use any of these functions.");
         jTextArea1.setWrapStyleWord(true);
@@ -294,7 +294,6 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(cbOnlineUpdate)
                     .addComponent(jCheckBox1)
-                    .addComponent(jCheckBox2)
                     .addComponent(jTextArea1))
                 .addContainerGap())
         );
@@ -306,8 +305,6 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(cbOnlineUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -337,7 +334,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDiscard)
                     .addComponent(btnSave))
@@ -493,7 +490,6 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cbQualityMain;
     private javax.swing.JComboBox clockMode;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

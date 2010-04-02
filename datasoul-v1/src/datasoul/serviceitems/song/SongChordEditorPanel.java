@@ -119,6 +119,7 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         transposeToolbar.add(jLabel4);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "#", "b" }));
+        jComboBox1.setMaximumSize(new java.awt.Dimension(50, 32767));
         transposeToolbar.add(jComboBox1);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-ascending.png"))); // NOI18N

@@ -11,6 +11,8 @@
 
 package datasoul.help;
 
+import datasoul.DatasoulMainForm;
+
 /**
  *
  * @author samuel
@@ -20,6 +22,7 @@ public class HelpFrameKeyboard extends javax.swing.JFrame {
     /** Creates new form HelpFrameKeyboard */
     public HelpFrameKeyboard() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
         StringBuffer sb = new StringBuffer();
         sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F3:_Go_Live"));
         sb.append("\n");
@@ -67,8 +70,9 @@ public class HelpFrameKeyboard extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Datasoul - Keyboard Shortcuts");
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 12));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-desktop-keyboard-shortcuts.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel1.setText(bundle.getString("Keyboard_Shortcuts")); // NOI18N
@@ -77,7 +81,7 @@ public class HelpFrameKeyboard extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("Dialog", 1, 12));
         jTextArea1.setRows(5);
         jTextArea1.setBorder(null);
         jTextArea1.setOpaque(false);
@@ -87,22 +91,20 @@ public class HelpFrameKeyboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 603, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 583, Short.MAX_VALUE)
                     .addComponent(jLabel1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 333, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

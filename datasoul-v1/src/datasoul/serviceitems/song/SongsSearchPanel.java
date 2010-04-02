@@ -74,6 +74,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnNew = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
+        btnAdd = new javax.swing.JButton();
         labelString = new javax.swing.JLabel();
         fieldString = new javax.swing.JTextField();
         scroolSongList = new javax.swing.JScrollPane();
@@ -93,10 +94,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnNew.setText(bundle.getString("New")); // NOI18N
-        btnNew.setToolTipText(bundle.getString("Create_a_new_song_...")); // NOI18N
-        btnNew.setAlignmentY(0.0F);
+        btnNew.setToolTipText("Create a new song");
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
+        btnNew.setFocusable(false);
         btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNewMouseClicked(evt);
@@ -106,10 +107,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
         btnEdit.setText(bundle.getString("Edit")); // NOI18N
-        btnEdit.setToolTipText(bundle.getString("Edit_song_...")); // NOI18N
-        btnEdit.setAlignmentY(0.0F);
+        btnEdit.setToolTipText("Edit song");
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
+        btnEdit.setFocusable(false);
         btnEdit.setName(""); // NOI18N
         btnEdit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -126,9 +127,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
         btnDelete.setText(bundle.getString("Delete")); // NOI18N
         btnDelete.setToolTipText(bundle.getString("Delete_song")); // NOI18N
-        btnDelete.setAlignmentY(0.0F);
         btnDelete.setBorderPainted(false);
         btnDelete.setFocusPainted(false);
+        btnDelete.setFocusable(false);
         btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnDeletebtnRemoveMouseClicked(evt);
@@ -141,22 +142,36 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         });
         toolBar.add(btnDelete);
 
+        btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
+        btnAdd.setText("Add");
+        btnAdd.setToolTipText("Add selected song to service");
+        btnAdd.setFocusable(false);
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        toolBar.add(btnAdd);
+
         labelString.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_zoom-object.png"))); // NOI18N
         labelString.setText(bundle.getString("Search")); // NOI18N
+        labelString.setFocusable(false);
+        labelString.setInheritsPopupMenu(false);
         toolBar.add(labelString);
 
         fieldString.setColumns(15);
+        fieldString.setMaximumSize(new java.awt.Dimension(2147483647, 20));
         fieldString.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fieldStringActionPerformed(evt);
             }
         });
         fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                fieldStringKeyTyped(evt);
-            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 fieldStringKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                fieldStringKeyTyped(evt);
             }
         });
         toolBar.add(fieldString);
@@ -194,9 +209,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(scroolSongList, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+                .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scroolSongList, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -301,7 +316,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             String filePath = song.getFilePath();
 
             File file = new File(filePath);
-            if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_that_you_want_to_delete_the_file_")+filePath+" ?",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+            if(JOptionPane.showConfirmDialog(this,"Are you sure to delete"+" "+song.getTitle()+"?" ,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
                 if(file.delete()){
                     tableSongList.removeItem();
                 }
@@ -316,6 +331,12 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        if (tableSongList.getSelectedRow() >= 0){
+            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
     public void tableChanged(TableModelEvent e) {
         this.repaint();
     }
@@ -326,6 +347,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnNew;

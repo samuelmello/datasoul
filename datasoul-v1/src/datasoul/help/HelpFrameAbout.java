@@ -11,6 +11,8 @@
 
 package datasoul.help;
 
+import datasoul.DatasoulMainForm;
+
 /**
  *
  * @author samuel
@@ -20,6 +22,7 @@ public class HelpFrameAbout extends javax.swing.JFrame {
     /** Creates new form HelpFrame */
     public HelpFrameAbout() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
     }
 
     /** This method is called from within the constructor to
@@ -36,7 +39,7 @@ public class HelpFrameAbout extends javax.swing.JFrame {
         helpLicense1 = new datasoul.help.HelpLicense();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Datasoul Help");
+        setTitle("Datasoul - About");
 
         jTabbedPane1.addTab("About", helpAbout1);
         jTabbedPane1.addTab("License Agreement", helpLicense1);
@@ -54,7 +57,7 @@ public class HelpFrameAbout extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 475, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

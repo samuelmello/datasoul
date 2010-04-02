@@ -12,6 +12,7 @@
 package datasoul.serviceitems.imagelist;
 
 import datasoul.util.ObjectManager;
+import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
@@ -59,6 +60,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Edit Image List");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -88,6 +90,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnAddImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
         btnAddImages.setText("Add");
         btnAddImages.setFocusPainted(false);
+        btnAddImages.setFocusable(false);
         btnAddImages.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddImagesActionPerformed(evt);
@@ -98,6 +101,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.setFocusPainted(false);
+        btnDelete.setFocusable(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -113,11 +117,11 @@ public class ImageListEditorForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                    .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 411, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)))
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,15 +171,20 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         });
         fc.setMultiSelectionEnabled(true);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            File selected[] = fc.getSelectedFiles();
-            for (int i=0; i < selected.length; i++){
-                try {
-                    edititem.addImage(selected[i]);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
+            try{
+                setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                for (File f : fc.getSelectedFiles()){
+                    try {
+                        edititem.addImage(f);
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
                 }
+            }finally{
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
         }
+
 
     }//GEN-LAST:event_btnAddImagesActionPerformed
 

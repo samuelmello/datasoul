@@ -48,7 +48,7 @@
               <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -79,7 +79,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtStorageLoc" pref="362" max="32767" attributes="0"/>
+                          <Component id="txtStorageLoc" pref="363" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -147,7 +147,7 @@
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Display Configuration"/>
+            <TitledBorder title="Output Configuration"/>
           </Border>
         </Property>
       </Properties>
@@ -175,8 +175,8 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="clockMode" pref="430" max="32767" attributes="3"/>
-                                      <Component id="cbQualityMain" alignment="0" pref="430" max="32767" attributes="3"/>
+                                      <Component id="clockMode" pref="431" max="32767" attributes="3"/>
+                                      <Component id="cbQualityMain" alignment="0" pref="431" max="32767" attributes="3"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -233,7 +233,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbMonitorOutput">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Enable Stage Display"/>
+            <Property name="text" type="java.lang.String" value="Enable Stage Output"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -270,7 +270,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbDetectMonitors">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Automatically Detect Displays"/>
+            <Property name="text" type="java.lang.String" value="Automatically Detect Outputs"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbDetectMonitorsActionPerformed"/>
@@ -327,12 +327,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Main Display"/>
+                <Property name="text" type="java.lang.String" value="Main Output"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel29">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Stage Display"/>
+                <Property name="text" type="java.lang.String" value="Stage Output"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cbMonitorDevice">
@@ -351,7 +351,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lblMonitorDisabled">
           <Properties>
-            <Property name="text" type="java.lang.String" value="(You need at least 2 displays to enable Stage Display)"/>
+            <Property name="text" type="java.lang.String" value="(You need at least 2 displays to enable Stage Output)"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -391,15 +391,14 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="cbOnlineUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextArea1" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -411,8 +410,6 @@
                   <Component id="cbOnlineUpdate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextArea1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -430,7 +427,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/datasoul/icons/v2/web-browser.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Allow these actions to access internet"/>
+            <Property name="text" type="java.lang.String" value="Allow these functions to access internet"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbOnlineUpdate">
@@ -440,22 +437,15 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="jCheckBox1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jCheckBox1"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jCheckBox2"/>
+            <Property name="text" type="java.lang.String" value="Send anonymous usage statistics"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextArea" name="jTextArea1">
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
-              <FontInfo relative="true">
-                <Font bold="true" component="jTextArea1" property="font" relativeSize="true" size="0"/>
-              </FontInfo>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="SansSerif" size="13" style="1"/>
             </Property>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="If you live in a country where christians are persecuted and do not wish to risk detection you should not use any of these functions."/>

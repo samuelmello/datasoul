@@ -23,6 +23,8 @@
 
 package datasoul.config;
 
+import datasoul.serviceitems.song.AllSongsListTable;
+
 /**
  *
  * @author samuelm
@@ -180,8 +182,15 @@ public class DisplayControlConfig extends AbstractConfig {
     }
 
     public void setDefaultTemplateSong(String defaultTemplateSong) {
+        boolean needUpdate = false;
+        if (this.defaultTemplateSong != null && !this.defaultTemplateSong.equals(defaultTemplateSong)){
+            needUpdate = true;
+        }
         this.defaultTemplateSong = defaultTemplateSong;
         save();
+        if (needUpdate){
+            AllSongsListTable.getInstance().updateDefaultTemplate();
+        }
     }
 
     public String getDefaultTemplateImage() {

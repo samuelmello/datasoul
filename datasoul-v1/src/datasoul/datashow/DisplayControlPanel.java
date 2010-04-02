@@ -211,13 +211,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             .addGroup(pnlSpeedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(196, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
             .addGroup(pnlSpeedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16)
-                .addContainerGap(113, Short.MAX_VALUE))
-            .addComponent(jSliderSlideChangeSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
-            .addComponent(jSliderShowHideSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addComponent(jSliderSlideChangeSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+            .addComponent(jSliderShowHideSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
         );
         pnlSpeedLayout.setVerticalGroup(
             pnlSpeedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,6 +242,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 3, 0));
 
         btnMonitorBlack.setText(bundle.getString("Black")); // NOI18N
+        btnMonitorBlack.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMonitorBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorBlackActionPerformed(evt);
@@ -251,6 +252,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         btnMonitorHide.setSelected(true);
         btnMonitorHide.setText(bundle.getString("Hide")); // NOI18N
+        btnMonitorHide.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMonitorHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorHideActionPerformed(evt);
@@ -259,6 +261,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel1.add(btnMonitorHide);
 
         btnMonitorShow.setText(bundle.getString("Show")); // NOI18N
+        btnMonitorShow.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMonitorShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMonitorShowActionPerformed(evt);
@@ -282,13 +285,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(templateMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                .addComponent(templateMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
             .addGroup(pnlMonitorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbMonitorFollowMain)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlMonitorLayout.setVerticalGroup(
             pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -317,6 +320,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnMainBlack.setText(bundle.getString("Black")); // NOI18N
         btnMainBlack.setToolTipText(bundle.getString("Makes_the_main_output_black_(F12)")); // NOI18N
         btnMainBlack.setFocusPainted(false);
+        btnMainBlack.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMainBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMainBlackActionPerformed(evt);
@@ -329,6 +333,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnHide.setText(bundle.getString("Hide")); // NOI18N
         btnHide.setToolTipText(bundle.getString("Hide_the_main_output_content_(F9)")); // NOI18N
         btnHide.setFocusPainted(false);
+        btnHide.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHideActionPerformed(evt);
@@ -340,6 +345,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         btnShow.setText(bundle.getString("Show")); // NOI18N
         btnShow.setToolTipText(bundle.getString("Show_the_main_output_content_(F10)")); // NOI18N
         btnShow.setFocusPainted(false);
+        btnShow.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowActionPerformed(evt);
@@ -363,11 +369,11 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addComponent(jMonitorCb)
-                    .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSpeedCb)
-                    .addComponent(pnlSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pnlSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

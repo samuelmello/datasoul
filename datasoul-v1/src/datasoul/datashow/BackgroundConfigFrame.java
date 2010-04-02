@@ -54,6 +54,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         if (!ConfigObj.getActiveInstance().isGstreamerActive()){
             rbVideo.setEnabled(false);
             lblVideo.setEnabled(false);
+            rbLive.setEnabled(false);
             btnChangeVideo.setEnabled(false);
             rbStatic.setSelected(true);
         }
@@ -108,7 +109,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             }
         });
 
-        btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
+        btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/image-x-generic.png"))); // NOI18N
         btnChangeMain.setText(bundle.getString("Image")); // NOI18N
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

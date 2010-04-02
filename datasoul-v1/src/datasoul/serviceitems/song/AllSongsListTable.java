@@ -121,5 +121,14 @@ public class AllSongsListTable extends SongListTable{
         }
         return instance;
     }
+
+    public void updateDefaultTemplate() {
+        for (int i=0; i < objectList.size(); i++){
+            Object obj = objectList.get(i);
+            if (obj instanceof Song){
+                ((Song)obj).setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateSong());
+            }
+        }
+    }
     
 }

@@ -144,7 +144,7 @@
     <Component class="javax.swing.JButton" name="btnChangeMain">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/v2/insert-image.png"/>
+          <Image iconType="3" name="/datasoul/icons/v2/image-x-generic.png"/>
         </Property>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
           <ResourceString bundle="datasoul/internationalize.properties" key="Image" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>

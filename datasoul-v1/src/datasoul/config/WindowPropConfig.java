@@ -43,7 +43,6 @@ public class WindowPropConfig extends AbstractConfig {
     private String templateSplit1;
     private String splMain;
     private String splService;
-    private String splPreview;
     private String splSongLibrary;
     private String splDisplayControl;
 
@@ -59,7 +58,6 @@ public class WindowPropConfig extends AbstractConfig {
         properties.add("TemplateSplit1");
         properties.add("SplMain");
         properties.add("SplService");
-        properties.add("SplPreview");
         properties.add("SplSongLibrary");
         properties.add("SplDisplayControl");
    }
@@ -259,23 +257,6 @@ public class WindowPropConfig extends AbstractConfig {
 
     public void setSplService(String str) {
         this.splService = str;
-        save();
-    }
-
-    public String getSplPreview() {
-        return splPreview;
-    }
-
-    public void getSplPreview(JSplitPane j){
-        if (!checkStr(splPreview)) return;
-        try{
-            j.setDividerLocation(Integer.parseInt(splPreview));
-        }catch(Exception e){
-        }
-    }
-
-    public void setSplPreview(String str) {
-        this.splPreview = str;
         save();
     }
 
