@@ -10,17 +10,19 @@ import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
+import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
 import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.SplashScreen;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 import javax.swing.UIManager;
 
 /**
@@ -135,6 +137,21 @@ public class StartupManager {
 
     }
 
+    public void updateSplash(String s){
+        SplashScreen splash = SplashScreen.getSplashScreen();
+        if (splash != null){
+
+            Graphics g = splash.createGraphics();
+            g.setColor(Color.WHITE);
+            g.fillRect(110, 105, 500, 500);
+            g.setColor(Color.BLACK);
+            g.drawString(s, 120, 120);
+            g.dispose();
+
+            splash.update();
+
+        }
+    }
 
     void run() {
 
@@ -152,6 +169,8 @@ public class StartupManager {
             System.setProperty("sun.java2d.d3d","false");
         }
 
+        updateSplash("Initializing...");
+
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
             //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
@@ -163,6 +182,11 @@ public class StartupManager {
 
         ContentManager.getInstance();
         checkStorageLocation();
+
+        updateSplash("Loading Songs...");
+        AllSongsListTable.getInstance();
+
+        updateSplash("Creating User Interface...");
 
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         mainForm.setVisible(true);
