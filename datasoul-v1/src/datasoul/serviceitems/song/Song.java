@@ -43,7 +43,7 @@ import javax.swing.ImageIcon;
 public class Song extends TextServiceItem implements Cloneable {
 
     private static final String SINGLE_CHORD_REGEX = "[A-G]{1}([a-z0-9#+-]*\\(*\\)*)*";
-    private static final String CHORDS_REGEX = "^=?[ ]*("+SINGLE_CHORD_REGEX+"(/"+SINGLE_CHORD_REGEX+")?[ ]*)+$";
+    private static final String CHORDS_REGEX = "^=?\\s*("+SINGLE_CHORD_REGEX+"(/"+SINGLE_CHORD_REGEX+")?\\s*)+$";
 
 
     public static final Pattern CHORDS_REGEX_PATTERN = Pattern.compile(CHORDS_REGEX);
