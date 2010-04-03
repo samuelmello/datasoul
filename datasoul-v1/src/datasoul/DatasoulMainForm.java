@@ -1263,12 +1263,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             FileInputStream fis;
             try {
+                ObjectManager.getInstance().setBusyCursor();
                 fis = new FileInputStream(fc.getSelectedFile());
                 AttachmentServiceItem asi = new AttachmentServiceItem(fc.getSelectedFile().getName(), fis);
                 ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
                     "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+            } finally {
+                ObjectManager.getInstance().setDefaultCursor();
             }
         }
 
@@ -1281,12 +1284,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             FileInputStream fis;
             try {
+                ObjectManager.getInstance().setBusyCursor();
                 fis = new FileInputStream(fc.getSelectedFile());
                 VideoServiceItem vsi = new VideoServiceItem(fc.getSelectedFile().getName(), fis);
                 ServiceListTable.getActiveInstance().addItem(vsi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
                     "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+            } finally {
+                ObjectManager.getInstance().setDefaultCursor();
             }
         }
 
