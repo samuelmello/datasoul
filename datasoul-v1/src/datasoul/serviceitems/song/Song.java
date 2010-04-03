@@ -242,7 +242,7 @@ public class Song extends TextServiceItem implements Cloneable {
                 }
 
                 /* Split in tokens */
-                for (String tok : line.split(" ")){
+                for (String tok : line.split("\\s")){
                     if (tok.length() > 0 && !usedChords.contains(tok) && !tok.equals("=")){
                         usedChords.add(tok);
                     }
