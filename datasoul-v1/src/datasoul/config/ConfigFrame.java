@@ -85,7 +85,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cbOnlineUpdate = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cbOnlineStats = new javax.swing.JCheckBox();
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -180,8 +180,8 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cbMonitorDevice, 0, 442, Short.MAX_VALUE)
-                    .addComponent(cbMainDevice, 0, 442, Short.MAX_VALUE))
+                    .addComponent(cbMonitorDevice, 0, 445, Short.MAX_VALUE)
+                    .addComponent(cbMainDevice, 0, 445, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlMonitorsLayout.setVerticalGroup(
@@ -268,13 +268,13 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
         jLabel2.setText("Allow these functions to access internet");
 
-        cbOnlineUpdate.setText("Notify when a new version of Datasoul is available");
+        cbOnlineUpdate.setText("Notify me when a new version of Datasoul is available");
 
-        jCheckBox1.setText("Send anonymous usage statistics");
+        cbOnlineStats.setText("Send anonymous usage statistics");
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13));
         jTextArea1.setLineWrap(true);
         jTextArea1.setText("If you live in a country where christians are persecuted and do not wish to risk detection you should not use any of these functions.");
         jTextArea1.setWrapStyleWord(true);
@@ -293,7 +293,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(cbOnlineUpdate)
-                    .addComponent(jCheckBox1)
+                    .addComponent(cbOnlineStats)
                     .addComponent(jTextArea1))
                 .addContainerGap())
         );
@@ -304,7 +304,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbOnlineUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(cbOnlineStats)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -334,7 +334,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDiscard)
                     .addComponent(btnSave))
@@ -400,6 +400,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         registerComponent(cbMonitorDevice, "MonitorOutputDevice");
 
         registerComponent(cbOnlineUpdate, "OnlineCheckUpdate");
+        registerComponent(cbOnlineStats, "OnlineUsageStats");
 
     }
 
@@ -486,10 +487,10 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox cbMainDevice;
     private javax.swing.JComboBox cbMonitorDevice;
     private javax.swing.JCheckBox cbMonitorOutput;
+    private javax.swing.JCheckBox cbOnlineStats;
     private javax.swing.JCheckBox cbOnlineUpdate;
     private javax.swing.JComboBox cbQualityMain;
     private javax.swing.JComboBox clockMode;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

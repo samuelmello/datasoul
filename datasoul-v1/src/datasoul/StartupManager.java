@@ -6,6 +6,7 @@
 package datasoul;
 
 import datasoul.config.ConfigObj;
+import datasoul.config.UsageStatsConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
@@ -14,6 +15,7 @@ import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
+import datasoul.util.OnlineUsageStats;
 import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -148,7 +150,11 @@ public class StartupManager {
             g.drawString(s, 120, 120);
             g.dispose();
 
-            splash.update();
+            try{
+                splash.update();
+            }catch(IllegalStateException e){
+                // ignore
+            }
 
         }
     }
@@ -182,6 +188,12 @@ public class StartupManager {
 
         ContentManager.getInstance();
         checkStorageLocation();
+
+        // Check for first time run
+        if (UsageStatsConfig.getInstance().getID() == null || UsageStatsConfig.getInstance().getID().length() == 0){
+            UsageStatsGrantDialog dialog = new UsageStatsGrantDialog(new javax.swing.JFrame(), true);
+            dialog.setVisible(true);
+        }
 
         updateSplash("Loading Songs...");
         AllSongsListTable.getInstance();
@@ -228,6 +240,13 @@ public class StartupManager {
             OnlineUpdateCheck ouc = new OnlineUpdateCheck();
             ouc.start();
         }
+
+        // Send anonymous usage data
+        if (ConfigObj.getActiveInstance().getOnlineUsageStatsBool()){
+            OnlineUsageStats ous = new OnlineUsageStats();
+            ous.start();
+        }
+
 
     }
 

@@ -5,14 +5,10 @@
 
 package datasoul.util;
 
-import java.io.IOException;
-import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.apache.commons.httpclient.params.HttpMethodParams;
 
 /**
  *
@@ -27,11 +23,6 @@ public class OnlineUpdateCheck extends Thread {
         
         HttpClient client = new HttpClient();
         HttpMethod method = new GetMethod("http://datasoul.sourceforge.net/onlineupdatecheck.txt");
-        /*
-        method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
-                new DefaultHttpMethodRetryHandler(3, false));
-         * 
-         */
         try {
             // Execute the method.
             int statusCode = client.executeMethod(method);
@@ -74,11 +65,6 @@ public class OnlineUpdateCheck extends Thread {
             method.releaseConnection();
         }
 
-    }
-
-    public static void main(String args[]) {
-        OnlineUpdateCheck ouc = new OnlineUpdateCheck();
-        ouc.run();
     }
 
 

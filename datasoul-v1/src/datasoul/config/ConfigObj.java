@@ -47,6 +47,7 @@ public class ConfigObj extends AbstractConfig {
     private boolean isGstreamerActive;
 
     private boolean onlineCheckUpdate;
+    private boolean onlineUsageStats;
 
     private int qualityMain;
     
@@ -104,6 +105,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("MainOutputDevice");
         properties.add("MonitorOutputDevice");
         properties.add("OnlineCheckUpdate");
+        properties.add("OnlineUsageStats");
     }
     
     public ArrayList<String> getProperties(){
@@ -394,6 +396,26 @@ public class ConfigObj extends AbstractConfig {
 
     public boolean getOnlineCheckUpdateBool(){
         return onlineCheckUpdate;
+    }
+
+    public String getOnlineUsageStats(){
+        if (onlineUsageStats){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public void setOnlineUsageStats(String s){
+        if (s.equals("0")){
+            onlineUsageStats = false;
+        }else{
+            onlineUsageStats = true;
+        }
+    }
+
+    public boolean getOnlineUsageStatsBool(){
+        return onlineUsageStats;
     }
 
 

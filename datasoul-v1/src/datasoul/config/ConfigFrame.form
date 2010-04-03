@@ -48,7 +48,7 @@
               <Component id="jPanel10" min="-2" max="-2" attributes="1"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -289,8 +289,8 @@
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cbMonitorDevice" pref="442" max="32767" attributes="2"/>
-                          <Component id="cbMainDevice" alignment="1" pref="442" max="32767" attributes="2"/>
+                          <Component id="cbMonitorDevice" pref="445" max="32767" attributes="2"/>
+                          <Component id="cbMainDevice" alignment="1" pref="445" max="32767" attributes="2"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -395,7 +395,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="cbOnlineUpdate" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="cbOnlineStats" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextArea1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -409,7 +409,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cbOnlineUpdate" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbOnlineStats" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jTextArea1" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -432,10 +432,10 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbOnlineUpdate">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Notify when a new version of Datasoul is available"/>
+            <Property name="text" type="java.lang.String" value="Notify me when a new version of Datasoul is available"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="cbOnlineStats">
           <Properties>
             <Property name="text" type="java.lang.String" value="Send anonymous usage statistics"/>
           </Properties>

@@ -51,6 +51,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -146,6 +147,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     public static void setDatasoulIcon(JFrame frame){
         frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
+    }
+
+    public static void setDatasoulIcon(JDialog dialog){
+        dialog.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
     private void previewItem(){

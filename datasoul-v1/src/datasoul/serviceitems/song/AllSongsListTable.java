@@ -102,8 +102,7 @@ public class AllSongsListTable extends SongListTable{
 
         // If already exists, remove old entry
         ArrayList<Song> toRemove = new ArrayList<Song>();
-        for (int i=0; i < objectList.size(); i++){
-            Object obj = objectList.get(i);
+        for (Object obj : objectList){
             if (obj instanceof Song){
                 if ( ((Song)obj).getTitle().equals(song.getTitle()) ){
                     toRemove.add((Song)obj);
@@ -123,12 +122,33 @@ public class AllSongsListTable extends SongListTable{
     }
 
     public void updateDefaultTemplate() {
-        for (int i=0; i < objectList.size(); i++){
-            Object obj = objectList.get(i);
+        for (Object obj : objectList){
             if (obj instanceof Song){
                 ((Song)obj).setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateSong());
             }
         }
+    }
+
+    public int getSongCount(){
+        return objectList.size();
+    }
+
+    public int getSongsWithChords(){
+
+        int i = 0;
+
+        for (Object obj : objectList){
+            if (obj instanceof Song){
+                Song s = ((Song)obj);
+                if (s.getChordsComplete().trim().length() > 0 ||
+                        s.getChordsSimplified().trim().length() > 0){
+                    i++;
+                }
+            }
+        }
+
+        return i;
+
     }
     
 }
