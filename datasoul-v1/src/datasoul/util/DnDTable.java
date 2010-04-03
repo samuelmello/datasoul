@@ -167,8 +167,12 @@ public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener,
         if(tm instanceof SongListTable){
             column = ((SongListTable)tm).getSongColumn();
         }
-        
-        SerializableObject obj = (SerializableObject)((ListTable)this.getModel()).getValueAt(this.getSelectedRows()[0],column);        
+
+        int idx = this.getSelectedRow();
+        if (this.getRowSorter() != null){
+            idx = this.getRowSorter().convertRowIndexToModel(idx);
+        }
+        SerializableObject obj = (SerializableObject)((ListTable)this.getModel()).getValueAt(idx,column);
 
         dge.startDrag(DragSource.DefaultCopyNoDrop, (Transferable)obj, this);
     }

@@ -25,9 +25,13 @@ import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
+import javax.swing.RowFilter.Entry;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableColumn;
 import javax.swing.SwingUtilities;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -37,7 +41,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private AllSongsListTable allSongsListTable;
     private int songColumn;
-    
+    private TableRowSorter<TableModel> sorter;
     /**
      * Creates new form SongsSearchPanel
      */
@@ -59,6 +63,10 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         col1.setMinWidth(30);
 
         tableSongList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        sorter = new TableRowSorter<TableModel>(allSongsListTable);
+        tableSongList.setRowSorter(sorter);
+
 
     }
     
@@ -250,52 +258,46 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private void showItem(){
 
         if (tableSongList.getSelectedRow() != -1){
+            int idx = sorter.convertRowIndexToModel(tableSongList.getSelectedRow());
             if (ObjectManager.getInstance().getDatasoulMainForm() != null){
-                ObjectManager.getInstance().getDatasoulMainForm().viewSong((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+                ObjectManager.getInstance().getDatasoulMainForm().viewSong((Song)tableSongList.getModel().getValueAt(idx,songColumn));
             }
         }
 
     }    
     
     private void fieldStringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldStringKeyPressed
-        
-        SongListTable foundSongTable = new SongListTable();
-        
-        String searchStr = "";
-        if (fieldString.getText().length() > 0){
-            if(String.valueOf(evt.getKeyChar()).equals("\b")){
-                searchStr = fieldString.getText().substring(0,fieldString.getText().length()-1);
-            }else{
-                searchStr = fieldString.getText()+evt.getKeyChar();
-            }
-            searchStr = searchStr.toUpperCase().trim();
-        }
-        
-        for(int i=0; i<allSongsListTable.getRowCount();i++){
-            try {
-                if(fieldString.getText().length()==0){
-                    foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
+
+        SwingUtilities.invokeLater( new Runnable(){
+
+            public void run(){
+                final String searchStr = fieldString.getText().toUpperCase();
+                if (searchStr.length() > 0){
+                    RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
+
+                        public boolean include(Entry entry) {
+
+                            String item = ((Song) entry.getValue(songColumn)).getSearchText();
+                            if (item.contains(searchStr)) {
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    };
+                    sorter.setRowFilter(filter);
                 }else{
-
-                    if(((Song)allSongsListTable.getValueAt(i,songColumn)).getSearchText().contains(searchStr)){
-                        foundSongTable.addItem(allSongsListTable.getValueAt(i,songColumn));
-                    }
-                                
+                    sorter.setRowFilter(null);
                 }
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_searching.Error:_")+ex.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);    
-                ex.printStackTrace();
+
             }
-        }
-        foundSongTable.addTableModelListener(this);        
 
-        tableSongList.setModel(foundSongTable);
-
-        TableColumn col1 = tableSongList.getColumnModel().getColumn(0);
-        col1.setMaxWidth(30);
-        col1.setMinWidth(30);
+        });
        
     }//GEN-LAST:event_fieldStringKeyPressed
+
+
+
 
     private void fieldStringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fieldStringActionPerformed
         
@@ -311,8 +313,9 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if (tableSongList.getSelectedRow() >= 0){
+            int idx = sorter.convertRowIndexToModel(tableSongList.getSelectedRow());
 
-            Song song = (Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn);
+            Song song = (Song)tableSongList.getModel().getValueAt(idx,songColumn);
             String filePath = song.getFilePath();
 
             File file = new File(filePath);
@@ -327,13 +330,15 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         if (tableSongList.getSelectedRow() >= 0){
-            ((Song)tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn)).edit();
+            int idx = sorter.convertRowIndexToModel(tableSongList.getSelectedRow());
+            ((Song)tableSongList.getModel().getValueAt(idx,songColumn)).edit();
         }
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         if (tableSongList.getSelectedRow() >= 0){
-            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(tableSongList.getSelectedRow(),songColumn));
+            int idx = sorter.convertRowIndexToModel(tableSongList.getSelectedRow());
+            ServiceListTable.getActiveInstance().addItem(tableSongList.getModel().getValueAt(idx,songColumn));
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
