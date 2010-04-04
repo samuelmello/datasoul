@@ -12,8 +12,6 @@ import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.TemplateManager;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
@@ -57,15 +55,27 @@ public class OnlineUsageStats extends Thread {
         sb.append("&");
 
         sb.append("osname=");
-        sb.append(System.getProperty("os.name"));
+        try {
+            sb.append(URLEncoder.encode(System.getProperty("os.name"), "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            sb.append("unknown");
+        }
         sb.append("&");
 
         sb.append("osversion=");
-        sb.append(System.getProperty("os.version"));
+        try {
+            sb.append(URLEncoder.encode(System.getProperty("os.version"), "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            sb.append("unknown");
+        }
         sb.append("&");
 
         sb.append("javaversion=");
-        sb.append(System.getProperty("java.version"));
+        try {
+            sb.append(URLEncoder.encode(System.getProperty("java.version"), "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            sb.append("unknown");
+        }
         sb.append("&");
 
         sb.append("dsversion=");
@@ -85,13 +95,7 @@ public class OnlineUsageStats extends Thread {
 
         HttpClient client = new HttpClient();
         
-        HttpMethod method;
-        try {
-            method = new GetMethod(URLEncoder.encode(sb.toString(), "UTF-8"));
-        } catch (UnsupportedEncodingException ex) {
-            ex.printStackTrace();
-            return;
-        }
+        HttpMethod method = new GetMethod(sb.toString());
         
         try {
             // Execute the method.
