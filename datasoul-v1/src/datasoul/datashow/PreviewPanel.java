@@ -24,7 +24,6 @@ import datasoul.serviceitems.ServiceItem;
 import datasoul.config.DisplayControlConfig;
 import datasoul.util.ObjectManager;
 import datasoul.render.ContentManager;
-import datasoul.serviceitems.song.Song;
 import java.awt.Dimension;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
@@ -61,6 +60,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
     public void previewItem(ServiceItem serviceItem){
         serviceItemTable1.setServiceItem(serviceItem, 0);
+        ContentManager.getInstance().setTemplatePreview(serviceItem.getTemplate());
         valueChanged(null);
 
         if (!cbAutoLive.isSelected()){
