@@ -24,6 +24,7 @@
 package datasoul.templates;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
 import datasoul.util.AttributedObject;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipReader;
@@ -394,7 +395,7 @@ public class DisplayTemplate extends AttributedObject {
 
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
-        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
+        File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if (fc.showSaveDialog(owner) == JFileChooser.APPROVE_OPTION) {
@@ -414,8 +415,8 @@ public class DisplayTemplate extends AttributedObject {
             saveAs(owner);
         }else{
 
-            String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-            String filename = path + System.getProperty("file.separator") + this.getName()+".templatez";
+            String path = ConfigObj.getActiveInstance().getStoragePathTemplates();
+            String filename = path + File.separator + this.getName()+".templatez";
 
             ZipWriter zip = new ZipWriter(filename, DatasoulMainForm.FILE_FORMAT_VERSION);
             Node node = this.writeObject(zip);

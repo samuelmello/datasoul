@@ -43,7 +43,7 @@ public class AllSongsListTable extends SongListTable{
     
     /** Creates a new instance of AllSongsListTable */
     private AllSongsListTable() {
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "songs";
+        String path = ConfigObj.getActiveInstance().getStoragePathSongs();
         
         File file = new File(path);
         String[] files = file.list();
@@ -64,8 +64,8 @@ public class AllSongsListTable extends SongListTable{
     }
     
     public void refreshSong(String name){
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "songs";
-        File songFile = new File(path + System.getProperty("file.separator") + name);
+        String path = ConfigObj.getActiveInstance().getStoragePathSongs();
+        File songFile = new File(path + File.separator + name);
 
         Document dom=null;
         Node node = null;

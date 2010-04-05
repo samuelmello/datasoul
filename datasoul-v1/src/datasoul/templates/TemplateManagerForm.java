@@ -12,6 +12,7 @@
 package datasoul.templates;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.OutputDevice;
 import datasoul.util.ObjectManager;
@@ -414,7 +415,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         JFileChooser fc = new JFileChooser();
         fc.addChoosableFileFilter(new FileNameExtensionFilter("Datasoul 1.x Templates (*.template)", "template"));
         fc.addChoosableFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
-        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates");
+        File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
         fc.setMultiSelectionEnabled(true);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));

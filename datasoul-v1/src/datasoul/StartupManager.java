@@ -43,31 +43,25 @@ public class StartupManager {
 
     public static void checkStorageLocation(){
         String stgloc = ConfigObj.getActiveInstance().getStorageLoc();
-        if (stgloc == null || stgloc.trim().equals("")){
-            stgloc = System.getProperty("user.home")+System.getProperty("file.separator")+".datasoul"+System.getProperty("file.separator")+"data";
-            ConfigObj.getActiveInstance().setStorageLoc(stgloc);
-            ConfigObj.getActiveInstance().save();
-        }
-        System.setProperty("datasoul.stgloc", stgloc);
 
         File stglocdir  = new File(stgloc);
         if (!stglocdir.exists()){
             stglocdir.mkdirs();
         }
 
-        File templates  = new File(stgloc+System.getProperty("file.separator")+"templates");
+        File templates  = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         if (!templates.exists()){
             templates.mkdirs();
             copySampleTemplates(templates.getAbsolutePath());
         }
 
-        File songs  = new File(stgloc+System.getProperty("file.separator")+"songs");
+        File songs  = new File(ConfigObj.getActiveInstance().getStoragePathSongs());
         if (!songs.exists()){
             songs.mkdirs();
             copySampleSongs(songs.getAbsolutePath());
         }
 
-        File serviceslist  = new File(stgloc+System.getProperty("file.separator")+"servicelists");
+        File serviceslist  = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
         if (!serviceslist.exists()){
             serviceslist.mkdirs();
             copySampleServices(serviceslist.getAbsolutePath());
@@ -100,7 +94,7 @@ public class StartupManager {
 
         for (String f: files){
             try{
-                copyFile("samples/"+f, dir+System.getProperty("file.separator")+f);
+                copyFile("samples/"+f, dir + File.separator + f);
             }catch(IOException e){
                 e.printStackTrace();
             }
@@ -117,7 +111,7 @@ public class StartupManager {
 
         for (String f: files){
             try{
-                copyFile("samples/"+f, dir+System.getProperty("file.separator")+f);
+                copyFile("samples/"+f, dir + File.separator + f);
             }catch(IOException e){
                 e.printStackTrace();
             }
@@ -131,7 +125,7 @@ public class StartupManager {
 
         for (String f: files){
             try{
-                copyFile("samples/"+f, dir+System.getProperty("file.separator")+f);
+                copyFile("samples/"+f, dir + File.separator + f);
             }catch(IOException e){
                 e.printStackTrace();
             }

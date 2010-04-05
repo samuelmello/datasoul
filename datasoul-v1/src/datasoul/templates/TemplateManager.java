@@ -123,7 +123,7 @@ public class TemplateManager implements TableModel {
     private void refreshAvailableTemplates(){
         
         availableTemplates.clear();
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
+        String path = ConfigObj.getActiveInstance().getStoragePathTemplates();
         
         File file = new File(path);
         String[] files = file.list();

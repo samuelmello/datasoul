@@ -26,6 +26,7 @@ package datasoul.config;
 import datasoul.render.OutputDevice;
 import java.util.ArrayList;
 import datasoul.util.ObjectManager;
+import java.io.File;
 
 /**
  *
@@ -245,6 +246,10 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public String getStorageLoc(){
+        if (storageLoc == null || storageLoc.trim().equals("")){
+            storageLoc = System.getProperty("user.home")+File.separator+".datasoul"+File.separator+"data";
+            ConfigObj.getActiveInstance().save();
+        }
         return storageLoc;
     }
     
@@ -418,5 +423,16 @@ public class ConfigObj extends AbstractConfig {
         return onlineUsageStats;
     }
 
+    public String getStoragePathTemplates(){
+        return getStorageLoc() + File.separator + "templates";
+    }
+
+    public String getStoragePathSongs(){
+        return getStorageLoc() + File.separator + "songs";
+    }
+    
+    public String getStoragePathServiceLists(){
+        return getStorageLoc() + File.separator + "servicelists";
+    }
 
 }

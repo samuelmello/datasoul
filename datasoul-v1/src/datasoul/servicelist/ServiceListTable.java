@@ -26,6 +26,7 @@ import datasoul.serviceitems.ServiceItem;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.VideoServiceItem;
@@ -415,7 +416,7 @@ public class ServiceListTable extends ListTable {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz", "servicelist") );
-        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
+        File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
         fc.setCurrentDirectory(dir);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
@@ -469,7 +470,7 @@ public class ServiceListTable extends ListTable {
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
         fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul 1.x Service Lists", "servicelist") );
-        File dir = new File(System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "servicelists");
+        File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
         if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
