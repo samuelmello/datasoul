@@ -21,17 +21,13 @@
 package datasoul.serviceitems.song;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
 import datasoul.config.WindowPropConfig;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.util.ShowDialog;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -378,8 +374,7 @@ public class SongEditorForm extends javax.swing.JFrame {
             String filename = this.fieldName.getText();
             if(!filename.contains(".song"))
                 filename = filename + ".song";
-            String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") +
-                    "songs"+ System.getProperty("file.separator")+filename;
+            String path = ConfigObj.getActiveInstance().getStoragePathSongs() + File.separator +filename;
 
             if(!path.equals(song.getFilePath())){
                 File file = new File(song.getFilePath());

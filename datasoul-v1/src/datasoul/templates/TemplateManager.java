@@ -150,8 +150,8 @@ public class TemplateManager implements TableModel {
     
     public void deleteTemplate(String templateName) throws Exception {
 
-        String path = System.getProperty("datasoul.stgloc") + System.getProperty("file.separator") + "templates";
-        File f = new File(path + System.getProperty("file.separator") + templateName + ".templatez");
+        String path = ConfigObj.getActiveInstance().getStoragePathTemplates();
+        File f = new File(path + File.separator + templateName + ".templatez");
         f.delete();
         DisplayTemplateMetadata todelete = null;
         for (DisplayTemplateMetadata meta : availableTemplates){
