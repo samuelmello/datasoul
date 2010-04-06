@@ -30,8 +30,11 @@ import datasoul.render.gstreamer.commands.GstDisplayCmdSetLiveBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetStaticBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 
 /**
@@ -89,7 +92,25 @@ public class BackgroundConfig extends AbstractConfig {
     }
 
     public void setMainBackgroundImgStr(String strImage){
-        // Keep for backward compatibility
+
+        // Convert to new format
+        
+        String str="";
+        int intAux=0;
+        byte[] bytes = new byte[strImage.length()/2];
+        for(int i=0; i< strImage.length()-1;i=i+2){
+            str = strImage.substring(i,i+2);
+            intAux = Integer.parseInt(str,16);
+            bytes[i/2]=(byte)intAux;
+        }
+        ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
+        try {
+            image = ImageIO.read(bais);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        save();
     }
     
     public void setMonitorBackgroundImgStr(String strImage){
