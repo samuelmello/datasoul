@@ -147,6 +147,21 @@ public class BackgroundConfig extends AbstractConfig {
 
     public void setMode(int m){
         mode = m;
+        refreshMode();
+    }
+
+    public String getVideoFile(){
+        return videofile;
+    }
+
+    public void setVideoFile(String s){
+        videofile = s;
+        if (mode == MODE_VIDEO){
+            GstManagerServer.getInstance().sendCommand( new GstDisplayCmdSetVideoBG(getVideoFile()) );
+        }
+    }
+
+    public void refreshMode() {
 
         if (GstManagerServer.getInstance().isRunning()){
 
@@ -173,17 +188,6 @@ public class BackgroundConfig extends AbstractConfig {
             ContentManager.getInstance().slideChange(-1);
         }
 
-    }
-
-    public String getVideoFile(){
-        return videofile;
-    }
-
-    public void setVideoFile(String s){
-        videofile = s;
-        if (mode == MODE_VIDEO){
-            GstManagerServer.getInstance().sendCommand( new GstDisplayCmdSetVideoBG(getVideoFile()) );
-        }
     }
 
 }

@@ -48,6 +48,9 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_VIDEO){
             rbVideo.setSelected(true);
         }
+        if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_LIVE){
+            rbLive.setSelected(true);
+        }
 
         lblVideo.setText(BackgroundConfig.getInstance().getVideoFile());
 

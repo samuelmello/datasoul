@@ -5,6 +5,7 @@
 
 package datasoul;
 
+import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.render.ContentManager;
@@ -220,8 +221,12 @@ public class StartupManager {
 
         Toolkit.getDefaultToolkit().addAWTEventListener( DatasoulKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
 
+        // Init displays
         ContentManager.getInstance().initMainDisplay();
         ContentManager.getInstance().initMonitorDisplay();
+
+        // Ensure background properly loaded
+        BackgroundConfig.getInstance().refreshMode();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
