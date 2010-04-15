@@ -67,8 +67,6 @@ public abstract class AbstractConfig extends SerializableObject {
     
     protected void load(String fileName){
         
-        boolean detectMonitor = false;
-
         /* Find the configuration file. If its not in ~/.datasoul/config, copy it there */
         String path = getConfigPath() + fileName;
         File configFile = new File(path);
@@ -90,7 +88,6 @@ public abstract class AbstractConfig extends SerializableObject {
                 }
             }else{
                 // Get it from jar
-                detectMonitor = true;
                 InputStream is = AbstractConfig.class.getResourceAsStream("defaults/"+fileName);
                 try {
                     writeFileFromStream(configFile, is);
@@ -129,35 +126,6 @@ public abstract class AbstractConfig extends SerializableObject {
             e.printStackTrace();
         }
         
-        // If the file was created from default, try to detect monitors
-        if (detectMonitor && this instanceof ConfigObj){
-            
-            ConfigObj me = (ConfigObj) this;
-            
-            GraphicsDevice gd[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            
-            // if there is a 2nd monitor, use it as main output
-            if (gd.length > 1){
-                GraphicsConfiguration gc = gd[1].getDefaultConfiguration();
-                Rectangle r = gc.getBounds();
-                me.setMainOutputPositionLeft(Integer.toString((int)r.getX()));
-                me.setMainOutputPositionTop(Integer.toString((int)r.getY()));
-                me.setMainOutputSizeHeight(Integer.toString((int)r.getHeight()));
-                me.setMainOutputSizeWidth(Integer.toString((int)r.getWidth()));
-            }
-            
-            // if there is a 3rd monitor, use it as main output
-            if (gd.length > 2){
-                GraphicsConfiguration gc = gd[2].getDefaultConfiguration();
-                Rectangle r = gc.getBounds();
-                me.setMonitorOutputPositionLeft(Integer.toString((int)r.getX()));
-                me.setMonitorOutputPositionTop(Integer.toString((int)r.getY()));
-                me.setMonitorOutputSizeHeight(Integer.toString((int)r.getHeight()));
-                me.setMonitorOutputSizeWidth(Integer.toString((int)r.getWidth()));
-            }
-            
-            
-        }
     }
     
     protected String getConfigPath(){
