@@ -27,9 +27,11 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.RowFilter.Entry;
+import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableColumn;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -67,6 +69,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         sorter = new TableRowSorter<TableModel>(allSongsListTable);
         tableSongList.setRowSorter(sorter);
 
+        tableSongList.getSelectionModel().addListSelectionListener(new SongSearchPanelSelectionListener() );
 
     }
     
@@ -241,18 +244,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         if (evt.getClickCount() > 1){
             btnEditActionPerformed(null);
-        }else{
-            showItem();
         }
 
     }//GEN-LAST:event_tableSongListMouseClicked
 
     private void tableSongListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableSongListKeyPressed
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                showItem();
-            }
-        });
     }//GEN-LAST:event_tableSongListKeyPressed
 
     private void showItem(){
@@ -362,5 +358,13 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     private datasoul.util.DnDTable tableSongList;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
-    
+
+    public class SongSearchPanelSelectionListener implements ListSelectionListener {
+
+        public void valueChanged(ListSelectionEvent e) {
+            showItem();
+        }
+        
+    }
+
 }

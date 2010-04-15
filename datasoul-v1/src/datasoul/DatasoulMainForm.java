@@ -56,6 +56,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -84,8 +86,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
 
         tableServiceList.setModel( ServiceListTable.getActiveInstance() );
-
         tableServiceList.setDraggable(false);
+        tableServiceList.getSelectionModel().addListSelectionListener(new ServiceListSelectionListener());
 
         this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new TemplateCellEditor());
 
@@ -1077,11 +1079,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_txtTitleFocusLost
 
     private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
+
         if (evt.getClickCount() > 1){
-            btnEditActionPerformed(null);
-        }else{
-            previewItem();
+            int col = tableServiceList.getColumnModel().getColumnIndexAtX(evt.getX());
+            if (col == ServiceListTable.COLUMN_TITLE){
+                btnEditActionPerformed(null);
+            }
         }
+
 }//GEN-LAST:event_tableServiceListMouseClicked
 
     private void btnAddWizardbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddWizardbtnAddActionPerformed
@@ -1220,20 +1225,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_btnShowMonitorActionPerformed
 
     private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
-
-        if (evt.getKeyCode() == KeyEvent.VK_UP ||
-            evt.getKeyCode() == KeyEvent.VK_DOWN ||
-            evt.getKeyCode() == KeyEvent.VK_PAGE_UP ||
-            evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN){
-
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    previewItem();
-                }
-            });
-            
-        }
 
     }//GEN-LAST:event_tableServiceListKeyPressed
 
@@ -1525,6 +1516,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public void setInfoText(String txt){
         lblInfo.setText(txt);
         tbInfo.setVisible(true);
+    }
+
+    public class ServiceListSelectionListener implements ListSelectionListener {
+
+        public void valueChanged(ListSelectionEvent e) {
+            previewItem();
+        }
+        
     }
 
 }
