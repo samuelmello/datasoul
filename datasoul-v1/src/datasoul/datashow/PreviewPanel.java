@@ -60,7 +60,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
     public void previewItem(ServiceItem serviceItem){
         serviceItemTable1.setServiceItem(serviceItem, 0);
-        ContentManager.getInstance().setTemplatePreview(serviceItem.getTemplate());
+        serviceItem.previewItem();
         valueChanged(null);
 
         if (!cbAutoLive.isSelected()){
