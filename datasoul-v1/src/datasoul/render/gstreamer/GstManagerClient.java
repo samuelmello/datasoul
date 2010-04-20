@@ -9,6 +9,7 @@ import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.ContentDisplay;
 import datasoul.render.OutputDevice;
 import datasoul.render.gstreamer.notifications.GstNotification;
+import datasoul.render.gstreamer.notifications.GstNotificationCmdDone;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -70,6 +71,7 @@ public class GstManagerClient {
                         System.out.println(">>>>> ERROR:"+e.getLocalizedMessage());
                         e.printStackTrace( new PrintStream(System.out));
                     }
+                    sendNotification(new GstNotificationCmdDone());
                 }
             }
         } catch (Exception ex) {

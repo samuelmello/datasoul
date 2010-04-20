@@ -18,6 +18,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
 import javax.swing.SwingUtilities;
 import org.gstreamer.Element;
 import org.gstreamer.swing.VideoComponent;
@@ -38,11 +39,18 @@ public class GstDisplayFrame extends javax.swing.JFrame {
         render = new ContentDisplayRenderer() {
             @Override
             public void repaint() {
-                SwingUtilities.invokeLater(new Runnable(){
-                    public void run(){
-                        GstDisplayFrame.this.repaint();
-                    }
-                });
+                try {
+                    SwingUtilities.invokeAndWait(new Runnable() {
+
+                        public void run() {
+                            GstDisplayFrame.this.repaint();
+                        }
+                    });
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                } catch (InvocationTargetException ex) {
+                    ex.printStackTrace();
+                }
 
             }
         };
