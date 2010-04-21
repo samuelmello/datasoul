@@ -164,6 +164,9 @@ public class StartupManager {
         // Enable anti-aliasing
         System.setProperty("swing.aatext","true");
 
+        // MacOS menu
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
+
         // JVM is broken for windows Vista and 7
         // Disable Direct3D to avoid problems with Swing
         if (System.getProperty("os.name").contains("Windows")){
@@ -183,12 +186,6 @@ public class StartupManager {
 
         ContentManager.getInstance();
         checkStorageLocation();
-
-        // Check for first time run
-        if (UsageStatsConfig.getInstance().getID() == null || UsageStatsConfig.getInstance().getID().length() == 0){
-            UsageStatsGrantDialog dialog = new UsageStatsGrantDialog(new javax.swing.JFrame(), true);
-            dialog.setVisible(true);
-        }
 
         updateSplash("Loading Songs...");
         AllSongsListTable.getInstance();
@@ -227,6 +224,13 @@ public class StartupManager {
 
         // Ensure background properly loaded
         BackgroundConfig.getInstance().refreshMode();
+
+        // Check for first time run
+        if (UsageStatsConfig.getInstance().getID() == null || UsageStatsConfig.getInstance().getID().length() == 0){
+            UsageStatsGrantDialog dialog = new UsageStatsGrantDialog(new javax.swing.JFrame(), true);
+            dialog.setLocationRelativeTo(mainForm);
+            dialog.setVisible(true);
+        }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
