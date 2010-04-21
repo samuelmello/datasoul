@@ -130,10 +130,11 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         transposeToolbar.add(jLabel4);
 
         cbTranspose.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "#", "b" }));
-        cbTranspose.setMaximumSize(new java.awt.Dimension(50, 32767));
+        cbTranspose.setMaximumSize(new java.awt.Dimension(60, 32767));
         transposeToolbar.add(cbTranspose);
 
         btnTransposeUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-ascending.png"))); // NOI18N
+        btnTransposeUp.setBorderPainted(false);
         btnTransposeUp.setFocusable(false);
         btnTransposeUp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTransposeUp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -145,6 +146,7 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         transposeToolbar.add(btnTransposeUp);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/view-sort-descending.png"))); // NOI18N
+        jButton2.setBorderPainted(false);
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);

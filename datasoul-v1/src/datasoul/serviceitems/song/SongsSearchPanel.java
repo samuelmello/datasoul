@@ -156,6 +156,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
         btnAdd.setText("Add");
         btnAdd.setToolTipText("Add selected song to service");
+        btnAdd.setBorderPainted(false);
         btnAdd.setFocusable(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,11 +179,11 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             }
         });
         fieldString.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                fieldStringKeyPressed(evt);
-            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 fieldStringKeyTyped(evt);
+            }
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fieldStringKeyPressed(evt);
             }
         });
         toolBar.add(fieldString);

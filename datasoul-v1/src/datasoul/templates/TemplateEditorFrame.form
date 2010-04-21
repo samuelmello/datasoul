@@ -69,6 +69,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-save_big.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Save"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -83,6 +84,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-save-as_big.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Save As"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -99,6 +101,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/insert-text.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add Text"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -111,6 +114,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/insert-image.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add Image"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -123,6 +127,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/stock_timer.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add Timer Bar"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -137,6 +142,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-properties.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Template Properties"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -168,9 +174,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar5" alignment="0" pref="264" max="32767" attributes="0"/>
+                  <Component id="jToolBar5" alignment="0" pref="246" max="32767" attributes="0"/>
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="1" pref="264" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" alignment="1" pref="246" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -180,7 +186,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="577" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="581" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

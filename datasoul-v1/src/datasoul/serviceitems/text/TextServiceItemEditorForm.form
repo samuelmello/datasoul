@@ -29,24 +29,24 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" alignment="0" pref="708" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="737" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="684" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="697" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textSplitPanel1" alignment="0" pref="684" max="32767" attributes="0"/>
+                  <Component id="textSplitPanel1" alignment="0" pref="697" max="32767" attributes="0"/>
                   <Component id="labelTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="labelTitle1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="319" max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="bibleTextPanel1" alignment="1" pref="684" max="32767" attributes="2"/>
-                  <Component id="fieldTitle" alignment="0" pref="684" max="32767" attributes="0"/>
+                  <Component id="bibleTextPanel1" alignment="1" pref="697" max="32767" attributes="2"/>
+                  <Component id="fieldTitle" alignment="0" pref="697" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -140,6 +140,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-save_big.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Save"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>

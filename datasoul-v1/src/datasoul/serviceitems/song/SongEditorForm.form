@@ -40,10 +40,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="fieldName" pref="468" max="32767" attributes="0"/>
-                          <Component id="fieldAuthor" pref="468" max="32767" attributes="0"/>
-                          <Component id="txtCopyright" alignment="0" pref="468" max="32767" attributes="0"/>
-                          <Component id="txtSongSource" alignment="0" pref="468" max="32767" attributes="0"/>
+                          <Component id="fieldName" pref="469" max="32767" attributes="0"/>
+                          <Component id="fieldAuthor" pref="469" max="32767" attributes="0"/>
+                          <Component id="txtCopyright" alignment="0" pref="469" max="32767" attributes="0"/>
+                          <Component id="txtSongSource" alignment="0" pref="469" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -51,7 +51,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Component id="jToolBar1" alignment="0" pref="565" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="581" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -134,8 +134,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="textSplitPanel1" alignment="0" pref="529" max="32767" attributes="0"/>
-                  <Component id="jScrollPane1" alignment="0" pref="529" max="32767" attributes="0"/>
+                  <Component id="textSplitPanel1" alignment="0" pref="520" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="520" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -143,7 +143,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="textSplitPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="183" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="170" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -240,6 +240,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-save_big.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Save"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -254,6 +255,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-print.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Print"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -268,6 +270,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/x-office-document_big.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Export"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>

@@ -26,11 +26,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar2" alignment="1" pref="431" max="32767" attributes="0"/>
+          <Component id="jToolBar2" alignment="1" pref="482" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="tblImages" alignment="1" pref="411" max="32767" attributes="0"/>
+                  <Component id="tblImages" alignment="1" pref="442" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="1"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -84,6 +84,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/document-save_big.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Save"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
@@ -100,6 +101,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/insert-image.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Add"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
@@ -113,6 +115,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/edit-delete_big.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Delete"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
