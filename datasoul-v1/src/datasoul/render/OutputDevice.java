@@ -90,6 +90,7 @@ public class OutputDevice {
 
     public void closeFullScreen(JFrame frame) {
         frame.setVisible(false);
+        device.setFullScreenWindow(null);
     }
 
     public int getProportionalHeight(int width){
