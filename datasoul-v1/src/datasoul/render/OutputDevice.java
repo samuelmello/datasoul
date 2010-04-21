@@ -81,7 +81,10 @@ public class OutputDevice {
     }
 
     public void setWindowFullScreen(JFrame frame){
-        frame.setBounds(gconfig.getBounds());
+        if (device.getFullScreenWindow() == null){
+            frame.setResizable(true);
+            device.setFullScreenWindow(frame);
+        }
         frame.setVisible(true);
     }
 
