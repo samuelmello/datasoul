@@ -26,7 +26,7 @@
                   <Component id="jSpeedCb" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="pnlSpeed" alignment="0" max="32767" attributes="2"/>
                   <Component id="pnlMonitor" alignment="0" max="32767" attributes="2"/>
-                  <Component id="jPanel2" alignment="0" pref="205" max="32767" attributes="2"/>
+                  <Component id="jPanel2" alignment="0" pref="267" max="32767" attributes="2"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -68,15 +68,15 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="111" max="32767" attributes="0"/>
+                  <EmptySpace pref="143" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="50" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
-              <Component id="jSliderSlideChangeSpeed" alignment="0" pref="205" max="32767" attributes="2"/>
-              <Component id="jSliderShowHideSpeed" alignment="0" pref="205" max="32767" attributes="0"/>
+              <Component id="jSliderSlideChangeSpeed" alignment="0" pref="267" max="32767" attributes="2"/>
+              <Component id="jSliderShowHideSpeed" alignment="0" pref="267" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -99,7 +99,6 @@
             <Property name="majorTickSpacing" type="int" value="5"/>
             <Property name="maximum" type="int" value="30"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
-            <Property name="paintLabels" type="boolean" value="true"/>
             <Property name="paintTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="2"/>
           </Properties>
@@ -119,7 +118,6 @@
             <Property name="majorTickSpacing" type="int" value="5"/>
             <Property name="maximum" type="int" value="30"/>
             <Property name="minorTickSpacing" type="int" value="1"/>
-            <Property name="paintLabels" type="boolean" value="true"/>
             <Property name="paintTicks" type="boolean" value="true"/>
             <Property name="value" type="int" value="10"/>
           </Properties>
@@ -145,10 +143,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="templateMonitor" pref="137" max="32767" attributes="0"/>
+                  <Component id="templateMonitor" pref="171" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Component id="jPanel1" alignment="1" pref="205" max="32767" attributes="1"/>
+              <Component id="jPanel1" alignment="1" pref="267" max="32767" attributes="1"/>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cbMonitorFollowMain" min="-2" max="-2" attributes="0"/>

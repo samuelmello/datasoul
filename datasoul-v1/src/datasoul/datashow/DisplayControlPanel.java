@@ -55,14 +55,6 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         cbMonitorFollowMain.setSelected( DisplayControlConfig.getInstance().getMonitorFollowMainControls() );
         updateMonitorControls();
  
-        Hashtable<Integer, JLabel> labels = new Hashtable<Integer, JLabel>();
-        labels.put( 0, new JLabel("0s") );
-        labels.put( 10, new JLabel("1s") );
-        labels.put( 20, new JLabel("2s") );
-        labels.put( 30, new JLabel("3s") );
-        jSliderShowHideSpeed.setLabelTable(labels);
-        jSliderSlideChangeSpeed.setLabelTable(labels);
-
         templateMonitor.setTargetContent(DisplayTemplate.TARGET_CONTENT_STAGE);
         
         pnlSpeed.setVisible( jSpeedCb.isSelected() );
@@ -179,7 +171,6 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSliderSlideChangeSpeed.setMajorTickSpacing(5);
         jSliderSlideChangeSpeed.setMaximum(30);
         jSliderSlideChangeSpeed.setMinorTickSpacing(1);
-        jSliderSlideChangeSpeed.setPaintLabels(true);
         jSliderSlideChangeSpeed.setPaintTicks(true);
         jSliderSlideChangeSpeed.setValue(2);
         jSliderSlideChangeSpeed.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -193,7 +184,6 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jSliderShowHideSpeed.setMajorTickSpacing(5);
         jSliderShowHideSpeed.setMaximum(30);
         jSliderShowHideSpeed.setMinorTickSpacing(1);
-        jSliderShowHideSpeed.setPaintLabels(true);
         jSliderShowHideSpeed.setPaintTicks(true);
         jSliderShowHideSpeed.setValue(10);
         jSliderShowHideSpeed.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -211,13 +201,13 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             .addGroup(pnlSpeedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel15)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
             .addGroup(pnlSpeedLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel16)
-                .addContainerGap(50, Short.MAX_VALUE))
-            .addComponent(jSliderSlideChangeSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
-            .addComponent(jSliderShowHideSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(jSliderSlideChangeSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .addComponent(jSliderShowHideSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
         );
         pnlSpeedLayout.setVerticalGroup(
             pnlSpeedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,9 +275,9 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(templateMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addComponent(templateMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
             .addGroup(pnlMonitorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbMonitorFollowMain)
@@ -373,7 +363,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                     .addComponent(jSpeedCb)
                     .addComponent(pnlSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlMonitor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
