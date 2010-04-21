@@ -466,8 +466,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
             }
             if (type == ImageTemplateItem.IMAGE_CONTENT_STATIC){
                 JFileChooser fc = new JFileChooser();
-                File dir = new File (ConfigObj.getActiveInstance().getStoragePathTemplates());
-                fc.setCurrentDirectory(dir);
                 fc.setDialogType(JFileChooser.OPEN_DIALOG);
                 fc.setMultiSelectionEnabled(false);
                 fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
