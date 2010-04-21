@@ -8,6 +8,7 @@ package datasoul.render.gstreamer.notifications;
 import datasoul.util.DatasoulKeyListener;
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -23,7 +24,13 @@ public class GstNotificationKeyboard extends GstNotification {
 
     @Override
     public void run(){
-        DatasoulKeyListener.getInstance().keyPressed(key);
+        SwingUtilities.invokeLater(new Runnable(){
+            @Override
+            public void run(){
+                DatasoulKeyListener.getInstance().keyPressed(key);
+            }
+        });
+
     }
 
 }
