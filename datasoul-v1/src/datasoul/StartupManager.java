@@ -82,15 +82,22 @@ public class StartupManager {
     }
 
     protected static void copySampleTemplates(String dir){
-        String files[] = {"alert-general.templatez",
-            "alert-nursery.templatez",
-            "alert-parking.templatez",
-            "bible.templatez",
-            "monitor-preaching.templatez",
-            "monitor-song.templatez",
-            "default.templatez",
-            "song.templatez",
-            "subtitle.templatez"
+        String files[] = {
+            "ds-alert-sick.templatez",
+            "ds-alert-smile.templatez",
+            "ds-alert-surprise.templatez",
+            "ds-alert-uncertain.templatez",
+            "ds-alert-warning.templatez",
+            "ds-alert-wink.templatez",
+            "ds-alert-worried.templatez",
+            "ds-images.templatez",
+            "ds-song.templatez",
+            "ds-stage-contentless.templatez",
+            "ds-stage-images.templatez",
+            "ds-stage-song.templatez",
+            "ds-stage-text.templatez",
+            "ds-subtitle.templatez",
+            "ds-text.templatez"
         };
 
         for (String f: files){
