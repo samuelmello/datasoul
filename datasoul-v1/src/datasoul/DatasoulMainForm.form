@@ -256,7 +256,7 @@
           <Component id="toolBarMain" alignment="0" pref="926" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="tbInfo" pref="906" max="32767" attributes="0"/>
+              <Component id="tbInfo" pref="914" max="32767" attributes="0"/>
           </Group>
           <Component id="splMain" alignment="0" pref="926" max="32767" attributes="0"/>
       </Group>
@@ -378,6 +378,7 @@
               <Image iconType="3" name="/datasoul/icons/v2/stock_effects-preview.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Show Output"/>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -481,17 +482,17 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" pref="462" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="476" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="toolBar" alignment="0" pref="454" max="32767" attributes="1"/>
+                                      <Component id="jScrollPane2" alignment="0" pref="476" max="32767" attributes="0"/>
+                                      <Component id="toolBar" alignment="0" pref="476" max="32767" attributes="1"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtTitle" pref="166" max="32767" attributes="0"/>
+                                          <Component id="txtTitle" pref="182" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jLabel2" min="-2" max="-2" attributes="1"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -534,11 +535,11 @@
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="toolBar" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" pref="36" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="49" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="23" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="37" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -811,9 +812,9 @@
                                   <Component id="lblSongName" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblAuthor" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="295" max="32767" attributes="0"/>
+                              <EmptySpace pref="323" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane3" alignment="1" pref="390" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="1" pref="408" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -829,7 +830,7 @@
                                   <Component id="lblAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="23" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="22" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -922,13 +923,13 @@
                               <Component id="pnlLiveBox" max="32767" attributes="0"/>
                               <EmptySpace min="12" pref="12" max="12" attributes="0"/>
                           </Group>
-                          <Component id="auxiliar" alignment="0" pref="212" max="32767" attributes="0"/>
+                          <Component id="auxiliar" alignment="0" pref="196" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="auxiliar" pref="128" max="32767" attributes="0"/>
+                              <Component id="auxiliar" pref="125" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pnlLiveBox" min="-2" max="-2" attributes="0"/>
                           </Group>
