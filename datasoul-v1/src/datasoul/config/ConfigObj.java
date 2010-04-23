@@ -423,8 +423,12 @@ public class ConfigObj extends AbstractConfig {
         return onlineUsageStats;
     }
 
-    public String getStoragePathTemplates(){
+    public String getStoragePathLegacyTemplates(){
         return getStorageLoc() + File.separator + "templates";
+    }
+
+    public String getStoragePathTemplates(){
+        return getStorageLoc() + File.separator + "templatez";
     }
 
     public String getStoragePathSongs(){

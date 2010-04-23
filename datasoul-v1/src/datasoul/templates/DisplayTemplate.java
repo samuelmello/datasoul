@@ -114,7 +114,12 @@ public class DisplayTemplate extends AttributedObject {
         DisplayTemplate t = new DisplayTemplate();
         try {
             t.loadFromFile(filename);
-            t.save(ObjectManager.getInstance().getDatasoulMainForm().getRootPane());
+            if (ObjectManager.getInstance().getDatasoulMainForm() != null){
+                t.save(ObjectManager.getInstance().getDatasoulMainForm().getRootPane());
+            }else{
+                // During initial conversion, at startup
+                t.save(null);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
