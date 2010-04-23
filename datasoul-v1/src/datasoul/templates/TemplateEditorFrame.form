@@ -18,6 +18,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="title" type="java.lang.String" value="Datasoul Template Editor"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -40,8 +41,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" alignment="0" pref="1029" max="32767" attributes="1"/>
-          <Component id="jSplitPane1" alignment="1" pref="1029" max="32767" attributes="0"/>
+          <Component id="jToolBar1" alignment="0" pref="878" max="32767" attributes="1"/>
+          <Component id="jSplitPane1" alignment="1" pref="878" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -49,7 +50,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jSplitPane1" pref="646" max="32767" attributes="0"/>
+              <Component id="jSplitPane1" pref="472" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -156,7 +157,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
-        <Property name="dividerLocation" type="int" value="850"/>
+        <Property name="dividerLocation" type="int" value="600"/>
       </Properties>
       <Events>
         <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jSplitPane1PropertyChange"/>
@@ -174,9 +175,9 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar5" alignment="0" pref="264" max="32767" attributes="0"/>
-                  <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="1" pref="264" max="32767" attributes="0"/>
+                  <Component id="jToolBar5" alignment="0" pref="281" max="32767" attributes="0"/>
+                  <Component id="jPanel1" alignment="0" pref="281" max="32767" attributes="0"/>
+                  <Component id="jScrollPane2" alignment="1" pref="281" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -186,7 +187,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="577" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="403" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

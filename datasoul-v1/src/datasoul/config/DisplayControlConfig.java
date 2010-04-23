@@ -43,6 +43,9 @@ public class DisplayControlConfig extends AbstractConfig {
     
     /** Creates a new instance of ConfigObj */
     private DisplayControlConfig() {
+        // Default value
+        automaticGoLive = true;
+
         load("displayControl.config");
     }
     

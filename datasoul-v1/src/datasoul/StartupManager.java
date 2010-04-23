@@ -72,7 +72,7 @@ public class StartupManager {
 
     }
 
-    protected void copyFile(String resource, String targetName) throws IOException{
+    public static void copyFile(String resource, String targetName) throws IOException{
         InputStream is = DatasoulMainForm.class.getResourceAsStream(resource);
         FileOutputStream fos = new FileOutputStream(targetName);
         int x;
@@ -183,8 +183,6 @@ public class StartupManager {
 
     void run() {
 
-        long l1 = System.currentTimeMillis();
-
         // Use IPv4, needed by http-commons
         System.getProperties().setProperty("java.net.preferIPv4Stack", "true");
 
@@ -221,9 +219,6 @@ public class StartupManager {
 
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         mainForm.setVisible(true);
-
-        System.out.println(System.currentTimeMillis() - l1);
-
 
         try{
             if (ConfigObj.getActiveInstance().isGstreamerActive()){

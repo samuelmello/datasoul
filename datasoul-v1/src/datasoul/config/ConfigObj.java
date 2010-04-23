@@ -41,6 +41,7 @@ public class ConfigObj extends AbstractConfig {
     private boolean detectMonitors;
     private int clockMode;    
     private String storageLoc;
+    private boolean storageLocChecked;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -74,6 +75,8 @@ public class ConfigObj extends AbstractConfig {
         // Default output devices
         setMainOutputDevice("");
         setMonitorOutputDevice("");
+        qualityMain = QUALITY_ORIGINAL;
+        detectMonitors = true;
         // Now load
         load("datasoul.config");
     }
@@ -246,9 +249,19 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public String getStorageLoc(){
-        if (storageLoc == null || storageLoc.trim().equals("")){
-            storageLoc = System.getProperty("user.home")+File.separator+".datasoul"+File.separator+"data";
-            ConfigObj.getActiveInstance().save();
+        if (storageLocChecked == false){
+            File f = new File(storageLoc);
+            if (! f.exists() ){
+                storageLoc = System.getProperty("user.home")+File.separator+".datasoul"+File.separator+"data";
+
+                File datadir = new File(storageLoc);
+                if (!datadir.exists()){
+                    datadir.mkdirs();
+                }
+
+                ConfigObj.getActiveInstance().save();
+            }
+            storageLocChecked = true;
         }
         return storageLoc;
     }

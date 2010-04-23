@@ -33,7 +33,7 @@ import javax.swing.JOptionPane;
 public class ShowDialog {
 
     public static void showReadFileError(String filename, Exception e){
-            JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_reading_fileFile:_")+filename+"\n"+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error")+": "+e.getLocalizedMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_reading_fileFile:_")+filename+"\n"+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error")+": "+e.getLocalizedMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
     }
     
     public static void showReadFileError(File file, Exception e){
@@ -41,7 +41,7 @@ public class ShowDialog {
     }
 
     public static void showWriteFileError(String filename, Exception e){
-            JOptionPane.showMessageDialog(null,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_writing_fileFile:_")+filename+"\n"+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error")+": "+e.getLocalizedMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error_writing_fileFile:_")+filename+"\n"+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Error")+": "+e.getLocalizedMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
     }
     
     public static void showWriteFileError(File file, Exception e){

@@ -26,6 +26,7 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        setSize(520,230);
     }
 
     /** This method is called from within the constructor to
@@ -46,7 +47,8 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul");
-        setResizable(false);
+        setLocationByPlatform(true);
+        setModal(true);
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getSize()-2f));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
@@ -91,13 +93,11 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(cbOnlineUpdate)
                     .addComponent(cbOnlineStats)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(315, 315, 315))
+                    .addComponent(jLabel1)
                     .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addGap(49, 49, 49))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(417, Short.MAX_VALUE)
+                .addContainerGap(453, Short.MAX_VALUE)
                 .addComponent(btnOk)
                 .addContainerGap())
         );
@@ -114,7 +114,7 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
                 .addComponent(cbOnlineStats)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnOk)
                 .addContainerGap())
         );
