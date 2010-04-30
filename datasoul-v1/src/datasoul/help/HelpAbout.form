@@ -17,9 +17,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jLabel1" alignment="1" max="32767" attributes="0"/>
           <Component id="lblVersion" alignment="1" pref="400" max="32767" attributes="0"/>
-          <Component id="jLabel3" alignment="1" pref="400" max="32767" attributes="0"/>
-          <Component id="jLabel4" alignment="1" pref="400" max="32767" attributes="0"/>
-          <Component id="jPanel1" alignment="1" pref="400" max="32767" attributes="0"/>
+          <Component id="jLabel3" alignment="0" pref="400" max="32767" attributes="0"/>
+          <Component id="jLabel2" alignment="1" pref="400" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -29,13 +28,11 @@
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="lblVersion" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="240" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="293" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,29 +61,11 @@
         <Property name="text" type="java.lang.String" value="datasoul.sourceforge.net"/>
       </Properties>
     </Component>
-    <Container class="javax.swing.JPanel" name="jPanel1">
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel2">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;center&gt;&#xa;Samuel Mello &lt;br&gt;&#xa;svmello@users.sourceforge.net&lt;br&gt;&#xa;Lead Developer&lt;br&gt;&#xa;&lt;br&gt;&#xa;Eduardo Schnell &lt;br&gt;&#xa;eduschnell@users.sourceforge.net&lt;br&gt;&#xa;Lead Developer&lt;br&gt;&#xa;&lt;br&gt;&#xa;Bastian Germann&lt;br&gt;&#xa;bgermann@users.sourceforge.net&lt;br&gt;&#xa;German Translation&lt;br&gt;"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/datasoul/icons/v2/stock_people.png"/>
-        </Property>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="datasoul/internationalize.properties" key="AUTHORS" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
-        </Property>
+        <Property name="text" type="java.lang.String" value="For more information, please visit"/>
       </Properties>
     </Component>
   </SubComponents>
 </Form>
-
-
