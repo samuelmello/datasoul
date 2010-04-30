@@ -231,3 +231,4 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     // End of variables declaration//GEN-END:variables
     
 }
+

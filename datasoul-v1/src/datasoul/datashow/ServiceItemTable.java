@@ -340,3 +340,4 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     }
 
 }
+

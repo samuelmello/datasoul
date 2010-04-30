@@ -12,3 +12,4 @@ package datasoul.render.gstreamer.notifications;
 public class GstNotificationCmdDone extends GstNotification {
 
 }
+

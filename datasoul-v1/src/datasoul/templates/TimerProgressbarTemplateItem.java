@@ -80,19 +80,19 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("ColorGoAhead");
-        registerDisplayString("ColorGoAhead", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Go_Ahead"));
+        registerDisplayString("ColorGoAhead", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("COLOR GO AHEAD"));
         properties.add("ColorFinish");
-        registerDisplayString("ColorFinish", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Finish"));
+        registerDisplayString("ColorFinish", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("COLOR FINISH"));
         properties.add("ColorStop");
-        registerDisplayString("ColorStop", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Stop"));
+        registerDisplayString("ColorStop", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("COLOR STOP"));
         properties.add("ColorRemainingTime");
-        registerDisplayString("ColorRemainingTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Color_Remaining_Time"));
+        registerDisplayString("ColorRemainingTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("COLOR REMAINING TIME"));
         properties.add("AlphaRemainingTime");
-        registerDisplayString("AlphaRemainingTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alpha_Remaining_Time"));
+        registerDisplayString("AlphaRemainingTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ALPHA REMAINING TIME"));
         properties.add("AlphaUsedTime");
-        registerDisplayString("AlphaUsedTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alpha_Used_Time"));
+        registerDisplayString("AlphaUsedTime", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ALPHA USED TIME"));
         properties.add("Position");
-        registerDisplayString("Position", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Position"));
+        registerDisplayString("Position", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("POSITION"));
     }
 
     public void draw(Graphics2D g, float time) {
@@ -248,3 +248,5 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
     }
 
 }
+
+

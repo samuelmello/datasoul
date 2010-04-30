@@ -38,3 +38,4 @@ public class VideoServiceItem extends GenericAttachmentServiceItem {
         GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoItem(file.getAbsolutePath()));
     }
 }
+

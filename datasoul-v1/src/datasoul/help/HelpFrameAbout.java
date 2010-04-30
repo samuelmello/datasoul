@@ -71,3 +71,4 @@ public class HelpFrameAbout extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+

@@ -57,7 +57,7 @@ public class ConfigObj extends AbstractConfig {
     public static final int CLOCKMODE_24_NOSEC = 1;
     public static final int CLOCKMODE_12_SEC = 2;
     public static final int CLOCKMODE_12_NOSEC = 3;
-    public static final String[] CLOCKMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24_Hours_with_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24_Hours_without_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM_with_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM_without_Seconds")};
+    public static final String[] CLOCKMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24 HOURS WITH SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24 HOURS WITHOUT SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM WITH SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM WITHOUT SECONDS")};
 
     public static final int QUALITY_640 = 0;
     public static final int QUALITY_800 = 1;
@@ -453,3 +453,5 @@ public class ConfigObj extends AbstractConfig {
     }
 
 }
+
+

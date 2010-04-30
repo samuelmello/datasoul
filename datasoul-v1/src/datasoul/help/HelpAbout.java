@@ -31,7 +31,7 @@ public class HelpAbout extends javax.swing.JPanel {
     /** Creates new form HelpAbout */
     public HelpAbout() {
         initComponents();
-        lblVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Version")+" "+DatasoulMainForm.getVersion());
+        lblVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSION")+" "+DatasoulMainForm.getVersion());
     }
      
     /** This method is called from within the constructor to
@@ -65,7 +65,7 @@ public class HelpAbout extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_people.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel4.setText(bundle.getString("Authors")); // NOI18N
+        jLabel4.setText(bundle.getString("AUTHORS")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,3 +105,5 @@ public class HelpAbout extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+
+

@@ -125,7 +125,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         spnTimer.setModel(new SpinnerNumberModel(1, 1, 9999, 1));
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel1.setText(bundle.getString("seconds")); // NOI18N
+        jLabel1.setText(bundle.getString("SECONDS")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -341,3 +341,5 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     }
     
 }
+
+

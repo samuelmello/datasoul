@@ -98,3 +98,4 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
 
 
 }
+

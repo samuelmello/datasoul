@@ -273,15 +273,15 @@ public class ServiceListTable extends ListTable {
         public String getColumnName(int columnIndex) {
             switch (columnIndex) {
                 case COLUMN_TIME:
-                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Time");
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TIME");
                 case COLUMN_DURATION:
-                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Duration");
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DURATION");
                 case COLUMN_TITLE:
-                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title");
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TITLE");
                 case COLUMN_NOTES:
-                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Notes");
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NOTES");
                 case COLUMN_TEMPLATE:
-                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
+                    return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE");
             }
             return null;
         }
@@ -336,7 +336,7 @@ public class ServiceListTable extends ListTable {
                             si.setDuration(aValue.toString());
                             updateStartTimes();
                         } catch (Exception e) {
-                            JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
+                            JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
                         }
                         break;
                     case COLUMN_NOTES:
@@ -358,7 +358,7 @@ public class ServiceListTable extends ListTable {
         }else{
             name = "";
         }
-        int resp = JOptionPane.showConfirmDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Do_you_want_to_save_")+name+ "?" );
+        int resp = JOptionPane.showConfirmDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DO YOU WANT TO SAVE ")+name+ "?" );
 
         switch(resp){
             case JOptionPane.CANCEL_OPTION:
@@ -472,7 +472,7 @@ public class ServiceListTable extends ListTable {
         fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul 1.x Service Lists", "servicelist") );
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
         fc.setCurrentDirectory(dir);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
             FileNameExtensionFilter currentfilter = (FileNameExtensionFilter) fc.getFileFilter();
@@ -517,3 +517,5 @@ public class ServiceListTable extends ListTable {
         saveFile();
     }
 }
+
+

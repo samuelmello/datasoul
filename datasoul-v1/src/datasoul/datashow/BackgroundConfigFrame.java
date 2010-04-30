@@ -105,7 +105,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
 
         btnColorMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bucketfill.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnColorMain.setText(bundle.getString("Color")); // NOI18N
+        btnColorMain.setText(bundle.getString("COLOR")); // NOI18N
         btnColorMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnColorMainActionPerformed(evt);
@@ -113,7 +113,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         });
 
         btnChangeMain.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/image-x-generic.png"))); // NOI18N
-        btnChangeMain.setText(bundle.getString("Image")); // NOI18N
+        btnChangeMain.setText(bundle.getString("IMAGE")); // NOI18N
         btnChangeMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeMainActionPerformed(evt);
@@ -229,7 +229,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
 
     private void btnColorMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnColorMainActionPerformed
 
-        Color color =  JColorChooser.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Choose_color"), Color.BLACK);
+        Color color =  JColorChooser.showDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHOOSE COLOR"), Color.BLACK);
         if (color != null){ // color is null if the user choose cancel.
             BufferedImage img = new BufferedImage(ConfigObj.getActiveInstance().getMainRenderWidth(), ConfigObj.getActiveInstance().getMainRenderHeight(), BufferedImage.TYPE_4BYTE_ABGR);
             Graphics2D g = img.createGraphics();
@@ -250,7 +250,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         fc.setMultiSelectionEnabled(false);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.setControlButtonsAreShown(true);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT IMAGE"));
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             imageDisplay.getImageTemplateItem().loadImage(filename);
@@ -316,3 +316,5 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

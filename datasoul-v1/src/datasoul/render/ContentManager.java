@@ -328,7 +328,7 @@ public class ContentManager {
             registerMainDisplay(gstdisplay);
         }else{
             mainDisplay = new SwingDisplayFrame();
-            mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
+            mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
             mainDisplay.registerAsMain();
         }
 
@@ -338,7 +338,7 @@ public class ContentManager {
         
         if (ConfigObj.getActiveInstance().getMonitorOutput() ){
             monitorDisplay = new SwingDisplayFrame();
-            monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Monitor_Display"));
+            monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
             monitorDisplay.registerAsMonitor();
         }
     }
@@ -382,3 +382,5 @@ public class ContentManager {
     }
 
 }
+
+

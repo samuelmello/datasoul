@@ -104,7 +104,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnNew.setText(bundle.getString("New")); // NOI18N
+        btnNew.setText(bundle.getString("NEW")); // NOI18N
         btnNew.setToolTipText("Create a new song");
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
@@ -117,7 +117,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnNew);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
-        btnEdit.setText(bundle.getString("Edit")); // NOI18N
+        btnEdit.setText(bundle.getString("EDIT")); // NOI18N
         btnEdit.setToolTipText("Edit song");
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
@@ -136,8 +136,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDelete.setText(bundle.getString("Delete")); // NOI18N
-        btnDelete.setToolTipText(bundle.getString("Delete_song")); // NOI18N
+        btnDelete.setText(bundle.getString("DELETE")); // NOI18N
+        btnDelete.setToolTipText(bundle.getString("DELETE SONG")); // NOI18N
         btnDelete.setBorderPainted(false);
         btnDelete.setFocusPainted(false);
         btnDelete.setFocusable(false);
@@ -166,7 +166,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnAdd);
 
         labelString.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_zoom-object.png"))); // NOI18N
-        labelString.setText(bundle.getString("Search")); // NOI18N
+        labelString.setText(bundle.getString("SEARCH")); // NOI18N
         labelString.setFocusable(false);
         labelString.setInheritsPopupMenu(false);
         toolBar.add(labelString);
@@ -316,7 +316,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             String filePath = song.getFilePath();
 
             File file = new File(filePath);
-            if(JOptionPane.showConfirmDialog(this,"Are you sure to delete"+" "+song.getTitle()+"?" ,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+            if(JOptionPane.showConfirmDialog(this,"Are you sure to delete"+" "+song.getTitle()+"?" ,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
                 if(file.delete()){
                     tableSongList.removeItem();
                 }
@@ -369,3 +369,5 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
     }
 
 }
+
+

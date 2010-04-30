@@ -93,7 +93,7 @@ public class GstManagerClient {
         this.isMonitorEnabled = monitorEnabled;
         this.mainDevice = new OutputDevice(mainDevice, OutputDevice.USAGE_MAIN);
         mainFrame = new GstDisplayFrame();
-        mainFrame.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_-_Main_Display"));
+        mainFrame.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
         mainFrame.init(this.mainDevice.getWidth(), this.mainDevice.getHeight());
         mainFrame.getVideoSink().setName("MainVideoSink");
         if (isMonitorEnabled){
@@ -196,3 +196,5 @@ public class GstManagerClient {
     }
 
 }
+
+

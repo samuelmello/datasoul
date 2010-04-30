@@ -70,7 +70,7 @@ public class DisplayTemplate extends AttributedObject {
     private int transitionKeepBG;
     public static final int KEEP_BG_YES = 0;
     public static final int KEEP_BG_NO = 1;
-    public static final String[] KEEP_BG_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No")};
+    public static final String[] KEEP_BG_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YES"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NO")};
     private static JComboBox cbKeepBG;
 
     private int targetContent;
@@ -237,9 +237,9 @@ public class DisplayTemplate extends AttributedObject {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("Name");
-        registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template_Name"));
+        registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE NAME"));
         properties.add("TransitionKeepBGIdx");
-        registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Transition_Keep_Background"));
+        registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TRANSITION KEEP BACKGROUND"));
         properties.add("TargetContentIdx");
         registerDisplayString("TargetContentIdx", "Target Content");
         properties.add("Width");
@@ -275,7 +275,7 @@ public class DisplayTemplate extends AttributedObject {
     
     public void addItem(TemplateItem t){
         if (t.getName().equals("")){
-            t.setName(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Item_#")+defaultItemNameCount++);
+            t.setName(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ITEM #")+defaultItemNameCount++);
         }
         
         items.add(t);
@@ -402,7 +402,7 @@ public class DisplayTemplate extends AttributedObject {
         fc.setFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showSaveDialog(owner) == JFileChooser.APPROVE_OPTION) {
             String fileName = fc.getSelectedFile().getName();
             fileName = fileName.replace(".templatez", "");
@@ -570,3 +570,5 @@ public class DisplayTemplate extends AttributedObject {
     }
 
 }
+
+

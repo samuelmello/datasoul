@@ -301,7 +301,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
         btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
+        btnDeleteTemplate.setText(bundle.getString("DELETE")); // NOI18N
         btnDeleteTemplate.setBorderPainted(false);
         btnDeleteTemplate.setFocusPainted(false);
         btnDeleteTemplate.setFocusable(false);
@@ -393,12 +393,12 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
             if (x instanceof String){
                 String str = (String) x;
-                int confirm = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Delete_template_")+x+"?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"), JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DELETE TEMPLATE ")+x+"?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"), JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION){
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_delete_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO DELETE TEMPLATE:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
                     }// try
                 }//if confirm
             }// if instance of
@@ -413,7 +413,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
         fc.setMultiSelectionEnabled(true);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             for (File f : fc.getSelectedFiles()){
                 DisplayTemplate.importTemplate(f.getAbsolutePath());
@@ -542,3 +542,5 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     }
 
 }
+
+

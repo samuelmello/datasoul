@@ -69,3 +69,4 @@ public class TemplateCellEditor extends DefaultCellEditor implements ActionListe
         stopCellEditing();
     }
 }
+

@@ -32,3 +32,4 @@ public class GstManagerVideoBackgroundPipeline extends GstManagerVideoGenericPip
         pipe.setState(State.PLAYING);
     }
 }
+

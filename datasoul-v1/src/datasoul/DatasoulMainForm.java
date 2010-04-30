@@ -288,7 +288,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
+        actAddSong.setText(bundle.getString("ADD SONG")); // NOI18N
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddSongActionPerformed(evt);
@@ -297,7 +297,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddSong);
 
         actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
-        actAddText.setText(bundle.getString("Add_Text")); // NOI18N
+        actAddText.setText(bundle.getString("ADD TEXT")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddTextActionPerformed(evt);
@@ -306,7 +306,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddText);
 
         actAddBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bookmark.png"))); // NOI18N
-        actAddBible.setText(bundle.getString("Add_Bible_Text")); // NOI18N
+        actAddBible.setText(bundle.getString("ADD BIBLE TEXT")); // NOI18N
         actAddBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddBibleActionPerformed(evt);
@@ -315,7 +315,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddBible);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
-        actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
+        actAddContentlessItem.setText(bundle.getString("ADD CONTENTLESS ITEM")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddContentlessItemActionPerformed(evt);
@@ -333,7 +333,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddImageList);
 
         actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
+        actImportItem.setText(bundle.getString("IMPORT ITEM")); // NOI18N
         actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actImportItemActionPerformed(evt);
@@ -517,9 +517,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         preview.setMinimumSize(new java.awt.Dimension(10, 10));
         splService.setRightComponent(preview);
 
-        jLabel2.setText(bundle.getString("Start_Time:")); // NOI18N
+        jLabel2.setText(bundle.getString("START TIME:")); // NOI18N
 
-        jLabel1.setText(bundle.getString("Service_Title:")); // NOI18N
+        jLabel1.setText(bundle.getString("SERVICE TITLE:")); // NOI18N
 
         txtTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -576,8 +576,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnAddWizard);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnRemove.setText(bundle.getString("Delete")); // NOI18N
-        btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
+        btnRemove.setText(bundle.getString("DELETE")); // NOI18N
+        btnRemove.setToolTipText(bundle.getString("DELETE ITEM")); // NOI18N
         btnRemove.setAlignmentY(0.0F);
         btnRemove.setBorderPainted(false);
         btnRemove.setFocusPainted(false);
@@ -602,8 +602,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnEdit);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-up.png"))); // NOI18N
-        btnUp.setText(bundle.getString("Move_Up")); // NOI18N
-        btnUp.setToolTipText(bundle.getString("Change_item_order_to_upper_position")); // NOI18N
+        btnUp.setText(bundle.getString("MOVE UP")); // NOI18N
+        btnUp.setToolTipText(bundle.getString("CHANGE ITEM ORDER TO UPPER POSITION")); // NOI18N
         btnUp.setAlignmentY(0.0F);
         btnUp.setBorderPainted(false);
         btnUp.setFocusPainted(false);
@@ -615,8 +615,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnUp);
 
         btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-down.png"))); // NOI18N
-        btnDown.setText(bundle.getString("Move_Down")); // NOI18N
-        btnDown.setToolTipText(bundle.getString("Change_item_order_to_lower_position")); // NOI18N
+        btnDown.setText(bundle.getString("MOVE DOWN")); // NOI18N
+        btnDown.setToolTipText(bundle.getString("CHANGE ITEM ORDER TO LOWER POSITION")); // NOI18N
         btnDown.setAlignmentY(0.0F);
         btnDown.setBorderPainted(false);
         btnDown.setFocusPainted(false);
@@ -676,7 +676,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(txtNotes);
 
-        jLabel4.setText(bundle.getString("Service_Notes:")); // NOI18N
+        jLabel4.setText(bundle.getString("SERVICE NOTES:")); // NOI18N
 
         javax.swing.GroupLayout pnlServiceListLayout = new javax.swing.GroupLayout(pnlServiceList);
         pnlServiceList.setLayout(pnlServiceListLayout);
@@ -751,9 +751,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         textSong.setEditable(false);
         jScrollPane3.setViewportView(textSong);
 
-        jLabel6.setText(bundle.getString("Author:")); // NOI18N
+        jLabel6.setText(bundle.getString("AUTHOR:")); // NOI18N
 
-        jLabel7.setText(bundle.getString("Song:")); // NOI18N
+        jLabel7.setText(bundle.getString("SONG:")); // NOI18N
 
         lblSongName.setText("     ");
 
@@ -1144,7 +1144,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
             ServiceListTable.getActiveInstance().setStartHour(x);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
         }
         pnlServiceList.revalidate();
@@ -1166,7 +1166,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
             ServiceListTable.getActiveInstance().setStartMinute(x);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
             txtMinutes.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartMinute()));
         }
 }//GEN-LAST:event_txtMinutesFocusLost
@@ -1196,7 +1196,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_actAddBibleActionPerformed
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
-        String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), "");
+        String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE ITEM NAME:"), "");
         if (s != null && !s.trim().equals("")){
             ContentlessServiceItem csi = new ContentlessServiceItem();
             csi.setTitle(s);
@@ -1362,7 +1362,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actEditConfigActionPerformed
 
     private void actFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExitActionPerformed
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Close")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM CLOSE")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
 
         if (resp == JOptionPane.YES_OPTION){
             System.exit(0);
@@ -1540,3 +1540,5 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
 }
+
+

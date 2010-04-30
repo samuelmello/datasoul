@@ -18,3 +18,4 @@ public class GstDisplayCmdSetStaticBG extends GstDisplayCmd {
     }
 
 }
+

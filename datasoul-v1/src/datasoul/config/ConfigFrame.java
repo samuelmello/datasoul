@@ -94,9 +94,9 @@ public class ConfigFrame extends javax.swing.JFrame {
         setTitle("Datasoul Configuration");
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Storage_Location"))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("STORAGE LOCATION"))); // NOI18N
 
-        btnStgloc.setText(bundle.getString("Change")); // NOI18N
+        btnStgloc.setText(bundle.getString("CHANGE")); // NOI18N
         btnStgloc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStglocActionPerformed(evt);
@@ -106,7 +106,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         txtStorageLoc.setEditable(false);
         txtStorageLoc.setText("jTextField1");
 
-        jLabel10.setText(bundle.getString("Storage_Directory")); // NOI18N
+        jLabel10.setText(bundle.getString("STORAGE DIRECTORY")); // NOI18N
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getSize()-2f));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/folder.png"))); // NOI18N
@@ -148,7 +148,7 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbMonitorOutput.setText("Enable Stage Output");
 
-        jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
+        jLabel9.setText(bundle.getString("CLOCK FORMAT")); // NOI18N
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -511,3 +511,5 @@ public class ConfigFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

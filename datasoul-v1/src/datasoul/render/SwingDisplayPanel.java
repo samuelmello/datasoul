@@ -98,3 +98,4 @@ public class SwingDisplayPanel extends javax.swing.JPanel  {
     // End of variables declaration//GEN-END:variables
     
 }
+

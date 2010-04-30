@@ -204,7 +204,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if (hasChanged()){
-            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
+            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SAVE THE CHANGES?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
 
             if (resp == JOptionPane.YES_OPTION){
                 save();
@@ -241,3 +241,5 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

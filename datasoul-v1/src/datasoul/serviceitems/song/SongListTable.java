@@ -62,7 +62,7 @@ public class SongListTable extends ListTable{
 
     public String getColumnName(int columnIndex) {
         if(columnIndex==1)
-            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Song_Name");
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG NAME");
         else
             return "";
     }
@@ -98,3 +98,5 @@ public class SongListTable extends ListTable{
     }
     
 }
+
+

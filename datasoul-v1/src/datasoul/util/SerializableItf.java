@@ -35,3 +35,4 @@ public interface SerializableItf {
      public void readObject(Node nodeIn, ZipReader zip) throws Exception;
     
 }
+
