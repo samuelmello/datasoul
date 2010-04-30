@@ -324,7 +324,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddContentlessItem);
 
         actAddImageList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/image-x-generic.png"))); // NOI18N
-        actAddImageList.setText("Add Image List");
+        actAddImageList.setText(bundle.getString("ADD IMAGE LIST")); // NOI18N
         actAddImageList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddImageListActionPerformed(evt);
@@ -342,7 +342,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actImportItem);
 
         actAddAttachment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/mail-attachment.png"))); // NOI18N
-        actAddAttachment.setText("Add Attachment");
+        actAddAttachment.setText(bundle.getString("ADD ATTACHMENT")); // NOI18N
         actAddAttachment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddAttachmentActionPerformed(evt);
@@ -351,7 +351,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddAttachment);
 
         actAddVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-x-generic.png"))); // NOI18N
-        actAddVideo.setText("Add Video");
+        actAddVideo.setText(bundle.getString("ADD VIDEO")); // NOI18N
         actAddVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddVideoActionPerformed(evt);
@@ -360,7 +360,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddVideo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Datasoul");
+        setTitle(bundle.getString("DATASOUL")); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -377,7 +377,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new_big.png"))); // NOI18N
-        btnNew.setToolTipText("New");
+        btnNew.setToolTipText(bundle.getString("NEW")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusable(false);
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -390,7 +390,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnNew);
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open_big.png"))); // NOI18N
-        btnOpen.setToolTipText("Open");
+        btnOpen.setToolTipText(bundle.getString("OPEN")); // NOI18N
         btnOpen.setBorderPainted(false);
         btnOpen.setFocusable(false);
         btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -403,7 +403,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnOpen);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -416,7 +416,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as_big.png"))); // NOI18N
-        btnSaveAs.setToolTipText("Save As");
+        btnSaveAs.setToolTipText(bundle.getString("SAVE AS")); // NOI18N
         btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -429,7 +429,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnSaveAs);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
-        btnPrint.setToolTipText("Print");
+        btnPrint.setToolTipText(bundle.getString("PRINT")); // NOI18N
         btnPrint.setBorderPainted(false);
         btnPrint.setFocusable(false);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -442,7 +442,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnPrint);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document_big.png"))); // NOI18N
-        btnExport.setText("Export");
+        btnExport.setText(bundle.getString("EXPORT")); // NOI18N
         btnExport.setBorderPainted(false);
         btnExport.setFocusable(false);
         btnExport.addActionListener(new java.awt.event.ActionListener() {
@@ -454,7 +454,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(jSeparator2);
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
-        btnShow.setText("Show Output");
+        btnShow.setText(bundle.getString("SHOW OUTPUT")); // NOI18N
         btnShow.setBorderPainted(false);
         btnShow.setFocusable(false);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
@@ -466,7 +466,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(jSeparator3);
 
         btnBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-desktop-wallpaper.png"))); // NOI18N
-        btnBackground.setText("Background");
+        btnBackground.setText(bundle.getString("BACKGROUND")); // NOI18N
         btnBackground.setBorderPainted(false);
         btnBackground.setFocusable(false);
         btnBackground.addActionListener(new java.awt.event.ActionListener() {
@@ -477,7 +477,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnBackground);
 
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
-        btnTemplates.setText("Templates");
+        btnTemplates.setText(bundle.getString("TEMPLATES")); // NOI18N
         btnTemplates.setBorderPainted(false);
         btnTemplates.setFocusable(false);
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
@@ -489,7 +489,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(jSeparator1);
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
-        btnConfig.setText("Configuration");
+        btnConfig.setText(bundle.getString("CONFIGURATION")); // NOI18N
         btnConfig.setBorderPainted(false);
         btnConfig.setFocusable(false);
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -561,8 +561,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.setOpaque(false);
 
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
-        btnAddWizard.setText("Add");
-        btnAddWizard.setToolTipText("Add Item ...");
+        btnAddWizard.setText(bundle.getString("ADD")); // NOI18N
+        btnAddWizard.setToolTipText(bundle.getString("ADD ITEM ...")); // NOI18N
         btnAddWizard.setAlignmentY(0.0F);
         btnAddWizard.setBorderPainted(false);
         btnAddWizard.setFocusPainted(false);
@@ -589,8 +589,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnRemove);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
-        btnEdit.setText("Edit");
-        btnEdit.setToolTipText("Edit selected item ...");
+        btnEdit.setText(bundle.getString("EDIT")); // NOI18N
+        btnEdit.setToolTipText(bundle.getString("EDIT SELECTED ITEM ...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
@@ -841,7 +841,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
 
         btnShowMonitor.setSelected(true);
-        btnShowMonitor.setText("Show Stage");
+        btnShowMonitor.setText(bundle.getString("SHOW STAGE")); // NOI18N
         btnShowMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowMonitorActionPerformed(evt);
@@ -912,9 +912,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         tbInfo.add(btnCloseInfo);
 
-        jMenu1.setText("File");
+        jMenu1.setText(bundle.getString("FILE")); // NOI18N
 
-        actFileNew.setText("New");
+        actFileNew.setText(bundle.getString("NEW")); // NOI18N
         actFileNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileNewActionPerformed(evt);
@@ -922,7 +922,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileNew);
 
-        actFileOpen.setText("Open");
+        actFileOpen.setText(bundle.getString("OPEN")); // NOI18N
         actFileOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileOpenActionPerformed(evt);
@@ -930,7 +930,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileOpen);
 
-        actFileSave.setText("Save");
+        actFileSave.setText(bundle.getString("SAVE")); // NOI18N
         actFileSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileSaveActionPerformed(evt);
@@ -938,7 +938,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileSave);
 
-        actFileSaveAs.setText("Save As");
+        actFileSaveAs.setText(bundle.getString("SAVE AS")); // NOI18N
         actFileSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileSaveAsActionPerformed(evt);
@@ -946,7 +946,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileSaveAs);
 
-        actFileExport.setText("Export");
+        actFileExport.setText(bundle.getString("EXPORT")); // NOI18N
         actFileExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileExportActionPerformed(evt);
@@ -955,7 +955,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jMenu1.add(actFileExport);
         jMenu1.add(jSeparator4);
 
-        actFileExit.setText("Exit");
+        actFileExit.setText(bundle.getString("EXIT")); // NOI18N
         actFileExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileExitActionPerformed(evt);
@@ -965,9 +965,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText(bundle.getString("EDIT")); // NOI18N
 
-        actEditBackground.setText("Background");
+        actEditBackground.setText(bundle.getString("BACKGROUND")); // NOI18N
         actEditBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actEditBackgroundActionPerformed(evt);
@@ -975,7 +975,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditBackground);
 
-        actEditTemplates.setText("Templates");
+        actEditTemplates.setText(bundle.getString("TEMPLATES")); // NOI18N
         actEditTemplates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actEditTemplatesActionPerformed(evt);
@@ -983,7 +983,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditTemplates);
 
-        actEditConfig.setText("Configuration");
+        actEditConfig.setText(bundle.getString("CONFIGURATION")); // NOI18N
         actEditConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actEditConfigActionPerformed(evt);
@@ -993,9 +993,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Help");
+        jMenu3.setText(bundle.getString("HELP")); // NOI18N
 
-        actHelpAbout.setText("About");
+        actHelpAbout.setText(bundle.getString("ABOUT")); // NOI18N
         actHelpAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actHelpAboutActionPerformed(evt);
@@ -1003,7 +1003,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu3.add(actHelpAbout);
 
-        actHelpKeyboard.setText("Keyboard Shortcuts");
+        actHelpKeyboard.setText(bundle.getString("KEYBOARD SHORTCUTS")); // NOI18N
         actHelpKeyboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actHelpKeyboardActionPerformed(evt);
@@ -1273,7 +1273,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                    "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
             } finally {
                 ObjectManager.getInstance().setDefaultCursor();
             }
@@ -1294,7 +1294,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 ServiceListTable.getActiveInstance().addItem(vsi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                    "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
             } finally {
                 ObjectManager.getInstance().setDefaultCursor();
             }
@@ -1397,7 +1397,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(DatasoulMainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "Unknown Private Build";
+        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNKNOWN PRIVATE BUILD");
     }
 
     public static String getFileFormatVersion() {

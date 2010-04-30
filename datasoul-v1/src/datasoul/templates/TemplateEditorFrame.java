@@ -112,7 +112,8 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Datasoul Template Editor");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("DATASOUL TEMPLATE EDITOR")); // NOI18N
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -124,7 +125,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -137,7 +138,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as_big.png"))); // NOI18N
-        btnSaveAs.setToolTipText("Save As");
+        btnSaveAs.setToolTipText(bundle.getString("SAVE AS")); // NOI18N
         btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -151,7 +152,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(jSeparator1);
 
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
-        btnAddText.setText("Add Text");
+        btnAddText.setText(bundle.getString("ADD TEXT")); // NOI18N
         btnAddText.setBorderPainted(false);
         btnAddText.setFocusable(false);
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +163,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnAddText);
 
         btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
-        btnAddImage.setText("Add Image");
+        btnAddImage.setText(bundle.getString("ADD IMAGE")); // NOI18N
         btnAddImage.setBorderPainted(false);
         btnAddImage.setFocusable(false);
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +174,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnAddImage);
 
         btnAddTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer_big.png"))); // NOI18N
-        btnAddTimer.setText("Add Timer Bar");
+        btnAddTimer.setText(bundle.getString("ADD TIMER BAR")); // NOI18N
         btnAddTimer.setBorderPainted(false);
         btnAddTimer.setFocusable(false);
         btnAddTimer.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +186,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(jSeparator2);
 
         btnTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
-        btnTemplate.setText("Template Properties");
+        btnTemplate.setText(bundle.getString("TEMPLATE PROPERTIES")); // NOI18N
         btnTemplate.setBorderPainted(false);
         btnTemplate.setFocusable(false);
         btnTemplate.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +219,6 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
 
         jToolBar5.setFloatable(false);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel9.setText(bundle.getString("PROPERTIES")); // NOI18N
         jToolBar5.add(jLabel9);
 

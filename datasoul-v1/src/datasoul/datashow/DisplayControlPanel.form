@@ -235,7 +235,9 @@
         </Container>
         <Component class="javax.swing.JCheckBox" name="cbMonitorFollowMain">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Stage follows Main Output controls"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="STAGE FOLLOWS MAIN OUTPUT CONTROLS" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
                 <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -250,7 +252,9 @@
     </Container>
     <Component class="javax.swing.JCheckBox" name="jMonitorCb">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Show Stage Controls"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="datasoul/internationalize.properties" key="SHOW STAGE CONTROLS" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder bottom="0" left="0" right="0" top="0"/>
@@ -349,5 +353,3 @@
     </Component>
   </SubComponents>
 </Form>
-
-

@@ -90,7 +90,7 @@ public class StartupManager {
 
             if (files != null){
 
-                updateSplash("Updating Templates...");
+                updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UPDATING TEMPLATES..."));
 
                 for (File f : files){
                     if(f.getName().endsWith(".template")){
@@ -198,7 +198,7 @@ public class StartupManager {
             System.setProperty("sun.java2d.d3d","false");
         }
 
-        updateSplash("Initializing...");
+        updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INITIALIZING..."));
 
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -212,10 +212,10 @@ public class StartupManager {
         ContentManager.getInstance();
         checkStorageLocation();
 
-        updateSplash("Loading Songs...");
+        updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LOADING SONGS..."));
         AllSongsListTable.getInstance();
 
-        updateSplash("Creating User Interface...");
+        updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CREATING USER INTERFACE..."));
 
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         mainForm.setVisible(true);

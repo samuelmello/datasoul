@@ -382,7 +382,7 @@ public class ServiceListExporterDocument {
 
         document.newPage();
 
-        Paragraph p = new Paragraph("Guitar Tabs", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16));
+        Paragraph p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GUITAR TABS"), FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16));
         document.add(p);
 
         for (Paragraph p2 : guitarTabs){

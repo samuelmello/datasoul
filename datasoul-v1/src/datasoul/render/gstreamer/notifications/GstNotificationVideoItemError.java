@@ -26,7 +26,7 @@ public class GstNotificationVideoItemError extends GstNotification {
         ContentManager.getInstance().slideChange(-1);
         ObjectManager.getInstance().getLivePanel().notifyVideoEnd();
         JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                "Error playing video:"+"\n"+msg);
+                java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR PLAYING VIDEO:")+"\n"+msg);
 
     }
 

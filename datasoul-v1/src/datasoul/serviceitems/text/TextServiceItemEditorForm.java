@@ -151,7 +151,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -165,7 +165,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jToolBar1.add(jSeparator1);
 
         btnShowBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/accessories-dictionary.png"))); // NOI18N
-        btnShowBible.setText("Bible Options");
+        btnShowBible.setText(bundle.getString("BIBLE OPTIONS")); // NOI18N
         btnShowBible.setFocusable(false);
         btnShowBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +175,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jToolBar1.add(btnShowBible);
 
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/format-justify-center.png"))); // NOI18N
-        btnShowSplit.setText("Split Options");
+        btnShowSplit.setText(bundle.getString("SPLIT OPTIONS")); // NOI18N
         btnShowSplit.setFocusable(false);
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

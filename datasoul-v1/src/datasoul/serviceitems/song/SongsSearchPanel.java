@@ -105,7 +105,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnNew.setText(bundle.getString("NEW")); // NOI18N
-        btnNew.setToolTipText("Create a new song");
+        btnNew.setToolTipText(bundle.getString("CREATE A NEW SONG")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
         btnNew.setFocusable(false);
@@ -118,7 +118,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
         btnEdit.setText(bundle.getString("EDIT")); // NOI18N
-        btnEdit.setToolTipText("Edit song");
+        btnEdit.setToolTipText(bundle.getString("EDIT SONG")); // NOI18N
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
         btnEdit.setFocusable(false);
@@ -154,8 +154,8 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
         toolBar.add(btnDelete);
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
-        btnAdd.setText("Add");
-        btnAdd.setToolTipText("Add selected song to service");
+        btnAdd.setText(bundle.getString("ADD")); // NOI18N
+        btnAdd.setToolTipText(bundle.getString("ADD SELECTED SONG TO SERVICE")); // NOI18N
         btnAdd.setBorderPainted(false);
         btnAdd.setFocusable(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -316,7 +316,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
             String filePath = song.getFilePath();
 
             File file = new File(filePath);
-            if(JOptionPane.showConfirmDialog(this,"Are you sure to delete"+" "+song.getTitle()+"?" ,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+            if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ARE YOU SURE TO DELETE")+" "+song.getTitle()+"?" ,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
                 if(file.delete()){
                     tableSongList.removeItem();
                 }

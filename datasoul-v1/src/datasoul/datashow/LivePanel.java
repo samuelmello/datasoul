@@ -114,7 +114,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         setBorder(null);
         setDoubleBuffered(false);
 
-        cbAutoChange.setText("Change every");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        cbAutoChange.setText(bundle.getString("CHANGE EVERY")); // NOI18N
         cbAutoChange.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbAutoChange.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +125,6 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
 
         spnTimer.setModel(new SpinnerNumberModel(1, 1, 9999, 1));
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel1.setText(bundle.getString("SECONDS")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

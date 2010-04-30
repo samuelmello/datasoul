@@ -76,7 +76,7 @@ public class TemplateManager implements TableModel {
             case COLUMN_NAME:
                 return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE");
             case COLUMN_TARGET_CONTENT:
-                return "Content";
+                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONTENT");
         }
         return "";
     }

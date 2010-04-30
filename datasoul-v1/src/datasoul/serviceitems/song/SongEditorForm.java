@@ -215,8 +215,8 @@ public class SongEditorForm extends javax.swing.JFrame {
         );
 
         tabSong.addTab(bundle.getString("LYRICS"), pnlLyricsTab); // NOI18N
-        tabSong.addTab("Chords Complete", songChordEditorComplete);
-        tabSong.addTab("Chords Simplified", songChordEditorSimple);
+        tabSong.addTab(bundle.getString("CHORDS COMPLETE"), songChordEditorComplete); // NOI18N
+        tabSong.addTab(bundle.getString("CHORDS SIMPLIFIED"), songChordEditorSimple); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Dialog", 2, 10));
         jLabel3.setText(bundle.getString("* USE A LINE WITH == TO SPLIT SLIDES AND A LINE WITH === TO SPLIT SESSIONS")); // NOI18N
@@ -237,7 +237,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -250,7 +250,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.add(btnSave);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
-        btnPrint.setToolTipText("Print");
+        btnPrint.setToolTipText(bundle.getString("PRINT")); // NOI18N
         btnPrint.setBorderPainted(false);
         btnPrint.setFocusable(false);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -263,7 +263,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.add(btnPrint);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document_big.png"))); // NOI18N
-        btnExport.setText("Export");
+        btnExport.setText(bundle.getString("EXPORT")); // NOI18N
         btnExport.setBorderPainted(false);
         btnExport.setFocusable(false);
         btnExport.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +275,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.add(jSeparator1);
 
         btnShowSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/format-justify-center.png"))); // NOI18N
-        btnShowSplit.setText("Split Options");
+        btnShowSplit.setText(bundle.getString("SPLIT OPTIONS")); // NOI18N
         btnShowSplit.setFocusable(false);
         btnShowSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -285,7 +285,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.add(btnShowSplit);
 
         btnShowChords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-sound.png"))); // NOI18N
-        btnShowChords.setText("Transposition");
+        btnShowChords.setText(bundle.getString("TRANSPOSITION")); // NOI18N
         btnShowChords.setFocusable(false);
         btnShowChords.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,7 +295,7 @@ public class SongEditorForm extends javax.swing.JFrame {
         jToolBar1.add(btnShowChords);
 
         btnShowTabs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_example.png"))); // NOI18N
-        btnShowTabs.setText("Guitar Tabs");
+        btnShowTabs.setText(bundle.getString("GUITAR TABS")); // NOI18N
         btnShowTabs.setFocusable(false);
         btnShowTabs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -455,7 +455,7 @@ public class SongEditorForm extends javax.swing.JFrame {
 
     private void exportPrintSong(int mode){
         if (hasChanged()){
-            int resp = JOptionPane.showConfirmDialog(this, "The song will be saved. Continue?", "Datasoul", JOptionPane.YES_NO_OPTION );
+            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("THE SONG WILL BE SAVED. CONTINUE?"), "Datasoul", JOptionPane.YES_NO_OPTION );
 
             if (resp == JOptionPane.YES_OPTION){
                 if (!save()){

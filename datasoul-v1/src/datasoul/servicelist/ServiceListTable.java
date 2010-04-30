@@ -415,7 +415,7 @@ public class ServiceListTable extends ListTable {
     public void openServiceList() {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz", "servicelist") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL SERVICE LISTS"), "servicelistz", "servicelist") );
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
         fc.setCurrentDirectory(dir);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
@@ -469,7 +469,7 @@ public class ServiceListTable extends ListTable {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul 1.x Service Lists", "servicelist") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL 1.X SERVICE LISTS"), "servicelist") );
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
@@ -481,10 +481,10 @@ public class ServiceListTable extends ListTable {
 
                 /* Ask the user if he really wants to use the older format */
                 int resp = JOptionPane.showConfirmDialog(fc, 
-                        "You have choosed to save the file in the format supported by older versions of Datasoul." + "\n" +
-                        "The service list may contain items not supported by older versions and these items will not be saved."+ "\n" +
-                        "Do you want to continue?",
-                        "Datasoul: Save as an older version", JOptionPane.OK_CANCEL_OPTION);
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YOU HAVE CHOOSED TO SAVE THE FILE IN THE FORMAT SUPPORTED BY OLDER VERSIONS OF DATASOUL.") + "\n" +
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("THE SERVICE LIST MAY CONTAIN ITEMS NOT SUPPORTED BY OLDER VERSIONS AND THESE ITEMS WILL NOT BE SAVED.")+ "\n" +
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DO YOU WANT TO CONTINUE?"),
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL: SAVE AS AN OLDER VERSION"), JOptionPane.OK_CANCEL_OPTION);
                 if (resp == JOptionPane.CANCEL_OPTION){
                     /* If user wants to change the format, give him back the file selection dialog */
                     saveServiceListAs();

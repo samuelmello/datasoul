@@ -79,7 +79,7 @@ public class DisplayTemplate extends AttributedObject {
     public static final int TARGET_CONTENT_STAGE = 2;
     public static final int TARGET_CONTENT_ALERT = 3;
     public static final int TARGET_CONTENT_IMAGES = 4;
-    public static final String [] TARGET_CONTENT_TABLE = {"Text", "Song", "Stage", "Alert", "Images" };
+    public static final String [] TARGET_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEXT"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("STAGE"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ALERT"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IMAGES") };
     private static JComboBox cbTargetContent;
 
     private int width;
@@ -399,7 +399,7 @@ public class DisplayTemplate extends AttributedObject {
     public void saveAs(JComponent owner) throws Exception {
 
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
+        fc.setFileFilter(new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL TEMPLATES (*.TEMPLATEZ)"), "templatez"));
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));

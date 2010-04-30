@@ -53,22 +53,22 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         String action = "";
         switch (mode){
             case MODE_EXPORT:
-                action = "Export";
+                action = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("EXPORT");
                 break;
             case MODE_PRINT:
-                action = "Print";
+                action = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PRINT");
                 if (! Desktop.isDesktopSupported() || ! Desktop.getDesktop().isSupported(Desktop.Action.PRINT) ){
-                    JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Print support is not enabled by Java in your platform."
-                            +"\n"+ "Please use export function and print it manually.");
+                    JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PRINT SUPPORT IS NOT ENABLED BY JAVA IN YOUR PLATFORM.")
+                            +"\n"+ java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PLEASE USE EXPORT FUNCTION AND PRINT IT MANUALLY."));
                     return false;
                 }
                 break;
         }
 
         if (singleSong == null){
-            lblTitle.setText(action+" "+"Service List");
+            lblTitle.setText(action+" "+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE LIST"));
         }else{
-            lblTitle.setText(action+" "+"Song");
+            lblTitle.setText(action+" "+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG"));
         }
 
         this.mode = mode;
@@ -106,7 +106,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         setTitle(bundle.getString("EXPORT SERVICE LIST")); // NOI18N
 
         lblTitle.setFont(lblTitle.getFont().deriveFont(lblTitle.getFont().getStyle() | java.awt.Font.BOLD));
-        lblTitle.setText("Print Service List");
+        lblTitle.setText(bundle.getString("PRINT SERVICE LIST")); // NOI18N
 
         cbServicePlan.setSelected(true);
         cbServicePlan.setText(bundle.getString("SERVICE PLAN")); // NOI18N
@@ -152,7 +152,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
 
         buttonGroup1.add(rbPrintout);
         rbPrintout.setSelected(true);
-        rbPrintout.setText("Printouts");
+        rbPrintout.setText(bundle.getString("PRINTOUTS")); // NOI18N
         rbPrintout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbPrintoutActionPerformed(evt);
@@ -160,7 +160,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(rbSlides);
-        rbSlides.setText("Slides");
+        rbSlides.setText(bundle.getString("SLIDES")); // NOI18N
         rbSlides.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbSlidesActionPerformed(evt);
@@ -168,7 +168,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         cbEmptySlide.setSelected(true);
-        cbEmptySlide.setText("Add an empty slide between service items");
+        cbEmptySlide.setText(bundle.getString("ADD AN EMPTY SLIDE BETWEEN SERVICE ITEMS")); // NOI18N
         cbEmptySlide.setEnabled(false);
         cbEmptySlide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,7 +177,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         });
 
         cbGuitarTabs.setSelected(true);
-        cbGuitarTabs.setText("Guitar Tabs");
+        cbGuitarTabs.setText(bundle.getString("GUITAR TABS")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -312,7 +312,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                                // ignore
                             }
                             if (sles.getSlideCount() == -1){
-                                throw new DocumentException("Internal Error");
+                                throw new DocumentException(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INTERNAL ERROR"));
                             }
                         }
                     }
@@ -344,7 +344,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                                 // ignore
                             }
                             if (sles.getSlideCount() == -1){
-                                throw new DocumentException("Internal Error");
+                                throw new DocumentException(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INTERNAL ERROR"));
                             }
                         }
                     }
@@ -565,7 +565,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                         Desktop.getDesktop().print(new File(fileName));
                         return;
                     }catch (Exception e){
-                        JOptionPane.showMessageDialog(ServiceListExporterPanel.this, "Unable to Print Document");
+                        JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO PRINT DOCUMENT"));
                         e.printStackTrace();
                     }
                     break;

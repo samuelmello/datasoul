@@ -87,7 +87,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
         cbShowOnMain1.setText(bundle.getString("SHOW ON MAIN OUTPUT")); // NOI18N
         cbShowOnMain1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
-        cbShowOnMonitor1.setText("Show on Stage Output");
+        cbShowOnMonitor1.setText(bundle.getString("SHOW ON STAGE OUTPUT")); // NOI18N
         cbShowOnMonitor1.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         jLabel1.setText(bundle.getString("TEMPLATE")); // NOI18N
@@ -141,11 +141,11 @@ public class AlertControlPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbMainTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                        .addComponent(cbMainTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 158, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTemplateMonitor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbMonitorTemplate, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                        .addComponent(cbMonitorTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, 158, Short.MAX_VALUE))
                     .addComponent(cbShowOnMain1)
                     .addComponent(cbShowOnMonitor1)
                     .addGroup(layout.createSequentialGroup()

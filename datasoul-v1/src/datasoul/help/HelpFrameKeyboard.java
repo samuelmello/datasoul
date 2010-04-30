@@ -70,11 +70,11 @@ public class HelpFrameKeyboard extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Datasoul - Keyboard Shortcuts");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("DATASOUL - KEYBOARD SHORTCUTS")); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 12));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-desktop-keyboard-shortcuts.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel1.setText(bundle.getString("KEYBOARD SHORTCUTS")); // NOI18N
 
         jScrollPane1.setBorder(null);

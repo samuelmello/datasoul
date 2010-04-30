@@ -41,7 +41,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     public PreviewPanel() {
         initComponents();
         serviceItemTable1.addTableListener(this);
-        serviceItemTable1.setTitlePrefix("Preview:");
+        serviceItemTable1.setTitlePrefix(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PREVIEW:"));
         serviceItemTable1.setMediaControlsEnabled(false);
 
         cbAutoLive.setSelected(!DisplayControlConfig.getInstance().getAutomaticGoLiveBool());
@@ -92,7 +92,8 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         setDoubleBuffered(false);
         setLayout(new java.awt.BorderLayout());
 
-        cbAutoLive.setText("Preview selected item before showing it on outputs");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        cbAutoLive.setText(bundle.getString("PREVIEW SELECTED ITEM BEFORE SHOWING IT ON OUTPUTS")); // NOI18N
         cbAutoLive.setFocusPainted(false);
         cbAutoLive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,7 +108,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             .addGroup(pnlPreviewBoxLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cbAutoLive)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         pnlPreviewBoxLayout.setVerticalGroup(
             pnlPreviewBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,14 +117,14 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
 
         add(pnlPreviewBox, java.awt.BorderLayout.NORTH);
 
-        btnGoLive.setText("Start Presentation");
+        btnGoLive.setText(bundle.getString("START PRESENTATION")); // NOI18N
         btnGoLive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGoLiveActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Preview:");
+        jLabel8.setText(bundle.getString("PREVIEW:")); // NOI18N
 
         previewDisplayPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         previewDisplayPanel1.setPreferredSize(new java.awt.Dimension(160, 120));
@@ -150,7 +151,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContentLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -162,11 +163,11 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
             pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContentLayout.createSequentialGroup()
                 .addGroup(pnlContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                    .addComponent(serviceItemTable1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                     .addGroup(pnlContentLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnGoLive)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(previewDisplayPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))

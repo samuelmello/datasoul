@@ -122,7 +122,8 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         lblTitle.setText("jLabel1");
         pnlHeader.add(lblTitle);
 
-        btnPlayPause.setText("Pause");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        btnPlayPause.setText(bundle.getString("PAUSE")); // NOI18N
         btnPlayPause.setFocusPainted(false);
         btnPlayPause.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

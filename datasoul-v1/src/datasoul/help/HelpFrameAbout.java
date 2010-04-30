@@ -39,10 +39,11 @@ public class HelpFrameAbout extends javax.swing.JFrame {
         helpLicense1 = new datasoul.help.HelpLicense();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Datasoul - About");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("DATASOUL - ABOUT")); // NOI18N
 
-        jTabbedPane1.addTab("About", helpAbout1);
-        jTabbedPane1.addTab("License Agreement", helpLicense1);
+        jTabbedPane1.addTab(bundle.getString("ABOUT"), helpAbout1); // NOI18N
+        jTabbedPane1.addTab(bundle.getString("LICENSE AGREEMENT"), helpLicense1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

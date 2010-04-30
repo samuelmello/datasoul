@@ -45,7 +45,9 @@
       <SubComponents>
         <Component class="javax.swing.JCheckBox" name="cbAutoLive">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Preview selected item before showing it on outputs"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="PREVIEW SELECTED ITEM BEFORE SHOWING IT ON OUTPUTS" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -101,7 +103,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnGoLive">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Start Presentation"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="START PRESENTATION" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGoLiveActionPerformed"/>
@@ -109,7 +113,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Preview:"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="PREVIEW:" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Container class="datasoul.render.SwingDisplayPanel" name="previewDisplayPanel1">
@@ -144,4 +150,3 @@
     </Container>
   </SubComponents>
 </Form>
-

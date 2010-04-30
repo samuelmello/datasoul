@@ -84,7 +84,7 @@ public abstract class AbstractConfig extends SerializableObject {
                 try {
                     writeFileFromStream(configFile, new FileInputStream(oldfile));
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                    JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CREATE CONFIG FILE ")+path+": "+ex.getMessage());
                 }
             }else{
                 // Get it from jar
@@ -92,7 +92,7 @@ public abstract class AbstractConfig extends SerializableObject {
                 try {
                     writeFileFromStream(configFile, is);
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                    JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CREATE CONFIG FILE ")+path+": "+ex.getMessage());
                 }
             }
             

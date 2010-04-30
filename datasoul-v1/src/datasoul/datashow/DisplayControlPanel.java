@@ -259,7 +259,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnMonitorShow);
 
-        cbMonitorFollowMain.setText("Stage follows Main Output controls");
+        cbMonitorFollowMain.setText(bundle.getString("STAGE FOLLOWS MAIN OUTPUT CONTROLS")); // NOI18N
         cbMonitorFollowMain.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbMonitorFollowMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,7 +296,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMonitorCb.setText("Show Stage Controls");
+        jMonitorCb.setText(bundle.getString("SHOW STAGE CONTROLS")); // NOI18N
         jMonitorCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jMonitorCb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

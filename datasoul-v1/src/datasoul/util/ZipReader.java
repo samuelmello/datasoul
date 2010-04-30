@@ -36,7 +36,7 @@ public class ZipReader {
         ZipEntry ze = zf.getEntry(name);
 
         if (ze == null){
-            throw new IOException("Unable to find entry "+name+" in archive "+zf.getName());
+            throw new IOException(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO FIND ENTRY ")+name+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString(" IN ARCHIVE ")+zf.getName());
         }
 
         return zf.getInputStream(ze);

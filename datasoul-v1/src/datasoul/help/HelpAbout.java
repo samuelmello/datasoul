@@ -58,7 +58,8 @@ public class HelpAbout extends javax.swing.JPanel {
         jLabel3.setText("datasoul.sourceforge.net");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("For more information, please visit");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel2.setText(bundle.getString("FOR MORE INFORMATION, PLEASE VISIT")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

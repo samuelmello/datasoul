@@ -63,7 +63,7 @@ public class ConfigObj extends AbstractConfig {
     public static final int QUALITY_800 = 1;
     public static final int QUALITY_1024 = 2;
     public static final int QUALITY_ORIGINAL = 3;
-    public static final String[] QUALITY_TABLE = { "Fast (640 px)", "Normal (800 px)", "High (1024 px)", "Maximum" };
+    public static final String[] QUALITY_TABLE = { java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FAST (640 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NORMAL (800 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("HIGH (1024 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MAXIMUM") };
 
     
     /** Creates a new instance of ConfigObj */
