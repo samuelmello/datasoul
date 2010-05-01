@@ -398,7 +398,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO DELETE TEMPLATE:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
+                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO DELETE TEMPLATE:")+"\n"+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
                     }// try
                 }//if confirm
             }// if instance of

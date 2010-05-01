@@ -33,7 +33,12 @@ import javax.swing.JOptionPane;
 public class ShowDialog {
 
     public static void showReadFileError(String filename, Exception e){
-            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR READING FILEFILE: ")+filename+"\n"+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR")+": "+e.getLocalizedMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
+            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR READING FILE")+"\n"+
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FILE")+": "+filename+"\n"+
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR")+": "+
+                    e.getLocalizedMessage(),
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
     }
     
     public static void showReadFileError(File file, Exception e){
@@ -41,7 +46,12 @@ public class ShowDialog {
     }
 
     public static void showWriteFileError(String filename, Exception e){
-            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR WRITING FILEFILE: ")+filename+"\n"+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR")+": "+e.getLocalizedMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
+            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR WRITING FILE")+"\n"+
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FILE")+": "+filename+"\n"+
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR")+": "+
+                    e.getLocalizedMessage(),
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
     }
     
     public static void showWriteFileError(File file, Exception e){

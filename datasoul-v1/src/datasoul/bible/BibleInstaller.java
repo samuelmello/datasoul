@@ -272,8 +272,8 @@ public class BibleInstaller extends javax.swing.JFrame {
     public static boolean checkDownloadAllowed(JPanel parent){
         if (! BibleInstaller.downloadAllowed){
             int allow = JOptionPane.showConfirmDialog(parent,
-                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("THIS OPERATION REQUIRE INTERNET ACCESS.") + "\n" +
-                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IF YOU LIVE IN A COUNTRY WHERE CHRISTIANS ARE PRESECUTED AND DO NOT WISH TO RISK DETECTION YOU SHOULD NOT PROCEED.") + "\n" +
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("THIS OPERATION REQUIRES INTERNET ACCESS.") + "\n" +
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IF YOU LIVE IN A COUNTRY WHERE CHRISTIANS ARE PERSECUTED AND DO NOT WISH TO RISK DETECTION YOU SHOULD NOT PROCEED.") + "\n" +
                     java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DO YOU WANT TO CONTINUE?"),
                     java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - WARNING"), JOptionPane.YES_NO_OPTION);
             if (allow == JOptionPane.YES_OPTION){

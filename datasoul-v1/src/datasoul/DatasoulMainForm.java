@@ -1362,7 +1362,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actEditConfigActionPerformed
 
     private void actFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExitActionPerformed
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM CLOSE")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM CLOSE?"), "Datasoul", JOptionPane.YES_NO_OPTION );
 
         if (resp == JOptionPane.YES_OPTION){
             System.exit(0);

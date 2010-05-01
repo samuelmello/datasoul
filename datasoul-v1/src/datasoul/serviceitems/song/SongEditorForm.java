@@ -369,7 +369,9 @@ public class SongEditorForm extends javax.swing.JFrame {
     private boolean save(){
 
         if(this.fieldName.getText().equals("")){
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PLEASE FILL THE FIELD \"Song_Name\""));
+            JOptionPane.showMessageDialog(this,
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PLEASE FILL THE FIELD") +" \"" +
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NAME") + "\".");
             return false;
         }
 
