@@ -1045,14 +1045,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentResized
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
-        TemplateManagerForm tmf = new TemplateManagerForm();
-        tmf.setLocationRelativeTo(this);
+        TemplateManagerForm tmf = ObjectManager.getInstance().getTemplateManagerForm();
         tmf.setVisible(true);
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        ConfigFrame cf = new ConfigFrame();
-        cf.setLocationRelativeTo(this);
+        ConfigFrame cf = ObjectManager.getInstance().getConfigFrame();
         cf.setVisible(true);
     }//GEN-LAST:event_btnConfigActionPerformed
 
@@ -1256,8 +1254,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackgroundActionPerformed
-        BackgroundConfigFrame bcf = new BackgroundConfigFrame();
-        bcf.setLocationRelativeTo(this);
+        BackgroundConfigFrame bcf = ObjectManager.getInstance().getBackgroundConfigFrame();
         bcf.setVisible(true);
     }//GEN-LAST:event_btnBackgroundActionPerformed
 

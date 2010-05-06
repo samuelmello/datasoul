@@ -369,10 +369,13 @@ public class ConfigFrame extends javax.swing.JFrame {
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
+        ObjectManager.getInstance().setConfigFrame(null);
         dispose();
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
+        ObjectManager.getInstance().setConfigFrame(null);
         dispose();
     }//GEN-LAST:event_btnDiscardActionPerformed
 

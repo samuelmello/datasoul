@@ -497,6 +497,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             d.setMonitorTemplateContentless(monContentless);
         }
 
+        ObjectManager.getInstance().setTemplateManagerForm(null);
+
 
     }//GEN-LAST:event_formWindowClosing
 

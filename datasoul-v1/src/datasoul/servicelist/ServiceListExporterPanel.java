@@ -542,6 +542,7 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
                 done();
             }catch(Exception e){
                 JOptionPane.showMessageDialog(ServiceListExporterPanel.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR CREATING DOCUMENT: ")+e.getMessage());
+                e.printStackTrace();
             }
             (ServiceListExporterPanel.this).dispose();
         }

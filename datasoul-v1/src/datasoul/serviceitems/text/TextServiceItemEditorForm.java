@@ -228,8 +228,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private boolean save(){
-        if(this.textServiceItem.getTitle().equals("")){
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YOU MUST FIELD THE TITLE"));
+        if(fieldTitle.getText().equals("")){
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YOU MUST FILL THE TITLE"));
             return false;
         }
 

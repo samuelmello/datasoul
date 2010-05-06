@@ -25,9 +25,12 @@ package datasoul.util;
 
 import datasoul.DatasoulMainForm;
 import datasoul.datashow.AuxiliarPanel;
+import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
+import datasoul.templates.TemplateManagerForm;
+import datasoul.config.ConfigFrame;
 import java.awt.Cursor;
 
 /**
@@ -44,6 +47,10 @@ public class ObjectManager {
     private TimerControlPanel timerControlPanel;
     
     private DatasoulMainForm datasoulMainForm;
+
+    private BackgroundConfigFrame backgroundConfigFrame;
+    private TemplateManagerForm templateManagerForm;
+    private ConfigFrame configFrame;
     
     /** Creates a new instance of ObjectManager */
     private ObjectManager() {
@@ -98,6 +105,60 @@ public class ObjectManager {
 
     public TimerControlPanel getTimerControlPanel(){
         return timerControlPanel;
+    }
+
+    /**
+     * @return the backgroundConfigFrame
+     */
+    public BackgroundConfigFrame getBackgroundConfigFrame() {
+        if (backgroundConfigFrame == null){
+            backgroundConfigFrame = new BackgroundConfigFrame();
+            backgroundConfigFrame.setLocationRelativeTo(datasoulMainForm);
+        }
+        return backgroundConfigFrame;
+    }
+
+    /**
+     * @param backgroundConfigFrame the backgroundConfigFrame to set
+     */
+    public void setBackgroundConfigFrame(BackgroundConfigFrame backgroundConfigFrame) {
+        this.backgroundConfigFrame = backgroundConfigFrame;
+    }
+
+    /**
+     * @return the templateManagerForm
+     */
+    public TemplateManagerForm getTemplateManagerForm() {
+        if (templateManagerForm == null){
+            templateManagerForm = new TemplateManagerForm();
+            templateManagerForm.setLocationRelativeTo(datasoulMainForm);
+        }
+        return templateManagerForm;
+    }
+
+    /**
+     * @param templateManagerForm the templateManagerForm to set
+     */
+    public void setTemplateManagerForm(TemplateManagerForm templateManagerForm) {
+        this.templateManagerForm = templateManagerForm;
+    }
+
+    /**
+     * @return the configFrame
+     */
+    public ConfigFrame getConfigFrame() {
+        if (configFrame == null){
+            configFrame = new ConfigFrame();
+            configFrame.setLocationRelativeTo(datasoulMainForm);
+        }
+        return configFrame;
+    }
+
+    /**
+     * @param configFrame the configFrame to set
+     */
+    public void setConfigFrame(ConfigFrame configFrame) {
+        this.configFrame = configFrame;
     }
     
 }

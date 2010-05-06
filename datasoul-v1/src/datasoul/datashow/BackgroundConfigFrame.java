@@ -15,6 +15,7 @@ import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.templates.ImageTemplateItem;
+import datasoul.util.ObjectManager;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -264,6 +265,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_rbStaticActionPerformed
 
     private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
+        ObjectManager.getInstance().setBackgroundConfigFrame(null);
         dispose();
     }//GEN-LAST:event_btnDiscardActionPerformed
 
@@ -280,6 +282,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             bg.setMode(BackgroundConfig.MODE_LIVE);
         }
         bg.save();
+        ObjectManager.getInstance().setBackgroundConfigFrame(null);
         dispose();
         
     }//GEN-LAST:event_btnSaveActionPerformed
