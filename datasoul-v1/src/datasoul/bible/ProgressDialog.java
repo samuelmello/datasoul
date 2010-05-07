@@ -44,7 +44,7 @@ public class ProgressDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        setTitle(bundle.getString("Datasoul_-_Please_Wait")); // NOI18N
+        setTitle(bundle.getString("DATASOUL - PLEASE WAIT")); // NOI18N
         setLocationByPlatform(true);
         setModal(true);
         setResizable(false);
@@ -54,7 +54,7 @@ public class ProgressDialog extends javax.swing.JDialog {
         lblText.setText("jLabel1");
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/process-stop.png"))); // NOI18N
-        btnCancel.setText(bundle.getString("Cancel")); // NOI18N
+        btnCancel.setText(bundle.getString("CANCEL")); // NOI18N
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -154,3 +154,5 @@ public class ProgressDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

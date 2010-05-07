@@ -23,6 +23,7 @@
 
 package datasoul.config;
 
+import datasoul.StartupManager;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
@@ -65,6 +66,15 @@ public class BackgroundConfig extends AbstractConfig {
         File imgfile = new File(getConfigPath()+"background.png");
         if (imgfile.exists() && imgfile.canRead()){
             try {
+                BufferedImage img = ImageIO.read(imgfile);
+                setBackgroundImg(img);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }else{
+            try {
+                // Copy default
+                StartupManager.copyFile("samples/background.png", imgfile.getAbsolutePath());
                 BufferedImage img = ImageIO.read(imgfile);
                 setBackgroundImg(img);
             } catch (IOException ex) {
@@ -191,3 +201,4 @@ public class BackgroundConfig extends AbstractConfig {
     }
 
 }
+

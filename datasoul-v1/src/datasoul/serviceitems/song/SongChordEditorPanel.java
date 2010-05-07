@@ -79,7 +79,8 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
 
         pnlTabsNotFound.setLayout(new java.awt.GridLayout(2, 1));
 
-        jLabel2.setText("Not Found:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel2.setText(bundle.getString("NOT FOUND:")); // NOI18N
         pnlTabsNotFound.add(jLabel2);
 
         lblNotFound.setText("jLabel3");
@@ -98,7 +99,7 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         jPanel2.add(btnRefreshTabs, java.awt.BorderLayout.LINE_START);
 
         btnTabsCatalog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
-        btnTabsCatalog.setText("Edit");
+        btnTabsCatalog.setText(bundle.getString("EDIT")); // NOI18N
         btnTabsCatalog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTabsCatalogActionPerformed(evt);
@@ -123,7 +124,7 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
         jLabel3.setText("  ");
         transposeToolbar.add(jLabel3);
 
-        jLabel1.setText("Transpose using");
+        jLabel1.setText(bundle.getString("TRANSPOSE USING")); // NOI18N
         transposeToolbar.add(jLabel1);
 
         jLabel4.setText("  ");
@@ -472,3 +473,4 @@ public class SongChordEditorPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
 }
+

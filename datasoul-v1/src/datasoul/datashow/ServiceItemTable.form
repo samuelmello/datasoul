@@ -75,7 +75,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnPlayPause">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pause"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="PAUSE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
           </Properties>
           <Events>

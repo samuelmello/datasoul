@@ -83,7 +83,7 @@ public class ServiceListExporterDocument {
         
         ServiceListTable slt = ServiceListTable.getActiveInstance();
         
-        Paragraph p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Plan"), FontFactory.getFont(FontFactory.HELVETICA, 12));
+        Paragraph p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE PLAN"), FontFactory.getFont(FontFactory.HELVETICA, 12));
         p.setAlignment(Element.ALIGN_CENTER);
         document.add(p);
         
@@ -96,10 +96,10 @@ public class ServiceListExporterDocument {
         t.setPadding(2.0f);
         t.setWidth(100.0f);
         
-        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Time")));
-        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Min")));
-        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Title")));
-        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Notes")));
+        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TIME")));
+        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MIN")));
+        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TITLE")));
+        t.addCell(createHeaderCell(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NOTES")));
         
         
         for (int i=0; i<slt.getRowCount(); i++){
@@ -135,7 +135,7 @@ public class ServiceListExporterDocument {
         
         document.add(t);
         
-        p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Notes"), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+        p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NOTES"), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
         document.add(p);
         
         p = new Paragraph(slt.getNotes(), FontFactory.getFont(FontFactory.HELVETICA));
@@ -166,17 +166,17 @@ public class ServiceListExporterDocument {
         document.add(p);
         
         if (!s.getSongAuthor().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Author")+s.getSongAuthor(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AUTHOR")+s.getSongAuthor(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
         
         if (!s.getCopyright().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Copyright")+s.getCopyright(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("COPYRIGHT")+s.getCopyright(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
 
         if (!s.getSongSource().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Source")+s.getSongSource(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SOURCE")+s.getSongSource(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
         
@@ -190,7 +190,7 @@ public class ServiceListExporterDocument {
 
         Paragraph p;
 
-        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Lyrics")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LYRICS")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
         document.add(p);
         
         String text = s.getText().replace(Song.CHORUS_MARK , "").replace(Song.SLIDE_BREAK, "");
@@ -234,7 +234,7 @@ public class ServiceListExporterDocument {
 
         Paragraph p;
 
-        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Simple")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORDS SIMPLE")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
         document.add(p);
 
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
@@ -251,7 +251,7 @@ public class ServiceListExporterDocument {
             p = new Paragraph(s.getTitle(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             guitarTabs.add(p);
 
-            p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+            p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORDS COMPLETE")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
             guitarTabs.add(p);
 
             guitarTabs.addAll(addChordsShape(Song.getUsedChords(s.getChordsSimplified())));
@@ -273,7 +273,7 @@ public class ServiceListExporterDocument {
 
         Paragraph p;
 
-        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+        p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORDS COMPLETE")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
         document.add(p);
         
         p = new Paragraph(" ", FontFactory.getFont(FontFactory.HELVETICA));
@@ -289,7 +289,7 @@ public class ServiceListExporterDocument {
         if (exportGuitarTabs){
             p = new Paragraph(s.getTitle(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             guitarTabs.add(p);
-            p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chords_Complete")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
+            p = new Paragraph("("+java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORDS COMPLETE")+")", FontFactory.getFont(FontFactory.HELVETICA, 8));
             guitarTabs.add(p);
             
             guitarTabs.addAll(addChordsShape(Song.getUsedChords(s.getChordsComplete())));
@@ -320,7 +320,7 @@ public class ServiceListExporterDocument {
                     Chunk c = new Chunk(Image.getInstance(tmp.getAbsolutePath()), 0, 0, false);
                     images.add(c);
                 }catch(IOException e){
-                    JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Internal_error:_")+e.getMessage());
+                    JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INTERNAL ERROR: ")+e.getMessage());
                 }
             }else{
                 notCatalogued += chordsName.get(i);
@@ -340,7 +340,7 @@ public class ServiceListExporterDocument {
         ret.add(p);
         
         if (!notCatalogued.equals("") ){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("The_following_chords_are_not_cataloged:_")+notCatalogued, FontFactory.getFont(FontFactory.HELVETICA, 8));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("THE FOLLOWING CHORDS ARE NOT CATALOGED: ")+notCatalogued, FontFactory.getFont(FontFactory.HELVETICA, 8));
             ret.add(p);
         }
 
@@ -382,7 +382,7 @@ public class ServiceListExporterDocument {
 
         document.newPage();
 
-        Paragraph p = new Paragraph("Guitar Tabs", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16));
+        Paragraph p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("GUITAR TABS"), FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16));
         document.add(p);
 
         for (Paragraph p2 : guitarTabs){
@@ -392,3 +392,5 @@ public class ServiceListExporterDocument {
     }
     
 }
+
+

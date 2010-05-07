@@ -50,6 +50,8 @@ public class ConfigFrame extends javax.swing.JFrame {
         configObj = ConfigObj.getNextInstance();
         refreshScreenValues();
 
+        setSize(615,515);
+
     }
 
     /** This method is called from within the constructor to
@@ -89,12 +91,12 @@ public class ConfigFrame extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Datasoul Configuration");
-
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Storage_Location"))); // NOI18N
+        setTitle(bundle.getString("DATASOUL CONFIGURATION")); // NOI18N
 
-        btnStgloc.setText(bundle.getString("Change")); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("STORAGE LOCATION"))); // NOI18N
+
+        btnStgloc.setText(bundle.getString("CHANGE")); // NOI18N
         btnStgloc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnStglocActionPerformed(evt);
@@ -104,11 +106,11 @@ public class ConfigFrame extends javax.swing.JFrame {
         txtStorageLoc.setEditable(false);
         txtStorageLoc.setText("jTextField1");
 
-        jLabel10.setText(bundle.getString("Storage_Directory")); // NOI18N
+        jLabel10.setText(bundle.getString("STORAGE DIRECTORY")); // NOI18N
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getSize()-2f));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/folder.png"))); // NOI18N
-        jLabel1.setText("Directory where Datasoul store its files");
+        jLabel1.setText(bundle.getString("DIRECTORY WHERE DATASOUL STORE ITS FILES")); // NOI18N
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -140,21 +142,21 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Output Configuration"));
 
-        jLabel7.setText("Rendering Quality");
+        jLabel7.setText(bundle.getString("RENDERING QUALITY")); // NOI18N
 
         cbQualityMain.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        cbMonitorOutput.setText("Enable Stage Output");
+        cbMonitorOutput.setText(bundle.getString("ENABLE STAGE OUTPUT")); // NOI18N
 
-        jLabel9.setText(bundle.getString("Clock_format")); // NOI18N
+        jLabel9.setText(bundle.getString("CLOCK FORMAT")); // NOI18N
 
         clockMode.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(jLabel3.getFont().deriveFont(jLabel3.getFont().getSize()-2f));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview_small.png"))); // NOI18N
-        jLabel3.setText("Display Devices and Rendering Properties");
+        jLabel3.setText(bundle.getString("DISPLAY DEVICES AND RENDERING PROPERTIES")); // NOI18N
 
-        cbDetectMonitors.setText("Automatically Detect Outputs");
+        cbDetectMonitors.setText(bundle.getString("AUTOMATICALLY DETECT OUTPUTS")); // NOI18N
         cbDetectMonitors.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbDetectMonitorsActionPerformed(evt);
@@ -163,9 +165,9 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbMainDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel28.setText("Main Output");
+        jLabel28.setText(bundle.getString("MAIN OUTPUT")); // NOI18N
 
-        jLabel29.setText("Stage Output");
+        jLabel29.setText(bundle.getString("STAGE OUTPUT")); // NOI18N
 
         cbMonitorDevice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -196,7 +198,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29)))
         );
 
-        lblMonitorDisabled.setText("(You need at least 2 displays to enable Stage Output)");
+        lblMonitorDisabled.setText(bundle.getString("(YOU NEED AT LEAST 2 DISPLAYS TO ENABLE STAGE OUTPUT)")); // NOI18N
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -247,7 +249,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         );
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
-        btnSave.setText("Save and Close");
+        btnSave.setText(bundle.getString("SAVE AND CLOSE")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
@@ -255,7 +257,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         });
 
         btnDiscard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnDiscard.setText("Discard and Close");
+        btnDiscard.setText(bundle.getString("DISCARD AND CLOSE")); // NOI18N
         btnDiscard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiscardActionPerformed(evt);
@@ -266,17 +268,17 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getSize()-2f));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
-        jLabel2.setText("Allow these functions to access internet");
+        jLabel2.setText(bundle.getString("ALLOW THESE FUNCTIONS TO ACCESS INTERNET")); // NOI18N
 
-        cbOnlineUpdate.setText("Notify me when a new version of Datasoul is available");
+        cbOnlineUpdate.setText(bundle.getString("NOTIFY ME WHEN A NEW VERSION OF DATASOUL IS AVAILABLE")); // NOI18N
 
-        cbOnlineStats.setText("Send anonymous usage statistics");
+        cbOnlineStats.setText(bundle.getString("SEND ANONYMOUS USAGE STATISTICS")); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
         jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13));
         jTextArea1.setLineWrap(true);
-        jTextArea1.setText("If you live in a country where christians are persecuted and do not wish to risk detection you should not use any of these functions.");
+        jTextArea1.setText(bundle.getString("IF YOU LIVE IN A COUNTRY WHERE CHRISTIANS ARE PERSECUTED AND DO NOT WISH TO RISK DETECTION YOU SHOULD NOT USE ANY OF THESE FUNCTIONS.")); // NOI18N
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setBorder(null);
         jTextArea1.setFocusable(false);
@@ -334,7 +336,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDiscard)
                     .addComponent(btnSave))
@@ -362,15 +364,18 @@ public class ConfigFrame extends javax.swing.JFrame {
             ObjectManager.getInstance().setBusyCursor();
             refreshObjectValues();
             configObj.save();
-            JOptionPane.showMessageDialog(this, "Configuration will take effect next time Datasoul is started", "Datasoul", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIGURATION WILL TAKE EFFECT NEXT TIME DATASOUL IS STARTED"), "Datasoul", JOptionPane.INFORMATION_MESSAGE);
 
         }finally{
             ObjectManager.getInstance().setDefaultCursor();
         }
+        ObjectManager.getInstance().setConfigFrame(null);
         dispose();
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDiscardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiscardActionPerformed
+        ObjectManager.getInstance().setConfigFrame(null);
         dispose();
     }//GEN-LAST:event_btnDiscardActionPerformed
 
@@ -509,3 +514,5 @@ public class ConfigFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

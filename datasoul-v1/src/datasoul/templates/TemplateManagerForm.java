@@ -97,7 +97,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         btnImport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Datasoul Template Manager");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("DATASOUL TEMPLATE MANAGER")); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -117,7 +118,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         ));
         jScrollPane1.setViewportView(jTableTemplates);
 
-        jLabel2.setText("Preview:");
+        jLabel2.setText(bundle.getString("PREVIEW:")); // NOI18N
 
         lblPreview.setText("      ");
         lblPreview.setMaximumSize(new java.awt.Dimension(100, 500));
@@ -125,11 +126,11 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
         pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder("Stage Templates"));
 
-        jLabel3.setText("Song:");
+        jLabel3.setText(bundle.getString("SONG:")); // NOI18N
 
-        jLabel4.setText("Text:");
+        jLabel4.setText(bundle.getString("TEXT:")); // NOI18N
 
-        jLabel5.setText("Images:");
+        jLabel5.setText(bundle.getString("IMAGES:")); // NOI18N
 
         cbMonitorSong.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbMonitorSong.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +153,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             }
         });
 
-        jLabel9.setText("Contentless:");
+        jLabel9.setText(bundle.getString("CONTENTLESS:")); // NOI18N
 
         cbMonitorContentless.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbMonitorContentless.addActionListener(new java.awt.event.ActionListener() {
@@ -203,11 +204,11 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Default Templates"));
 
-        jLabel6.setText("Song:");
+        jLabel6.setText(bundle.getString("SONG:")); // NOI18N
 
-        jLabel7.setText("Text:");
+        jLabel7.setText(bundle.getString("TEXT:")); // NOI18N
 
-        jLabel8.setText("Images:");
+        jLabel8.setText(bundle.getString("IMAGES:")); // NOI18N
 
         cbDefaultSong.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbDefaultSong.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +273,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         jToolBar1.setRollover(true);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new_big.png"))); // NOI18N
-        btnNew.setToolTipText("New");
+        btnNew.setToolTipText(bundle.getString("NEW")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusPainted(false);
         btnNew.setFocusable(false);
@@ -286,7 +287,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         jToolBar1.add(btnNew);
 
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open_big.png"))); // NOI18N
-        btnLoad.setToolTipText("Open");
+        btnLoad.setToolTipText(bundle.getString("OPEN")); // NOI18N
         btnLoad.setBorderPainted(false);
         btnLoad.setFocusPainted(false);
         btnLoad.setFocusable(false);
@@ -300,8 +301,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         jToolBar1.add(btnLoad);
 
         btnDeleteTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        btnDeleteTemplate.setText(bundle.getString("Delete")); // NOI18N
+        btnDeleteTemplate.setText(bundle.getString("DELETE")); // NOI18N
         btnDeleteTemplate.setBorderPainted(false);
         btnDeleteTemplate.setFocusPainted(false);
         btnDeleteTemplate.setFocusable(false);
@@ -313,7 +313,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         jToolBar1.add(btnDeleteTemplate);
 
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned_big.png"))); // NOI18N
-        btnImport.setText("Import");
+        btnImport.setText(bundle.getString("IMPORT")); // NOI18N
         btnImport.setBorderPainted(false);
         btnImport.setFocusable(false);
         btnImport.addActionListener(new java.awt.event.ActionListener() {
@@ -393,12 +393,12 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             Object x = jTableTemplates.getValueAt( jTableTemplates.getSelectedRow(), jTableTemplates.getSelectedColumn() );
             if (x instanceof String){
                 String str = (String) x;
-                int confirm = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Delete_template_")+x+"?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"), JOptionPane.YES_NO_OPTION);
+                int confirm = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DELETE TEMPLATE ")+x+"?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"), JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION){
                     try{
                         TemplateManager.getInstance().deleteTemplate(str);
                     }catch(Exception e){
-                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_delete_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+                        JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO DELETE TEMPLATE:")+"\n"+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
                     }// try
                 }//if confirm
             }// if instance of
@@ -408,12 +408,12 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
         JFileChooser fc = new JFileChooser();
-        fc.addChoosableFileFilter(new FileNameExtensionFilter("Datasoul 1.x Templates (*.template)", "template"));
-        fc.addChoosableFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
+        fc.addChoosableFileFilter(new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL 1.X TEMPLATES (*.TEMPLATE)"), "template"));
+        fc.addChoosableFileFilter(new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL TEMPLATES (*.TEMPLATEZ)"), "templatez"));
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
         fc.setMultiSelectionEnabled(true);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             for (File f : fc.getSelectedFiles()){
                 DisplayTemplate.importTemplate(f.getAbsolutePath());
@@ -497,6 +497,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
             d.setMonitorTemplateContentless(monContentless);
         }
 
+        ObjectManager.getInstance().setTemplateManagerForm(null);
+
 
     }//GEN-LAST:event_formWindowClosing
 
@@ -542,3 +544,5 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     }
 
 }
+
+

@@ -26,3 +26,4 @@ public class GstDisplayCmdPaintTemplate extends GstDisplayCmd {
     }
 
 }
+

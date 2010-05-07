@@ -48,9 +48,9 @@ public class OnlineUpdateCheck extends Thread {
             int latestversion = Integer.parseInt(toks[0]);
 
             if (latestversion > VERSION){
-                String msg = "New Datasoul version"+
+                String msg = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW DATASOUL VERSION")+
                         " "+toks[1]+" "+
-                        "is available at"+
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IS AVAILABLE AT")+
                         " "+toks[2];
 
                 System.out.println(msg);
@@ -69,3 +69,4 @@ public class OnlineUpdateCheck extends Thread {
 
 
 }
+

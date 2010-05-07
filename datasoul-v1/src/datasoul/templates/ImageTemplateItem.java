@@ -57,21 +57,21 @@ public class ImageTemplateItem extends TemplateItem {
     public static final int IMAGE_CONTENT_STATIC = 0;
     public static final int IMAGE_CONTENT_SLIDE = 1;
     public static final int IMAGE_CONTENT_NEXT_SLIDE = 2;
-    public static final String[] IMAGE_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Static"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slide"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Next_Slide")};
+    public static final String[] IMAGE_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("STATIC"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SLIDE"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEXT SLIDE")};
     
     public static final int ALIGN_LEFT = 0; //"Left";
     public static final int ALIGN_CENTER = 1;//"Center";
     public static final int ALIGN_RIGHT = 2; //"Right";
-    public static final String[] ALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Left"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Center"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Right")};
+    public static final String[] ALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LEFT"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CENTER"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("RIGHT")};
 
     public static final int VALIGN_TOP = 0; //"Top";
     public static final int VALIGN_MIDDLE = 1; //"Middle";
     public static final int VALIGN_BOTTOM = 2; //"Bottom";
-    public static final String[] VALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Top"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Middle"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Bottom")};
+    public static final String[] VALIGN_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TOP"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MIDDLE"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("BOTTOM")};
     
     public static final int STRETCH_NO = 0;
     public static final int STRETCH_YES = 1;
-    public static final String[] STRETCH_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes")};
+    public static final String[] STRETCH_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NO"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YES")};
 
     private ZipReader activeZipReader;
     
@@ -141,7 +141,6 @@ public class ImageTemplateItem extends TemplateItem {
         if (filename != null){
             try {
                 img = ImageIO.read( new File(filename) );
-                assertImageSize();
                 this.setWidth( img.getWidth() );
                 this.setHeight( img.getHeight() );
             } catch (IOException ex) {
@@ -152,9 +151,6 @@ public class ImageTemplateItem extends TemplateItem {
     
     public void setImage(BufferedImage img){
         this.img = img;
-        if (img != null){
-            assertImageSize();
-        }
     }
     
     public BufferedImage getImage(){
@@ -165,10 +161,10 @@ public class ImageTemplateItem extends TemplateItem {
      * Ensures that the image is not larger than the screen size to 
      * avoid running out of memory
      */
-    private void assertImageSize(){
+    public void assertImageSize(int templateWidth, int templateHeight){
 
-        float fw = (float) this.img.getWidth() / (float) DisplayTemplate.TEMPLATE_WIDTH;
-        float fh = (float) this.img.getHeight() / (float) DisplayTemplate.TEMPLATE_HEIGHT;
+        float fw = (float) this.img.getWidth() / (float) templateWidth;
+        float fh = (float) this.img.getHeight() / (float) templateHeight;
         
         // any of the sides is greater than the output size?
         // using 1.1 to allow some tolerance and avoid 
@@ -196,13 +192,13 @@ public class ImageTemplateItem extends TemplateItem {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("ContentIdx");
-        registerDisplayString("ContentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Content"));
+        registerDisplayString("ContentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONTENT"));
         properties.add("AlignmentIdx");
-        registerDisplayString("AlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Alignment"));
+        registerDisplayString("AlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ALIGNMENT"));
         properties.add("VerticalAlignmentIdx");
-        registerDisplayString("VerticalAlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Vertical_Alignment"));
+        registerDisplayString("VerticalAlignmentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERTICAL ALIGNMENT"));
         properties.add("StretchIdx");
-        registerDisplayString("StretchIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Stretch"));
+        registerDisplayString("StretchIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("STRETCH"));
 
     }
     
@@ -269,7 +265,6 @@ public class ImageTemplateItem extends TemplateItem {
             try {
                 is = activeZipReader.getInputStream(strImage);
                 img = ImageIO.read(is);
-                assertImageSize();
             } catch (IOException ex) {
                 ex.printStackTrace();
             } finally {
@@ -288,7 +283,6 @@ public class ImageTemplateItem extends TemplateItem {
 
     public void setImageInStr(String strImage) {
         img = ImageSerializer.strToImage(strImage);
-        assertImageSize();
     }
 
 
@@ -441,3 +435,5 @@ public class ImageTemplateItem extends TemplateItem {
 
      
 }
+
+

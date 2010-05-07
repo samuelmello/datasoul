@@ -18,3 +18,4 @@ public class GstDisplayCmdVideoStop extends GstDisplayCmd {
         GstManagerClient.getInstance().stopVideoItem();
     }
 }
+

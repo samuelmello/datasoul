@@ -62,3 +62,4 @@ public class ServiceItemNumberLabel extends JLabel {
         }
     
 }
+

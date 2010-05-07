@@ -70,7 +70,7 @@ public class DisplayTemplate extends AttributedObject {
     private int transitionKeepBG;
     public static final int KEEP_BG_YES = 0;
     public static final int KEEP_BG_NO = 1;
-    public static final String[] KEEP_BG_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Yes"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("No")};
+    public static final String[] KEEP_BG_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YES"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NO")};
     private static JComboBox cbKeepBG;
 
     private int targetContent;
@@ -79,7 +79,7 @@ public class DisplayTemplate extends AttributedObject {
     public static final int TARGET_CONTENT_STAGE = 2;
     public static final int TARGET_CONTENT_ALERT = 3;
     public static final int TARGET_CONTENT_IMAGES = 4;
-    public static final String [] TARGET_CONTENT_TABLE = {"Text", "Song", "Stage", "Alert", "Images" };
+    public static final String [] TARGET_CONTENT_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEXT"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SONG"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("STAGE"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ALERT"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IMAGES") };
     private static JComboBox cbTargetContent;
 
     private int width;
@@ -114,7 +114,12 @@ public class DisplayTemplate extends AttributedObject {
         DisplayTemplate t = new DisplayTemplate();
         try {
             t.loadFromFile(filename);
-            t.save(ObjectManager.getInstance().getDatasoulMainForm().getRootPane());
+            if (ObjectManager.getInstance().getDatasoulMainForm() != null){
+                t.save(ObjectManager.getInstance().getDatasoulMainForm().getRootPane());
+            }else{
+                // During initial conversion, at startup
+                t.save(null);
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -232,9 +237,9 @@ public class DisplayTemplate extends AttributedObject {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("Name");
-        registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template_Name"));
+        registerDisplayString("Name", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE NAME"));
         properties.add("TransitionKeepBGIdx");
-        registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Transition_Keep_Background"));
+        registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TRANSITION KEEP BACKGROUND"));
         properties.add("TargetContentIdx");
         registerDisplayString("TargetContentIdx", "Target Content");
         properties.add("Width");
@@ -270,7 +275,7 @@ public class DisplayTemplate extends AttributedObject {
     
     public void addItem(TemplateItem t){
         if (t.getName().equals("")){
-            t.setName(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Item_#")+defaultItemNameCount++);
+            t.setName(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ITEM #")+defaultItemNameCount++);
         }
         
         items.add(t);
@@ -394,10 +399,10 @@ public class DisplayTemplate extends AttributedObject {
     public void saveAs(JComponent owner) throws Exception {
 
         JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileNameExtensionFilter("Datasoul Templates (*.templatez)", "templatez"));
+        fc.setFileFilter(new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL TEMPLATES (*.TEMPLATEZ)"), "templatez"));
         File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
         fc.setCurrentDirectory(dir);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_the_file_to_save."));
+        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showSaveDialog(owner) == JFileChooser.APPROVE_OPTION) {
             String fileName = fc.getSelectedFile().getName();
             fileName = fileName.replace(".templatez", "");
@@ -565,3 +570,5 @@ public class DisplayTemplate extends AttributedObject {
     }
 
 }
+
+

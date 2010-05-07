@@ -13,6 +13,7 @@ import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
 import datasoul.serviceitems.song.AllSongsListTable;
+import datasoul.templates.DisplayTemplate;
 import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
@@ -42,7 +43,7 @@ public class StartupManager {
         sm.run();
     }
 
-    public static void checkStorageLocation(){
+    public void checkStorageLocation(){
         String stgloc = ConfigObj.getActiveInstance().getStorageLoc();
 
         File stglocdir  = new File(stgloc);
@@ -54,6 +55,7 @@ public class StartupManager {
         if (!templates.exists()){
             templates.mkdirs();
             copySampleTemplates(templates.getAbsolutePath());
+            checkLegacyTemplates();
         }
 
         File songs  = new File(ConfigObj.getActiveInstance().getStoragePathSongs());
@@ -70,7 +72,7 @@ public class StartupManager {
 
     }
 
-    protected static void copyFile(String resource, String targetName) throws IOException{
+    public static void copyFile(String resource, String targetName) throws IOException{
         InputStream is = DatasoulMainForm.class.getResourceAsStream(resource);
         FileOutputStream fos = new FileOutputStream(targetName);
         int x;
@@ -81,7 +83,25 @@ public class StartupManager {
         fos.close();
     }
 
-    protected static void copySampleTemplates(String dir){
+    protected void checkLegacyTemplates(){
+        File legacyDir = new File( ConfigObj.getActiveInstance().getStoragePathLegacyTemplates() );
+        if (legacyDir.exists()){
+            File[] files = legacyDir.listFiles();
+
+            if (files != null){
+
+                updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UPDATING TEMPLATES..."));
+
+                for (File f : files){
+                    if(f.getName().endsWith(".template")){
+                        DisplayTemplate.importTemplate(f.getAbsolutePath());
+                    }
+                }
+            }
+        }
+    }
+
+    protected void copySampleTemplates(String dir){
         String files[] = {
             "ds-alert-sick.templatez",
             "ds-alert-smile.templatez",
@@ -110,7 +130,7 @@ public class StartupManager {
 
     }
 
-    protected static void copySampleSongs(String dir){
+    protected void copySampleSongs(String dir){
         String files[] = {"Amazing Grace.song",
             "How Great Thou Art.song",
             "It Is Well With My Soul.song",
@@ -128,7 +148,7 @@ public class StartupManager {
     }
 
 
-    protected static void copySampleServices(String dir){
+    protected void copySampleServices(String dir){
         String files[] = {"SampleService.servicelist"};
 
         for (String f: files){
@@ -163,8 +183,6 @@ public class StartupManager {
 
     void run() {
 
-        long l1 = System.currentTimeMillis();
-
         // Use IPv4, needed by http-commons
         System.getProperties().setProperty("java.net.preferIPv4Stack", "true");
 
@@ -180,7 +198,7 @@ public class StartupManager {
             System.setProperty("sun.java2d.d3d","false");
         }
 
-        updateSplash("Initializing...");
+        updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INITIALIZING..."));
 
         try{
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -194,16 +212,13 @@ public class StartupManager {
         ContentManager.getInstance();
         checkStorageLocation();
 
-        updateSplash("Loading Songs...");
+        updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LOADING SONGS..."));
         AllSongsListTable.getInstance();
 
-        updateSplash("Creating User Interface...");
+        updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CREATING USER INTERFACE..."));
 
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         mainForm.setVisible(true);
-
-        System.out.println(System.currentTimeMillis() - l1);
-
 
         try{
             if (ConfigObj.getActiveInstance().isGstreamerActive()){
@@ -261,3 +276,4 @@ public class StartupManager {
     }
 
 }
+

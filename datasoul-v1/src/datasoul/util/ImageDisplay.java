@@ -89,3 +89,4 @@ public class ImageDisplay extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+

@@ -90,7 +90,7 @@ public class ChordsDB extends ListTable{
                 try {
                     writeFileFromStream(chordsFile, new FileInputStream(oldfile));
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                    JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CREATE CONFIG FILE ")+path+": "+ex.getMessage());
                 }
             }else{
                 // Get it from jar
@@ -98,7 +98,7 @@ public class ChordsDB extends ListTable{
                 try {
                     writeFileFromStream(chordsFile, is);
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Unable to create config file "+path+": "+ex.getMessage());
+                    JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CREATE CONFIG FILE ")+path+": "+ex.getMessage());
                 }
 
             }
@@ -141,7 +141,7 @@ public class ChordsDB extends ListTable{
     }
     
     public String getColumnName(int columnIndex) {
-        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chord");
+        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHORD");
     }
     
     public Chord getChordByName(String name){
@@ -228,3 +228,5 @@ public class ChordsDB extends ListTable{
      }
     
 }
+
+

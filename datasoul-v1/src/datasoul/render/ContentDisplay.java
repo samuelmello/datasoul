@@ -15,3 +15,4 @@ public interface ContentDisplay {
     public void updateScreen(boolean isBlack, boolean keepBG, float background, float transition, float template, float alert);
 
 }
+

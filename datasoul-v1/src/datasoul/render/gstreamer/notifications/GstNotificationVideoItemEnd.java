@@ -22,3 +22,4 @@ public class GstNotificationVideoItemEnd extends GstNotification {
     }
 
 }
+

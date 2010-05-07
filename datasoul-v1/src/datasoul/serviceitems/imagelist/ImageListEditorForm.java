@@ -60,14 +60,15 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Edit Image List");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("EDIT IMAGE LIST")); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
         });
 
-        jLabel2.setText("Image List Title:");
+        jLabel2.setText(bundle.getString("IMAGE LIST TITLE:")); // NOI18N
 
         txtTitle.setText("jTextField1");
 
@@ -75,7 +76,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         jToolBar2.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -89,7 +90,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         jToolBar2.add(jSeparator1);
 
         btnAddImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
-        btnAddImages.setText("Add");
+        btnAddImages.setText(bundle.getString("ADD")); // NOI18N
         btnAddImages.setBorderPainted(false);
         btnAddImages.setFocusPainted(false);
         btnAddImages.setFocusable(false);
@@ -101,7 +102,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         jToolBar2.add(btnAddImages);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
-        btnDelete.setText("Delete");
+        btnDelete.setText(bundle.getString("DELETE")); // NOI18N
         btnDelete.setBorderPainted(false);
         btnDelete.setFocusPainted(false);
         btnDelete.setFocusable(false);
@@ -169,7 +170,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
             }
 
             public String getDescription() {
-                return "Image Files (*.jpg, *.gif, *.png, *.bmp)";
+                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IMAGE FILES (*.JPG, *.GIF, *.PNG, *.BMP)");
             }
         });
         fc.setMultiSelectionEnabled(true);
@@ -204,7 +205,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         if (hasChanged()){
-            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
+            int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SAVE THE CHANGES?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
 
             if (resp == JOptionPane.YES_OPTION){
                 save();
@@ -241,3 +242,5 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

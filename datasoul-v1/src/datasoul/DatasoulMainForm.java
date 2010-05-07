@@ -114,6 +114,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         wpc.getSplSongLibrary(splSongLibrary);
         wpc.getSplDisplayControl(splDisplayControl);
 
+        updatePreviewHeight();
+
         updateSize = true;
     }
 
@@ -286,7 +288,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        actAddSong.setText(bundle.getString("Add_Song")); // NOI18N
+        actAddSong.setText(bundle.getString("ADD SONG")); // NOI18N
         actAddSong.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddSongActionPerformed(evt);
@@ -295,7 +297,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddSong);
 
         actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
-        actAddText.setText(bundle.getString("Add_Text")); // NOI18N
+        actAddText.setText(bundle.getString("ADD TEXT")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddTextActionPerformed(evt);
@@ -304,7 +306,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddText);
 
         actAddBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bookmark.png"))); // NOI18N
-        actAddBible.setText(bundle.getString("Add_Bible_Text")); // NOI18N
+        actAddBible.setText(bundle.getString("ADD BIBLE TEXT")); // NOI18N
         actAddBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddBibleActionPerformed(evt);
@@ -313,7 +315,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddBible);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
-        actAddContentlessItem.setText(bundle.getString("Add_Contentless_Item")); // NOI18N
+        actAddContentlessItem.setText(bundle.getString("ADD CONTENTLESS ITEM")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddContentlessItemActionPerformed(evt);
@@ -322,7 +324,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddContentlessItem);
 
         actAddImageList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/image-x-generic.png"))); // NOI18N
-        actAddImageList.setText("Add Image List");
+        actAddImageList.setText(bundle.getString("ADD IMAGE LIST")); // NOI18N
         actAddImageList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddImageListActionPerformed(evt);
@@ -331,7 +333,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddImageList);
 
         actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        actImportItem.setText(bundle.getString("Import_Item")); // NOI18N
+        actImportItem.setText(bundle.getString("IMPORT ITEM")); // NOI18N
         actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actImportItemActionPerformed(evt);
@@ -340,7 +342,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actImportItem);
 
         actAddAttachment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/mail-attachment.png"))); // NOI18N
-        actAddAttachment.setText("Add Attachment");
+        actAddAttachment.setText(bundle.getString("ADD ATTACHMENT")); // NOI18N
         actAddAttachment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddAttachmentActionPerformed(evt);
@@ -349,7 +351,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddAttachment);
 
         actAddVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-x-generic.png"))); // NOI18N
-        actAddVideo.setText("Add Video");
+        actAddVideo.setText(bundle.getString("ADD VIDEO")); // NOI18N
         actAddVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actAddVideoActionPerformed(evt);
@@ -358,7 +360,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ppmAddItem.add(actAddVideo);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Datasoul");
+        setTitle(bundle.getString("DATASOUL")); // NOI18N
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -375,7 +377,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new_big.png"))); // NOI18N
-        btnNew.setToolTipText("New");
+        btnNew.setToolTipText(bundle.getString("NEW")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.setFocusable(false);
         btnNew.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -388,7 +390,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnNew);
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open_big.png"))); // NOI18N
-        btnOpen.setToolTipText("Open");
+        btnOpen.setToolTipText(bundle.getString("OPEN")); // NOI18N
         btnOpen.setBorderPainted(false);
         btnOpen.setFocusable(false);
         btnOpen.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -401,7 +403,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnOpen);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -414,7 +416,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as_big.png"))); // NOI18N
-        btnSaveAs.setToolTipText("Save As");
+        btnSaveAs.setToolTipText(bundle.getString("SAVE AS")); // NOI18N
         btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -427,7 +429,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnSaveAs);
 
         btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-print.png"))); // NOI18N
-        btnPrint.setToolTipText("Print");
+        btnPrint.setToolTipText(bundle.getString("PRINT")); // NOI18N
         btnPrint.setBorderPainted(false);
         btnPrint.setFocusable(false);
         btnPrint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -440,7 +442,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnPrint);
 
         btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-document_big.png"))); // NOI18N
-        btnExport.setText("Export");
+        btnExport.setText(bundle.getString("EXPORT")); // NOI18N
         btnExport.setBorderPainted(false);
         btnExport.setFocusable(false);
         btnExport.addActionListener(new java.awt.event.ActionListener() {
@@ -452,7 +454,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(jSeparator2);
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
-        btnShow.setText("Show Output");
+        btnShow.setText(bundle.getString("SHOW OUTPUT")); // NOI18N
         btnShow.setBorderPainted(false);
         btnShow.setFocusable(false);
         btnShow.addActionListener(new java.awt.event.ActionListener() {
@@ -464,7 +466,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(jSeparator3);
 
         btnBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-desktop-wallpaper.png"))); // NOI18N
-        btnBackground.setText("Background");
+        btnBackground.setText(bundle.getString("BACKGROUND")); // NOI18N
         btnBackground.setBorderPainted(false);
         btnBackground.setFocusable(false);
         btnBackground.addActionListener(new java.awt.event.ActionListener() {
@@ -475,7 +477,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(btnBackground);
 
         btnTemplates.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/applications-graphics.png"))); // NOI18N
-        btnTemplates.setText("Templates");
+        btnTemplates.setText(bundle.getString("TEMPLATES")); // NOI18N
         btnTemplates.setBorderPainted(false);
         btnTemplates.setFocusable(false);
         btnTemplates.addActionListener(new java.awt.event.ActionListener() {
@@ -487,7 +489,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBarMain.add(jSeparator1);
 
         btnConfig.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/preferences-system.png"))); // NOI18N
-        btnConfig.setText("Configuration");
+        btnConfig.setText(bundle.getString("CONFIGURATION")); // NOI18N
         btnConfig.setBorderPainted(false);
         btnConfig.setFocusable(false);
         btnConfig.addActionListener(new java.awt.event.ActionListener() {
@@ -497,7 +499,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         toolBarMain.add(btnConfig);
 
-        splMain.setDividerLocation(500);
+        splMain.setDividerLocation(420);
         splMain.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 splMainPropertyChange(evt);
@@ -515,9 +517,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         preview.setMinimumSize(new java.awt.Dimension(10, 10));
         splService.setRightComponent(preview);
 
-        jLabel2.setText(bundle.getString("Start_Time:")); // NOI18N
+        jLabel2.setText(bundle.getString("START TIME:")); // NOI18N
 
-        jLabel1.setText(bundle.getString("Service_Title:")); // NOI18N
+        jLabel1.setText(bundle.getString("SERVICE TITLE:")); // NOI18N
 
         txtTitle.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -559,8 +561,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.setOpaque(false);
 
         btnAddWizard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/list-add.png"))); // NOI18N
-        btnAddWizard.setText("Add");
-        btnAddWizard.setToolTipText("Add Item ...");
+        btnAddWizard.setText(bundle.getString("ADD")); // NOI18N
+        btnAddWizard.setToolTipText(bundle.getString("ADD ITEM ...")); // NOI18N
         btnAddWizard.setAlignmentY(0.0F);
         btnAddWizard.setBorderPainted(false);
         btnAddWizard.setFocusPainted(false);
@@ -574,8 +576,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnAddWizard);
 
         btnRemove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnRemove.setText(bundle.getString("Delete")); // NOI18N
-        btnRemove.setToolTipText(bundle.getString("Delete_item")); // NOI18N
+        btnRemove.setText(bundle.getString("DELETE")); // NOI18N
+        btnRemove.setToolTipText(bundle.getString("DELETE ITEM")); // NOI18N
         btnRemove.setAlignmentY(0.0F);
         btnRemove.setBorderPainted(false);
         btnRemove.setFocusPainted(false);
@@ -587,8 +589,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnRemove);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
-        btnEdit.setText("Edit");
-        btnEdit.setToolTipText("Edit selected item ...");
+        btnEdit.setText(bundle.getString("EDIT")); // NOI18N
+        btnEdit.setToolTipText(bundle.getString("EDIT SELECTED ITEM ...")); // NOI18N
         btnEdit.setAlignmentY(0.0F);
         btnEdit.setBorderPainted(false);
         btnEdit.setFocusPainted(false);
@@ -600,8 +602,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnEdit);
 
         btnUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-up.png"))); // NOI18N
-        btnUp.setText(bundle.getString("Move_Up")); // NOI18N
-        btnUp.setToolTipText(bundle.getString("Change_item_order_to_upper_position")); // NOI18N
+        btnUp.setText(bundle.getString("MOVE UP")); // NOI18N
+        btnUp.setToolTipText(bundle.getString("CHANGE ITEM ORDER TO UPPER POSITION")); // NOI18N
         btnUp.setAlignmentY(0.0F);
         btnUp.setBorderPainted(false);
         btnUp.setFocusPainted(false);
@@ -613,8 +615,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         toolBar.add(btnUp);
 
         btnDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/go-down.png"))); // NOI18N
-        btnDown.setText(bundle.getString("Move_Down")); // NOI18N
-        btnDown.setToolTipText(bundle.getString("Change_item_order_to_lower_position")); // NOI18N
+        btnDown.setText(bundle.getString("MOVE DOWN")); // NOI18N
+        btnDown.setToolTipText(bundle.getString("CHANGE ITEM ORDER TO LOWER POSITION")); // NOI18N
         btnDown.setAlignmentY(0.0F);
         btnDown.setBorderPainted(false);
         btnDown.setFocusPainted(false);
@@ -674,7 +676,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(txtNotes);
 
-        jLabel4.setText(bundle.getString("Service_Notes:")); // NOI18N
+        jLabel4.setText(bundle.getString("SERVICE NOTES:")); // NOI18N
 
         javax.swing.GroupLayout pnlServiceListLayout = new javax.swing.GroupLayout(pnlServiceList);
         pnlServiceList.setLayout(pnlServiceListLayout);
@@ -684,16 +686,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-                            .addComponent(toolBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                            .addComponent(toolBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                                .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -738,7 +740,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         splMain.setLeftComponent(splService);
 
-        splSongLibrary.setDividerLocation(350);
+        splSongLibrary.setDividerLocation(200);
         splSongLibrary.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         splSongLibrary.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -749,9 +751,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         textSong.setEditable(false);
         jScrollPane3.setViewportView(textSong);
 
-        jLabel6.setText(bundle.getString("Author:")); // NOI18N
+        jLabel6.setText(bundle.getString("AUTHOR:")); // NOI18N
 
-        jLabel7.setText(bundle.getString("Song:")); // NOI18N
+        jLabel7.setText(bundle.getString("SONG:")); // NOI18N
 
         lblSongName.setText("     ");
 
@@ -770,8 +772,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(323, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addContainerGap(403, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -784,7 +786,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -792,7 +794,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         tabbedRightSide.addTab("Song Library", splSongLibrary);
 
-        splDisplayControl.setDividerLocation(250);
+        splDisplayControl.setDividerLocation(240);
         splDisplayControl.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 splDisplayControlPropertyChange(evt);
@@ -839,7 +841,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
 
         btnShowMonitor.setSelected(true);
-        btnShowMonitor.setText("Show Stage");
+        btnShowMonitor.setText(bundle.getString("SHOW STAGE")); // NOI18N
         btnShowMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnShowMonitorActionPerformed(evt);
@@ -856,7 +858,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -875,7 +877,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -910,9 +912,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         tbInfo.add(btnCloseInfo);
 
-        jMenu1.setText("File");
+        jMenu1.setText(bundle.getString("FILE")); // NOI18N
 
-        actFileNew.setText("New");
+        actFileNew.setText(bundle.getString("NEW")); // NOI18N
         actFileNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileNewActionPerformed(evt);
@@ -920,7 +922,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileNew);
 
-        actFileOpen.setText("Open");
+        actFileOpen.setText(bundle.getString("OPEN")); // NOI18N
         actFileOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileOpenActionPerformed(evt);
@@ -928,7 +930,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileOpen);
 
-        actFileSave.setText("Save");
+        actFileSave.setText(bundle.getString("SAVE")); // NOI18N
         actFileSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileSaveActionPerformed(evt);
@@ -936,7 +938,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileSave);
 
-        actFileSaveAs.setText("Save As");
+        actFileSaveAs.setText(bundle.getString("SAVE AS")); // NOI18N
         actFileSaveAs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileSaveAsActionPerformed(evt);
@@ -944,7 +946,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu1.add(actFileSaveAs);
 
-        actFileExport.setText("Export");
+        actFileExport.setText(bundle.getString("EXPORT")); // NOI18N
         actFileExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileExportActionPerformed(evt);
@@ -953,7 +955,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jMenu1.add(actFileExport);
         jMenu1.add(jSeparator4);
 
-        actFileExit.setText("Exit");
+        actFileExit.setText(bundle.getString("EXIT")); // NOI18N
         actFileExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actFileExitActionPerformed(evt);
@@ -963,9 +965,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Edit");
+        jMenu2.setText(bundle.getString("EDIT")); // NOI18N
 
-        actEditBackground.setText("Background");
+        actEditBackground.setText(bundle.getString("BACKGROUND")); // NOI18N
         actEditBackground.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actEditBackgroundActionPerformed(evt);
@@ -973,7 +975,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditBackground);
 
-        actEditTemplates.setText("Templates");
+        actEditTemplates.setText(bundle.getString("TEMPLATES")); // NOI18N
         actEditTemplates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actEditTemplatesActionPerformed(evt);
@@ -981,7 +983,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditTemplates);
 
-        actEditConfig.setText("Configuration");
+        actEditConfig.setText(bundle.getString("CONFIGURATION")); // NOI18N
         actEditConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actEditConfigActionPerformed(evt);
@@ -991,9 +993,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Help");
+        jMenu3.setText(bundle.getString("HELP")); // NOI18N
 
-        actHelpAbout.setText("About");
+        actHelpAbout.setText(bundle.getString("ABOUT")); // NOI18N
         actHelpAbout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actHelpAboutActionPerformed(evt);
@@ -1001,7 +1003,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu3.add(actHelpAbout);
 
-        actHelpKeyboard.setText("Keyboard Shortcuts");
+        actHelpKeyboard.setText(bundle.getString("KEYBOARD SHORTCUTS")); // NOI18N
         actHelpKeyboard.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actHelpKeyboardActionPerformed(evt);
@@ -1043,14 +1045,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_formComponentResized
 
     private void btnTemplatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplatesActionPerformed
-        TemplateManagerForm tmf = new TemplateManagerForm();
-        tmf.setLocationRelativeTo(this);
+        TemplateManagerForm tmf = ObjectManager.getInstance().getTemplateManagerForm();
         tmf.setVisible(true);
     }//GEN-LAST:event_btnTemplatesActionPerformed
 
     private void btnConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfigActionPerformed
-        ConfigFrame cf = new ConfigFrame();
-        cf.setLocationRelativeTo(this);
+        ConfigFrame cf = ObjectManager.getInstance().getConfigFrame();
         cf.setVisible(true);
     }//GEN-LAST:event_btnConfigActionPerformed
 
@@ -1142,7 +1142,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
             ServiceListTable.getActiveInstance().setStartHour(x);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
         }
         pnlServiceList.revalidate();
@@ -1164,7 +1164,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
             ServiceListTable.getActiveInstance().setStartMinute(x);
         }catch(Exception e){
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_value"));
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
             txtMinutes.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartMinute()));
         }
 }//GEN-LAST:event_txtMinutesFocusLost
@@ -1194,7 +1194,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_actAddBibleActionPerformed
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
-        String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Service_Item_Name:"), "");
+        String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE ITEM NAME:"), "");
         if (s != null && !s.trim().equals("")){
             ContentlessServiceItem csi = new ContentlessServiceItem();
             csi.setTitle(s);
@@ -1254,8 +1254,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintActionPerformed
 
     private void btnBackgroundActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackgroundActionPerformed
-        BackgroundConfigFrame bcf = new BackgroundConfigFrame();
-        bcf.setLocationRelativeTo(bcf);
+        BackgroundConfigFrame bcf = ObjectManager.getInstance().getBackgroundConfigFrame();
         bcf.setVisible(true);
     }//GEN-LAST:event_btnBackgroundActionPerformed
 
@@ -1271,7 +1270,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                    "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
             } finally {
                 ObjectManager.getInstance().setDefaultCursor();
             }
@@ -1292,7 +1291,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 ServiceListTable.getActiveInstance().addItem(vsi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                    "Error attaching file:"+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
             } finally {
                 ObjectManager.getInstance().setDefaultCursor();
             }
@@ -1360,7 +1359,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actEditConfigActionPerformed
 
     private void actFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExitActionPerformed
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm_Close")+ "?", "Datasoul", JOptionPane.YES_NO_OPTION );
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM CLOSE?"), "Datasoul", JOptionPane.YES_NO_OPTION );
 
         if (resp == JOptionPane.YES_OPTION){
             System.exit(0);
@@ -1395,7 +1394,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(DatasoulMainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return "Unknown Private Build";
+        return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNKNOWN PRIVATE BUILD");
     }
 
     public static String getFileFormatVersion() {
@@ -1538,3 +1537,5 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
 }
+
+

@@ -62,7 +62,7 @@ public class ContentlessServiceItem extends ServiceItem {
 
     @Override
     public void edit(){
-        String s = JOptionPane.showInputDialog(ObjectManager.getInstance().getDatasoulMainForm(), "Service Item Title:", getTitle());
+        String s = JOptionPane.showInputDialog(ObjectManager.getInstance().getDatasoulMainForm(), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE ITEM TITLE:"), getTitle());
         if (s != null && !s.trim().equals("")){
             this.setTitle(s);
         }
@@ -70,3 +70,4 @@ public class ContentlessServiceItem extends ServiceItem {
     }
 
 }
+

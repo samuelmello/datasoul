@@ -143,3 +143,4 @@ public class ListTable extends SerializableObject implements TableModel {
     }
     
 }
+

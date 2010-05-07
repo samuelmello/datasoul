@@ -211,11 +211,11 @@ public class TemplateEditorPanel extends javax.swing.JPanel
                 propTable.setModel(t);
                 ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
                 if (t instanceof TextTemplateItem){
-                    activeItemLabel.setText(bundle.getString("Text"));
+                    activeItemLabel.setText(bundle.getString("TEXT"));
                 }else if (t instanceof ImageTemplateItem){
-                    activeItemLabel.setText(bundle.getString("Image"));
+                    activeItemLabel.setText(bundle.getString("IMAGE"));
                 }else if (t instanceof TimerProgressbarTemplateItem){
-                    activeItemLabel.setText(bundle.getString("Timer"));
+                    activeItemLabel.setText(bundle.getString("TIMER"));
                 }else{
                     activeItemLabel.setText("");
                 }
@@ -254,7 +254,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         if (template.getName() != null){
             activeItemLabel.setText(template.getName());
         }else{
-            activeItemLabel.setText("New Template");
+            activeItemLabel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW TEMPLATE"));
         }
 
     }
@@ -283,7 +283,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         if (template.getName() != null){
             activeItemLabel.setText(template.getName());
         }else{
-            activeItemLabel.setText("New Template");
+            activeItemLabel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW TEMPLATE"));
         }
         repaint();
     }
@@ -356,7 +356,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             if (template.getName() != null){
                 activeItemLabel.setText(template.getName());
             }else{
-                activeItemLabel.setText("New Template");
+                activeItemLabel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW TEMPLATE"));
             }
             this.repaint();
         }catch(Exception e) {
@@ -376,13 +376,13 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             if (template.getName() != null){
                 activeItemLabel.setText(template.getName());
             }else{
-                activeItemLabel.setText("New Template");
+                activeItemLabel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW TEMPLATE"));
             }
             this.repaint();
             
         }catch(Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Unable_to_create_template:")+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Datasoul_Error"),0);
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CREATE TEMPLATE:")+"\n"+e.getMessage(),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
         }
     }
 
@@ -395,3 +395,5 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     }
     
 }
+
+

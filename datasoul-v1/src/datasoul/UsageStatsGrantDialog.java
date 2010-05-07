@@ -26,6 +26,7 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        setSize(520,230);
     }
 
     /** This method is called from within the constructor to
@@ -46,23 +47,25 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Datasoul");
-        setResizable(false);
+        setLocationByPlatform(true);
+        setModal(true);
 
         jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getSize()-2f));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
-        jLabel2.setText("Allow these functions to access internet");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel2.setText(bundle.getString("ALLOW THESE FUNCTIONS TO ACCESS INTERNET")); // NOI18N
 
         cbOnlineUpdate.setSelected(true);
-        cbOnlineUpdate.setText("Notify me when a new version of Datasoul is available");
+        cbOnlineUpdate.setText(bundle.getString("NOTIFY ME WHEN A NEW VERSION OF DATASOUL IS AVAILABLE")); // NOI18N
 
         cbOnlineStats.setSelected(true);
-        cbOnlineStats.setText("Send anonymous usage statistics");
+        cbOnlineStats.setText(bundle.getString("SEND ANONYMOUS USAGE STATISTICS")); // NOI18N
 
         jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13));
         jTextArea1.setLineWrap(true);
-        jTextArea1.setText("If you live in a country where christians are persecuted and do not wish to risk detection you should not use any of these functions.");
+        jTextArea1.setText(bundle.getString("IF YOU LIVE IN A COUNTRY WHERE CHRISTIANS ARE PERSECUTED AND DO NOT WISH TO RISK DETECTION YOU SHOULD NOT USE ANY OF THESE FUNCTIONS.")); // NOI18N
         jTextArea1.setWrapStyleWord(true);
         jTextArea1.setBorder(null);
         jTextArea1.setFocusable(false);
@@ -71,9 +74,9 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
         jTextArea1.setVerifyInputWhenFocusTarget(false);
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+2));
-        jLabel1.setText("Welcome to Datasoul");
+        jLabel1.setText(bundle.getString("WELCOME TO DATASOUL")); // NOI18N
 
-        btnOk.setText("Ok");
+        btnOk.setText(bundle.getString("OK")); // NOI18N
         btnOk.setMargin(new java.awt.Insets(2, 14, 2, 14));
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,13 +94,11 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(cbOnlineUpdate)
                     .addComponent(cbOnlineStats)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(315, 315, 315))
+                    .addComponent(jLabel1)
                     .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20))
+                .addGap(49, 49, 49))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(417, Short.MAX_VALUE)
+                .addContainerGap(453, Short.MAX_VALUE)
                 .addComponent(btnOk)
                 .addContainerGap())
         );
@@ -114,7 +115,7 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
                 .addComponent(cbOnlineStats)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnOk)
                 .addContainerGap())
         );
@@ -160,3 +161,4 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
 }
+

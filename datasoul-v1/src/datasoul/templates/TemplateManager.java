@@ -74,9 +74,9 @@ public class TemplateManager implements TableModel {
     public String getColumnName(int columnIndex) {
         switch (columnIndex){
             case COLUMN_NAME:
-                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Template");
+                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TEMPLATE");
             case COLUMN_TARGET_CONTENT:
-                return "Content";
+                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONTENT");
         }
         return "";
     }
@@ -207,3 +207,5 @@ public class TemplateManager implements TableModel {
 
 
 }
+
+

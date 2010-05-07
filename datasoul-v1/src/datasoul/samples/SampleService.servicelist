@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <ServiceListTable>
-    <title>Sample Service</title>
-    <notes>Praise Team: 
+<title>Sample Service</title>
+<notes>Praise Team: 
    Guitar: Matthew  
    Bass: Mark 
    Drums: Luke 
@@ -11,16 +11,16 @@
 Announcement about the Church's Retreat
    
 </notes>
-    <hour>10</hour>
-    <minute>0</minute>
-    <DatasoulFileVersion>1</DatasoulFileVersion>
-    <Song>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>Amazing Grace</Title>
-        <Template>song</Template>
-        <Duration>4</Duration>
-        <Notes/>
-        <Text>Amazing Grace, how sweet the sound,
+<hour>10</hour>
+<minute>0</minute>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Song>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>Amazing Grace</Title>
+<Template>ds-song</Template>
+<Duration>4</Duration>
+<Notes/>
+<Text>Amazing Grace, how sweet the sound,
 That saved a wretch like me.
 I once was lost, but now im found,
 Was blind, but now I see.
@@ -39,8 +39,8 @@ Amazing Grace, how sweet the sound,
 That saved a wretch like me.
 I once was lost, but now im found,
 Was blind, but now I see.</Text>
-        <SongAuthor>John Newton</SongAuthor>
-        <ChordsComplete>=D      D/F#         G          D
+<SongAuthor>John Newton</SongAuthor>
+<ChordsComplete>=D      D/F#         G          D
 Amazing Grace, how sweet the sound,
 =    D                A7
 That saved a wretch like me.
@@ -75,7 +75,7 @@ That saved a wretch like me.
 I once was lost, but now im found,
 =   D           G   A  D 
 Was blind, but now I see.</ChordsComplete>
-        <ChordsSimplified>=       D            G          D
+<ChordsSimplified>=       D            G          D
 Amazing Grace, how sweet the sound,
 =			 A7
 That saved a wretch like me.
@@ -108,17 +108,17 @@ That saved a wretch like me.
 I once was lost, but now im found,
 =               A7     D
 Was blind, but now I see.</ChordsSimplified>
-        <Obs/>
-        <Copyright/>
-        <SongSource/>
-    </Song>
-    <Song>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>How Great Thou Art</Title>
-        <Template>song</Template>
-        <Duration>4</Duration>
-        <Notes/>
-        <Text>O Lord my God!  When I in awesome wonder
+<Obs/>
+<Copyright/>
+<SongSource/>
+</Song>
+<Song>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>How Great Thou Art</Title>
+<Template>ds-song</Template>
+<Duration>4</Duration>
+<Notes/>
+<Text>O Lord my God!  When I in awesome wonder
 Consider all the works Thy hands have made,
 I see the stars, I hear the mighty thunder,
 Thy power throughout the universe displayed.
@@ -157,8 +157,8 @@ Then sings my soul, my Savior God to Thee;
 How great Thou art!  How great Thou art!
 Then sings my soul, my Savior God to Thee;
 How great Thou art!  How great Thou art!</Text>
-        <SongAuthor>Carl Boberg</SongAuthor>
-        <ChordsComplete>=   E7      A               D
+<SongAuthor>Carl Boberg</SongAuthor>
+<ChordsComplete>=   E7      A               D
 O Lord my God!  When I in awesome wonder
 =          A       E7                   A
 Consider all the works Thy hands have made,
@@ -230,18 +230,18 @@ Then sings my soul, my Savior God to Thee;
 =                 Bm         E7         A
 How great Thou art!  How great Thou art!
 </ChordsComplete>
-        <ChordsSimplified/>
-        <Obs/>
-        <Copyright/>
-        <SongSource/>
-    </Song>
-    <Song>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>Joyful Joyful We Adore Thee</Title>
-        <Template>song</Template>
-        <Duration>4</Duration>
-        <Notes/>
-        <Text>Joyful, joyful, we adore Thee,
+<ChordsSimplified/>
+<Obs/>
+<Copyright/>
+<SongSource/>
+</Song>
+<Song>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>Joyful Joyful We Adore Thee</Title>
+<Template>ds-song</Template>
+<Duration>4</Duration>
+<Notes/>
+<Text>Joyful, joyful, we adore Thee,
 God of glory Lord of love;
 Hearts unfold like flow'rs before Thee,
 Opening to the sun above.
@@ -280,8 +280,8 @@ Ever singing march we onward
 Victors in the midst of strife
 Joyful music leads us sunward
 In the triumph song of life</Text>
-        <SongAuthor>Henry Van Dyke</SongAuthor>
-        <ChordsComplete>=E                  B   
+<SongAuthor>Henry Van Dyke</SongAuthor>
+<ChordsComplete>=E                  B   
 Joyful, joyful, we adore Thee,
 =E            C#m     B
 God of glory Lord of love;
@@ -349,25 +349,25 @@ Joyful music leads us sunward
 =E                B        E
 In the triumph song of life
 </ChordsComplete>
-        <ChordsSimplified/>
-        <Obs/>
-        <Copyright/>
-        <SongSource/>
-    </Song>
-    <ContentlessServiceItem>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>Prayer Time</Title>
-        <Template/>
-        <Duration>10</Duration>
-        <Notes/>
-    </ContentlessServiceItem>
-    <TextServiceItem>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>Sermon - Mattew 5.1-12</Title>
-        <Template>bible</Template>
-        <Duration>35</Duration>
-        <Notes>Pr John Doe</Notes>
-        <Text>1 And seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him:
+<ChordsSimplified/>
+<Obs/>
+<Copyright/>
+<SongSource/>
+</Song>
+<ContentlessServiceItem>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>Prayer Time</Title>
+<Template/>
+<Duration>10</Duration>
+<Notes/>
+</ContentlessServiceItem>
+<TextServiceItem>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>Sermon - Mattew 5.1-12</Title>
+<Template>ds-text</Template>
+<Duration>35</Duration>
+<Notes>Pr John Doe</Notes>
+<Text>1 And seeing the multitudes, he went up into a mountain: and when he was set, his disciples came unto him:
 ==
 2 And he opened his mouth, and taught them, saying,
 ==
@@ -390,21 +390,21 @@ In the triumph song of life
 11 Blessed are ye, when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for my sake.
 ==
 12 Rejoice, and be exceeding glad: for great is your reward in heaven: for so persecuted they the prophets which were before you.</Text>
-    </TextServiceItem>
-    <ContentlessServiceItem>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>Announcements</Title>
-        <Template/>
-        <Duration>3</Duration>
-        <Notes/>
-    </ContentlessServiceItem>
-    <Song>
-        <DatasoulFileVersion>1</DatasoulFileVersion>
-        <Title>It Is Well With My Soul</Title>
-        <Template>song</Template>
-        <Duration>4</Duration>
-        <Notes/>
-        <Text>When peace like a river attendeth my way,
+</TextServiceItem>
+<ContentlessServiceItem>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>Announcements</Title>
+<Template/>
+<Duration>3</Duration>
+<Notes/>
+</ContentlessServiceItem>
+<Song>
+<DatasoulFileVersion>2</DatasoulFileVersion>
+<Title>It Is Well With My Soul</Title>
+<Template>ds-song</Template>
+<Duration>4</Duration>
+<Notes/>
+<Text>When peace like a river attendeth my way,
 When sorrows like sea billows roll,
 Whatever my lot, Thou hast taught me to say,
 "It is well, it is well with my soul."
@@ -435,8 +435,8 @@ And, Lord, haste the day when the faith shall be sight,
 The clouds be rolled back as a scroll,
 The trump shall resound, and the Lord shall descend,
 Even so, it is well with my soul.</Text>
-        <SongAuthor>Horatio Spafford, Philip Bliss</SongAuthor>
-        <ChordsComplete>=     G                     C  D      G
+<SongAuthor>Horatio Spafford, Philip Bliss</SongAuthor>
+<ChordsComplete>=     G                     C  D      G
 When peace like a river attendeth my way,
 =      Em          A           D
 When sorrows like sea billows roll,
@@ -492,9 +492,9 @@ The clouds be rolled back as a scroll,
 The trump shall resound, and the Lord shall descend,
 =       G            C    D   G 
 Even so, it is well with my soul.</ChordsComplete>
-        <ChordsSimplified/>
-        <Obs/>
-        <Copyright/>
-        <SongSource/>
-    </Song>
+<ChordsSimplified/>
+<Obs/>
+<Copyright/>
+<SongSource/>
+</Song>
 </ServiceListTable>

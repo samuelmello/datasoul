@@ -36,8 +36,9 @@ public class AttachmentServiceItem extends GenericAttachmentServiceItem {
                 Desktop.getDesktop().open(file);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                        "Error launching file:"+" "+filename+"\n"+ex.getLocalizedMessage());
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR LAUNCHING FILE:")+" "+filename+"\n"+ex.getLocalizedMessage());
             }
         }
     }
 }
+

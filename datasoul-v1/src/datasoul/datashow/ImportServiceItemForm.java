@@ -65,7 +65,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        setTitle(bundle.getString("Import_Service_Item")); // NOI18N
+        setTitle(bundle.getString("IMPORT SERVICE ITEM")); // NOI18N
 
         tableServiceList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,18 +86,18 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         scroolServiceList.setViewportView(tableServiceList);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText(bundle.getString("Close")); // NOI18N
-        btnClose.setToolTipText(bundle.getString("Close_window")); // NOI18N
+        btnClose.setText(bundle.getString("CLOSE")); // NOI18N
+        btnClose.setToolTipText(bundle.getString("CLOSE WINDOW")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        jLabel1.setText(bundle.getString("Select_another_service_list_to_import_an_item")); // NOI18N
+        jLabel1.setText(bundle.getString("SELECT ANOTHER SERVICE LIST TO IMPORT AN ITEM")); // NOI18N
 
         btnOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-open.png"))); // NOI18N
-        btnOpen.setText(bundle.getString("Open")); // NOI18N
+        btnOpen.setText(bundle.getString("OPEN")); // NOI18N
         btnOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOpenActionPerformed(evt);
@@ -105,7 +105,7 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
         });
 
         btnImport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        btnImport.setText(bundle.getString("Import")); // NOI18N
+        btnImport.setText(bundle.getString("IMPORT")); // NOI18N
         btnImport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImportActionPerformed(evt);
@@ -176,3 +176,5 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+

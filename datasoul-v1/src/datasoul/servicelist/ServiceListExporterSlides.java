@@ -107,7 +107,8 @@ public class ServiceListExporterSlides {
         public void slideChange(int transictionTime){
             updateDisplayValues();
 
-            /*
+            BufferedImage outputImage0 = new BufferedImage(template.getWidth(), template.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+
             synchronized(outputImage0){
                 Graphics2D g = outputImage0.createGraphics();
 
@@ -139,8 +140,6 @@ public class ServiceListExporterSlides {
                 e.printStackTrace();
                 slideCount = -1;
             }
-             * 
-             */
 
         }
 
@@ -151,3 +150,4 @@ public class ServiceListExporterSlides {
     }
 
 }
+

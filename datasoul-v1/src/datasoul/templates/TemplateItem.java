@@ -49,15 +49,15 @@ public abstract class TemplateItem extends AttributedObject {
     protected void registerProperties(){
         super.registerProperties();
         properties.add("Top");
-        registerDisplayString("Top",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Top"));
+        registerDisplayString("Top",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TOP"));
         properties.add("Left");
-        registerDisplayString("Left",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Left"));
+        registerDisplayString("Left",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LEFT"));
         properties.add("Width");
-        registerDisplayString("Width",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Width"));
+        registerDisplayString("Width",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("WIDTH"));
         properties.add("Height");
-        registerDisplayString("Height",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Height"));
+        registerDisplayString("Height",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("HEIGHT"));
         properties.add("Alpha");
-        registerDisplayString("Alpha",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Opacity"));
+        registerDisplayString("Alpha",java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPACITY"));
     }
 
     
@@ -209,3 +209,5 @@ public abstract class TemplateItem extends AttributedObject {
     }
 
 }
+
+

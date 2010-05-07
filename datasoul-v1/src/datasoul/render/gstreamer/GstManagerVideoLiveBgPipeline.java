@@ -91,3 +91,4 @@ public class GstManagerVideoLiveBgPipeline extends GstManagerPipeline {
 
 
 }
+

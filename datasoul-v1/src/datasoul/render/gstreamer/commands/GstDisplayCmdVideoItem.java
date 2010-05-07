@@ -23,3 +23,4 @@ public class GstDisplayCmdVideoItem extends GstDisplayCmd {
             GstManagerClient.getInstance().setVideoItem(filename);
     }
 }
+

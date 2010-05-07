@@ -41,6 +41,7 @@ public class ConfigObj extends AbstractConfig {
     private boolean detectMonitors;
     private int clockMode;    
     private String storageLoc;
+    private boolean storageLocChecked;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -56,13 +57,13 @@ public class ConfigObj extends AbstractConfig {
     public static final int CLOCKMODE_24_NOSEC = 1;
     public static final int CLOCKMODE_12_SEC = 2;
     public static final int CLOCKMODE_12_NOSEC = 3;
-    public static final String[] CLOCKMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24_Hours_with_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24_Hours_without_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM_with_Seconds"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM_without_Seconds")};
+    public static final String[] CLOCKMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24 HOURS WITH SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24 HOURS WITHOUT SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM WITH SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM WITHOUT SECONDS")};
 
     public static final int QUALITY_640 = 0;
     public static final int QUALITY_800 = 1;
     public static final int QUALITY_1024 = 2;
     public static final int QUALITY_ORIGINAL = 3;
-    public static final String[] QUALITY_TABLE = { "Fast (640 px)", "Normal (800 px)", "High (1024 px)", "Maximum" };
+    public static final String[] QUALITY_TABLE = { java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FAST (640 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NORMAL (800 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("HIGH (1024 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MAXIMUM") };
 
     
     /** Creates a new instance of ConfigObj */
@@ -74,6 +75,8 @@ public class ConfigObj extends AbstractConfig {
         // Default output devices
         setMainOutputDevice("");
         setMonitorOutputDevice("");
+        qualityMain = QUALITY_ORIGINAL;
+        detectMonitors = true;
         // Now load
         load("datasoul.config");
     }
@@ -246,9 +249,19 @@ public class ConfigObj extends AbstractConfig {
     }
 
     public String getStorageLoc(){
-        if (storageLoc == null || storageLoc.trim().equals("")){
-            storageLoc = System.getProperty("user.home")+File.separator+".datasoul"+File.separator+"data";
-            ConfigObj.getActiveInstance().save();
+        if (storageLocChecked == false){
+            File f = new File(storageLoc);
+            if (! f.exists() ){
+                storageLoc = System.getProperty("user.home")+File.separator+".datasoul"+File.separator+"data";
+
+                File datadir = new File(storageLoc);
+                if (!datadir.exists()){
+                    datadir.mkdirs();
+                }
+
+                ConfigObj.getActiveInstance().save();
+            }
+            storageLocChecked = true;
         }
         return storageLoc;
     }
@@ -423,8 +436,12 @@ public class ConfigObj extends AbstractConfig {
         return onlineUsageStats;
     }
 
-    public String getStoragePathTemplates(){
+    public String getStoragePathLegacyTemplates(){
         return getStorageLoc() + File.separator + "templates";
+    }
+
+    public String getStoragePathTemplates(){
+        return getStorageLoc() + File.separator + "templatez";
     }
 
     public String getStoragePathSongs(){
@@ -436,3 +453,5 @@ public class ConfigObj extends AbstractConfig {
     }
 
 }
+
+

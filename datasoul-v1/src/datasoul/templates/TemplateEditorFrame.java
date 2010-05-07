@@ -11,6 +11,7 @@
 
 package datasoul.templates;
 
+import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 import datasoul.config.WindowPropConfig;
 import datasoul.util.ObjectManager;
@@ -33,6 +34,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
     /** Creates new form TemplateEditorFrame */
     public TemplateEditorFrame() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
 
         try{
 
@@ -110,7 +112,8 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("Datasoul Template Editor");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("DATASOUL TEMPLATE EDITOR")); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -121,7 +124,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.setRollover(true);
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save_big.png"))); // NOI18N
-        btnSave.setToolTipText("Save");
+        btnSave.setToolTipText(bundle.getString("SAVE")); // NOI18N
         btnSave.setBorderPainted(false);
         btnSave.setFocusable(false);
         btnSave.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -134,7 +137,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnSave);
 
         btnSaveAs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save-as_big.png"))); // NOI18N
-        btnSaveAs.setToolTipText("Save As");
+        btnSaveAs.setToolTipText(bundle.getString("SAVE AS")); // NOI18N
         btnSaveAs.setBorderPainted(false);
         btnSaveAs.setFocusable(false);
         btnSaveAs.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -148,7 +151,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(jSeparator1);
 
         btnAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-text.png"))); // NOI18N
-        btnAddText.setText("Add Text");
+        btnAddText.setText(bundle.getString("ADD TEXT")); // NOI18N
         btnAddText.setBorderPainted(false);
         btnAddText.setFocusable(false);
         btnAddText.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +162,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnAddText);
 
         btnAddImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
-        btnAddImage.setText("Add Image");
+        btnAddImage.setText(bundle.getString("ADD IMAGE")); // NOI18N
         btnAddImage.setBorderPainted(false);
         btnAddImage.setFocusable(false);
         btnAddImage.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +173,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnAddImage);
 
         btnAddTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer_big.png"))); // NOI18N
-        btnAddTimer.setText("Add Timer Bar");
+        btnAddTimer.setText(bundle.getString("ADD TIMER BAR")); // NOI18N
         btnAddTimer.setBorderPainted(false);
         btnAddTimer.setFocusable(false);
         btnAddTimer.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +185,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(jSeparator2);
 
         btnTemplate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties.png"))); // NOI18N
-        btnTemplate.setText("Template Properties");
+        btnTemplate.setText(bundle.getString("TEMPLATE PROPERTIES")); // NOI18N
         btnTemplate.setBorderPainted(false);
         btnTemplate.setFocusable(false);
         btnTemplate.addActionListener(new java.awt.event.ActionListener() {
@@ -193,7 +196,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jToolBar1.add(btnTemplate);
 
         jSplitPane1.setBorder(null);
-        jSplitPane1.setDividerLocation(850);
+        jSplitPane1.setDividerLocation(600);
         jSplitPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jSplitPane1PropertyChange(evt);
@@ -215,8 +218,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
 
         jToolBar5.setFloatable(false);
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel9.setText(bundle.getString("Properties")); // NOI18N
+        jLabel9.setText(bundle.getString("PROPERTIES")); // NOI18N
         jToolBar5.add(jLabel9);
 
         jLabel3.setText("  -  ");
@@ -228,8 +230,8 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         btnDeleteItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDeleteItem.setText(bundle.getString("Remove")); // NOI18N
-        btnDeleteItem.setToolTipText(bundle.getString("Delete_item")); // NOI18N
+        btnDeleteItem.setText(bundle.getString("REMOVE")); // NOI18N
+        btnDeleteItem.setToolTipText(bundle.getString("DELETE ITEM")); // NOI18N
         btnDeleteItem.setBorderPainted(false);
         btnDeleteItem.setFocusPainted(false);
         btnDeleteItem.setFocusable(false);
@@ -243,8 +245,8 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jPanel1.add(btnDeleteItem);
 
         btnMoveDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-infront.png"))); // NOI18N
-        btnMoveDown.setText(bundle.getString("To_Back")); // NOI18N
-        btnMoveDown.setToolTipText(bundle.getString("Move_the_item_to_the_lowest_layer")); // NOI18N
+        btnMoveDown.setText(bundle.getString("TO BACK")); // NOI18N
+        btnMoveDown.setToolTipText(bundle.getString("MOVE THE ITEM TO THE LOWEST LAYER")); // NOI18N
         btnMoveDown.setBorderPainted(false);
         btnMoveDown.setFocusPainted(false);
         btnMoveDown.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -256,8 +258,8 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         jPanel1.add(btnMoveDown);
 
         btnMoveUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_object-behind.png"))); // NOI18N
-        btnMoveUp.setText(bundle.getString("To_Front")); // NOI18N
-        btnMoveUp.setToolTipText(bundle.getString("Move_the_item_to_the_upper_layer")); // NOI18N
+        btnMoveUp.setText(bundle.getString("TO FRONT")); // NOI18N
+        btnMoveUp.setToolTipText(bundle.getString("MOVE THE ITEM TO THE UPPER LAYER")); // NOI18N
         btnMoveUp.setBorderPainted(false);
         btnMoveUp.setFocusPainted(false);
         btnMoveUp.setMargin(new java.awt.Insets(2, 2, 2, 2));
@@ -272,9 +274,9 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         panelProperties.setLayout(panelPropertiesLayout);
         panelPropertiesLayout.setHorizontalGroup(
             panelPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+            .addComponent(jToolBar5, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
         );
         panelPropertiesLayout.setVerticalGroup(
             panelPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,7 +285,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
         );
 
         jSplitPane1.setRightComponent(panelProperties);
@@ -302,7 +304,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         );
 
         jLabel5.setFont(jLabel5.getFont().deriveFont((jLabel5.getFont().getStyle() | java.awt.Font.ITALIC), jLabel5.getFont().getSize()-2));
-        jLabel5.setText(bundle.getString("Hold_Shift_down_for_resizing_items")); // NOI18N
+        jLabel5.setText(bundle.getString("HOLD SHIFT DOWN FOR RESIZING ITEMS")); // NOI18N
 
         javax.swing.GroupLayout panelTemplateEditorLayout = new javax.swing.GroupLayout(panelTemplateEditor);
         panelTemplateEditor.setLayout(panelTemplateEditorLayout);
@@ -332,15 +334,15 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1029, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 878, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
         );
 
         pack();
@@ -366,7 +368,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveAsActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Save_the_changes?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SAVE THE CHANGES?"), "Datasoul", JOptionPane.YES_NO_CANCEL_OPTION );
 
         if (resp == JOptionPane.YES_OPTION){
             save();
@@ -470,10 +472,11 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 fc.setMultiSelectionEnabled(false);
                 fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 fc.setControlButtonsAreShown(true);
-                fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Select_Image"));
+                fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT IMAGE"));
                 if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
                     String filename = fc.getSelectedFile().getAbsolutePath();
                     ImageTemplateItem img = new ImageTemplateItem( filename );
+                    img.assertImageSize(templateEditorPanel1.getTemplate().getWidth(), templateEditorPanel1.getTemplate().getHeight());
                     templateEditorPanel1.addItem(img);
                 }
             }else if (type == ImageTemplateItem.IMAGE_CONTENT_SLIDE){
@@ -521,3 +524,5 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
 
 
 }
+
+

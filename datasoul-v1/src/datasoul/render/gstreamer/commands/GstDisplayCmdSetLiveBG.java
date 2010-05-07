@@ -24,3 +24,4 @@ public class GstDisplayCmdSetLiveBG extends GstDisplayCmd {
     }
 
 }
+

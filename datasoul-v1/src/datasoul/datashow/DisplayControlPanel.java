@@ -166,7 +166,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         setAutoscrolls(true);
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel10.setText(bundle.getString("Main_Output")); // NOI18N
+        jLabel10.setText(bundle.getString("MAIN OUTPUT")); // NOI18N
 
         jSliderSlideChangeSpeed.setMajorTickSpacing(5);
         jSliderSlideChangeSpeed.setMaximum(30);
@@ -179,7 +179,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel16.setText(bundle.getString("Slide_Change_Transition_Speed")); // NOI18N
+        jLabel16.setText(bundle.getString("SLIDE CHANGE TRANSITION SPEED")); // NOI18N
 
         jSliderShowHideSpeed.setMajorTickSpacing(5);
         jSliderShowHideSpeed.setMaximum(30);
@@ -192,7 +192,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel15.setText(bundle.getString("Show/Hide_Speed")); // NOI18N
+        jLabel15.setText(bundle.getString("SHOW/HIDE SPEED")); // NOI18N
 
         javax.swing.GroupLayout pnlSpeedLayout = new javax.swing.GroupLayout(pnlSpeed);
         pnlSpeed.setLayout(pnlSpeedLayout);
@@ -221,7 +221,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addComponent(jSliderSlideChangeSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jLabel1.setText(bundle.getString("Template")); // NOI18N
+        jLabel1.setText(bundle.getString("TEMPLATE")); // NOI18N
 
         templateMonitor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +231,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 3, 0));
 
-        btnMonitorBlack.setText(bundle.getString("Black")); // NOI18N
+        btnMonitorBlack.setText(bundle.getString("BLACK")); // NOI18N
         btnMonitorBlack.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMonitorBlack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +241,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel1.add(btnMonitorBlack);
 
         btnMonitorHide.setSelected(true);
-        btnMonitorHide.setText(bundle.getString("Hide")); // NOI18N
+        btnMonitorHide.setText(bundle.getString("HIDE")); // NOI18N
         btnMonitorHide.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMonitorHide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,7 +250,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnMonitorHide);
 
-        btnMonitorShow.setText(bundle.getString("Show")); // NOI18N
+        btnMonitorShow.setText(bundle.getString("SHOW")); // NOI18N
         btnMonitorShow.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMonitorShow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,7 +259,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnMonitorShow);
 
-        cbMonitorFollowMain.setText("Stage follows Main Output controls");
+        cbMonitorFollowMain.setText(bundle.getString("STAGE FOLLOWS MAIN OUTPUT CONTROLS")); // NOI18N
         cbMonitorFollowMain.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         cbMonitorFollowMain.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -296,7 +296,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jMonitorCb.setText("Show Stage Controls");
+        jMonitorCb.setText(bundle.getString("SHOW STAGE CONTROLS")); // NOI18N
         jMonitorCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jMonitorCb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,8 +307,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 3, 0));
 
         btnMainBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display-black.png"))); // NOI18N
-        btnMainBlack.setText(bundle.getString("Black")); // NOI18N
-        btnMainBlack.setToolTipText(bundle.getString("Makes_the_main_output_black_(F12)")); // NOI18N
+        btnMainBlack.setText(bundle.getString("BLACK")); // NOI18N
+        btnMainBlack.setToolTipText(bundle.getString("MAKES THE MAIN OUTPUT BLACK (F12)")); // NOI18N
         btnMainBlack.setFocusPainted(false);
         btnMainBlack.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnMainBlack.addActionListener(new java.awt.event.ActionListener() {
@@ -320,8 +320,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         btnHide.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_3d-light-off.png"))); // NOI18N
         btnHide.setSelected(true);
-        btnHide.setText(bundle.getString("Hide")); // NOI18N
-        btnHide.setToolTipText(bundle.getString("Hide_the_main_output_content_(F9)")); // NOI18N
+        btnHide.setText(bundle.getString("HIDE")); // NOI18N
+        btnHide.setToolTipText(bundle.getString("HIDE THE MAIN OUTPUT CONTENT (F9)")); // NOI18N
         btnHide.setFocusPainted(false);
         btnHide.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnHide.addActionListener(new java.awt.event.ActionListener() {
@@ -332,8 +332,8 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         jPanel2.add(btnHide);
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_3d-light-on.png"))); // NOI18N
-        btnShow.setText(bundle.getString("Show")); // NOI18N
-        btnShow.setToolTipText(bundle.getString("Show_the_main_output_content_(F10)")); // NOI18N
+        btnShow.setText(bundle.getString("SHOW")); // NOI18N
+        btnShow.setToolTipText(bundle.getString("SHOW THE MAIN OUTPUT CONTENT (F10)")); // NOI18N
         btnShow.setFocusPainted(false);
         btnShow.setMargin(new java.awt.Insets(2, 2, 2, 2));
         btnShow.addActionListener(new java.awt.event.ActionListener() {
@@ -343,7 +343,7 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         });
         jPanel2.add(btnShow);
 
-        jSpeedCb.setText(bundle.getString("Show_Speed_Controls")); // NOI18N
+        jSpeedCb.setText(bundle.getString("SHOW SPEED CONTROLS")); // NOI18N
         jSpeedCb.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         jSpeedCb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -519,3 +519,5 @@ public class DisplayControlPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+
+

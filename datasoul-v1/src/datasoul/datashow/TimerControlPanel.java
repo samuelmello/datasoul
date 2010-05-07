@@ -63,11 +63,11 @@ public class TimerControlPanel extends javax.swing.JPanel {
         btnApplyTimer = new javax.swing.JButton();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel1.setText(bundle.getString("Timer_Direction")); // NOI18N
+        jLabel1.setText(bundle.getString("TIMER DIRECTION")); // NOI18N
 
         pnlTimerStart.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel5.setText(bundle.getString("Start")); // NOI18N
+        jLabel5.setText(bundle.getString("START")); // NOI18N
         pnlTimerStart.add(jLabel5);
 
         edtTimerStartMin.setText("00");
@@ -95,7 +95,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
 
         pnlTimerTotal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel7.setText(bundle.getString("Total")); // NOI18N
+        jLabel7.setText(bundle.getString("TOTAL")); // NOI18N
         pnlTimerTotal.add(jLabel7);
 
         edtTimerTotalMin.setText("00");
@@ -118,7 +118,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         pnlTimerTotal.add(edtTimerTotalSec);
 
         btnTimerOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-playback-stop.png"))); // NOI18N
-        btnTimerOff.setText(bundle.getString("Off")); // NOI18N
+        btnTimerOff.setText(bundle.getString("OFF")); // NOI18N
         btnTimerOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimerOffActionPerformed(evt);
@@ -126,7 +126,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         });
 
         btnTimerForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-seek-forward.png"))); // NOI18N
-        btnTimerForward.setText(bundle.getString("Forward")); // NOI18N
+        btnTimerForward.setText(bundle.getString("FORWARD")); // NOI18N
         btnTimerForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimerForwardActionPerformed(evt);
@@ -134,7 +134,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         });
 
         btnTimerBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/media-seek-backward.png"))); // NOI18N
-        btnTimerBackward.setText(bundle.getString("Backward")); // NOI18N
+        btnTimerBackward.setText(bundle.getString("BACKWARD")); // NOI18N
         btnTimerBackward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTimerBackwardActionPerformed(evt);
@@ -142,7 +142,7 @@ public class TimerControlPanel extends javax.swing.JPanel {
         });
 
         btnApplyTimer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/dialog-apply.png"))); // NOI18N
-        btnApplyTimer.setText(bundle.getString("Apply")); // NOI18N
+        btnApplyTimer.setText(bundle.getString("APPLY")); // NOI18N
         btnApplyTimer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApplyTimerActionPerformed(evt);
@@ -338,3 +338,5 @@ public class TimerControlPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+
+

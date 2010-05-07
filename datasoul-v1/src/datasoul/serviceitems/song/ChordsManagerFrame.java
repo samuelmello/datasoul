@@ -104,13 +104,13 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        setTitle(bundle.getString("Chords_Manager")); // NOI18N
+        setTitle(bundle.getString("CHORDS MANAGER")); // NOI18N
 
         jToolBar1.setFloatable(false);
         jToolBar1.setOpaque(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-new.png"))); // NOI18N
-        btnNew.setText(bundle.getString("New")); // NOI18N
+        btnNew.setText(bundle.getString("NEW")); // NOI18N
         btnNew.setBorderPainted(false);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +120,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.add(btnNew);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/gtk-edit.png"))); // NOI18N
-        btnEdit.setText(bundle.getString("Edit")); // NOI18N
+        btnEdit.setText(bundle.getString("EDIT")); // NOI18N
         btnEdit.setBorderPainted(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,7 +130,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.add(btnEdit);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete.png"))); // NOI18N
-        btnDelete.setText(bundle.getString("Delete")); // NOI18N
+        btnDelete.setText(bundle.getString("DELETE")); // NOI18N
         btnDelete.setBorderPainted(false);
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +140,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         jToolBar1.add(btnDelete);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnClose.setText(bundle.getString("Close")); // NOI18N
+        btnClose.setText(bundle.getString("CLOSE")); // NOI18N
         btnClose.setBorderPainted(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,7 +184,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
             }
         });
 
-        labelString.setText(bundle.getString("Search")); // NOI18N
+        labelString.setText(bundle.getString("SEARCH")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -263,7 +263,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tableChordsListKeyPressed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Are_you_sure_that_you_want_to_delete_this_chord?"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Confirm"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
+        if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ARE YOU SURE THAT YOU WANT TO DELETE THIS CHORD?"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             tableChordsList.removeItem();
             chordsDB.getInstance().save();
         }
@@ -300,3 +300,5 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     
 }
+
+

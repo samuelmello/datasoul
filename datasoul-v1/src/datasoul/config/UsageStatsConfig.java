@@ -56,3 +56,4 @@ public class UsageStatsConfig extends AbstractConfig {
         save();
     }
 }
+

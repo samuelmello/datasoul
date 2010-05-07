@@ -298,7 +298,7 @@ public class ChordShapePanel extends javax.swing.JPanel {
 
             //change the start fret
             if(x<15&&y<50&&y>25){
-                String str = JOptionPane.showInputDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Digit_the_start_fret_desired."),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Start_fret"),JOptionPane.QUESTION_MESSAGE);
+                String str = JOptionPane.showInputDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DIGIT THE START FRET DESIRED."),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("START FRET"),JOptionPane.QUESTION_MESSAGE);
                 try{
                     startFret = Integer.parseInt(str);
                 }catch (Exception e){
@@ -334,3 +334,5 @@ public class ChordShapePanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+
+

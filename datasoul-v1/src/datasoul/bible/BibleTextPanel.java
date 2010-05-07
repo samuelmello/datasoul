@@ -51,17 +51,17 @@ public class BibleTextPanel extends javax.swing.JPanel {
         // cbHowToSplit options
         // Keep the current idem ordem. They are handled by their index in Load.
         cbHowToSplit.removeAllItems();
-        cbHowToSplit.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Sections"));
-        cbHowToSplit.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Slides"));
-        cbHowToSplit.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Continuous"));
+        cbHowToSplit.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SECTIONS"));
+        cbHowToSplit.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SLIDES"));
+        cbHowToSplit.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONTINUOUS"));
 
         // cbRefType options
         // Keep the current idem ordem. They are handled by their index in Load.
         cbRefType.removeAllItems();
-        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Full"));
-        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Chapter_and_Verse"));
-        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Verse_Only"));
-        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("None"));
+        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FULL"));
+        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHAPTER AND VERSE"));
+        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSE ONLY"));
+        cbRefType.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NONE"));
         cbRefType.setSelectedIndex(1);
 
         // Setup bible books
@@ -160,30 +160,30 @@ public class BibleTextPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(443, 101));
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        jLabel3.setText(bundle.getString("Bible:")); // NOI18N
+        jLabel3.setText(bundle.getString("BIBLE:")); // NOI18N
 
         cbBibles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnManageBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_data-sources-new.png"))); // NOI18N
-        btnManageBible.setText(bundle.getString("Manage_Installed_Bibles")); // NOI18N
+        btnManageBible.setText(bundle.getString("MANAGE INSTALLED BIBLES")); // NOI18N
         btnManageBible.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManageBibleActionPerformed(evt);
             }
         });
 
-        jLabel1.setText(bundle.getString("Verses:")); // NOI18N
+        jLabel1.setText(bundle.getString("VERSES:")); // NOI18N
 
-        jLabel2.setText(bundle.getString("Put_verses_in")); // NOI18N
+        jLabel2.setText(bundle.getString("PUT VERSES IN")); // NOI18N
 
         cbHowToSplit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel6.setText(bundle.getString("Add_reference")); // NOI18N
+        jLabel6.setText(bundle.getString("ADD REFERENCE")); // NOI18N
 
         cbRefType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnLoad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_edit-bookmark.png"))); // NOI18N
-        btnLoad.setText(bundle.getString("Load")); // NOI18N
+        btnLoad.setText(bundle.getString("LOAD")); // NOI18N
         btnLoad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoadActionPerformed(evt);
@@ -364,7 +364,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
         int end = cbVersesTo.getSelectedIndex() + 1;
 
         if (begin > end) {
-            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("Invalid_verse_range"));
+            JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VERSE RANGE"));
             return;
         }
 
@@ -476,3 +476,5 @@ public class BibleTextPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
+
+

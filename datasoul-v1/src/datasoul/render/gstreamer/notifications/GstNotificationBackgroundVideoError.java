@@ -26,8 +26,9 @@ public class GstNotificationBackgroundVideoError extends GstNotification {
         BackgroundConfig.getInstance().setMode(BackgroundConfig.MODE_STATIC);
         ContentManager.getInstance().slideChange(-1);
         JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                "Error playing background video:"+"\n"+msg);
+                java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR PLAYING BACKGROUND VIDEO:")+"\n"+msg);
 
     }
 
 }
+

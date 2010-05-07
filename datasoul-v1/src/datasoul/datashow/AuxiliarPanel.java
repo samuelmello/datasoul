@@ -72,8 +72,8 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         tabAuxiliar.setMinimumSize(new java.awt.Dimension(0, 0));
         tabAuxiliar.addTab("Output", new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-display.png")), displayControlPanel1); // NOI18N
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        tabAuxiliar.addTab(bundle.getString("Alert"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bell.png")), alertControlPanel1); // NOI18N
-        tabAuxiliar.addTab(bundle.getString("Timer"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png")), timerControlPanel1); // NOI18N
+        tabAuxiliar.addTab(bundle.getString("ALERT"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bell.png")), alertControlPanel1); // NOI18N
+        tabAuxiliar.addTab(bundle.getString("TIMER"), new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_timer.png")), timerControlPanel1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -103,3 +103,5 @@ public class AuxiliarPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 }
+
+
