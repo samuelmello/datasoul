@@ -141,7 +141,6 @@ public class ImageTemplateItem extends TemplateItem {
         if (filename != null){
             try {
                 img = ImageIO.read( new File(filename) );
-                assertImageSize();
                 this.setWidth( img.getWidth() );
                 this.setHeight( img.getHeight() );
             } catch (IOException ex) {
@@ -152,9 +151,6 @@ public class ImageTemplateItem extends TemplateItem {
     
     public void setImage(BufferedImage img){
         this.img = img;
-        if (img != null){
-            assertImageSize();
-        }
     }
     
     public BufferedImage getImage(){
@@ -165,10 +161,10 @@ public class ImageTemplateItem extends TemplateItem {
      * Ensures that the image is not larger than the screen size to 
      * avoid running out of memory
      */
-    private void assertImageSize(){
+    public void assertImageSize(int templateWidth, int templateHeight){
 
-        float fw = (float) this.img.getWidth() / (float) DisplayTemplate.TEMPLATE_WIDTH;
-        float fh = (float) this.img.getHeight() / (float) DisplayTemplate.TEMPLATE_HEIGHT;
+        float fw = (float) this.img.getWidth() / (float) templateWidth;
+        float fh = (float) this.img.getHeight() / (float) templateHeight;
         
         // any of the sides is greater than the output size?
         // using 1.1 to allow some tolerance and avoid 
@@ -269,7 +265,6 @@ public class ImageTemplateItem extends TemplateItem {
             try {
                 is = activeZipReader.getInputStream(strImage);
                 img = ImageIO.read(is);
-                assertImageSize();
             } catch (IOException ex) {
                 ex.printStackTrace();
             } finally {
@@ -288,7 +283,6 @@ public class ImageTemplateItem extends TemplateItem {
 
     public void setImageInStr(String strImage) {
         img = ImageSerializer.strToImage(strImage);
-        assertImageSize();
     }
 
 

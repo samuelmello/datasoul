@@ -476,6 +476,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
                     String filename = fc.getSelectedFile().getAbsolutePath();
                     ImageTemplateItem img = new ImageTemplateItem( filename );
+                    img.assertImageSize(templateEditorPanel1.getTemplate().getWidth(), templateEditorPanel1.getTemplate().getHeight());
                     templateEditorPanel1.addItem(img);
                 }
             }else if (type == ImageTemplateItem.IMAGE_CONTENT_SLIDE){

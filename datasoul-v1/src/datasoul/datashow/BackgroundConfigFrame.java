@@ -255,6 +255,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
             String filename = fc.getSelectedFile().getAbsolutePath();
             imageDisplay.getImageTemplateItem().loadImage(filename);
+            imageDisplay.getImageTemplateItem().assertImageSize(ConfigObj.getActiveInstance().getMainRenderWidth(), ConfigObj.getActiveInstance().getMainRenderHeight());
             imageDisplay.updateSize();
             imageDisplay.repaint();
         }
