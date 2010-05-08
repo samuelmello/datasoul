@@ -8,8 +8,8 @@ package datasoul.serviceitems;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,8 +23,8 @@ public class AttachmentServiceItem extends GenericAttachmentServiceItem {
         super();
     }
 
-    public AttachmentServiceItem(String filename, InputStream is) throws IOException{
-        super(filename, is);
+    public AttachmentServiceItem(File f, boolean isLink) throws IOException{
+        super(f, isLink);
     }
 
     @Override

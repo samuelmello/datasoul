@@ -11,6 +11,7 @@ import datasoul.util.ZipWriter;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,6 +28,7 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
 
     protected String filename;
     protected String internalfilename;
+    protected boolean isLink;
     protected File file;
     protected static File tmpdir;
 
@@ -34,16 +36,26 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
         super();
     }
 
-    public GenericAttachmentServiceItem(String filename, InputStream is) throws IOException{
+    public GenericAttachmentServiceItem(File f, boolean isLink) throws IOException{
         this();
-        this.filename = filename;
+        this.isLink = isLink;
         this.internalfilename = "att-"+filename;
-        copyFile(filename, is);
-        int lastdot = filename.lastIndexOf(".");
-        if (lastdot > 0){
-            setTitle(filename.substring(0, lastdot));
+        if (!isLink){
+            InputStream is = new FileInputStream(f);
+            copyFile(filename, is);
+            this.filename = f.getName();
         }else{
-            setTitle(filename);
+            this.filename = f.getAbsolutePath();
+            this.file = f;
+        }
+        int lastdot = f.getName().lastIndexOf(".");
+        if (lastdot > 0){
+            setTitle(f.getName().substring(0, lastdot));
+        }else{
+            setTitle(f.getName());
+        }
+        if (isLink){
+            setTitle(getTitle() + " (" + "link" +")");
         }
 
     }
@@ -86,6 +98,7 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
         super.registerProperties();
         properties.add("InternalFilename");
         properties.add("Filename");
+        properties.add("IsLink");
     }
 
     protected String getTempDir(){
@@ -119,18 +132,24 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
     @Override
     public Node writeObject(ZipWriter zip) throws Exception{
         Node node = super.writeObject(zip);
-        zip.appendFile(internalfilename, file.getAbsolutePath());
+        if (!isLink){
+            zip.appendFile(internalfilename, file.getAbsolutePath());
+        }
         return node;
     }
 
     @Override
     public void readObject(Node nodeIn, ZipReader zip) {
         super.readObject(nodeIn, zip);
-        try {
-            InputStream is = zip.getInputStream(internalfilename);
-            copyFile(filename, is);
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        if (!isLink){
+            try {
+                InputStream is = zip.getInputStream(internalfilename);
+                copyFile(filename, is);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }else{
+            file = new File(filename);
         }
     }
 
@@ -154,6 +173,41 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
         return false;
     }
 
+    public String getIsLink(){
+        if (isLink){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public void setIsLink(String s){
+        if (s.equals("1")){
+            isLink = true;
+        }else{
+            isLink = false;
+        }
+    }
+
+    public void setIsLink(boolean b){
+        isLink = b;
+    }
+
+    public static boolean askForLink(){
+
+        //Custom button text
+        Object[] options = {"Link", "Copy"};
+        int n = JOptionPane.showOptionDialog(ObjectManager.getInstance().getDatasoulMainForm(),
+            "Do you want include a copy or a link to the file?",
+            "Datasoul",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[1]);
+
+        return (n == 0);
+    }
 
 }
 

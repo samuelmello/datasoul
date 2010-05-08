@@ -38,6 +38,7 @@ import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
+import datasoul.serviceitems.GenericAttachmentServiceItem;
 import datasoul.serviceitems.VideoServiceItem;
 import datasoul.servicelist.ServiceListExporterPanel;
 import datasoul.serviceitems.song.Song;
@@ -1261,12 +1262,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void actAddAttachmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddAttachmentActionPerformed
 
         JFileChooser fc = new JFileChooser();
-        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            FileInputStream fis;
+        if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            boolean isLink = GenericAttachmentServiceItem.askForLink();
             try {
                 ObjectManager.getInstance().setBusyCursor();
-                fis = new FileInputStream(fc.getSelectedFile());
-                AttachmentServiceItem asi = new AttachmentServiceItem(fc.getSelectedFile().getName(), fis);
+                AttachmentServiceItem asi = new AttachmentServiceItem(fc.getSelectedFile(), isLink);
                 ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
@@ -1283,12 +1283,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         JFileChooser fc = new JFileChooser();
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            boolean isLink = GenericAttachmentServiceItem.askForLink();
             FileInputStream fis;
             try {
                 ObjectManager.getInstance().setBusyCursor();
-                fis = new FileInputStream(fc.getSelectedFile());
-                VideoServiceItem vsi = new VideoServiceItem(fc.getSelectedFile().getName(), fis);
-                ServiceListTable.getActiveInstance().addItem(vsi);
+                VideoServiceItem asi = new VideoServiceItem(fc.getSelectedFile(), isLink);
+                ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
                     java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());

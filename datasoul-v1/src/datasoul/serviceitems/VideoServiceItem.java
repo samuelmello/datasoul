@@ -8,8 +8,8 @@ package datasoul.serviceitems;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoItem;
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 /**
  *
@@ -21,8 +21,8 @@ public class VideoServiceItem extends GenericAttachmentServiceItem {
         super();
     }
 
-    public VideoServiceItem(String filename, InputStream is) throws IOException{
-        super(filename, is);
+    public VideoServiceItem(File f, boolean isLink) throws IOException{
+        super(f, isLink);
     }
 
     @Override
