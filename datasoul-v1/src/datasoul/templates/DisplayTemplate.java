@@ -241,9 +241,11 @@ public class DisplayTemplate extends AttributedObject {
         properties.add("TransitionKeepBGIdx");
         registerDisplayString("TransitionKeepBGIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TRANSITION KEEP BACKGROUND"));
         properties.add("TargetContentIdx");
-        registerDisplayString("TargetContentIdx", "Target Content");
+        registerDisplayString("TargetContentIdx", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TARGET CONTENT"));
         properties.add("Width");
+        registerDisplayString("Width", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("WIDTH"));
         properties.add("Height");
+        registerDisplayString("Height", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("HEIGHT"));
     }
     
     public String getName(){

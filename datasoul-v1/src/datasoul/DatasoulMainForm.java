@@ -793,7 +793,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         splSongLibrary.setRightComponent(jPanel6);
         splSongLibrary.setLeftComponent(songsSearchPanel1);
 
-        tabbedRightSide.addTab("Song Library", splSongLibrary);
+        tabbedRightSide.addTab(bundle.getString("SONG LIBRARY"), splSongLibrary); // NOI18N
 
         splDisplayControl.setDividerLocation(240);
         splDisplayControl.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -890,7 +890,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         splDisplayControl.setRightComponent(jPanel3);
 
-        tabbedRightSide.addTab("Display Controls", splDisplayControl);
+        tabbedRightSide.addTab(bundle.getString("DISPLAY CONTROLS"), splDisplayControl); // NOI18N
 
         splMain.setRightComponent(tabbedRightSide);
 

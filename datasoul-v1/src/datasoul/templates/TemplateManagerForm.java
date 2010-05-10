@@ -124,7 +124,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         lblPreview.setMaximumSize(new java.awt.Dimension(100, 500));
         lblPreview.setMinimumSize(new java.awt.Dimension(100, 15));
 
-        pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder("Stage Templates"));
+        pnlMonitor.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("STAGE TEMPLATES"))); // NOI18N
 
         jLabel3.setText(bundle.getString("SONG:")); // NOI18N
 
@@ -173,10 +173,10 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(pnlMonitorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbMonitorContentless, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
-                    .addComponent(cbMonitorImages, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                    .addComponent(cbMonitorContentless, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
+                    .addComponent(cbMonitorImages, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
                     .addComponent(cbMonitorText, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbMonitorSong, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -202,7 +202,7 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Default Templates"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("DEFAULT TEMPLATES"))); // NOI18N
 
         jLabel6.setText(bundle.getString("SONG:")); // NOI18N
 
