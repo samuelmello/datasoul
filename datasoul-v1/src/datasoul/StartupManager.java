@@ -5,6 +5,7 @@
 
 package datasoul;
 
+import com.sun.jna.Platform;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
@@ -194,7 +195,7 @@ public class StartupManager {
 
         // JVM is broken for windows Vista and 7
         // Disable Direct3D to avoid problems with Swing
-        if (System.getProperty("os.name").contains("Windows")){
+        if (Platform.isWindows()){
             System.setProperty("sun.java2d.d3d","false");
         }
 

@@ -1,6 +1,7 @@
 
 package datasoul.render;
 
+import com.sun.jna.Platform;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -81,16 +82,29 @@ public class OutputDevice {
     }
 
     public void setWindowFullScreen(JFrame frame){
-        if (device.getFullScreenWindow() == null){
-            frame.setResizable(true);
-            device.setFullScreenWindow(frame);
+        frame.setResizable(true);
+        /**
+         * Another workaround for windows...
+         * By some weird reason, Windows Vista/7 minimize frames set as Fullscreen
+         * when they lose focus. Using setBounds works properly in windows, but for
+         * MacOS it does not cover the menu bar and dock, so we need platform
+         * dependant code here. 
+         */
+        if (Platform.isWindows() ==  false){
+            if (device.getFullScreenWindow() == null){
+                device.setFullScreenWindow(frame);
+            }
+        }else{
+            frame.setBounds(device.getDefaultConfiguration().getBounds());
         }
         frame.setVisible(true);
     }
 
     public void closeFullScreen(JFrame frame) {
         frame.setVisible(false);
-        device.setFullScreenWindow(null);
+        if (!Platform.isWindows()){
+            device.setFullScreenWindow(null);
+        }
     }
 
     public int getProportionalHeight(int width){
