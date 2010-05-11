@@ -23,12 +23,16 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author samuel
  */
 public class TemplateManagerForm extends javax.swing.JFrame implements ListSelectionListener {
+
+    private TableRowSorter<TableModel> sorter;
 
     /** Creates new form TemplateManagerForm */
     public TemplateManagerForm() {
@@ -58,6 +62,10 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
         cbMonitorContentless.setSelectedItem(DisplayControlConfig.getInstance().getMonitorTemplateContentless());
 
         pnlMonitor.setVisible(OutputDevice.isMonitorAllowed());
+
+        sorter = new TableRowSorter<TableModel>(jTableTemplates.getModel());
+        jTableTemplates.setRowSorter(sorter);
+
 
     }
 
@@ -533,8 +541,8 @@ public class TemplateManagerForm extends javax.swing.JFrame implements ListSelec
     @Override
     public void valueChanged(ListSelectionEvent arg0) {
         if (jTableTemplates.getSelectedRow() >= 0){
-
-            DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(jTableTemplates.getSelectedRow());
+            int idx = sorter.convertRowIndexToModel(jTableTemplates.getSelectedRow());
+            DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(idx);
             ImageIcon icon = new ImageIcon(meta.getMiniImage());
             lblPreview.setIcon(icon);
             lblPreview.setText("");
