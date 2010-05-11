@@ -221,6 +221,10 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         }
     }
 
+    public boolean isPreviewActive(){
+        return !cbAutoLive.isSelected();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGoLive;
     private javax.swing.JCheckBox cbAutoLive;

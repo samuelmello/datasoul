@@ -509,13 +509,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         splService.setDividerLocation(200);
         splService.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        splService.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                splServiceComponentResized(evt);
+            }
+        });
         splService.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 splServicePropertyChange(evt);
             }
         });
-
-        preview.setMinimumSize(new java.awt.Dimension(10, 10));
         splService.setRightComponent(preview);
 
         jLabel2.setText(bundle.getString("START TIME:")); // NOI18N
@@ -1377,6 +1380,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         key.setLocationRelativeTo(this);
         key.setVisible(true);
     }//GEN-LAST:event_actHelpKeyboardActionPerformed
+
+    private void splServiceComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_splServiceComponentResized
+        if ( preview.isPreviewActive() ){
+            splService.setDividerLocation( splService.getHeight() - splService.getDividerSize() - preview.getPreferedHeight());
+        }
+    }//GEN-LAST:event_splServiceComponentResized
 
     public void closeOutputs(){
 
