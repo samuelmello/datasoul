@@ -481,7 +481,7 @@ public class ServiceListTable extends ListTable {
 
                 /* Ask the user if he really wants to use the older format */
                 int resp = JOptionPane.showConfirmDialog(fc, 
-                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YOU HAVE CHOOSED TO SAVE THE FILE IN THE FORMAT SUPPORTED BY OLDER VERSIONS OF DATASOUL.") + "\n" +
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("YOU HAVE CHOSEN TO SAVE THE FILE IN THE FORMAT SUPPORTED BY OLDER VERSIONS OF DATASOUL.") + "\n" +
                         java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("THE SERVICE LIST MAY CONTAIN ITEMS NOT SUPPORTED BY OLDER VERSIONS AND THESE ITEMS WILL NOT BE SAVED.")+ "\n" +
                         java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DO YOU WANT TO CONTINUE?"),
                         java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL: SAVE AS AN OLDER VERSION"), JOptionPane.OK_CANCEL_OPTION);
