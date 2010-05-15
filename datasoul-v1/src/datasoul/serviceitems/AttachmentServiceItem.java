@@ -31,7 +31,7 @@ public class AttachmentServiceItem extends GenericAttachmentServiceItem {
     public void showItem(){
         super.showItem();
         ContentManager.getInstance().setMainShowTemplate(false);
-        if (ContentManager.getInstance().isOutputVisible()){
+        if (ObjectManager.getInstance().isOutputVisible()){
             try {
                 Desktop.getDesktop().open(file);
             } catch (IOException ex) {

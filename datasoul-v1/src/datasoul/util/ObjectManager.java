@@ -31,6 +31,13 @@ import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.config.ConfigFrame;
+import datasoul.config.ConfigObj;
+import datasoul.render.ContentManager;
+import datasoul.render.gstreamer.GstContentRender;
+import datasoul.render.SwingDisplayFrame;
+import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.commands.GstDisplayCmdShowHide;
 import java.awt.Cursor;
 
 /**
@@ -52,6 +59,11 @@ public class ObjectManager {
     private TemplateManagerForm templateManagerForm;
     private ConfigFrame configFrame;
     
+    private SwingDisplayFrame mainDisplay;
+    private SwingDisplayFrame monitorDisplay;
+    private boolean isOutputVisible;
+
+
     /** Creates a new instance of ObjectManager */
     private ObjectManager() {
     }
@@ -160,6 +172,57 @@ public class ObjectManager {
     public void setConfigFrame(ConfigFrame configFrame) {
         this.configFrame = configFrame;
     }
-    
+
+    public void initMainDisplay(){
+
+        if (ConfigObj.getActiveInstance().isGstreamerActive()){
+            GstContentRender mainGstRender = new GstContentRender(GstContentRender.Target.TARGET_MAIN);
+            ContentManager.getInstance().registerMainRender(mainGstRender);
+
+        }else{
+            mainDisplay = new SwingDisplayFrame();
+            mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
+            mainDisplay.registerAsMain();
+        }
+
+    }
+
+    public void initMonitorDisplay(){
+
+        if (ConfigObj.getActiveInstance().getMonitorOutput() ){
+            monitorDisplay = new SwingDisplayFrame();
+            monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
+            monitorDisplay.registerAsMonitor();
+        }
+    }
+
+    public boolean isOutputVisible(){
+        return isOutputVisible;
+    }
+
+    public void setOutputVisible(boolean b){
+
+        isOutputVisible = b;
+
+        if (ConfigObj.getActiveInstance().isGstreamerActive()){
+
+            GstDisplayCmd cmd = new GstDisplayCmdShowHide(b);
+            GstManagerServer.getInstance().sendCommand(cmd);
+
+        }else{
+
+            if (b){
+                ConfigObj.getActiveInstance().getMainOutputDeviceObj().setWindowFullScreen(mainDisplay);
+                if (ConfigObj.getActiveInstance().getMonitorOutput())
+                    ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().setWindowFullScreen(monitorDisplay);
+            }else{
+                ConfigObj.getActiveInstance().getMainOutputDeviceObj().closeFullScreen(mainDisplay);
+                if (ConfigObj.getActiveInstance().getMonitorOutput())
+                    ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().closeFullScreen(monitorDisplay);
+            }
+        }
+    }
+
+
 }
 

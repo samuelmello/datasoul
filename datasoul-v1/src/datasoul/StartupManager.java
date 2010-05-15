@@ -11,8 +11,6 @@ import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.gstreamer.commands.GstDisplayCmdInit;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.util.DatasoulKeyListener;
@@ -225,11 +223,7 @@ public class StartupManager {
             if (ConfigObj.getActiveInstance().isGstreamerActive()){
                 boolean gst = GstManagerServer.getInstance().start();
                 if (gst){
-                    GstDisplayCmd cmd = new GstDisplayCmdInit(
-                        ConfigObj.getActiveInstance().getMonitorOutput(),
-                        ConfigObj.getActiveInstance().getMainOutputDevice(),
-                        ConfigObj.getActiveInstance().getMonitorOutputDevice());
-                    GstManagerServer.getInstance().sendCommand(cmd);
+                    // Perform any initialization
                 }else{
                     ConfigObj.getActiveInstance().setGstreamerActive(gst);
                 }
@@ -242,8 +236,8 @@ public class StartupManager {
         Toolkit.getDefaultToolkit().addAWTEventListener( DatasoulKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
 
         // Init displays
-        ContentManager.getInstance().initMainDisplay();
-        ContentManager.getInstance().initMonitorDisplay();
+        ObjectManager.getInstance().initMainDisplay();
+        ObjectManager.getInstance().initMonitorDisplay();
 
         // Ensure background properly loaded
         BackgroundConfig.getInstance().refreshMode();

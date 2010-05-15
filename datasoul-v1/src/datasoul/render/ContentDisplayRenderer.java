@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage;
  *
  * @author samuellucas
  */
-public abstract class ContentDisplayRenderer implements ContentDisplay {
+public abstract class ContentDisplayRenderer {
     
     private int activeImage;
     private BufferedImage transitionImage;
@@ -68,27 +68,22 @@ public abstract class ContentDisplayRenderer implements ContentDisplay {
         g.dispose();
     }
 
-    @Override
     public void paintBackground(Image im) {
         paintImage(backgroundImage, im);
     }
 
-    @Override
     public void paintTransition(Image im) {
         paintImage(transitionImage, im);
     }
 
-    @Override
     public void paintTemplate(Image im) {
         paintImage(templateImage, im);
     }
 
-    @Override
     public void paintAlert(Image im) {
         paintImage(alertImage, im);
     }
 
-    @Override
     public synchronized void updateScreen(boolean isBlack, boolean keepbg, float background, float transition, float template, float alert) {
         if (isBlack){
             paintOutputBlack();

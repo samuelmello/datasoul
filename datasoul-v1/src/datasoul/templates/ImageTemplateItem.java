@@ -29,6 +29,7 @@ import datasoul.util.ZipWriter;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -149,8 +150,12 @@ public class ImageTemplateItem extends TemplateItem {
         }
     }
     
-    public void setImage(BufferedImage img){
-        this.img = img;
+    public void setImage(Image img){
+        if (img instanceof BufferedImage){
+            this.img = (BufferedImage) img;
+        }else{
+            throw new UnsupportedOperationException("Received Image is not a BufferedImage");
+        }
     }
     
     public BufferedImage getImage(){

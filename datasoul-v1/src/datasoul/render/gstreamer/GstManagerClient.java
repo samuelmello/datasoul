@@ -5,8 +5,10 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.config.ConfigObj;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.ContentDisplay;
+import datasoul.render.ContentDisplayRenderer;
+import datasoul.render.ContentRender;
 import datasoul.render.OutputDevice;
 import datasoul.render.gstreamer.notifications.GstNotification;
 import datasoul.render.gstreamer.notifications.GstNotificationCmdDone;
@@ -33,8 +35,22 @@ public class GstManagerClient {
     protected ObjectOutputStream output;
     protected ObjectInputStream input;
 
+    protected ContentRender mainRender;
+    protected ContentRender monitorRender;
+
+
+    private GstDisplayFrame mainFrame;
+    private GstDisplayFrame monitorFrame;
+    private boolean isMonitorEnabled;
+    private OutputDevice mainDevice;
+    private OutputDevice monitorDevice;
+    private GstManagerPipeline bgpipeline;
+    private boolean isOutputVisible;
+
+
     private GstManagerClient (){
-        
+        ConfigObj cfg = ConfigObj.getActiveInstance();
+        init(cfg.getMainOutputDevice(), cfg.getMonitorOutputDevice(), cfg.getMonitorOutput() );
     }
     
     public static GstManagerClient getInstance(){
@@ -42,6 +58,14 @@ public class GstManagerClient {
             instance = new GstManagerClient();
         }
         return instance;
+    }
+
+    public ContentRender getMainRender(){
+        return mainRender;
+    }
+
+    public ContentRender getMonitorRender(){
+        return monitorRender;
     }
 
     public void run(){
@@ -79,16 +103,7 @@ public class GstManagerClient {
         }
     }
 
-
-    private GstDisplayFrame mainFrame;
-    private GstDisplayFrame monitorFrame;
-    private boolean isMonitorEnabled;
-    private OutputDevice mainDevice;
-    private OutputDevice monitorDevice;
-    private GstManagerPipeline bgpipeline;
-    private boolean isOutputVisible;
-    
-    public void init ( String mainDevice, String monitorDevice, boolean monitorEnabled ) {
+    private void init ( String mainDevice, String monitorDevice, boolean monitorEnabled ) {
 
         this.isMonitorEnabled = monitorEnabled;
         this.mainDevice = new OutputDevice(mainDevice, OutputDevice.USAGE_MAIN);
@@ -96,11 +111,13 @@ public class GstManagerClient {
         mainFrame.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
         mainFrame.init(this.mainDevice.getWidth(), this.mainDevice.getHeight());
         mainFrame.getVideoSink().setName("MainVideoSink");
+        mainRender = new ContentRender(this.mainDevice.getWidth(), this.mainDevice.getHeight(), mainFrame.getContentDisplay());
         if (isMonitorEnabled){
             this.monitorDevice = new OutputDevice(monitorDevice, OutputDevice.USAGE_MONITOR);
             monitorFrame = new GstDisplayFrame();
             monitorFrame.init(this.monitorDevice.getWidth(), this.monitorDevice.getHeight());
             monitorFrame.getVideoSink().setName("MonitorVideoSink");
+            monitorRender = new ContentRender(this.monitorDevice.getWidth(), this.monitorDevice.getHeight(), monitorFrame.getContentDisplay());
         }
 
     }
@@ -109,7 +126,7 @@ public class GstManagerClient {
         return this.isMonitorEnabled;
     }
 
-    public ContentDisplay getMainContentDisplay(){
+    public ContentDisplayRenderer getMainContentDisplay(){
         return mainFrame.getContentDisplay();
     }
 

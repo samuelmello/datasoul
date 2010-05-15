@@ -68,7 +68,7 @@ public class ServiceListExporterSlides {
             f.delete();
         }
         /* Stop render thread */
-        render.shutdown();
+        render.cleanup();
     }
 
     public void addEmptySlide() throws DocumentException{
@@ -100,7 +100,7 @@ public class ServiceListExporterSlides {
     public class ExporterContentRender extends ContentRender {
 
         public ExporterContentRender(){
-            super(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT);
+            super(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, null);
         }
 
         @Override
@@ -145,6 +145,10 @@ public class ServiceListExporterSlides {
 
         public BufferedImage getBackgroundImage(){
             return backgroundImage;
+        }
+
+        public void cleanup(){
+            shutdown();
         }
 
     }

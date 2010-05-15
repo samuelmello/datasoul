@@ -89,7 +89,7 @@ public class SwingDisplayPanel extends javax.swing.JPanel  {
         this.setSize(w, h);
     }
 
-    public ContentDisplay getContentDisplay(){
+    public ContentDisplayRenderer getContentDisplay(){
         return contentDisplay;
     }
 

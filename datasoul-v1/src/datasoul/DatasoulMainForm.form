@@ -534,18 +534,18 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                                  <Component id="toolBar" pref="381" max="32767" attributes="2"/>
+                                  <Component id="toolBar" pref="396" max="32767" attributes="2"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                  <Component id="jScrollPane1" pref="381" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="396" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jScrollPane2" alignment="0" pref="381" max="32767" attributes="0"/>
+                                      <Component id="jScrollPane2" alignment="0" pref="396" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jPanel2" pref="375" max="32767" attributes="0"/>
+                                          <Component id="jPanel2" pref="390" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                       </Group>

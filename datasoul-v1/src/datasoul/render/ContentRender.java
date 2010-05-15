@@ -37,14 +37,13 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
-import java.util.LinkedList;
 import java.util.concurrent.Semaphore;
 
 /**
  *
  * @author root
  */
-public class ContentRender {
+public class ContentRender implements ContentRenderItf {
     
     protected DisplayTemplate template;
     private boolean templateChanged;
@@ -75,6 +74,9 @@ public class ContentRender {
     private BufferedImage nextImage;
     private boolean nextImageChanged;
     private boolean showHideNeedUpdate;
+
+    private int width;
+    private int height;
     
     private Semaphore updSemaphore;
     private UpdateThread updThread;
@@ -96,7 +98,7 @@ public class ContentRender {
     final protected BufferedImage alertImage;
     final protected BufferedImage backgroundImage;
 
-    private LinkedList<ContentDisplay> displays;
+    private ContentDisplayRenderer display;
 
     private boolean run;
 
@@ -107,18 +109,15 @@ public class ContentRender {
     private boolean showTemplate;
     private boolean showBackground;
 
-    private int width;
-    private int height;
-
     /** Creates a new instance of ContentRender */
-    public ContentRender(int width, int height) {
+    public ContentRender(int width, int height, ContentDisplayRenderer display) {
         updSemaphore = new Semaphore(0);
         slideTransition = TRANSITION_HIDE;
         slideTransTimerTotal = 1;
         slideTransTimer = 0;
         showTemplate = true;
         showBackground = true;
-        displays = new LinkedList<ContentDisplay>();
+        this.display = display;
         this.width = width;
         this.height = height;
 
@@ -135,18 +134,10 @@ public class ContentRender {
         updThread.start();
     }
 
-    public void shutdown(){
+    protected void shutdown(){
         run = false;
         updSemaphore.release();
         updThread.interrupt();
-    }
-
-    public int getWidth(){
-        return width;
-    }
-
-    public int getHeight(){
-        return height;
     }
 
     public void setActiveImage(BufferedImage img){
@@ -159,26 +150,14 @@ public class ContentRender {
         this.nextImageChanged = true;
     }
 
-    public String getTitle() {
-        return title;
-    }
-    
     public void setTitle(String title) {
         this.title = title;
         this.titleChanged = true;
     }
 
-    public String getSongAuthor() {
-        return songAuthor;
-    }
-    
     public void setSongAuthor(String songAuthor) {
         this.songAuthor = songAuthor;
         this.songAuthorChanged = true;
-    }
-    
-    public String getCopyright() {
-        return copyright;
     }
     
     public void setCopyright(String copyright) {
@@ -186,17 +165,9 @@ public class ContentRender {
         this.copyrightChanged = true;
     }
     
-    public String getSongSource() {
-        return songSource;
-    }
-    
     public void setSongSource(String songSource) {
         this.songSource = songSource;
         this.songSourceChanged = true;
-    }
-    
-    public String getSlide() {
-        return slide;
     }
     
     public void setSlide(String slide) {
@@ -204,26 +175,14 @@ public class ContentRender {
         this.slideChanged = true;
     }
     
-    public String getNextSlide() {
-        return nextSlide;
-    }
-    
     public void setNextSlide(String nextSlide) {
         this.nextSlide = nextSlide;
         this.nextSlideChanged = true;
     }
     
-    public String getClock() {
-        return clock;
-    }
-    
     public void setClock(String clock) {
         this.clock = clock;
         this.clockChanged = true;
-    }
-    
-    public String getTimer() {
-        return timer;
     }
     
     public void setTimer(String timer) {
@@ -241,10 +200,6 @@ public class ContentRender {
         this.timerChanged  = true;
     }
     
-    public String getAlert(){
-        return this.timer;
-    }
-    
     public void setAlert(String alert){
         this.alert = alert;
         this.alertChanged = true;
@@ -253,7 +208,7 @@ public class ContentRender {
     public void setTemplate(String template){
         try{
             if (template != null && !template.equals("")){
-                this.template = TemplateManager.getInstance().newDisplayTemplate(template, this);
+                this.template = TemplateManager.getInstance().newDisplayTemplate(template, width, height);
                 this.templateChanged = true;
 
                 this.templateNeedsTimer = this.template.useTimer();
@@ -269,17 +224,9 @@ public class ContentRender {
         }
     }
     
-    public String getTemplate(){
-        if (template != null){
-            return this.template.getName();
-        }else{
-            return null;
-        }
-    }
-    
     public void setAlertTemplate(String template){
         try{
-            this.alertTemplate = TemplateManager.getInstance().newDisplayTemplate(template, this);
+            this.alertTemplate = TemplateManager.getInstance().newDisplayTemplate(template, width, height);
             this.alertNeedsTimer = this.alertTemplate.useTimer();
         }catch(Exception e){
             e.printStackTrace();
@@ -301,9 +248,7 @@ public class ContentRender {
             showHideNeedUpdate = true;
             updateDisplayValues();
             saveImage(templateImage, template, 1.0f);
-            for (ContentDisplay d : displays){
-                d.paintTemplate(templateImage);
-            }
+            display.paintTemplate(templateImage);
         }
         update();
     }
@@ -315,15 +260,11 @@ public class ContentRender {
             slideTransTimerTotal = transictionTime;
             updateDisplayValues();
             saveImage(templateImage, template, 1.0f);   
-            for (ContentDisplay d : displays){
-                d.paintTemplate(templateImage);
-            }
+            display.paintTemplate(templateImage);
         }else if (transictionTime < 0){
             updateDisplayValues();
             saveImage(templateImage, template, 1.0f);   
-            for (ContentDisplay d : displays){
-                d.paintTemplate(templateImage);
-            }
+            display.paintTemplate(templateImage);
         }
         update();
     }
@@ -345,10 +286,7 @@ public class ContentRender {
             alertTransTimerTotal = transictionTime;
             updateDisplayValues();
             saveImage(alertImage, alertTemplate, 1.0f);
-            for (ContentDisplay d : displays){
-                d.paintAlert(alertImage);
-            }
-
+            display.paintAlert(alertImage);
         }
         update();
     }
@@ -367,12 +305,6 @@ public class ContentRender {
         updSemaphore.release();
     }
 
-    public synchronized void registerDisplay(ContentDisplay d){
-        displays.add(d);
-        d.paintBackground(backgroundImage);
-        updSemaphore.release();
-    }
-    
     /**
      * Update the screen only if needed.
      * That is, if the changes were only in content that isn't
@@ -380,7 +312,7 @@ public class ContentRender {
      *
      * returns if a screen refresh is needed
      */
-    public boolean updateDisplayValues(){
+    protected boolean updateDisplayValues(){
         
             boolean needUpdate = false;
             
@@ -565,9 +497,7 @@ public class ContentRender {
 
 
         if (isBlack){
-            for (ContentDisplay d : displays){
-                d.updateScreen(true, false, 0, 0, 0, 0);
-            }
+            display.updateScreen(true, false, 0, 0, 0, 0);
         }else{
             float bglevel, slidelevel, transitionlevel;
             boolean keepbg = (template != null && template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
@@ -592,40 +522,12 @@ public class ContentRender {
                 transitionlevel = 0.0f;
             }
 
-            for (ContentDisplay d : displays){
-                d.updateScreen(false, keepbg, bglevel, transitionlevel, slidelevel, paintAlertLevel);
-            }
+            display.updateScreen(false, keepbg, bglevel, transitionlevel, slidelevel, paintAlertLevel);
 
-
-            /*
-            paintOutput(backgroundImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER));
-
-                if (template != null){
-                    if (slideTransition == TRANSITION_CHANGE){
-                        if (template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f){
-                            paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f));
-                            paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_ATOP, paintSlideLevel));
-                        }else{
-                            paintOutput(transitionImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1 - paintSlideLevel));
-                            paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
-                        }
-                    }else{
-                        paintOutput(templateImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintSlideLevel));
-                    }
-                }
-
-                if (paintAlertLevel > 0){
-                    paintOutput(alertImage, AlphaComposite.getInstance(AlphaComposite.SRC_OVER, paintAlertLevel));
-                }
-            }
-             *
-             */
         }
 
     }
     
-    
-
     protected void saveImage(BufferedImage dst, DisplayTemplate tpl, float alpha){
         synchronized(dst){
             Graphics2D g = dst.createGraphics();
@@ -644,12 +546,10 @@ public class ContentRender {
     public void saveTransitionImage(){
         updateDisplayValues();
         saveImage(transitionImage, template, 1.0f);
-        for (ContentDisplay d : displays){
-            d.paintTransition(transitionImage);
-        }
+        display.paintTransition(transitionImage);
     }
 
-    void setBlack(boolean b) {
+    public void setBlack(boolean b) {
         this.isBlack = b;
         updSemaphore.release();
     }
@@ -659,19 +559,17 @@ public class ContentRender {
             Graphics2D g = backgroundImage.createGraphics();
             g.drawImage(img, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight(), null);
             g.dispose();
-            for (ContentDisplay d : displays){
-                d.paintBackground(backgroundImage);
-            }
+            display.paintBackground(backgroundImage);
 
             updSemaphore.release();
         }
     }
 
-    void setShowTemplate(boolean b) {
+    public void setShowTemplate(boolean b) {
         this.showTemplate = b;
     }
 
-    void setShowBackground(boolean b) {
+    public void setShowBackground(boolean b) {
         this.showBackground = b;
     }
     
@@ -721,8 +619,10 @@ public class ContentRender {
         }
     }
 
-    public boolean getNeedTimer(){
-        return (templateNeedsTimer || (alertActive && alertNeedsTimer));
+    public void slideChangeFromTimerManager(){
+        if (templateNeedsTimer || (alertActive && alertNeedsTimer)){
+            slideChange(-1);
+        }
     }
 
 }

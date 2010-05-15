@@ -79,14 +79,16 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
         int w = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getWidth();
         int h = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(w);
         swingDisplayPanel1.initDisplay(w, h);
-        ContentManager.getInstance().registerMainDisplay(swingDisplayPanel1.getContentDisplay());
+        ContentRender r = new ContentRender(w, h, swingDisplayPanel1.getContentDisplay());
+        ContentManager.getInstance().registerMainRender(r);
     }
 
     public void registerAsMonitor(){
         int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
         int h = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(w);
         swingDisplayPanel1.initDisplay(getWidth(), getHeight());
-        ContentManager.getInstance().registerMonitorDisplay(swingDisplayPanel1.getContentDisplay());
+        ContentRender r = new ContentRender(w, h, swingDisplayPanel1.getContentDisplay());
+        ContentManager.getInstance().registerMonitorRender(r);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

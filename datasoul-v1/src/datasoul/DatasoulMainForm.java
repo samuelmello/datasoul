@@ -36,6 +36,7 @@ import datasoul.serviceitems.text.TextServiceItemEditorForm;
 import datasoul.render.ContentManager;
 import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
+import datasoul.render.ContentRender;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.GenericAttachmentServiceItem;
@@ -135,7 +136,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         liveDisplayPanel.setMaximumSize(liveSize);
         liveDisplayPanel.setMinimumSize(liveSize);
         liveDisplayPanel.initDisplay((int) liveSize.getWidth(), (int) liveSize.getHeight());
-        ContentManager.getInstance().registerMainDisplay(liveDisplayPanel.getContentDisplay());
+        ContentRender liveRender = new ContentRender((int) liveSize.getWidth(), (int) liveSize.getHeight(), liveDisplayPanel.getContentDisplay());
+        ContentManager.getInstance().registerMainRender(liveRender);
 
         if (ConfigObj.getActiveInstance().getMonitorOutput()){
 
@@ -145,7 +147,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             monitorDisplayPanel.setMaximumSize(monitorSize);
             monitorDisplayPanel.setMinimumSize(monitorSize);
             monitorDisplayPanel.initDisplay((int) liveSize.getWidth(), (int) liveSize.getHeight());
-            ContentManager.getInstance().registerMonitorDisplay(monitorDisplayPanel.getContentDisplay());
+            ContentRender monitorRender = new ContentRender((int) liveSize.getWidth(), (int) liveSize.getHeight(), monitorDisplayPanel.getContentDisplay());
+            ContentManager.getInstance().registerMonitorRender(monitorRender);
 
         }else{
             btnShowMonitor.setSelected(false);
@@ -1278,7 +1281,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tableServiceListKeyPressed
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-        ContentManager.getInstance().setOutputVisible( btnShow.isSelected() );
+        ObjectManager.getInstance().setOutputVisible( btnShow.isSelected() );
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
@@ -1424,7 +1427,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public void closeOutputs(){
 
         if (btnShow.isSelected()){
-            ContentManager.getInstance().setOutputVisible( false );
+            ObjectManager.getInstance().setOutputVisible( false );
             btnShow.setSelected(false);
         }
     }
