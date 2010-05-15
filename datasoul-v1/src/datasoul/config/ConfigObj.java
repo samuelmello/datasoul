@@ -42,6 +42,7 @@ public class ConfigObj extends AbstractConfig {
     private int clockMode;    
     private String storageLoc;
     private boolean storageLocChecked;
+    private boolean trackDuration;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -110,6 +111,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("MonitorOutputDevice");
         properties.add("OnlineCheckUpdate");
         properties.add("OnlineUsageStats");
+        properties.add("TrackDuration");
     }
     
     public ArrayList<String> getProperties(){
@@ -450,6 +452,22 @@ public class ConfigObj extends AbstractConfig {
     
     public String getStoragePathServiceLists(){
         return getStorageLoc() + File.separator + "servicelists";
+    }
+
+    public String getTrackDuration(){
+        if (trackDuration){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public boolean getTrackDurationBool(){
+        return trackDuration;
+    }
+
+    public void setTrackDuration(String s){
+        trackDuration = s.equals("1");
     }
 
 }

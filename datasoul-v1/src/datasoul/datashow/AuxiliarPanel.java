@@ -39,7 +39,7 @@ public class AuxiliarPanel extends javax.swing.JPanel {
         initComponents();
 
         ObjectManager.getInstance().setAuxiliarPanel(this);
-        if (!ConfigObj.getActiveInstance().getMonitorOutput()){
+        if (!ConfigObj.getActiveInstance().getTrackDurationBool()){
             tabAuxiliar.removeTabAt(TAB_CLOCK);
         }
         

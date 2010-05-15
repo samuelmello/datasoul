@@ -93,14 +93,20 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new TemplateCellEditor());
 
         ServiceListColorRender cr = new ServiceListColorRender();
-        for (int i=0; i<ServiceListTable.COLUMN_COUNT; i++){
+        for (int i=0; i<tableServiceList.getColumnModel().getColumnCount(); i++){
             this.tableServiceList.getColumnModel().getColumn(i).setCellRenderer(cr);
         }
 
         // adjust columns
-        tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TIME).setPreferredWidth(40);
-        tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_DURATION).setPreferredWidth(70);
         tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TITLE).setPreferredWidth(200);
+
+        if (ConfigObj.getActiveInstance().getTrackDurationBool()){
+            tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TIME).setPreferredWidth(70);
+            tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_DURATION).setPreferredWidth(40);
+            pnlServiceStart.setVisible(true);
+        }else{
+            pnlServiceStart.setVisible(false);
+        }
 
         initLive();
 
@@ -231,9 +237,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         splService = new javax.swing.JSplitPane();
         preview = new datasoul.datashow.PreviewPanel();
         pnlServiceList = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        txtTitle = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableServiceList = new datasoul.util.DnDTable();
         toolBar = new javax.swing.JToolBar();
@@ -243,12 +246,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnUp = new javax.swing.JButton();
         btnDown = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        txtHours = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMinutes = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtTitle = new javax.swing.JTextField();
+        pnlServiceStart = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtHours = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtMinutes = new javax.swing.JTextField();
         tabbedRightSide = new javax.swing.JTabbedPane();
         splSongLibrary = new javax.swing.JSplitPane();
         jPanel6 = new javax.swing.JPanel();
@@ -521,21 +529,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         splService.setRightComponent(preview);
 
-        jLabel2.setText(bundle.getString("START TIME:")); // NOI18N
-
-        jLabel1.setText(bundle.getString("SERVICE TITLE:")); // NOI18N
-
-        txtTitle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTitleActionPerformed(evt);
-            }
-        });
-        txtTitle.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTitleFocusLost(evt);
-            }
-        });
-
         tableServiceList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -633,6 +626,36 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
+        txtNotes.setColumns(20);
+        txtNotes.setRows(5);
+        txtNotes.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNotesFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(txtNotes);
+
+        jLabel4.setText(bundle.getString("SERVICE NOTES:")); // NOI18N
+
+        jPanel2.setLayout(new java.awt.BorderLayout(3, 0));
+
+        jLabel1.setText(bundle.getString("SERVICE TITLE:")); // NOI18N
+        jPanel2.add(jLabel1, java.awt.BorderLayout.WEST);
+
+        txtTitle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTitleActionPerformed(evt);
+            }
+        });
+        txtTitle.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTitleFocusLost(evt);
+            }
+        });
+        jPanel2.add(txtTitle, java.awt.BorderLayout.CENTER);
+
+        jLabel2.setText(bundle.getString("START TIME:")); // NOI18N
+
         txtHours.setColumns(2);
         txtHours.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtHours.setText("00");
@@ -671,16 +694,42 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
 
-        txtNotes.setColumns(20);
-        txtNotes.setRows(5);
-        txtNotes.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNotesFocusLost(evt);
-            }
-        });
-        jScrollPane1.setViewportView(txtNotes);
+        javax.swing.GroupLayout pnlServiceStartLayout = new javax.swing.GroupLayout(pnlServiceStart);
+        pnlServiceStart.setLayout(pnlServiceStartLayout);
+        pnlServiceStartLayout.setHorizontalGroup(
+            pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 162, Short.MAX_VALUE)
+            .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlServiceStartLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(5, 5, 5)
+                    .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(5, 5, 5)
+                    .addComponent(jLabel3)
+                    .addGap(5, 5, 5)
+                    .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        pnlServiceStartLayout.setVerticalGroup(
+            pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 25, Short.MAX_VALUE)
+            .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pnlServiceStartLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnlServiceStartLayout.createSequentialGroup()
+                            .addGap(5, 5, 5)
+                            .addComponent(jLabel2))
+                        .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlServiceStartLayout.createSequentialGroup()
+                            .addGap(5, 5, 5)
+                            .addComponent(jLabel3))
+                        .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
-        jLabel4.setText(bundle.getString("SERVICE NOTES:")); // NOI18N
+        jPanel2.add(pnlServiceStart, java.awt.BorderLayout.EAST);
 
         javax.swing.GroupLayout pnlServiceListLayout = new javax.swing.GroupLayout(pnlServiceList);
         pnlServiceList.setLayout(pnlServiceListLayout);
@@ -688,26 +737,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlServiceListLayout.createSequentialGroup()
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlServiceListLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                            .addComponent(toolBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                            .addGroup(pnlServiceListLayout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
@@ -718,21 +759,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         pnlServiceListLayout.setVerticalGroup(
             pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlServiceListLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnlServiceListLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1486,6 +1520,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenu jMenu3;
     javax.swing.JMenuBar jMenuBar1;
     javax.swing.JPanel jPanel1;
+    javax.swing.JPanel jPanel2;
     javax.swing.JPanel jPanel3;
     javax.swing.JPanel jPanel6;
     javax.swing.JScrollPane jScrollPane1;
@@ -1503,6 +1538,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     datasoul.render.SwingDisplayPanel monitorDisplayPanel;
     javax.swing.JPanel pnlLiveBox;
     javax.swing.JPanel pnlServiceList;
+    javax.swing.JPanel pnlServiceStart;
     javax.swing.JPopupMenu ppmAddItem;
     datasoul.datashow.PreviewPanel preview;
     datasoul.serviceitems.song.SongsSearchPanel songsSearchPanel1;

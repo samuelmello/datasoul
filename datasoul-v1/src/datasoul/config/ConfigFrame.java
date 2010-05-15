@@ -82,6 +82,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         cbMonitorDevice = new javax.swing.JComboBox();
         lblMonitorDisabled = new javax.swing.JLabel();
+        cbTrackDuration = new javax.swing.JCheckBox();
         btnSave = new javax.swing.JButton();
         btnDiscard = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -200,6 +201,8 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         lblMonitorDisabled.setText(bundle.getString("(YOU NEED AT LEAST 2 DISPLAYS TO ENABLE STAGE OUTPUT)")); // NOI18N
 
+        cbTrackDuration.setText(bundle.getString("MONITOR THE DURATION OF EACH SERVICE ITEM")); // NOI18N
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -215,16 +218,20 @@ public class ConfigFrame extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(cbMonitorOutput)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblMonitorDisabled))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(clockMode, 0, 431, Short.MAX_VALUE)
-                                    .addComponent(cbQualityMain, 0, 431, Short.MAX_VALUE))))
-                        .addContainerGap())))
+                                .addComponent(lblMonitorDisabled)))
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(clockMode, 0, 431, Short.MAX_VALUE)
+                            .addComponent(cbQualityMain, 0, 431, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(cbTrackDuration)
+                        .addContainerGap(280, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,14 +245,16 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(cbDetectMonitors)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlMonitors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(cbQualityMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(clockMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(clockMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbTrackDuration))
         );
 
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
@@ -336,7 +345,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDiscard)
                     .addComponent(btnSave))
@@ -406,6 +415,7 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         registerComponent(cbOnlineUpdate, "OnlineCheckUpdate");
         registerComponent(cbOnlineStats, "OnlineUsageStats");
+        registerComponent(cbTrackDuration, "TrackDuration");
 
     }
 
@@ -495,6 +505,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbOnlineStats;
     private javax.swing.JCheckBox cbOnlineUpdate;
     private javax.swing.JComboBox cbQualityMain;
+    private javax.swing.JCheckBox cbTrackDuration;
     private javax.swing.JComboBox clockMode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

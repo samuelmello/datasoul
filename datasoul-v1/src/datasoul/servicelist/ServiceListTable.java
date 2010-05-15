@@ -259,18 +259,24 @@ public class ServiceListTable extends ListTable {
         updateStartTimes();
     }
 
-        public static final int COLUMN_TIME = 0;
-        public static final int COLUMN_DURATION = 1;
-        public static final int COLUMN_TITLE = 2;
-        public static final int COLUMN_NOTES = 3;
-        public static final int COLUMN_TEMPLATE = 4;
-        public static final int COLUMN_COUNT = 5;
+        public static final int COLUMN_TITLE = 0;
+        public static final int COLUMN_NOTES = 1;
+        public static final int COLUMN_TEMPLATE = 2;
+        public static final int COLUMN_TIME = 3;
+        public static final int COLUMN_DURATION = 4;
+        private static final int COLUMN_COUNT = 5;
 
         public int getColumnCount() {
-            return COLUMN_COUNT;
+            /* If time tracking is not active, hide the 2 first columns */
+            if (ConfigObj.getActiveInstance().getTrackDurationBool()){
+                return COLUMN_COUNT;
+            }else{
+                return COLUMN_COUNT-2;
+            }
         }
 
         public String getColumnName(int columnIndex) {
+
             switch (columnIndex) {
                 case COLUMN_TIME:
                     return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("TIME");
