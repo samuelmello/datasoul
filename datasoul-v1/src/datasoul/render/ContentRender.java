@@ -495,7 +495,6 @@ public class ContentRender implements ContentRenderItf {
         }
 
 
-
         if (isBlack){
             display.updateScreen(true, false, 0, 0, 0, 0);
         }else{
@@ -503,7 +502,7 @@ public class ContentRender implements ContentRenderItf {
             boolean keepbg = (template != null && template.getTransitionKeepBGIdx() == DisplayTemplate.KEEP_BG_YES && paintSlideLevel < 1.0f);
 
             if (showBackground){
-                bglevel = (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC) ? 1.0f : 0.0f;
+                bglevel = 1.0f;
             }else{
                 bglevel = 0.0f;
             }

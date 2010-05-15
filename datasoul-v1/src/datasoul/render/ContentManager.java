@@ -339,6 +339,15 @@ public class ContentManager {
         monitorRenderList.add(r);
     }
 
+    public void setShowBackground(boolean b){
+
+        for (ContentRenderItf r : mainRenderList)
+            r.setShowBackground(b);
+
+        for (ContentRenderItf r : monitorRenderList)
+            r.setShowBackground(b);
+    }
+
 }
 
 

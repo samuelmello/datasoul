@@ -194,6 +194,13 @@ public class BackgroundConfig extends AbstractConfig {
                 GstManagerServer.getInstance().sendCommand(cmd);
             }
 
+            if (mode == MODE_STATIC){
+                ContentManager.getInstance().setShowBackground(true);
+            }else{
+                ContentManager.getInstance().setShowBackground(false);
+            }
+
+
             // Update display
             ContentManager.getInstance().slideChange(-1);
         }

@@ -125,32 +125,6 @@ public class DisplayTemplate extends AttributedObject {
         }
     }
 
-    public void assign(DisplayTemplate from){
-        
-        this.setName(from.getName());
-        this.setTransitionKeepBG(from.getTransitionKeepBG());
-        this.setTargetContentIdx(from.getTargetContentIdx());
-        this.setWidth(from.getWidth());
-        this.setHeight(from.getHeight());
-        this.items.clear();
-        for (TemplateItem t : from.getItems()){
-            
-            Class<?> itemClass = t.getClass();
-            try {
-                TemplateItem newItem = (TemplateItem) itemClass.newInstance();
-                Class[] formalParams = { itemClass  };
-                Object[] actualParams = { t };
-                itemClass.getMethod("assign", formalParams).invoke(newItem, actualParams);
-                this.items.add(newItem);
-                
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            
-        }
-        
-    }
-    
     public void loadFromFile(String filename) throws Exception{
         
         
