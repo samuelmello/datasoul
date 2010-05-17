@@ -190,9 +190,14 @@ public class ObjectManager {
     public void initMonitorDisplay(){
 
         if (ConfigObj.getActiveInstance().getMonitorOutput() ){
-            monitorDisplay = new SwingDisplayFrame();
-            monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
-            monitorDisplay.registerAsMonitor();
+            if (ConfigObj.getActiveInstance().isGstreamerActive()){
+                GstContentRender monitorGstRender = new GstContentRender(GstContentRender.Target.TARGET_MONITOR);
+                ContentManager.getInstance().registerMonitorRender(monitorGstRender);
+            }else{
+                monitorDisplay = new SwingDisplayFrame();
+                monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
+                monitorDisplay.registerAsMonitor();
+            }
         }
     }
 

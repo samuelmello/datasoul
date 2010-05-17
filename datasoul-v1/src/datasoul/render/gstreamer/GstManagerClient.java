@@ -154,17 +154,15 @@ public class GstManagerClient {
             resumeBgPipeline();
             
             mainDevice.setWindowFullScreen(mainFrame);
-            /*
             if (isMonitorEnabled){
                 monitorDevice.setWindowFullScreen(monitorFrame);
-            }*/
+            }
         }else{
             pauseBgPipeline();
             mainDevice.closeFullScreen(mainFrame);
-            /*
             if (isMonitorEnabled){
-                monitorDevice.closeFullScreen();
-            }*/
+                monitorDevice.closeFullScreen(monitorFrame);
+            }
         }
     }
 

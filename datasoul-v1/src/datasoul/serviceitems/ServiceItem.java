@@ -23,6 +23,7 @@
 
 package datasoul.serviceitems;
 
+import datasoul.config.BackgroundConfig;
 import datasoul.datashow.ServiceItemNumberLabel;
 import datasoul.datashow.ServiceItemRenderer;
 import datasoul.render.ContentManager;
@@ -307,7 +308,11 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     public void showItem(){
         ContentManager cm = ContentManager.getInstance();
-        cm.setMainShowBackground(true);
+        if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
+            cm.setMainShowBackground(true);
+        }else{
+            cm.setMainShowBackground(false);
+        }
         cm.setMainShowTemplate(true);
         cm.setTemplateLive(this.getTemplate());
         cm.setTitleLive(this.getTitle());
