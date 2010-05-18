@@ -52,31 +52,19 @@ public class ConfigObj extends AbstractConfig {
     private boolean onlineCheckUpdate;
     private boolean onlineUsageStats;
 
-    private int qualityMain;
-    
     public static final int CLOCKMODE_24_SEC = 0;
     public static final int CLOCKMODE_24_NOSEC = 1;
     public static final int CLOCKMODE_12_SEC = 2;
     public static final int CLOCKMODE_12_NOSEC = 3;
     public static final String[] CLOCKMODE_TABLE = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24 HOURS WITH SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("24 HOURS WITHOUT SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM WITH SECONDS"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AM/PM WITHOUT SECONDS")};
 
-    public static final int QUALITY_640 = 0;
-    public static final int QUALITY_800 = 1;
-    public static final int QUALITY_1024 = 2;
-    public static final int QUALITY_ORIGINAL = 3;
-    public static final String[] QUALITY_TABLE = { java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("FAST (640 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NORMAL (800 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("HIGH (1024 PX)"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("MAXIMUM") };
-
-    
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
-        // Default quality:
-        this.qualityMain = QUALITY_800;
         this.isGstreamerActive = true;
         this.onlineCheckUpdate = true;
         // Default output devices
         setMainOutputDevice("");
         setMonitorOutputDevice("");
-        qualityMain = QUALITY_ORIGINAL;
         detectMonitors = true;
         // Now load
         load("datasoul.config");
@@ -106,7 +94,6 @@ public class ConfigObj extends AbstractConfig {
         properties.add("MonitorOutputIdx");
         properties.add("ClockModeIdx");        
         properties.add("StorageLoc");
-        properties.add("QualityMainIdx");
         properties.add("MainOutputDevice");
         properties.add("MonitorOutputDevice");
         properties.add("OnlineCheckUpdate");
@@ -272,81 +259,16 @@ public class ConfigObj extends AbstractConfig {
         this.storageLoc = storageLoc;
     }
 
-    public void setQualityMainIdx(int i){
-        this.qualityMain = i;
-    }
-
-    public void setQualityMainIdx(String i){
-        setQualityMainIdx(Integer.parseInt(i));
-    }
-
-    public void setQualityMain(String str){
-        for (int i=0; i<QUALITY_TABLE.length; i++){
-            if (str.equalsIgnoreCase(QUALITY_TABLE[i])){
-                setQualityMainIdx(i);
-            }
-        }
-    }
-
-    public int getQualityMainIdx(){
-        return this.qualityMain;
-    }
-
-    public String getQualityMain(){
-        return QUALITY_TABLE[this.qualityMain];
-    }
-
     public int getMainRenderWidth(){
-
-        int ret = mainOutputDevice.getWidth();
-
-        switch(qualityMain){
-            case QUALITY_640:
-                if (ret > 640)
-                    ret = 640;
-                break;
-            case QUALITY_800:
-                if (ret > 800)
-                    ret = 800;
-                break;
-            case QUALITY_1024:
-                if (ret > 1024)
-                    ret = 1024;
-                break;
-            case QUALITY_ORIGINAL:
-                break;
-        }
-
-        return ret;
+        return  mainOutputDevice.getWidth();
     }
 
     public int getMainRenderHeight(){
-
         return mainOutputDevice.getProportionalHeight(getMainRenderWidth());
     }
 
     public int getMonitorRenderWidth(){
-
-        int ret = monitorOutputDevice.getWidth();
-
-        switch(qualityMain){
-            case QUALITY_640:
-                if (ret > 640)
-                    ret = 640;
-                break;
-            case QUALITY_800:
-                if (ret > 800)
-                    ret = 800;
-                break;
-            case QUALITY_1024:
-                if (ret > 1024)
-                    ret = 1024;
-                break;
-            case QUALITY_ORIGINAL:
-                break;
-        }
-
-        return ret;
+        return monitorOutputDevice.getWidth();
     }
 
     public int getMonitorRenderHeight(){
