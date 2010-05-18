@@ -18,7 +18,7 @@
  * Created on February 10, 2006, 11:22 PM
  */
 
-package datasoul.datashow;
+package datasoul.serviceitems;
 
 import datasoul.serviceitems.ServiceItem;
 import datasoul.render.ContentManager;

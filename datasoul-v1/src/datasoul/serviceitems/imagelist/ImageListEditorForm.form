@@ -72,7 +72,7 @@
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
-    <Component class="datasoul.datashow.ServiceItemTable" name="tblImages">
+    <Component class="datasoul.serviceitems.ServiceItemTable" name="tblImages">
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBar2">
       <Properties>

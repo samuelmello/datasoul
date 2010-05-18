@@ -24,8 +24,6 @@
 package datasoul.serviceitems;
 
 import datasoul.config.BackgroundConfig;
-import datasoul.datashow.ServiceItemNumberLabel;
-import datasoul.datashow.ServiceItemRenderer;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;

@@ -52,7 +52,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         txtTitle = new javax.swing.JTextField();
-        tblImages = new datasoul.datashow.ServiceItemTable();
+        tblImages = new datasoul.serviceitems.ServiceItemTable();
         jToolBar2 = new javax.swing.JToolBar();
         btnSave = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
@@ -237,7 +237,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JToolBar jToolBar2;
-    private datasoul.datashow.ServiceItemTable tblImages;
+    private datasoul.serviceitems.ServiceItemTable tblImages;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 

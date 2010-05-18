@@ -5,7 +5,7 @@
 
 package datasoul.serviceitems.imagelist;
 
-import datasoul.datashow.ServiceItemRenderer;
+import datasoul.serviceitems.ServiceItemRenderer;
 import datasoul.templates.ImageTemplateItem;
 import java.awt.Color;
 import java.awt.Component;

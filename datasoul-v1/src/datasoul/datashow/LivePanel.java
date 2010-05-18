@@ -105,7 +105,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
+        serviceItemTable1 = new datasoul.serviceitems.ServiceItemTable();
         jPanel1 = new javax.swing.JPanel();
         cbAutoChange = new javax.swing.JCheckBox();
         spnTimer = new javax.swing.JSpinner();
@@ -266,7 +266,7 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
     private javax.swing.JCheckBox cbAutoChange;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private datasoul.datashow.ServiceItemTable serviceItemTable1;
+    private datasoul.serviceitems.ServiceItemTable serviceItemTable1;
     private javax.swing.JSpinner spnTimer;
     // End of variables declaration//GEN-END:variables
     

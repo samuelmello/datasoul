@@ -7,7 +7,7 @@ package datasoul.serviceitems.imagelist;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.serviceitems.ServiceItem;
-import datasoul.datashow.ServiceItemRenderer;
+import datasoul.serviceitems.ServiceItemRenderer;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipReader;

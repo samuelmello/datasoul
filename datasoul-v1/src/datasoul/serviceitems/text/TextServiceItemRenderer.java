@@ -23,7 +23,7 @@
 
 package datasoul.serviceitems.text;
 
-import datasoul.datashow.ServiceItemRenderer;
+import datasoul.serviceitems.ServiceItemRenderer;
 import java.awt.Component;
 import java.awt.Color;
 import javax.swing.JTable;

@@ -21,7 +21,7 @@
  * and open the template in the editor.
  */
 
-package datasoul.datashow;
+package datasoul.servicelist;
 
 import datasoul.servicelist.ServiceListTable;
 import datasoul.serviceitems.ServiceItem;

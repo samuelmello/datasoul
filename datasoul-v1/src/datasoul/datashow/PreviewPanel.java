@@ -84,7 +84,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
         pnlPreviewBox = new javax.swing.JPanel();
         cbAutoLive = new javax.swing.JCheckBox();
         pnlContent = new javax.swing.JPanel();
-        serviceItemTable1 = new datasoul.datashow.ServiceItemTable();
+        serviceItemTable1 = new datasoul.serviceitems.ServiceItemTable();
         btnGoLive = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         previewDisplayPanel1 = new datasoul.render.SwingDisplayPanel();
@@ -232,7 +232,7 @@ public class PreviewPanel extends javax.swing.JPanel implements ListSelectionLis
     private javax.swing.JPanel pnlContent;
     private javax.swing.JPanel pnlPreviewBox;
     private datasoul.render.SwingDisplayPanel previewDisplayPanel1;
-    private datasoul.datashow.ServiceItemTable serviceItemTable1;
+    private datasoul.serviceitems.ServiceItemTable serviceItemTable1;
     // End of variables declaration//GEN-END:variables
     
 }

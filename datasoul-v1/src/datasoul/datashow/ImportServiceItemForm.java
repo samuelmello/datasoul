@@ -20,6 +20,7 @@
 
 package datasoul.datashow;
 
+import datasoul.servicelist.ServiceListColorRender;
 import datasoul.servicelist.ServiceListTable;
 import datasoul.DatasoulMainForm;
 

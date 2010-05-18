@@ -99,7 +99,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="datasoul.datashow.ServiceItemTable" name="serviceItemTable1">
+        <Component class="datasoul.serviceitems.ServiceItemTable" name="serviceItemTable1">
         </Component>
         <Component class="javax.swing.JButton" name="btnGoLive">
           <Properties>
