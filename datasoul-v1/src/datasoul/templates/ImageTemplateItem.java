@@ -150,12 +150,8 @@ public class ImageTemplateItem extends TemplateItem {
         }
     }
     
-    public void setImage(Image img){
-        if (img instanceof BufferedImage){
-            this.img = (BufferedImage) img;
-        }else{
-            throw new UnsupportedOperationException("Received Image is not a BufferedImage");
-        }
+    public void setImage(BufferedImage img){
+        this.img = img;
     }
     
     public BufferedImage getImage(){
