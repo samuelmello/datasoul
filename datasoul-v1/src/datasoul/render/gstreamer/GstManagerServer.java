@@ -8,7 +8,6 @@ package datasoul.render.gstreamer;
 import datasoul.config.ConfigObj;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.notifications.GstNotification;
-import datasoul.render.gstreamer.notifications.GstNotificationCmdDone;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -45,7 +44,6 @@ public class GstManagerServer {
     protected ObjectOutputStream output;
     protected ObjectInputStream input;
     protected Semaphore connectSemaphore;
-    protected Semaphore cmdSemaphore;
     protected StdoutDumpThread stdoutDumpThread;
     protected WorkerThread workerThread;
 
@@ -65,7 +63,6 @@ public class GstManagerServer {
             stdoutDumpThread.start();
             
             connectSemaphore = new Semaphore(0);
-            cmdSemaphore = new Semaphore(0);
             
             workerThread = new WorkerThread();
             workerThread.start();
@@ -114,8 +111,6 @@ public class GstManagerServer {
             output.writeObject(obj);
             output.reset();
 
-            cmdSemaphore.acquire();
-
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -139,11 +134,7 @@ public class GstManagerServer {
                 while (true){
                     Object o = input.readObject();
                     if (o instanceof GstNotification){
-                        if (o instanceof GstNotificationCmdDone){
-                            cmdSemaphore.release();
-                        }else{
-                            ((GstNotification)o).run();
-                        }
+                        ((GstNotification)o).run();
                     }
                 }
             } catch (Exception ex) {
