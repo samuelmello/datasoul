@@ -59,20 +59,21 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
             text = value.toString();
         }
         
+        setText(text);
+
+        if (column == ServiceListTable.COLUMN_TITLE){
+            setIcon(serviceItem.getIcon());
+        }else{
+            setIcon(null);
+        }
         
         if(isSelected){
             setBackground(table.getSelectionBackground());
-            setText(text);
-            return this;
-        }
-
-        Color c = serviceItem.getBackgroundColor();
-
-        if (c != null) {
-            setBackground(c);
-            setText(text);
-        } else {
-            super.setValue(value);
+        }else{
+            Color c = serviceItem.getBackgroundColor();
+            if (c != null) {
+                setBackground(c);
+            }
         }
 
         return this;

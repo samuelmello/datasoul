@@ -20,10 +20,11 @@
 package datasoul.serviceitems;
 
 import datasoul.config.DisplayControlConfig;
-import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import datasoul.util.ZipWriter;
 import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import org.w3c.dom.Node;
 
@@ -69,5 +70,10 @@ public class ContentlessServiceItem extends ServiceItem {
         ObjectManager.getInstance().getDatasoulMainForm().repaint();        
     }
 
+    private static final Icon icon = new ImageIcon(ContentlessServiceItem.class .getResource("/datasoul/icons/v2/stock_insert-note.png"));
+    @Override
+    public Icon getIcon(){
+        return icon;
+    }
 }
 

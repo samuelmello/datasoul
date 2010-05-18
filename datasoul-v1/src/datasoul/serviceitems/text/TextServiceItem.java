@@ -31,6 +31,8 @@ import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
 import javax.swing.AbstractCellEditor;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
@@ -144,6 +146,12 @@ public class TextServiceItem extends ServiceItem {
         tsief.setLocationRelativeTo(ObjectManager.getInstance().getDatasoulMainForm());
         tsief.setVisible(true);
     }
+
     
+    private static final Icon icon = new ImageIcon(TextServiceItem.class .getResource("/datasoul/icons/v2/font-x-generic.png"));
+    @Override
+    public Icon getIcon(){
+        return icon;
+    }
 }
 

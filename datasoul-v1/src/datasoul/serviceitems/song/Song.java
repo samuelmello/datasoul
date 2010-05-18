@@ -34,6 +34,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -289,5 +290,9 @@ public class Song extends TextServiceItem implements Cloneable {
         cm.setCopyrightLive(this.getCopyright());
     }
 
-
+    private static final Icon icon = new ImageIcon(Song.class .getResource("/datasoul/icons/v2/stock_effects-sound_small2.png"));
+    @Override
+    public Icon getIcon(){
+        return icon;
+    }
 }

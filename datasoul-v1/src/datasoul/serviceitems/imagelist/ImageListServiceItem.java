@@ -18,6 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -147,6 +149,10 @@ public class ImageListServiceItem extends ServiceItem {
         ilsi.setVisible(true);
     }
 
-
+    private static final Icon icon = new ImageIcon(ImageListServiceItem.class .getResource("/datasoul/icons/v2/image-x-generic.png"));
+    @Override
+    public Icon getIcon(){
+        return icon;
+    }
 }
 
