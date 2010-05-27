@@ -214,7 +214,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         ppmAddItem = new javax.swing.JPopupMenu();
-        actAddSong = new javax.swing.JMenuItem();
         actAddText = new javax.swing.JMenuItem();
         actAddBible = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
@@ -298,17 +297,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         actHelpAbout = new javax.swing.JMenuItem();
         actHelpKeyboard = new javax.swing.JMenuItem();
 
-        actAddSong.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_playlist.png"))); // NOI18N
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
-        actAddSong.setText(bundle.getString("ADD SONG")); // NOI18N
-        actAddSong.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actAddSongActionPerformed(evt);
-            }
-        });
-        ppmAddItem.add(actAddSong);
-
         actAddText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         actAddText.setText(bundle.getString("ADD TEXT")); // NOI18N
         actAddText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -742,16 +732,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
+                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                             .addGroup(pnlServiceListLayout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
@@ -1214,13 +1204,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ServiceListTable.getActiveInstance().setNotes(txtNotes.getText());
 }//GEN-LAST:event_txtNotesFocusLost
 
-    private void actAddSongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddSongActionPerformed
-        showDisplayControls();
-        tabbedRightSide.setSelectedComponent(splSongLibrary);
-        songsSearchPanel1.requestFocusForSearch();
-
-}//GEN-LAST:event_actAddSongActionPerformed
-
     private void actAddTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddTextActionPerformed
         TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
         tsief.setLocationRelativeTo(this);
@@ -1479,7 +1462,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actAddBible;
     javax.swing.JMenuItem actAddContentlessItem;
     javax.swing.JMenuItem actAddImageList;
-    javax.swing.JMenuItem actAddSong;
     javax.swing.JMenuItem actAddText;
     javax.swing.JMenuItem actAddVideo;
     javax.swing.JMenuItem actEditBackground;
