@@ -23,7 +23,6 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     protected Element src;
     protected DecodeBin decodeBin;
     protected Element decodeQueue;
-    protected Element colorSpace;
 
     public GstManagerVideoGenericPipeline(String filename){
         super();
@@ -37,11 +36,10 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
 
         src = ElementFactory.make("filesrc", "Input File");
         src.set("location", this.filename);
-        colorSpace = ElementFactory.make("ffmpegcolorspace", "Color Space");
         decodeBin = new DecodeBin("Decode Bin");
         decodeQueue = ElementFactory.make("queue", "Decode Queue");
-        pipe.addMany(src, colorSpace, decodeQueue, decodeBin);
-        Element.linkMany(src, colorSpace, decodeQueue,  decodeBin);
+        pipe.addMany(src, decodeQueue, decodeBin);
+        Element.linkMany(src, decodeQueue,  decodeBin);
 
         decodeBin.connect(new DecodeBin.NEW_DECODED_PAD() {
             @Override
@@ -66,8 +64,8 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     public void stop(){
         super.stop();
         if (pipe != null){
-            pipe.removeMany(src, colorSpace, decodeQueue, decodeBin);
-            Element.unlinkMany(src, colorSpace, decodeQueue,  decodeBin);
+            pipe.removeMany(src, decodeQueue, decodeBin);
+            Element.unlinkMany(src, decodeQueue,  decodeBin);
         }
     }
 
@@ -77,7 +75,6 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
         if (src != null) src.dispose();
         if (decodeBin != null) decodeBin.dispose();
         if (decodeQueue != null) decodeQueue.dispose();
-        if (colorSpace != null) colorSpace.dispose();
     }
 
 }
