@@ -64,8 +64,8 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     public void stop(){
         super.stop();
         if (pipe != null){
-            pipe.removeMany(src, decodeQueue, decodeBin);
             Element.unlinkMany(src, decodeQueue,  decodeBin);
+            pipe.removeMany(src, decodeQueue, decodeBin);
         }
     }
 
