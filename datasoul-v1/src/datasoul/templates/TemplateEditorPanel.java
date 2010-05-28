@@ -54,10 +54,6 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     /** Creates new form TemplateEditorPanel */
     public TemplateEditorPanel() {
         initComponents();
-        setMaximumSize(new java.awt.Dimension(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT));
-        setMinimumSize(new java.awt.Dimension(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT));
-        setPreferredSize(new java.awt.Dimension(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT));
-        
     }
     
     public void addItem(TemplateItem t){
@@ -256,6 +252,9 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         }else{
             activeItemLabel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW TEMPLATE"));
         }
+
+        // Update size
+        tableChanged(null);
 
     }
     

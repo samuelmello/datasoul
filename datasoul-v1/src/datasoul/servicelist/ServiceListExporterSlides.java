@@ -11,6 +11,7 @@ import com.lowagie.text.Image;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfWriter;
 import datasoul.DatasoulMainForm;
+import datasoul.render.ContentDisplayRenderer;
 import datasoul.render.ContentRender;
 import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
@@ -53,7 +54,9 @@ public class ServiceListExporterSlides {
         document.addCreator("Datasoul "+DatasoulMainForm.getVersion());
         document.addCreationDate();
 
-        render = new ExporterContentRender();
+
+
+        render = new ExporterContentRender(width, height, new DummyContentDisplay());
 
     }
     
@@ -96,11 +99,20 @@ public class ServiceListExporterSlides {
         return slideCount;
     }
 
+    public class DummyContentDisplay extends ContentDisplayRenderer {
+
+        @Override
+        public void repaint() {
+            // Ignore
+        }
+        
+    }
 
     public class ExporterContentRender extends ContentRender {
 
-        public ExporterContentRender(){
-            super(DisplayTemplate.TEMPLATE_WIDTH, DisplayTemplate.TEMPLATE_HEIGHT, null);
+        public ExporterContentRender(int width, int height, DummyContentDisplay dummy ){
+            super(width, height, dummy);
+            dummy.initDisplay(width, height);
         }
 
         @Override

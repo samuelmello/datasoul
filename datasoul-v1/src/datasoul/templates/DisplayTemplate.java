@@ -58,9 +58,6 @@ import org.w3c.dom.NodeList;
  */
 public class DisplayTemplate extends AttributedObject {
     
-    public final static int TEMPLATE_WIDTH = 800;
-    public final static int TEMPLATE_HEIGHT = 600;
-    
     ArrayList<TemplateItem> items;
     
     static int defaultItemNameCount = 1;
@@ -91,8 +88,8 @@ public class DisplayTemplate extends AttributedObject {
         items = new ArrayList<TemplateItem>();
         
         this.setTransitionKeepBGIdx(KEEP_BG_YES);
-        this.setWidth(TEMPLATE_WIDTH);
-        this.setHeight(TEMPLATE_HEIGHT);
+        this.setWidth(800);
+        this.setHeight(600);
         
         if (cbKeepBG == null){
             cbKeepBG = new JComboBox();
