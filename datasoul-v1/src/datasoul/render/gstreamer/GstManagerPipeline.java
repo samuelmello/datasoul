@@ -27,7 +27,9 @@ public class GstManagerPipeline {
     }
 
     public void eos(){
-        pipe.setState(State.NULL);
+        if (pipe != null){
+            pipe.setState(State.NULL);
+        }
     }
 
     public void error(int code, String msg){
