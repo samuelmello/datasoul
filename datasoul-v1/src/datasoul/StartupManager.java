@@ -251,6 +251,7 @@ public class StartupManager {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                ObjectManager.getInstance().getDatasoulMainForm().setOutputEnabled(true);
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
             }
         });
