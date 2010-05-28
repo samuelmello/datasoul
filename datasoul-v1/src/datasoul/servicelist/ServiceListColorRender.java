@@ -23,10 +23,7 @@
 
 package datasoul.servicelist;
 
-import datasoul.servicelist.ServiceListTable;
 import datasoul.serviceitems.ServiceItem;
-import datasoul.serviceitems.ContentlessServiceItem;
-import datasoul.serviceitems.song.Song;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JTable;
@@ -69,7 +66,9 @@ public class ServiceListColorRender extends DefaultTableCellRenderer{
         
         if(isSelected){
             setBackground(table.getSelectionBackground());
+            setForeground(table.getSelectionForeground());
         }else{
+            setForeground(table.getForeground());
             Color c = serviceItem.getBackgroundColor();
             if (c != null) {
                 setBackground(c);
