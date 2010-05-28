@@ -1378,7 +1378,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actEditTemplatesActionPerformed
 
     private void actEditConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actEditConfigActionPerformed
-        btnEditActionPerformed(evt);
+        btnConfigActionPerformed(evt);
     }//GEN-LAST:event_actEditConfigActionPerformed
 
     private void actFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExitActionPerformed
