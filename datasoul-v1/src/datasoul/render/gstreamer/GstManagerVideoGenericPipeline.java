@@ -5,12 +5,16 @@
 
 package datasoul.render.gstreamer;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import org.gstreamer.Caps;
 import org.gstreamer.Element;
 import org.gstreamer.ElementFactory;
 import org.gstreamer.Pad;
 import org.gstreamer.Structure;
 import org.gstreamer.elements.DecodeBin;
+import org.gstreamer.io.InputStreamSrc;
 
 /**
  *
@@ -23,6 +27,7 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     protected Element src;
     protected DecodeBin decodeBin;
     protected Element decodeQueue;
+    protected FileInputStream fis;
 
     public GstManagerVideoGenericPipeline(String filename){
         super();
@@ -33,9 +38,12 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     public void prepareForStart(){
 
         super.prepareForStart();
-
-        src = ElementFactory.make("filesrc", "Input File");
-        src.set("location", this.filename);
+        try {
+            fis = new FileInputStream(this.filename);
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace(System.out);
+        }
+        src = new InputStreamSrc(fis, "Input File");
         decodeBin = new DecodeBin("Decode Bin");
         decodeQueue = ElementFactory.make("queue", "Decode Queue");
         pipe.addMany(src, decodeQueue, decodeBin);
@@ -75,6 +83,11 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
         if (src != null) src.dispose();
         if (decodeBin != null) decodeBin.dispose();
         if (decodeQueue != null) decodeQueue.dispose();
+        if (fis != null) try {
+            fis.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 }
