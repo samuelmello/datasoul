@@ -5,6 +5,7 @@
 
 package datasoul.render.gstreamer.notifications;
 
+import datasoul.config.BackgroundConfig;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import javax.swing.JOptionPane;
@@ -22,7 +23,9 @@ public class GstNotificationVideoItemError extends GstNotification {
 
     @Override
     public void run(){
-        ContentManager.getInstance().setMainShowBackground(true);
+        if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
+            ContentManager.getInstance().setMainShowBackground(true);
+        }
         ContentManager.getInstance().slideChange(-1);
         ObjectManager.getInstance().getLivePanel().notifyVideoEnd();
         JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),

@@ -97,8 +97,9 @@ public class GstManagerClient {
                 }
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(System.out);
         }
+        System.out.println("Exiting");
     }
 
     private void init ( String mainDevice, String monitorDevice, boolean monitorEnabled ) {
@@ -174,7 +175,7 @@ public class GstManagerClient {
         }
     }
 
-    public void setBgPipeline(GstManagerPipeline pipe){
+    public synchronized void setBgPipeline(GstManagerPipeline pipe){
         if (this.bgpipeline != null){
             this.bgpipeline.stop();
             this.bgpipeline.dispose();
