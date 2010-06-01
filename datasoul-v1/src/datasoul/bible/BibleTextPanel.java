@@ -175,7 +175,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
         cbHowToSplit.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel6.setText(bundle.getString("ADD REFERENCE")); // NOI18N
+        jLabel6.setText(bundle.getString("ADD REFERENCE:")); // NOI18N
 
         cbRefType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -250,13 +250,13 @@ public class BibleTextPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnManageBible))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbHowToSplit, 0, 156, Short.MAX_VALUE)
+                        .addComponent(cbHowToSplit, 0, 173, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbRefType, 0, 166, Short.MAX_VALUE))
+                        .addComponent(cbRefType, 0, 182, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbBook, 0, 135, Short.MAX_VALUE)
+                        .addComponent(cbBook, 0, 211, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(5, 5, 5)

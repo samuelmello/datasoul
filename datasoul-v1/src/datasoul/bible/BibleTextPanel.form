@@ -30,14 +30,14 @@
                       <Component id="btnManageBible" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="cbHowToSplit" pref="156" max="32767" attributes="2"/>
+                      <Component id="cbHowToSplit" pref="173" max="32767" attributes="2"/>
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cbRefType" pref="166" max="32767" attributes="0"/>
+                      <Component id="cbRefType" pref="182" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="cbBook" pref="135" max="32767" attributes="2"/>
+                      <Component id="cbBook" pref="211" max="32767" attributes="2"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cbChapter" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
@@ -162,7 +162,7 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-          <ResourceString bundle="datasoul/internationalize.properties" key="ADD REFERENCE" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+          <ResourceString bundle="datasoul/internationalize.properties" key="ADD REFERENCE:" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
         </Property>
       </Properties>
     </Component>
