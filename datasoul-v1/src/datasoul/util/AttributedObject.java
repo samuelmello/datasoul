@@ -204,6 +204,9 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
             if ( colorEditors.contains( prop ) && propEditors.containsKey( prop ) ){
                 Component c = propEditors.get( properties.get(row) );
+                if (c instanceof JColorTextField){
+                    ((JColorTextField)c).setText("0x"+value.toString());
+                }
                 return c;
             }else{
                 return super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
@@ -296,19 +299,16 @@ public abstract class AttributedObject extends SerializableObject implements Tab
             
             this.addFocusListener(new java.awt.event.FocusAdapter() {
                 
+                @Override
                 public void focusGained(java.awt.event.FocusEvent evt) {
                     if (!edited){
                         
                         edited = true;
                         
-                        JColorChooser cc = new JColorChooser();
-                        Color color =  cc.showDialog(JColorTextField.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHOOSE COLOR"), Color.BLACK);
+                        Color color =  JColorChooser.showDialog(JColorTextField.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CHOOSE COLOR"), Color.decode(getText()));
 
                         if (color != null){
-                            String hexcolor = (color.getRed()>0x09) ? Integer.toHexString(color.getRed()) : Integer.toHexString(color.getRed())+"0";
-                            hexcolor = hexcolor + ((color.getGreen()>0x09) ? Integer.toHexString(color.getGreen()) : Integer.toHexString(color.getGreen())+"0");
-                            hexcolor = hexcolor + ((color.getBlue()>0x09)?Integer.toHexString(color.getBlue()) : Integer.toHexString(color.getBlue())+"0");
-
+                            String hexcolor = String.format("%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue());
                             JColorTextField.this.setText( hexcolor );
                             tableCellEditor.setValue( hexcolor );
                         }
