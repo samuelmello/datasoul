@@ -37,7 +37,9 @@ import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -371,18 +373,11 @@ public class DisplayTemplate extends AttributedObject {
 
     public void saveAs(JComponent owner) throws Exception {
 
-        JFileChooser fc = new JFileChooser();
-        fc.setFileFilter(new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL TEMPLATES (*.TEMPLATEZ)"), "templatez"));
-        File dir = new File(ConfigObj.getActiveInstance().getStoragePathTemplates());
-        fc.setCurrentDirectory(dir);
-        fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
-        if (fc.showSaveDialog(owner) == JFileChooser.APPROVE_OPTION) {
-            String fileName = fc.getSelectedFile().getName();
-            fileName = fileName.replace(".templatez", "");
-            this.setName(fileName);
+        String newname = JOptionPane.showInputDialog("Enter new template name:", getName());
+        if (newname != null && !newname.trim().equals("")){
+            this.setName(newname.trim());
             this.save(owner);
         }
-        
 
     }
 
