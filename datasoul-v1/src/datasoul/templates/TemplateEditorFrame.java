@@ -30,6 +30,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
 
     private boolean updateSize;
 
+    private File lastImageDirectory;
 
     /** Creates new form TemplateEditorFrame */
     public TemplateEditorFrame() {
@@ -473,7 +474,11 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 fc.setControlButtonsAreShown(true);
                 fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT IMAGE"));
+                if (lastImageDirectory != null){
+                    fc.setCurrentDirectory(lastImageDirectory);
+                }
                 if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
+                    lastImageDirectory = fc.getSelectedFile().getParentFile();
                     String filename = fc.getSelectedFile().getAbsolutePath();
                     ImageTemplateItem img = new ImageTemplateItem( filename );
                     img.assertImageSize(templateEditorPanel1.getTemplate().getWidth(), templateEditorPanel1.getTemplate().getHeight());
