@@ -357,6 +357,10 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             }else{
                 activeItemLabel.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NEW TEMPLATE"));
             }
+
+            // update size
+            tableChanged(null);
+
             this.repaint();
         }catch(Exception e) {
             ShowDialog.showReadFileError(template.getName(), e);
