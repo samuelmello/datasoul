@@ -41,6 +41,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
 
             templateEditorPanel1.setEditorFrame(this);
 
+            WindowPropConfig.getInstance().getTemplateEditor(this);
             WindowPropConfig.getInstance().getTemplateSplit1(jSplitPane1);
             updateSize = true;
 
@@ -118,6 +119,11 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+        });
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
             }
         });
 
@@ -297,11 +303,11 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         templateEditorPanel1.setLayout(templateEditorPanel1Layout);
         templateEditorPanel1Layout.setHorizontalGroup(
             templateEditorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 796, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
         templateEditorPanel1Layout.setVerticalGroup(
             templateEditorPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 596, Short.MAX_VALUE)
+            .addGap(0, 476, Short.MAX_VALUE)
         );
 
         jLabel5.setFont(jLabel5.getFont().deriveFont((jLabel5.getFont().getStyle() | java.awt.Font.ITALIC), jLabel5.getFont().getSize()-2));
@@ -415,6 +421,11 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
     private void btnTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTemplateActionPerformed
         templateEditorPanel1.unselectItem();
     }//GEN-LAST:event_btnTemplateActionPerformed
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        if (updateSize)
+            WindowPropConfig.getInstance().setTemplateEditor(this);
+    }//GEN-LAST:event_formComponentResized
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImage;

@@ -39,6 +39,8 @@ public class WindowPropConfig extends AbstractConfig {
     private String wTextEditor;
     private String hSongEditor;
     private String wSongEditor;
+    private String hTemplateEditor;
+    private String wTemplateEditor;
     private String templateSplit1;
     private String splMain;
     private String splService;
@@ -54,6 +56,8 @@ public class WindowPropConfig extends AbstractConfig {
         properties.add("WTextEditor");
         properties.add("HSongEditor");
         properties.add("WSongEditor");
+        properties.add("HTemplateEditor");
+        properties.add("WTemplateEditor");
         properties.add("TemplateSplit1");
         properties.add("SplMain");
         properties.add("SplService");
@@ -158,6 +162,39 @@ public class WindowPropConfig extends AbstractConfig {
         if (checkStr(wSongEditor) && checkStr(hSongEditor)){
             try{
                 m.setSize(Integer.parseInt(wSongEditor), Integer.parseInt(hSongEditor));
+            }catch(Exception e){
+                //ignore
+            }
+        }
+    }
+
+    public String getWTemplateEditor() {
+        return wTemplateEditor;
+    }
+
+    public void setWTemplateEditor(String wTemplateEditor) {
+        this.wTemplateEditor = wTemplateEditor;
+    }
+
+    public String getHTemplateEditor() {
+        return hTemplateEditor;
+    }
+
+    public void setHTemplateEditor(String hTemplateEditor) {
+        this.hTemplateEditor = hTemplateEditor;
+    }
+
+
+    public void setTemplateEditor(JFrame m){
+        setWTemplateEditor(Integer.toString(m.getWidth()));
+        setHTemplateEditor(Integer.toString(m.getHeight()));
+        save();
+    }
+
+    public void getTemplateEditor(JFrame m){
+        if (checkStr(wTemplateEditor) && checkStr(hTemplateEditor)){
+            try{
+                m.setSize(Integer.parseInt(wTemplateEditor), Integer.parseInt(hTemplateEditor));
             }catch(Exception e){
                 //ignore
             }
