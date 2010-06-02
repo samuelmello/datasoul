@@ -32,6 +32,7 @@ import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.VideoServiceItem;
 import datasoul.serviceitems.song.Song;
 import datasoul.util.ListTable;
+import datasoul.util.ObjectManager;
 import datasoul.util.SerializableItf;
 import datasoul.util.ShowDialog;
 import datasoul.util.ZipReader;
@@ -349,7 +350,9 @@ public class ServiceListTable extends ListTable {
                         si.setNotes(aValue.toString());
                         break;
                     case COLUMN_TEMPLATE:
-                    si.setTemplate(aValue.toString());
+                        si.setTemplate(aValue.toString());
+                        ObjectManager.getInstance().getDatasoulMainForm().previewItem();
+                        break;
                 }
             }
 

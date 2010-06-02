@@ -167,7 +167,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         dialog.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
-    private void previewItem(){
+    public void previewItem(){
 
         try{
             ObjectManager.getInstance().setBusyCursor();
