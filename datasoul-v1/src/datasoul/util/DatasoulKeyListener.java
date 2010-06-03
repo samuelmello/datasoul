@@ -71,24 +71,22 @@ public class DatasoulKeyListener implements KeyListener, AWTEventListener{
     public void keyPressed(KeyEvent e) {
 
         switch(e.getKeyCode()){
-            case KeyEvent.VK_F3:
-                ObjectManager.getInstance().getPreviewPanel().goLive(false);
-                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
-                ObjectManager.getInstance().getLivePanel().setFocusInTable();
-                break;
             case KeyEvent.VK_F4:
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                 ObjectManager.getInstance().getLivePanel().setFocusInTable();
                 break;
             case KeyEvent.VK_F5:
-                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_DISPLAY);
+                ObjectManager.getInstance().getDatasoulMainForm().showOutputs();
                 break;
             case KeyEvent.VK_F6:
                 ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
-                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_DISPLAY);
                 break;
             case KeyEvent.VK_F7:
+                ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
+                ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_ALARM);
+                break;
+            case KeyEvent.VK_F8:
                 if (ConfigObj.getActiveInstance().getMonitorOutput()){
                     ObjectManager.getInstance().getDatasoulMainForm().showDisplayControls();
                     ObjectManager.getInstance().getAuxiliarPanel().setVisibleTab(AuxiliarPanel.TAB_CLOCK);

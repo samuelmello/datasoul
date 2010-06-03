@@ -1416,6 +1416,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
     }
 
+    public void showOutputs(){
+        if (!btnShow.isSelected()){
+            ObjectManager.getInstance().setOutputVisible( true );
+            btnShow.setSelected(true);
+        }
+
+    }
+
     public static String getVersion(){
         try {
             Properties prop = new Properties();
