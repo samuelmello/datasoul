@@ -13,6 +13,7 @@ import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
+import datasoul.templates.TemplateManager;
 import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
@@ -91,9 +92,21 @@ public class StartupManager {
 
                 updateSplash(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UPDATING TEMPLATES..."));
 
+                // Ensure current templates are read.
+                // If we let this be called when the first template is being conveted,
+                // the new template may be read by the manager constructor (refreshAvailableTemplates)
+                // what may raise an exception
+                TemplateManager.getInstance();
+
                 for (File f : files){
                     if(f.getName().endsWith(".template")){
-                        DisplayTemplate.importTemplate(f.getAbsolutePath());
+                        // Check if already converted
+                        File newf = new File(f.getAbsolutePath()+"z");
+                        if (!newf.exists()){
+                            DisplayTemplate.importTemplate(f.getAbsolutePath());
+                        }else{
+                            System.out.println("exists."+newf.getAbsolutePath());
+                        }
                     }
                 }
             }
