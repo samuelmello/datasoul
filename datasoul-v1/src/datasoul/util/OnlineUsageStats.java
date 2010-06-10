@@ -8,6 +8,7 @@ package datasoul.util;
 import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
+import datasoul.render.OutputDevice;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.TemplateManager;
 import java.io.UnsupportedEncodingException;
@@ -24,7 +25,8 @@ import org.apache.commons.httpclient.methods.GetMethod;
  */
 public class OnlineUsageStats extends Thread {
 
-    private static final long UPD_INTERVAL = 24 * 60 * 60 * 1000; // 24 hours
+    private static final long UPD_INTERVAL = 3 * 24 * 60 * 60 * 1000; // 3 days
+    //private static final long UPD_INTERVAL = 0; // uncomment for debug
 
     @Override
     public void run(){
@@ -48,7 +50,7 @@ public class OnlineUsageStats extends Thread {
 
         StringBuffer sb = new StringBuffer();
 
-        sb.append("http://datasoul.sourceforge.net/usage.php?");
+        sb.append(OnlineUpdateCheck.ONLINE_BASE_URL+"datasoulweb?");
 
         sb.append("sysid=");
         sb.append(UsageStatsConfig.getInstance().getID());
@@ -92,6 +94,22 @@ public class OnlineUsageStats extends Thread {
 
         sb.append("songchords=");
         sb.append(AllSongsListTable.getInstance().getSongsWithChords());
+        sb.append("&");
+
+        sb.append("numdisplays=");
+        sb.append(OutputDevice.getNumDisplays());
+        sb.append("&");
+        
+        sb.append("geometry1=");
+        sb.append(ConfigObj.getActiveInstance().getMainOutputDeviceObj().getDiplayGeometry());
+        sb.append("&");
+
+        sb.append("geometry2=");
+        if (ConfigObj.getActiveInstance().getMonitorOutputDeviceObj() != null){
+            sb.append(ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getDiplayGeometry());
+        }else{
+            sb.append("disabled");
+        }
 
         HttpClient client = new HttpClient();
         

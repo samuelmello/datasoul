@@ -15,6 +15,7 @@ public class OutputDevice {
 
     private GraphicsDevice device;
     private GraphicsConfiguration gconfig;
+    private int usage;
 
     public static final int USAGE_MAIN = 0;
     public static final int USAGE_MONITOR = 1;
@@ -25,7 +26,9 @@ public class OutputDevice {
      * @param hintID
      */
     public OutputDevice(String hintID, int usage){
-        
+
+        this.usage = usage;
+
         GraphicsEnvironment local = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
         for (GraphicsDevice gd : local.getScreenDevices()){
@@ -79,6 +82,19 @@ public class OutputDevice {
      */
     public static boolean isMonitorAllowed(){
         return (GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length > 1);
+    }
+
+    /* Methods used by usage stats */
+    public static int getNumDisplays(){
+        return GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length;
+    }
+
+    public String getDiplayGeometry(){
+        if (usage == USAGE_MONITOR && ! isMonitorAllowed()){
+            return "disabled";
+        }else{
+            return ((int) gconfig.getBounds().getWidth()) + "x"+ ((int) gconfig.getBounds().getHeight());
+        }
     }
 
     public void setWindowFullScreen(JFrame frame){

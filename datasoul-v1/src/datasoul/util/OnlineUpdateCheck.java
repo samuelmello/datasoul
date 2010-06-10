@@ -18,11 +18,13 @@ public class OnlineUpdateCheck extends Thread {
 
     public static final int VERSION = 0;
 
+    public static final String ONLINE_BASE_URL = "http://datasoul-presentation.appspot.com/";
+
     @Override
     public void run(){
         
         HttpClient client = new HttpClient();
-        HttpMethod method = new GetMethod("http://datasoul.sourceforge.net/onlineupdatecheck.txt");
+        HttpMethod method = new GetMethod(ONLINE_BASE_URL+"latest-version");
         try {
             // Execute the method.
             int statusCode = client.executeMethod(method);
@@ -53,7 +55,6 @@ public class OnlineUpdateCheck extends Thread {
                         java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("IS AVAILABLE AT")+
                         " "+toks[2];
 
-                System.out.println(msg);
                 ObjectManager.getInstance().getDatasoulMainForm().setInfoText(msg);
             }
 
