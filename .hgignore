@@ -1,0 +1,6 @@
+.*.swp
+.*~
+datasoul-src/dist
+datasoul-src/build
+datasoul-src/nbproject/private
+
