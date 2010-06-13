@@ -10,6 +10,7 @@
  */
 package datasoul.bible;
 
+import datasoul.config.WindowPropConfig;
 import datasoul.serviceitems.text.TextServiceItem;
 import org.crosswire.jsword.versification.BibleInfo;
 import javax.swing.JTextArea;
@@ -95,9 +96,15 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
         List installed = Books.installed().getBooks(BookFilters.getOnlyBibles());
 
+        String prevSelectedBible = WindowPropConfig.getInstance().getSelectedBible();
+
         for (Object o : installed) {
             if (o instanceof Book) {
-                cbBibles.addItem(((Book) o).getName());
+                String name = ((Book) o).getName();
+                cbBibles.addItem(name);
+                if (prevSelectedBible != null && prevSelectedBible.equals(name)){
+                    cbBibles.setSelectedItem(name);
+                }
             }
         }
 
@@ -111,6 +118,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
         cbVersesFrom.setEnabled(hasAny);
         cbVersesTo.setEnabled(hasAny);
         btnLoad.setEnabled(hasAny);
+
 
     }
 
@@ -160,6 +168,11 @@ public class BibleTextPanel extends javax.swing.JPanel {
         jLabel3.setText(bundle.getString("BIBLE:")); // NOI18N
 
         cbBibles.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbBibles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbBiblesActionPerformed(evt);
+            }
+        });
 
         btnManageBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_data-sources-new.png"))); // NOI18N
         btnManageBible.setText(bundle.getString("MANAGE INSTALLED BIBLES")); // NOI18N
@@ -462,6 +475,13 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
     private void cbVersesFromFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbVersesFromFocusGained
     }//GEN-LAST:event_cbVersesFromFocusGained
+
+    private void cbBiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBiblesActionPerformed
+        if (cbBibles.getSelectedItem() != null){
+            WindowPropConfig.getInstance().setSelectedBible(cbBibles.getSelectedItem().toString());
+        }
+    }//GEN-LAST:event_cbBiblesActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoad;
     private javax.swing.JButton btnManageBible;

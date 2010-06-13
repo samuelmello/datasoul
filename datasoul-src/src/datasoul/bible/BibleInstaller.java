@@ -11,6 +11,7 @@
 package datasoul.bible;
 
 import datasoul.DatasoulMainForm;
+import datasoul.config.WindowPropConfig;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Map;
@@ -338,10 +339,13 @@ public class BibleInstaller extends javax.swing.JFrame {
                 pd.isBibleDownload(true);
                 pd.setLocationRelativeTo(this);
 
+                WindowPropConfig.getInstance().setSelectedBible(book.getName());
+
                 Installer installer = imanager.getInstaller(cbSource.getSelectedItem().toString());
                 installer.install(book);
 
                 pd.setVisible(true);
+
                 updateInstalled();
 
             } catch (InstallException ex) {
