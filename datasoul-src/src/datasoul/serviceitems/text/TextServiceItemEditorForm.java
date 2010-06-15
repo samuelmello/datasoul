@@ -64,16 +64,13 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         highlightlyric(this.textText);
         textText.setCaretPosition(0);
 
+        btnShowBible.setSelected(WindowPropConfig.getInstance().getShowBibleControlsBool());
+
         textSplitPanel1.registerTextArea(textText);
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
 
         bibleTextPanel1.registerTitlefield(fieldTitle);
         bibleTextPanel1.registerTextArea(textText);
-        bibleTextPanel1.setVisible(btnShowBible.isSelected());
-    }
-
-    public void setBibleVisible(boolean b){
-        btnShowBible.setSelected(b);
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
     }
 
@@ -264,6 +261,9 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
 
     private void btnShowBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowBibleActionPerformed
         bibleTextPanel1.setVisible(btnShowBible.isSelected());
+        if (updateSize){
+            WindowPropConfig.getInstance().setShowBibleControlsBool(btnShowBible.isSelected());
+        }
     }//GEN-LAST:event_btnShowBibleActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

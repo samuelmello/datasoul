@@ -215,12 +215,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddText = new javax.swing.JMenuItem();
-        actAddBible = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
         actAddImageList = new javax.swing.JMenuItem();
-        actImportItem = new javax.swing.JMenuItem();
-        actAddAttachment = new javax.swing.JMenuItem();
         actAddVideo = new javax.swing.JMenuItem();
+        actAddAttachment = new javax.swing.JMenuItem();
+        actImportItem = new javax.swing.JMenuItem();
         toolBarMain = new javax.swing.JToolBar();
         btnNew = new javax.swing.JButton();
         btnOpen = new javax.swing.JButton();
@@ -307,15 +306,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         ppmAddItem.add(actAddText);
 
-        actAddBible.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_bookmark.png"))); // NOI18N
-        actAddBible.setText(bundle.getString("ADD BIBLE TEXT")); // NOI18N
-        actAddBible.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actAddBibleActionPerformed(evt);
-            }
-        });
-        ppmAddItem.add(actAddBible);
-
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("ADD CONTENTLESS ITEM")); // NOI18N
         actAddContentlessItem.addActionListener(new java.awt.event.ActionListener() {
@@ -334,14 +324,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         ppmAddItem.add(actAddImageList);
 
-        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
-        actImportItem.setText(bundle.getString("IMPORT ITEM")); // NOI18N
-        actImportItem.addActionListener(new java.awt.event.ActionListener() {
+        actAddVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-x-generic.png"))); // NOI18N
+        actAddVideo.setText(bundle.getString("ADD VIDEO")); // NOI18N
+        actAddVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actImportItemActionPerformed(evt);
+                actAddVideoActionPerformed(evt);
             }
         });
-        ppmAddItem.add(actImportItem);
+        ppmAddItem.add(actAddVideo);
 
         actAddAttachment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/mail-attachment.png"))); // NOI18N
         actAddAttachment.setText(bundle.getString("ADD ATTACHMENT")); // NOI18N
@@ -352,14 +342,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         ppmAddItem.add(actAddAttachment);
 
-        actAddVideo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/video-x-generic.png"))); // NOI18N
-        actAddVideo.setText(bundle.getString("ADD VIDEO")); // NOI18N
-        actAddVideo.addActionListener(new java.awt.event.ActionListener() {
+        actImportItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_task-assigned.png"))); // NOI18N
+        actImportItem.setText(bundle.getString("IMPORT ITEM")); // NOI18N
+        actImportItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actAddVideoActionPerformed(evt);
+                actImportItemActionPerformed(evt);
             }
         });
-        ppmAddItem.add(actAddVideo);
+        ppmAddItem.add(actImportItem);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle(bundle.getString("DATASOUL")); // NOI18N
@@ -692,7 +682,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         pnlServiceStart.setLayout(pnlServiceStartLayout);
         pnlServiceStartLayout.setHorizontalGroup(
             pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 162, Short.MAX_VALUE)
+            .addGap(0, 208, Short.MAX_VALUE)
             .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlServiceStartLayout.createSequentialGroup()
                     .addGap(0, 23, Short.MAX_VALUE)
@@ -707,7 +697,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         );
         pnlServiceStartLayout.setVerticalGroup(
             pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
             .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlServiceStartLayout.createSequentialGroup()
                     .addGap(0, 2, Short.MAX_VALUE)
@@ -733,16 +723,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))
+                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                             .addGroup(pnlServiceListLayout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
@@ -760,11 +750,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -804,8 +794,8 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(425, Short.MAX_VALUE))
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)
+                .addContainerGap(405, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -818,7 +808,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -890,7 +880,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -909,12 +899,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1051,11 +1041,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+            .addComponent(toolBarMain, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tbInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 916, Short.MAX_VALUE))
-            .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+            .addComponent(splMain, javax.swing.GroupLayout.DEFAULT_SIZE, 928, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1210,13 +1200,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         tsief.setLocationRelativeTo(this);
         tsief.setVisible(true);
 }//GEN-LAST:event_actAddTextActionPerformed
-
-    private void actAddBibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddBibleActionPerformed
-        TextServiceItemEditorForm tsief = new TextServiceItemEditorForm(new TextServiceItem());
-        tsief.setLocationRelativeTo(this);
-        tsief.setBibleVisible(true);
-        tsief.setVisible(true);
-}//GEN-LAST:event_actAddBibleActionPerformed
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
         String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE ITEM NAME:"), "");
@@ -1468,7 +1451,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JMenuItem actAddAttachment;
-    javax.swing.JMenuItem actAddBible;
     javax.swing.JMenuItem actAddContentlessItem;
     javax.swing.JMenuItem actAddImageList;
     javax.swing.JMenuItem actAddText;

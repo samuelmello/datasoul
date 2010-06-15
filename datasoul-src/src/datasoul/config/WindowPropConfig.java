@@ -47,6 +47,7 @@ public class WindowPropConfig extends AbstractConfig {
     private String splSongLibrary;
     private String splDisplayControl;
     private String selectedBible;
+    private boolean showBibleControls;
 
 
     protected void registerProperties() {
@@ -65,6 +66,7 @@ public class WindowPropConfig extends AbstractConfig {
         properties.add("SplSongLibrary");
         properties.add("SplDisplayControl");
         properties.add("SelectedBible");
+        properties.add("ShowBibleControls");
    }
 
     private boolean checkStr(String str){
@@ -341,5 +343,33 @@ public class WindowPropConfig extends AbstractConfig {
         save();
     }
 
+    public boolean getShowBibleControlsBool(){
+        return showBibleControls;
+    }
+    
+    public void setShowBibleControlsBool(boolean b){
+        if (b){
+            setShowBibleControls("true");
+        }else{
+            setShowBibleControls("false");
+        }
+    }
+
+    public String getShowBibleControls(){
+        if (showBibleControls){
+            return "true";
+        }else{
+            return "false";
+        }
+    }
+
+    public void setShowBibleControls(String s){
+        if (s.equals("true")){
+            this.showBibleControls = true;
+        }else{
+            this.showBibleControls = false;
+        }
+        save();
+    }
 }
 
