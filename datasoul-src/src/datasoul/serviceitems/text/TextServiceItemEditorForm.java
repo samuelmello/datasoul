@@ -24,6 +24,8 @@ import datasoul.DatasoulMainForm;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.servicelist.ServiceListTable;
+import datasoul.templates.DisplayTemplate;
+import datasoul.util.ObjectManager;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
@@ -58,13 +60,14 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         }
         //read value
         this.fieldTitle.setText(textServiceItem.getTitle());
-
         this.textText.setText(textServiceItem.getText());
+        this.cbTemplate.setSelectedItem(textServiceItem.getTemplate());
 
         highlightlyric(this.textText);
         textText.setCaretPosition(0);
 
         btnShowBible.setSelected(WindowPropConfig.getInstance().getShowBibleControlsBool());
+        cbTemplate.setTargetContent(DisplayTemplate.TARGET_CONTENT_TEXT);
 
         textSplitPanel1.registerTextArea(textText);
         textSplitPanel1.setVisible(btnShowSplit.isSelected());
@@ -81,6 +84,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private void updateValues(){
         this.textServiceItem.setTitle(this.fieldTitle.getText());
         this.textServiceItem.setText(this.textText.getText());
+        this.textServiceItem.setTemplate(this.cbTemplate.getSelectedItem().toString());
+        ObjectManager.getInstance().getDatasoulMainForm().repaint();
     }
     
     /** This method is called from within the constructor to
@@ -104,6 +109,8 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnShowBible = new javax.swing.JToggleButton();
         btnShowSplit = new javax.swing.JToggleButton();
+        lblTemplate = new javax.swing.JLabel();
+        cbTemplate = new datasoul.templates.TemplateComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -181,23 +188,35 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
         });
         jToolBar1.add(btnShowSplit);
 
+        lblTemplate.setText(bundle.getString("TEMPLATE:")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
-                    .addComponent(textSplitPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
-                    .addComponent(labelTitle)
+                    .addComponent(bibleTextPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(fieldTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTemplate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
+                    .addComponent(textSplitPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 810, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelTitle1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
-                        .addComponent(jLabel3))
-                    .addComponent(bibleTextPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
-                    .addComponent(fieldTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 445, Short.MAX_VALUE)
+                        .addComponent(jLabel3)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -207,17 +226,19 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bibleTextPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(labelTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTitle)
+                    .addComponent(fieldTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbTemplate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTemplate))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTitle1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textSplitPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -303,6 +324,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JButton btnSave;
     private javax.swing.JToggleButton btnShowBible;
     private javax.swing.JToggleButton btnShowSplit;
+    private datasoul.templates.TemplateComboBox cbTemplate;
     private javax.swing.JTextField fieldTitle;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
@@ -310,6 +332,7 @@ public class TextServiceItemEditorForm extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;
+    private javax.swing.JLabel lblTemplate;
     private datasoul.util.TextSplitPanel textSplitPanel1;
     private datasoul.util.HighlightTextArea textText;
     // End of variables declaration//GEN-END:variables
