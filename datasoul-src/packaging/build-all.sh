@@ -4,16 +4,15 @@ DSVERSION=$(awk -F= '/version/{ print $2 }' ../src/datasoul/version.properties)
 
 ##################################################
 
-# Clean up
+# Clean up and build
 rm -Rf installers
-ant clean 
+cd ..
+ant clean jar
+cd -
 mkdir installers
 
-# Compile
-ant jar
-
 # Remove generated README.TXT file
-rm -f dist/README.TXT
+rm -f ../dist/README.TXT
 
 ##################################################
 
@@ -21,7 +20,7 @@ rm -f dist/README.TXT
 mkdir -p debian/datasoul/usr/lib/datasoul
 cd debian
 sed -i "s/Version:.*/Version: ${DSVERSION}/" datasoul/DEBIAN/control
-cp -r ../dist/* datasoul/usr/lib/datasoul
+cp -r ../../dist/* datasoul/usr/lib/datasoul
 dpkg -b datasoul
 mv datasoul.deb ../installers/datasoul_${DSVERSION}_all.deb
 rm -Rf datasoul/usr/lib/datasoul/*
@@ -36,7 +35,7 @@ cd ..
 MACINSTDIR=installers/Datasoul-${DSVERSION}-MacOSX/Datasoul-${DSVERSION}.app
 mkdir -p ${MACINSTDIR}
 cp -r MacOSX/Contents ${MACINSTDIR}
-cp -r dist/* ${MACINSTDIR}/Contents/Resources/Java
+cp -r ../dist/* ${MACINSTDIR}/Contents/Resources/Java
 cd installers
 zip -r Datasoul-${DSVERSION}-MacOSX.zip Datasoul-${DSVERSION}-MacOSX
 cd ..
@@ -50,11 +49,11 @@ mv Datasoul-${DSVERSION}.exe installers
 mkdir datasoul-$DSVERSION
 mkdir datasoul-$DSVERSION/src
 cp  -r ../src/datasoul  datasoul-$DSVERSION/src
-cp  -r ../lib           datasoul-$DSVERSION/lib
 tar czvf installers/datasoul-$DSVERSION-source.tar.gz datasoul-$DSVERSION
 rm -Rf datasoul-$DSVERSION
 
 ###################################################
 # Clean up
+cd ..
 ant clean
-
+cd -

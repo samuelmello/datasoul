@@ -21,7 +21,7 @@ section
 setOutPath $INSTDIR
  
 # specify file to go in output path
-file /r dist/*
+file /r ../dist/*
 file datasoul.ico
 
 WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\Datasoul-${VERSION}" \
