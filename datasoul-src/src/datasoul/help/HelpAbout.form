@@ -58,7 +58,7 @@
           <Font name="Dialog" size="18" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="datasoul.sourceforge.net"/>
+        <Property name="text" type="java.lang.String" value="http://code.google.com/p/datasoul/"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
