@@ -3,4 +3,4 @@
 datasoul-src/dist
 datasoul-src/build
 datasoul-src/nbproject/private
-datasoul-src/packaging/installers
+packaging/installers
