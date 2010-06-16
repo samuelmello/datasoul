@@ -43,7 +43,7 @@ rm -Rf installers/Datasoul-${DSVERSION}-MacOSX
 
 # Build Windows
 makensis windows.nsi
-mv Datasoul-${DSVERSION}.exe installers
+mv Datasoul-${DSVERSION}.exe installers/Datasoul-${DSVERSION}-Windows.exe
 
 ###################################################
 # Clean up
