@@ -17,8 +17,6 @@
  *
  * Created on 9 de Janeiro de 2006, 22:28
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
  */
 package datasoul.servicelist;
 

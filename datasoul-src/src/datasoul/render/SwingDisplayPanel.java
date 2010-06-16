@@ -1,5 +1,5 @@
 /* 
- * Copyright 2005-2008 Samuel Mello & Eduardo Schnell
+ * Copyright 2005-2010 Samuel Mello & Eduardo Schnell
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -12,22 +12,12 @@
  * 
  */
 
-/*
- * SwingDisplayPanel.java
- *
- * Created on March 22, 2006, 11:47 PM
- */
-
 package datasoul.render;
 
 import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author  root
- */
 public class SwingDisplayPanel extends javax.swing.JPanel  {
 
     private ContentDisplayRenderer contentDisplay;
@@ -70,7 +60,6 @@ public class SwingDisplayPanel extends javax.swing.JPanel  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        // TODO add your handling code here:
     }//GEN-LAST:event_formKeyPressed
 
     @Override

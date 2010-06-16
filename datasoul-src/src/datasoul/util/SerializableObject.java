@@ -17,8 +17,6 @@
  *
  * Created on 3 de Janeiro de 2006, 21:37
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
  */
 
 package datasoul.util;

@@ -1,5 +1,5 @@
 /* 
- * Copyright 2005-2008 Samuel Mello & Eduardo Schnell
+ * Copyright 2005-2010 Samuel Mello & Eduardo Schnell
  *
  *   This program is free software; you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -17,8 +17,6 @@
  *
  * Created on 8 de Janeiro de 2006, 22:53
  *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
  */
 
 package datasoul.serviceitems.song;

@@ -1,12 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * SwingDisplayFrame.java
+/* 
+ * Copyright 2005-2010 Samuel Mello
  *
- * Created on Feb 9, 2010, 5:50:41 PM
+ *   This program is free software; you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation; version 2 of the License.
+ * 
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ * 
  */
 
 package datasoul.render;
@@ -14,10 +17,6 @@ package datasoul.render;
 import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 
-/**
- *
- * @author samuellucas
- */
 public class SwingDisplayFrame extends javax.swing.JFrame {
 
     /** Creates new form SwingDisplayFrame */
