@@ -1,5 +1,5 @@
 Package: datasoul
-Version: 2.0_beta1
+Version: 2.0_beta2
 Priority: optional
 Architecture: all
 Depends: java6-runtime
