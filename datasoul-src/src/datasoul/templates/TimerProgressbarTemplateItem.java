@@ -56,6 +56,11 @@ public class TimerProgressbarTemplateItem extends TemplateItem {
         this.setHeight(50);
         this.showTimer = true;
         
+    }
+
+    @Override
+    public void setUpEdit(){
+        super.setUpEdit();
         registerColorChooser("ColorGoAhead");
         registerColorChooser("ColorFinish");
         registerColorChooser("ColorStop");

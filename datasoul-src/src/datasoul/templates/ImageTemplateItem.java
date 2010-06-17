@@ -76,11 +76,18 @@ public class ImageTemplateItem extends TemplateItem {
     
     public ImageTemplateItem() {
         super();
-        int i;
         this.setStretchIdx(STRETCH_YES);
         this.setAlignmentIdx(ALIGN_CENTER);
         this.setVerticalAlignmentIdx(VALIGN_MIDDLE);
         
+    }
+
+    @Override
+    public void setUpEdit(){
+        int i;
+
+        super.setUpEdit();
+
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
             for (i=0; i<ALIGN_TABLE.length; i++){
@@ -88,7 +95,7 @@ public class ImageTemplateItem extends TemplateItem {
             }
         }
         registerEditorComboBox("AlignmentIdx", cbAlignment);
-        
+
         if (cbVerticalAlignment == null) {
             cbVerticalAlignment = new JComboBox();
             for (i=0; i<VALIGN_TABLE.length; i++){

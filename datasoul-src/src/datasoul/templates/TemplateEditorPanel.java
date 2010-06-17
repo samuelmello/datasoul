@@ -57,7 +57,8 @@ public class TemplateEditorPanel extends javax.swing.JPanel
     }
     
     public void addItem(TemplateItem t){
-        
+
+        t.setUpEdit();
         template.addItem(t);
         t.addTableModelListener(this);
         selectedItem = t;
@@ -243,6 +244,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         // objects in the constructor. So, we allocate the first template here
         if (template == null){
             template = new DisplayTemplate();
+            template.setUpEdit();
         }
         propTable.setDefaultEditor(Object.class, template.getTableCellEditor() );
         propTable.setDefaultRenderer(AttributedObject.class, template.getColorTableCellRenderer() );
@@ -345,6 +347,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             selectedItem = null;
             
             template = TemplateManager.getInstance().newDisplayTemplate(templatename);
+            template.setUpEdit();
             template.addTableModelListener(this);
            
             for (TemplateItem t : template.getItems()){
@@ -363,7 +366,8 @@ public class TemplateEditorPanel extends javax.swing.JPanel
 
             this.repaint();
         }catch(Exception e) {
-            ShowDialog.showReadFileError(template.getName(), e);
+            e.printStackTrace();
+            ShowDialog.showReadFileError(templatename, e);
         }        
         
     }
@@ -374,6 +378,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
             // Create a new one
             selectedItem = null;
             template = new DisplayTemplate();
+            template.setUpEdit();
             template.addTableModelListener(this);
             propTable.setModel(template);
             if (template.getName() != null){
@@ -394,6 +399,7 @@ public class TemplateEditorPanel extends javax.swing.JPanel
         for (TemplateItem t : template.getItems()){
             t.removeTableModelListener(this);
         }
+        template.tearDownEdit();
         editorFrame = null;
     }
     

@@ -35,10 +35,7 @@ import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -91,20 +88,6 @@ public class DisplayTemplate extends AttributedObject {
         this.setWidth(800);
         this.setHeight(600);
         
-        if (cbKeepBG == null){
-            cbKeepBG = new JComboBox();
-            for (int i=0; i<KEEP_BG_TABLE.length; i++)
-                cbKeepBG.addItem(KEEP_BG_TABLE[i]);
-        }
-        registerEditorComboBox("TransitionKeepBGIdx", cbKeepBG);
-
-        if (cbTargetContent == null){
-            cbTargetContent = new JComboBox();
-            for (int i=0; i<TARGET_CONTENT_TABLE.length; i++)
-                cbTargetContent.addItem(TARGET_CONTENT_TABLE[i]);
-        }
-        registerEditorComboBox("TargetContentIdx", cbTargetContent);
-
     }
 
     public static void importTemplate(String filename){
@@ -533,6 +516,37 @@ public class DisplayTemplate extends AttributedObject {
 
     public void setHeight(String h){
         setHeight(Integer.parseInt(h));
+    }
+
+    @Override
+    public void setUpEdit(){
+        super.setUpEdit();
+        for (TemplateItem item : items){
+            item.setUpEdit();
+        }
+
+        if (cbKeepBG == null){
+            cbKeepBG = new JComboBox();
+            for (int i=0; i<KEEP_BG_TABLE.length; i++)
+                cbKeepBG.addItem(KEEP_BG_TABLE[i]);
+        }
+        registerEditorComboBox("TransitionKeepBGIdx", cbKeepBG);
+
+        if (cbTargetContent == null){
+            cbTargetContent = new JComboBox();
+            for (int i=0; i<TARGET_CONTENT_TABLE.length; i++)
+                cbTargetContent.addItem(TARGET_CONTENT_TABLE[i]);
+        }
+        registerEditorComboBox("TargetContentIdx", cbTargetContent);
+
+    }
+
+    @Override
+    public void tearDownEdit(){
+        super.tearDownEdit();
+        for (TemplateItem item : items){
+            item.tearDownEdit();
+        }
     }
 
 }

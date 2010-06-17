@@ -178,13 +178,21 @@ public class TextTemplateItem extends TemplateItem {
         this.setOutlineColor(Color.BLACK);
         this.setUppercaseIdx(UPPERCASE_NO);
 
+    }
+
+    @Override
+    public void setUpEdit(){
+        int i;
+
+        super.setUpEdit();
+
         if (cbContent == null){
             cbContent = new JComboBox();
             for (i=0; i<CONTENT_TABLE.length; i++)
                 cbContent.addItem(CONTENT_TABLE[i]);
         }
         registerEditorComboBox("ContentIdx", cbContent);
-        
+
         if (cbAlignment == null){
             cbAlignment = new JComboBox();
             for (i=0; i<ALIGN_TABLE.length; i++){
@@ -192,7 +200,7 @@ public class TextTemplateItem extends TemplateItem {
             }
         }
         registerEditorComboBox("AlignmentIdx", cbAlignment);
-        
+
         if (cbVerticalAlignment == null) {
             cbVerticalAlignment = new JComboBox();
             for (i=0; i<VALIGN_TABLE.length; i++){
@@ -201,7 +209,7 @@ public class TextTemplateItem extends TemplateItem {
 
         }
         registerEditorComboBox("VerticalAlignmentIdx", cbVerticalAlignment);
-        
+
         if (cbTextWidth == null){
             cbTextWidth = new JComboBox();
             for (i=0; i<TEXTWIDTH_TABLE.length; i++){
@@ -216,24 +224,24 @@ public class TextTemplateItem extends TemplateItem {
                 cbTextWeight.addItem(TEXTWEIGHT_TABLE[i]);
         }
         registerEditorComboBox("TextWeightIdx", cbTextWeight);
-        
-        
+
+
         if (cbUnderline == null){
             cbUnderline = new JComboBox();
             for (i=0; i<UNDERLINE_TABLE.length; i++)
                 cbUnderline.addItem(UNDERLINE_TABLE[i]);
         }
         registerEditorComboBox("UnderlineIdx", cbUnderline);
-        
+
         if (cbUppercase == null){
             cbUppercase = new JComboBox();
             for (i=0; i<UPPERCASE_TABLE.length; i++)
                 cbUppercase.addItem(UPPERCASE_TABLE[i]);
         }
         registerEditorComboBox("UppercaseIdx", cbUppercase);
-        
 
-        
+
+
         if (cbFontName == null){
             String fontList[] = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
             cbFontName = new JComboBox();
@@ -241,9 +249,10 @@ public class TextTemplateItem extends TemplateItem {
               cbFontName.addItem( fontList[i] );
         }
         registerEditorComboBox("FontName", cbFontName);
-        
+
         registerColorChooser("FontColor");
         registerColorChooser("OutlineColor");
+
     }
     
     public void assign(TextTemplateItem from){

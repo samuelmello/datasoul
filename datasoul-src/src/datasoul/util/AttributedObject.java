@@ -58,18 +58,13 @@ public abstract class AttributedObject extends SerializableObject implements Tab
     protected MyTableCellEditor tableCellEditor;
     
     protected ColorTableCellRenderer colorTableCellRenderer;
+
+    private HashMap<JComboBoxWrapper, JComboBox> comboboxWrappers;
     
     private ArrayList<javax.swing.event.TableModelListener> listeners;
     
     /** Creates a new instance of AttributedObject */
     public AttributedObject() {
-        
-        propEditors = new HashMap<String, Component>();
-        
-        listeners = new ArrayList<javax.swing.event.TableModelListener>();
-        tableCellEditor = new MyTableCellEditor(new JTextField());
-        colorTableCellRenderer = new ColorTableCellRenderer();
-        colorEditors = new ArrayList<String>();
         
     }
 
@@ -176,6 +171,10 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
         int i;
         boolean found = false;
+
+        // Ignore event if object is not used in edit mode (setUpEdit not called)
+        if (listeners == null)
+            return;
         
         for (i=0; i<properties.size(); i++){
             if (properties.get(i).equals(prop)){
@@ -193,7 +192,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         }
     }
 
-    private class ColorTableCellRenderer extends DefaultTableCellRenderer {
+    protected class ColorTableCellRenderer extends DefaultTableCellRenderer {
         
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
@@ -215,7 +214,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         
     }
 
-    private class MyTableCellEditor extends DefaultCellEditor {
+    protected class MyTableCellEditor extends DefaultCellEditor {
         
         public MyTableCellEditor(JTextField j){
             super(j);
@@ -245,13 +244,33 @@ public abstract class AttributedObject extends SerializableObject implements Tab
         
     }
 
-    
-    
+    public void setUpEdit(){
+        propEditors = new HashMap<String, Component>();
+
+        listeners = new ArrayList<javax.swing.event.TableModelListener>();
+        tableCellEditor = new MyTableCellEditor(new JTextField());
+        colorTableCellRenderer = new ColorTableCellRenderer();
+        colorEditors = new ArrayList<String>();
+        comboboxWrappers = new HashMap<JComboBoxWrapper, JComboBox>();
+
+    }
+
+    public void tearDownEdit(){
+        for (JComboBoxWrapper wrap : comboboxWrappers.keySet()){
+            comboboxWrappers.get(wrap).removeActionListener(wrap);
+        }
+        comboboxWrappers.clear();
+    }
+
     protected void registerEditorComboBox(String property, JComboBox cb){
         cb.putClientProperty("JComboBox.isTableCellEditor", Boolean.TRUE);
         
-        cb.addActionListener(  new JComboBoxWrapper() );
-        
+        JComboBoxWrapper wrap = new JComboBoxWrapper();
+
+        cb.addActionListener(wrap);
+
+        comboboxWrappers.put(wrap, cb);
+
         propEditors.put(property, cb);
     }
     
