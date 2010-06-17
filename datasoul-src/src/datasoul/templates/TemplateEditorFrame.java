@@ -72,7 +72,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
                 mi.addActionListener(new java.awt.event.ActionListener() {
                     @Override
                     public void actionPerformed(java.awt.event.ActionEvent evt) {
-                        addTextImage(evt);
+                        addImageItem(evt);
                     }
                 });
                 ppmNewImage.add(mi);
@@ -475,7 +475,7 @@ public class TemplateEditorFrame extends javax.swing.JFrame {
         templateEditorPanel1.addItem(txt);
     }
 
-    private void addTextImage(java.awt.event.ActionEvent evt){
+    private void addImageItem(java.awt.event.ActionEvent evt){
 
         if (evt.getSource() instanceof JMenuItem){
 
