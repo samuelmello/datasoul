@@ -84,8 +84,16 @@ public class BibleTextPanel extends javax.swing.JPanel {
                 ex.printStackTrace();
             }
         }
-        bvlp = new BibleVerseListPanel();
+        bvlp = new BibleVerseListPanel(this);
 
+    }
+
+    public int getSelectedRefType() {
+        return cbRefType.getSelectedIndex();
+    }
+
+    public int getSelectedHowToSplit() {
+        return cbHowToSplit.getSelectedIndex();
     }
 
     public void registerTitlefield(JTextField field) {
@@ -509,7 +517,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
             return;
         }
         if (bvlp == null) {
-            bvlp = new BibleVerseListPanel();
+            bvlp = new BibleVerseListPanel(this);
         }
         bvlp.setBook(book);
         bvlp.setVisible(true);

@@ -13,6 +13,9 @@ package datasoul.bible;
 import datasoul.config.DisplayControlConfig;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.servicelist.ServiceListTable;
+import datasoul.util.SwordHelper;
+import datasoul.util.SwordHelper.ReferenceTxtType;
+import datasoul.util.SwordHelper.TxtSplitType;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +34,11 @@ import org.crosswire.jsword.book.BookData;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.passage.Key;
+import org.crosswire.jsword.passage.KeyUtil;
 import org.crosswire.jsword.passage.NoSuchKeyException;
+import org.crosswire.jsword.passage.Passage;
+import org.crosswire.jsword.passage.Verse;
+import org.jdom.Element;
 
 /**
  *
@@ -41,6 +48,7 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
 
     Book swordBook = null;
     String endl = System.getProperty("line.separator");
+    BibleTextPanel btp;
     StyledDocument doc;
     BvlDocListener docListener;
     Style errorStyle;
@@ -48,7 +56,7 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
     Map<String, Boolean> validityCache = new HashMap<String, Boolean>();
 
     /** Creates new form BibleVerseListPanel */
-    public BibleVerseListPanel() {
+    public BibleVerseListPanel(BibleTextPanel btp) {
         initComponents();
         doc = jTextPane.getStyledDocument();
         docListener = new BvlDocListener();
@@ -57,6 +65,7 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
         StyleConstants.setBackground(errorStyle, Color.red);
         clearStyle = doc.addStyle("normalLine", null);
         StyleConstants.setBackground(clearStyle, Color.white);
+        this.btp = btp;
     }
 
     public void setBook(Book swordBook) {
@@ -135,30 +144,6 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private boolean validateRef(String reference) {
-        if (swordBook == null) {
-            return false;
-        }
-        if (reference == null) {
-            return true;
-        }
-        reference = reference.trim();
-        if (reference.length() == 0) {
-            return true;
-        }
-        Key key = null;
-        try {
-            key = swordBook.getKey(reference);
-            if (key.getCardinality() > 0) {
-                return true;
-            }
-        } catch (NoSuchKeyException ex) {
-            return false;
-        }
-
-        return false;
-    }
-
     private void updateMarkup() {
         System.out.println("updateMarkup! " + new java.util.Date());
         if (swordBook == null) {
@@ -186,17 +171,17 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
 
             if (reference.trim().length() == 0) {
                 doc.setCharacterAttributes(pos, reference.length() + endlsz, clearStyle, true);
-                pos = pos + reference.length()  + endlsz ;
+                pos = pos + reference.length() + endlsz;
                 continue;
             }
 
-            boolean valid = validateRef(reference);
+            boolean valid = SwordHelper.isReferenceValid(swordBook, reference);
             if (valid) {
                 doc.setCharacterAttributes(pos, reference.length() + endlsz, clearStyle, true);
-                pos = pos + reference.length() + endlsz ;
+                pos = pos + reference.length() + endlsz;
             } else {
                 doc.setCharacterAttributes(pos, reference.length() + endlsz, errorStyle, true);
-                pos = pos + reference.length() + endlsz ;
+                pos = pos + reference.length() + endlsz;
             }
         }
 
@@ -217,6 +202,9 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
         }
         String refs[] = listTxt.split(endl);
 
+        ReferenceTxtType refStype = ReferenceTxtType.getRefTypeById(btp.getSelectedRefType());
+        TxtSplitType splitType = TxtSplitType.getTxtSplitTypeById(btp.getSelectedHowToSplit());
+
         for (String reference : refs) {
             if (reference == null) {
                 continue;
@@ -226,8 +214,6 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
                 return;
             }
 
-
-            System.out.println("REF: " + reference);
             Key key = null;
             try {
                 key = swordBook.getKey(reference);
@@ -235,33 +221,73 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
                 Logger.getLogger(BibleVerseListPanel.class.getName()).log(Level.SEVERE, null, ex);
                 continue;
             }
+            String fullTxt = null;
 
-            BookData data = new BookData(swordBook, key);
+            // Somewhow, the following lines always throw a BookException...
+            // It seems that there is a bug in the jsword library we're using
+/*
+            try {
+            fullTxt = OSISUtil.getCanonicalText(data.getOsis());
+            } catch (BookException ex) {
+            Logger.getLogger(BibleVerseListPanel.class.getName()).log(Level.SEVERE, null, ex);
+            continue;
+            }
+             */
+            StringBuffer sb = new StringBuffer();
+            System.err.println("ref = " + reference);
 
             int cardinality = key.getCardinality();
-
-            System.out.println("-----------------------");
-            System.out.println("book = " + swordBook);
-            System.out.println("data = " + data);
-            System.out.println("ref [" + reference + "] cardinality = " + cardinality);
+            System.err.println("    cardinality = " + cardinality);
             for (int i = 0; i < cardinality; i++) {
                 Key k = key.get(i);
-                System.out.println("  key[" + i + "] = " + k);
-            }
+
+                Verse v = KeyUtil.getVerse(k);
+
+                System.err.println("    v.getRootName() = " + v.getRootName());
+                System.err.println("    v.getName() = " + v.getName());
+                /*
+                System.err.println("    v.getRootName() = " + v.getRootName());
+                System.err.println("    v.getChapter() = " + v.getChapter());
+                System.err.println("    v.getVerse() = " + v.getVerse());
+                 */
+                BookData data = new BookData(swordBook, k);
+
+                try {
+                    //The following line can throw a BookException
+                    Element xmlData = data.getOsis();
+                    String osisRef = OSISUtil.getReferences(xmlData);
+
+                    fullTxt = OSISUtil.getCanonicalText(xmlData);
+                    String bkName = data.getFirstBook().getName();
+                    System.err.println("    k = " + k);
+
+                    if (sb.length() > 0) {
+                        sb.append(splitType.getTxt());
+                    }
+                    switch (refStype) {
+                        case Full:
+                            sb.append(v.getRootName()).append(" ").append(v.getChapter()).append(":").append(v.getVerse()).append(" ");
+                            break;
+                        case ChapterAndVerse:
+                            sb.append(v.getChapter()).append(":").append(v.getVerse()).append(" ");
+                            break;
+                        case VerseOnly:
+                            sb.append(v.getVerse()).append(" ");
+                            break;
+                    }
 
 
-            String fullTxt = null;
-            try {
-                fullTxt = OSISUtil.getCanonicalText(data.getOsis());
-            } catch (BookException ex) {
-                Logger.getLogger(BibleVerseListPanel.class.getName()).log(Level.SEVERE, null, ex);
-                continue;
+                    sb.append(fullTxt).append(endl);
+
+                } catch (BookException ex) {
+                    Logger.getLogger(BibleVerseListPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
             TextServiceItem textServiceItem = new TextServiceItem();
 
             textServiceItem.setTitle(reference);
-            textServiceItem.setText(fullTxt);
+            textServiceItem.setText(sb.toString());
 
             textServiceItem.setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateText());
             ServiceListTable.getActiveInstance().addItem(textServiceItem);
@@ -289,7 +315,7 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
         }
 
         public void doUpdateMarkup(boolean force) {
-            if (force || (inQueue.get() == false  && (System.currentTimeMillis() - last) >= minDelta)) {
+            if (force || (inQueue.get() == false && (System.currentTimeMillis() - last) >= minDelta)) {
                 inQueue.set(true);
                 SwingUtilities.invokeLater(this);
             }
@@ -328,18 +354,6 @@ public class BibleVerseListPanel extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         updateMarkup();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new BibleVerseListPanel().setVisible(true);
-            }
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane2;
