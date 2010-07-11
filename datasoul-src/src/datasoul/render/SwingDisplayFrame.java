@@ -85,7 +85,7 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
     public void registerAsMonitor(){
         int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
         int h = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(w);
-        swingDisplayPanel1.initDisplay(getWidth(), getHeight());
+        swingDisplayPanel1.initDisplay(w, h);
         ContentRender r = new ContentRender(w, h, swingDisplayPanel1.getContentDisplay());
         ContentManager.getInstance().registerMonitorRender(r);
     }
