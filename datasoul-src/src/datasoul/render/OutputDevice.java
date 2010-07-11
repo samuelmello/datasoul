@@ -29,6 +29,7 @@ public class OutputDevice {
     private GraphicsDevice device;
     private GraphicsConfiguration gconfig;
     private int usage;
+    private boolean isDefault;
 
     public static final int USAGE_MAIN = 0;
     public static final int USAGE_MONITOR = 1;
@@ -82,6 +83,12 @@ public class OutputDevice {
         }
 
         this.gconfig = device.getDefaultConfiguration();
+
+        if (this.device == local.getDefaultScreenDevice()){
+            this.isDefault = true;
+        }else{
+            this.isDefault = false;
+        }
     }
 
 
@@ -113,13 +120,17 @@ public class OutputDevice {
     public void setWindowFullScreen(JFrame frame){
         frame.setResizable(true);
         /**
+         * Use setFullScreenWindow only for the default display.
+         * This is required to cover OS taskbar and menus,
+         * but for Mac, when setting a window full screen it covers all screens
+         *
          * Another workaround for windows...
          * By some weird reason, Windows Vista/7 minimize frames set as Fullscreen
          * when they lose focus. Using setBounds works properly in windows, but for
          * MacOS it does not cover the menu bar and dock, so we need platform
-         * dependant code here. 
+         * dependant code here.
          */
-        if (Platform.isWindows() ==  false){
+        if (isDefault && Platform.isWindows() == false){
             if (device.getFullScreenWindow() == null){
                 device.setFullScreenWindow(frame);
             }
@@ -131,7 +142,7 @@ public class OutputDevice {
 
     public void closeFullScreen(JFrame frame) {
         frame.setVisible(false);
-        if (!Platform.isWindows()){
+        if (isDefault && Platform.isWindows() == false){
             device.setFullScreenWindow(null);
         }
     }
