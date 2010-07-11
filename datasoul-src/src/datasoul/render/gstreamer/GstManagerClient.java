@@ -123,6 +123,7 @@ public class GstManagerClient {
         if (isMonitorEnabled){
             this.monitorDevice = new OutputDevice(monitorDevice, OutputDevice.USAGE_MONITOR);
             monitorFrame = new GstDisplayFrame();
+            monitorFrame.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
             monitorFrame.init(this.monitorDevice.getWidth(), this.monitorDevice.getHeight());
             monitorFrame.getVideoSink().setName("MonitorVideoSink");
             monitorRender = new ContentRender(this.monitorDevice.getWidth(), this.monitorDevice.getHeight(), monitorFrame.getContentDisplay());
