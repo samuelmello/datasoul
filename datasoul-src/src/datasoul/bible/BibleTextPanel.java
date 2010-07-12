@@ -48,7 +48,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
     private int chapter;
     private int versefrom;
     private int verseto;
-    private BibleVerseListPanel bvlp = null;
 
     /** Creates new form BibleTextPanel */
     public BibleTextPanel() {
@@ -84,8 +83,27 @@ public class BibleTextPanel extends javax.swing.JPanel {
                 ex.printStackTrace();
             }
         }
-        bvlp = new BibleVerseListPanel(this);
+    }
 
+    public String getSelectedBookName(){
+        Object o = cbBibles.getSelectedItem();
+        if(o == null){
+            return null;
+        }
+        return o.toString();
+    }
+    
+    public void configureForVerseListEditorForm(){
+        //TODO: hide the bible book combobox, the chapter & verses buttons and 
+        //      the "load" button
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
+        cbBook.setVisible(false);
+        cbChapter.setVisible(false);
+        cbVersesFrom.setVisible(false);
+        cbVersesTo.setVisible(false);
+        btnLoad.setVisible(false);
     }
 
     public int getSelectedRefType() {
@@ -181,7 +199,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cbChapter = new javax.swing.JComboBox();
         cbBook = new javax.swing.JComboBox();
-        btnLoadList = new javax.swing.JButton();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         jLabel3.setText(bundle.getString("BIBLE:")); // NOI18N
@@ -266,13 +283,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
             }
         });
 
-        btnLoadList.setText("Load list");
-        btnLoadList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadListActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -307,8 +317,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
                         .addGap(5, 5, 5)
                         .addComponent(cbVersesTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnLoad))
-                    .addComponent(btnLoadList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLoad))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,8 +350,6 @@ public class BibleTextPanel extends javax.swing.JPanel {
                         .addGroup(layout.createSequentialGroup()
                             .addGap(1, 1, 1)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLoadList, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -511,20 +518,8 @@ public class BibleTextPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cbBiblesActionPerformed
 
-    private void btnLoadListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadListActionPerformed
-        Book book = Books.installed().getBook(cbBibles.getSelectedItem().toString());
-        if (book == null) {
-            return;
-        }
-        if (bvlp == null) {
-            bvlp = new BibleVerseListPanel(this);
-        }
-        bvlp.setBook(book);
-        bvlp.setVisible(true);
-    }//GEN-LAST:event_btnLoadListActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoad;
-    private javax.swing.JButton btnLoadList;
     private javax.swing.JButton btnManageBible;
     private javax.swing.JComboBox cbBibles;
     private javax.swing.JComboBox cbBook;
