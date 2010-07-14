@@ -83,8 +83,35 @@ public class BibleTextPanel extends javax.swing.JPanel {
                 ex.printStackTrace();
             }
         }
+    }
 
+    public String getSelectedBookName(){
+        Object o = cbBibles.getSelectedItem();
+        if(o == null){
+            return null;
+        }
+        return o.toString();
+    }
+    
+    public void configureForVerseListEditorForm(){
+        //TODO: hide the bible book combobox, the chapter & verses buttons and 
+        //      the "load" button
+        jLabel1.setVisible(false);
+        jLabel4.setVisible(false);
+        jLabel5.setVisible(false);
+        cbBook.setVisible(false);
+        cbChapter.setVisible(false);
+        cbVersesFrom.setVisible(false);
+        cbVersesTo.setVisible(false);
+        btnLoad.setVisible(false);
+    }
 
+    public int getSelectedRefType() {
+        return cbRefType.getSelectedIndex();
+    }
+
+    public int getSelectedHowToSplit() {
+        return cbHowToSplit.getSelectedIndex();
     }
 
     public void registerTitlefield(JTextField field) {
@@ -111,7 +138,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
             if (o instanceof Book) {
                 String name = ((Book) o).getName();
                 cbBibles.addItem(name);
-                if (prevSelectedBible != null && prevSelectedBible.equals(name)){
+                if (prevSelectedBible != null && prevSelectedBible.equals(name)) {
                     cbBibles.setSelectedItem(name);
                 }
             }
@@ -272,12 +299,12 @@ public class BibleTextPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnManageBible))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(cbHowToSplit, 0, 173, Short.MAX_VALUE)
+                        .addComponent(cbHowToSplit, 0, 186, Short.MAX_VALUE)
                         .addGap(10, 10, 10)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbRefType, 0, 182, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbRefType, 0, 195, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cbBook, 0, 211, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbChapter, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -475,8 +502,8 @@ public class BibleTextPanel extends javax.swing.JPanel {
             cbVersesFrom.setSelectedIndex(versefrom);
         } else {
             versefrom = cbVersesFrom.getSelectedIndex();
-            if (cbVersesTo.getItemCount() == cbVersesFrom.getItemCount() &&
-                    cbVersesTo.getSelectedIndex() < cbVersesFrom.getSelectedIndex()) {
+            if (cbVersesTo.getItemCount() == cbVersesFrom.getItemCount()
+                    && cbVersesTo.getSelectedIndex() < cbVersesFrom.getSelectedIndex()) {
                 cbVersesTo.setSelectedIndex(cbVersesFrom.getSelectedIndex());
             }
         }
@@ -486,7 +513,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cbVersesFromFocusGained
 
     private void cbBiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBiblesActionPerformed
-        if (cbBibles.getSelectedItem() != null){
+        if (cbBibles.getSelectedItem() != null) {
             WindowPropConfig.getInstance().setSelectedBible(cbBibles.getSelectedItem().toString());
         }
     }//GEN-LAST:event_cbBiblesActionPerformed

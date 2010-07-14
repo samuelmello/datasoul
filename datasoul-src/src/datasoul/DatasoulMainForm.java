@@ -17,9 +17,10 @@
  *
  * Created on 13 de Dezembro de 2005, 21:59
  */
-
 package datasoul;
 
+import datasoul.bible.BibleTextPanel;
+import datasoul.bible.BibleVerseListEditorForm;
 import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
@@ -68,44 +69,43 @@ import javax.swing.event.ListSelectionListener;
 public class DatasoulMainForm extends javax.swing.JFrame {
 
     private boolean updateSize = false;
-    
     public static final int FILE_FORMAT_VERSION = 2;
-      
+
     /**
      * Creates new form DatasoulMainForm
      */
     public DatasoulMainForm() {
-        
+
         initComponents();
-        
-        this.setTitle("Datasoul - "+getVersion());
+
+        this.setTitle("Datasoul - " + getVersion());
         DatasoulMainForm.setDatasoulIcon(this);
-        
+
         ObjectManager.getInstance().setDatasoulMainForm(this);
         ObjectManager.getInstance().setPreviewPanel(preview);
         ObjectManager.getInstance().setAuxiliarPanel(auxiliar);
         ObjectManager.getInstance().setLivePanel(live);
 
 
-        tableServiceList.setModel( ServiceListTable.getActiveInstance() );
+        tableServiceList.setModel(ServiceListTable.getActiveInstance());
         tableServiceList.setDraggable(false);
         tableServiceList.getSelectionModel().addListSelectionListener(new ServiceListSelectionListener());
 
         this.tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TEMPLATE).setCellEditor(new TemplateCellEditor());
 
         ServiceListColorRender cr = new ServiceListColorRender();
-        for (int i=0; i<tableServiceList.getColumnModel().getColumnCount(); i++){
+        for (int i = 0; i < tableServiceList.getColumnModel().getColumnCount(); i++) {
             this.tableServiceList.getColumnModel().getColumn(i).setCellRenderer(cr);
         }
 
         // adjust columns
         tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TITLE).setPreferredWidth(200);
 
-        if (ConfigObj.getActiveInstance().getTrackDurationBool()){
+        if (ConfigObj.getActiveInstance().getTrackDurationBool()) {
             tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_TIME).setPreferredWidth(70);
             tableServiceList.getColumnModel().getColumn(ServiceListTable.COLUMN_DURATION).setPreferredWidth(40);
             pnlServiceStart.setVisible(true);
-        }else{
+        } else {
             pnlServiceStart.setVisible(false);
         }
 
@@ -127,7 +127,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         updateSize = true;
     }
 
-    private void initLive(){
+    private void initLive() {
 
 
         Dimension liveSize = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewHeight());
@@ -139,7 +139,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ContentRender liveRender = new ContentRender((int) liveSize.getWidth(), (int) liveSize.getHeight(), liveDisplayPanel.getContentDisplay());
         ContentManager.getInstance().registerMainRender(liveRender);
 
-        if (ConfigObj.getActiveInstance().getMonitorOutput()){
+        if (ConfigObj.getActiveInstance().getMonitorOutput()) {
 
             Dimension monitorSize = new Dimension(ContentManager.PREVIEW_WIDTH, ContentManager.getInstance().getPreviewMonitorHeight());
             monitorDisplayPanel.setSize(monitorSize);
@@ -150,7 +150,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             ContentRender monitorRender = new ContentRender((int) liveSize.getWidth(), (int) liveSize.getHeight(), monitorDisplayPanel.getContentDisplay());
             ContentManager.getInstance().registerMonitorRender(monitorRender);
 
-        }else{
+        } else {
             btnShowMonitor.setSelected(false);
             btnShowMonitor.setVisible(false);
             monitorDisplayPanel.setVisible(false);
@@ -158,44 +158,45 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     }
 
-
-    public static void setDatasoulIcon(JFrame frame){
+    public static void setDatasoulIcon(JFrame frame) {
         frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
-    public static void setDatasoulIcon(JDialog dialog){
+    public static void setDatasoulIcon(JDialog dialog) {
         dialog.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }
 
-    public void previewItem(){
+    public void previewItem() {
 
-        try{
+        try {
             ObjectManager.getInstance().setBusyCursor();
 
-            if (tableServiceList.getSelectedRow() != -1){
+            if (tableServiceList.getSelectedRow() != -1) {
                 ServiceItem item = (ServiceItem) ServiceListTable.getActiveInstance().getServiceItem(tableServiceList.getSelectedRow());
-                if(ObjectManager.getInstance().getPreviewPanel()!=null)
+                if (ObjectManager.getInstance().getPreviewPanel() != null) {
                     ObjectManager.getInstance().getPreviewPanel().previewItem(item);
+                }
             }
-        }finally{
+        } finally {
             ObjectManager.getInstance().setDefaultCursor();
         }
     }
 
-    private void goLiveItem(){
+    private void goLiveItem() {
 
         previewItem();
 
-        if (!DisplayControlConfig.getInstance().getAutomaticGoLiveBool()){
-            SwingUtilities.invokeLater(new Runnable(){
+        if (!DisplayControlConfig.getInstance().getAutomaticGoLiveBool()) {
+            SwingUtilities.invokeLater(new Runnable() {
+
                 @Override
-                public void run(){
+                public void run() {
                     preview.goLive(false);
-                }});
+                }
+            });
 
         }
     }
-
 
     public void viewSong(Song song) {
         lblSongName.setText(song.getTitle());
@@ -203,7 +204,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         textSong.setText(song.getText().replace(Song.CHORUS_MARK, "").replace(Song.SLIDE_BREAK, ""));
         textSong.setCaretPosition(0);
     }
-
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -215,6 +215,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         ppmAddItem = new javax.swing.JPopupMenu();
         actAddText = new javax.swing.JMenuItem();
+        actAddVerseList = new javax.swing.JMenuItem();
         actAddContentlessItem = new javax.swing.JMenuItem();
         actAddImageList = new javax.swing.JMenuItem();
         actAddVideo = new javax.swing.JMenuItem();
@@ -305,6 +306,15 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         ppmAddItem.add(actAddText);
+
+        actAddVerseList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/font-x-generic.png"))); // NOI18N
+        actAddVerseList.setText(bundle.getString("ADD_VERSE_LIST")); // NOI18N
+        actAddVerseList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actAddVerseListActionPerformed(evt);
+            }
+        });
+        ppmAddItem.add(actAddVerseList);
 
         actAddContentlessItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_insert-note.png"))); // NOI18N
         actAddContentlessItem.setText(bundle.getString("ADD CONTENTLESS ITEM")); // NOI18N
@@ -685,7 +695,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGap(0, 208, Short.MAX_VALUE)
             .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlServiceStartLayout.createSequentialGroup()
-                    .addGap(0, 23, Short.MAX_VALUE)
+                    .addGap(0, 35, Short.MAX_VALUE)
                     .addComponent(jLabel2)
                     .addGap(5, 5, 5)
                     .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -693,14 +703,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addGap(5, 5, 5)
                     .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 23, Short.MAX_VALUE)))
+                    .addGap(0, 36, Short.MAX_VALUE)))
         );
         pnlServiceStartLayout.setVerticalGroup(
             pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 30, Short.MAX_VALUE)
             .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pnlServiceStartLayout.createSequentialGroup()
-                    .addGap(0, 2, Short.MAX_VALUE)
+                    .addGap(0, 5, Short.MAX_VALUE)
                     .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlServiceStartLayout.createSequentialGroup()
                             .addGap(5, 5, 5)
@@ -710,7 +720,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                             .addGap(5, 5, 5)
                             .addComponent(jLabel3))
                         .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 3, Short.MAX_VALUE)))
+                    .addGap(0, 5, Short.MAX_VALUE)))
         );
 
         jPanel2.add(pnlServiceStart, java.awt.BorderLayout.EAST);
@@ -723,16 +733,16 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
+                        .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE))
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(pnlServiceListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                             .addGroup(pnlServiceListLayout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlServiceListLayout.createSequentialGroup()
@@ -750,7 +760,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -794,7 +804,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSongName)
                     .addComponent(lblAuthor))
-                .addContainerGap(405, Short.MAX_VALUE))
+                .addContainerGap(406, Short.MAX_VALUE))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
@@ -808,7 +818,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -880,7 +890,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(monitorDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(liveDisplayPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnShowMonitor))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
         pnlLiveBoxLayout.setVerticalGroup(
             pnlLiveBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -899,12 +909,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(12, 12, 12))
-            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+            .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1061,7 +1071,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
-        if (updateSize){
+        if (updateSize) {
             WindowPropConfig.getInstance().setMainForm(this);
         }
     }//GEN-LAST:event_formComponentResized
@@ -1077,41 +1087,41 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfigActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        try{
+        try {
             ObjectManager.getInstance().setBusyCursor();
             ServiceListTable.getActiveInstance().fileNew();
-        }finally{
+        } finally {
             ObjectManager.getInstance().setDefaultCursor();
         }
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        try{
+        try {
             ObjectManager.getInstance().setBusyCursor();
             ServiceListTable.getActiveInstance().openServiceList();
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
             txtMinutes.setText(String.format("%02d", ServiceListTable.getActiveInstance().getStartMinute()));
             txtTitle.setText(ServiceListTable.getActiveInstance().getTitle());
             txtNotes.setText(ServiceListTable.getActiveInstance().getNotes());
-        }finally{
+        } finally {
             ObjectManager.getInstance().setDefaultCursor();
         }
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        try{
+        try {
             ObjectManager.getInstance().setBusyCursor();
             ServiceListTable.getActiveInstance().saveServiceList();
-        }finally{
+        } finally {
             ObjectManager.getInstance().setDefaultCursor();
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
-        try{
+        try {
             ObjectManager.getInstance().setBusyCursor();
             ServiceListTable.getActiveInstance().saveServiceListAs();
-        }finally{
+        } finally {
             ObjectManager.getInstance().setDefaultCursor();
         }
     }//GEN-LAST:event_btnSaveAsActionPerformed
@@ -1133,9 +1143,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void tableServiceListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableServiceListMouseClicked
 
-        if (evt.getClickCount() > 1){
+        if (evt.getClickCount() > 1) {
             int col = tableServiceList.getColumnModel().getColumnIndexAtX(evt.getX());
-            if (col == ServiceListTable.COLUMN_TITLE){
+            if (col == ServiceListTable.COLUMN_TITLE) {
                 btnEditActionPerformed(null);
             }
         }
@@ -1151,11 +1161,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_btnRemoveMouseClicked
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        if (tableServiceList.getSelectedRow() == -1){
+        if (tableServiceList.getSelectedRow() == -1) {
             return;
         }
 
-        ServiceItem item = (ServiceItem)ServiceListTable.getActiveInstance().getServiceItem( tableServiceList.getSelectedRow() );
+        ServiceItem item = (ServiceItem) ServiceListTable.getActiveInstance().getServiceItem(tableServiceList.getSelectedRow());
         item.edit();
 
     }//GEN-LAST:event_btnEditActionPerformed
@@ -1177,13 +1187,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_txtHoursFocusGained
 
     private void txtHoursFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoursFocusLost
-        try{
+        try {
             int x = Integer.parseInt(txtHours.getText());
-            if (x < 0 || x > 24){
+            if (x < 0 || x > 24) {
                 throw new Exception();
             }
             ServiceListTable.getActiveInstance().setStartHour(x);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
         }
@@ -1191,7 +1201,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_txtHoursFocusLost
 
     private void txtHoursKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHoursKeyPressed
-
 }//GEN-LAST:event_txtHoursKeyPressed
 
     private void txtMinutesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinutesFocusGained
@@ -1199,13 +1208,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_txtMinutesFocusGained
 
     private void txtMinutesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMinutesFocusLost
-        try{
+        try {
             int x = Integer.parseInt(txtMinutes.getText());
-            if (x < 0 || x > 60){
+            if (x < 0 || x > 60) {
                 throw new Exception();
             }
             ServiceListTable.getActiveInstance().setStartMinute(x);
-        }catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));
             txtMinutes.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartMinute()));
         }
@@ -1223,7 +1232,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void actAddContentlessItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddContentlessItemActionPerformed
         String s = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SERVICE ITEM NAME:"), "");
-        if (s != null && !s.trim().equals("")){
+        if (s != null && !s.trim().equals("")) {
             ContentlessServiceItem csi = new ContentlessServiceItem();
             csi.setTitle(s);
             csi.setTemplate("");
@@ -1246,13 +1255,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_actImportItemActionPerformed
 
     private void splSongLibraryPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splSongLibraryPropertyChange
-        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)) {
             WindowPropConfig.getInstance().setSplSongLibrary(Integer.toString(splSongLibrary.getDividerLocation()));
         }
 }//GEN-LAST:event_splSongLibraryPropertyChange
 
     private void liveDisplayPanelpreviewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_liveDisplayPanelpreviewDisplayResized
-
     }//GEN-LAST:event_liveDisplayPanelpreviewDisplayResized
 
     private void monitorDisplayPanelpreviewDisplayResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_monitorDisplayPanelpreviewDisplayResized
@@ -1264,19 +1272,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 }//GEN-LAST:event_btnShowMonitorActionPerformed
 
     private void tableServiceListKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableServiceListKeyPressed
-
     }//GEN-LAST:event_tableServiceListKeyPressed
 
     private void btnShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowActionPerformed
-        ObjectManager.getInstance().setOutputVisible( btnShow.isSelected() );
+        ObjectManager.getInstance().setOutputVisible(btnShow.isSelected());
     }//GEN-LAST:event_btnShowActionPerformed
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
         ServiceListExporterPanel p = new ServiceListExporterPanel();
         p.setLocationRelativeTo(this);
-        if (p.setMode(ServiceListExporterPanel.MODE_PRINT) == false){
+        if (p.setMode(ServiceListExporterPanel.MODE_PRINT) == false) {
             p.dispose();
-        }else{
+        } else {
             p.setVisible(true);
         }
     }//GEN-LAST:event_btnPrintActionPerformed
@@ -1297,13 +1304,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:") + " " + fc.getSelectedFile().getName() + "\n" + ex.getLocalizedMessage());
             } finally {
                 ObjectManager.getInstance().setDefaultCursor();
             }
         }
 
-        
+
     }//GEN-LAST:event_actAddAttachmentActionPerformed
 
     private void actAddVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddVideoActionPerformed
@@ -1318,7 +1325,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 ServiceListTable.getActiveInstance().addItem(asi);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:")+" "+fc.getSelectedFile().getName()+"\n"+ex.getLocalizedMessage());
+                        java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR ATTACHING FILE:") + " " + fc.getSelectedFile().getName() + "\n" + ex.getLocalizedMessage());
             } finally {
                 ObjectManager.getInstance().setDefaultCursor();
             }
@@ -1328,19 +1335,19 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actAddVideoActionPerformed
 
     private void splMainPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splMainPropertyChange
-        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)) {
             WindowPropConfig.getInstance().setSplMain(Integer.toString(splMain.getDividerLocation()));
         }
     }//GEN-LAST:event_splMainPropertyChange
 
     private void splServicePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splServicePropertyChange
-        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)) {
             WindowPropConfig.getInstance().setSplService(Integer.toString(splService.getDividerLocation()));
         }
     }//GEN-LAST:event_splServicePropertyChange
 
     private void splDisplayControlPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_splDisplayControlPropertyChange
-        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)){
+        if (updateSize && evt.getPropertyName().equals(javax.swing.JSplitPane.DIVIDER_LOCATION_PROPERTY)) {
             WindowPropConfig.getInstance().setSplDisplayControl(Integer.toString(splDisplayControl.getDividerLocation()));
         }
     }//GEN-LAST:event_splDisplayControlPropertyChange
@@ -1386,9 +1393,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actEditConfigActionPerformed
 
     private void actFileExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actFileExitActionPerformed
-        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM CLOSE?"), "Datasoul", JOptionPane.YES_NO_OPTION );
+        int resp = JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM CLOSE?"), "Datasoul", JOptionPane.YES_NO_OPTION);
 
-        if (resp == JOptionPane.YES_OPTION){
+        if (resp == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_actFileExitActionPerformed
@@ -1406,28 +1413,34 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_actHelpKeyboardActionPerformed
 
     private void splServiceComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_splServiceComponentResized
-        if ( preview.isPreviewActive() ){
-            splService.setDividerLocation( splService.getHeight() - splService.getDividerSize() - preview.getPreferedHeight());
+        if (preview.isPreviewActive()) {
+            splService.setDividerLocation(splService.getHeight() - splService.getDividerSize() - preview.getPreferedHeight());
         }
     }//GEN-LAST:event_splServiceComponentResized
 
-    public void closeOutputs(){
+    private void actAddVerseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actAddVerseListActionPerformed
+        BibleVerseListEditorForm bvlef = new BibleVerseListEditorForm();
+        bvlef.setLocationRelativeTo(this);
+        bvlef.setVisible(true);
+    }//GEN-LAST:event_actAddVerseListActionPerformed
 
-        if (btnShow.isSelected()){
-            ObjectManager.getInstance().setOutputVisible( false );
+    public void closeOutputs() {
+
+        if (btnShow.isSelected()) {
+            ObjectManager.getInstance().setOutputVisible(false);
             btnShow.setSelected(false);
         }
     }
 
-    public void showOutputs(){
-        if (!btnShow.isSelected()){
-            ObjectManager.getInstance().setOutputVisible( true );
+    public void showOutputs() {
+        if (!btnShow.isSelected()) {
+            ObjectManager.getInstance().setOutputVisible(true);
             btnShow.setSelected(true);
         }
 
     }
 
-    public static String getVersion(){
+    public static String getVersion() {
         try {
             Properties prop = new Properties();
             prop.load(DatasoulMainForm.class.getResourceAsStream("version.properties"));
@@ -1443,12 +1456,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     }
 
     public boolean goToNextServiceItem() {
-       int currentRow = tableServiceList.getSelectedRow();
-       int maxRow = tableServiceList.getRowCount();
-       while (currentRow < maxRow-1){
-           tableServiceList.setRowSelectionInterval(currentRow+1,currentRow+1);
-           goLiveItem();
-           return true;
+        int currentRow = tableServiceList.getSelectedRow();
+        int maxRow = tableServiceList.getRowCount();
+        while (currentRow < maxRow - 1) {
+            tableServiceList.setRowSelectionInterval(currentRow + 1, currentRow + 1);
+            goLiveItem();
+            return true;
         }
         return false;
     }
@@ -1456,24 +1469,22 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     public boolean goToPreviousServiceItem() {
         int currentRow = tableServiceList.getSelectedRow();
         while (currentRow > 0) {
-           tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);
-           goLiveItem();
-           return true;
+            tableServiceList.setRowSelectionInterval(currentRow - 1, currentRow - 1);
+            goLiveItem();
+            return true;
         }
         return false;
     }
 
-
-    public void showDisplayControls(){
+    public void showDisplayControls() {
         tabbedRightSide.setSelectedComponent(splDisplayControl);
     }
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JMenuItem actAddAttachment;
     javax.swing.JMenuItem actAddContentlessItem;
     javax.swing.JMenuItem actAddImageList;
     javax.swing.JMenuItem actAddText;
+    javax.swing.JMenuItem actAddVerseList;
     javax.swing.JMenuItem actAddVideo;
     javax.swing.JMenuItem actEditBackground;
     javax.swing.JMenuItem actEditConfig;
@@ -1554,22 +1565,21 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 
-
-    public void setGstreamerEnabled(boolean b){
+    public void setGstreamerEnabled(boolean b) {
         actAddVideo.setEnabled(b);
         live.setMediaControlsEnabled(b);
     }
 
-    public void updatePreviewHeight(){
-        splService.setDividerLocation(splService.getHeight()-splService.getDividerSize()-preview.getPreferedHeight());
+    public void updatePreviewHeight() {
+        splService.setDividerLocation(splService.getHeight() - splService.getDividerSize() - preview.getPreferedHeight());
     }
 
-    public void setInfoText(String txt){
+    public void setInfoText(String txt) {
         lblInfo.setText(txt);
         tbInfo.setVisible(true);
     }
 
-    public void setOutputEnabled(boolean b){
+    public void setOutputEnabled(boolean b) {
         btnShow.setEnabled(b);
     }
 
@@ -1578,9 +1588,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         public void valueChanged(ListSelectionEvent e) {
             previewItem();
         }
-        
     }
-
 }
 
 
