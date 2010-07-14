@@ -57,7 +57,8 @@ public class WindowPropConfig extends AbstractConfig {
     private String splDisplayControl;
     private String selectedBible;
     private boolean showBibleControls;
-
+    private String textSplitLine;
+    private String textSplitSlide;
 
     protected void registerProperties() {
         super.registerProperties();
@@ -76,6 +77,8 @@ public class WindowPropConfig extends AbstractConfig {
         properties.add("SplDisplayControl");
         properties.add("SelectedBible");
         properties.add("ShowBibleControls");
+        properties.add("TextSplitLine");
+        properties.add("TextSplitSlide");
    }
 
     private boolean checkStr(String str){
@@ -378,6 +381,30 @@ public class WindowPropConfig extends AbstractConfig {
         }else{
             this.showBibleControls = false;
         }
+        save();
+    }
+
+    public String getTextSplitLine() {
+        if (textSplitLine == null)
+            return "";
+        else
+            return textSplitLine;
+    }
+
+    public void setTextSplitLine(String textSplitLine) {
+        this.textSplitLine = textSplitLine;
+        save();
+    }
+
+    public String getTextSplitSlide() {
+        if (textSplitSlide == null)
+            return "";
+        else
+            return textSplitSlide;
+    }
+
+    public void setTextSplitSlide(String textSplitSlide) {
+        this.textSplitSlide = textSplitSlide;
         save();
     }
 }

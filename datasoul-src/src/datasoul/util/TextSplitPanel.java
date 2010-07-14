@@ -20,6 +20,7 @@
 
 package datasoul.util;
 
+import datasoul.config.WindowPropConfig;
 import datasoul.serviceitems.text.TextServiceItem;
 import javax.swing.text.JTextComponent;
 import javax.swing.JOptionPane;
@@ -35,6 +36,19 @@ public class TextSplitPanel extends javax.swing.JPanel {
     /** Creates new form TextSplitPanel */
     public TextSplitPanel() {
         initComponents();
+
+        if (WindowPropConfig.getInstance().getTextSplitLine().length() > 0){
+            txtMaxLenght.setText(WindowPropConfig.getInstance().getTextSplitLine());
+            txtMaxLenght.setEnabled(true);
+            cbMaxLenght.setSelected(true);
+        }
+
+        if (WindowPropConfig.getInstance().getTextSplitSlide().length() > 0){
+            txtMaxSlideLines.setText(WindowPropConfig.getInstance().getTextSplitSlide());
+            txtMaxSlideLines.setEnabled(true);
+            cbMaxSlideLines.setSelected(true);
+        }
+
     }
 
     public void registerTextArea(JTextComponent textComp){
@@ -54,29 +68,60 @@ public class TextSplitPanel extends javax.swing.JPanel {
         cbMaxSlideLines = new javax.swing.JCheckBox();
         txtMaxSlideLines = new javax.swing.JTextField();
         txtMaxLenght = new javax.swing.JTextField();
-        btnOk = new javax.swing.JButton();
+        btnSplit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         cbMaxLenght.setText(bundle.getString("SPLIT IN LINES OF")); // NOI18N
+        cbMaxLenght.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMaxLenghtActionPerformed(evt);
+            }
+        });
 
-        cbMaxSlideLines.setSelected(true);
         cbMaxSlideLines.setText(bundle.getString("SPLIT IN SLIDES OF")); // NOI18N
+        cbMaxSlideLines.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbMaxSlideLinesActionPerformed(evt);
+            }
+        });
 
         txtMaxSlideLines.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtMaxSlideLines.setText("5");
+        txtMaxSlideLines.setEnabled(false);
         txtMaxSlideLines.setPreferredSize(new java.awt.Dimension(30, 20));
+        txtMaxSlideLines.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaxSlideLinesFocusLost(evt);
+            }
+        });
+        txtMaxSlideLines.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaxSlideLinesKeyTyped(evt);
+            }
+        });
 
         txtMaxLenght.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtMaxLenght.setText("40");
+        txtMaxLenght.setEnabled(false);
         txtMaxLenght.setPreferredSize(new java.awt.Dimension(30, 20));
+        txtMaxLenght.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMaxLenghtFocusLost(evt);
+            }
+        });
+        txtMaxLenght.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMaxLenghtKeyTyped(evt);
+            }
+        });
 
-        btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_view-details.png"))); // NOI18N
-        btnOk.setText(bundle.getString("SPLIT")); // NOI18N
-        btnOk.addActionListener(new java.awt.event.ActionListener() {
+        btnSplit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_view-details.png"))); // NOI18N
+        btnSplit.setText(bundle.getString("SPLIT")); // NOI18N
+        btnSplit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnOkActionPerformed(evt);
+                btnSplitActionPerformed(evt);
             }
         });
 
@@ -102,7 +147,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(btnOk)
+                .addComponent(btnSplit)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -114,48 +159,45 @@ public class TextSplitPanel extends javax.swing.JPanel {
                 .addComponent(txtMaxLenght, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addComponent(jLabel2)
                 .addComponent(jLabel1)
-                .addComponent(btnOk))
+                .addComponent(btnSplit))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
+    public void setBtnSplitVisible(boolean b){
+        btnSplit.setVisible(b);
+    }
 
-        String str0;
-        str0 = textComp.getText();
+    public String splitText(String original) throws NumberFormatException {
 
-        int lines;
-        try{
-            lines = Integer.parseInt(txtMaxSlideLines.getText());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID LINES PER SLIDE VALUE"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
-            return;
+
+        int maxSlideLines = 0;
+        if (cbMaxSlideLines.isSelected()){
+            maxSlideLines = Integer.parseInt(txtMaxSlideLines.getText());
         }
 
-        int maxline;
-        try {
-            maxline = Integer.parseInt(txtMaxLenght.getText());
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID CHARACTERS PER LINE VALUE"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
-            return;
+        int maxLenght = 0;
+        if (cbMaxLenght.isSelected()){
+            maxLenght = Integer.parseInt(txtMaxLenght.getText());
         }
 
+        String str0 = original;
 
         // If needed remove slide breaks
-        if ( cbMaxSlideLines.isSelected() ){
+        if ( maxSlideLines > 0 ){
             str0 = str0.replaceAll("\n"+TextServiceItem.SLIDE_BREAK+"\n", "\n");
         }
 
         // If needed, remove line breaks
-        if ( cbMaxLenght.isSelected() ){
+        if ( maxLenght > 0 ){
             str0 = str0.replaceAll("\n"+TextServiceItem.SLIDE_BREAK+"\n", "@@"+TextServiceItem.SLIDE_BREAK+"@@");
             str0 = str0.replaceAll("\n"+TextServiceItem.CHORUS_MARK+"\n", "@@"+TextServiceItem.CHORUS_MARK+"@@");
             str0 = str0.replaceAll("\n", " ");
             str0 = str0.replaceAll("@@"+TextServiceItem.CHORUS_MARK+"@@", "\n"+TextServiceItem.CHORUS_MARK+"\n");
             str0 = str0.replaceAll("@@"+TextServiceItem.SLIDE_BREAK+"@@", "\n"+TextServiceItem.SLIDE_BREAK+"\n");
         }
-        
+
         // if needed, break lines respecting maximum line width
-        if ( cbMaxLenght.isSelected()){
+        if (maxLenght > 0){
             StringBuffer sb  = new StringBuffer();
             String tmp;
             int lastspace = 0;
@@ -164,7 +206,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
                 if ( str0.charAt(i) == ' '){
                     lastspace = i;
                 }
-                if ( (i-lastbreak) >  maxline){
+                if ( (i-lastbreak) >  maxLenght){
                     tmp = str0.substring(lastbreak, lastspace).trim();
                     if (tmp.length() > 0){
                         sb.append(tmp+"\n");
@@ -188,9 +230,9 @@ public class TextSplitPanel extends javax.swing.JPanel {
         }
 
         // Split in slides
-        if ( cbMaxSlideLines.isSelected()){
+        if (maxSlideLines > 0){
             str0 = str0.replace("\n"+TextServiceItem.SLIDE_BREAK+"\n","\n");
-        
+
             StringBuffer sb = new StringBuffer();
 
             String verses[] = str0.split(TextServiceItem.CHORUS_MARK+"\n");
@@ -199,7 +241,7 @@ public class TextSplitPanel extends javax.swing.JPanel {
                 for (int j=0; j<vlines.length; j++){
                     sb.append(vlines[j]);
                     sb.append("\n");
-                    if (lines != 0 && (j+1)%lines == 0 && vlines.length-j>1){
+                    if (maxSlideLines != 0 && (j+1)%maxSlideLines == 0 && vlines.length-j>1){
                         sb.append(TextServiceItem.SLIDE_BREAK);
                         sb.append("\n");
                     }
@@ -212,14 +254,74 @@ public class TextSplitPanel extends javax.swing.JPanel {
             str0 = sb.toString();
         }
 
-        // Store the result
-        textComp.setText(str0);
+        return str0;
 
-    }//GEN-LAST:event_btnOkActionPerformed
+    }
+
+    private void btnSplitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSplitActionPerformed
+
+        try{
+            String str0 = splitText(textComp.getText());
+
+            // Store the result
+            textComp.setText(str0);
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL ERROR"),0);
+        }
+
+    }//GEN-LAST:event_btnSplitActionPerformed
+
+    private void txtMaxLenghtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaxLenghtKeyTyped
+        if (evt.getKeyChar() < '0' || evt.getKeyChar() > '9') {
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_txtMaxLenghtKeyTyped
+
+    private void txtMaxSlideLinesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaxSlideLinesKeyTyped
+        if (evt.getKeyChar() < '0' || evt.getKeyChar() > '9') {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtMaxSlideLinesKeyTyped
+
+    private void cbMaxLenghtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMaxLenghtActionPerformed
+        txtMaxLenght.setEnabled(cbMaxLenght.isSelected());
+        if (cbMaxLenght.isSelected()){
+            WindowPropConfig.getInstance().setTextSplitLine(txtMaxLenght.getText());
+        }else{
+            WindowPropConfig.getInstance().setTextSplitLine("");
+        }
+
+    }//GEN-LAST:event_cbMaxLenghtActionPerformed
+
+    private void cbMaxSlideLinesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMaxSlideLinesActionPerformed
+        txtMaxSlideLines.setEnabled(cbMaxSlideLines.isSelected());
+        if (cbMaxSlideLines.isSelected()){
+            WindowPropConfig.getInstance().setTextSplitSlide(txtMaxSlideLines.getText());
+        }else{
+            WindowPropConfig.getInstance().setTextSplitSlide("");
+        }
+    }//GEN-LAST:event_cbMaxSlideLinesActionPerformed
+
+    private void txtMaxLenghtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaxLenghtFocusLost
+        if (cbMaxLenght.isSelected()){
+            WindowPropConfig.getInstance().setTextSplitLine(txtMaxLenght.getText());
+        }else{
+            WindowPropConfig.getInstance().setTextSplitLine("");
+        }
+    }//GEN-LAST:event_txtMaxLenghtFocusLost
+
+    private void txtMaxSlideLinesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMaxSlideLinesFocusLost
+        if (cbMaxSlideLines.isSelected()){
+            WindowPropConfig.getInstance().setTextSplitSlide(txtMaxSlideLines.getText());
+        }else{
+            WindowPropConfig.getInstance().setTextSplitSlide("");
+        }
+    }//GEN-LAST:event_txtMaxSlideLinesFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnOk;
+    private javax.swing.JButton btnSplit;
     private javax.swing.JCheckBox cbMaxLenght;
     private javax.swing.JCheckBox cbMaxSlideLines;
     private javax.swing.JLabel jLabel1;

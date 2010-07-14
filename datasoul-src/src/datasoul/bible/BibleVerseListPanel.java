@@ -16,6 +16,7 @@ import datasoul.servicelist.ServiceListTable;
 import datasoul.util.SwordHelper;
 import datasoul.util.SwordHelper.ReferenceTxtType;
 import datasoul.util.SwordHelper.TxtSplitType;
+import datasoul.util.TextSplitPanel;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
@@ -141,7 +142,7 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
 
     }
 
-    public void createTextServiceItems() {
+    public void createTextServiceItems(TextSplitPanel split) {
 
         if (!checkSelectedBook()) {
             clearAndClose();
@@ -250,7 +251,8 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
             TextServiceItem textServiceItem = new TextServiceItem();
 
             textServiceItem.setTitle(reference);
-            textServiceItem.setText(sb.toString());
+            String text = split.splitText(sb.toString());
+            textServiceItem.setText(text);
 
             textServiceItem.setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateText());
             ServiceListTable.getActiveInstance().addItem(textServiceItem);
@@ -325,21 +327,15 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE))
-                .addContainerGap())
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
