@@ -62,7 +62,9 @@ public class BibleVerseListEditorForm extends javax.swing.JFrame {
 
         bibleVerseListPanel1.registerBibleTextPanel(bibleTextPanel1);
         Book book = Books.installed().getBook(bibleTextPanel1.getSelectedBookName());
-        bibleVerseListPanel1.setBook(book);
+        if (book != null){
+            bibleVerseListPanel1.setBook(book);
+        }
 
         textSplitPanel1.setBtnSplitVisible(false);
         textSplitPanel1.setVisible(true);
