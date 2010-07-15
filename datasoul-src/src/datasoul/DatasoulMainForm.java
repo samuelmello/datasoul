@@ -648,7 +648,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jPanel2.add(txtTitle, java.awt.BorderLayout.CENTER);
 
+        pnlServiceStart.setLayout(new javax.swing.BoxLayout(pnlServiceStart, javax.swing.BoxLayout.LINE_AXIS));
+
         jLabel2.setText(bundle.getString("START TIME:")); // NOI18N
+        pnlServiceStart.add(jLabel2);
 
         txtHours.setColumns(2);
         txtHours.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -672,9 +675,11 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 txtHoursKeyPressed(evt);
             }
         });
+        pnlServiceStart.add(txtHours);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText(":");
+        pnlServiceStart.add(jLabel3);
 
         txtMinutes.setColumns(2);
         txtMinutes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -687,41 +692,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 txtMinutesFocusLost(evt);
             }
         });
-
-        javax.swing.GroupLayout pnlServiceStartLayout = new javax.swing.GroupLayout(pnlServiceStart);
-        pnlServiceStart.setLayout(pnlServiceStartLayout);
-        pnlServiceStartLayout.setHorizontalGroup(
-            pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 233, Short.MAX_VALUE)
-            .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlServiceStartLayout.createSequentialGroup()
-                    .addGap(0, 35, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(5, 5, 5)
-                    .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(5, 5, 5)
-                    .addComponent(jLabel3)
-                    .addGap(5, 5, 5)
-                    .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 36, Short.MAX_VALUE)))
-        );
-        pnlServiceStartLayout.setVerticalGroup(
-            pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 25, Short.MAX_VALUE)
-            .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlServiceStartLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(pnlServiceStartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnlServiceStartLayout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(jLabel2))
-                        .addComponent(txtHours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(pnlServiceStartLayout.createSequentialGroup()
-                            .addGap(5, 5, 5)
-                            .addComponent(jLabel3))
-                        .addComponent(txtMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        pnlServiceStart.add(txtMinutes);
 
         jPanel2.add(pnlServiceStart, java.awt.BorderLayout.EAST);
 
@@ -760,14 +731,13 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
