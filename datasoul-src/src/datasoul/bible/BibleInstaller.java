@@ -39,6 +39,7 @@ import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.Books;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.BookFilters;
+import org.crosswire.jsword.bridge.BookInstaller;
 
 
 
@@ -375,7 +376,7 @@ public class BibleInstaller extends javax.swing.JFrame {
 
         if (JOptionPane.showConfirmDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ARE YOU SURE TO UNINSTALL") + " " + selected.getName() + " ?", java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM UNINSTALL"), JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             try {
-                Books.installed().removeBook(selected);
+                selected.getDriver().delete(selected);               
             } catch (BookException ex) {
                 ex.printStackTrace();
             }
