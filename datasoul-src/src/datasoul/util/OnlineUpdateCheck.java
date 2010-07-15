@@ -25,7 +25,7 @@ import org.apache.commons.httpclient.methods.GetMethod;
  */
 public class OnlineUpdateCheck extends Thread {
 
-    public static final int VERSION = 2;
+    public static final int VERSION = 3;
 
     public static final String ONLINE_BASE_URL = "http://datasoul-presentation.appspot.com/";
 
