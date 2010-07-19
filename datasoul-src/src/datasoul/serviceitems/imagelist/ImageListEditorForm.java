@@ -14,6 +14,7 @@
 
 package datasoul.serviceitems.imagelist;
 
+import datasoul.DatasoulMainForm;
 import datasoul.util.ObjectManager;
 import datasoul.util.OpenofficeHelper;
 import datasoul.util.ShowDialog;
@@ -28,6 +29,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     /** Creates new form ImageListEditorForm */
     public ImageListEditorForm() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
     }
     
     private ImageListServiceItem origitem;
@@ -234,36 +236,41 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
     private void btnAddOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOfficeActionPerformed
 
-        JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser();
         fc.setMultiSelectionEnabled(false);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            try{
-                setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                OpenofficeHelper helper = new OpenofficeHelper();
+            Thread t = new Thread(){
+                public void run(){
+                    try{
+                        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                        OpenofficeHelper helper = new OpenofficeHelper();
 
-                String name = helper.convertImages(fc.getSelectedFile());
+                        String name = helper.convertImages(fc.getSelectedFile());
 
-                if (name != null){
-                    int i = 0;
-                    do{
-                        File f = new File(name+"."+i+".jpg");
-                        if (f.exists()){
-                            edititem.addImage(f);
-                            f.delete();
-                            i++;
-                        }else{
-                            i = -1;
+                        if (name != null){
+                            int i = 0;
+                            do{
+                                File f = new File(name+"."+i+".jpg");
+                                if (f.exists()){
+                                    edititem.addImage(f);
+                                    f.delete();
+                                    i++;
+                                }else{
+                                    i = -1;
+                                }
+                            } while (i >= 0);
                         }
-                    } while (i >= 0);
-                }
 
-                helper.dispose();
-            }catch(Exception e){
-                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                JOptionPane.showMessageDialog(this, "Error converting file: "+e.getMessage());
-            }finally{
-                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-            }
+                        helper.dispose();
+                    }catch(Exception e){
+                        ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                        JOptionPane.showMessageDialog(ImageListEditorForm.this, "Error converting file: "+e.getMessage());
+                    }finally{
+                        ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    }
+                }
+            };
+            t.start();
         }
         
 
