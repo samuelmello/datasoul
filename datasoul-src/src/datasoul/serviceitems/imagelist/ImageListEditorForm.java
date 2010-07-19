@@ -15,6 +15,7 @@
 package datasoul.serviceitems.imagelist;
 
 import datasoul.util.ObjectManager;
+import datasoul.util.OpenofficeHelper;
 import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
@@ -56,6 +57,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         btnSave = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnAddImages = new javax.swing.JButton();
+        btnAddOffice = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -100,6 +102,17 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         });
         jToolBar2.add(btnAddImages);
 
+        btnAddOffice.setText("Add Office File");
+        btnAddOffice.setFocusable(false);
+        btnAddOffice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAddOffice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAddOffice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddOfficeActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnAddOffice);
+
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/edit-delete_big.png"))); // NOI18N
         btnDelete.setText(bundle.getString("DELETE")); // NOI18N
         btnDelete.setBorderPainted(false);
@@ -120,11 +133,11 @@ public class ImageListEditorForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                    .addComponent(tblImages, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)))
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -218,6 +231,43 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnAddOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOfficeActionPerformed
+
+        JFileChooser fc = new JFileChooser();
+        fc.setMultiSelectionEnabled(false);
+        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            try{
+                setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                OpenofficeHelper helper = new OpenofficeHelper();
+
+                String name = helper.convertImages(fc.getSelectedFile());
+
+                if (name != null){
+                    int i = 0;
+                    do{
+                        File f = new File(name+"."+i+".jpg");
+                        if (f.exists()){
+                            edititem.addImage(f);
+                            f.delete();
+                            i++;
+                        }else{
+                            i = -1;
+                        }
+                    } while (i >= 0);
+                }
+
+                helper.dispose();
+            }catch(Exception e){
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                e.printStackTrace();
+            }finally{
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        }
+        
+
+    }//GEN-LAST:event_btnAddOfficeActionPerformed
+
     public boolean hasChanged(){
         return !origitem.getTitle().equals(txtTitle.getText()) ||
                !origitem.getSlides().equals(edititem.getSlides());
@@ -231,6 +281,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddImages;
+    private javax.swing.JButton btnAddOffice;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel2;
