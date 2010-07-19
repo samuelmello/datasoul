@@ -16,6 +16,7 @@ package datasoul.serviceitems.imagelist;
 
 import datasoul.util.ObjectManager;
 import datasoul.util.OpenofficeHelper;
+import datasoul.util.ShowDialog;
 import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
@@ -102,7 +103,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         });
         jToolBar2.add(btnAddImages);
 
-        btnAddOffice.setText("Add Office File");
+        btnAddOffice.setText("Add Presentation");
         btnAddOffice.setFocusable(false);
         btnAddOffice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAddOffice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -259,7 +260,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                 helper.dispose();
             }catch(Exception e){
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error converting file: "+e.getMessage());
             }finally{
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }

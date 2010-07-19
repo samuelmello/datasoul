@@ -18,6 +18,7 @@ import java.io.InputStream;
 public class OpenofficeHelper {
 
     private File helper;
+    public static final int TIMEOUT = 60;
 
     public OpenofficeHelper() throws IOException {
 
@@ -65,30 +66,17 @@ public class OpenofficeHelper {
             return null;
         }else{
 
+            int i = 0;
             File done = new File(tmp.getAbsolutePath()+".done");
             done.deleteOnExit();
-            while (!done.exists()){
-                System.out.println("Waiting...");
+            while (!done.exists() && i < TIMEOUT){
                 Thread.sleep(1000);
+                i++;
             }
 
             done.delete();
         }
         return tmp.getAbsolutePath();
-    }
-
-    public static void main(String args[]) {
-
-        try{
-            OpenofficeHelper help = new OpenofficeHelper();
-            File f =  new File("/tmp/gloire.ppt");
-            String b = help.convertImages(f);
-            
-            System.out.println("Sainda >>> "+b);
-
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
 

@@ -119,7 +119,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnAddOffice">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Office File"/>
+            <Property name="text" type="java.lang.String" value="Add Presentation"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="verticalTextPosition" type="int" value="3"/>
