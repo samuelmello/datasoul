@@ -69,10 +69,9 @@ public class OpenOfficeTextExtractor {
 
             for (int i=0; i<pagelist.getLength(); i++){
                 findText(pagelist.item(i), sb);
-                System.out.println(sb.toString().trim());
-
                 if (i+1 < pagelist.getLength()){
-                    System.out.println(TextServiceItem.CHORUS_MARK);
+                    sb.append(TextServiceItem.CHORUS_MARK);
+                    sb.append("\n");
                 }
             }
         }catch(SAXException e){
