@@ -19,7 +19,6 @@
  */
 package datasoul;
 
-import datasoul.bible.BibleTextPanel;
 import datasoul.bible.BibleVerseListEditorForm;
 import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
@@ -47,12 +46,12 @@ import datasoul.serviceitems.song.Song;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.templates.TemplateCellEditor;
 import datasoul.util.ObjectManager;
+import datasoul.util.OfficeTextExtractorFrame;
 import java.awt.Dimension;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
@@ -293,6 +292,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         actEditBackground = new javax.swing.JMenuItem();
         actEditTemplates = new javax.swing.JMenuItem();
         actEditConfig = new javax.swing.JMenuItem();
+        actImportSongFromOffice = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         actHelpAbout = new javax.swing.JMenuItem();
         actHelpKeyboard = new javax.swing.JMenuItem();
@@ -996,6 +996,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditConfig);
 
+        actImportSongFromOffice.setText("Import Song from Office Presentation");
+        actImportSongFromOffice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actImportSongFromOfficeActionPerformed(evt);
+            }
+        });
+        jMenu2.add(actImportSongFromOffice);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText(bundle.getString("HELP")); // NOI18N
@@ -1397,6 +1405,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         bvlef.setVisible(true);
     }//GEN-LAST:event_actAddVerseListActionPerformed
 
+    private void actImportSongFromOfficeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actImportSongFromOfficeActionPerformed
+
+        OfficeTextExtractorFrame otef = new OfficeTextExtractorFrame();
+        otef.setLocationRelativeTo(this);
+        otef.showConvertDialog();
+
+    }//GEN-LAST:event_actImportSongFromOfficeActionPerformed
+
     public void closeOutputs() {
 
         if (btnShow.isSelected()) {
@@ -1471,6 +1487,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actHelpAbout;
     javax.swing.JMenuItem actHelpKeyboard;
     javax.swing.JMenuItem actImportItem;
+    javax.swing.JMenuItem actImportSongFromOffice;
     datasoul.datashow.AuxiliarPanel auxiliar;
     javax.swing.JButton btnAddWizard;
     javax.swing.JButton btnBackground;
