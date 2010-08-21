@@ -244,24 +244,13 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                     try{
                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         OpenofficeHelper helper = new OpenofficeHelper();
-
-                        String name = helper.convertImages(fc.getSelectedFile());
-
-                        if (name != null){
-                            int i = 0;
-                            do{
-                                File f = new File(name+"."+i+".jpg");
-                                if (f.exists()){
-                                    edititem.addImage(f);
-                                    f.delete();
-                                    i++;
-                                }else{
-                                    i = -1;
-                                }
-                            } while (i >= 0);
-                        }
-
+                        PresentationConverterProgress pcp = new PresentationConverterProgress();
+                        pcp.setLocationRelativeTo(ImageListEditorForm.this);
+                        pcp.registerHelper(helper);
+                        pcp.setVisible(true);
+                        helper.convertImages(fc.getSelectedFile(), edititem);
                         helper.dispose();
+                        pcp.dispose();
                     }catch(Exception e){
                         ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                         JOptionPane.showMessageDialog(ImageListEditorForm.this, "Error converting file: "+e.getMessage());

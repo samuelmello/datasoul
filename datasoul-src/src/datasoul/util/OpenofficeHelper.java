@@ -5,6 +5,7 @@
 
 package datasoul.util;
 
+import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -18,10 +19,11 @@ import java.io.InputStream;
 public class OpenofficeHelper {
 
     private File helper;
-    public static final int TIMEOUT = 60;
+    private boolean abort;
 
     public OpenofficeHelper() throws IOException {
 
+        abort = false;
         helper = File.createTempFile("DatasoulOpenofficeHelper", ".odt");
         helper.deleteOnExit();
         InputStream is = OpenofficeHelper.class.getResourceAsStream("OpenofficeHelper.odt");
@@ -39,7 +41,7 @@ public class OpenofficeHelper {
         helper.delete();
     }
 
-    public String convertImages(File f) throws IOException, InterruptedException{
+    public void convertImages(File f, ImageListServiceItem item) throws IOException, InterruptedException{
 
         // Create a copy of the file
         File tmp = File.createTempFile("dsconv", f.getName());
@@ -63,21 +65,30 @@ public class OpenofficeHelper {
         Process proc = pb.start();
 
         if (proc.waitFor() != 0){
-            return null;
+            return;
         }else{
 
             int i = 0;
             File done = new File(tmp.getAbsolutePath()+".done");
             done.deleteOnExit();
-            while (!done.exists() && i < TIMEOUT){
-                Thread.sleep(1000);
-                i++;
+            File next = new File(tmp.getAbsolutePath()+"."+i+".jpg");
+            while (abort == false && (!done.exists() || next.exists())){
+                if (next.exists()){
+                    item.addImage(next);
+                    next.delete();
+                    i++;
+                    next = new File(tmp.getAbsolutePath()+"."+i+".jpg");
+                }else{
+                    Thread.sleep(1000);
+                }
             }
 
             done.delete();
         }
-        return tmp.getAbsolutePath();
     }
 
+    public void abort(){
+        abort = true;
+    }
 
 }
