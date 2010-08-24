@@ -20,6 +20,7 @@
 
 package datasoul.datashow;
 
+import datasoul.config.ConfigObj;
 import datasoul.util.ObjectManager;
 
 /**
@@ -314,7 +315,10 @@ public class TimerControlPanel extends javax.swing.JPanel {
         edtTimerTotalSec.setText("00");
         edtTimerStartMin.setText("00");
         edtTimerStartSec.setText("00");
-        btnApplyTimerActionPerformed(null);
+        
+        if (ConfigObj.getActiveInstance().getAutoStartTimerBool()){
+            btnApplyTimerActionPerformed(null);
+        }
 
     }
     

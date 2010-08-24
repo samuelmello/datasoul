@@ -41,6 +41,7 @@ public class ConfigObj extends AbstractConfig {
     private String storageLoc;
     private boolean storageLocChecked;
     private boolean trackDuration;
+    private boolean autoStartTimer;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -60,6 +61,7 @@ public class ConfigObj extends AbstractConfig {
     private ConfigObj() {
         this.isGstreamerActive = true;
         this.onlineCheckUpdate = true;
+        this.autoStartTimer = true;
         // Default output devices
         setMainOutputDevice("");
         setMonitorOutputDevice("");
@@ -97,6 +99,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("OnlineCheckUpdate");
         properties.add("OnlineUsageStats");
         properties.add("TrackDuration");
+        properties.add("AutoStartTimer");
     }
     
     public ArrayList<String> getProperties(){
@@ -388,6 +391,22 @@ public class ConfigObj extends AbstractConfig {
 
     public void setTrackDuration(String s){
         trackDuration = s.equals("1");
+    }
+
+    public String getAutoStartTimer(){
+        if (autoStartTimer){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public boolean getAutoStartTimerBool(){
+        return autoStartTimer;
+    }
+
+    public void setAutoStartTimer(String s){
+        autoStartTimer = s.equals("1");
     }
 
 }

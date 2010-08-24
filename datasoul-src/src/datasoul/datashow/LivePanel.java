@@ -75,9 +75,10 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         if (ConfigObj.getActiveInstance().getMonitorOutput()){
             // Update monitor template
             cm.setTemplateMonitorLive( serviceItem.getDefaultMonitorTemplate() );
-            // Setup timer
-            ObjectManager.getInstance().getTimerControlPanel().setTimerFromServiceItem(serviceItem.getDuration());
         }
+        
+        // Setup timer
+        ObjectManager.getInstance().getTimerControlPanel().setTimerFromServiceItem(serviceItem.getDuration());
 
         if (backwards){
             this.serviceItemTable1.setServiceItem(serviceItem, serviceItem.getRowCount()-1);
