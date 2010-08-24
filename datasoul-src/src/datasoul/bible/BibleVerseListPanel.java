@@ -69,6 +69,9 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
         StyleConstants.setBackground(errorStyle, Color.red);
         clearStyle = doc.addStyle("normalLine", null);
         StyleConstants.setBackground(clearStyle, Color.white);
+
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        jLabel2.setText("<html>"+bundle.getString("BIBLE_VERSE_LIST_SHORT_HELP")+"</html>");
     }
 
     public void registerBibleTextPanel(BibleTextPanel btp) {
