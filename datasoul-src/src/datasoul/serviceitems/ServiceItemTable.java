@@ -311,24 +311,29 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
     }
 
     public void valueChanged(ListSelectionEvent e) {
-        int x = displayTable.getSelectedRow();
 
-        // try to show next two slides
-        if ( (x + 2 > e.getLastIndex()) && (x + 2 < displayTable.getRowCount()) ) {
-                displayTable.scrollRectToVisible( displayTable.getCellRect(x + 2, 0, true) );
-        }else if ( (x + 1 > e.getLastIndex()) && (x + 1 < displayTable.getRowCount()) ) {
-                displayTable.scrollRectToVisible( displayTable.getCellRect(x + 1, 0, true) );
-        }
-       
-        // try to show previous two slides
-        if ( (x - 2 < e.getFirstIndex()) && (x - 2 >= 0) ) {
-                displayTable.scrollRectToVisible( displayTable.getCellRect(x - 2, 0, true) );
-        }else if ( (x - 1 < e.getFirstIndex()) && (x - 1 >= 0 )) {
-                displayTable.scrollRectToVisible( displayTable.getCellRect(x - 1, 0, true) );
-        }
+        try{
+            int x = displayTable.getSelectedRow();
 
-        // ensure that the actual slide is being shown
-        displayTable.scrollRectToVisible( displayTable.getCellRect(x, 0, true) );
+            // try to show next two slides
+            if ( (x + 2 > e.getLastIndex()) && (x + 2 < displayTable.getRowCount()) ) {
+                    displayTable.scrollRectToVisible( displayTable.getCellRect(x + 2, 0, true) );
+            }else if ( (x + 1 > e.getLastIndex()) && (x + 1 < displayTable.getRowCount()) ) {
+                    displayTable.scrollRectToVisible( displayTable.getCellRect(x + 1, 0, true) );
+            }
+
+            // try to show previous two slides
+            if ( (x - 2 < e.getFirstIndex()) && (x - 2 >= 0) ) {
+                    displayTable.scrollRectToVisible( displayTable.getCellRect(x - 2, 0, true) );
+            }else if ( (x - 1 < e.getFirstIndex()) && (x - 1 >= 0 )) {
+                    displayTable.scrollRectToVisible( displayTable.getCellRect(x - 1, 0, true) );
+            }
+
+            // ensure that the actual slide is being shown
+            displayTable.scrollRectToVisible( displayTable.getCellRect(x, 0, true) );
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         
     }
 
