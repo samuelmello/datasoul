@@ -5,6 +5,7 @@
 
 package datasoul.util;
 
+import datasoul.config.ConfigObj;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import java.io.File;
 import java.io.FileInputStream;
@@ -58,7 +59,7 @@ public class OpenofficeHelper {
         fos.close();
 
         // Run openoffice to convert
-        String[] cmd = { "soffice",
+        String[] cmd = { ConfigObj.getActiveInstance().getSofficePath(),
             helper.getAbsolutePath(),
             "macro://./Standard.Module1.ConvertToODP(\""+tmp.getAbsolutePath()+"\")"
         };
@@ -97,7 +98,7 @@ public class OpenofficeHelper {
         fos.close();
 
         // Run openoffice to convert
-        String[] cmd = { "soffice",
+        String[] cmd = { ConfigObj.getActiveInstance().getSofficePath(),
             helper.getAbsolutePath(),
             "macro://./Standard.Module1.ConvertToImage(\""+tmp.getAbsolutePath()+"\")"
         };

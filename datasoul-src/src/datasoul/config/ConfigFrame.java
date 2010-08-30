@@ -33,6 +33,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileFilter;
 
 /**
  *
@@ -59,8 +61,18 @@ public class ConfigFrame extends javax.swing.JFrame {
         configObj = ConfigObj.getNextInstance();
         refreshScreenValues();
 
-        setSize(600,630);
+        setSize(600,650);
+        updateHeight();
 
+    }
+
+    private void updateHeight(){
+
+        SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                setSize(getWidth(), btnSave.getY()+btnSave.getHeight()*2 + 10);
+            }
+        });
     }
 
     /** This method is called from within the constructor to
@@ -100,6 +112,9 @@ public class ConfigFrame extends javax.swing.JFrame {
         cbTrackDuration = new javax.swing.JCheckBox();
         cbAutoStartTimer = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtSofficeLocation = new javax.swing.JTextField();
+        btnSofficeLocation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -314,6 +329,18 @@ public class ConfigFrame extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
         jLabel4.setText("Configure Datasoul behavior");
 
+        jLabel11.setText(bundle.getString("OPENOFFICE_LOCATION")); // NOI18N
+
+        txtSofficeLocation.setEditable(false);
+        txtSofficeLocation.setText("jTextField1");
+
+        btnSofficeLocation.setText(bundle.getString("CHANGE")); // NOI18N
+        btnSofficeLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSofficeLocationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -329,7 +356,13 @@ public class ConfigFrame extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addComponent(clockMode, 0, 366, Short.MAX_VALUE))
                     .addComponent(cbTrackDuration)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSofficeLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSofficeLocation)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -343,7 +376,12 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbTrackDuration)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbAutoStartTimer))
+                .addComponent(cbAutoStartTimer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(txtSofficeLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSofficeLocation)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -426,8 +464,35 @@ public class ConfigFrame extends javax.swing.JFrame {
 
     private void cbDetectMonitorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDetectMonitorsActionPerformed
         pnlMonitors.setVisible(!cbDetectMonitors.isSelected());
-        
+        updateHeight();
     }//GEN-LAST:event_cbDetectMonitorsActionPerformed
+
+    private void btnSofficeLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSofficeLocationActionPerformed
+        JFileChooser fc = new JFileChooser();
+        File dir = new File(txtSofficeLocation.getText());
+        fc.setCurrentDirectory(dir);
+        fc.setDialogType(JFileChooser.OPEN_DIALOG);
+        fc.setMultiSelectionEnabled(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileFilter(new FileFilter(){
+
+            @Override
+            public boolean accept(File f) {
+                return (!f.isFile() || f.getName().equalsIgnoreCase("soffice")
+                        || f.getName().equalsIgnoreCase("soffice.exe"));
+            }
+
+            @Override
+            public String getDescription() {
+                return "OpenOffice Executable (soffice, soffice.exe)";
+            }
+
+        });
+        if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
+            txtSofficeLocation.setText(fc.getSelectedFile().getAbsolutePath());
+        }
+    }//GEN-LAST:event_btnSofficeLocationActionPerformed
 
     private void registerComponents(){
         registerComponent(cbMonitorOutput,"MonitorOutputIdx");
@@ -448,6 +513,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         registerComponent(cbTrackDuration, "TrackDuration");
 
         registerComponent(cbAutoStartTimer, "AutoStartTimer");
+        registerComponent(txtSofficeLocation, "SofficePath");
 
     }
 
@@ -529,6 +595,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDiscard;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnSofficeLocation;
     private javax.swing.JButton btnStgloc;
     private javax.swing.JCheckBox cbAutoStartTimer;
     private javax.swing.JCheckBox cbDetectMonitors;
@@ -541,6 +608,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox clockMode;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
@@ -554,6 +622,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblMonitorDisabled;
     private javax.swing.JPanel pnlMonitors;
+    private javax.swing.JTextField txtSofficeLocation;
     private javax.swing.JTextField txtStorageLoc;
     // End of variables declaration//GEN-END:variables
 

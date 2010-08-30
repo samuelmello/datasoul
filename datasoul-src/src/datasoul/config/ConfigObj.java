@@ -42,6 +42,7 @@ public class ConfigObj extends AbstractConfig {
     private boolean storageLocChecked;
     private boolean trackDuration;
     private boolean autoStartTimer;
+    private String sofficePath;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -62,6 +63,7 @@ public class ConfigObj extends AbstractConfig {
         this.isGstreamerActive = true;
         this.onlineCheckUpdate = true;
         this.autoStartTimer = true;
+        this.sofficePath = "soffice";
         // Default output devices
         setMainOutputDevice("");
         setMonitorOutputDevice("");
@@ -100,6 +102,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("OnlineUsageStats");
         properties.add("TrackDuration");
         properties.add("AutoStartTimer");
+        properties.add("SofficePath");
     }
     
     public ArrayList<String> getProperties(){
@@ -409,6 +412,12 @@ public class ConfigObj extends AbstractConfig {
         autoStartTimer = s.equals("1");
     }
 
+    public String getSofficePath(){
+        return sofficePath;
+    }
+
+    public void setSofficePath(String s){
+        this.sofficePath = s;
+    }
+
 }
-
-
