@@ -109,6 +109,9 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
         if (n.getNodeName().equals("text:span")){
             sb.append(n.getTextContent());
             sb.append("\n");
+        }else if (n.getNodeName().equals("text:p")){
+            sb.append(n.getTextContent());
+            sb.append("\n");
         }else{
             NodeList childs = n.getChildNodes();
             for (int i=0; i<childs.getLength(); i++){
@@ -171,7 +174,7 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
     }
 
 
-    public void processOdpFile(File officeFile) throws IOException{
+    public void processOfficeFile(File officeFile) throws IOException, InterruptedException{
 
         // Determine the name
         String origname = officeFile.getName();
@@ -195,10 +198,28 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
         song.setFilePath(songFile.getAbsolutePath());
         song.setTemplate(DisplayControlConfig.getInstance().getDefaultTemplateSong());
 
+        // If needed, convert the file to ODP
+        File processFile = officeFile;
+        if (officeFile.getName().toLowerCase().endsWith("ppt") ||
+                officeFile.getName().toLowerCase().endsWith("pptx")){
+            OpenofficeHelper helper = new OpenofficeHelper();
+            String convFile = helper.convertToODP(officeFile);
+            processFile = new File(convFile);
+            if (!processFile.exists()){
+                throw new IOException("Unable to convert document: "+officeFile.getName());
+            }
+            helper.dispose();
+        }
+
         // Extract text from Office file
         StringBuffer sb = new StringBuffer();
-        convertPresentationToText(officeFile, sb);
+        convertPresentationToText(processFile, sb);
         song.setText(sb.toString());
+
+        // If needed, cleanup converted ODP file
+        if (processFile != officeFile){
+            processFile.delete();
+        }
 
         // Write the file
         try{
@@ -230,35 +251,42 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
 
     public void showConvertDialog(){
 
-        JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.setMultiSelectionEnabled(true);
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Presentation Files "+"(*.odp)", "odp") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter("Presentation Files "+"(*.odp,*.ppt,*.pptx)", "odp", "ppt", "pptx") );
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 
             jProgressBar1.setMaximum(fc.getSelectedFiles().length);
             lblName.setText("");
             setVisible(true);
 
-            int i = 0;
-            for (File f : fc.getSelectedFiles()){
+            Thread process = new Thread(){
+                public void run(){
+                    int i = 0;
+                    for (File f : fc.getSelectedFiles()){
 
-                // Update graphic
-                lblName.setText(f.getName());
-                jProgressBar1.setValue(++i);
+                        // Update graphic
+                        lblName.setText(f.getName());
+                        jProgressBar1.setValue(++i);
 
-                // Process file
-                try {
-                    processOdpFile(f);
-                } catch (IOException ex) {
-                    ShowDialog.showWriteFileError(f.getName(), ex);
+                        // Process file
+                        try {
+                            processOfficeFile(f);
+                        } catch (IOException ex) {
+                            ShowDialog.showWriteFileError(f.getName(), ex);
+                        } catch (InterruptedException ex2) {
+                            ShowDialog.showWriteFileError(f.getName(), ex2);
+                        }
+                    }
+                    AllSongsListTable.getInstance().sortByName();
+
+                    OfficeTextExtractorFrame.this.dispose();
                 }
-            }
-            AllSongsListTable.getInstance().sortByName();
+            };
+
+            process.start();
         }
-
-        dispose();
-
     }
 
 
