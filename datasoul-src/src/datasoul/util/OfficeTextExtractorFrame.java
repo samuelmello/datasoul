@@ -63,10 +63,11 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Converting Office Files");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("CONVERTING OFFICE FILES")); // NOI18N
         setResizable(false);
 
-        jLabel1.setText("Convertendo:");
+        jLabel1.setText(bundle.getString("CONVERTING:")); // NOI18N
 
         lblName.setText("jLabel2");
 
@@ -143,7 +144,7 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
 
             if (ze == null){
                 zip.close();
-                throw new IOException("Invalid OpenOffice Presentation file");
+                throw new IOException(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID OPENOFFICE PRESENTATION FILE"));
             }
 
             dom = db.parse(zip.getInputStream(ze));
@@ -206,7 +207,7 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
             String convFile = helper.convertToODP(officeFile);
             processFile = new File(convFile);
             if (!processFile.exists()){
-                throw new IOException("Unable to convert document: "+officeFile.getName());
+                throw new IOException(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CONVERT DOCUMENT: ")+officeFile.getName());
             }
             helper.dispose();
         }
@@ -254,7 +255,7 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
         final JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.setMultiSelectionEnabled(true);
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Presentation Files "+"(*.odp,*.ppt,*.pptx)", "odp", "ppt", "pptx") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PRESENTATION FILES")+" (*.odp,*.ppt,*.pptx)", "odp", "ppt", "pptx") );
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 
             jProgressBar1.setMaximum(fc.getSelectedFiles().length);

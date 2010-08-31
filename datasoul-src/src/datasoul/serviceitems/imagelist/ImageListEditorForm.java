@@ -17,12 +17,12 @@ package datasoul.serviceitems.imagelist;
 import datasoul.DatasoulMainForm;
 import datasoul.util.ObjectManager;
 import datasoul.util.OpenofficeHelper;
-import datasoul.util.ShowDialog;
 import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ImageListEditorForm extends javax.swing.JFrame {
 
@@ -94,7 +94,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         jToolBar2.add(jSeparator1);
 
         btnAddImages.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/insert-image.png"))); // NOI18N
-        btnAddImages.setText(bundle.getString("ADD")); // NOI18N
+        btnAddImages.setText(bundle.getString("ADD IMAGE")); // NOI18N
         btnAddImages.setBorderPainted(false);
         btnAddImages.setFocusPainted(false);
         btnAddImages.setFocusable(false);
@@ -105,10 +105,9 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         });
         jToolBar2.add(btnAddImages);
 
-        btnAddOffice.setText("Add Presentation");
+        btnAddOffice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-presentation.png"))); // NOI18N
+        btnAddOffice.setText(bundle.getString("ADD PRESENTATION")); // NOI18N
         btnAddOffice.setFocusable(false);
-        btnAddOffice.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAddOffice.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAddOffice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddOfficeActionPerformed(evt);
@@ -238,6 +237,8 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
         final JFileChooser fc = new JFileChooser();
         fc.setMultiSelectionEnabled(false);
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PRESENTATION FILES")+" (*.odp,*.ppt,*.pptx)", "odp", "ppt", "pptx") );
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             Thread t = new Thread(){
                 public void run(){
@@ -253,7 +254,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                         pcp.dispose();
                     }catch(Exception e){
                         ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-                        JOptionPane.showMessageDialog(ImageListEditorForm.this, "Error converting file: "+e.getMessage());
+                        JOptionPane.showMessageDialog(ImageListEditorForm.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR CONVERTING FILE")+": "+e.getMessage());
                     }finally{
                         ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                     }

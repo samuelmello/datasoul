@@ -323,11 +323,11 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbTrackDuration.setText(bundle.getString("MONITOR THE DURATION OF EACH SERVICE ITEM")); // NOI18N
 
-        cbAutoStartTimer.setText("Start timer when item is presented");
+        cbAutoStartTimer.setText(bundle.getString("START TIMER WHEN ITEM IS PRESENTED")); // NOI18N
 
         jLabel4.setFont(jLabel4.getFont().deriveFont(jLabel4.getFont().getSize()-2f));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser.png"))); // NOI18N
-        jLabel4.setText("Configure Datasoul behavior");
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-properties_small.png"))); // NOI18N
+        jLabel4.setText(bundle.getString("CONFIGURE DATASOUL BEHAVIOR")); // NOI18N
 
         jLabel11.setText(bundle.getString("OPENOFFICE_LOCATION")); // NOI18N
 
@@ -485,7 +485,7 @@ public class ConfigFrame extends javax.swing.JFrame {
 
             @Override
             public String getDescription() {
-                return "OpenOffice Executable (soffice, soffice.exe)";
+                return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("OPENOFFICE EXECUTABLE")+" (soffice, soffice.exe)";
             }
 
         });

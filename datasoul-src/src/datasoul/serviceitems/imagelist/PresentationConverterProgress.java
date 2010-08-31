@@ -40,12 +40,12 @@ public class PresentationConverterProgress extends javax.swing.JFrame {
         jProgressBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Converting...");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("CONVERTING OFFICE FILES")); // NOI18N
         setResizable(false);
 
-        jLabel1.setText("Converting...");
+        jLabel1.setText(bundle.getString("CONVERTING OFFICE FILES")); // NOI18N
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
         btnCancel.setText(bundle.getString("CANCEL")); // NOI18N
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

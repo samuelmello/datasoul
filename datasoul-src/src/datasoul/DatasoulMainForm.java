@@ -996,7 +996,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditConfig);
 
-        actImportSongFromOffice.setText("Import Song from Office Presentation");
+        actImportSongFromOffice.setText(bundle.getString("IMPORT SONG FROM OFFICE PRESENTATION")); // NOI18N
         actImportSongFromOffice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actImportSongFromOfficeActionPerformed(evt);
