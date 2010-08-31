@@ -21,17 +21,20 @@ public class OpenofficeHelper {
 
     private File helper;
     private boolean abort;
+    private File tmp;
 
     public OpenofficeHelper() throws IOException {
 
+        tmp = null;
         abort = false;
         helper = File.createTempFile("DatasoulOpenofficeHelper", ".odt");
         helper.deleteOnExit();
         InputStream is = OpenofficeHelper.class.getResourceAsStream("OpenofficeHelper.odt");
         FileOutputStream fos = new FileOutputStream(helper);
-        int x;
-        while ((x=is.read()) != -1){
-            fos.write((byte)x);
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = is.read(buffer)) != -1){
+            fos.write(buffer, 0, bytesRead);
         }
         is.close();
         fos.close();
@@ -42,32 +45,40 @@ public class OpenofficeHelper {
         helper.delete();
     }
 
-    public String convertToODP(File f) throws IOException, InterruptedException {
-
-        String ret = null;
+    private int init(File f, String macro) throws IOException, InterruptedException{
 
         // Create a copy of the file
-        File tmp = File.createTempFile("dsconv", f.getName());
+        tmp = File.createTempFile("dsconv", f.getName().substring(f.getName().lastIndexOf(".")));
         tmp.deleteOnExit();
         FileInputStream is = new FileInputStream(f);
         FileOutputStream fos = new FileOutputStream(tmp);
-        int x;
-        while ((x=is.read()) != -1){
-            fos.write((byte)x);
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = is.read(buffer)) != -1){
+            fos.write(buffer, 0, bytesRead);
         }
         is.close();
         fos.close();
 
         // Run openoffice to convert
         String[] cmd = { ConfigObj.getActiveInstance().getSofficePath(),
+            "-headless",
             helper.getAbsolutePath(),
-            "macro://./Standard.Module1.ConvertToODP(\""+tmp.getAbsolutePath()+"\")"
+            "macro://./Standard.Module1."+macro+"(\""+tmp.getAbsolutePath()+"\")"
         };
         ProcessBuilder pb = new ProcessBuilder(cmd);
         pb.redirectErrorStream(true);
         Process proc = pb.start();
 
-        if (proc.waitFor() == 0){
+        return proc.waitFor();
+
+    }
+
+    public String convertToODP(File f) throws IOException, InterruptedException {
+
+        String ret = null;
+
+        if (init(f, "ConvertToODP") == 0){
             File done = new File(tmp.getAbsolutePath()+".done");
             done.deleteOnExit();
             while (abort == false && !done.exists()){
@@ -85,28 +96,7 @@ public class OpenofficeHelper {
 
     public void convertImages(File f, ImageListServiceItem item) throws IOException, InterruptedException{
 
-        // Create a copy of the file
-        File tmp = File.createTempFile("dsconv", f.getName());
-        tmp.deleteOnExit();
-        FileInputStream is = new FileInputStream(f);
-        FileOutputStream fos = new FileOutputStream(tmp);
-        int x;
-        while ((x=is.read()) != -1){
-            fos.write((byte)x);
-        }
-        is.close();
-        fos.close();
-
-        // Run openoffice to convert
-        String[] cmd = { ConfigObj.getActiveInstance().getSofficePath(),
-            helper.getAbsolutePath(),
-            "macro://./Standard.Module1.ConvertToImage(\""+tmp.getAbsolutePath()+"\")"
-        };
-        ProcessBuilder pb = new ProcessBuilder(cmd);
-        pb.redirectErrorStream(true);
-        Process proc = pb.start();
-
-        if (proc.waitFor() == 0){
+        if (init(f, "ConvertToImage") == 0){
             int i = 0;
             File done = new File(tmp.getAbsolutePath()+".done");
             done.deleteOnExit();
