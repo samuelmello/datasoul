@@ -36,7 +36,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
     private ImageListServiceItem edititem;
 
     public ImageListEditorForm(ImageListServiceItem item){
-        initComponents();
+        this();
         tblImages.setHeaderVisible(false);
         this.origitem = item;
         this.edititem = item.getEditableCopy();
