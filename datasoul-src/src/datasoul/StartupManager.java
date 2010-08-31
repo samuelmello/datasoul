@@ -244,7 +244,7 @@ public class StartupManager {
         mainForm.setVisible(true);
 
         // If user provided an initial file, open it
-        if (initialFile != null && (initialFile.endsWith(".servicelistx") || initialFile.endsWith(".servicelist"))){
+        if (initialFile != null && (initialFile.endsWith(".servicelistz") || initialFile.endsWith(".servicelist"))){
             final File f = new File(initialFile);
             if (f.exists()){
                 SwingUtilities.invokeLater(new Runnable(){
