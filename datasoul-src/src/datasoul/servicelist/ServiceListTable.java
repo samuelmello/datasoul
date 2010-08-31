@@ -427,14 +427,11 @@ public class ServiceListTable extends ListTable {
         fc.setCurrentDirectory(dir);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();
-
             openFile(fileName);
-
-            tableModelChanged();
         }
     }
 
-    private void openFile(String filename) {
+    public void openFile(String filename) {
 
         try{
             InputStream is = null;
@@ -469,6 +466,7 @@ public class ServiceListTable extends ListTable {
         }catch (Exception e){
             ShowDialog.showReadFileError(filename, e);
         }
+        tableModelChanged();
 
     }
 

@@ -21,6 +21,7 @@ import datasoul.config.UsageStatsConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.serviceitems.song.AllSongsListTable;
+import datasoul.servicelist.ServiceListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
 import datasoul.util.DatasoulKeyListener;
@@ -36,6 +37,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
@@ -49,7 +51,7 @@ public class StartupManager {
      */
     public static void main(String args[]) {
         StartupManager sm = new StartupManager();
-        sm.run();
+        sm.run(args.length > 0 ? args[0] : null);
     }
 
     public void checkStorageLocation(){
@@ -202,7 +204,7 @@ public class StartupManager {
         }
     }
 
-    void run() {
+    void run(String initialFile) {
 
         // Use IPv4, needed by http-commons
         System.getProperties().setProperty("java.net.preferIPv4Stack", "true");
@@ -240,6 +242,18 @@ public class StartupManager {
 
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         mainForm.setVisible(true);
+
+        // If user provided an initial file, open it
+        if (initialFile != null && (initialFile.endsWith(".servicelistx") || initialFile.endsWith(".servicelist"))){
+            final File f = new File(initialFile);
+            if (f.exists()){
+                SwingUtilities.invokeLater(new Runnable(){
+                    public void run(){
+                        ServiceListTable.getActiveInstance().openFile(f.getAbsolutePath());
+                    }
+                });
+            }
+        }
 
         try{
             if (ConfigObj.getActiveInstance().isGstreamerActive()){
