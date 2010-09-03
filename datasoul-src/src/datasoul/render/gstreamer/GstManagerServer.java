@@ -25,6 +25,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -69,7 +70,6 @@ public class GstManagerServer {
                     Socket s = ss.accept();
                     WorkerThread t = new WorkerThread(s);
                     workerers.add(t);
-                    System.out.println("added "+t);
                     t.start();
                 }
             }catch (Exception e){
@@ -175,13 +175,12 @@ public class GstManagerServer {
                         ((GstNotification)o).run();
                     }
                 }
-            } catch (EOFException eof){
+            } catch (SocketException eof){
                 // Silently ignore disconnection
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
             workerers.remove(WorkerThread.this);
-            System.out.println("removed "+this);
         }
 
         public ObjectOutputStream getOutput(){

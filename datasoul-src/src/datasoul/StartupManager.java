@@ -20,8 +20,8 @@ import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.notifications.GstNotificationFileOpen;
 import datasoul.serviceitems.song.AllSongsListTable;
-import datasoul.servicelist.ServiceListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
 import datasoul.util.DatasoulKeyListener;
@@ -37,7 +37,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.swing.SwingUtilities;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import javax.swing.UIManager;
 
 /**
@@ -50,8 +51,30 @@ public class StartupManager {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+        // If there is a file, first try to send a FileOpen notification to another instance
+        if (args.length > 0){
+            sendFileOpenNotification(args[0]);
+        }
+
         StartupManager sm = new StartupManager();
         sm.run(args.length > 0 ? args[0] : null);
+    }
+
+    public static void sendFileOpenNotification(String filename){
+        try{
+            Socket s = new Socket("localhost", 34912);
+            s.setTcpNoDelay(true);
+            ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
+            output.writeObject(new GstNotificationFileOpen(filename));
+            output.flush();
+            output.reset();
+            output.close();
+            // If we were able to send the notification, just quit
+            System.exit(0);
+        }catch(Exception e){
+            // ignore and start a new session
+        }
     }
 
     public void checkStorageLocation(){
@@ -244,15 +267,9 @@ public class StartupManager {
         mainForm.setVisible(true);
 
         // If user provided an initial file, open it
-        if (initialFile != null && (initialFile.endsWith(".servicelistz") || initialFile.endsWith(".servicelist"))){
-            final File f = new File(initialFile);
-            if (f.exists()){
-                SwingUtilities.invokeLater(new Runnable(){
-                    public void run(){
-                        ServiceListTable.getActiveInstance().openFile(f.getAbsolutePath());
-                    }
-                });
-            }
+        if (initialFile != null){
+            GstNotificationFileOpen open = new GstNotificationFileOpen(initialFile);
+            open.run();
         }
 
         try{
