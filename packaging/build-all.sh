@@ -28,7 +28,7 @@ cd ..
 
 # Build RPM
 cd installers
-alien -k --to-rpm datasoul_${DSVERSION}_all.deb
+alien -k --scripts --to-rpm datasoul_${DSVERSION}_all.deb
 cd ..
 
 # Build MacOSX
