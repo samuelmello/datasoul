@@ -2,4 +2,3 @@
 
 update-mime-database /usr/share/mime
 update-desktop-database
-update-icon-caches /usr/share/icons/gnome
