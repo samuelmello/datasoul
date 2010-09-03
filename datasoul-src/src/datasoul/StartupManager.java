@@ -63,10 +63,13 @@ public class StartupManager {
 
     public static void sendFileOpenNotification(String filename){
         try{
+            File f = new File(filename);
+            if (!f.exists()) return;
+
             Socket s = new Socket("localhost", 34912);
             s.setTcpNoDelay(true);
             ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
-            output.writeObject(new GstNotificationFileOpen(filename));
+            output.writeObject(new GstNotificationFileOpen(f.getAbsolutePath()));
             output.flush();
             output.reset();
             output.close();
