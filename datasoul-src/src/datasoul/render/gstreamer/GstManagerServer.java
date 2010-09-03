@@ -18,12 +18,14 @@ package datasoul.render.gstreamer;
 import datasoul.config.ConfigObj;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.notifications.GstNotification;
+import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -38,7 +40,9 @@ public class GstManagerServer {
     private static GstManagerServer instance;
 
     private GstManagerServer(){
-
+        workerers = new ArrayList<WorkerThread>();
+        server = new ServerThread();
+        server.start();
     }
 
     public static GstManagerServer getInstance(){
@@ -49,17 +53,33 @@ public class GstManagerServer {
     }
 
     private Process proc;
-    private ServerSocket ss;
-    protected Socket s;
-    protected ObjectOutputStream output;
-    protected ObjectInputStream input;
+    protected ServerThread server;
     protected Semaphore connectSemaphore;
     protected StdoutDumpThread stdoutDumpThread;
-    protected WorkerThread workerThread;
+    protected ArrayList<WorkerThread> workerers;
+
+    public class ServerThread extends Thread {
+        private ServerSocket ss;
+        
+        @Override
+        public void run(){
+            try{
+                ss = new ServerSocket(34912);
+                while(true){
+                    Socket s = ss.accept();
+                    WorkerThread t = new WorkerThread(s);
+                    workerers.add(t);
+                    System.out.println("added "+t);
+                    t.start();
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
 
     public boolean start(){
         try {
-            ss = new ServerSocket(34912);
             String[] cmd = { System.getProperty("java.home")+File.separator+"bin"+File.separator+"java",
                         "-cp",
                         System.getProperty("java.class.path"),
@@ -74,9 +94,6 @@ public class GstManagerServer {
             
             connectSemaphore = new Semaphore(0);
             
-            workerThread = new WorkerThread();
-            workerThread.start();
-
             for (int retries = 0; retries < 10; retries ++){
                 if (connectSemaphore.tryAcquire(1, TimeUnit.SECONDS)){
                     return true;
@@ -96,7 +113,6 @@ public class GstManagerServer {
              */
 
             proc.destroy();
-            workerThread.interrupt();
             stdoutDumpThread.interrupt();
             return false;
 
@@ -114,12 +130,14 @@ public class GstManagerServer {
 
         try {
 
-            if (output == null){
-                System.err.println("Rejecting command "+obj);
-                return;
+            for (WorkerThread w : workerers){
+                if (w.getOutput() == null){
+                    System.err.println("Rejecting command "+obj);
+                    return;
+                }
+                w.getOutput().writeObject(obj);
+                w.getOutput().reset();
             }
-            output.writeObject(obj);
-            output.reset();
 
         } catch (Exception e){
             e.printStackTrace();
@@ -127,19 +145,29 @@ public class GstManagerServer {
     }
 
     public boolean isRunning(){
-        return (output != null);
+        return (workerers.size() > 0);
+    }
+
+    public void clientConnected(){
+        connectSemaphore.release();
     }
 
     public class WorkerThread extends Thread {
+
+        protected ObjectOutputStream output;
+        protected ObjectInputStream input;
+        protected Socket s;
+
+        public WorkerThread(Socket s){
+            this.s = s;
+        }
+
         @Override
         public void run(){
             try {
-                s = ss.accept();
                 s.setTcpNoDelay(true);
                 output = new ObjectOutputStream(s.getOutputStream());
                 input = new ObjectInputStream(s.getInputStream());
-
-                connectSemaphore.release();
 
                 while (true){
                     Object o = input.readObject();
@@ -147,10 +175,21 @@ public class GstManagerServer {
                         ((GstNotification)o).run();
                     }
                 }
+            } catch (EOFException eof){
+                // Silently ignore disconnection
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+            workerers.remove(WorkerThread.this);
+            System.out.println("removed "+this);
+        }
 
+        public ObjectOutputStream getOutput(){
+            return output;
+        }
+
+        public ObjectInputStream getInput(){
+            return input;
         }
     }
 

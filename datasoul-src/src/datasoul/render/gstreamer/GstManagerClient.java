@@ -20,6 +20,7 @@ import datasoul.render.ContentDisplayRenderer;
 import datasoul.render.ContentRender;
 import datasoul.render.OutputDevice;
 import datasoul.render.gstreamer.notifications.GstNotification;
+import datasoul.render.gstreamer.notifications.GstNotificationHello;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -90,6 +91,7 @@ public class GstManagerClient {
             s.setTcpNoDelay(true);
             output = new ObjectOutputStream(s.getOutputStream());
             input = new ObjectInputStream(s.getInputStream());
+            sendNotification(new GstNotificationHello());
             while(true){
                 Object o = input.readObject();
                 if (o == null){
