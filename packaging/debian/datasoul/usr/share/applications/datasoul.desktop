@@ -8,3 +8,4 @@ GenericName=Datasoul
 Terminal=false
 Type=Application
 Categories=Application;AudioVideo;
+MimeType=application/x-datasoul-servicelist
