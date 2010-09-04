@@ -198,7 +198,7 @@ public class StartupManager {
 
 
     protected void copySampleServices(String dir){
-        String files[] = {"SampleService.servicelist"};
+        String files[] = {"SampleService.servicelistz"};
 
         for (String f: files){
             try{
