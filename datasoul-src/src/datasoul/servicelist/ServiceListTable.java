@@ -356,8 +356,7 @@ public class ServiceListTable extends ListTable {
 
         }
 
-    public void fileNew(){
-
+    public boolean askForSaveOrCancel(){
         File f = new File(fileName);
         String name;
         if (f.exists()){
@@ -365,15 +364,27 @@ public class ServiceListTable extends ListTable {
         }else{
             name = "";
         }
+
+        // For empty files, never save
+        if (name.equals("") && getRowCount() == 0)
+            return true;
+
+
+
         int resp = JOptionPane.showConfirmDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DO YOU WANT TO SAVE ")+name+ "?" );
 
-        switch(resp){
-            case JOptionPane.CANCEL_OPTION:
-                return;
-            case JOptionPane.YES_OPTION:
-                saveServiceList();
-                break;
+        if (resp == JOptionPane.CANCEL_OPTION){
+            return false;
+        }else if (resp == JOptionPane.YES_OPTION){
+            saveServiceList();
         }
+        return true;
+    }
+
+    public void fileNew(){
+
+        if (askForSaveOrCancel() == false)
+            return;
 
         cleanup();
         fileName = "";
@@ -419,16 +430,15 @@ public class ServiceListTable extends ListTable {
         }
     }
 
-    public void openServiceList() {
+    public File openServiceList() {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL SERVICE LISTS"), "servicelistz", "servicelist") );
-        File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
-        fc.setCurrentDirectory(dir);
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            fileName = fc.getSelectedFile().getPath();
-            openFile(fileName);
+            return fc.getSelectedFile();
         }
+        return null;
     }
 
     public void openFile(String filename) {
@@ -466,6 +476,9 @@ public class ServiceListTable extends ListTable {
         }catch (Exception e){
             ShowDialog.showReadFileError(filename, e);
         }
+
+        this.fileName = filename;
+
         tableModelChanged();
 
     }
@@ -473,10 +486,9 @@ public class ServiceListTable extends ListTable {
     public void saveServiceListAs() {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
-        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL 1.X SERVICE LISTS"), "servicelist") );
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
-        File dir = new File(ConfigObj.getActiveInstance().getStoragePathServiceLists());
-        fc.setCurrentDirectory(dir);
+        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL 1.X SERVICE LISTS"), "servicelist") );
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
             fileName = fc.getSelectedFile().getPath();

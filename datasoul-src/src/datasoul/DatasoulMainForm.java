@@ -48,6 +48,7 @@ import datasoul.templates.TemplateCellEditor;
 import datasoul.util.ObjectManager;
 import datasoul.util.OfficeTextExtractorFrame;
 import java.awt.Dimension;
+import java.io.File;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -1071,15 +1072,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         try {
             ObjectManager.getInstance().setBusyCursor();
             ServiceListTable.getActiveInstance().fileNew();
-        } finally {
-            ObjectManager.getInstance().setDefaultCursor();
-        }
-    }//GEN-LAST:event_btnNewActionPerformed
-
-    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
-        try {
-            ObjectManager.getInstance().setBusyCursor();
-            ServiceListTable.getActiveInstance().openServiceList();
             txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
             txtMinutes.setText(String.format("%02d", ServiceListTable.getActiveInstance().getStartMinute()));
             txtTitle.setText(ServiceListTable.getActiveInstance().getTitle());
@@ -1087,7 +1079,32 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         } finally {
             ObjectManager.getInstance().setDefaultCursor();
         }
+    }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
+        File f = ServiceListTable.getActiveInstance().openServiceList();
+        if (f != null){
+            openServiceList(f.getAbsolutePath());
+        }
     }//GEN-LAST:event_btnOpenActionPerformed
+
+    public void openServiceList(String path){
+        try {
+            // If there is an active service list, ask the user to save
+            if (ServiceListTable.getActiveInstance().askForSaveOrCancel() == false)
+                return;
+            
+            // Now, open the file
+            ObjectManager.getInstance().setBusyCursor();
+            ServiceListTable.getActiveInstance().openFile(path);
+            txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
+            txtMinutes.setText(String.format("%02d", ServiceListTable.getActiveInstance().getStartMinute()));
+            txtTitle.setText(ServiceListTable.getActiveInstance().getTitle());
+            txtNotes.setText(ServiceListTable.getActiveInstance().getNotes());
+        } finally {
+            ObjectManager.getInstance().setDefaultCursor();
+        }
+    }
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         try {

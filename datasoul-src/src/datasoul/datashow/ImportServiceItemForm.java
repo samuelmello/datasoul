@@ -23,6 +23,7 @@ package datasoul.datashow;
 import datasoul.servicelist.ServiceListColorRender;
 import datasoul.servicelist.ServiceListTable;
 import datasoul.DatasoulMainForm;
+import java.io.File;
 
 /**
  *
@@ -158,7 +159,10 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
 
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
 
-        serviceListTable.openServiceList();
+        File f = serviceListTable.openServiceList();
+        if (f != null){
+            serviceListTable.openFile(f.getAbsolutePath());
+        }
 
     }//GEN-LAST:event_btnOpenActionPerformed
 

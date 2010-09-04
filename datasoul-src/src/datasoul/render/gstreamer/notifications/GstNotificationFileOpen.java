@@ -5,7 +5,9 @@
 
 package datasoul.render.gstreamer.notifications;
 
+import datasoul.DatasoulMainForm;
 import datasoul.servicelist.ServiceListTable;
+import datasoul.util.ObjectManager;
 import java.io.File;
 import javax.swing.SwingUtilities;
 
@@ -30,7 +32,7 @@ public class GstNotificationFileOpen extends GstNotification {
             if (f.exists()){
                 SwingUtilities.invokeLater(new Runnable(){
                     public void run(){
-                        ServiceListTable.getActiveInstance().openFile(f.getAbsolutePath());
+                        ObjectManager.getInstance().getDatasoulMainForm().openServiceList(f.getAbsolutePath());
                     }
                 });
             }
