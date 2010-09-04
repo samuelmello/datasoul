@@ -22,19 +22,15 @@
 package datasoul.templates;
 
 import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.RenderingHints;
-import java.awt.Shape;
-import java.awt.Stroke;
 import java.awt.font.FontRenderContext;
 import java.awt.font.LineBreakMeasurer;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
-import java.awt.geom.AffineTransform;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import javax.swing.DefaultCellEditor;
@@ -335,7 +331,6 @@ getFullWord: {
          }
          
          Color oldColor = g.getColor();
-         Stroke oldStroke = g.getStroke();
          Composite oldComposite = g.getComposite();
          try{
              g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -361,27 +356,28 @@ getFullWord: {
                  if ( alingment == ALIGN_CENTER)
                      drawPosX = this.getLeft() + ( this.getWidth() - layout.getAdvance() )/2 ;
                  
-                 // draw the text
-                 g.setStroke( oldStroke );
-                 
-                 g.setColor(fontColor);
-                 
-                 layout.draw(g, drawPosX, drawPosY + this.getTop());
-                 
                  // draw the outline
-                 if (this.getFontOutline() > 0.01f){
-                     g.setStroke ( new BasicStroke(this.getFontOutline()) );
-                     Shape shp = layout.getOutline( AffineTransform.getTranslateInstance(drawPosX, drawPosY + this.getTop()) ); 
+                 if (this.getFontOutline() > 0.1f){
                      g.setColor(outlineColor);
-                     g.draw(shp);
+                     layout.draw(g, drawPosX + this.getFontOutline(), drawPosY + this.getTop());
+                     layout.draw(g, drawPosX - this.getFontOutline(), drawPosY + this.getTop());
+                     layout.draw(g, drawPosX, drawPosY + this.getTop() + this.getFontOutline());
+                     layout.draw(g, drawPosX, drawPosY + this.getTop() - this.getFontOutline());
+                     layout.draw(g, drawPosX + this.getFontOutline(), drawPosY + this.getTop() + this.getFontOutline());
+                     layout.draw(g, drawPosX + this.getFontOutline(), drawPosY + this.getTop() - this.getFontOutline());
+                     layout.draw(g, drawPosX - this.getFontOutline(), drawPosY + this.getTop() + this.getFontOutline());
+                     layout.draw(g, drawPosX - this.getFontOutline(), drawPosY + this.getTop() - this.getFontOutline());
                  }
 
+                 // draw the text
+                 g.setColor(fontColor);
+                 layout.draw(g, drawPosX, drawPosY + this.getTop());
+                 
                  drawPosY += layout.getDescent(); 
                  drawPosY += layout.getLeading();
              }
          }finally{
              g.setColor(oldColor);
-             g.setStroke(oldStroke);
              g.setComposite(oldComposite);
          }
 
