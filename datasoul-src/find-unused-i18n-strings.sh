@@ -6,7 +6,7 @@ import os
 def convert(s):
 	return s.replace("*", "\\*");
 
-f = open(sys.argv[1], 'r')
+f = open('src/datasoul/internationalize.properties', 'r')
 
 x = f.read()
 
