@@ -23,7 +23,6 @@ package datasoul.util;
 
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
-import datasoul.render.ContentManager;
 import datasoul.render.SwingDisplayFrame;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
@@ -91,13 +90,13 @@ public class DatasoulKeyListener implements KeyListener, AWTEventListener{
                 }
                 break;
             case KeyEvent.VK_F9:
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayBlack();
+                break;
+            case KeyEvent.VK_F11:
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutHideMain();
                 break;
-            case KeyEvent.VK_F10:
-                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
-                break;
             case KeyEvent.VK_F12:
-                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().mainDisplayBlack();
+                ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
                 break;
         }
 

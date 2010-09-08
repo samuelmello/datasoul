@@ -47,11 +47,11 @@ public class HelpFrameKeyboard extends javax.swing.JFrame {
         sb.append("\n");
         sb.append("");
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F9: HIDE"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F9: BLACK"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F10: SHOW"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F11: HIDE"));
         sb.append("\n");
-        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F12: BLACK"));
+        sb.append(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("F12: SHOW"));
         sb.append("\n");
         sb.append("");
         sb.append("\n");
