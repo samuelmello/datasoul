@@ -202,8 +202,6 @@ public class ChordsDB extends ListTable{
         
         Node nodeOut = doc.createElement("ChordsDB");
         Node node; 
-        String paramName;
-        String paramValue;
         for(int i=0;i<objectList.size();i++){
             node = ((SerializableItf)objectList.get(i)).writeObject(zip);
             nodeOut.appendChild(doc.importNode(node,true));
@@ -216,8 +214,6 @@ public class ChordsDB extends ListTable{
     public void readObject(Node nodeIn, ZipReader zip) {
 
         NodeList nodeList= nodeIn.getChildNodes();
-        String paramName;
-        String paramValue;
         for(int i=0;i<nodeList.getLength();i++){
             if(nodeList.item(i).getNodeType()==1){
                 Chord chord = new Chord();

@@ -52,7 +52,7 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
     protected ArrayList<String> colorEditors;
 
-    static private HashMap<Class, HashMap<String, String>> displayNamesTable = new HashMap<Class, HashMap<String, String>>();
+    static private HashMap<Class<?>, HashMap<String, String>> displayNamesTable = new HashMap<Class<?>, HashMap<String, String>>();
 
     private HashMap<String, String> displayNames;
     

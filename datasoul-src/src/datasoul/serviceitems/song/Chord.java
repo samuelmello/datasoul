@@ -127,7 +127,6 @@ public class Chord implements SerializableItf{
 
         NodeList nodeList= nodeIn.getChildNodes();
         Node node;
-        String paramName;
         String paramValue;
         for(int i=0;i<nodeList.getLength();i++){
             node = nodeList.item(i);

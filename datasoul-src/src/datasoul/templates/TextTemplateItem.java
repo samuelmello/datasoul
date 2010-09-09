@@ -34,7 +34,6 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 
 /**
@@ -59,8 +58,6 @@ public class TextTemplateItem extends TemplateItem {
     private int uppercase;
         
     private AttributedString atribStr;
-    
-    private DefaultCellEditor alignmentEditor;
     
     @Override
     protected void registerProperties(){
@@ -157,8 +154,6 @@ public class TextTemplateItem extends TemplateItem {
     public TextTemplateItem () {
         
         super();
-        
-        int i;
         
         this.setWidth(100);
         this.setHeight(100);

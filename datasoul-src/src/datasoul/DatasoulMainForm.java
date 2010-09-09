@@ -21,7 +21,6 @@ package datasoul;
 
 import java.awt.Dimension;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
@@ -1318,7 +1317,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         JFileChooser fc = new JFileChooser();
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             boolean isLink = GenericAttachmentServiceItem.askForLink();
-            FileInputStream fis;
             try {
                 ObjectManager.getInstance().setBusyCursor();
                 VideoServiceItem asi = new VideoServiceItem(fc.getSelectedFile(), isLink);

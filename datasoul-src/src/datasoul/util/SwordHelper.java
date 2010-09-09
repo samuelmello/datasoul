@@ -135,12 +135,9 @@ public class SwordHelper {
 
         int cardinality = key.getCardinality();
         for (int i = 0; i < cardinality; i++) {
-            Key k = key.get(i);
             BookData data = new BookData(swordBook, key);
             //The following line can throw a BookException
             fullTxt = OSISUtil.getCanonicalText(data.getOsis());
-
-
             txt.add(fullTxt);
         }
 

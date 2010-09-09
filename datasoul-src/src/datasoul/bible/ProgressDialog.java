@@ -112,7 +112,7 @@ public class ProgressDialog extends javax.swing.JDialog {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
 
-        Set jobs = JobManager.getJobs();
+        Set<?> jobs = JobManager.getJobs();
         for (Object x : jobs){
             if (x instanceof Job){
                 if (((Job)x).isCancelable())

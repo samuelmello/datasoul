@@ -41,7 +41,6 @@ public class TimerManager extends Thread {
     public static final int TIMER_DIRECTION_BACKWARD_OVERDUE = 3;
     
     private SimpleDateFormat sdformat;
-    private SimpleDateFormat sdformatTimer;
     private volatile boolean stopThread;
     private int timerDirection;
     private long timerForwardCounter;
@@ -52,8 +51,6 @@ public class TimerManager extends Thread {
     private TimerManager() {
 
         int format = ConfigObj.getActiveInstance().getClockModeIdx();
-        
-        sdformatTimer = new SimpleDateFormat("H:mm:ss");
         
         // Select the format
         switch(format){

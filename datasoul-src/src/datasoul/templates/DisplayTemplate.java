@@ -326,12 +326,10 @@ public class DisplayTemplate extends AttributedObject {
                         // Determine the type for the TemplateItem
                         String className = templateItemsNodes.item(j).getNodeName();
                         className = this.getClass().getPackage().getName() + "." + className;
-                        Class cl;
                         Object ti = null;
                         
                         try {
-                            cl = Class.forName(className);
-                            ti = cl.newInstance();
+                            ti = Class.forName(className).newInstance();
                         } catch (Exception ex) {
                             ex.printStackTrace();
                         }

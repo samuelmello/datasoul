@@ -133,7 +133,7 @@ public class BibleTextPanel extends javax.swing.JPanel {
 
         cbBibles.removeAllItems();
 
-        List installed = Books.installed().getBooks(BookFilters.getOnlyBibles());
+        List<?> installed = Books.installed().getBooks(BookFilters.getOnlyBibles());
 
         String prevSelectedBible = WindowPropConfig.getInstance().getSelectedBible();
 

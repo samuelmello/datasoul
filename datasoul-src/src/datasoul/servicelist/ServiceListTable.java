@@ -341,7 +341,7 @@ public class ServiceListTable extends ListTable {
                     case COLUMN_DURATION:
                         try {
                             int i = Integer.parseInt(aValue.toString());
-                            si.setDuration(aValue.toString());
+                            si.setDuration(Integer.toString(i));
                             updateStartTimes();
                         } catch (Exception e) {
                             JOptionPane.showMessageDialog(null, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("INVALID VALUE"));

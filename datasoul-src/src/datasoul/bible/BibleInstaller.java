@@ -309,12 +309,12 @@ public class BibleInstaller extends javax.swing.JFrame {
             public void run() {
 
                 // Ask the Install Manager for a map of all known module sites
-                Map installers = imanager.getInstallers();
+                Map<?,?> installers = imanager.getInstallers();
 
                 // Get all the installers one after the other
-                Iterator iter = installers.entrySet().iterator();
+                Iterator<?> iter = installers.entrySet().iterator();
                 while (iter.hasNext()) {
-                    Map.Entry mapEntry = (Map.Entry) iter.next();
+                    Map.Entry<?,?> mapEntry = (Map.Entry<?,?>) iter.next();
                     try {
                         pd.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UPDATING ") + " " + mapEntry.getKey().toString() + "...");
                         ((Installer) mapEntry.getValue()).reloadBookList();
@@ -401,12 +401,12 @@ public class BibleInstaller extends javax.swing.JFrame {
         cbSource.removeAllItems();
 
         // Ask the Install Manager for a map of all known module sites
-        Map installers = imanager.getInstallers();
+        Map<?,?> installers = imanager.getInstallers();
 
         // Get all the installers one after the other
-        Iterator iter = installers.entrySet().iterator();
+        Iterator<?> iter = installers.entrySet().iterator();
         while (iter.hasNext()) {
-            Map.Entry mapEntry = (Map.Entry) iter.next();
+            Map.Entry<?,?> mapEntry = (Map.Entry<?,?>) iter.next();
             cbSource.addItem(mapEntry.getKey());
         }
 

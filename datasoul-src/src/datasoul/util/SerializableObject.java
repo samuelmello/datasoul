@@ -48,7 +48,7 @@ public abstract class SerializableObject  implements Transferable, SerializableI
     static public DataFlavor serializableObjectFlavor = new DataFlavor(datasoul.util.SerializableObject.class,"serializableObjectFlavor");;
     
     // we hold just one properties array instance for each class
-    static private HashMap<Class, ArrayList<String>> propertiesTable = new HashMap<Class, ArrayList<String>>();
+    static private HashMap<Class<?>, ArrayList<String>> propertiesTable = new HashMap<Class<?>, ArrayList<String>>();
 
     private int datasoulFileVersion;
     

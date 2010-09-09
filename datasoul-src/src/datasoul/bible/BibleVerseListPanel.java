@@ -118,8 +118,6 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
         }
         String refs[] = listTxt.split(endl);
 
-        StringBuffer buf = new StringBuffer();
-
         int endlsz = endl.length();
         int pos = 0;
         int end = refs.length;
@@ -224,18 +222,13 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
                 try {
                     //The following line can throw a BookException
                     Element xmlData = data.getOsis();
-                    String osisRef = OSISUtil.getReferences(xmlData);
-
                     fullTxt = OSISUtil.getCanonicalText(xmlData);
-                    String bkName = data.getFirstBook().getName();
-                    //    System.err.println("    k = " + k);
 
                     if (sb.length() > 0) {
                         sb.append(splitType.getTxt());
                     }
                     switch (refStype) {
                         case Full:
-                         //sb.append(v.getRootName()).append(" ").append(v.getChapter()).append(":").append(v.getVerse()).append(" ");
                             sb.append(localBookName).append(" ").append(v.getChapter()).append(":").append(v.getVerse()).append(" ");
                             break;
                         case ChapterAndVerse:

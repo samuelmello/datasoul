@@ -49,7 +49,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
         panelChordShapes.setLayout(new GridLayout());
         
         StyleContext sc = new StyleContext();
-        Style defaultStyle = StyleContext.getDefaultStyleContext().getStyle(StyleContext.DEFAULT_STYLE);
         chordShapeStyle = sc.addStyle("chordShapeStyle",null);        
     }
 
@@ -231,8 +230,6 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void fieldStringKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fieldStringKeyPressed
-        SongListTable foundSongTable = new SongListTable();
-        
         for(int i=0; i<tableChordsList.getRowCount();i++){
             String searchStr;
             if(String.valueOf(evt.getKeyChar()).equals("\b")&&(fieldString.getText().length()>0)){
@@ -266,7 +263,7 @@ public class ChordsManagerFrame extends javax.swing.JFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if(JOptionPane.showConfirmDialog(this,java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ARE YOU SURE THAT YOU WANT TO DELETE THIS CHORD?"),java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONFIRM"),JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
             tableChordsList.removeItem();
-            chordsDB.getInstance().save();
+            ChordsDB.getInstance().save();
         }
         this.repaint();
     }//GEN-LAST:event_btnDeleteActionPerformed

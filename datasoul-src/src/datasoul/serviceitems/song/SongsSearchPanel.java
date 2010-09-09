@@ -273,7 +273,7 @@ public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.
                 if (searchStr.length() > 0){
                     RowFilter<Object, Object> filter = new RowFilter<Object, Object>() {
 
-                        public boolean include(Entry entry) {
+                        public boolean include(Entry<?,?> entry) {
 
                             String item = ((Song) entry.getValue(songColumn)).getSearchText();
                             if (item.contains(searchStr)) {
