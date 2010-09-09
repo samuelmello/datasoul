@@ -5,11 +5,11 @@
 
 package datasoul.render.gstreamer.notifications;
 
-import datasoul.DatasoulMainForm;
-import datasoul.servicelist.ServiceListTable;
-import datasoul.util.ObjectManager;
 import java.io.File;
+
 import javax.swing.SwingUtilities;
+
+import datasoul.util.ObjectManager;
 
 /**
  *

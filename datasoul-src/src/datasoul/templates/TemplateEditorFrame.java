@@ -20,16 +20,17 @@
 
 package datasoul.templates;
 
-import datasoul.DatasoulMainForm;
-import datasoul.config.ConfigObj;
-import datasoul.config.WindowPropConfig;
-import datasoul.util.ObjectManager;
 import java.io.File;
+
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.WindowPropConfig;
+import datasoul.util.ObjectManager;
 
 /**
  *

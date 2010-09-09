@@ -21,13 +21,10 @@
 
 package datasoul.render;
 
-import datasoul.config.ConfigObj;
-import datasoul.render.gstreamer.GstContentRender;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmdShowHide;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
+
+import datasoul.config.ConfigObj;
 
 /**
  *

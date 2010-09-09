@@ -19,41 +19,14 @@
  */
 package datasoul;
 
-import datasoul.bible.BibleVerseListEditorForm;
-import datasoul.config.ConfigFrame;
-import datasoul.config.ConfigObj;
-import datasoul.config.DisplayControlConfig;
-import datasoul.config.WindowPropConfig;
-import datasoul.datashow.BackgroundConfigFrame;
-import datasoul.serviceitems.imagelist.ImageListEditorForm;
-import datasoul.serviceitems.imagelist.ImageListServiceItem;
-import datasoul.datashow.ImportServiceItemForm;
-import datasoul.serviceitems.ServiceItem;
-import datasoul.servicelist.ServiceListColorRender;
-import datasoul.servicelist.ServiceListTable;
-import datasoul.serviceitems.text.TextServiceItem;
-import datasoul.serviceitems.text.TextServiceItemEditorForm;
-import datasoul.render.ContentManager;
-import datasoul.help.HelpFrameAbout;
-import datasoul.help.HelpFrameKeyboard;
-import datasoul.render.ContentRender;
-import datasoul.serviceitems.AttachmentServiceItem;
-import datasoul.serviceitems.ContentlessServiceItem;
-import datasoul.serviceitems.GenericAttachmentServiceItem;
-import datasoul.serviceitems.VideoServiceItem;
-import datasoul.servicelist.ServiceListExporterPanel;
-import datasoul.serviceitems.song.Song;
-import datasoul.templates.TemplateManagerForm;
-import datasoul.templates.TemplateCellEditor;
-import datasoul.util.ObjectManager;
-import datasoul.util.OfficeTextExtractorFrame;
 import java.awt.Dimension;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.FileInputStream;
+
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -61,6 +34,35 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import datasoul.bible.BibleVerseListEditorForm;
+import datasoul.config.ConfigFrame;
+import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
+import datasoul.config.WindowPropConfig;
+import datasoul.datashow.BackgroundConfigFrame;
+import datasoul.datashow.ImportServiceItemForm;
+import datasoul.help.HelpFrameAbout;
+import datasoul.help.HelpFrameKeyboard;
+import datasoul.render.ContentManager;
+import datasoul.render.ContentRender;
+import datasoul.serviceitems.AttachmentServiceItem;
+import datasoul.serviceitems.ContentlessServiceItem;
+import datasoul.serviceitems.GenericAttachmentServiceItem;
+import datasoul.serviceitems.ServiceItem;
+import datasoul.serviceitems.VideoServiceItem;
+import datasoul.serviceitems.imagelist.ImageListEditorForm;
+import datasoul.serviceitems.imagelist.ImageListServiceItem;
+import datasoul.serviceitems.song.Song;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.serviceitems.text.TextServiceItemEditorForm;
+import datasoul.servicelist.ServiceListColorRender;
+import datasoul.servicelist.ServiceListExporterPanel;
+import datasoul.servicelist.ServiceListTable;
+import datasoul.templates.TemplateCellEditor;
+import datasoul.templates.TemplateManagerForm;
+import datasoul.util.ObjectManager;
+import datasoul.util.OfficeTextExtractorFrame;
 
 /**
  *

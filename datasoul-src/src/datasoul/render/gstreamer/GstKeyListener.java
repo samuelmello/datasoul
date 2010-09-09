@@ -14,11 +14,12 @@
 
 package datasoul.render.gstreamer;
 
-import datasoul.render.gstreamer.notifications.GstNotificationKeyboard;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import datasoul.render.gstreamer.notifications.GstNotificationKeyboard;
 
 /**
  *

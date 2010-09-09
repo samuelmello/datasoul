@@ -19,27 +19,29 @@
  */
 package datasoul.bible;
 
-import datasoul.DatasoulMainForm;
-import datasoul.config.WindowPropConfig;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.Map;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Comparator;
-import java.util.Collections;
-import javax.swing.table.DefaultTableModel;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import org.crosswire.jsword.book.install.InstallManager;
-import org.crosswire.jsword.book.install.Installer;
-import org.crosswire.jsword.book.install.InstallException;
+import javax.swing.table.DefaultTableModel;
+
 import org.crosswire.jsword.book.Book;
-import org.crosswire.jsword.book.Books;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.BookFilters;
-import org.crosswire.jsword.bridge.BookInstaller;
+import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.install.InstallException;
+import org.crosswire.jsword.book.install.InstallManager;
+import org.crosswire.jsword.book.install.Installer;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.WindowPropConfig;
 
 
 

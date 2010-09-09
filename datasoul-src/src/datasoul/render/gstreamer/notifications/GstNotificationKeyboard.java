@@ -14,10 +14,11 @@
 
 package datasoul.render.gstreamer.notifications;
 
-import datasoul.util.DatasoulKeyListener;
 import java.awt.event.KeyEvent;
-import java.io.Serializable;
+
 import javax.swing.SwingUtilities;
+
+import datasoul.util.DatasoulKeyListener;
 
 /**
  *

@@ -21,8 +21,7 @@
 
 package datasoul.util;
 
-import datasoul.serviceitems.song.Song;
-import datasoul.serviceitems.song.SongListTable;
+import java.awt.Container;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DnDConstants;
@@ -37,10 +36,13 @@ import java.awt.dnd.DropTargetDropEvent;
 import java.awt.dnd.DropTargetEvent;
 import java.io.IOException;
 import java.util.TooManyListenersException;
+
 import javax.swing.JTable;
-import javax.swing.table.TableModel;
-import java.awt.Container;
 import javax.swing.JViewport;
+import javax.swing.table.TableModel;
+
+import datasoul.serviceitems.song.Song;
+import datasoul.serviceitems.song.SongListTable;
 
 /**
  *

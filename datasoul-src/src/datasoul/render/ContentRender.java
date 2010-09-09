@@ -21,13 +21,6 @@
 
 package datasoul.render;
 
-import datasoul.config.BackgroundConfig;
-import datasoul.templates.DisplayTemplate;
-import datasoul.templates.ImageTemplateItem;
-import datasoul.templates.TemplateItem;
-import datasoul.templates.TemplateManager;
-import datasoul.templates.TextTemplateItem;
-import datasoul.templates.TimerProgressbarTemplateItem;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -36,6 +29,13 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.Semaphore;
+
+import datasoul.templates.DisplayTemplate;
+import datasoul.templates.ImageTemplateItem;
+import datasoul.templates.TemplateItem;
+import datasoul.templates.TemplateManager;
+import datasoul.templates.TextTemplateItem;
+import datasoul.templates.TimerProgressbarTemplateItem;
 
 /**
  *

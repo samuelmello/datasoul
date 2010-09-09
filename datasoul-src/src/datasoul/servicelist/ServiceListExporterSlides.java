@@ -14,15 +14,6 @@
 
 package datasoul.servicelist;
 
-import com.lowagie.text.Document;
-import com.lowagie.text.DocumentException;
-import com.lowagie.text.Image;
-import com.lowagie.text.Rectangle;
-import com.lowagie.text.pdf.PdfWriter;
-import datasoul.DatasoulMainForm;
-import datasoul.render.ContentDisplayRenderer;
-import datasoul.render.ContentRender;
-import datasoul.templates.DisplayTemplate;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -31,7 +22,18 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.LinkedList;
+
 import javax.imageio.ImageIO;
+
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.PdfWriter;
+
+import datasoul.DatasoulMainForm;
+import datasoul.render.ContentDisplayRenderer;
+import datasoul.render.ContentRender;
 
 /**
  *

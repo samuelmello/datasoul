@@ -14,17 +14,17 @@
 
 package datasoul.render.gstreamer.commands;
 
-import datasoul.render.ContentRender;
-import datasoul.render.gstreamer.GstContentRender;
-import datasoul.render.gstreamer.GstManagerClient;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
+
+import datasoul.render.ContentRender;
+import datasoul.render.gstreamer.GstContentRender;
+import datasoul.render.gstreamer.GstManagerClient;
 
 /**
  *

@@ -20,10 +20,11 @@
 
 package datasoul.util;
 
+import javax.swing.JOptionPane;
+import javax.swing.text.JTextComponent;
+
 import datasoul.config.WindowPropConfig;
 import datasoul.serviceitems.text.TextServiceItem;
-import javax.swing.text.JTextComponent;
-import javax.swing.JOptionPane;
 
 /**
  *

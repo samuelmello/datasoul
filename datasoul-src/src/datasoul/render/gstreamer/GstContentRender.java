@@ -14,9 +14,10 @@
 
 package datasoul.render.gstreamer;
 
+import java.awt.image.BufferedImage;
+
 import datasoul.render.ContentRenderItf;
 import datasoul.render.gstreamer.commands.GstDisplayCmdUpdateContent;
-import java.awt.image.BufferedImage;
 
 /**
  *

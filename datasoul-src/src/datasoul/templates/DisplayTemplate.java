@@ -21,18 +21,13 @@
 
 package datasoul.templates;
 
-import datasoul.DatasoulMainForm;
-import datasoul.config.ConfigObj;
-import datasoul.util.AttributedObject;
-import datasoul.util.ObjectManager;
-import datasoul.util.ZipReader;
-import datasoul.util.ZipWriter;
 import java.awt.Graphics2D;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
+
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -45,9 +40,17 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
+import datasoul.util.AttributedObject;
+import datasoul.util.ObjectManager;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 
 /**
  *

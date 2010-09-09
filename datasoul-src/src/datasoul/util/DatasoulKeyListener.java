@@ -21,13 +21,14 @@
 
 package datasoul.util;
 
-import datasoul.config.ConfigObj;
-import datasoul.datashow.AuxiliarPanel;
-import datasoul.render.SwingDisplayFrame;
 import java.awt.AWTEvent;
 import java.awt.event.AWTEventListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import datasoul.config.ConfigObj;
+import datasoul.datashow.AuxiliarPanel;
+import datasoul.render.SwingDisplayFrame;
 
 /**
  *

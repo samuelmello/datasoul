@@ -20,22 +20,24 @@
 
 package datasoul.servicelist;
 
-import com.lowagie.text.DocumentException;
-import datasoul.DatasoulMainForm;
-import datasoul.config.BackgroundConfig;
-import datasoul.serviceitems.ServiceItem;
-import datasoul.serviceitems.text.TextServiceItem;
-import datasoul.render.ContentRender;
-import datasoul.serviceitems.song.Song;
-import datasoul.templates.DisplayTemplate;
-import datasoul.templates.TemplateManager;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+
+import com.lowagie.text.DocumentException;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.BackgroundConfig;
+import datasoul.render.ContentRender;
+import datasoul.serviceitems.ServiceItem;
+import datasoul.serviceitems.song.Song;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.templates.DisplayTemplate;
+import datasoul.templates.TemplateManager;
 
 /**
  *

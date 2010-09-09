@@ -20,14 +20,12 @@
 
 package datasoul.config;
 
-import datasoul.DatasoulMainForm;
-import datasoul.render.OutputDevice;
-import datasoul.util.ObjectManager;
 import java.awt.Component;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 import java.util.ArrayList;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -35,6 +33,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
+
+import datasoul.DatasoulMainForm;
+import datasoul.render.OutputDevice;
+import datasoul.util.ObjectManager;
 
 /**
  *

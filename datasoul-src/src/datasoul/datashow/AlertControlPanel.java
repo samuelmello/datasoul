@@ -20,11 +20,13 @@
 
 package datasoul.datashow;
 
-import datasoul.config.ConfigObj;
-import datasoul.templates.DisplayTemplate;
 import java.util.ArrayList;
+
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
+
+import datasoul.config.ConfigObj;
+import datasoul.templates.DisplayTemplate;
 
 /**
  *

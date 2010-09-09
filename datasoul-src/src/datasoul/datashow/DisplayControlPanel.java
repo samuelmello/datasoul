@@ -24,9 +24,6 @@ import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.templates.DisplayTemplate;
-import datasoul.templates.TemplateComboBox;
-import java.util.Hashtable;
-import javax.swing.JLabel;
   
 /**
  *

@@ -19,19 +19,22 @@
  */
 package datasoul.bible;
 
-import datasoul.serviceitems.text.*;
-import datasoul.DatasoulMainForm;
-import datasoul.config.DisplayControlConfig;
-import datasoul.config.WindowPropConfig;
-import datasoul.templates.DisplayTemplate;
 import java.awt.Color;
+
 import javax.swing.JOptionPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import javax.swing.text.JTextComponent;
+
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.Books;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.DisplayControlConfig;
+import datasoul.config.WindowPropConfig;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.templates.DisplayTemplate;
 
 /**
  *

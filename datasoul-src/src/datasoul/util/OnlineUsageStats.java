@@ -14,18 +14,20 @@
 
 package datasoul.util;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.GetMethod;
+
 import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.render.OutputDevice;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.TemplateManager;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.GetMethod;
 
 
 /**

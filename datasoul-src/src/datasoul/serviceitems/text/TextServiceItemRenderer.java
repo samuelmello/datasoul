@@ -21,10 +21,12 @@
 
 package datasoul.serviceitems.text;
 
-import datasoul.serviceitems.ServiceItemRenderer;
-import java.awt.Component;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JTable;
+
+import datasoul.serviceitems.ServiceItemRenderer;
 
 /**
  *

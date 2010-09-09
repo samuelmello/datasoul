@@ -20,12 +20,8 @@
 
 package datasoul.templates;
 
-import datasoul.DatasoulMainForm;
-import datasoul.config.ConfigObj;
-import datasoul.config.DisplayControlConfig;
-import datasoul.render.OutputDevice;
-import datasoul.util.ObjectManager;
 import java.io.File;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -34,6 +30,12 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
+import datasoul.render.OutputDevice;
+import datasoul.util.ObjectManager;
 
 /**
  *

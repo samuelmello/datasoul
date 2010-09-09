@@ -14,10 +14,11 @@
 
 package datasoul.render.gstreamer.notifications;
 
+import javax.swing.JOptionPane;
+
 import datasoul.config.BackgroundConfig;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
-import javax.swing.JOptionPane;
 
 /**
  *

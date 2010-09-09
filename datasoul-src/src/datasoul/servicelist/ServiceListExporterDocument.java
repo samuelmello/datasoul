@@ -14,6 +14,19 @@
 
 package datasoul.servicelist;
 
+import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.regex.Matcher;
+
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+
 import com.lowagie.text.BadElementException;
 import com.lowagie.text.Cell;
 import com.lowagie.text.Chunk;
@@ -27,24 +40,14 @@ import com.lowagie.text.Paragraph;
 import com.lowagie.text.Table;
 import com.lowagie.text.pdf.PdfWriter;
 import com.lowagie.text.rtf.RtfWriter2;
+
 import datasoul.DatasoulMainForm;
 import datasoul.serviceitems.ServiceItem;
-import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.serviceitems.song.Chord;
 import datasoul.serviceitems.song.ChordShapePanel;
 import datasoul.serviceitems.song.ChordsDB;
 import datasoul.serviceitems.song.Song;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.regex.Matcher;
-import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
+import datasoul.serviceitems.text.TextServiceItem;
 
 /**
  *

@@ -14,7 +14,6 @@
 
 package datasoul.render;
 
-import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 

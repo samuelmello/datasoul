@@ -20,9 +20,10 @@
 
 package datasoul;
 
+import java.util.Random;
+
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
-import java.util.Random;
 
 /**
  *

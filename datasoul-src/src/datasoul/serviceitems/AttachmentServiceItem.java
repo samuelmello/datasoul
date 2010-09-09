@@ -14,12 +14,14 @@
 
 package datasoul.serviceitems;
 
-import datasoul.render.ContentManager;
-import datasoul.util.ObjectManager;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
+
 import javax.swing.JOptionPane;
+
+import datasoul.render.ContentManager;
+import datasoul.util.ObjectManager;
 
 /**
  *

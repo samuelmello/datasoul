@@ -21,15 +21,11 @@
 
 package datasoul.serviceitems;
 
-import datasoul.config.BackgroundConfig;
-import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;
-import datasoul.util.SerializableObject;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.LinkedList;
+
 import javax.swing.Icon;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -38,6 +34,12 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
+
+import datasoul.config.BackgroundConfig;
+import datasoul.render.ContentManager;
+import datasoul.render.gstreamer.GstManagerServer;
+import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;
+import datasoul.util.SerializableObject;
 
 /**
  *

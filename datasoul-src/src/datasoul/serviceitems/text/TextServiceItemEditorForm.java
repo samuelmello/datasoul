@@ -20,18 +20,20 @@
 
 package datasoul.serviceitems.text;
 
+import java.awt.Color;
+
+import javax.swing.JOptionPane;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+import javax.swing.text.JTextComponent;
+
 import datasoul.DatasoulMainForm;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
 import datasoul.servicelist.ServiceListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.util.ObjectManager;
-import java.awt.Color;
-import javax.swing.JOptionPane;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DefaultHighlighter;
-import javax.swing.text.Highlighter;
-import javax.swing.text.JTextComponent;
 
 /**
  *

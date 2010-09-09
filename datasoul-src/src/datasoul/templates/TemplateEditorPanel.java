@@ -20,8 +20,6 @@
 
 package datasoul.templates;
 
-import datasoul.util.AttributedObject;
-import datasoul.util.ShowDialog;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,10 +29,14 @@ import java.awt.Rectangle;
 import java.awt.Stroke;
 import java.awt.event.InputEvent;
 import java.util.ResourceBundle;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.event.TableModelEvent;
+
+import datasoul.util.AttributedObject;
+import datasoul.util.ShowDialog;
 
 /**
  *

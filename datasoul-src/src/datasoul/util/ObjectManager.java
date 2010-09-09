@@ -21,22 +21,23 @@
 
 package datasoul.util;
 
+import java.awt.Cursor;
+
 import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigFrame;
+import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
-import datasoul.templates.TemplateManagerForm;
-import datasoul.config.ConfigFrame;
-import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstContentRender;
 import datasoul.render.SwingDisplayFrame;
+import datasoul.render.gstreamer.GstContentRender;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdShowHide;
-import java.awt.Cursor;
+import datasoul.templates.TemplateManagerForm;
 
 /**
  *

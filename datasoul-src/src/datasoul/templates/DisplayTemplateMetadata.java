@@ -14,12 +14,9 @@
 
 package datasoul.templates;
 
-import datasoul.DatasoulMainForm;
-import datasoul.util.SerializableObject;
-import datasoul.util.ZipReader;
-import datasoul.util.ZipWriter;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,8 +27,14 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+
+import datasoul.DatasoulMainForm;
+import datasoul.util.SerializableObject;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 
 /**
  *

@@ -14,11 +14,13 @@
 
 package datasoul.render;
 
-import com.sun.jna.Platform;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+
 import javax.swing.JFrame;
+
+import com.sun.jna.Platform;
 
 /**
  *

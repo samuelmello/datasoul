@@ -21,20 +21,22 @@
 
 package datasoul.templates;
 
-import datasoul.util.ImageSerializer;
-import datasoul.util.ZipReader;
-import datasoul.util.ZipWriter;
 import java.awt.AlphaComposite;
 import java.awt.Composite;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
+
 import org.w3c.dom.Node;
+
+import datasoul.util.ImageSerializer;
+import datasoul.util.ZipReader;
+import datasoul.util.ZipWriter;
 
 /**
  *

@@ -21,10 +21,6 @@
 
 package datasoul.serviceitems.song;
 
-import datasoul.config.DisplayControlConfig;
-import datasoul.serviceitems.text.TextServiceItem;
-import datasoul.render.ContentManager;
-import datasoul.util.ObjectManager;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -32,8 +28,14 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import datasoul.config.DisplayControlConfig;
+import datasoul.render.ContentManager;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.util.ObjectManager;
 
 /**
  *

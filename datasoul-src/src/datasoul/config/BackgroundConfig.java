@@ -21,6 +21,13 @@
 
 package datasoul.config;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import datasoul.StartupManager;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
@@ -28,13 +35,6 @@ import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetLiveBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetStaticBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 
 /**
  *

@@ -24,6 +24,7 @@ package datasoul.util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableModel;
 

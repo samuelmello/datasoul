@@ -14,18 +14,20 @@
 
 package datasoul.templates;
 
-import datasoul.serviceitems.imagelist.ImageListServiceItem;
-import datasoul.serviceitems.ServiceItem;
-import datasoul.servicelist.ServiceListTable;
-import datasoul.serviceitems.text.TextServiceItem;
-import datasoul.serviceitems.song.Song;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import datasoul.serviceitems.ServiceItem;
+import datasoul.serviceitems.imagelist.ImageListServiceItem;
+import datasoul.serviceitems.song.Song;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.servicelist.ServiceListTable;
 
 public class TemplateCellEditor extends DefaultCellEditor implements ActionListener {
 

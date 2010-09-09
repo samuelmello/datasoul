@@ -14,8 +14,9 @@
 
 package datasoul.render.gstreamer;
 
-import datasoul.render.gstreamer.notifications.GstNotificationBackgroundVideoError;
 import org.gstreamer.State;
+
+import datasoul.render.gstreamer.notifications.GstNotificationBackgroundVideoError;
 
 /**
  *

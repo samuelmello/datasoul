@@ -20,17 +20,18 @@
 
 package datasoul.serviceitems;
 
-import datasoul.serviceitems.ServiceItem;
+import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+
+import javax.swing.ImageIcon;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoPause;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
-import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
-import javax.swing.ImageIcon;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 /**
  *

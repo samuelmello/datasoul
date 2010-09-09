@@ -20,9 +20,10 @@
 
 package datasoul.util;
 
-import datasoul.templates.ImageTemplateItem;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
+import datasoul.templates.ImageTemplateItem;
 
 /**
  *

@@ -20,17 +20,19 @@
 
 package datasoul.datashow;
 
+import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.swing.JColorChooser;
+import javax.swing.JFileChooser;
+
 import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.util.ObjectManager;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.swing.JColorChooser;
-import javax.swing.JFileChooser;
 
 /**
  *

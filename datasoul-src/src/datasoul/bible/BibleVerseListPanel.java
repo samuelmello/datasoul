@@ -10,19 +10,13 @@
  */
 package datasoul.bible;
 
-import datasoul.config.DisplayControlConfig;
-import datasoul.serviceitems.text.TextServiceItem;
-import datasoul.servicelist.ServiceListTable;
-import datasoul.util.SwordHelper;
-import datasoul.util.SwordHelper.ReferenceTxtType;
-import datasoul.util.SwordHelper.TxtSplitType;
-import datasoul.util.TextSplitPanel;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -30,6 +24,7 @@ import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookData;
 import org.crosswire.jsword.book.BookException;
@@ -42,6 +37,14 @@ import org.crosswire.jsword.passage.NoSuchVerseException;
 import org.crosswire.jsword.passage.Verse;
 import org.crosswire.jsword.versification.BibleInfo;
 import org.jdom.Element;
+
+import datasoul.config.DisplayControlConfig;
+import datasoul.serviceitems.text.TextServiceItem;
+import datasoul.servicelist.ServiceListTable;
+import datasoul.util.SwordHelper;
+import datasoul.util.TextSplitPanel;
+import datasoul.util.SwordHelper.ReferenceTxtType;
+import datasoul.util.SwordHelper.TxtSplitType;
 
 /**
  *

@@ -4,15 +4,17 @@
  */
 package datasoul.util;
 
-import datasoul.serviceitems.text.TextServiceItem;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.crosswire.jsword.book.Book;
 import org.crosswire.jsword.book.BookData;
 import org.crosswire.jsword.book.BookException;
 import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.passage.Key;
 import org.crosswire.jsword.passage.NoSuchKeyException;
+
+import datasoul.serviceitems.text.TextServiceItem;
 
 /**
  *

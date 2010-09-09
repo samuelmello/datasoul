@@ -14,13 +14,6 @@
 
 package datasoul.render.gstreamer;
 
-import datasoul.config.ConfigObj;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.ContentDisplayRenderer;
-import datasoul.render.ContentRender;
-import datasoul.render.OutputDevice;
-import datasoul.render.gstreamer.notifications.GstNotification;
-import datasoul.render.gstreamer.notifications.GstNotificationHello;
 import java.awt.AWTEvent;
 import java.awt.Toolkit;
 import java.io.IOException;
@@ -29,8 +22,17 @@ import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.ConnectException;
 import java.net.Socket;
+
 import org.gstreamer.Element;
 import org.gstreamer.Gst;
+
+import datasoul.config.ConfigObj;
+import datasoul.render.ContentDisplayRenderer;
+import datasoul.render.ContentRender;
+import datasoul.render.OutputDevice;
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.notifications.GstNotification;
+import datasoul.render.gstreamer.notifications.GstNotificationHello;
 
 /**
  *

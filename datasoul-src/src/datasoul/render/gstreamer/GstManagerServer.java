@@ -15,10 +15,6 @@
 
 package datasoul.render.gstreamer;
 
-import datasoul.config.ConfigObj;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.gstreamer.notifications.GstNotification;
-import java.io.EOFException;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -31,6 +27,10 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import datasoul.config.ConfigObj;
+import datasoul.render.gstreamer.commands.GstDisplayCmd;
+import datasoul.render.gstreamer.notifications.GstNotification;
 
 /**
  *

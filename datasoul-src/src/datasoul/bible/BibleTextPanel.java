@@ -19,22 +19,25 @@
  */
 package datasoul.bible;
 
-import datasoul.config.WindowPropConfig;
-import datasoul.serviceitems.text.TextServiceItem;
-import org.crosswire.jsword.versification.BibleInfo;
-import javax.swing.JTextArea;
 import java.util.List;
+
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
 import org.crosswire.jsword.book.Book;
-import org.crosswire.jsword.book.Books;
+import org.crosswire.jsword.book.BookData;
 import org.crosswire.jsword.book.BookFilters;
+import org.crosswire.jsword.book.Books;
 import org.crosswire.jsword.book.BooksEvent;
 import org.crosswire.jsword.book.BooksListener;
-import org.crosswire.jsword.book.BookData;
 import org.crosswire.jsword.book.OSISUtil;
 import org.crosswire.jsword.passage.NoSuchVerseException;
 import org.crosswire.jsword.passage.Verse;
+import org.crosswire.jsword.versification.BibleInfo;
+
+import datasoul.config.WindowPropConfig;
+import datasoul.serviceitems.text.TextServiceItem;
 
 /**
  *

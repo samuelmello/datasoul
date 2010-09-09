@@ -14,7 +14,22 @@
 
 package datasoul;
 
+import java.awt.AWTEvent;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.SplashScreen;
+import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
+import javax.swing.UIManager;
+
 import com.sun.jna.Platform;
+
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
@@ -28,18 +43,6 @@ import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
 import datasoul.util.OnlineUsageStats;
-import java.awt.AWTEvent;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.SplashScreen;
-import java.awt.Toolkit;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-import javax.swing.UIManager;
 
 /**
  *

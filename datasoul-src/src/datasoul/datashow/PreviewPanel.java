@@ -20,14 +20,16 @@
 
 package datasoul.datashow;
 
-import datasoul.serviceitems.ServiceItem;
-import datasoul.config.DisplayControlConfig;
-import datasoul.util.ObjectManager;
-import datasoul.render.ContentManager;
 import java.awt.Dimension;
+
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import datasoul.config.DisplayControlConfig;
+import datasoul.render.ContentManager;
+import datasoul.serviceitems.ServiceItem;
+import datasoul.util.ObjectManager;
 
 /**
  *

@@ -13,17 +13,19 @@
  */
 
 package datasoul.datashow;
-import datasoul.serviceitems.ServiceItem;
-import datasoul.config.ConfigObj;
-import datasoul.config.DisplayControlConfig;
-import datasoul.render.ContentManager;
-import datasoul.util.ObjectManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import datasoul.config.ConfigObj;
+import datasoul.config.DisplayControlConfig;
+import datasoul.render.ContentManager;
+import datasoul.serviceitems.ServiceItem;
+import datasoul.util.ObjectManager;
 
 /**
  *

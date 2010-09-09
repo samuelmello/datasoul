@@ -20,17 +20,20 @@
 
 package datasoul.render.gstreamer;
 
-import datasoul.DatasoulMainForm;
-import datasoul.render.ContentDisplayRenderer;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.lang.reflect.InvocationTargetException;
+
 import javax.swing.SwingUtilities;
+
 import org.gstreamer.Element;
 import org.gstreamer.swing.VideoComponent;
+
+import datasoul.DatasoulMainForm;
+import datasoul.render.ContentDisplayRenderer;
 
 /**
  *

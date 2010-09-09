@@ -21,12 +21,13 @@
 
 package datasoul.templates;
 
-import datasoul.config.ConfigObj;
-import datasoul.render.ContentRender;
 import java.io.File;
 import java.util.ArrayList;
+
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.TableModel;
+
+import datasoul.config.ConfigObj;
 
 /**
  *

@@ -21,11 +21,13 @@
 
 package datasoul.servicelist;
 
-import datasoul.serviceitems.ServiceItem;
 import java.awt.Color;
 import java.awt.Component;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import datasoul.serviceitems.ServiceItem;
 
 /**
  *

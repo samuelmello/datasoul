@@ -19,11 +19,12 @@
  */
 
 package datasoul.bible;
+import java.util.Set;
+
+import org.crosswire.common.progress.Job;
+import org.crosswire.common.progress.JobManager;
 import org.crosswire.common.progress.WorkEvent;
 import org.crosswire.common.progress.WorkListener;
-import org.crosswire.common.progress.JobManager;
-import org.crosswire.common.progress.Job;
-import java.util.Set;
 
 /**
  *

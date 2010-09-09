@@ -21,15 +21,18 @@
 
 package datasoul.serviceitems.song;
 
+import java.io.File;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.util.ShowDialog;
-import java.io.File;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import java.util.ArrayList;
 
 /**
  *

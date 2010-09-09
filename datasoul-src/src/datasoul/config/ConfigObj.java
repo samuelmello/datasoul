@@ -21,10 +21,11 @@
 
 package datasoul.config;
 
-import datasoul.render.OutputDevice;
-import java.util.ArrayList;
-import datasoul.util.ObjectManager;
 import java.io.File;
+import java.util.ArrayList;
+
+import datasoul.render.OutputDevice;
+import datasoul.util.ObjectManager;
 
 /**
  *

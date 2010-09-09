@@ -14,16 +14,18 @@
 
 package datasoul.util;
 
-import datasoul.serviceitems.song.Song;
-import datasoul.serviceitems.text.TextServiceItem;
-import javax.swing.JTextArea;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.text.Highlighter;
-import javax.swing.text.DefaultHighlighter;
+
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+
+import datasoul.serviceitems.song.Song;
+import datasoul.serviceitems.text.TextServiceItem;
 
 /**
  *

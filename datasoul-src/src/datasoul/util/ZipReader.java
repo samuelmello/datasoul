@@ -14,7 +14,6 @@
 
 package datasoul.util;
 
-import datasoul.DatasoulMainForm;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipEntry;

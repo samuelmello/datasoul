@@ -14,13 +14,15 @@
 
 package datasoul.serviceitems;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoItem;
-import java.io.File;
-import java.io.IOException;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 /**
  *

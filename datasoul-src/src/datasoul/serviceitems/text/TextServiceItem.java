@@ -21,18 +21,20 @@
 
 package datasoul.serviceitems.text;
 
-import datasoul.config.DisplayControlConfig;
-import datasoul.serviceitems.ServiceItem;
-import datasoul.util.ObjectManager;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.EventObject;
+
 import javax.swing.AbstractCellEditor;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
+
+import datasoul.config.DisplayControlConfig;
+import datasoul.serviceitems.ServiceItem;
+import datasoul.util.ObjectManager;
 
 /**
  *

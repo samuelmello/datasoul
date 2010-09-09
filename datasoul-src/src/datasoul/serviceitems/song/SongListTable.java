@@ -21,8 +21,9 @@
 
 package datasoul.serviceitems.song;
 
-import datasoul.util.ListTable;
 import javax.swing.ImageIcon;
+
+import datasoul.util.ListTable;
 
 /**
  *

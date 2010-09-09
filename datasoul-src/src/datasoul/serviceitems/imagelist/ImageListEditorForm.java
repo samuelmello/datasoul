@@ -14,15 +14,17 @@
 
 package datasoul.serviceitems.imagelist;
 
-import datasoul.DatasoulMainForm;
-import datasoul.util.ObjectManager;
-import datasoul.util.OpenofficeHelper;
 import java.awt.Cursor;
 import java.io.File;
 import java.io.IOException;
+
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import datasoul.DatasoulMainForm;
+import datasoul.util.ObjectManager;
+import datasoul.util.OpenofficeHelper;
 
 public class ImageListEditorForm extends javax.swing.JFrame {
 

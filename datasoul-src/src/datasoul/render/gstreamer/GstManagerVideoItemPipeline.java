@@ -14,8 +14,6 @@
 
 package datasoul.render.gstreamer;
 
-import datasoul.render.gstreamer.notifications.GstNotificationVideoItemEnd;
-import datasoul.render.gstreamer.notifications.GstNotificationVideoItemError;
 import org.gstreamer.Bin;
 import org.gstreamer.Caps;
 import org.gstreamer.Element;
@@ -24,6 +22,9 @@ import org.gstreamer.GhostPad;
 import org.gstreamer.Pad;
 import org.gstreamer.Structure;
 import org.gstreamer.elements.DecodeBin;
+
+import datasoul.render.gstreamer.notifications.GstNotificationVideoItemEnd;
+import datasoul.render.gstreamer.notifications.GstNotificationVideoItemError;
 
 /**
  *

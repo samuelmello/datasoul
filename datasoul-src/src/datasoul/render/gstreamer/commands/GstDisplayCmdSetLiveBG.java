@@ -15,7 +15,6 @@
 package datasoul.render.gstreamer.commands;
 
 import datasoul.render.gstreamer.GstManagerClient;
-import datasoul.render.gstreamer.GstManagerVideoBackgroundPipeline;
 import datasoul.render.gstreamer.GstManagerVideoLiveBgPipeline;
 
 /**
