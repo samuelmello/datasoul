@@ -38,7 +38,12 @@ import datasoul.util.ObjectManager;
  */
 public class TemplateEditorFrame extends javax.swing.JFrame {
 
-    private boolean updateSize;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 615652559631671747L;
+
+	private boolean updateSize;
 
     private File lastImageDirectory;
 

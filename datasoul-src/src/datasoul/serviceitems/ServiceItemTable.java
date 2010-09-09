@@ -39,7 +39,11 @@ import datasoul.serviceitems.text.TextServiceItem;
  */
 public class ServiceItemTable extends javax.swing.JPanel implements ListSelectionListener {
     
-    ServiceItem item;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7691279789517845510L;
+	ServiceItem item;
     private boolean videoEnded;
     private boolean isPaused;
 

@@ -28,7 +28,11 @@ import datasoul.DatasoulMainForm;
  */
 public class HelpFrameKeyboard extends javax.swing.JFrame {
 
-    /** Creates new form HelpFrameKeyboard */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7656550067311460787L;
+	/** Creates new form HelpFrameKeyboard */
     public HelpFrameKeyboard() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

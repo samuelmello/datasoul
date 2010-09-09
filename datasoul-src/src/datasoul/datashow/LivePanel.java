@@ -33,7 +33,12 @@ import datasoul.util.ObjectManager;
  */
 public class LivePanel extends javax.swing.JPanel implements ListSelectionListener {
 
-    private AutomaticChanger automaticChanger;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6946986219215801662L;
+
+	private AutomaticChanger automaticChanger;
     
     private int lastSelectedIndex;
     

@@ -38,6 +38,10 @@ import datasoul.util.ObjectManager;
 public class PreviewPanel extends javax.swing.JPanel implements ListSelectionListener {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 853165917594791935L;
+	/**
      * Creates new form PreviewPanel
      */
     public PreviewPanel() {

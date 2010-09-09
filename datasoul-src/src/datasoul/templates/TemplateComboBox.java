@@ -31,7 +31,12 @@ import javax.swing.event.TableModelListener;
  */
 public class TemplateComboBox extends JComboBox implements TableModelListener{
     
-    private int targetContent;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7833643012768256674L;
+
+	private int targetContent;
     
     private boolean updating;
     

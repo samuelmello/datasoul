@@ -40,7 +40,11 @@ import datasoul.util.ObjectManager;
  */
 public class BackgroundConfigFrame extends javax.swing.JFrame {
 
-    /** Creates new form BackgroundConfigFrame */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5552735972332154608L;
+	/** Creates new form BackgroundConfigFrame */
     public BackgroundConfigFrame() {
         initComponents();
 

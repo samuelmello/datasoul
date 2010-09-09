@@ -45,7 +45,11 @@ import datasoul.serviceitems.text.TextServiceItem;
  */
 public class BibleTextPanel extends javax.swing.JPanel {
 
-    private MyBooksListener listener;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6780367347001363628L;
+	private MyBooksListener listener;
     private JTextArea txtArea;
     private JTextField titleField;
     private int chapter;

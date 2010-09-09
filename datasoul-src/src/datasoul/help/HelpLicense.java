@@ -29,7 +29,11 @@ import java.io.InputStream;
  */
 public class HelpLicense extends javax.swing.JPanel {
     
-    /** Creates new form HelpLicense */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5165469081956820910L;
+	/** Creates new form HelpLicense */
     public HelpLicense() {
         initComponents();
         

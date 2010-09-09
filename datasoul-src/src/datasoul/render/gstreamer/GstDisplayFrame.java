@@ -41,7 +41,11 @@ import datasoul.render.ContentDisplayRenderer;
  */
 public class GstDisplayFrame extends javax.swing.JFrame {
 
-    private MyVideoComponent vcomp;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -171894252068723465L;
+	private MyVideoComponent vcomp;
     private ContentDisplayRenderer render;
 
     /** Creates new form GstDisplayFrame */
@@ -110,7 +114,12 @@ public class GstDisplayFrame extends javax.swing.JFrame {
 
 
     public class MyVideoComponent extends VideoComponent {
-            @Override
+            /**
+		 * 
+		 */
+		private static final long serialVersionUID = -966652712395463586L;
+
+			@Override
             public void paint(Graphics g){
                     g.setColor(Color.BLACK);
                     g.fillRect(0,0, GstDisplayFrame.this.getWidth(), GstDisplayFrame.this.getHeight());

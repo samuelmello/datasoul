@@ -32,7 +32,11 @@ import datasoul.DatasoulMainForm;
  */
 public class ChordEditorForm extends javax.swing.JFrame {
 
-    private Chord chord;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7287724964857848396L;
+	private Chord chord;
     private ChordsDB chordsDB;
     private boolean isNewChord;
     

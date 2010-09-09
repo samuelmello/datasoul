@@ -22,7 +22,12 @@ import datasoul.render.gstreamer.GstManagerClient;
  */
 public class GstDisplayCmdSetStaticBG extends GstDisplayCmd {
 
-    public void run(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1626748037896068400L;
+
+	public void run(){
         GstManagerClient.getInstance().setBgPipeline(null);
     }
 

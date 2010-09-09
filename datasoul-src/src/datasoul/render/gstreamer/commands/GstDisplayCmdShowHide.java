@@ -22,7 +22,11 @@ import datasoul.render.gstreamer.GstManagerClient;
  */
 public class GstDisplayCmdShowHide extends GstDisplayCmd {
 
-    private boolean param;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6974683670587336197L;
+	private boolean param;
 
     public GstDisplayCmdShowHide(boolean param){
         this.param = param;

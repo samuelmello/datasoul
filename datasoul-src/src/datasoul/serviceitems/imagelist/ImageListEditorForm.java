@@ -28,7 +28,12 @@ import datasoul.util.OpenofficeHelper;
 
 public class ImageListEditorForm extends javax.swing.JFrame {
 
-    /** Creates new form ImageListEditorForm */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4390112556858243062L;
+
+	/** Creates new form ImageListEditorForm */
     public ImageListEditorForm() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

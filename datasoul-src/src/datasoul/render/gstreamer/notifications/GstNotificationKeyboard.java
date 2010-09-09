@@ -26,7 +26,11 @@ import datasoul.util.DatasoulKeyListener;
  */
 public class GstNotificationKeyboard extends GstNotification {
 
-    private KeyEvent key;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1010397600008855550L;
+	private KeyEvent key;
     
     public GstNotificationKeyboard(KeyEvent key){
         this.key = key;

@@ -29,7 +29,11 @@ import datasoul.util.ObjectManager;
  */
 public class TimerControlPanel extends javax.swing.JPanel {
     
-    /** Creates new form TimerControlPanel */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 5844471576070312812L;
+	/** Creates new form TimerControlPanel */
     public TimerControlPanel() {
         initComponents();
         btnTimerOff.setSelected(true);

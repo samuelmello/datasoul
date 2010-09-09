@@ -47,7 +47,12 @@ import datasoul.serviceitems.text.TextServiceItem;
  */
 public class OfficeTextExtractorFrame extends javax.swing.JFrame {
 
-    /** Creates new form OfficeTextExtractorFrame */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5452527503567755096L;
+
+	/** Creates new form OfficeTextExtractorFrame */
     public OfficeTextExtractorFrame() {
         initComponents();
     }

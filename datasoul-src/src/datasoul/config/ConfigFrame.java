@@ -44,7 +44,11 @@ import datasoul.util.ObjectManager;
  */
 public class ConfigFrame extends javax.swing.JFrame {
 
-    private ConfigObj configObj;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2986444321184109906L;
+	private ConfigObj configObj;
     private ArrayList<Component> components;
 
 

@@ -111,7 +111,12 @@ public class TextServiceItem extends ServiceItem {
     
     public class TextAreaCellEditor extends AbstractCellEditor implements TableCellEditor {
         
-        public Object getCellEditorValue() {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 2088586522613763045L;
+
+		public Object getCellEditorValue() {
             fireTableChanged();
             return null;
         }

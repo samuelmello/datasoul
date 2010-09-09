@@ -35,7 +35,12 @@ import datasoul.serviceitems.ServiceItem;
  */
 public class ServiceListColorRender extends DefaultTableCellRenderer{
     
-    /** Creates a new instance of ServiceListColorRender */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3183094959240277205L;
+
+	/** Creates a new instance of ServiceListColorRender */
     public ServiceListColorRender() {
     }
 

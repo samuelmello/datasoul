@@ -42,7 +42,11 @@ import datasoul.templates.DisplayTemplate;
  */
 public class BibleVerseListEditorForm extends javax.swing.JFrame {
 
-    private boolean updateSize;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3611815761291540234L;
+	private boolean updateSize;
     boolean hasChanged = false;
 
     /** Creates new form EditTextItem */

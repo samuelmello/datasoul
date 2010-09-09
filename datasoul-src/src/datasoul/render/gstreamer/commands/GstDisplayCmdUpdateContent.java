@@ -32,7 +32,12 @@ import datasoul.render.gstreamer.GstManagerClient;
  */
 public class GstDisplayCmdUpdateContent extends GstDisplayCmd {
 
-    public enum ArgType {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -711860229878479862L;
+
+	public enum ArgType {
         ARG_TYPE_VOID,
         ARG_TYPE_INT,
         ARG_TYPE_FLOAT,

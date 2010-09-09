@@ -35,7 +35,12 @@ import javax.swing.JTextArea;
  */
 public class TextServiceItemTextArea extends JTextArea {
     
-        public static final int SPACE_HEIGHT = 2;
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6597610926082130984L;
+
+		public static final int SPACE_HEIGHT = 2;
         
         private boolean showMark;
 

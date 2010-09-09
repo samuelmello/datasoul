@@ -19,7 +19,11 @@ import java.awt.image.BufferedImage;
 
 public class SwingDisplayPanel extends javax.swing.JPanel  {
 
-    private ContentDisplayRenderer contentDisplay;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8385004717965058615L;
+	private ContentDisplayRenderer contentDisplay;
 
     /** Creates new form SwingDisplayPanel */
     public SwingDisplayPanel() {

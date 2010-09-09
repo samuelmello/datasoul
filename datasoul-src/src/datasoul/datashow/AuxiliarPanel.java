@@ -29,7 +29,11 @@ import datasoul.util.ObjectManager;
  */
 public class AuxiliarPanel extends javax.swing.JPanel {
 
-    public static final int TAB_DISPLAY = 0;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8866281647274335402L;
+	public static final int TAB_DISPLAY = 0;
     public static final int TAB_ALARM = 1;
     public static final int TAB_CLOCK = 2;
     /**

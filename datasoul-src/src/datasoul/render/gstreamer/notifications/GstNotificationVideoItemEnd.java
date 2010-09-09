@@ -24,7 +24,12 @@ import datasoul.util.ObjectManager;
  */
 public class GstNotificationVideoItemEnd extends GstNotification {
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2829574508805973164L;
+
+	@Override
     public void run(){
         if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
             ContentManager.getInstance().setMainShowBackground(true);

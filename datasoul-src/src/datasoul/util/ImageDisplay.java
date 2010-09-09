@@ -31,7 +31,11 @@ import datasoul.templates.ImageTemplateItem;
  */
 public class ImageDisplay extends javax.swing.JPanel {
 
-    private ImageTemplateItem imageTemplateItem;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2533776947932846677L;
+	private ImageTemplateItem imageTemplateItem;
     
     /** Creates new form ImageDisplay */
     public ImageDisplay() {

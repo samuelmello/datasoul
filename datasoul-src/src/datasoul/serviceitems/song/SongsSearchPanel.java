@@ -42,7 +42,11 @@ import datasoul.util.ObjectManager;
  */
 public class SongsSearchPanel extends javax.swing.JPanel implements javax.swing.event.TableModelListener{
 
-    private AllSongsListTable allSongsListTable;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8178849318898277849L;
+	private AllSongsListTable allSongsListTable;
     private int songColumn;
     private TableRowSorter<TableModel> sorter;
     /**

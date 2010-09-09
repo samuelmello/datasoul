@@ -51,7 +51,11 @@ import datasoul.config.WindowPropConfig;
  */
 public class BibleInstaller extends javax.swing.JFrame {
 
-    protected InstallManager imanager;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8631105525458347323L;
+	protected InstallManager imanager;
     protected MyBookTableModel myAvailableModel;
     protected MyBookTableModel myInstalledModel;
 
@@ -446,7 +450,11 @@ public class BibleInstaller extends javax.swing.JFrame {
 
     public class MyBookTableModel extends DefaultTableModel {
 
-        List<Book> list;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = -9212438386839906862L;
+		List<Book> list;
 
         public MyBookTableModel() {
             this.list = new ArrayList<Book>();

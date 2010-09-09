@@ -32,7 +32,11 @@ import org.crosswire.common.progress.WorkListener;
  */
 public class ProgressDialog extends javax.swing.JDialog {
 
-    /** Creates new form ProgressDialog */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2252953122937626979L;
+	/** Creates new form ProgressDialog */
     public ProgressDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

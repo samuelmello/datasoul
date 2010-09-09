@@ -30,7 +30,11 @@ import java.util.regex.Matcher;
  */
 public class SongChordEditorPanel extends javax.swing.JPanel {
 
-    private enum TransposeDirection{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2366846294747131199L;
+	private enum TransposeDirection{
         Transpose_Up,
         Transpose_Down
     };

@@ -50,7 +50,12 @@ import datasoul.serviceitems.song.SongListTable;
  */
 public class DnDTable extends JTable implements java.awt.dnd.DropTargetListener, java.awt.dnd.DragSourceListener, java.awt.dnd.DragGestureListener{
     
-    private boolean droppable=true;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5106351843032921028L;
+
+	private boolean droppable=true;
     
     private boolean draggable=true;
     

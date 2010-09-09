@@ -195,7 +195,12 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
     protected class ColorTableCellRenderer extends DefaultTableCellRenderer {
         
-        @Override
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = -7907149548084154377L;
+
+		@Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
 
             String prop = properties.get(row);
@@ -217,7 +222,12 @@ public abstract class AttributedObject extends SerializableObject implements Tab
 
     protected class MyTableCellEditor extends DefaultCellEditor {
         
-        public MyTableCellEditor(JTextField j){
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 699934266250662777L;
+
+		public MyTableCellEditor(JTextField j){
             super(j);
         }
         
@@ -289,6 +299,11 @@ public abstract class AttributedObject extends SerializableObject implements Tab
     protected class JComboBoxWrapper implements ActionListener, Serializable {
 
        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 4003888818618151183L;
+
+	/**
         * When an action is performed, editing is ended.
         * @param e the action event
         * @see #stopCellEditing
@@ -306,7 +321,12 @@ public abstract class AttributedObject extends SerializableObject implements Tab
     
     protected class JColorTextField extends JTextField {
         
-        boolean edited = false;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 2302828591260507615L;
+
+		boolean edited = false;
         
         String property;
         

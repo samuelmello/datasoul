@@ -45,7 +45,11 @@ import datasoul.util.ShowDialog;
 public class TemplateEditorPanel extends javax.swing.JPanel
         implements javax.swing.event.TableModelListener {
     
-    private TemplateItem selectedItem = null;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1486106069427369238L;
+	private TemplateItem selectedItem = null;
     private Point dragBegin;
     private Rectangle dragOrigSize;
     private JTable propTable;

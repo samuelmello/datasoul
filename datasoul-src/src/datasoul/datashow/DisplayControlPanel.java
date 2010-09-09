@@ -31,7 +31,11 @@ import datasoul.templates.DisplayTemplate;
  */
 public class DisplayControlPanel extends javax.swing.JPanel {
     
-    private boolean isMainOnBlack = false;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7649817353286475768L;
+	private boolean isMainOnBlack = false;
     
     /**
      * Creates new form DisplayControlPanel

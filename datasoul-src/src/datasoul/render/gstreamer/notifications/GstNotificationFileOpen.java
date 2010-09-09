@@ -17,7 +17,11 @@ import datasoul.util.ObjectManager;
  */
 public class GstNotificationFileOpen extends GstNotification {
 
-    private String filename;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7143882768264011882L;
+	private String filename;
 
     public GstNotificationFileOpen(String f){
         this.filename = f;

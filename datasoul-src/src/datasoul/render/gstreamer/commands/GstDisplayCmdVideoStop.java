@@ -22,7 +22,12 @@ import datasoul.render.gstreamer.GstManagerClient;
  */
 public class GstDisplayCmdVideoStop extends GstDisplayCmd {
 
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7815120224665136585L;
+
+	@Override
     public void run(){
         GstManagerClient.getInstance().stopVideoItem();
     }

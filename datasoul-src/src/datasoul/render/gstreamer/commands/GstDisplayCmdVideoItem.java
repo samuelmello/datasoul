@@ -21,7 +21,11 @@ import datasoul.render.gstreamer.GstManagerClient;
  * @author samuel
  */
 public class GstDisplayCmdVideoItem extends GstDisplayCmd {
-    private String filename;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8644766578526443453L;
+	private String filename;
 
     public GstDisplayCmdVideoItem(String filename){
         this.filename = filename;

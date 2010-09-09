@@ -23,7 +23,11 @@ import datasoul.render.gstreamer.GstManagerVideoBackgroundPipeline;
  */
 public class GstDisplayCmdSetVideoBG extends GstDisplayCmd {
 
-    private String filename;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3311433090825497006L;
+	private String filename;
 
     public GstDisplayCmdSetVideoBG(String filename){
         this.filename = filename;

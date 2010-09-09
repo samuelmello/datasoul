@@ -31,7 +31,11 @@ import datasoul.servicelist.ServiceListTable;
 
 public class TemplateCellEditor extends DefaultCellEditor implements ActionListener {
 
-    private TemplateComboBox cbSong;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3835020850587825408L;
+	private TemplateComboBox cbSong;
     private TemplateComboBox cbText;
     private TemplateComboBox cbImage;
     private TemplateComboBox cbAll;

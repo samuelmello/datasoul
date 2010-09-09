@@ -52,7 +52,11 @@ import datasoul.util.SwordHelper.TxtSplitType;
  */
 public class BibleVerseListPanel extends javax.swing.JPanel {
 
-    Book swordBook = null;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7320663763971411520L;
+	Book swordBook = null;
     String swordBookName = null;
     String endl = System.getProperty("line.separator");
     BibleTextPanel btp;

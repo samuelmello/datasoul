@@ -32,7 +32,11 @@ import datasoul.serviceitems.text.TextServiceItem;
  */
 public class TextSplitPanel extends javax.swing.JPanel {
 
-    private JTextComponent textComp;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5095605987736730361L;
+	private JTextComponent textComp;
 
     /** Creates new form TextSplitPanel */
     public TextSplitPanel() {

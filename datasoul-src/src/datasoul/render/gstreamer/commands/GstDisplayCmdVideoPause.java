@@ -22,7 +22,11 @@ import datasoul.render.gstreamer.GstManagerClient;
  */
 public class GstDisplayCmdVideoPause extends GstDisplayCmd {
 
-    private boolean pause;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3972457267807425046L;
+	private boolean pause;
 
     public GstDisplayCmdVideoPause (boolean b){
         pause = b;

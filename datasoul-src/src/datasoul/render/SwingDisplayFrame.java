@@ -19,7 +19,12 @@ import datasoul.config.ConfigObj;
 
 public class SwingDisplayFrame extends javax.swing.JFrame {
 
-    /** Creates new form SwingDisplayFrame */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2509069399889617587L;
+
+	/** Creates new form SwingDisplayFrame */
     public SwingDisplayFrame() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

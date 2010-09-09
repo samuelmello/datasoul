@@ -28,7 +28,11 @@ import datasoul.DatasoulMainForm;
  */
 public class HelpFrameAbout extends javax.swing.JFrame {
 
-    /** Creates new form HelpFrame */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7054648269712547762L;
+	/** Creates new form HelpFrame */
     public HelpFrameAbout() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

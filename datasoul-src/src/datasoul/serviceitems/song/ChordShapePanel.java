@@ -37,7 +37,11 @@ import javax.swing.JOptionPane;
  */
 public class ChordShapePanel extends javax.swing.JPanel {
 
-    private String shape;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1156138810768694171L;
+	private String shape;
     private String chordName; 
     private int startFret;
     private boolean editable;

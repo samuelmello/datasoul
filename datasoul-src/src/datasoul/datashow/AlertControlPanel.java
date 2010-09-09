@@ -34,7 +34,12 @@ import datasoul.templates.DisplayTemplate;
  */
 public class AlertControlPanel extends javax.swing.JPanel {
     
-    private ArrayList<String> history;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1692467251222649684L;
+
+	private ArrayList<String> history;
     
     private Alert activeAlert;
     
@@ -264,6 +269,11 @@ public class AlertControlPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public class HistoryModel extends DefaultComboBoxModel {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -1494632137834311038L;
         
     }
     

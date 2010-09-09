@@ -34,7 +34,12 @@ public class ImageListServiceRenderer implements ServiceItemRenderer {
 
     public class ImageListRendererLabel extends JLabel {
 
-        public void paint(Graphics g) {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 3968632277212059372L;
+
+		public void paint(Graphics g) {
             super.paint(g);
             image.draw((Graphics2D) g, 1.0f);
 

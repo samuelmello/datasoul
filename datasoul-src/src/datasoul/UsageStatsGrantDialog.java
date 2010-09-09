@@ -31,7 +31,11 @@ import datasoul.config.UsageStatsConfig;
  */
 public class UsageStatsGrantDialog extends javax.swing.JDialog {
 
-    /** Creates new form UsageStatsGrantDialog */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6788939686746288779L;
+	/** Creates new form UsageStatsGrantDialog */
     public UsageStatsGrantDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

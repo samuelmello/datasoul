@@ -33,7 +33,12 @@ import javax.swing.JLabel;
  */
 public class ServiceItemNumberLabel extends JLabel {
     
-        public static final int SPACE_HEIGHT = 2;
+        /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8131936356403108442L;
+
+		public static final int SPACE_HEIGHT = 2;
         
         private boolean showMark;
         

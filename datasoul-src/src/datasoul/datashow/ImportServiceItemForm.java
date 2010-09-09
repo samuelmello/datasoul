@@ -32,7 +32,11 @@ import datasoul.servicelist.ServiceListTable;
  */
 public class ImportServiceItemForm extends javax.swing.JFrame {
 
-    private ServiceListTable serviceListTable;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8063664060956315259L;
+	private ServiceListTable serviceListTable;
 
     /** Creates new form ImportServiceItemForm */
     public ImportServiceItemForm() {
@@ -78,7 +82,8 @@ public class ImportServiceItemForm extends javax.swing.JFrame {
                 "", "", ""
             }
         ) {
-            boolean[] canEdit = new boolean [] {
+			private static final long serialVersionUID = -6089039632958802040L;
+			boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 

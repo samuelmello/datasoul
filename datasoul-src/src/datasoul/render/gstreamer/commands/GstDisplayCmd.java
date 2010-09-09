@@ -22,7 +22,12 @@ import java.io.Serializable;
  */
 public abstract class GstDisplayCmd implements Serializable {
 
-    public abstract void run();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5512569505017124430L;
+
+	public abstract void run();
     
 }
 

@@ -33,7 +33,11 @@ import datasoul.serviceitems.text.TextServiceItem;
  */
 public class HighlightTextArea extends JTextArea {
 
-    private boolean chords;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1670409895687878135L;
+	private boolean chords;
     private Pattern slidePattern;
     private Pattern chorusPattern;
     private Pattern chordsPattern;

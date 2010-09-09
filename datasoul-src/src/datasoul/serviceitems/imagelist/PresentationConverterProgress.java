@@ -20,7 +20,12 @@ import datasoul.util.OpenofficeHelper;
  */
 public class PresentationConverterProgress extends javax.swing.JFrame {
 
-    /** Creates new form PresentationConverterProgress */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2779052772836547491L;
+
+	/** Creates new form PresentationConverterProgress */
     public PresentationConverterProgress() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

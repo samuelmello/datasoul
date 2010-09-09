@@ -43,7 +43,11 @@ import datasoul.util.ObjectManager;
  */
 public class TemplateManagerForm extends javax.swing.JFrame implements ListSelectionListener {
 
-    private TableRowSorter<TableModel> sorter;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5734375915329809081L;
+	private TableRowSorter<TableModel> sorter;
 
     /** Creates new form TemplateManagerForm */
     public TemplateManagerForm() {

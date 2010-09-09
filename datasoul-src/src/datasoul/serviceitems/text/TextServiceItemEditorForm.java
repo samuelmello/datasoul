@@ -41,7 +41,11 @@ import datasoul.util.ObjectManager;
  */
 public class TextServiceItemEditorForm extends javax.swing.JFrame {
     
-    private TextServiceItem textServiceItem;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 4463635810697177397L;
+	private TextServiceItem textServiceItem;
     private boolean isNewItem;
     private boolean updateSize;
 

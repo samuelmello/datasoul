@@ -69,7 +69,11 @@ import datasoul.util.OfficeTextExtractorFrame;
  */
 public class DatasoulMainForm extends javax.swing.JFrame {
 
-    private boolean updateSize = false;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -2585781540789945771L;
+	private boolean updateSize = false;
     public static final int FILE_FORMAT_VERSION = 2;
 
     /**

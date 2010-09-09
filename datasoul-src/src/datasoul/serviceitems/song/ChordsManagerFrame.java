@@ -36,7 +36,11 @@ import javax.swing.text.StyleContext;
  */
 public class ChordsManagerFrame extends javax.swing.JFrame {
     
-    private ChordsDB chordsDB;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6654284171762467231L;
+	private ChordsDB chordsDB;
     private Style chordShapeStyle;
       
     /** Creates new form ChordsManagerFrame */

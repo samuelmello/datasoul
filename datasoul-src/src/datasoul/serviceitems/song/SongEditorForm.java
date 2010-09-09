@@ -48,7 +48,11 @@ import datasoul.util.ShowDialog;
 public class SongEditorForm extends javax.swing.JFrame {
     
 
-    private Song song;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -980421668741654819L;
+	private Song song;
     private boolean newSong;
     boolean updateSize = false;
 

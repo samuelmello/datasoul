@@ -13,7 +13,12 @@ import datasoul.render.gstreamer.GstManagerServer;
  */
 public class GstNotificationHello extends GstNotification {
 
-    public GstNotificationHello(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9175305702584608196L;
+
+	public GstNotificationHello(){
     }
 
     @Override

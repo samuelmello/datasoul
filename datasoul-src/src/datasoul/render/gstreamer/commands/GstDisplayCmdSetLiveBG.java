@@ -23,7 +23,12 @@ import datasoul.render.gstreamer.GstManagerVideoLiveBgPipeline;
  */
 public class GstDisplayCmdSetLiveBG extends GstDisplayCmd {
 
-    public GstDisplayCmdSetLiveBG(){
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3159264840991168905L;
+
+	public GstDisplayCmdSetLiveBG(){
     }
 
     @Override

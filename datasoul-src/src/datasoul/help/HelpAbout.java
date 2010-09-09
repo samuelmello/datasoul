@@ -28,7 +28,11 @@ import datasoul.DatasoulMainForm;
  */
 public class HelpAbout extends javax.swing.JPanel {
     
-    /** Creates new form HelpAbout */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8058595265078784236L;
+	/** Creates new form HelpAbout */
     public HelpAbout() {
         initComponents();
         lblVersion.setText(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("VERSION")+" "+DatasoulMainForm.getVersion());

@@ -26,7 +26,11 @@ import datasoul.util.ObjectManager;
  */
 public class GstNotificationVideoItemError extends GstNotification {
 
-    private String msg;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -1426454189751552261L;
+	private String msg;
     public GstNotificationVideoItemError(String msg){
         this.msg = msg;
     }

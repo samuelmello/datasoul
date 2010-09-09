@@ -45,7 +45,11 @@ import datasoul.templates.TemplateManager;
  */
 public class ServiceListExporterPanel extends javax.swing.JFrame {
 
-    public static final int MODE_EXPORT = 0;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -9185576471182395731L;
+	public static final int MODE_EXPORT = 0;
     public static final int MODE_PRINT = 1;
 
     /** Creates new form ServiceListExporterPanel */
