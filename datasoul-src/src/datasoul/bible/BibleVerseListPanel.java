@@ -110,7 +110,6 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
     }
 
     private void updateMarkup() {
-        //System.out.println("updateMarkup! " + new java.util.Date());
         if (!checkSelectedBook()) {
             return;
         }
@@ -128,7 +127,6 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
         for (int i = 0; i < end; i++) {
             String reference = refs[i];
             if (reference == null) {
-                //                buf.append(endl);
                 continue;
             }
 
@@ -185,21 +183,9 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
             }
             String fullTxt = null;
 
-            // Somewhow, the following lines always throw a BookException...
-            // It seems that there is a bug in the jsword library we're using
-/*
-            try {
-            fullTxt = OSISUtil.getCanonicalText(data.getOsis());
-            } catch (BookException ex) {
-            Logger.getLogger(BibleVerseListPanel.class.getName()).log(Level.SEVERE, null, ex);
-            continue;
-            }
-             */
             StringBuffer sb = new StringBuffer();
-            //System.err.println("ref = " + reference);
 
             int cardinality = key.getCardinality();
-            //System.err.println("    cardinality = " + cardinality);
             String localBookName = null;
             for (int i = 0; i < cardinality; i++) {
                 Key k = key.get(i);
@@ -212,15 +198,6 @@ public class BibleVerseListPanel extends javax.swing.JPanel {
                         Logger.getLogger(BibleVerseListPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                /*
-                System.err.println("    v.getRootName() = " + v.getRootName());
-                System.err.println("    v.getName() = " + v.getName());
-                 */
-                /*
-                System.err.println("    v.getRootName() = " + v.getRootName());
-                System.err.println("    v.getChapter() = " + v.getChapter());
-                System.err.println("    v.getVerse() = " + v.getVerse());
-                 */
                 BookData data = new BookData(swordBook, k);
 
                 try {
