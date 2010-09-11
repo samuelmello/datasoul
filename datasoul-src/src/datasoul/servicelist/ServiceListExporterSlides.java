@@ -79,7 +79,6 @@ public class ServiceListExporterSlides {
         /* Delete temporary files */
         for (String s : deleteOnDispose){
             File f = new File(s);
-            f.delete();
         }
         /* Stop render thread */
         render.cleanup();
@@ -121,16 +120,21 @@ public class ServiceListExporterSlides {
 
     public class ExporterContentRender extends ContentRender {
 
+        private int width;
+        private int height;
+
         public ExporterContentRender(int width, int height, DummyContentDisplay dummy ){
             super(width, height, dummy);
             dummy.initDisplay(width, height);
+            this.width = width;
+            this.height = height;
         }
 
         @Override
         public void slideChange(int transictionTime){
             updateDisplayValues();
 
-            BufferedImage outputImage0 = new BufferedImage(template.getWidth(), template.getHeight(), BufferedImage.TYPE_4BYTE_ABGR);
+            BufferedImage outputImage0 = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR);
 
             synchronized(outputImage0){
                 Graphics2D g = outputImage0.createGraphics();
