@@ -5,6 +5,7 @@
 
 package datasoul.util;
 
+import com.sun.jna.Platform;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -23,6 +24,10 @@ public class OpenofficeHelper {
     private File helper;
     private boolean abort;
     private File tmp;
+
+    public static final String SOFFICE_DEFAULT_LINUX = "/usr/bin/soffice";
+    public static final String SOFFICE_DEFAULT_MAC = "/Applications/OpenOffice.org.app/Contents/MacOS/soffice";
+    public static final String SOFFICE_DEFAULT_WINDOWS = "c:\\Program Files\\OpenOffice 3\\program\\soffice.exe";
 
     public OpenofficeHelper() throws IOException {
 
@@ -46,6 +51,37 @@ public class OpenofficeHelper {
         helper.delete();
     }
 
+    private String getSofficePath(){
+
+        /* Check value configured by user */
+        String config = ConfigObj.getActiveInstance().getSofficePath();
+        File f1 = new File(config);
+        if (f1.exists())
+            return config;
+
+        /* If not found, try default values */
+        if (Platform.isLinux()){
+            File f2 = new File(SOFFICE_DEFAULT_LINUX);
+            if (f2.exists())
+                return SOFFICE_DEFAULT_LINUX;
+        }
+
+        if (Platform.isMac()){
+            File f2 = new File(SOFFICE_DEFAULT_MAC);
+            if (f2.exists())
+                return SOFFICE_DEFAULT_MAC;
+        }
+
+        if (Platform.isWindows()){
+            File f2 = new File(SOFFICE_DEFAULT_WINDOWS);
+            if (f2.exists())
+                return SOFFICE_DEFAULT_WINDOWS;
+        }
+
+        /* If there is no OpenOffice at default locations, return value configured anyway */
+        return config;
+    }
+
     private int init(File f, String macro) throws IOException, InterruptedException{
 
         // Create a copy of the file
@@ -62,7 +98,7 @@ public class OpenofficeHelper {
         fos.close();
 
         // Run openoffice to convert
-        String[] cmd = { ConfigObj.getActiveInstance().getSofficePath(),
+        String[] cmd = { getSofficePath(),
             "-headless",
             helper.getAbsolutePath(),
             "macro://./Standard.Module1."+macro+"(\""+tmp.getAbsolutePath()+"\")"
@@ -70,6 +106,7 @@ public class OpenofficeHelper {
         ProcessBuilder pb = new ProcessBuilder(cmd);
         pb.redirectErrorStream(true);
         Process proc = pb.start();
+
 
         return proc.waitFor();
 

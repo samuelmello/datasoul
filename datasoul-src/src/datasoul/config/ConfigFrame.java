@@ -20,6 +20,7 @@
 
 package datasoul.config;
 
+import com.sun.jna.Platform;
 import java.awt.Component;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -446,8 +447,21 @@ public class ConfigFrame extends javax.swing.JFrame {
 
             @Override
             public boolean accept(File f) {
-                return (!f.isFile() || f.getName().equalsIgnoreCase("soffice")
-                        || f.getName().equalsIgnoreCase("soffice.exe"));
+
+                if (Platform.isLinux()){
+                    return (!f.isFile() || f.getName().equals("soffice"));
+                }
+
+                if (Platform.isWindows()){
+                    return (!f.isFile() || f.getName().equalsIgnoreCase("soffice.exe"));
+                }
+
+                if (Platform.isMac()){
+                    File f2 = new File(f.getAbsolutePath()+"/Contents/MacOS/soffice");
+                    return f2.exists();
+                }
+
+                return false;
             }
 
             @Override
@@ -457,7 +471,11 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         });
         if(fc.showOpenDialog(this)==JFileChooser.APPROVE_OPTION && fc.getSelectedFile().exists() ){
-            txtSofficeLocation.setText(fc.getSelectedFile().getAbsolutePath());
+            if (Platform.isMac()){
+                txtSofficeLocation.setText(fc.getSelectedFile().getAbsolutePath()+"/Contents/MacOS/soffice");
+            } else {
+                txtSofficeLocation.setText(fc.getSelectedFile().getAbsolutePath());
+            }
         }
     }//GEN-LAST:event_btnSofficeLocationActionPerformed
 
