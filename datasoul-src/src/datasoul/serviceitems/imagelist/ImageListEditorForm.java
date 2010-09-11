@@ -114,6 +114,8 @@ public class ImageListEditorForm extends javax.swing.JFrame {
 
         btnAddOffice.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/x-office-presentation.png"))); // NOI18N
         btnAddOffice.setText(bundle.getString("ADD PRESENTATION")); // NOI18N
+        btnAddOffice.setBorderPainted(false);
+        btnAddOffice.setFocusPainted(false);
         btnAddOffice.setFocusable(false);
         btnAddOffice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +140,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -146,7 +148,7 @@ public class ImageListEditorForm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)))
+                        .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -248,21 +250,22 @@ public class ImageListEditorForm extends javax.swing.JFrame {
         fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("PRESENTATION FILES")+" (*.odp,*.ppt,*.pptx)", "odp", "ppt", "pptx") );
         if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             Thread t = new Thread(){
+                @Override
                 public void run(){
+                    PresentationConverterProgress pcp = new PresentationConverterProgress();
                     try{
                         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                         OpenofficeHelper helper = new OpenofficeHelper();
-                        PresentationConverterProgress pcp = new PresentationConverterProgress();
                         pcp.setLocationRelativeTo(ImageListEditorForm.this);
                         pcp.registerHelper(helper);
                         pcp.setVisible(true);
                         helper.convertImages(fc.getSelectedFile(), edititem);
                         helper.dispose();
-                        pcp.dispose();
                     }catch(Exception e){
                         ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                         JOptionPane.showMessageDialog(ImageListEditorForm.this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR CONVERTING FILE")+": "+e.getMessage());
                     }finally{
+                        pcp.dispose();
                         ImageListEditorForm.this.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                     }
                 }
