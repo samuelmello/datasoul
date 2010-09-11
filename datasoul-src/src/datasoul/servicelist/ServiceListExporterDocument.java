@@ -178,7 +178,7 @@ public class ServiceListExporterDocument {
         document.add(p);
         
         if (!s.getSongAuthor().trim().equals("")){
-            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AUTHOR")+s.getSongAuthor(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
+            p = new Paragraph(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("AUTHOR")+": "+s.getSongAuthor(), FontFactory.getFont(FontFactory.HELVETICA_BOLD));
             document.add(p);
         }
         
