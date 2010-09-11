@@ -27,7 +27,7 @@ public class OpenofficeHelper {
 
     public static final String SOFFICE_DEFAULT_LINUX = "/usr/bin/soffice";
     public static final String SOFFICE_DEFAULT_MAC = "/Applications/OpenOffice.org.app/Contents/MacOS/soffice";
-    public static final String SOFFICE_DEFAULT_WINDOWS = "c:\\Program Files\\OpenOffice 3\\program\\soffice.exe";
+    public static final String SOFFICE_DEFAULT_WINDOWS = "c:\\Program Files\\OpenOffice.org 3\\program\\soffice.exe";
 
     public OpenofficeHelper() throws IOException {
 
