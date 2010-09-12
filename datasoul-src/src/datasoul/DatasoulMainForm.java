@@ -1093,40 +1093,64 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnOpenActionPerformed
 
-    public void openServiceList(String path){
-        try {
-            // If there is an active service list, ask the user to save
-            if (ServiceListTable.getActiveInstance().askForSaveOrCancel() == false)
-                return;
-            
-            // Now, open the file
-            ObjectManager.getInstance().setBusyCursor();
-            ServiceListTable.getActiveInstance().openFile(path);
-            txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
-            txtMinutes.setText(String.format("%02d", ServiceListTable.getActiveInstance().getStartMinute()));
-            txtTitle.setText(ServiceListTable.getActiveInstance().getTitle());
-            txtNotes.setText(ServiceListTable.getActiveInstance().getNotes());
-        } finally {
-            ObjectManager.getInstance().setDefaultCursor();
+    public void openServiceList(final String path){
+        // If there is an active service list, ask the user to save
+        if (ServiceListTable.getActiveInstance().askForSaveOrCancel() == false) {
+            return;
         }
+
+        // Now, open the file
+        ObjectManager.getInstance().setBusyCursor();
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    ServiceListTable.getActiveInstance().openFile(path);
+                    txtHours.setText(Integer.toString(ServiceListTable.getActiveInstance().getStartHour()));
+                    txtMinutes.setText(String.format("%02d", ServiceListTable.getActiveInstance().getStartMinute()));
+                    txtTitle.setText(ServiceListTable.getActiveInstance().getTitle());
+                    txtNotes.setText(ServiceListTable.getActiveInstance().getNotes());
+                } finally {
+                    ObjectManager.getInstance().setDefaultCursor();
+                }
+            }
+        };
+        t.start();
     }
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        try {
-            ObjectManager.getInstance().setBusyCursor();
-            ServiceListTable.getActiveInstance().saveServiceList();
-        } finally {
-            ObjectManager.getInstance().setDefaultCursor();
-        }
+        ObjectManager.getInstance().setBusyCursor();
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    ServiceListTable.getActiveInstance().saveServiceList();
+                } finally {
+                    ObjectManager.getInstance().setDefaultCursor();
+                }
+
+            }
+        };
+        t.start();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnSaveAsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveAsActionPerformed
-        try {
-            ObjectManager.getInstance().setBusyCursor();
-            ServiceListTable.getActiveInstance().saveServiceListAs();
-        } finally {
-            ObjectManager.getInstance().setDefaultCursor();
-        }
+        ObjectManager.getInstance().setBusyCursor();
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    ServiceListTable.getActiveInstance().saveServiceListAs();
+                } finally {
+                    ObjectManager.getInstance().setDefaultCursor();
+                }
+
+            }
+        };
+        t.start();
     }//GEN-LAST:event_btnSaveAsActionPerformed
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
