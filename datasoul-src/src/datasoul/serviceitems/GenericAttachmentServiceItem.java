@@ -71,24 +71,29 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
 
     }
 
-    protected void copyFile(String filename, InputStream is) throws IOException {
-
-
+    public static File createTemporaryFile(String filename){
         // find and available name
-        file = new File( getTempDir() + File.separator + filename );
-        if (file.exists()){
+        File f = new File( getTempDir() + File.separator + filename );
+        if (f.exists()){
             int i = 1;
             while (true){
-                file = new File( getTempDir() + File.separator + i + "_" +filename );
-                if (file.exists()){
+                f = new File( getTempDir() + File.separator + i + "_" +filename );
+                if (f.exists()){
                     i++;
                 }else{
-                    internalfilename = "att-"+file.getName();
                     break;
                 }
             }
         }
+        return f;
 
+    }
+
+    public void copyFile(String filename, InputStream is) throws IOException {
+
+        file = createTemporaryFile(filename);
+        internalfilename = "att-"+file.getName();
+ 
         // Copy it to temporary directory
         file.deleteOnExit();
         FileOutputStream fos = new FileOutputStream(file);
@@ -112,7 +117,7 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
         properties.add("IsLink");
     }
 
-    protected String getTempDir(){
+    public static String getTempDir(){
         if (tmpdir == null){
             tmpdir = new File(System.getProperty("java.io.tmpdir")+File.separator+"datasoul-tmp");
             if (! tmpdir.exists() ){

@@ -14,17 +14,21 @@
 
 package datasoul.serviceitems.imagelist;
 
+import datasoul.serviceitems.GenericAttachmentServiceItem;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import datasoul.serviceitems.ServiceItemRenderer;
 import datasoul.templates.ImageTemplateItem;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -53,6 +57,7 @@ public class ImageListServiceRenderer implements ServiceItemRenderer {
 
     private ImageListRendererLabel label;
     private ImageTemplateItem image;
+    private File tmpFile;
 
     private int height = 125;
 
@@ -107,8 +112,34 @@ public class ImageListServiceRenderer implements ServiceItemRenderer {
         return false;
     }
 
-    public void setImage(BufferedImage bi){
+    public void setImageWithoutTempFile(BufferedImage img){
+        image.setImage(img);
+    }
+
+    public void setImage(BufferedImage bi) throws IOException{
         image.setImage(bi);
+        
+        // Ensure maximum image size is Full HD
+        image.assertImageSize(0, 1080);
+
+        // Clean up any previous
+        if (tmpFile != null)
+            tmpFile.delete();
+
+        // Save temporary file
+        tmpFile = GenericAttachmentServiceItem.createTemporaryFile("img-"+this.hashCode()+".png");
+        tmpFile.deleteOnExit();
+        ImageIO.write(image.getImage(), "png", tmpFile);
+    }
+
+    public void dispose(){
+        if (tmpFile != null){
+            tmpFile.delete();
+        }
+    }
+
+    public File getTmpFile(){
+        return tmpFile;
     }
 
     public BufferedImage getImage(){

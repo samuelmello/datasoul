@@ -54,12 +54,17 @@ public class ImageListServiceItem extends ServiceItem {
 
     public void addImage(BufferedImage img){
         ImageListServiceRenderer r1 = new ImageListServiceRenderer();
-        r1.setImage(img);
-        slides.add(r1);
-        this.fireTableChanged();
+        try{
+            r1.setImage(img);
+            slides.add(r1);
+            this.fireTableChanged();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void delImage(int index){
+        ((ImageListServiceRenderer)slides.get(index)).dispose();
         slides.remove(index);
         this.fireTableChanged();
     }
@@ -78,8 +83,8 @@ public class ImageListServiceItem extends ServiceItem {
         this.fireTableChanged();
     }
 
-    public BufferedImage getImage(int index){
-        return ((ImageListServiceRenderer)slides.get(index)).getImage();
+    public ImageListServiceRenderer getImageRenderer(int index){
+        return ((ImageListServiceRenderer)slides.get(index));
     }
 
     @Override
@@ -166,5 +171,12 @@ public class ImageListServiceItem extends ServiceItem {
     public Icon getIcon(){
         return icon;
     }
-}
+    
+    @Override
+    public void dispose(){
+        for (ServiceItemRenderer render : slides){
+            ((ImageListServiceRenderer) render).dispose();
+        }
+    }
 
+}

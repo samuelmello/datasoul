@@ -21,6 +21,7 @@
 
 package datasoul.render;
 
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.GraphicsConfiguration;
@@ -138,13 +139,21 @@ public class ContentRender implements ContentRenderItf {
         updThread.interrupt();
     }
 
-    public void setActiveImage(BufferedImage img){
-        this.activeImage = img;
+    public void setActiveImage(ImageListServiceRenderer img){
+        if (img != null){
+            this.activeImage = img.getImage();
+        }else{
+            this.activeImage = null;
+        }
         this.activeImageChanged = true;
     }
 
-    public void setNextImage(BufferedImage img){
-        this.nextImage = img;
+    public void setNextImage(ImageListServiceRenderer img){
+        if (img != null){
+            this.nextImage = img.getImage();
+        }else{
+            this.nextImage = null;
+        }
         this.nextImageChanged = true;
     }
 
@@ -551,10 +560,10 @@ public class ContentRender implements ContentRenderItf {
         updSemaphore.release();
     }
 
-    public void paintBackground(BufferedImage img) {
+    public void paintBackground(ImageListServiceRenderer img) {
         if (img != null && backgroundImage != null){
             Graphics2D g = backgroundImage.createGraphics();
-            g.drawImage(img, 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight(), null);
+            g.drawImage(img.getImage(), 0, 0, backgroundImage.getWidth(), backgroundImage.getHeight(), null);
             g.dispose();
             display.paintBackground(backgroundImage);
 

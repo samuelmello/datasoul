@@ -14,6 +14,7 @@
 
 package datasoul.render;
 
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import java.awt.image.BufferedImage;
 
 /**
@@ -26,11 +27,11 @@ public interface ContentRenderItf {
 
     void alertShow(int transictionTime);
 
-    void paintBackground(BufferedImage img);
+    void paintBackground(ImageListServiceRenderer img);
 
     void saveTransitionImage();
 
-    void setActiveImage(BufferedImage img);
+    void setActiveImage(ImageListServiceRenderer img);
 
     void setAlert(String alert);
 
@@ -44,7 +45,7 @@ public interface ContentRenderItf {
 
     void setCopyright(String copyright);
 
-    void setNextImage(BufferedImage img);
+    void setNextImage(ImageListServiceRenderer img);
 
     void setNextSlide(String nextSlide);
 

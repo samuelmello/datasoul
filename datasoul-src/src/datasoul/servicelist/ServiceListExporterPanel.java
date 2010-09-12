@@ -34,6 +34,7 @@ import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.render.ContentRender;
 import datasoul.serviceitems.ServiceItem;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import datasoul.serviceitems.song.Song;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.templates.DisplayTemplate;
@@ -294,7 +295,9 @@ public class ServiceListExporterPanel extends javax.swing.JFrame {
         try{
             ServiceListTable slt =  ServiceListTable.getActiveInstance();
             ContentRender r = sles.getRender();
-            r.paintBackground( BackgroundConfig.getInstance().getBackgroundImg());
+            ImageListServiceRenderer img = new ImageListServiceRenderer();
+            img.setImageWithoutTempFile(BackgroundConfig.getInstance().getBackgroundImg());
+            r.paintBackground(img);
             int slideCount = 0;
 
             /* initial empty slide */

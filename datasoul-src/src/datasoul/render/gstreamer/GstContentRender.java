@@ -18,6 +18,7 @@ import java.awt.image.BufferedImage;
 
 import datasoul.render.ContentRenderItf;
 import datasoul.render.gstreamer.commands.GstDisplayCmdUpdateContent;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 
 /**
  *
@@ -46,7 +47,7 @@ public class GstContentRender implements ContentRenderItf {
         GstManagerServer.getInstance().sendCommand(cmd);
     }
 
-    public void paintBackground(BufferedImage img) {
+    public void paintBackground(ImageListServiceRenderer img) {
         GstDisplayCmdUpdateContent cmd = new GstDisplayCmdUpdateContent(target, "paintBackground", img);
         GstManagerServer.getInstance().sendCommand(cmd);
     }
@@ -56,7 +57,7 @@ public class GstContentRender implements ContentRenderItf {
         GstManagerServer.getInstance().sendCommand(cmd);
     }
 
-    public void setActiveImage(BufferedImage img) {
+    public void setActiveImage(ImageListServiceRenderer img) {
         GstDisplayCmdUpdateContent cmd = new GstDisplayCmdUpdateContent(target, "setActiveImage", img);
         GstManagerServer.getInstance().sendCommand(cmd);
     }
@@ -91,7 +92,7 @@ public class GstContentRender implements ContentRenderItf {
         GstManagerServer.getInstance().sendCommand(cmd);
     }
 
-    public void setNextImage(BufferedImage img) {
+    public void setNextImage(ImageListServiceRenderer img) {
         GstDisplayCmdUpdateContent cmd = new GstDisplayCmdUpdateContent(target, "setNextImage", img);
         GstManagerServer.getInstance().sendCommand(cmd);
     }

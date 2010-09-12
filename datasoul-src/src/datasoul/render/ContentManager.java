@@ -25,6 +25,7 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 import datasoul.config.ConfigObj;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 
 /**
  *
@@ -243,7 +244,7 @@ public class ContentManager {
             r.slideHide(i);
     }
 
-    public void paintBackground(BufferedImage img){
+    public void paintBackground(ImageListServiceRenderer img){
         for (ContentRenderItf r : mainRenderList)
             r.paintBackground(img);
         for (ContentRenderItf r : monitorRenderList)
@@ -285,25 +286,25 @@ public class ContentManager {
             r.setAlertActive(b);
     }
 
-    public void setActiveImageLive(BufferedImage img){
+    public void setActiveImageLive(ImageListServiceRenderer img){
         for (ContentRenderItf r : mainRenderList)
             r.setActiveImage(img);
         for (ContentRenderItf r : monitorRenderList)
             r.setActiveImage(img);
     }
     
-    public void setActiveImagePreview(BufferedImage img){
+    public void setActiveImagePreview(ImageListServiceRenderer img){
         previewRender.setActiveImage(img);
     }
 
-    public void setNextImageLive(BufferedImage img){
+    public void setNextImageLive(ImageListServiceRenderer img){
         for (ContentRenderItf r : mainRenderList)
             r.setNextImage(img);
         for (ContentRenderItf r : monitorRenderList)
             r.setNextImage(img);
     }
 
-    public void setNextImagePreview(BufferedImage img){
+    public void setNextImagePreview(ImageListServiceRenderer img){
         previewRender.setNextImage(img);
     }
 

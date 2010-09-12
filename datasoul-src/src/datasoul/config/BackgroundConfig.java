@@ -25,6 +25,8 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
@@ -35,6 +37,7 @@ import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetLiveBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetStaticBG;
 import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 
 /**
  *
@@ -138,7 +141,14 @@ public class BackgroundConfig extends AbstractConfig {
     
     public void setBackgroundImg(BufferedImage img){
         image = img;
-        ContentManager.getInstance().paintBackground(img);
+        try {
+            ImageListServiceRenderer render = new ImageListServiceRenderer();
+            render.setImage(img);
+            ContentManager.getInstance().paintBackground(render);
+            render.dispose();
+        } catch (IOException ex) {
+            Logger.getLogger(BackgroundConfig.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public String getMode(){

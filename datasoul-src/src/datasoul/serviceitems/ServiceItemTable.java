@@ -31,6 +31,7 @@ import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoPause;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import datasoul.serviceitems.text.TextServiceItem;
 
 /**
@@ -258,7 +259,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
         return ((TextServiceItem)item).getSlideText(selectedRow+1);
     }
 
-    public BufferedImage getSlideImage(){
+    public ImageListServiceRenderer getSlideImage(){
         int selectedRow = displayTable.getSelectedRow();
         if (selectedRow == -1) {
             return null;
@@ -272,10 +273,10 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
             return null;
         }
 
-        return ((ImageListServiceItem)item).getImage(selectedRow);
+        return ((ImageListServiceItem)item).getImageRenderer(selectedRow);
     }
 
-    public BufferedImage getNextSlideImage(){
+    public ImageListServiceRenderer getNextSlideImage(){
         int selectedRow = displayTable.getSelectedRow();
         if (selectedRow == -1) {
             selectedRow = 0;
@@ -289,7 +290,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
             return null;
         }
 
-        return ((ImageListServiceItem)item).getImage(selectedRow+1);
+        return ((ImageListServiceItem)item).getImageRenderer(selectedRow+1);
     }
 
     public int getSlideIndex(){

@@ -14,6 +14,8 @@
 
 package datasoul.render.gstreamer.commands;
 
+import datasoul.render.gstreamer.GstContentRender.Target;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -25,6 +27,7 @@ import javax.imageio.ImageIO;
 import datasoul.render.ContentRender;
 import datasoul.render.gstreamer.GstContentRender;
 import datasoul.render.gstreamer.GstManagerClient;
+import java.io.FileInputStream;
 
 /**
  *
@@ -89,8 +92,8 @@ public class GstDisplayCmdUpdateContent extends GstDisplayCmd {
         this.type = ArgType.ARG_TYPE_BOOLEAN;
         this.argboolean = arg;
     }
-
-    public GstDisplayCmdUpdateContent (GstContentRender.Target target, String method, BufferedImage arg){
+    
+    public GstDisplayCmdUpdateContent(Target target, String method, ImageListServiceRenderer arg) {
         this.target = target;
         this.method = method;
         this.type = ArgType.ARG_TYPE_IMAGE;
@@ -98,7 +101,12 @@ public class GstDisplayCmdUpdateContent extends GstDisplayCmd {
         if (arg != null){
             try {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                ImageIO.write(arg, "png", baos);
+                FileInputStream fis = new FileInputStream(arg.getTmpFile());
+                byte[] buffer = new byte[1024];
+                int i = 0;
+                while ((i = fis.read(buffer)) != -1) {
+                    baos.write(buffer, 0, i);
+                }
                 this.argImage = baos.toByteArray();
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -143,7 +151,9 @@ public class GstDisplayCmdUpdateContent extends GstDisplayCmd {
                             ex.printStackTrace();
                         }
                     }
-                    tgt.getClass().getMethod(method, BufferedImage.class).invoke(tgt, img);
+                    ImageListServiceRenderer render = new ImageListServiceRenderer();
+                    render.setImageWithoutTempFile(img);
+                    tgt.getClass().getMethod(method, ImageListServiceRenderer.class).invoke(tgt, render);
                     break;
             }
         }catch(NoSuchMethodException ex){
