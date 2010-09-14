@@ -145,7 +145,6 @@ public class BackgroundConfig extends AbstractConfig {
             ImageListServiceRenderer render = new ImageListServiceRenderer();
             render.setImage(img);
             ContentManager.getInstance().paintBackground(render);
-            render.dispose();
         } catch (IOException ex) {
             Logger.getLogger(BackgroundConfig.class.getName()).log(Level.SEVERE, null, ex);
         }

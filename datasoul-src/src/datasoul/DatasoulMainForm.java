@@ -45,6 +45,7 @@ import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
 import datasoul.render.ContentManager;
 import datasoul.render.ContentRender;
+import datasoul.render.gstreamer.GstRemoteLauncherDialog;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.GenericAttachmentServiceItem;
@@ -299,6 +300,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         actEditTemplates = new javax.swing.JMenuItem();
         actEditConfig = new javax.swing.JMenuItem();
         actImportSongFromOffice = new javax.swing.JMenuItem();
+        actRemoteDisplay = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         actHelpAbout = new javax.swing.JMenuItem();
         actHelpKeyboard = new javax.swing.JMenuItem();
@@ -1010,6 +1012,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actImportSongFromOffice);
 
+        actRemoteDisplay.setText("Connect as Remote Display");
+        actRemoteDisplay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actRemoteDisplayActionPerformed(evt);
+            }
+        });
+        jMenu2.add(actRemoteDisplay);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText(bundle.getString("HELP")); // NOI18N
@@ -1458,6 +1468,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_actImportSongFromOfficeActionPerformed
 
+    private void actRemoteDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actRemoteDisplayActionPerformed
+
+        GstRemoteLauncherDialog dialog = new GstRemoteLauncherDialog(this, true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+
+    }//GEN-LAST:event_actRemoteDisplayActionPerformed
+
     public void closeOutputs() {
 
         if (btnShow.isSelected()) {
@@ -1533,6 +1551,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actHelpKeyboard;
     javax.swing.JMenuItem actImportItem;
     javax.swing.JMenuItem actImportSongFromOffice;
+    javax.swing.JMenuItem actRemoteDisplay;
     datasoul.datashow.AuxiliarPanel auxiliar;
     javax.swing.JButton btnAddWizard;
     javax.swing.JButton btnBackground;

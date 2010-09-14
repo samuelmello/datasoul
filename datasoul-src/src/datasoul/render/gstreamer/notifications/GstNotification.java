@@ -23,12 +23,17 @@ import java.io.Serializable;
 public abstract class GstNotification implements Serializable {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 3171918122491117498L;
+     *
+     */
+    private static final long serialVersionUID = 3171918122491117498L;
 
-	public void run(){
-        
+    public void run() {
     }
+
+    public boolean isUnconnectedAllowed(){
+        return false;
+    }
+
+
 }
 

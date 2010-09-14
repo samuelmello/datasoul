@@ -23,16 +23,24 @@ import datasoul.render.gstreamer.GstManagerServer;
 public class GstNotificationHello extends GstNotification {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -9175305702584608196L;
+     *
+     */
+    private static final long serialVersionUID = -9175305702584608196L;
 
-	public GstNotificationHello(){
+    private boolean isLocal;
+    
+    public GstNotificationHello(boolean isLocal) {
+        this.isLocal = isLocal;
     }
 
     @Override
     public void run(){
-        GstManagerServer.getInstance().clientConnected();
+        GstManagerServer.getInstance().clientConnected(isLocal);
+    }
+
+    @Override
+    public boolean isUnconnectedAllowed(){
+        return true;
     }
 
 }

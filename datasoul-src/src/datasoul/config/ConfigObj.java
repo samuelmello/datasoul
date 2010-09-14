@@ -44,6 +44,7 @@ public class ConfigObj extends AbstractConfig {
     private boolean trackDuration;
     private boolean autoStartTimer;
     private String sofficePath;
+    private boolean acceptRemoteDisplays;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -104,6 +105,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("TrackDuration");
         properties.add("AutoStartTimer");
         properties.add("SofficePath");
+        properties.add("AcceptRemoteDisplays");
     }
     
     public ArrayList<String> getProperties(){
@@ -420,5 +422,23 @@ public class ConfigObj extends AbstractConfig {
     public void setSofficePath(String s){
         this.sofficePath = s;
     }
+
+    public String getAcceptRemoteDisplays(){
+        if (acceptRemoteDisplays){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public boolean getAcceptRemoteDisplaysBool(){
+        return acceptRemoteDisplays;
+    }
+
+    public void setAcceptRemoteDisplays(String s){
+        acceptRemoteDisplays = s.equals("1");
+    }
+
+
 
 }

@@ -21,7 +21,6 @@
 
 package datasoul.render;
 
-import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 import datasoul.config.ConfigObj;
@@ -40,6 +39,25 @@ public class ContentManager {
     private LinkedList<ContentRenderItf> monitorRenderList;
 
     public static final int PREVIEW_WIDTH = 160;
+
+    private ImageListServiceRenderer activeImageLive;
+    private String titleLive;
+    private String slideLive;
+    private String nextSlideLive;
+    private String clockLive;
+    private String timerLive;
+    private String songAuthorLive;
+    private String songSourceLive;
+    private String copyrightLive;
+    private String templateLive;
+    private String templateMonitorLive;
+    private float timetProgress;
+    private boolean showTimer;
+    private ImageListServiceRenderer nextImageLive;
+    private boolean mainShowBackground;
+    private boolean mainShowTemplate;
+    private boolean showBackground;
+    private ImageListServiceRenderer staticBackground;
 
     /** Creates a new instance of ContentManager */
     private ContentManager() {
@@ -68,6 +86,7 @@ public class ContentManager {
     }
 
     public void setTitleLive(String title){
+        titleLive = title;
         for (ContentRenderItf r : mainRenderList)
             r.setTitle(title);
         for (ContentRenderItf r : monitorRenderList)
@@ -82,6 +101,7 @@ public class ContentManager {
     }
     
     public void setSlideLive(String slide){
+        slideLive = slide;
         for (ContentRenderItf r : mainRenderList)
             r.setSlide(slide);
         for (ContentRenderItf r : monitorRenderList)
@@ -89,6 +109,7 @@ public class ContentManager {
     }
     
     public void setNextSlideLive(String slide){
+        nextSlideLive = slide;
         for (ContentRenderItf r : mainRenderList)
             r.setNextSlide(slide);
         for (ContentRenderItf r : monitorRenderList)
@@ -96,6 +117,7 @@ public class ContentManager {
     }
     
     public void setClockLive(String text){
+        clockLive = text;
         for (ContentRenderItf r : mainRenderList)
             r.setClock(text);
         for (ContentRenderItf r : monitorRenderList)
@@ -103,6 +125,7 @@ public class ContentManager {
     }
     
     public void setTimerLive(String timer){
+        timerLive = timer;
         for (ContentRenderItf r : mainRenderList)
             r.setTimer(timer);
         for (ContentRenderItf r : monitorRenderList)
@@ -110,6 +133,7 @@ public class ContentManager {
     }
 
     public void setSongAuthorLive(String songAuthor){
+        songAuthorLive = songAuthor;
         for (ContentRenderItf r : mainRenderList)
             r.setSongAuthor(songAuthor);
         for (ContentRenderItf r : monitorRenderList)
@@ -117,6 +141,7 @@ public class ContentManager {
     }
 
     public void setSongSourceLive(String songSource){
+        songSourceLive = songSource;
         for (ContentRenderItf r : mainRenderList)
             r.setSongSource(songSource);
         for (ContentRenderItf r : monitorRenderList)
@@ -124,6 +149,7 @@ public class ContentManager {
     }
     
     public void setCopyrightLive(String copyright){
+        copyrightLive = copyright;
         for (ContentRenderItf r : mainRenderList)
             r.setCopyright(copyright);
         for (ContentRenderItf r : monitorRenderList)
@@ -131,11 +157,13 @@ public class ContentManager {
     }
     
     public void setTemplateLive(String template){
+        templateLive = template;
         for (ContentRenderItf r : mainRenderList)
             r.setTemplate(template);
     }
 
     public void setTemplateMonitorLive(String template){
+        templateMonitorLive = template;
         for (ContentRenderItf r : monitorRenderList)
             r.setTemplate(template);
     }
@@ -198,7 +226,6 @@ public class ContentManager {
     }
     
     public void setTemplatePreview(String template){
-        //if (template != null && !template.equals(""))
 		previewRender.setTemplate(template);
     }
     
@@ -214,6 +241,7 @@ public class ContentManager {
     }
     
     public void setTimerProgress(float f){
+        timetProgress = f;
         for (ContentRenderItf r : mainRenderList)
             r.setTimerProgress(f);
         for (ContentRenderItf r : monitorRenderList)
@@ -221,6 +249,7 @@ public class ContentManager {
     }
     
     public void setShowTimer(boolean b){
+        showTimer = b;
         for (ContentRenderItf r : mainRenderList)
             r.setShowTimer(b);
         for (ContentRenderItf r : monitorRenderList)
@@ -245,6 +274,7 @@ public class ContentManager {
     }
 
     public void paintBackground(ImageListServiceRenderer img){
+        staticBackground = img;
         for (ContentRenderItf r : mainRenderList)
             r.paintBackground(img);
         for (ContentRenderItf r : monitorRenderList)
@@ -287,10 +317,12 @@ public class ContentManager {
     }
 
     public void setActiveImageLive(ImageListServiceRenderer img){
+        activeImageLive = img;
         for (ContentRenderItf r : mainRenderList)
             r.setActiveImage(img);
         for (ContentRenderItf r : monitorRenderList)
             r.setActiveImage(img);
+
     }
     
     public void setActiveImagePreview(ImageListServiceRenderer img){
@@ -298,6 +330,7 @@ public class ContentManager {
     }
 
     public void setNextImageLive(ImageListServiceRenderer img){
+        nextImageLive = img;
         for (ContentRenderItf r : mainRenderList)
             r.setNextImage(img);
         for (ContentRenderItf r : monitorRenderList)
@@ -309,11 +342,13 @@ public class ContentManager {
     }
 
     public void setMainShowBackground(boolean b){
+        mainShowBackground = b;
         for (ContentRenderItf r : mainRenderList)
             r.setShowBackground(b);
     }
 
     public void setMainShowTemplate(boolean b){
+        mainShowTemplate = b;
         for (ContentRenderItf r : mainRenderList)
             r.setShowTemplate(b);
     }
@@ -337,11 +372,35 @@ public class ContentManager {
 
     public void setShowBackground(boolean b){
 
+        showBackground = b;
+
         for (ContentRenderItf r : mainRenderList)
             r.setShowBackground(b);
 
         for (ContentRenderItf r : monitorRenderList)
             r.setShowBackground(b);
+    }
+
+    public void refreshLive(){
+        setActiveImageLive(activeImageLive);
+        setTitleLive(titleLive);
+        setSlideLive(slideLive);
+        setNextSlideLive(nextSlideLive);
+        setClockLive(clockLive);
+        setTimerLive(timerLive);
+        setSongAuthorLive(songAuthorLive);
+        setSongSourceLive(songSourceLive);
+        setCopyrightLive(copyrightLive);
+        setTemplateLive(templateLive);
+        setTemplateMonitorLive(templateMonitorLive);
+        setTimerProgress(timetProgress);
+        setShowTimer(showTimer);
+        setNextImageLive(nextImageLive);
+        setMainShowBackground(mainShowBackground);
+        setMainShowTemplate(mainShowTemplate);
+        setShowBackground(showBackground);
+        paintBackground(staticBackground);
+        slideChange(0);
     }
 
 }

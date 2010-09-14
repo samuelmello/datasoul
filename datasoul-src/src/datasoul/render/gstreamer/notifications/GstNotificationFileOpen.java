@@ -51,4 +51,10 @@ public class GstNotificationFileOpen extends GstNotification {
             }
         }
     }
+
+    @Override
+    public boolean isUnconnectedAllowed(){
+        return true;
+    }
+
 }

@@ -36,11 +36,12 @@ import java.io.FileInputStream;
 public class GstDisplayCmdUpdateContent extends GstDisplayCmd {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -711860229878479862L;
+     *
+     */
+    private static final long serialVersionUID = -711860229878479862L;
 
-	public enum ArgType {
+    public enum ArgType {
+
         ARG_TYPE_VOID,
         ARG_TYPE_INT,
         ARG_TYPE_FLOAT,
@@ -58,6 +59,33 @@ public class GstDisplayCmdUpdateContent extends GstDisplayCmd {
     private ArgType type;
     private String method;
     private GstContentRender.Target target;
+
+    @Override
+    public String toString(){
+        String param = "(null)";
+        switch(type){
+            case ARG_TYPE_VOID:
+                param = "(null)";
+                break;
+            case ARG_TYPE_INT:
+                param = Integer.toString(argint);
+                break;
+            case ARG_TYPE_FLOAT:
+                param = Float.toString(argfloat);
+                break;
+            case ARG_TYPE_STRING:
+                param = argString;
+                break;
+            case ARG_TYPE_BOOLEAN:
+                param = Boolean.toString(argboolean);
+                break;
+            case ARG_TYPE_IMAGE:
+                param = (argImage == null) ? "(null)" : "(image)";
+                break;
+        }
+
+        return "GstDisplayCmdUpdateContent["+method+"="+param+"]@"+this.hashCode();
+    }
 
     public GstDisplayCmdUpdateContent (GstContentRender.Target target, String method){
         this.target = target;

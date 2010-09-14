@@ -79,21 +79,29 @@ public class GstManagerClient {
         return monitorRender;
     }
 
-    public void run(){
+    public void run(String remoteAddr){
+
+        boolean isLocal = false;
+        String connectAddr = remoteAddr;
+        if (remoteAddr == null){
+            isLocal = true;
+            connectAddr = "localhost";
+        }
+
         try {
             boolean b = true;
             while(b){
                 try {
-                    s = new Socket("localhost", 34912);
+                    s = new Socket(connectAddr, 34912);
                     b = false;
                 }catch(ConnectException ex){
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 }
             }
             s.setTcpNoDelay(true);
             output = new ObjectOutputStream(s.getOutputStream());
             input = new ObjectInputStream(s.getInputStream());
-            sendNotification(new GstNotificationHello());
+            sendNotification(new GstNotificationHello(isLocal));
             while(true){
                 Object o = input.readObject();
                 if (o == null){
@@ -144,10 +152,14 @@ public class GstManagerClient {
     }
 
     public static void main(String[] args) {
+        String remoteAddr = null;
         System.setProperty("sun.java2d.opengl", "true");
         args = Gst.init("Datasoul", args);
         Toolkit.getDefaultToolkit().addAWTEventListener( GstKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
-        GstManagerClient.getInstance().run();
+        if (args.length > 0){
+            remoteAddr = args[0];
+        }
+        GstManagerClient.getInstance().run(remoteAddr);
         System.exit(0);
     }
 

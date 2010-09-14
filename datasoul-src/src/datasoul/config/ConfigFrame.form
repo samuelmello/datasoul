@@ -58,7 +58,7 @@
                   <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,7 +82,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtStorageLoc" pref="303" max="32767" attributes="0"/>
+                  <Component id="txtStorageLoc" pref="329" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -201,8 +201,8 @@
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbMonitorDevice" pref="406" max="32767" attributes="2"/>
-                          <Component id="cbMainDevice" alignment="0" pref="406" max="32767" attributes="2"/>
+                          <Component id="cbMonitorDevice" pref="411" max="32767" attributes="2"/>
+                          <Component id="cbMainDevice" alignment="0" pref="411" max="32767" attributes="2"/>
                       </Group>
                   </Group>
               </Group>
@@ -393,7 +393,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -409,10 +409,11 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSofficeLocation" pref="283" max="32767" attributes="0"/>
+                          <Component id="txtSofficeLocation" pref="314" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSofficeLocation" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="cbRemoteDisplays" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -435,6 +436,8 @@
                       <Component id="txtSofficeLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSofficeLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="cbRemoteDisplays" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -495,6 +498,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSofficeLocationActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbRemoteDisplays">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Accept Remote Displays"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

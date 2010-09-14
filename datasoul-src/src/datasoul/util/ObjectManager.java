@@ -204,6 +204,13 @@ public class ObjectManager {
         return isOutputVisible;
     }
 
+    public void refreshOutputVisible(){
+        if (ConfigObj.getActiveInstance().isGstreamerActive()){
+            GstDisplayCmd cmd = new GstDisplayCmdShowHide(isOutputVisible);
+            GstManagerServer.getInstance().sendCommand(cmd);
+        }
+    }
+
     public void setOutputVisible(boolean b){
 
         isOutputVisible = b;

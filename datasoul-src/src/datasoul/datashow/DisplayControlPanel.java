@@ -134,6 +134,21 @@ public class DisplayControlPanel extends javax.swing.JPanel {
 
         ContentManager.getInstance().slideHideMonitor( time );
     }
+
+    public void refreshStatus(){
+        ContentManager.getInstance().setMainBlack(btnMainBlack.isSelected());
+        ContentManager.getInstance().setMonitorBlack(btnMonitorBlack.isSelected());
+        if (btnShow.isSelected()){
+            ContentManager.getInstance().slideShowMain(0);
+        }else{
+            ContentManager.getInstance().slideHideMain(0);
+        }
+        if (btnMonitorShow.isSelected()){
+            ContentManager.getInstance().slideShowMonitor(0);
+        }else{
+            ContentManager.getInstance().slideHideMonitor(0);
+        }
+    }
     
     /** This method is called from within the constructor to
      * initialize the form.
@@ -451,7 +466,6 @@ public class DisplayControlPanel extends javax.swing.JPanel {
         
         boolean b = ! DisplayControlConfig.getInstance().getMonitorFollowMainControls();
         btnMonitorBlack.setEnabled(b);
-        //btnMonitorClear.setEnabled(b);
         btnMonitorHide.setEnabled(b);
         btnMonitorShow.setEnabled(b);
         

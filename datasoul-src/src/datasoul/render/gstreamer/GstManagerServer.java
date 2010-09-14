@@ -15,6 +15,7 @@
 
 package datasoul.render.gstreamer;
 
+import datasoul.config.BackgroundConfig;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -29,8 +30,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import datasoul.config.ConfigObj;
+import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.notifications.GstNotification;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -53,10 +56,8 @@ public class GstManagerServer {
             return instance;
     }
 
-    private Process proc;
     protected ServerThread server;
     protected Semaphore connectSemaphore;
-    protected StdoutDumpThread stdoutDumpThread;
     protected ArrayList<WorkerThread> workerers;
 
     public class ServerThread extends Thread {
@@ -78,6 +79,31 @@ public class GstManagerServer {
         }
     }
 
+    public Process startRemote(String addr){
+        try {
+            String[] cmd = { System.getProperty("java.home")+File.separator+"bin"+File.separator+"java",
+                        "-cp",
+                        System.getProperty("java.class.path"),
+                        "datasoul.render.gstreamer.GstManagerClient",
+                        addr
+            };
+            ProcessBuilder pb = new ProcessBuilder(cmd);
+            pb.redirectErrorStream(true);
+            Process proc = pb.start();
+
+            StdoutDumpThread dumpThread = new StdoutDumpThread();
+            dumpThread.setProcess(proc);
+            dumpThread.start();
+
+            return proc;
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return null;
+    }
+
     public boolean start(){
         try {
             String[] cmd = { System.getProperty("java.home")+File.separator+"bin"+File.separator+"java",
@@ -87,11 +113,12 @@ public class GstManagerServer {
             };
             ProcessBuilder pb = new ProcessBuilder(cmd);
             pb.redirectErrorStream(true);
-            proc = pb.start();
+            Process proc = pb.start();
 
-            stdoutDumpThread = new StdoutDumpThread();
+            StdoutDumpThread stdoutDumpThread = new StdoutDumpThread();
+            stdoutDumpThread.setProcess(proc);
             stdoutDumpThread.start();
-            
+
             connectSemaphore = new Semaphore(0);
             
             for (int retries = 0; retries < 10; retries ++){
@@ -128,28 +155,52 @@ public class GstManagerServer {
             return;
         }
 
-        try {
-
-            for (WorkerThread w : workerers){
-                if (w.getOutput() == null){
-                    System.err.println("Rejecting command "+obj);
+        for (WorkerThread w : workerers) {
+            try {
+                if (w.getOutput() == null) {
+                    System.err.println("Rejecting command " + obj);
                     return;
                 }
                 w.getOutput().writeObject(obj);
                 w.getOutput().reset();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-
-        } catch (Exception e){
-            e.printStackTrace();
         }
+
     }
 
     public boolean isRunning(){
         return (workerers.size() > 0);
     }
 
-    public void clientConnected(){
-        connectSemaphore.release();
+    public void initRemoteConnection(){
+        ContentManager.getInstance().refreshLive();
+        ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().refreshStatus();
+        ObjectManager.getInstance().refreshOutputVisible();
+        BackgroundConfig.getInstance().refreshMode();
+    }
+
+    public void clientConnected(boolean isLocal){
+
+        Thread t = Thread.currentThread();
+        
+        if (t instanceof WorkerThread){
+            WorkerThread w = ((WorkerThread)t);
+            w.setLocal(isLocal);
+            w.setConnected(true);
+            if (isLocal){
+                connectSemaphore.release();
+            }else{
+                if (ConfigObj.getActiveInstance().getAcceptRemoteDisplaysBool()){
+                    initRemoteConnection();
+                }else{
+                    w.disconnect();
+                    System.out.println("Disconnected remote client");
+                }
+            }
+        }
+        
     }
 
     public class WorkerThread extends Thread {
@@ -157,9 +208,26 @@ public class GstManagerServer {
         protected ObjectOutputStream output;
         protected ObjectInputStream input;
         protected Socket s;
+        protected boolean isLocal;
+        protected boolean isConnected;
+        protected boolean quit;
 
         public WorkerThread(Socket s){
             this.s = s;
+            this.quit = false;
+            this.setName("GstWorkerThread"+s.getRemoteSocketAddress().toString());
+        }
+
+        public void setLocal(boolean isLocal){
+            this.isLocal = isLocal;
+        }
+
+        public void setConnected(boolean isConnected){
+            this.isConnected = isConnected;
+        }
+
+        public void disconnect(){
+            this.quit = true;
         }
 
         @Override
@@ -169,10 +237,15 @@ public class GstManagerServer {
                 output = new ObjectOutputStream(s.getOutputStream());
                 input = new ObjectInputStream(s.getInputStream());
 
-                while (true){
+                while (quit == false){
                     Object o = input.readObject();
                     if (o instanceof GstNotification){
-                        ((GstNotification)o).run();
+                        GstNotification notif = ((GstNotification)o);
+                        if (isConnected && isLocal){
+                            notif.run();
+                        }else if (notif.isUnconnectedAllowed()) {
+                            notif.run();
+                        }
                     }
                 }
             } catch (SocketException eof){
@@ -193,7 +266,15 @@ public class GstManagerServer {
     }
 
     public class StdoutDumpThread extends Thread {
+
+        private Process proc;
+
+        public void setProcess(Process proc){
+            this.proc = proc;
+        }
+
         public void run(){
+            this.setName("StdoutDumpThread "+proc);
             try {
                 int x;
                 while ((x = proc.getInputStream().read()) > 0) {
