@@ -34,6 +34,7 @@ import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.notifications.GstNotification;
 import datasoul.util.ObjectManager;
+import java.io.EOFException;
 
 /**
  *
@@ -79,7 +80,7 @@ public class GstManagerServer {
         }
     }
 
-    public Process startRemote(String addr){
+    public Process startRemote(String addr, GstRemoteLauncherDialog dialog){
         try {
             String[] cmd = { System.getProperty("java.home")+File.separator+"bin"+File.separator+"java",
                         "-cp",
@@ -93,6 +94,7 @@ public class GstManagerServer {
 
             StdoutDumpThread dumpThread = new StdoutDumpThread();
             dumpThread.setProcess(proc);
+            dumpThread.registerRemoteDialog(dialog);
             dumpThread.start();
 
             return proc;
@@ -248,6 +250,8 @@ public class GstManagerServer {
                         }
                     }
                 }
+            } catch (EOFException eof){
+                // Silently ignore disconnection
             } catch (SocketException eof){
                 // Silently ignore disconnection
             } catch (Exception ex) {
@@ -268,18 +272,37 @@ public class GstManagerServer {
     public class StdoutDumpThread extends Thread {
 
         private Process proc;
+        private GstRemoteLauncherDialog remoteDialog = null;
 
         public void setProcess(Process proc){
             this.proc = proc;
         }
 
+        public void registerRemoteDialog(GstRemoteLauncherDialog remoteDialog){
+            this.remoteDialog = remoteDialog;
+        }
+
+        @Override
         public void run(){
+            StringBuffer sb = null;
             this.setName("StdoutDumpThread "+proc);
             try {
                 int x;
                 while ((x = proc.getInputStream().read()) > 0) {
                     if (x < 0) break;
                     System.out.print((char) x);
+                    
+                    // Store the current line in a buffer for remote display status
+                    if (remoteDialog != null){
+                        if (sb == null) sb = new StringBuffer();
+                        sb.append((char)x);
+                        if ( (char) x == '\n' ){
+                            if (sb.toString().startsWith("DATASOUL:")){
+                                remoteDialog.setStatus(sb.toString().substring(9));
+                            }
+                            sb.setLength(0);
+                        }
+                    }
                 }
             } catch (IOException ex) {
                 Logger.getLogger(GstManagerServer.class.getName()).log(Level.SEVERE, null, ex);

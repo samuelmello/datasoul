@@ -33,12 +33,16 @@ import datasoul.render.OutputDevice;
 import datasoul.render.gstreamer.commands.GstDisplayCmd;
 import datasoul.render.gstreamer.notifications.GstNotification;
 import datasoul.render.gstreamer.notifications.GstNotificationHello;
+import java.io.EOFException;
+import java.net.UnknownHostException;
 
 /**
  *
  * @author samuellucas
  */
 public class GstManagerClient {
+
+    public static final String REMOTE_STATUS_MARKER = "DATASOUL:";
 
     private static GstManagerClient instance;
 
@@ -57,6 +61,7 @@ public class GstManagerClient {
     private OutputDevice monitorDevice;
     private GstManagerPipeline bgpipeline;
     private boolean isOutputVisible;
+    private boolean isLocal = false;
 
 
     private GstManagerClient (){
@@ -79,9 +84,14 @@ public class GstManagerClient {
         return monitorRender;
     }
 
+    private void reportRemoteStatus(String s){
+        if (isLocal == false){
+            System.out.println("DATASOUL:"+s);
+        }
+    }
+
     public void run(String remoteAddr){
 
-        boolean isLocal = false;
         String connectAddr = remoteAddr;
         if (remoteAddr == null){
             isLocal = true;
@@ -90,18 +100,25 @@ public class GstManagerClient {
 
         try {
             boolean b = true;
+            reportRemoteStatus("Connecting...");
             while(b){
                 try {
                     s = new Socket(connectAddr, 34912);
                     b = false;
                 }catch(ConnectException ex){
-                    Thread.sleep(1000);
+                    if (isLocal == true){
+                        ex.printStackTrace(System.out);
+                        Thread.sleep(1000);
+                    }else{
+                       throw ex;
+                    }
                 }
             }
             s.setTcpNoDelay(true);
             output = new ObjectOutputStream(s.getOutputStream());
             input = new ObjectInputStream(s.getInputStream());
             sendNotification(new GstNotificationHello(isLocal));
+            reportRemoteStatus("Connected");
             while(true){
                 Object o = input.readObject();
                 if (o == null){
@@ -117,9 +134,23 @@ public class GstManagerClient {
                     }
                 }
             }
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace(System.out);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace(System.out);
+        } catch (UnknownHostException ex) {
+            ex.printStackTrace(System.out);
+            reportRemoteStatus("Unable to connect. Unknown host: "+ex.getMessage());
+        } catch (EOFException eof) {
+            eof.printStackTrace(System.out);
+            reportRemoteStatus("Disconnected");
+        } catch (ConnectException ex) {
+            ex.printStackTrace();
+            reportRemoteStatus(ex.getLocalizedMessage());
+        } catch (IOException ex) {
             ex.printStackTrace(System.out);
         }
+
         System.out.println("Exiting");
     }
 
