@@ -299,6 +299,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         actEditBackground = new javax.swing.JMenuItem();
         actEditTemplates = new javax.swing.JMenuItem();
         actEditConfig = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
         actImportSongFromOffice = new javax.swing.JMenuItem();
         actRemoteDisplay = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -741,7 +742,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addGroup(pnlServiceListLayout.createSequentialGroup()
                         .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -799,7 +800,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(lblAuthor))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
         );
 
         splSongLibrary.setRightComponent(jPanel6);
@@ -895,7 +896,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                .addComponent(auxiliar, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLiveBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1004,13 +1005,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu2.add(actEditConfig);
 
+        jMenuBar1.add(jMenu2);
+
+        jMenu4.setText("Tools");
+
         actImportSongFromOffice.setText(bundle.getString("IMPORT SONG FROM OFFICE PRESENTATION")); // NOI18N
         actImportSongFromOffice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actImportSongFromOfficeActionPerformed(evt);
             }
         });
-        jMenu2.add(actImportSongFromOffice);
+        jMenu4.add(actImportSongFromOffice);
 
         actRemoteDisplay.setText("Connect as Remote Display");
         actRemoteDisplay.addActionListener(new java.awt.event.ActionListener() {
@@ -1018,9 +1023,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
                 actRemoteDisplayActionPerformed(evt);
             }
         });
-        jMenu2.add(actRemoteDisplay);
+        jMenu4.add(actRemoteDisplay);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu4);
 
         jMenu3.setText(bundle.getString("HELP")); // NOI18N
 
@@ -1579,6 +1584,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenu jMenu1;
     javax.swing.JMenu jMenu2;
     javax.swing.JMenu jMenu3;
+    javax.swing.JMenu jMenu4;
     javax.swing.JMenuBar jMenuBar1;
     javax.swing.JPanel jPanel1;
     javax.swing.JPanel jPanel2;
