@@ -23,7 +23,7 @@ import org.gstreamer.Element;
 import org.gstreamer.ElementFactory;
 import org.gstreamer.Pad;
 import org.gstreamer.Structure;
-import org.gstreamer.elements.DecodeBin;
+import org.gstreamer.elements.DecodeBin2;
 import org.gstreamer.io.InputStreamSrc;
 
 /**
@@ -35,7 +35,7 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     protected String filename;
 
     protected Element src;
-    protected DecodeBin decodeBin;
+    protected DecodeBin2 decodeBin;
     protected Element decodeQueue;
     protected FileInputStream fis;
 
@@ -54,15 +54,14 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
             ex.printStackTrace(System.out);
         }
         src = new InputStreamSrc(fis, "Input File");
-        decodeBin = new DecodeBin("Decode Bin");
+        decodeBin = new DecodeBin2("Decode Bin");
         decodeQueue = ElementFactory.make("queue", "Decode Queue");
         pipe.addMany(src, decodeQueue, decodeBin);
         Element.linkMany(src, decodeQueue,  decodeBin);
 
-        decodeBin.connect(new DecodeBin.NEW_DECODED_PAD() {
+        decodeBin.connect(new DecodeBin2.NEW_DECODED_PAD() {
             @Override
-            public void newDecodedPad(Element elem, Pad pad, boolean last) {
-
+            public void newDecodedPad(DecodeBin2 db, Pad pad, boolean last) {
                 /* only link once */
                 if (pad.isLinked()) {
                     return;

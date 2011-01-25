@@ -20,7 +20,7 @@ import org.gstreamer.ElementFactory;
 import org.gstreamer.Pad;
 import org.gstreamer.State;
 import org.gstreamer.Structure;
-import org.gstreamer.elements.DecodeBin;
+import org.gstreamer.elements.DecodeBin2;
 
 import datasoul.render.gstreamer.notifications.GstNotificationBackgroundVideoError;
 
@@ -31,7 +31,7 @@ import datasoul.render.gstreamer.notifications.GstNotificationBackgroundVideoErr
 public class GstManagerVideoLiveBgPipeline extends GstManagerPipeline {
 
     protected Element src;
-    protected DecodeBin decodeBin;
+    protected DecodeBin2 decodeBin;
     protected Element colorSpace;
 
     public GstManagerVideoLiveBgPipeline(){
@@ -45,13 +45,13 @@ public class GstManagerVideoLiveBgPipeline extends GstManagerPipeline {
 
         src = ElementFactory.make("autovideosrc", "Input Source");
         colorSpace = ElementFactory.make("ffmpegcolorspace", "Color Space");
-        decodeBin = new DecodeBin("Decode Bin");
+        decodeBin = new DecodeBin2("Decode Bin");
         pipe.addMany(src, colorSpace, decodeBin);
         Element.linkMany(src, colorSpace, decodeBin);
 
-        decodeBin.connect(new DecodeBin.NEW_DECODED_PAD() {
+        decodeBin.connect(new DecodeBin2.NEW_DECODED_PAD() {
             @Override
-            public void newDecodedPad(Element elem, Pad pad, boolean last) {
+            public void newDecodedPad(DecodeBin2 elem, Pad pad, boolean last) {
 
                 /* only link once */
                 if (pad.isLinked()) {

@@ -21,7 +21,7 @@ import org.gstreamer.ElementFactory;
 import org.gstreamer.GhostPad;
 import org.gstreamer.Pad;
 import org.gstreamer.Structure;
-import org.gstreamer.elements.DecodeBin;
+import org.gstreamer.elements.DecodeBin2;
 
 import datasoul.render.gstreamer.notifications.GstNotificationVideoItemEnd;
 import datasoul.render.gstreamer.notifications.GstNotificationVideoItemError;
@@ -70,9 +70,9 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
 
         pipe.add(audioBin);
 
-        decodeBin.connect(new DecodeBin.NEW_DECODED_PAD() {
+        decodeBin.connect(new DecodeBin2.NEW_DECODED_PAD() {
             @Override
-            public void newDecodedPad(Element elem, Pad pad, boolean last) {
+            public void newDecodedPad(DecodeBin2 elem, Pad pad, boolean last) {
                 Pad audioPad = audioBin.getStaticPad("sink");
                 if (pad.isLinked()) {
                     return;
