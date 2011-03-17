@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
@@ -58,7 +58,7 @@
                   <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="29" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,7 +82,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtStorageLoc" pref="329" max="32767" attributes="0"/>
+                  <Component id="txtStorageLoc" pref="337" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -201,8 +201,8 @@
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbMonitorDevice" pref="411" max="32767" attributes="2"/>
-                          <Component id="cbMainDevice" alignment="0" pref="411" max="32767" attributes="2"/>
+                          <Component id="cbMonitorDevice" pref="426" max="32767" attributes="2"/>
+                          <Component id="cbMainDevice" alignment="0" pref="426" max="32767" attributes="2"/>
                       </Group>
                   </Group>
               </Group>
@@ -403,7 +403,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="clockMode" pref="397" max="32767" attributes="3"/>
+                          <Component id="clockMode" pref="411" max="32767" attributes="3"/>
                       </Group>
                       <Component id="cbTrackDuration" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
@@ -501,7 +501,9 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbRemoteDisplays">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Accept Remote Displays"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="ACCEPT REMOTE DISPLAYS" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

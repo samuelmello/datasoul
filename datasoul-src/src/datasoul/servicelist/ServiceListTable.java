@@ -490,7 +490,7 @@ public class ServiceListTable extends ListTable {
         JFileChooser fc = new JFileChooser();
         fc.setAcceptAllFileFilterUsed(false);
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fc.addChoosableFileFilter( new FileNameExtensionFilter("Datasoul Service Lists", "servicelistz") );
+        fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL SERVICE LISTS"), "servicelistz") );
         fc.addChoosableFileFilter( new FileNameExtensionFilter(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL 1.X SERVICE LISTS"), "servicelist") );
         fc.setDialogTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("SELECT THE FILE TO SAVE."));
         if (fc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {

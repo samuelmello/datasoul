@@ -212,9 +212,9 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
     public static boolean askForLink(){
 
         //Custom button text
-        Object[] options = {"Link", "Copy"};
+        Object[] options = {java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("LINK"), java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("COPY")};
         int n = JOptionPane.showOptionDialog(ObjectManager.getInstance().getDatasoulMainForm(),
-            "Do you want include a copy or a link to the file?",
+            java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DO YOU WANT INCLUDE A COPY OR A LINK TO THE FILE?"),
             "Datasoul",
             JOptionPane.YES_NO_OPTION,
             JOptionPane.QUESTION_MESSAGE,

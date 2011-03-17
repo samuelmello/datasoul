@@ -51,25 +51,26 @@ public class GstRemoteLauncherDialog extends javax.swing.JDialog {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Connect as Remote Display");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
+        setTitle(bundle.getString("CONNECT AS REMOTE DISPLAY")); // NOI18N
 
-        jLabel1.setText("Remote Host");
+        jLabel1.setText(bundle.getString("REMOTE HOST")); // NOI18N
 
-        btnConnect.setText("Connect");
+        btnConnect.setText(bundle.getString("CONNECT")); // NOI18N
         btnConnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConnectActionPerformed(evt);
             }
         });
 
-        btnClose.setText("Close");
+        btnClose.setText(bundle.getString("CLOSE")); // NOI18N
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCloseActionPerformed(evt);
             }
         });
 
-        btnDisconnect.setText("Disconnect");
+        btnDisconnect.setText(bundle.getString("DISCONNECT")); // NOI18N
         btnDisconnect.setEnabled(false);
         btnDisconnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +130,7 @@ public class GstRemoteLauncherDialog extends javax.swing.JDialog {
         btnConnect.setEnabled(false);
         btnDisconnect.setEnabled(true);
         btnClose.setEnabled(false);
-        setStatus("Starting...");
+        setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("STARTING..."));
         WaiterThread wt = new WaiterThread();
         wt.start();
     }//GEN-LAST:event_btnConnectActionPerformed

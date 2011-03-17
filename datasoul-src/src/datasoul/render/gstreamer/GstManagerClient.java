@@ -100,7 +100,7 @@ public class GstManagerClient {
 
         try {
             boolean b = true;
-            reportRemoteStatus("Connecting...");
+            reportRemoteStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONNECTING..."));
             while(b){
                 try {
                     s = new Socket(connectAddr, 34912);
@@ -118,7 +118,7 @@ public class GstManagerClient {
             output = new ObjectOutputStream(s.getOutputStream());
             input = new ObjectInputStream(s.getInputStream());
             sendNotification(new GstNotificationHello(isLocal));
-            reportRemoteStatus("Connected");
+            reportRemoteStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONNECTED"));
             while(true){
                 Object o = input.readObject();
                 if (o == null){
@@ -140,10 +140,10 @@ public class GstManagerClient {
             ex.printStackTrace(System.out);
         } catch (UnknownHostException ex) {
             ex.printStackTrace(System.out);
-            reportRemoteStatus("Unable to connect. Unknown host: "+ex.getMessage());
+            reportRemoteStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CONNECT. UNKNOWN HOST: ")+ex.getMessage());
         } catch (EOFException eof) {
             eof.printStackTrace(System.out);
-            reportRemoteStatus("Disconnected");
+            reportRemoteStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DISCONNECTED"));
         } catch (ConnectException ex) {
             ex.printStackTrace();
             reportRemoteStatus(ex.getLocalizedMessage());

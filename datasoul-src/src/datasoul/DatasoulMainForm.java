@@ -1007,7 +1007,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu4.setText("Tools");
+        jMenu4.setText(bundle.getString("TOOLS")); // NOI18N
 
         actImportSongFromOffice.setText(bundle.getString("IMPORT SONG FROM OFFICE PRESENTATION")); // NOI18N
         actImportSongFromOffice.addActionListener(new java.awt.event.ActionListener() {
@@ -1017,7 +1017,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu4.add(actImportSongFromOffice);
 
-        actRemoteDisplay.setText("Connect as Remote Display");
+        actRemoteDisplay.setText(bundle.getString("CONNECT AS REMOTE DISPLAY")); // NOI18N
         actRemoteDisplay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actRemoteDisplayActionPerformed(evt);

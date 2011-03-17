@@ -355,7 +355,7 @@ public class DisplayTemplate extends AttributedObject {
 
     public void saveAs(JComponent owner) throws Exception {
 
-        String newname = JOptionPane.showInputDialog("Enter new template name:", getName());
+        String newname = JOptionPane.showInputDialog(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ENTER NEW TEMPLATE NAME:"), getName());
         if (newname != null && !newname.trim().equals("")){
             this.setName(newname.trim());
             this.save(owner);
