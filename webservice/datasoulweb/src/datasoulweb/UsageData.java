@@ -1,5 +1,7 @@
 package datasoulweb;
 
+import java.util.Date;
+
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -46,6 +48,9 @@ public class UsageData {
     
     @Persistent
     private String country;
+    
+    @Persistent
+    private Date lastUpdateTime;
     
     public String getOsname() {
 		return osname;
@@ -181,5 +186,13 @@ public class UsageData {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-    
+
+	public Date getLastUpdateTime() {
+		return lastUpdateTime;
+	}
+
+	public void setLastUpdateTime(Date lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
+	
 }

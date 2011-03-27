@@ -1,5 +1,6 @@
 package datasoulweb;
 import java.io.IOException;
+import java.util.Date;
 
 import javax.jdo.JDOObjectNotFoundException;
 import javax.jdo.PersistenceManager;
@@ -41,6 +42,7 @@ public class DatasoulwebServlet extends HttpServlet {
 				usage.setGeometryDisplay2(req.getParameter("geometry2"));
 				usage.setCountry(GeoIP.getClientCountry(req));
 				usage.setUsageUpdateCount(usage.getUsageUpdateCount()+1);
+				usage.setLastUpdateTime(new Date());
 				
 			}finally{
 				pm.close();
