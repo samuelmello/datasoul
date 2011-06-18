@@ -158,5 +158,21 @@ public class TextServiceItem extends ServiceItem {
     public Icon getIcon(){
         return icon;
     }
-}
 
+    @Override
+    public String getJSon(){
+        
+        StringBuffer sb = new StringBuffer();
+        sb.append(super.getJSon());
+        
+        if (this.getText().trim().length() > 0){
+            sb.append("text: '");
+            sb.append(ServiceItem.escapeJson(this.getText()));
+            sb.append("', ");
+            sb.append("\n");
+        }
+        
+        return sb.toString();
+    }
+    
+}

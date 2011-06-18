@@ -39,6 +39,7 @@ import datasoul.config.BackgroundConfig;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;
+import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.util.SerializableObject;
 
 /**
@@ -334,6 +335,52 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
 
     public boolean getShowMediaControls(){
         return false;
+    }
+    
+    public String getJSon(){
+        
+        StringBuffer sb = new StringBuffer();
+        
+        sb.append("duration: ");
+        sb.append(this.getDuration());
+        sb.append(",");
+        sb.append("\n");
+        
+        sb.append("notes: '");
+        sb.append(ServiceItem.escapeJson(this.getNotes()));
+        sb.append("',");
+        sb.append("\n");
+        
+        sb.append("start: '");
+        sb.append(this.getStartTime());
+        sb.append("',");
+        sb.append("\n");
+        
+        sb.append("title: '");
+        sb.append(ServiceItem.escapeJson(this.getTitle()));
+        sb.append("',");
+        sb.append("\n");
+        
+        return sb.toString();
+    }
+    
+    static public String escapeJson(String s){
+        
+        if (s == null){
+            return "";
+        }else{
+            return s.
+                replaceAll("\\\\", "\\\\\\\\").
+                replaceAll("'", "\\\\'").
+                replaceAll("&", "&amp;").
+                replaceAll("<", "&lt;").
+                replaceAll(">", "&gt;").
+                replaceAll("\n"+TextServiceItem.CHORUS_MARK+"\n", "<hr>").
+                replaceAll("\n"+TextServiceItem.SLIDE_BREAK+"\n", "<br>&nbsp<br>").
+                replaceAll("\n", "<br>");
+                    
+        }
+        
     }
 
 }

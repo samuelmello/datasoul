@@ -63,6 +63,12 @@ import datasoul.templates.TemplateCellEditor;
 import datasoul.templates.TemplateManagerForm;
 import datasoul.util.ObjectManager;
 import datasoul.util.OfficeTextExtractorFrame;
+import datasoul.util.OnlinePublishFrame;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
  *
@@ -234,6 +240,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         btnSaveAs = new javax.swing.JButton();
         btnPrint = new javax.swing.JButton();
         btnExport = new javax.swing.JButton();
+        btnPublish = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JToolBar.Separator();
         btnShow = new javax.swing.JToggleButton();
         jSeparator3 = new javax.swing.JToolBar.Separator();
@@ -302,6 +309,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         actImportSongFromOffice = new javax.swing.JMenuItem();
         actRemoteDisplay = new javax.swing.JMenuItem();
+        actPublishOnline = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         actHelpAbout = new javax.swing.JMenuItem();
         actHelpKeyboard = new javax.swing.JMenuItem();
@@ -462,6 +470,17 @@ public class DatasoulMainForm extends javax.swing.JFrame {
             }
         });
         toolBarMain.add(btnExport);
+
+        btnPublish.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/web-browser-big.png"))); // NOI18N
+        btnPublish.setText(bundle.getString("PUBLISH")); // NOI18N
+        btnPublish.setFocusable(false);
+        btnPublish.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnPublish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPublishActionPerformed(evt);
+            }
+        });
+        toolBarMain.add(btnPublish);
         toolBarMain.add(jSeparator2);
 
         btnShow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/stock_effects-preview.png"))); // NOI18N
@@ -1025,6 +1044,14 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         });
         jMenu4.add(actRemoteDisplay);
 
+        actPublishOnline.setText(bundle.getString("PUBLISH SERVICE PLAN ONLINE")); // NOI18N
+        actPublishOnline.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actPublishOnlineActionPerformed(evt);
+            }
+        });
+        jMenu4.add(actPublishOnline);
+
         jMenuBar1.add(jMenu4);
 
         jMenu3.setText(bundle.getString("HELP")); // NOI18N
@@ -1481,6 +1508,18 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_actRemoteDisplayActionPerformed
 
+    private void btnPublishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPublishActionPerformed
+
+        OnlinePublishFrame opf = new OnlinePublishFrame();
+        opf.setLocationRelativeTo(this);
+        opf.setVisible(true);
+        
+    }//GEN-LAST:event_btnPublishActionPerformed
+
+    private void actPublishOnlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actPublishOnlineActionPerformed
+        btnPublishActionPerformed(evt);
+    }//GEN-LAST:event_actPublishOnlineActionPerformed
+
     public void closeOutputs() {
 
         if (btnShow.isSelected()) {
@@ -1556,6 +1595,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JMenuItem actHelpKeyboard;
     javax.swing.JMenuItem actImportItem;
     javax.swing.JMenuItem actImportSongFromOffice;
+    javax.swing.JMenuItem actPublishOnline;
     javax.swing.JMenuItem actRemoteDisplay;
     datasoul.datashow.AuxiliarPanel auxiliar;
     javax.swing.JButton btnAddWizard;
@@ -1568,6 +1608,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JButton btnNew;
     javax.swing.JButton btnOpen;
     javax.swing.JButton btnPrint;
+    javax.swing.JButton btnPublish;
     javax.swing.JButton btnRemove;
     javax.swing.JButton btnSave;
     javax.swing.JButton btnSaveAs;

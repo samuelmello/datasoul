@@ -34,6 +34,7 @@ import javax.swing.ImageIcon;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
+import datasoul.serviceitems.ServiceItem;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.util.ObjectManager;
 
@@ -295,4 +296,40 @@ public class Song extends TextServiceItem implements Cloneable {
     public Icon getIcon(){
         return icon;
     }
+    
+    @Override
+    public String getJSon(){
+        
+        StringBuffer sb = new StringBuffer();
+        sb.append(super.getJSon());
+        
+        if (this.getChordsSimplified().trim().length() > 0){
+            sb.append("chordsimpl: '");
+            String chordsimpl = this.getChordsSimplified();
+            chordsimpl = ServiceItem.escapeJson(chordsimpl);
+            chordsimpl = chordsimpl.replaceAll("<br>=", "<br> ");
+            if (chordsimpl.charAt(0) == '='){
+                chordsimpl = chordsimpl.replace("=", "");
+            }
+            sb.append(chordsimpl);
+            sb.append("', ");
+            sb.append("\n");
+        }
+        
+        if (this.getChordsComplete().trim().length() > 0){
+            sb.append("chordcompl: '");
+            String chordcompl = this.getChordsComplete();
+            chordcompl = ServiceItem.escapeJson(chordcompl);
+            chordcompl = chordcompl.replaceAll("<br>=", "<br> ");
+            if (chordcompl.charAt(0) == '='){
+                chordcompl = chordcompl.replace("=", "");
+            }
+            sb.append(chordcompl);
+            sb.append("', ");
+            sb.append("\n");
+        }
+        
+        return sb.toString();
+    }
+    
 }

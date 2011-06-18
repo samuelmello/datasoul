@@ -20,6 +20,7 @@
 
 package datasoul.util;
 
+import datasoul.DatasoulMainForm;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -64,6 +65,7 @@ public class OfficeTextExtractorFrame extends javax.swing.JFrame {
 	/** Creates new form OfficeTextExtractorFrame */
     public OfficeTextExtractorFrame() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
     }
 
     /** This method is called from within the constructor to

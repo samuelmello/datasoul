@@ -91,6 +91,50 @@ public class ServiceListTable extends ListTable {
         }
     }
 
+    public String getJSon(){
+        
+        StringBuffer sb = new StringBuffer();
+        
+        sb.append("var service = {");
+        sb.append("\n");
+        
+        sb.append("notes : '");
+        sb.append(ServiceItem.escapeJson(this.getNotes()));
+        sb.append("', ");
+        sb.append("\n");
+        
+        sb.append("usetime : ");
+        sb.append(ConfigObj.getActiveInstance().getTrackDurationBool());
+        sb.append(", ");
+        sb.append("\n");
+
+        sb.append("title : '");
+        sb.append(ServiceItem.escapeJson(this.getTitle()));
+        sb.append("', ");
+        sb.append("\n");
+
+        sb.append("items : [");
+        sb.append("\n");
+        for( Object o : objectList){
+            if (o instanceof ServiceItem){
+                ServiceItem si = (ServiceItem) o;
+                sb.append("{");
+                sb.append("\n");
+                sb.append(si.getJSon());
+                sb.append("\n");
+                sb.append("},");
+                sb.append("\n");
+            }
+        }
+        sb.append("\n");
+        sb.append("], "); //items
+        
+        sb.append("\n");
+        sb.append("};"); // service
+        
+        return sb.toString();
+    }
+    
     @Override
     public Node writeObject(ZipWriter zip) throws Exception {
 
