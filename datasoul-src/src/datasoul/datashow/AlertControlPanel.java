@@ -223,6 +223,11 @@ public class AlertControlPanel extends javax.swing.JPanel {
     
     
     private void btnShowAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAlertActionPerformed
+
+        if (!cbShowOnMain1.isSelected() && !cbShowOnMonitor1.isSelected()){
+            return;
+        }
+
         activeAlert = new Alert(this);
         String text = txtAlert.getText();
         activeAlert.setText( text );

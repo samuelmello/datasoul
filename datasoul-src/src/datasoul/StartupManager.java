@@ -33,6 +33,7 @@ import com.sun.jna.Platform;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
+import datasoul.datashow.TimerManager;
 import datasoul.render.ContentManager;
 import datasoul.render.gstreamer.GstManagerServer;
 import datasoul.render.gstreamer.notifications.GstNotificationFileOpen;
@@ -300,6 +301,9 @@ public class StartupManager {
 
         // Ensure background properly loaded
         BackgroundConfig.getInstance().refreshMode();
+
+        // Ensure timer properly initiated
+        TimerManager.getInstance().setTimerOff();
 
         // Check for first time run
         if (UsageStatsConfig.getInstance().getID() == null || UsageStatsConfig.getInstance().getID().length() == 0){
