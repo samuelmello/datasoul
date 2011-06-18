@@ -76,6 +76,14 @@ public class ServiceServlet extends HttpServlet {
 			resp.getWriter().println("<meta property='og:site_name' content='Datasoul' />");
 			resp.getWriter().println("<meta property='og:type' content='activity' />");
 			
+		}else{
+			resp.getWriter().println("<script>");
+			resp.getWriter().println("$(document).ready(function(){");
+			resp.getWriter().println("$('#loading').hide();");
+			resp.getWriter().println("$('#bodycont').show();");
+			resp.getWriter().println("});");
+			resp.getWriter().println("</script>");
+
 		}
 		
 		resp.getWriter().println("<script src='/js/datasoulservice.js'></script>");
