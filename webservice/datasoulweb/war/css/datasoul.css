@@ -1,0 +1,127 @@
+* {
+	margin:0;
+        padding:0;
+}
+
+body {
+	font-family: Verdana,Arial,sans-serif; 
+	background: #444;
+	color: #333;
+}
+
+#loading {
+	padding: 30px;
+	background: #ffd;
+	text-align: center;
+}
+
+
+#bodycont {
+	padding: 30px;
+	background: #ffd;
+	display: none;
+}
+
+.textitem {
+	font-size: 80%;
+}
+
+.chorditem {
+	font-size: 90%;
+	font-family: monospace;
+	white-space: pre;
+}
+
+.textitem hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 40px;
+	margin-right: 40px;
+	border: solid 1px #BBB;
+}
+
+.chorditem hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 40px;
+	margin-right: 40px;
+	border: solid 1px #BBB;
+}
+
+h2 {
+	margin-bottom: 0.5em;
+	font-weight: normal;
+	font-size: 130%;
+}
+
+#servnotes {
+	margin-top: 0.5em;
+	padding: 5px;
+	background: #ffc;
+	border: solid 1px #333;
+	width: 770px; /* 780 - 2*5 (padding) */
+}
+
+#servtable table {
+	width: 780px;
+	margin: 0;
+	border-collapse: collapse;
+}
+
+#servtable th {
+	padding: 4px;
+	border-top: solid 1px #333;
+	text-align: left;
+	border-bottom: solid 2px #333;
+}
+
+#servtable td {
+	border-bottom: solid 1px #BBB;
+	padding: 4px;
+}
+
+#servtable a {
+	color: #333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.time {
+	text-align: left;
+	width: 40px;
+}
+
+.duration {
+	text-align: right;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 40px;
+}
+
+#topbar {
+	background-image: url('/img/background.png');
+	background-repeat: repeat-x; 
+}
+
+#topbar img {
+	padding: 0.5em;
+	margin-left: 30px;
+}
+
+#footnote {
+	margin: 10px;
+	margin-bottom: 20px;
+	color: #999;
+	font-size: 50%;
+	text-align: right;
+}
+
+#footnote a {
+	color: #999;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#footnote a:hover {
+	text-decoration: underline;
+}
