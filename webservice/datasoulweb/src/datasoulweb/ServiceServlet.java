@@ -56,6 +56,8 @@ public class ServiceServlet extends HttpServlet {
 		resp.getWriter().println("<link rel='stylesheet' type='text/css' href='/css/datasoul.css' />");
 
 		String url = req.getRequestURL().toString();
+		String img = "http://datasoul-presentation.appspot.com/img/datasoul-logo.gif"; 
+		
 		if (sp != null){
 			
 			resp.getWriter().println("<script>");
@@ -73,8 +75,11 @@ public class ServiceServlet extends HttpServlet {
 			resp.getWriter().println("<meta property='og:title' content='"+sp.getTitle()+"' />");
 			resp.getWriter().println("<meta property='og:description' content='"+sp.getDescription()+"' />");
 			resp.getWriter().println("<meta property='og:url' content='"+url+"' />");
+			resp.getWriter().println("<meta property='og:image' content='"+img+"' />");
 			resp.getWriter().println("<meta property='og:site_name' content='Datasoul' />");
 			resp.getWriter().println("<meta property='og:type' content='activity' />");
+			resp.getWriter().println("<meta property='fb:admins' content='100000723079053' />");
+			resp.getWriter().println("<meta property='fb:app_id' content='162685747132742' />");
 			
 		}else{
 			resp.getWriter().println("<script>");
@@ -85,6 +90,18 @@ public class ServiceServlet extends HttpServlet {
 			resp.getWriter().println("</script>");
 
 		}
+
+		// Google Analytics
+		resp.getWriter().println("<script type='text/javascript'>");
+		resp.getWriter().println("		  var _gaq = _gaq || [];");
+		resp.getWriter().println("_gaq.push(['_setAccount', 'UA-16968492-3']);");
+		resp.getWriter().println("_gaq.push(['_trackPageview']);");
+		resp.getWriter().println("  (function() {");
+		resp.getWriter().println("    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;");
+		resp.getWriter().println("    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';");
+		resp.getWriter().println("    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);");
+		resp.getWriter().println("  })();");
+		resp.getWriter().println("</script>");		
 		
 		resp.getWriter().println("<script src='/js/datasoulservice.js'></script>");
 		resp.getWriter().println("</head>");
