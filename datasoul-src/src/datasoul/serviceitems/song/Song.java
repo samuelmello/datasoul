@@ -304,6 +304,7 @@ public class Song extends TextServiceItem implements Cloneable {
         sb.append(super.getJSon());
         
         if (this.getChordsSimplified().trim().length() > 0){
+            sb.append(",");
             sb.append("chordsimpl: '");
             String chordsimpl = this.getChordsSimplified();
             chordsimpl = ServiceItem.escapeJson(chordsimpl);
@@ -312,11 +313,11 @@ public class Song extends TextServiceItem implements Cloneable {
                 chordsimpl = chordsimpl.replace("=", "");
             }
             sb.append(chordsimpl);
-            sb.append("', ");
-            sb.append("\n");
+            sb.append("'\n");
         }
         
         if (this.getChordsComplete().trim().length() > 0){
+            sb.append(",");
             sb.append("chordcompl: '");
             String chordcompl = this.getChordsComplete();
             chordcompl = ServiceItem.escapeJson(chordcompl);
@@ -325,8 +326,7 @@ public class Song extends TextServiceItem implements Cloneable {
                 chordcompl = chordcompl.replace("=", "");
             }
             sb.append(chordcompl);
-            sb.append("', ");
-            sb.append("\n");
+            sb.append("'\n");
         }
         
         return sb.toString();

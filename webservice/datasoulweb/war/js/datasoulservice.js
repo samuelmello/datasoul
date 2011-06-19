@@ -111,7 +111,7 @@ function showcont(x){
 	$("#cont_" + x).dialog({ 
 		modal: true,
 		width: '80%',
-		title: service.items[x].title,
+		title: service.items[x].title
 	});
 }
 

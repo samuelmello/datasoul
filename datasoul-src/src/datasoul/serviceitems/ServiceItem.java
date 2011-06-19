@@ -343,23 +343,22 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         
         sb.append("duration: ");
         sb.append(this.getDuration());
-        sb.append(",");
         sb.append("\n");
         
+        sb.append(",");
         sb.append("notes: '");
         sb.append(ServiceItem.escapeJson(this.getNotes()));
-        sb.append("',");
-        sb.append("\n");
+        sb.append("'\n");
         
+        sb.append(",");
         sb.append("start: '");
         sb.append(this.getStartTime());
-        sb.append("',");
-        sb.append("\n");
+        sb.append("'\n");
         
+        sb.append(",");
         sb.append("title: '");
         sb.append(ServiceItem.escapeJson(this.getTitle()));
-        sb.append("',");
-        sb.append("\n");
+        sb.append("'\n");
         
         return sb.toString();
     }

@@ -115,19 +115,27 @@ public class ServiceListTable extends ListTable {
 
         sb.append("items : [");
         sb.append("\n");
+        boolean first = true;
         for( Object o : objectList){
             if (o instanceof ServiceItem){
+                
+                if (first) {
+                    first = false;
+                }else{
+                sb.append(",");
+                }
+                
                 ServiceItem si = (ServiceItem) o;
                 sb.append("{");
                 sb.append("\n");
                 sb.append(si.getJSon());
                 sb.append("\n");
-                sb.append("},");
+                sb.append("}");
                 sb.append("\n");
             }
         }
         sb.append("\n");
-        sb.append("], "); //items
+        sb.append("]"); //items
         
         sb.append("\n");
         sb.append("};"); // service

@@ -166,10 +166,10 @@ public class TextServiceItem extends ServiceItem {
         sb.append(super.getJSon());
         
         if (this.getText().trim().length() > 0){
+            sb.append(",");
             sb.append("text: '");
             sb.append(ServiceItem.escapeJson(this.getText()));
-            sb.append("', ");
-            sb.append("\n");
+            sb.append("'\n");
         }
         
         return sb.toString();
