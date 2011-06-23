@@ -11,14 +11,14 @@ body {
 
 #loading {
 	padding: 30px;
-	background: #ffd;
+	background: #fff;
 	text-align: center;
 }
 
 
 #bodycont {
 	padding: 30px;
-	background: #ffd;
+	background: #fff;
 	display: none;
 }
 
