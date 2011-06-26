@@ -40,6 +40,7 @@ import datasoul.render.gstreamer.notifications.GstNotificationFileOpen;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
+import datasoul.util.AlertHTTPD;
 import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
@@ -331,6 +332,14 @@ public class StartupManager {
             ous.start();
         }
 
+        // Start AlertHTTPD
+        if (ConfigObj.getActiveInstance().getAcceptRemoteAlertsBool()){
+            try{
+                new AlertHTTPD();
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
 
     }
 

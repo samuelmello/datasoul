@@ -23,6 +23,8 @@ package datasoul.datashow;
 
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
+import datasoul.util.ObjectManager;
+import java.util.LinkedList;
 
 /**
  *
@@ -39,8 +41,8 @@ public class Alert extends Thread {
 
     private AlertControlPanel panel;
     
-    public Alert(AlertControlPanel panel){
-        this.panel = panel;
+    public Alert(){
+        this.panel = ObjectManager.getInstance().getAlertControlPanel();
     }
     
     public int getTime() {
@@ -75,12 +77,14 @@ public class Alert extends Thread {
         this.showOnMonitor = showOnMonitor;
     }
     
+    @Override
     public void run(){
         
         if ( showOnMain == false && showOnMonitor == false) {
             return;
         }
         
+        panel.notifyAlertStart(this);
         
         // show
         ContentManager cm = ContentManager.getInstance();
@@ -113,6 +117,10 @@ public class Alert extends Thread {
         cm.alertHide(DisplayControlConfig.getInstance().getSlideShowHideTime());
         
         panel.notifyAlertEnd();
+
+        queue.remove(this);
+        
+        Alert.processQueue();
     }
 
     public String getMainTemplate() {
@@ -131,7 +139,22 @@ public class Alert extends Thread {
         this.monitorTemplate = monitorTemplate;
     }
            
+    static LinkedList<Alert> queue = new LinkedList<Alert>();
     
+    static public void enqueue(Alert obj){
+        boolean process = queue.isEmpty();
+        queue.addLast(obj);
+        if (process){
+            Alert.processQueue();
+        }
+    }
+    
+    static public void processQueue(){
+        if (!queue.isEmpty()){
+            Alert obj = queue.getFirst();
+            obj.start();
+        }
+    }
     
 }
 

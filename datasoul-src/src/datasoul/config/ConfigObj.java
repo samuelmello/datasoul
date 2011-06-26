@@ -45,6 +45,7 @@ public class ConfigObj extends AbstractConfig {
     private boolean autoStartTimer;
     private String sofficePath;
     private boolean acceptRemoteDisplays;
+    private boolean acceptRemoteAlerts;
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -106,6 +107,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("AutoStartTimer");
         properties.add("SofficePath");
         properties.add("AcceptRemoteDisplays");
+        properties.add("AcceptRemoteAlerts");
     }
     
     public ArrayList<String> getProperties(){
@@ -439,6 +441,21 @@ public class ConfigObj extends AbstractConfig {
         acceptRemoteDisplays = s.equals("1");
     }
 
+    public String getAcceptRemoteAlerts(){
+        if (acceptRemoteAlerts){
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public boolean getAcceptRemoteAlertsBool(){
+        return acceptRemoteAlerts;
+    }
+
+    public void setAcceptRemoteAlerts(String s){
+        acceptRemoteAlerts = s.equals("1");
+    }
 
 
 }

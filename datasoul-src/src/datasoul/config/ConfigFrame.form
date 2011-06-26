@@ -58,7 +58,7 @@
                   <Component id="btnDiscard" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSave" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="29" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,7 +82,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txtStorageLoc" pref="337" max="32767" attributes="0"/>
+                  <Component id="txtStorageLoc" pref="362" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnStgloc" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -201,8 +201,8 @@
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cbMonitorDevice" pref="426" max="32767" attributes="2"/>
-                          <Component id="cbMainDevice" alignment="0" pref="426" max="32767" attributes="2"/>
+                          <Component id="cbMonitorDevice" pref="444" max="32767" attributes="2"/>
+                          <Component id="cbMainDevice" alignment="0" pref="444" max="32767" attributes="2"/>
                       </Group>
                   </Group>
               </Group>
@@ -403,17 +403,22 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="clockMode" pref="411" max="32767" attributes="3"/>
+                          <Component id="clockMode" pref="430" max="32767" attributes="3"/>
                       </Group>
                       <Component id="cbTrackDuration" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="txtSofficeLocation" pref="314" max="32767" attributes="0"/>
+                      <Component id="cbRemoteDisplays" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="cbRemoteAlerts" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="txtSofficeLocation" pref="347" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="btnSofficeLocation" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="cbRemoteDisplays" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -436,8 +441,10 @@
                       <Component id="txtSofficeLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btnSofficeLocation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="cbRemoteDisplays" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="cbRemoteAlerts" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -486,7 +493,9 @@
         <Component class="javax.swing.JTextField" name="txtSofficeLocation">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize_de_DE.properties" key="" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSofficeLocation">
@@ -503,6 +512,13 @@
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
               <ResourceString bundle="datasoul/internationalize.properties" key="ACCEPT REMOTE DISPLAYS" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JCheckBox" name="cbRemoteAlerts">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="datasoul/internationalize.properties" key="ACCEPT ALERTS FROM NETWORK" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
             </Property>
           </Properties>
         </Component>

@@ -26,6 +26,7 @@ import java.awt.Cursor;
 import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
+import datasoul.datashow.AlertControlPanel;
 import datasoul.datashow.AuxiliarPanel;
 import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.datashow.LivePanel;
@@ -51,6 +52,7 @@ public class ObjectManager {
     private LivePanel livePanel;
     private PreviewPanel previewPanel;
     private TimerControlPanel timerControlPanel;
+    private AlertControlPanel alertControlPanel;
     
     private DatasoulMainForm datasoulMainForm;
 
@@ -118,6 +120,14 @@ public class ObjectManager {
         return timerControlPanel;
     }
 
+    public void setAlertControlPanel(AlertControlPanel acp){
+        this.alertControlPanel = acp;
+    }
+    
+    public AlertControlPanel getAlertControlPanel(){
+        return alertControlPanel;
+    }
+    
     /**
      * @return the backgroundConfigFrame
      */

@@ -27,6 +27,7 @@ import javax.swing.SpinnerNumberModel;
 
 import datasoul.config.ConfigObj;
 import datasoul.templates.DisplayTemplate;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -57,6 +58,7 @@ public class AlertControlPanel extends javax.swing.JPanel {
             cbShowOnMain1.setSelected(true);
             cbShowOnMain1.setVisible(false);
         }
+        ObjectManager.getInstance().setAlertControlPanel(this);
     }
     
     /** This method is called from within the constructor to
@@ -221,22 +223,17 @@ public class AlertControlPanel extends javax.swing.JPanel {
         btnCancel.setEnabled(false);
     }
     
+    public void notifyAlertStart(Alert obj){
     
-    private void btnShowAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAlertActionPerformed
+        String text = obj.getText();
 
-        if (!cbShowOnMain1.isSelected() && !cbShowOnMonitor1.isSelected()){
-            return;
-        }
-
-        activeAlert = new Alert(this);
-        String text = txtAlert.getText();
-        activeAlert.setText( text );
-        activeAlert.setMainTemplate( cbMainTemplate.getSelectedItem().toString() );
-        activeAlert.setMonitorTemplate( cbMonitorTemplate.getSelectedItem().toString() );
-        activeAlert.setShowOnMain( cbShowOnMain1.isSelected() );
-        activeAlert.setShowOnMonitor( cbShowOnMonitor1.isSelected() );
-        activeAlert.setTime( Integer.parseInt(spnAlertTime.getValue().toString()) * 1000 );
-        activeAlert.start();
+        // Update UI, if alert received from network
+        txtAlert.setText(text);
+        cbMainTemplate.setSelectedItem(obj.getMainTemplate());
+        cbMonitorTemplate.setSelectedItem(obj.getMonitorTemplate());
+        cbShowOnMain1.setSelected(obj.isShowOnMain());
+        cbShowOnMonitor1.setSelected(obj.isShowOnMonitor());
+        spnAlertTime.setValue(obj.getTime()/1000);
         
         history.add(0, text);
         if (text.length() > 40){
@@ -248,11 +245,32 @@ public class AlertControlPanel extends javax.swing.JPanel {
             history.remove(5);
             cbHistory.removeItemAt(5);
         }
+
         btnShowAlert.setEnabled(false);
         btnCancel.setEnabled(true);
         
-    }//GEN-LAST:event_btnShowAlertActionPerformed
+    }
     
+    private void btnShowAlertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAlertActionPerformed
+
+        if (!cbShowOnMain1.isSelected() && !cbShowOnMonitor1.isSelected()){
+            return;
+        }
+
+        activeAlert = new Alert();
+        String text = txtAlert.getText();
+        activeAlert.setText( text );
+        activeAlert.setMainTemplate( cbMainTemplate.getSelectedItem().toString() );
+        if (cbMonitorTemplate.getSelectedItem() != null){
+            activeAlert.setMonitorTemplate( cbMonitorTemplate.getSelectedItem().toString() );
+        }
+        activeAlert.setShowOnMain( cbShowOnMain1.isSelected() );
+        activeAlert.setShowOnMonitor( cbShowOnMonitor1.isSelected() );
+        activeAlert.setTime( Integer.parseInt(spnAlertTime.getValue().toString()) * 1000 );
+
+        Alert.enqueue(activeAlert);
+        
+    }//GEN-LAST:event_btnShowAlertActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

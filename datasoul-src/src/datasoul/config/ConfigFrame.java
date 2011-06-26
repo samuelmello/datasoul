@@ -119,6 +119,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         txtSofficeLocation = new javax.swing.JTextField();
         btnSofficeLocation = new javax.swing.JButton();
         cbRemoteDisplays = new javax.swing.JCheckBox();
+        cbRemoteAlerts = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -146,7 +147,7 @@ public class ConfigFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtStorageLoc, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                .addComponent(txtStorageLoc, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnStgloc)
                 .addContainerGap())
@@ -189,8 +190,8 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cbMonitorDevice, 0, 411, Short.MAX_VALUE)
-                    .addComponent(cbMainDevice, 0, 411, Short.MAX_VALUE)))
+                    .addComponent(cbMonitorDevice, 0, 444, Short.MAX_VALUE)
+                    .addComponent(cbMainDevice, 0, 444, Short.MAX_VALUE)))
         );
         pnlMonitorsLayout.setVerticalGroup(
             pnlMonitorsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,6 +316,8 @@ public class ConfigFrame extends javax.swing.JFrame {
 
         cbRemoteDisplays.setText(bundle.getString("ACCEPT REMOTE DISPLAYS")); // NOI18N
 
+        cbRemoteAlerts.setText(bundle.getString("ACCEPT ALERTS FROM NETWORK")); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -328,15 +331,18 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(43, 43, 43)
-                        .addComponent(clockMode, 0, 397, Short.MAX_VALUE))
+                        .addComponent(clockMode, 0, 430, Short.MAX_VALUE))
                     .addComponent(cbTrackDuration)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11)
+                    .addComponent(cbRemoteDisplays)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbRemoteAlerts, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSofficeLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSofficeLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSofficeLocation))
-                    .addComponent(cbRemoteDisplays))
+                        .addComponent(btnSofficeLocation)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -354,8 +360,10 @@ public class ConfigFrame extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(txtSofficeLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSofficeLocation))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(cbRemoteDisplays))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbRemoteDisplays)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbRemoteAlerts))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -500,6 +508,7 @@ public class ConfigFrame extends javax.swing.JFrame {
         registerComponent(txtSofficeLocation, "SofficePath");
 
         registerComponent(cbRemoteDisplays, "AcceptRemoteDisplays");
+        registerComponent(cbRemoteAlerts, "AcceptRemoteAlerts");
     }
 
     private void initDeviceMenu(){
@@ -589,6 +598,7 @@ public class ConfigFrame extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbMonitorOutput;
     private javax.swing.JCheckBox cbOnlineStats;
     private javax.swing.JCheckBox cbOnlineUpdate;
+    private javax.swing.JCheckBox cbRemoteAlerts;
     private javax.swing.JCheckBox cbRemoteDisplays;
     private javax.swing.JCheckBox cbTrackDuration;
     private javax.swing.JComboBox clockMode;
