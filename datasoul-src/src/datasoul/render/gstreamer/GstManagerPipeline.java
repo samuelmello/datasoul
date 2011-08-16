@@ -31,12 +31,14 @@ public class GstManagerPipeline {
     protected Element tee;
     protected Element queue;
     protected Element queue2;
+    private boolean isPipelineSet;
 
     public GstManagerPipeline(){
+        isPipelineSet = false;
     }
 
     public void eos(){
-        if (pipe != null){
+        if (isPipelineSet){
             pipe.setState(State.NULL);
         }
     }
@@ -76,6 +78,9 @@ public class GstManagerPipeline {
             Element.linkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
         }
 
+        isPipelineSet = true;
+        
+        //System.out.println("GstManagerPipeline.prepareForStart");
     }
 
     public void start(){
@@ -84,7 +89,7 @@ public class GstManagerPipeline {
     }
 
     public void stop(){
-        if (pipe != null){
+        if (isPipelineSet){
             pipe.setState(State.NULL);
             Element.unlinkMany(tee, queue, GstManagerClient.getInstance().getMainVideoSink());
             pipe.removeMany(queue, tee, GstManagerClient.getInstance().getMainVideoSink());
@@ -92,6 +97,7 @@ public class GstManagerPipeline {
                 Element.unlinkMany(tee, queue2, GstManagerClient.getInstance().getMonitorVideoSink());
                 pipe.removeMany(queue2, GstManagerClient.getInstance().getMonitorVideoSink());
             }
+            isPipelineSet = false;
         }
     }
 
@@ -104,11 +110,11 @@ public class GstManagerPipeline {
     }
 
     public void dispose(){
-        if (pipe != null) pipe.dispose();
-        if (tee != null)  tee.dispose();
-        if (queue != null) queue.dispose();
+        if (pipe != null) { pipe.dispose(); pipe = null; }
+        if (tee != null)  { tee.dispose(); tee = null; }
+        if (queue != null) { queue.dispose(); queue = null; }
         if (GstManagerClient.getInstance().isMonitorEnabled()){
-            if (queue2 != null) queue2.dispose();
+            if (queue2 != null) { queue2.dispose(); queue2 = null; }
         }
     }
 

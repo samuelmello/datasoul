@@ -25,6 +25,7 @@ import org.gstreamer.elements.DecodeBin2;
 
 import datasoul.render.gstreamer.notifications.GstNotificationVideoItemEnd;
 import datasoul.render.gstreamer.notifications.GstNotificationVideoItemError;
+import datasoul.render.gstreamer.notifications.GstNotificationVideoItemStart;
 
 /**
  *
@@ -36,14 +37,17 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
     protected Element conv;
     protected Element sink;
     protected Bin audioBin;
+    private boolean isPipelineSet;
 
     public GstManagerVideoItemPipeline(String filename, GstManagerPipeline oldpipeline){
         super(filename);
         this.oldpipeline = oldpipeline;
+        isPipelineSet = false;
     }
 
     @Override
     public void error(int code, String msg){
+        System.out.println("GstManagerVideoItemPipeline.Error Called: "+code+" msg="+msg);
         GstManagerClient.getInstance().sendNotification(new GstNotificationVideoItemError("("+code+") "+msg));
         eos();
     }
@@ -51,6 +55,7 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
     @Override
     public void eos(){
         super.eos();
+        //System.out.println("GstManagerVideoItemPipeline.EOS Called. filename was "+filename);
         GstManagerClient.getInstance().setBgPipeline(oldpipeline);
         GstManagerClient.getInstance().sendNotification(new GstNotificationVideoItemEnd());
     }
@@ -58,6 +63,7 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
     @Override
     public void prepareForStart(){
 
+        //System.out.println("GstManagerVideoItemPipeline.prepareForStart Begin"); 
         super.prepareForStart();
 
         audioBin = new Bin("Audio Bin");
@@ -86,24 +92,34 @@ public class GstManagerVideoItemPipeline extends GstManagerVideoGenericPipeline 
 
             }
         });
+        
+        GstManagerClient.getInstance().sendNotification(new GstNotificationVideoItemStart());
+        
+        //System.out.println("GstManagerVideoItemPipeline.prepareForStart End"); 
+        isPipelineSet = true;
     }
 
     @Override
     public void stop(){
+        //System.out.println("GstManagerVideoItemPipeline.Stop Begin"); 
         super.stop();
-        if (pipe != null){
+        if (isPipelineSet){
             audioBin.removeMany(conv, sink);
             Element.unlinkMany(conv, sink);
             pipe.remove(audioBin);
+            isPipelineSet = false;
         }
+        //System.out.println("GstManagerVideoItemPipeline.Stop End"); 
     }
 
     @Override
     public void dispose(){
+        //System.out.println("GstManagerVideoItemPipeline.Dispose Begin"); 
         super.dispose();
-        if (audioBin != null) audioBin.dispose();
-        if (conv != null) conv.dispose();
-        if (sink != null) sink.dispose();
+        if (audioBin != null) {audioBin.dispose(); audioBin = null; }
+        if (conv != null) { conv.dispose(); conv = null; }
+        if (sink != null) { sink.dispose(); sink = null; }
+        //System.out.println("GstManagerVideoItemPipeline.Dispose End"); 
     }
 
 

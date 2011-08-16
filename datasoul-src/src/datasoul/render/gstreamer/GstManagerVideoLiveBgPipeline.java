@@ -33,9 +33,12 @@ public class GstManagerVideoLiveBgPipeline extends GstManagerPipeline {
     protected Element src;
     protected DecodeBin2 decodeBin;
     protected Element colorSpace;
+    
+    private boolean isPipelineSet;
 
     public GstManagerVideoLiveBgPipeline(){
         super();
+        isPipelineSet = false;
     }
 
     @Override
@@ -65,24 +68,27 @@ public class GstManagerVideoLiveBgPipeline extends GstManagerPipeline {
                 }
             }
         });
+        
+        isPipelineSet = true;
 
     }
 
     @Override
     public void stop(){
         super.stop();
-        if (pipe != null){
+        if (isPipelineSet){
             pipe.removeMany(src, colorSpace, decodeBin);
             Element.unlinkMany(src, colorSpace, decodeBin);
+            isPipelineSet = false;
         }
     }
 
     @Override
     public void dispose(){
         super.dispose();
-        if (src != null) src.dispose();
-        if (decodeBin != null) decodeBin.dispose();
-        if (colorSpace != null) colorSpace.dispose();
+        if (src != null) { src.dispose(); src = null; }
+        if (decodeBin != null) { decodeBin.dispose(); decodeBin = null; }
+        if (colorSpace != null) { colorSpace.dispose(); colorSpace = null; }
     }
 
     @Override

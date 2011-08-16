@@ -38,10 +38,12 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
     protected DecodeBin2 decodeBin;
     protected Element decodeQueue;
     protected FileInputStream fis;
+    private boolean isPipelineSet;
 
     public GstManagerVideoGenericPipeline(String filename){
         super();
         this.filename = filename;
+        isPipelineSet = false;
     }
 
     @Override
@@ -75,23 +77,25 @@ public class GstManagerVideoGenericPipeline extends GstManagerPipeline {
             }
         });
 
+        isPipelineSet = true;
     }
 
     @Override
     public void stop(){
         super.stop();
-        if (pipe != null){
+        if (isPipelineSet){
             Element.unlinkMany(src, decodeQueue,  decodeBin);
             pipe.removeMany(src, decodeQueue, decodeBin);
+            isPipelineSet = false;
         }
     }
 
     @Override
     public void dispose(){
         super.dispose();
-        if (src != null) src.dispose();
-        if (decodeBin != null) decodeBin.dispose();
-        if (decodeQueue != null) decodeQueue.dispose();
+        if (src != null) { src.dispose(); src = null; }
+        if (decodeBin != null) { decodeBin.dispose(); decodeBin = null; }
+        if (decodeQueue != null) { decodeQueue.dispose(); decodeQueue = null; }
         if (fis != null) try {
             fis.close();
         } catch (IOException ex) {
