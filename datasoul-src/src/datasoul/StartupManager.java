@@ -35,8 +35,6 @@ import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.datashow.TimerManager;
 import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.notifications.GstNotificationFileOpen;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
@@ -74,7 +72,7 @@ public class StartupManager {
             Socket s = new Socket("localhost", 34912);
             s.setTcpNoDelay(true);
             ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
-            output.writeObject(new GstNotificationFileOpen(f.getAbsolutePath()));
+            //output.writeObject(new GstNotificationFileOpen(f.getAbsolutePath()));
             output.flush();
             output.reset();
             output.close();
@@ -276,32 +274,15 @@ public class StartupManager {
 
         // If user provided an initial file, open it
         if (initialFile != null){
-            GstNotificationFileOpen open = new GstNotificationFileOpen(initialFile);
-            open.run();
+            //GstNotificationFileOpen open = new GstNotificationFileOpen(initialFile);
+            //open.run();
         }
-
-        try{
-            if (ConfigObj.getActiveInstance().isGstreamerActive()){
-                boolean gst = GstManagerServer.getInstance().start();
-                if (gst){
-                    // Perform any initialization
-                }else{
-                    ConfigObj.getActiveInstance().setGstreamerActive(gst);
-                }
-            }
-        }catch(Exception e){
-            ConfigObj.getActiveInstance().setGstreamerActive(false);
-        }
-
 
         Toolkit.getDefaultToolkit().addAWTEventListener( DatasoulKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
 
         // Init displays
         ObjectManager.getInstance().initMainDisplay();
         ObjectManager.getInstance().initMonitorDisplay();
-
-        // Ensure background properly loaded
-        BackgroundConfig.getInstance().refreshMode();
 
         // Ensure timer properly initiated
         TimerManager.getInstance().setTimerOff();

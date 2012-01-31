@@ -37,8 +37,6 @@ import javax.swing.table.TableModel;
 
 import datasoul.config.BackgroundConfig;
 import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmdVideoStop;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.util.SerializableObject;
 
@@ -318,7 +316,6 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         cm.setSongAuthorLive("");
         cm.setSongSourceLive("");
         cm.setCopyrightLive("");
-        GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoStop());
     }
 
     public void dispose(){

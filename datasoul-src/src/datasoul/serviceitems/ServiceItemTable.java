@@ -21,15 +21,12 @@
 package datasoul.serviceitems;
 
 import java.awt.event.KeyListener;
-import java.awt.image.BufferedImage;
 
 import javax.swing.ImageIcon;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmdVideoPause;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import datasoul.serviceitems.text.TextServiceItem;
@@ -183,7 +180,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
             ContentManager.getInstance().slideChange(-1);
             videoEnded = false;
         }else{
-            GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoPause(isPaused));
+            //GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoPause(isPaused));
         }
 
 

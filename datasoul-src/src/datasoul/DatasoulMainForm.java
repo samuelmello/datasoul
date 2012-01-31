@@ -45,7 +45,6 @@ import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
 import datasoul.render.ContentManager;
 import datasoul.render.ContentRender;
-import datasoul.render.gstreamer.GstRemoteLauncherDialog;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.GenericAttachmentServiceItem;
@@ -64,11 +63,6 @@ import datasoul.templates.TemplateManagerForm;
 import datasoul.util.ObjectManager;
 import datasoul.util.OfficeTextExtractorFrame;
 import datasoul.util.OnlinePublishFrame;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.methods.PostMethod;
 
 /**
  *
@@ -122,8 +116,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         }
 
         initLive();
-
-        setGstreamerEnabled(ConfigObj.getActiveInstance().isGstreamerActive());
 
         tbInfo.setVisible(false);
 
@@ -1502,9 +1494,12 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void actRemoteDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actRemoteDisplayActionPerformed
 
+        /*
         GstRemoteLauncherDialog dialog = new GstRemoteLauncherDialog(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
+        * 
+        */
 
     }//GEN-LAST:event_actRemoteDisplayActionPerformed
 
@@ -1665,11 +1660,6 @@ public class DatasoulMainForm extends javax.swing.JFrame {
     javax.swing.JTextArea txtNotes;
     javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
-
-    public void setGstreamerEnabled(boolean b) {
-        actAddVideo.setEnabled(b);
-        live.setMediaControlsEnabled(b);
-    }
 
     public void updatePreviewHeight() {
         splService.setDividerLocation(splService.getHeight() - splService.getDividerSize() - preview.getPreferedHeight());

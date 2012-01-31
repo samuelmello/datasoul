@@ -21,8 +21,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmdVideoItem;
 
 /**
  *
@@ -48,7 +46,7 @@ public class VideoServiceItem extends GenericAttachmentServiceItem {
         super.showItem();
         ContentManager.getInstance().setMainShowBackground(false);
         ContentManager.getInstance().setMainShowTemplate(false);
-        GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoItem(file.getAbsolutePath()));
+        //GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoItem(file.getAbsolutePath()));
     }
 
     private static final Icon icon = new ImageIcon(VideoServiceItem.class .getResource("/datasoul/icons/v2/video-x-generic.png"));

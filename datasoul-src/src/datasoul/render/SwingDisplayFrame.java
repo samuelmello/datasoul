@@ -16,6 +16,7 @@ package datasoul.render;
 
 import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
+import java.awt.Color;
 
 public class SwingDisplayFrame extends javax.swing.JFrame {
 
@@ -28,6 +29,7 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
     public SwingDisplayFrame() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
+        setBackground(new Color(0,0,0,0));
     }
 
     /** This method is called from within the constructor to
@@ -85,6 +87,7 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
         swingDisplayPanel1.initDisplay(w, h);
         ContentRender r = new ContentRender(w, h, swingDisplayPanel1.getContentDisplay());
         ContentManager.getInstance().registerMainRender(r);
+        this.setSize(w, h);
     }
 
     public void registerAsMonitor(){
@@ -93,6 +96,7 @@ public class SwingDisplayFrame extends javax.swing.JFrame {
         swingDisplayPanel1.initDisplay(w, h);
         ContentRender r = new ContentRender(w, h, swingDisplayPanel1.getContentDisplay());
         ContentManager.getInstance().registerMonitorRender(r);
+        this.setSize(w, h);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

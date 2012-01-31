@@ -70,14 +70,6 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
 
         lblVideo.setText(BackgroundConfig.getInstance().getVideoFile());
 
-        if (!ConfigObj.getActiveInstance().isGstreamerActive()){
-            rbVideo.setEnabled(false);
-            lblVideo.setEnabled(false);
-            rbLive.setEnabled(false);
-            btnChangeVideo.setEnabled(false);
-            rbStatic.setSelected(true);
-        }
-
     }
 
     /** This method is called from within the constructor to

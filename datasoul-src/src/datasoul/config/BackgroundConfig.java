@@ -32,11 +32,6 @@ import javax.imageio.ImageIO;
 
 import datasoul.StartupManager;
 import datasoul.render.ContentManager;
-import datasoul.render.gstreamer.GstManagerServer;
-import datasoul.render.gstreamer.commands.GstDisplayCmd;
-import datasoul.render.gstreamer.commands.GstDisplayCmdSetLiveBG;
-import datasoul.render.gstreamer.commands.GstDisplayCmdSetStaticBG;
-import datasoul.render.gstreamer.commands.GstDisplayCmdSetVideoBG;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 
 /**
@@ -164,7 +159,6 @@ public class BackgroundConfig extends AbstractConfig {
 
     public void setMode(int m){
         mode = m;
-        refreshMode();
     }
 
     public String getVideoFile(){
@@ -174,44 +168,8 @@ public class BackgroundConfig extends AbstractConfig {
     public void setVideoFile(String s){
         videofile = s;
         if (mode == MODE_VIDEO){
-            GstManagerServer.getInstance().sendCommand( new GstDisplayCmdSetVideoBG(getVideoFile()) );
+            //GstManagerServer.getInstance().sendCommand( new GstDisplayCmdSetVideoBG(getVideoFile()) );
         }
-    }
-
-    public void refreshMode() {
-
-        if (GstManagerServer.getInstance().isRunning()){
-
-            GstDisplayCmd cmd = null;
-
-            switch(mode){
-                case MODE_STATIC:
-                    cmd = new GstDisplayCmdSetStaticBG();
-                    break;
-
-                case MODE_VIDEO:
-                    cmd = new GstDisplayCmdSetVideoBG(getVideoFile());
-                    break;
-
-                case MODE_LIVE:
-                    cmd = new GstDisplayCmdSetLiveBG();
-                    break;
-            }
-            if (cmd != null){
-                GstManagerServer.getInstance().sendCommand(cmd);
-            }
-
-            if (mode == MODE_STATIC){
-                ContentManager.getInstance().setShowBackground(true);
-            }else{
-                ContentManager.getInstance().setShowBackground(false);
-            }
-
-
-            // Update display
-            ContentManager.getInstance().slideChange(-1);
-        }
-
     }
 
 }

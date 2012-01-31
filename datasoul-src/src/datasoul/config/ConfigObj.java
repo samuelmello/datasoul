@@ -50,8 +50,6 @@ public class ConfigObj extends AbstractConfig {
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
 
-    private boolean isGstreamerActive;
-
     private boolean onlineCheckUpdate;
     private boolean onlineUsageStats;
 
@@ -63,7 +61,6 @@ public class ConfigObj extends AbstractConfig {
 
     /** Creates a new instance of ConfigObj */
     private ConfigObj() {
-        this.isGstreamerActive = true;
         this.onlineCheckUpdate = true;
         this.autoStartTimer = true;
         this.sofficePath = "soffice";
@@ -316,17 +313,6 @@ public class ConfigObj extends AbstractConfig {
 
     public OutputDevice getMonitorOutputDeviceObj(){
         return monitorOutputDevice;
-    }
-
-    public boolean isGstreamerActive(){
-        return isGstreamerActive;
-    }
-
-    public void setGstreamerActive(boolean b){
-        this.isGstreamerActive = b;
-        if (ObjectManager.getInstance().getDatasoulMainForm() != null){
-            ObjectManager.getInstance().getDatasoulMainForm().setGstreamerEnabled(b);
-        }
     }
 
     public String getOnlineCheckUpdate(){
