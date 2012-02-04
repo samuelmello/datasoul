@@ -25,6 +25,7 @@ import java.util.LinkedList;
 
 import datasoul.config.ConfigObj;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -403,6 +404,17 @@ public class ContentManager {
         slideChange(0);
     }
 
-}
+    public void playVideoItem(String url){
+        ObjectManager.getInstance().getMainVideoFrame().playVideoItem(url);
+    }
 
+    public void pauseVideoItem(boolean b){
+        ObjectManager.getInstance().getMainVideoFrame().pauseVideoItem(b);
+    }
+
+    public void stopVideoItem(){
+        ObjectManager.getInstance().getMainVideoFrame().stopVideoItem();
+    }
+
+}
 

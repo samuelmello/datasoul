@@ -14,8 +14,11 @@
 
 package datasoul.render;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import sun.java2d.pipe.AlphaColorPipe;
 
 public class SwingDisplayPanel extends javax.swing.JPanel  {
 
@@ -69,7 +72,8 @@ public class SwingDisplayPanel extends javax.swing.JPanel  {
     public void paint (Graphics g){
         BufferedImage img = contentDisplay.getActiveImage();
         if (img != null){
-            g.clearRect(0, 0, img.getWidth(), img.getHeight());
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setComposite(AlphaComposite.Src);
             synchronized(img){
                 g.drawImage(img, 0,0, img.getWidth(), img.getHeight(), null);
             }

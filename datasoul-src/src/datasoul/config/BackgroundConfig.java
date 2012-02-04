@@ -33,6 +33,7 @@ import javax.imageio.ImageIO;
 import datasoul.StartupManager;
 import datasoul.render.ContentManager;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -167,9 +168,6 @@ public class BackgroundConfig extends AbstractConfig {
 
     public void setVideoFile(String s){
         videofile = s;
-        if (mode == MODE_VIDEO){
-            //GstManagerServer.getInstance().sendCommand( new GstDisplayCmdSetVideoBG(getVideoFile()) );
-        }
     }
 
 }

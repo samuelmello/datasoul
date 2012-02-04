@@ -302,6 +302,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             bg.setMode(BackgroundConfig.MODE_LIVE);
         }
         bg.save();
+        ObjectManager.getInstance().getMainVideoFrame().playBackground();
         ObjectManager.getInstance().setBackgroundConfigFrame(null);
         dispose();
         

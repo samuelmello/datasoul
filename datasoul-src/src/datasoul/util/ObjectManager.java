@@ -33,6 +33,7 @@ import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
 import datasoul.render.SwingDisplayFrame;
+import datasoul.render.vlcj.VlcjBackgroundFrame;
 import datasoul.templates.TemplateManagerForm;
 
 /**
@@ -57,6 +58,7 @@ public class ObjectManager {
     
     private SwingDisplayFrame mainDisplay;
     private SwingDisplayFrame monitorDisplay;
+    private VlcjBackgroundFrame mainVideo;
     private boolean isOutputVisible;
 
 
@@ -183,6 +185,9 @@ public class ObjectManager {
         mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
         mainDisplay.registerAsMain();
 
+        mainVideo= new VlcjBackgroundFrame();
+        mainVideo.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
+        mainVideo.registerAsMain();
     }
 
     public void initMonitorDisplay(){
@@ -202,11 +207,16 @@ public class ObjectManager {
 
         isOutputVisible = b;
 
+        mainVideo.setVisible(b);
         mainDisplay.setVisible(b);
+
         if (ConfigObj.getActiveInstance().getMonitorOutput())
             monitorDisplay.setVisible(b);
     }
 
+    public VlcjBackgroundFrame getMainVideoFrame(){
+        return mainVideo;
+    }
 
 }
 

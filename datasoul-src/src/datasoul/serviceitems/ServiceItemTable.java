@@ -180,7 +180,7 @@ public class ServiceItemTable extends javax.swing.JPanel implements ListSelectio
             ContentManager.getInstance().slideChange(-1);
             videoEnded = false;
         }else{
-            //GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoPause(isPaused));
+            ContentManager.getInstance().pauseVideoItem(isPaused);
         }
 
 

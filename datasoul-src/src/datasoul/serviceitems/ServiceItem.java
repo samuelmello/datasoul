@@ -316,6 +316,7 @@ public class ServiceItem extends SerializableObject implements TableModel, Table
         cm.setSongAuthorLive("");
         cm.setSongSourceLive("");
         cm.setCopyrightLive("");
+        cm.stopVideoItem();
     }
 
     public void dispose(){

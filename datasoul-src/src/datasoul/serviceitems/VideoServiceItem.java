@@ -46,7 +46,7 @@ public class VideoServiceItem extends GenericAttachmentServiceItem {
         super.showItem();
         ContentManager.getInstance().setMainShowBackground(false);
         ContentManager.getInstance().setMainShowTemplate(false);
-        //GstManagerServer.getInstance().sendCommand(new GstDisplayCmdVideoItem(file.getAbsolutePath()));
+        ContentManager.getInstance().playVideoItem(file.getAbsolutePath());
     }
 
     private static final Icon icon = new ImageIcon(VideoServiceItem.class .getResource("/datasoul/icons/v2/video-x-generic.png"));
