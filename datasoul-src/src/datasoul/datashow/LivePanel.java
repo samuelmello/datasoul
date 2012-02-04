@@ -25,6 +25,7 @@ import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.serviceitems.ServiceItem;
+import datasoul.serviceitems.ServiceItemTable;
 import datasoul.util.ObjectManager;
 
 /**
@@ -255,8 +256,8 @@ public class LivePanel extends javax.swing.JPanel implements ListSelectionListen
         }
     }
 
-    public void notifyVideoEnd(){
-        serviceItemTable1.notifyVideoEnd();
+    public ServiceItemTable getLiveServiceItemTable(){
+        return serviceItemTable1;
     }
 
     public void evtKeyPressed(KeyEvent e){

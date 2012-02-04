@@ -406,14 +406,30 @@ public class ContentManager {
 
     public void playVideoItem(String url){
         ObjectManager.getInstance().getMainVideoFrame().playVideoItem(url);
+        if (ObjectManager.getInstance().getMonitorVideoFrame() != null){
+            ObjectManager.getInstance().getMonitorVideoFrame().playVideoItem(url);
+        }
     }
 
-    public void pauseVideoItem(boolean b){
-        ObjectManager.getInstance().getMainVideoFrame().pauseVideoItem(b);
+    public void seekVideoItem(float position){
+        ObjectManager.getInstance().getMainVideoFrame().seekVideoItem(position);
+        if (ObjectManager.getInstance().getMonitorVideoFrame() != null){
+            ObjectManager.getInstance().getMonitorVideoFrame().seekVideoItem(position);
+        }
+    }
+    
+    public void pauseVideoItem(){
+        ObjectManager.getInstance().getMainVideoFrame().pauseVideoItem();
+        if (ObjectManager.getInstance().getMonitorVideoFrame() != null){
+            ObjectManager.getInstance().getMonitorVideoFrame().pauseVideoItem();
+        }
     }
 
     public void stopVideoItem(){
         ObjectManager.getInstance().getMainVideoFrame().stopVideoItem();
+        if (ObjectManager.getInstance().getMonitorVideoFrame() != null){
+            ObjectManager.getInstance().getMonitorVideoFrame().stopVideoItem();
+        }
     }
 
 }

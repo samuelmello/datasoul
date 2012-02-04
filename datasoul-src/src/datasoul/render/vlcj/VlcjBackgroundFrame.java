@@ -8,12 +8,12 @@ import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
+import datasoul.serviceitems.ServiceItemTable;
 import datasoul.util.ObjectManager;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JWindow;
-import javax.swing.SwingUtilities;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 import uk.co.caprica.vlcj.player.MediaPlayerFactory;
@@ -25,11 +25,11 @@ import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
  */
 public class VlcjBackgroundFrame extends javax.swing.JFrame {
     
-    MediaPlayerFactory factory;
-    EmbeddedMediaPlayer mediaPlayer;
-    MediaPlayerControl mediaPlayerControl;
-    boolean playingItem;
-    JWindow overlayWindow;
+    private MediaPlayerFactory factory;
+    private EmbeddedMediaPlayer mediaPlayer;
+    private boolean playingItem;
+    private JWindow overlayWindow;
+    private boolean handlingErrors;
     
     /**
      * Creates new form VlcjBackgroundFrame
@@ -45,7 +45,14 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         this.getContentPane().add(c, BorderLayout.CENTER);
         c.setBackground(Color.black);
         mediaPlayer.setVideoSurface(c);
-        addWindowListener(new VlcjBackgroundFrameWindowAdapter());
+        
+    }
+    
+    public void handleErrors(){
+        if (!handlingErrors){
+            addWindowListener(new VlcjBackgroundFrameWindowAdapter());
+            handlingErrors = true;
+        }
     }
 
     public void setOverlay(JWindow win){
@@ -90,6 +97,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         int h = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(w);
         this.setSize(w, h);
     }
+        
 
     public void registerAsMonitor(){
         int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
@@ -137,10 +145,18 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /* 
      * Pause a Video Item
      */
-    public void pauseVideoItem(boolean b){
+    public void pauseVideoItem(){
         if (playingItem){
             mediaPlayer.pause();
         }
+    }
+    
+    public void seekVideoItem(float position){
+        mediaPlayer.setPosition(position);
+    }
+    
+    private ServiceItemTable getLiveTable(){
+        return ObjectManager.getInstance().getLivePanel().getLiveServiceItemTable();
     }
     
     /**
@@ -152,26 +168,48 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
             ContentManager.getInstance().setMainShowBackground(true);
         }
         ContentManager.getInstance().slideChange(-1);
-        ObjectManager.getInstance().getLivePanel().notifyVideoEnd();
+        getLiveTable().notifyVideoEnd();
     }
     
     private class MediaPlayerControl extends MediaPlayerEventAdapter {
-
-        @Override
-        public void finished(MediaPlayer mp) {
-            if (playingItem){
-                videoItemCompleted();
-            }
-            playBackground();
-        }
 
         @Override
         public void error(MediaPlayer mp) {
             System.out.println("Error");
 
         }
-        
+
+        @Override
+        public void playing(MediaPlayer mp) {
+            getLiveTable().videoPausedChanged(false);
+        }
+
+        @Override
+        public void paused(MediaPlayer mp) {
+            getLiveTable().videoPausedChanged(true);
+        }
+
+        @Override
+        public void finished(MediaPlayer mp) {
+            if (playingItem){
+                videoItemCompleted();
+                getLiveTable().videoPausedChanged(true);
+            }
+            playBackground();
+        }
+
+        @Override
+        public void positionChanged(MediaPlayer mp, float f) {
+            getLiveTable().videoPositionChanged(f);
+        }
+
+        @Override
+        public void pausableChanged(MediaPlayer mp, int i) {
+            getLiveTable().videoPausableChanged(i != 0);
+        }
+
     }
+    
     
     private class VlcjBackgroundFrameWindowAdapter extends WindowAdapter{
         @Override
