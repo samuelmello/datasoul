@@ -63,6 +63,7 @@ import datasoul.templates.TemplateManagerForm;
 import datasoul.util.ObjectManager;
 import datasoul.util.OfficeTextExtractorFrame;
 import datasoul.util.OnlinePublishFrame;
+import javax.swing.*;
 
 /**
  *
@@ -162,6 +163,10 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     }
 
+    public static void setDatasoulIcon(JWindow win) {
+        win.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
+    }
+    
     public static void setDatasoulIcon(JFrame frame) {
         frame.setIconImage(new javax.swing.ImageIcon(DatasoulMainForm.class.getResource("/datasoul/icons/datasoul.png")).getImage());
     }

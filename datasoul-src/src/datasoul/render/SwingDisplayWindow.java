@@ -1,0 +1,65 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datasoul.render;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
+import java.awt.AlphaComposite;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import javax.swing.JWindow;
+
+/**
+ *
+ * @author samuel
+ */
+public class SwingDisplayWindow extends JWindow {
+
+    private ContentDisplayRenderer contentDisplay;
+    
+    public SwingDisplayWindow(){
+        DatasoulMainForm.setDatasoulIcon(this);
+        setBackground(new Color(0,0,0,0));
+        contentDisplay = new ContentDisplayRenderer() {
+            @Override
+            public void repaint() {
+                    SwingDisplayWindow.this.repaint();
+            }
+        };        
+    }
+    
+    public void registerAsMain(){
+        int w = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getWidth();
+        int h = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(w);
+        contentDisplay.initDisplay(w, h);
+        ContentRender r = new ContentRender(w, h, contentDisplay);
+        ContentManager.getInstance().registerMainRender(r);
+        this.setSize(w, h);
+    }
+
+    public void registerAsMonitor(){
+        int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
+        int h = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(w);
+        contentDisplay.initDisplay(w, h);
+        ContentRender r = new ContentRender(w, h, contentDisplay);
+        ContentManager.getInstance().registerMonitorRender(r);
+        this.setSize(w, h);
+    }
+    
+    
+    @Override
+    public void paint (Graphics g){
+        BufferedImage img = contentDisplay.getActiveImage();
+        if (img != null){
+            Graphics2D g2 = (Graphics2D) g;
+            g2.setComposite(AlphaComposite.Src);
+            synchronized(img){
+                g.drawImage(img, 0,0, img.getWidth(), img.getHeight(), null);
+            }
+        }  
+    }
+}

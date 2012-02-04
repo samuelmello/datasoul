@@ -4,12 +4,16 @@
  */
 package datasoul.render.vlcj;
 
+import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import java.awt.*;
-import javax.swing.JFrame;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import javax.swing.JWindow;
+import javax.swing.SwingUtilities;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
 import uk.co.caprica.vlcj.player.MediaPlayerFactory;
@@ -25,12 +29,14 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     EmbeddedMediaPlayer mediaPlayer;
     MediaPlayerControl mediaPlayerControl;
     boolean playingItem;
+    JWindow overlayWindow;
     
     /**
      * Creates new form VlcjBackgroundFrame
      */
     public VlcjBackgroundFrame() {
         initComponents();
+        DatasoulMainForm.setDatasoulIcon(this);
         factory = new MediaPlayerFactory(new String[] {"--no-video-title-show"});
         mediaPlayer = factory.newMediaPlayer(null);
         mediaPlayer.addMediaPlayerEventListener(new MediaPlayerControl());
@@ -39,10 +45,12 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         this.getContentPane().add(c, BorderLayout.CENTER);
         c.setBackground(Color.black);
         mediaPlayer.setVideoSurface(c);
+        addWindowListener(new VlcjBackgroundFrameWindowAdapter());
     }
 
-    public void setOverlay(JFrame frame){
-        mediaPlayer.setOverlay(frame);
+    public void setOverlay(JWindow win){
+        mediaPlayer.setOverlay(win);
+        overlayWindow = win;
     }
 
     @Override
@@ -165,7 +173,13 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         
     }
     
-
+    private class VlcjBackgroundFrameWindowAdapter extends WindowAdapter{
+        @Override
+        public void windowActivated(WindowEvent e) {
+            overlayWindow.toFront();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

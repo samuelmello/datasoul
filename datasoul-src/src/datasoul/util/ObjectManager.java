@@ -32,7 +32,7 @@ import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
-import datasoul.render.SwingDisplayFrame;
+import datasoul.render.SwingDisplayWindow;
 import datasoul.render.vlcj.VlcjBackgroundFrame;
 import datasoul.templates.TemplateManagerForm;
 
@@ -56,8 +56,8 @@ public class ObjectManager {
     private TemplateManagerForm templateManagerForm;
     private ConfigFrame configFrame;
     
-    private SwingDisplayFrame mainDisplay;
-    private SwingDisplayFrame monitorDisplay;
+    private SwingDisplayWindow mainDisplay;
+    private SwingDisplayWindow monitorDisplay;
     private VlcjBackgroundFrame mainVideo;
     private boolean isOutputVisible;
 
@@ -181,20 +181,20 @@ public class ObjectManager {
 
     public void initMainDisplay(){
 
-        mainDisplay = new SwingDisplayFrame();
-        mainDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
+        mainDisplay = new SwingDisplayWindow();
         mainDisplay.registerAsMain();
-
         mainVideo= new VlcjBackgroundFrame();
         mainVideo.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
         mainVideo.registerAsMain();
+        
+        mainVideo.setOverlay(mainDisplay);
     }
 
     public void initMonitorDisplay(){
 
         if (ConfigObj.getActiveInstance().getMonitorOutput() ){
-            monitorDisplay = new SwingDisplayFrame();
-            monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
+            monitorDisplay = new SwingDisplayWindow();
+            //monitorDisplay.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
             monitorDisplay.registerAsMonitor();
         }
     }

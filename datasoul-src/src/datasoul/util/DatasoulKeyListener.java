@@ -28,7 +28,8 @@ import java.awt.event.KeyListener;
 
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
-import datasoul.render.SwingDisplayFrame;
+import datasoul.render.SwingDisplayWindow;
+import datasoul.render.vlcj.VlcjBackgroundFrame;
 
 /**
  *
@@ -101,7 +102,7 @@ public class DatasoulKeyListener implements KeyListener, AWTEventListener{
                 break;
         }
 
-        if (e.getSource() instanceof SwingDisplayFrame){
+        if (e.getSource() instanceof VlcjBackgroundFrame){
             switch( e.getKeyCode()){
                 case KeyEvent.VK_PAGE_DOWN:
                 case KeyEvent.VK_RIGHT:
