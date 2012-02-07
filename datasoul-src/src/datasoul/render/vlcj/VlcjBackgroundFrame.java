@@ -4,15 +4,19 @@
  */
 package datasoul.render.vlcj;
 
+import com.sun.jna.Platform;
 import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.serviceitems.ServiceItemTable;
 import datasoul.util.ObjectManager;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.JOptionPane;
 import javax.swing.JWindow;
 import uk.co.caprica.vlcj.player.MediaPlayer;
 import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
@@ -105,6 +109,19 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         this.setSize(w, h);
     }
 
+    private String getLiveURL(){
+        if (Platform.isLinux()){
+            return "v4l2://";
+        }
+        if (Platform.isWindows()){
+            return "dshow://";
+        }
+        if (Platform.isMac()){
+            return "qtcapture://";
+        }
+        return null;
+    }
+    
     /*
      * This method is responsible for setting the appropriate background when a item stop playing
      */
@@ -116,6 +133,12 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
                 break;
             case BackgroundConfig.MODE_VIDEO:
                 mediaPlayer.playMedia(BackgroundConfig.getInstance().getVideoFile(), "no-audio");
+                break;
+            case BackgroundConfig.MODE_LIVE:
+                String url = getLiveURL();
+                if (url != null){
+                    mediaPlayer.playMedia(url, "no-audio");
+                }
                 break;
         }
     }
@@ -152,7 +175,9 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     }
     
     public void seekVideoItem(float position){
-        mediaPlayer.setPosition(position);
+        if (playingItem){
+            mediaPlayer.setPosition(position);
+        }
     }
     
     private ServiceItemTable getLiveTable(){
@@ -162,7 +187,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /**
      * Called to clean up after video item finished
      */
-    private void videoItemCompleted(){
+    public void videoItemCompleted(){
         playingItem = false;
         if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
             ContentManager.getInstance().setMainShowBackground(true);
@@ -175,8 +200,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
 
         @Override
         public void error(MediaPlayer mp) {
-            System.out.println("Error");
-
+            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(), "Unable to play video", "Datasoul", JOptionPane.ERROR_MESSAGE);
         }
 
         @Override

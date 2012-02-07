@@ -298,6 +298,7 @@ public class StartupManager {
             public void run() {
                 ObjectManager.getInstance().getDatasoulMainForm().setOutputEnabled(true);
                 ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().shortcutShowMain();
+                ContentManager.getInstance().updateBackgroundMode();
                 ObjectManager.getInstance().getMainVideoFrame().playBackground();
             }
         });

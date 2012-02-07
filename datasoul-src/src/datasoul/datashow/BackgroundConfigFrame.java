@@ -31,8 +31,10 @@ import javax.swing.JFileChooser;
 import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
+import datasoul.render.ContentManager;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.util.ObjectManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,9 +93,9 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         lblVideo = new javax.swing.JLabel();
         btnChangeVideo = new javax.swing.JButton();
         rbLive = new javax.swing.JRadioButton();
-        jPanel1 = new javax.swing.JPanel();
-        btnDiscard = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        btnDiscard = new javax.swing.JButton();
+        btnUseVlcMrl = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("datasoul/internationalize"); // NOI18N
@@ -144,7 +146,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
 
         lblVideo.setText("jLabel2");
 
-        btnChangeVideo.setText(bundle.getString("CHANGE")); // NOI18N
+        btnChangeVideo.setText(bundle.getString("SELECT VIDEO")); // NOI18N
         btnChangeVideo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChangeVideoActionPerformed(evt);
@@ -154,14 +156,6 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         buttonGroup1.add(rbLive);
         rbLive.setText(bundle.getString("LIVE VIDEO")); // NOI18N
 
-        btnDiscard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
-        btnDiscard.setText(bundle.getString("DISCARD AND CLOSE")); // NOI18N
-        btnDiscard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDiscardActionPerformed(evt);
-            }
-        });
-
         btnSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/document-save.png"))); // NOI18N
         btnSave.setText(bundle.getString("SAVE AND CLOSE")); // NOI18N
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -170,26 +164,20 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnSave)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDiscard)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDiscard)
-                    .addComponent(btnSave))
-                .addContainerGap())
-        );
+        btnDiscard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/datasoul/icons/v2/window-close.png"))); // NOI18N
+        btnDiscard.setText(bundle.getString("DISCARD AND CLOSE")); // NOI18N
+        btnDiscard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDiscardActionPerformed(evt);
+            }
+        });
+
+        btnUseVlcMrl.setText("Use VLC MRL");
+        btnUseVlcMrl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUseVlcMrlActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,18 +195,28 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnColorMain)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnChangeMain))))
+                                        .addComponent(btnChangeMain))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(btnChangeVideo)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btnUseVlcMrl))
+                                            .addComponent(lblVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addComponent(rbStatic)
                             .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(btnChangeVideo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblVideo, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE))
-                            .addComponent(rbVideo)
-                            .addComponent(rbLive))
+                            .addComponent(rbVideo))
                         .addContainerGap())
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(rbLive)
+                            .addGap(173, 173, 173))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnSave)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnDiscard)
+                            .addContainerGap()))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,18 +228,23 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
                 .addComponent(imageDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnChangeMain, 0, 0, Short.MAX_VALUE)
+                    .addComponent(btnChangeMain, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnColorMain, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(14, 14, 14)
                 .addComponent(rbVideo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblVideo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnChangeVideo)
-                    .addComponent(lblVideo))
+                    .addComponent(btnUseVlcMrl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rbLive)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSave)
+                    .addComponent(btnDiscard))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -302,6 +305,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             bg.setMode(BackgroundConfig.MODE_LIVE);
         }
         bg.save();
+        ContentManager.getInstance().updateBackgroundMode();
         ObjectManager.getInstance().getMainVideoFrame().playBackground();
         ObjectManager.getInstance().setBackgroundConfigFrame(null);
         dispose();
@@ -323,6 +327,13 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnChangeVideoActionPerformed
 
+    private void btnUseVlcMrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUseVlcMrlActionPerformed
+        String mrl = JOptionPane.showInputDialog(this, "Enter VLC MRL:", "Datasoul", JOptionPane.PLAIN_MESSAGE);
+        if (mrl != null){
+            lblVideo.setText(mrl);
+        }
+    }//GEN-LAST:event_btnUseVlcMrlActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChangeMain;
@@ -330,10 +341,10 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnColorMain;
     private javax.swing.JButton btnDiscard;
     private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnUseVlcMrl;
     private javax.swing.ButtonGroup buttonGroup1;
     private datasoul.util.ImageDisplay imageDisplay;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblVideo;
     private javax.swing.JRadioButton rbLive;
     private javax.swing.JRadioButton rbStatic;

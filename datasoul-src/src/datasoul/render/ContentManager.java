@@ -21,6 +21,7 @@
 
 package datasoul.render;
 
+import datasoul.config.BackgroundConfig;
 import java.util.LinkedList;
 
 import datasoul.config.ConfigObj;
@@ -340,6 +341,15 @@ public class ContentManager {
 
     public void setNextImagePreview(ImageListServiceRenderer img){
         previewRender.setNextImage(img);
+    }
+    
+    public void updateBackgroundMode(){
+        if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
+            ContentManager.getInstance().setMainShowBackground(true);
+        }else{
+            ContentManager.getInstance().setMainShowBackground(false);
+        }
+        slideChange(-1);
     }
 
     public void setMainShowBackground(boolean b){
