@@ -32,7 +32,10 @@ import datasoul.datashow.BackgroundConfigFrame;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
+import datasoul.render.ContentRender;
 import datasoul.render.SwingDisplayWindow;
+import datasoul.render.remote.RemoteContentCommand;
+import datasoul.render.remote.RemoteContentServer;
 import datasoul.render.vlcj.VlcjBackgroundFrame;
 import datasoul.templates.TemplateManagerForm;
 
@@ -214,8 +217,15 @@ public class ObjectManager {
         mainVideo.setVisible(b);
         mainDisplay.setVisible(b);
 
-        if (ConfigObj.getActiveInstance().getMonitorOutput())
+        if (ConfigObj.getActiveInstance().getMonitorOutput()){
+            monitorVideo.setVisible(b);
             monitorDisplay.setVisible(b);
+        }
+
+        if (ConfigObj.getActiveInstance().getAcceptRemoteDisplaysBool()){
+            RemoteContentCommand cmd = new RemoteContentCommand(RemoteContentCommand.Target.TARGET_MAIN, b);
+            RemoteContentServer.getInstance().sendCommand(cmd);
+        }
     }
 
     public VlcjBackgroundFrame getMainVideoFrame(){
@@ -224,6 +234,18 @@ public class ObjectManager {
     
     public VlcjBackgroundFrame getMonitorVideoFrame(){
         return monitorVideo;
+    }
+    
+    public ContentRender getMainContentRender(){
+        return mainDisplay.getContentRender();
+    }
+    
+    public ContentRender getMonitorContentRender(){
+        if (ConfigObj.getActiveInstance().getMonitorOutput()){
+            return monitorDisplay.getContentRender();
+        }else{
+            return null;
+        }
     }
     
 

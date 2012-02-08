@@ -35,6 +35,7 @@ import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.datashow.TimerManager;
 import datasoul.render.ContentManager;
+import datasoul.render.remote.RemoteContentServer;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
@@ -283,6 +284,11 @@ public class StartupManager {
         // Init displays
         ObjectManager.getInstance().initMainDisplay();
         ObjectManager.getInstance().initMonitorDisplay();
+
+        // Start remote server
+        if (ConfigObj.getActiveInstance().getAcceptRemoteDisplaysBool()){
+            RemoteContentServer.getInstance().startServer();
+        }
 
         // Ensure timer properly initiated
         TimerManager.getInstance().setTimerOff();

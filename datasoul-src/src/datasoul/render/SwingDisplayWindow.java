@@ -20,6 +20,7 @@ import javax.swing.JWindow;
 public class SwingDisplayWindow extends JWindow {
 
     private ContentDisplayRenderer contentDisplay;
+    private ContentRender render;
     
     public SwingDisplayWindow(){
         DatasoulMainForm.setDatasoulIcon(this);
@@ -36,8 +37,8 @@ public class SwingDisplayWindow extends JWindow {
         int w = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getWidth();
         int h = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(w);
         contentDisplay.initDisplay(w, h);
-        ContentRender r = new ContentRender(w, h, contentDisplay);
-        ContentManager.getInstance().registerMainRender(r);
+        render = new ContentRender(w, h, contentDisplay);
+        ContentManager.getInstance().registerMainRender(render);
         this.setSize(w, h);
     }
 
@@ -45,8 +46,8 @@ public class SwingDisplayWindow extends JWindow {
         int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
         int h = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(w);
         contentDisplay.initDisplay(w, h);
-        ContentRender r = new ContentRender(w, h, contentDisplay);
-        ContentManager.getInstance().registerMonitorRender(r);
+        render = new ContentRender(w, h, contentDisplay);
+        ContentManager.getInstance().registerMonitorRender(render);
         this.setSize(w, h);
     }
     
@@ -61,5 +62,9 @@ public class SwingDisplayWindow extends JWindow {
                 g.drawImage(img, 0,0, img.getWidth(), img.getHeight(), null);
             }
         }  
+    }
+    
+    public ContentRender getContentRender(){
+        return render;
     }
 }
