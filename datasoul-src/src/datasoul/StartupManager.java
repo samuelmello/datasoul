@@ -14,6 +14,8 @@
 
 package datasoul;
 
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
 import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -30,7 +32,6 @@ import javax.swing.UIManager;
 
 import com.sun.jna.Platform;
 
-import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.datashow.TimerManager;
@@ -44,6 +45,9 @@ import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
 import datasoul.util.OnlineUsageStats;
+import javax.swing.SwingUtilities;
+import uk.co.caprica.vlcj.binding.LibVlc;
+import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
 /**
  *
@@ -233,6 +237,12 @@ public class StartupManager {
 
         }
     }
+    
+    private String getJarPath(){
+        String jarpath = StartupManager.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        String path = jarpath.substring(0, jarpath.lastIndexOf(File.separator));
+        return path;
+    }
 
     void run(String initialFile) {
 
@@ -260,6 +270,35 @@ public class StartupManager {
             //ignore and fall back to java look and feel
         }
 
+        // Initialize VLC
+        if (Platform.isMac()){
+            /* In Mac, the directory structure is something like this:
+             * 
+             * Resources/
+             *    Java/
+             *      datasoul.jar
+             *      lib/*.jar
+             *    vlc-intel32/
+             *      lib/ <-- libvlc
+             *      plugins/
+             *    vlc-intel64/
+             *      lib/ <-- libvlc
+             *      plugins/
+             * 
+             */
+            String platform = "vlc-intel32";
+            if (Platform.is64Bit()){
+                platform = "vlc-intel64";
+            }
+            String path = getJarPath().substring(0, getJarPath().lastIndexOf(File.separator)) 
+                    + File.separator + platform + File.separator + "lib";
+            System.out.println("Adding path "+path);
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), path);
+        }
+
+        // Now load VLC
+        Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
+        
         ConfigObj.getActiveInstance();
 
         ContentManager.getInstance();

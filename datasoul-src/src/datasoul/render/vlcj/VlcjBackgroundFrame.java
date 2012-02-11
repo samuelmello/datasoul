@@ -41,15 +41,20 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     public VlcjBackgroundFrame() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
-        factory = new MediaPlayerFactory(new String[] {"--no-video-title-show"});
-        mediaPlayer = factory.newMediaPlayer(null);
+        String[] args;
+        if (Platform.isMac()){
+            args = new String[] {"--no-video-title-show", "--vout=macosx"};
+        }else{
+            args = new String[] {"--no-video-title-show"};
+        }
+        factory = new MediaPlayerFactory(args);
+        mediaPlayer = factory.newEmbeddedMediaPlayer(null);
         mediaPlayer.addMediaPlayerEventListener(new MediaPlayerControl());
         Canvas c = new Canvas();
         this.getContentPane().setLayout(new BorderLayout());
         this.getContentPane().add(c, BorderLayout.CENTER);
         c.setBackground(Color.black);
-        mediaPlayer.setVideoSurface(c);
-        
+        mediaPlayer.setVideoSurface(factory.newVideoSurface(c));
     }
     
     public void handleErrors(){
