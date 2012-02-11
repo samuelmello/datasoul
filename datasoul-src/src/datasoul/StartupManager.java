@@ -273,12 +273,6 @@ public class StartupManager {
         final DatasoulMainForm mainForm = new DatasoulMainForm();
         mainForm.setVisible(true);
 
-        // If user provided an initial file, open it
-        if (initialFile != null){
-            //GstNotificationFileOpen open = new GstNotificationFileOpen(initialFile);
-            //open.run();
-        }
-
         Toolkit.getDefaultToolkit().addAWTEventListener( DatasoulKeyListener.getInstance(), AWTEvent.KEY_EVENT_MASK);
 
         // Init displays
@@ -309,6 +303,20 @@ public class StartupManager {
             }
         });
 
+        // If user provided an initial file, open it
+        if (initialFile != null){
+            if (initialFile.endsWith(".servicelistz") || initialFile.endsWith(".servicelist")){
+                final File f = new File(initialFile);
+                if (f.exists()){
+                    SwingUtilities.invokeLater(new Runnable(){
+                        public void run(){
+                            ObjectManager.getInstance().getDatasoulMainForm().openServiceList(f.getAbsolutePath());
+                        }
+                    });
+                }
+            }
+        }
+        
         // Check for online updates
         if (ConfigObj.getActiveInstance().getOnlineCheckUpdateBool()){
             OnlineUpdateCheck ouc = new OnlineUpdateCheck();
