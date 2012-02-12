@@ -45,6 +45,11 @@ import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
 import datasoul.util.OnlineUsageStats;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URLDecoder;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.runtime.RuntimeUtil;
@@ -239,9 +244,18 @@ public class StartupManager {
     }
     
     private String getJarPath(){
-        String jarpath = StartupManager.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        String path = jarpath.substring(0, jarpath.lastIndexOf(File.separator));
-        return path;
+        File f;
+        try {
+            f = new File(StartupManager.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+            String jarpath = f.getAbsolutePath();
+            String path = jarpath.substring(0, jarpath.lastIndexOf(File.separator));
+            return path;
+        
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(StartupManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+        
     }
 
     void run(String initialFile) {
@@ -292,7 +306,19 @@ public class StartupManager {
             }
             String path = getJarPath().substring(0, getJarPath().lastIndexOf(File.separator)) 
                     + File.separator + platform + File.separator + "lib";
-            System.out.println("Adding path "+path);
+            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), path);
+        }
+        
+        if (Platform.isWindows()){
+            /* In Windows, the directory structure is something like this:
+             * 
+             * Datasoul/
+             *   datasoul.jar
+             *   lib/*.jar
+             *   vlc-2.0/ <-- libvlc
+             *      plugins/
+             */
+            String path = getJarPath() + File.separator + "vlc-2.0";
             NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), path);
         }
 
