@@ -26,11 +26,6 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -45,6 +40,7 @@ import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
 import datasoul.render.ContentManager;
 import datasoul.render.ContentRender;
+import datasoul.render.remote.RemoteLauncherDialog;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
 import datasoul.serviceitems.GenericAttachmentServiceItem;
@@ -1500,12 +1496,9 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void actRemoteDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actRemoteDisplayActionPerformed
 
-        /*
-        GstRemoteLauncherDialog dialog = new GstRemoteLauncherDialog(this, true);
+        RemoteLauncherDialog dialog = new RemoteLauncherDialog(this, true);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
-        * 
-        */
 
     }//GEN-LAST:event_actRemoteDisplayActionPerformed
 
