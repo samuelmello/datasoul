@@ -1,4 +1,4 @@
-!define VERSION "2.0-v1"
+!define VERSION "2.1-b0"
 
 Name "Datasoul ${VERSION}"
 OutFile "Datasoul-${VERSION}.exe"
@@ -39,6 +39,7 @@ installDir $PROGRAMFILES\Datasoul-${VERSION}
 ShowInstDetails nevershow
 ShowUninstDetails nevershow
 
+
 Page directory
 Page instfiles
 UninstPage uninstConfirm
@@ -52,6 +53,7 @@ setOutPath $INSTDIR
  
 # specify file to go in output path
 file /r ../datasoul-src/dist/*
+file /r ../native/windows/*
 file datasoul.ico
 file datasoul_file.ico
 

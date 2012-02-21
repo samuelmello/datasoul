@@ -36,6 +36,7 @@ MACINSTDIR=installers/Datasoul-${DSVERSION}-MacOSX/Datasoul-${DSVERSION}.app
 mkdir -p ${MACINSTDIR}
 cp -r MacOSX/Contents ${MACINSTDIR}
 cp -r $DISTDIR/* ${MACINSTDIR}/Contents/Resources/Java
+cp -r ../native/macos/* ${MACINSTDIR}/Contents/Resources
 cd installers
 zip -r Datasoul-${DSVERSION}-MacOSX.zip Datasoul-${DSVERSION}-MacOSX
 cd ..

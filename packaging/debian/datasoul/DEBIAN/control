@@ -1,5 +1,5 @@
 Package: datasoul
-Version: 2.0-v1
+Version: 2.1-b0
 Priority: optional
 Architecture: all
 Depends: openjdk-7-jre, vlc (>= 2.0.0)
