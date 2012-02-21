@@ -12,8 +12,6 @@
 package datasoul.render.remote;
 
 import datasoul.DatasoulMainForm;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +19,12 @@ import java.util.logging.Logger;
  */
 public class RemoteLauncherDialog extends javax.swing.JDialog {
 
-    private RemoteContentClient cli;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 6815319760848769847L;
+	
+	private RemoteContentClient cli;
     private WaiterThread wt;
     
     /** Creates new form RemoteLauncherDialog */

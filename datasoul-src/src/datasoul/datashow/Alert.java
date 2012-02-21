@@ -21,10 +21,11 @@
 
 package datasoul.datashow;
 
+import java.util.LinkedList;
+
 import datasoul.config.DisplayControlConfig;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
-import java.util.LinkedList;
 
 /**
  *

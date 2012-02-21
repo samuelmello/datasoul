@@ -4,10 +4,11 @@
  */
 package datasoul.render.remote;
 
-import datasoul.config.BackgroundConfig;
-import datasoul.render.ContentManager;
-import datasoul.util.ObjectManager;
-import java.io.*;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -16,6 +17,9 @@ import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import datasoul.render.ContentManager;
+import datasoul.util.ObjectManager;
 
 /**
  *

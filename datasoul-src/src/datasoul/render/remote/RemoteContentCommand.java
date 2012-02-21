@@ -4,10 +4,6 @@
  */
 package datasoul.render.remote;
 
-import datasoul.config.ConfigObj;
-import datasoul.render.ContentRender;
-import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
-import datasoul.util.ObjectManager;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -15,7 +11,13 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+
 import javax.imageio.ImageIO;
+
+import datasoul.config.ConfigObj;
+import datasoul.render.ContentRender;
+import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -23,12 +25,10 @@ import javax.imageio.ImageIO;
  */
 public class RemoteContentCommand implements Serializable {
     
-    public enum RemoteCommand {
-        SHOW_OUTPUT,
-    };
-    
-    private RemoteCommand command;
-    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 758446189373705635L;
 
     public enum ArgType {
         ARG_TYPE_VOID,

@@ -51,9 +51,9 @@ import datasoul.config.DisplayControlConfig;
 import datasoul.serviceitems.text.TextServiceItem;
 import datasoul.servicelist.ServiceListTable;
 import datasoul.util.SwordHelper;
-import datasoul.util.TextSplitPanel;
 import datasoul.util.SwordHelper.ReferenceTxtType;
 import datasoul.util.SwordHelper.TxtSplitType;
+import datasoul.util.TextSplitPanel;
 
 /**
  *

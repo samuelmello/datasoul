@@ -26,15 +26,21 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JWindow;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import datasoul.bible.BibleVerseListEditorForm;
+import datasoul.config.BackgroundConfigFrame;
 import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
-import datasoul.config.BackgroundConfigFrame;
 import datasoul.datashow.ImportServiceItemForm;
 import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
@@ -59,7 +65,6 @@ import datasoul.templates.TemplateManagerForm;
 import datasoul.util.ObjectManager;
 import datasoul.util.OfficeTextExtractorFrame;
 import datasoul.util.OnlinePublishFrame;
-import javax.swing.*;
 
 /**
  *

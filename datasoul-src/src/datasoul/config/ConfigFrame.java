@@ -20,7 +20,6 @@
 
 package datasoul.config;
 
-import com.sun.jna.Platform;
 import java.awt.Component;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -34,6 +33,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileFilter;
+
+import com.sun.jna.Platform;
 
 import datasoul.DatasoulMainForm;
 import datasoul.render.OutputDevice;

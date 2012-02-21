@@ -25,7 +25,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import datasoul.render.OutputDevice;
-import datasoul.util.ObjectManager;
 
 /**
  *

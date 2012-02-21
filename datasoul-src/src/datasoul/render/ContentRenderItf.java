@@ -15,7 +15,6 @@
 package datasoul.render;
 
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
-import java.awt.image.BufferedImage;
 
 /**
  *

@@ -307,7 +307,7 @@ public class ChordShapePanel extends javax.swing.JPanel {
                 try{
                     startFret = Integer.parseInt(str);
                 }catch (Exception e){
-
+                	// Ignore
                 }
                 this.repaint();
 

@@ -33,7 +33,6 @@ import javax.imageio.ImageIO;
 import datasoul.StartupManager;
 import datasoul.render.ContentManager;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
-import datasoul.util.ObjectManager;
 
 /**
  *

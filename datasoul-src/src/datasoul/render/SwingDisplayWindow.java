@@ -4,14 +4,16 @@
  */
 package datasoul.render;
 
-import datasoul.DatasoulMainForm;
-import datasoul.config.ConfigObj;
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
 import javax.swing.JWindow;
+
+import datasoul.DatasoulMainForm;
+import datasoul.config.ConfigObj;
 
 /**
  *
@@ -19,7 +21,12 @@ import javax.swing.JWindow;
  */
 public class SwingDisplayWindow extends JWindow {
 
-    private ContentDisplayRenderer contentDisplay;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -8080565325793000741L;
+	
+	private ContentDisplayRenderer contentDisplay;
     private ContentRender render;
     
     public SwingDisplayWindow(){

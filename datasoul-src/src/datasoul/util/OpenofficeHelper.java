@@ -14,12 +14,13 @@
 
 package datasoul.util;
 
-import com.sun.jna.Platform;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import com.sun.jna.Platform;
 
 import datasoul.config.ConfigObj;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;

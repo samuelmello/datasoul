@@ -23,6 +23,7 @@ package datasoul.serviceitems;
 import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -30,7 +31,6 @@ import datasoul.render.ContentManager;
 import datasoul.serviceitems.imagelist.ImageListServiceItem;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import datasoul.serviceitems.text.TextServiceItem;
-import javax.swing.UIManager;
 
 /**
  *

@@ -14,8 +14,6 @@
 
 package datasoul;
 
-import com.sun.jna.Native;
-import com.sun.jna.NativeLibrary;
 import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -27,9 +25,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import uk.co.caprica.vlcj.binding.LibVlc;
+import uk.co.caprica.vlcj.runtime.RuntimeUtil;
+
+import com.sun.jna.Native;
+import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
 
 import datasoul.config.ConfigObj;
@@ -45,14 +52,6 @@ import datasoul.util.DatasoulKeyListener;
 import datasoul.util.ObjectManager;
 import datasoul.util.OnlineUpdateCheck;
 import datasoul.util.OnlineUsageStats;
-import java.io.*;
-import java.net.URISyntaxException;
-import java.net.URLDecoder;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.SwingUtilities;
-import uk.co.caprica.vlcj.binding.LibVlc;
-import uk.co.caprica.vlcj.runtime.RuntimeUtil;
 
 /**
  *

@@ -4,24 +4,28 @@
  */
 package datasoul.render.vlcj;
 
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JOptionPane;
+import javax.swing.JWindow;
+
+import uk.co.caprica.vlcj.player.MediaPlayer;
+import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
+import uk.co.caprica.vlcj.player.MediaPlayerFactory;
+import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
+
 import com.sun.jna.Platform;
+
 import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.serviceitems.ServiceItemTable;
 import datasoul.util.ObjectManager;
-import java.awt.BorderLayout;
-import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JOptionPane;
-import javax.swing.JWindow;
-import uk.co.caprica.vlcj.player.MediaPlayer;
-import uk.co.caprica.vlcj.player.MediaPlayerEventAdapter;
-import uk.co.caprica.vlcj.player.MediaPlayerFactory;
-import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 
 /**
  *
@@ -29,7 +33,12 @@ import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
  */
 public class VlcjBackgroundFrame extends javax.swing.JFrame {
     
-    private MediaPlayerFactory factory;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8030486478069411461L;
+	
+	private MediaPlayerFactory factory;
     private EmbeddedMediaPlayer mediaPlayer;
     private boolean playingItem;
     private JWindow overlayWindow;

@@ -28,7 +28,6 @@ import java.awt.event.KeyListener;
 
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AuxiliarPanel;
-import datasoul.render.SwingDisplayWindow;
 import datasoul.render.vlcj.VlcjBackgroundFrame;
 
 /**

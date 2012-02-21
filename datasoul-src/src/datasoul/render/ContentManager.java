@@ -21,9 +21,9 @@
 
 package datasoul.render;
 
-import datasoul.config.BackgroundConfig;
 import java.util.LinkedList;
 
+import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.serviceitems.imagelist.ImageListServiceRenderer;
 import datasoul.util.ObjectManager;

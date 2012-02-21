@@ -10,13 +10,16 @@
  */
 package datasoul.util;
 
-import datasoul.DatasoulMainForm;
-import datasoul.servicelist.ServiceListTable;
 import java.net.URI;
 import java.net.URLEncoder;
+
 import javax.swing.JOptionPane;
+
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.PostMethod;
+
+import datasoul.DatasoulMainForm;
+import datasoul.servicelist.ServiceListTable;
 
 /**
  *
@@ -24,7 +27,12 @@ import org.apache.commons.httpclient.methods.PostMethod;
  */
 public class OnlinePublishFrame extends javax.swing.JFrame {
 
-    /** Creates new form OnlinePublishFrame */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -5288507088600686549L;
+	
+	/** Creates new form OnlinePublishFrame */
     public OnlinePublishFrame() {
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);

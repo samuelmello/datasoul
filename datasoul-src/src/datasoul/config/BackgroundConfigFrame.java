@@ -27,14 +27,12 @@ import java.io.File;
 
 import javax.swing.JColorChooser;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 
 import datasoul.DatasoulMainForm;
-import datasoul.config.BackgroundConfig;
-import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.util.ObjectManager;
-import javax.swing.JOptionPane;
 
 /**
  *

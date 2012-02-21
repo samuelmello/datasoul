@@ -79,6 +79,7 @@ public class ServiceListExporterSlides {
         /* Delete temporary files */
         for (String s : deleteOnDispose){
             File f = new File(s);
+            f.delete();
         }
         /* Stop render thread */
         render.cleanup();

@@ -14,21 +14,21 @@
 
 package datasoul.serviceitems.imagelist;
 
-import datasoul.serviceitems.GenericAttachmentServiceItem;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
+import datasoul.serviceitems.GenericAttachmentServiceItem;
 import datasoul.serviceitems.ServiceItemRenderer;
 import datasoul.templates.ImageTemplateItem;
-import java.io.File;
-import javax.imageio.ImageIO;
 
 /**
  *

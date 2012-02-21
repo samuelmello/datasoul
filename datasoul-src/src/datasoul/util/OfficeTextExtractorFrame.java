@@ -20,7 +20,6 @@
 
 package datasoul.util;
 
-import datasoul.DatasoulMainForm;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -45,6 +44,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import datasoul.DatasoulMainForm;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.serviceitems.song.AllSongsListTable;
