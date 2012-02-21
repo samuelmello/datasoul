@@ -189,8 +189,8 @@ public class ObjectManager {
         mainDisplay.registerAsMain();
         mainVideo= new VlcjBackgroundFrame();
         mainVideo.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
-        mainVideo.registerAsMain();
         mainVideo.setOverlay(mainDisplay);
+        mainVideo.registerAsMain();
         mainVideo.handleErrors();
     }
 
@@ -201,8 +201,8 @@ public class ObjectManager {
             monitorDisplay.registerAsMonitor();
             monitorVideo = new VlcjBackgroundFrame();
             monitorVideo.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
-            monitorVideo.registerAsMain();
             monitorVideo.setOverlay(monitorDisplay);
+            monitorVideo.registerAsMonitor();
         }
     }
 

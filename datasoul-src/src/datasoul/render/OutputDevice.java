@@ -21,6 +21,7 @@ import java.awt.GraphicsEnvironment;
 import javax.swing.JFrame;
 
 import com.sun.jna.Platform;
+import java.awt.Rectangle;
 
 /**
  *
@@ -166,7 +167,10 @@ public class OutputDevice {
     public int getHeight(){
         return (int) gconfig.getBounds().getHeight();
     }
-
+    
+    public Rectangle getBounds(){
+        return device.getDefaultConfiguration().getBounds();
+    }
 
 }
 

@@ -84,14 +84,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     }
 
     public void setOverlay(JWindow win){
-        mediaPlayer.setOverlay(win);
         overlayWindow = win;
-    }
-
-    @Override
-    public void setVisible(boolean b){
-        super.setVisible(b);
-        mediaPlayer.enableOverlay(b);
     }
     
     /**
@@ -121,16 +114,14 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void registerAsMain(){
-        int w = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getWidth();
-        int h = ConfigObj.getActiveInstance().getMainOutputDeviceObj().getProportionalHeight(w);
-        this.setSize(w, h);
+        this.setBounds(ConfigObj.getActiveInstance().getMainOutputDeviceObj().getBounds());
+        overlayWindow.setBounds(ConfigObj.getActiveInstance().getMainOutputDeviceObj().getBounds());
     }
         
 
     public void registerAsMonitor(){
-        int w = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getWidth();
-        int h = ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getProportionalHeight(w);
-        this.setSize(w, h);
+        this.setBounds(ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getBounds());
+        overlayWindow.setBounds(ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getBounds());
     }
 
     private String getLiveURL(){
