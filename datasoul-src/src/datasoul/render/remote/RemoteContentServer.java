@@ -8,6 +8,7 @@ import datasoul.config.BackgroundConfig;
 import datasoul.render.ContentManager;
 import datasoul.util.ObjectManager;
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
@@ -62,8 +63,9 @@ public class RemoteContentServer {
         @Override
         public void run(){
             try{
-                ss = new ServerSocket(34913);
+                ss = new ServerSocket();
                 ss.setReuseAddress(true);
+                ss.bind(new InetSocketAddress(34913));
                 while(true){
                     Socket s = ss.accept();
                     WorkerThread t = new WorkerThread(s);

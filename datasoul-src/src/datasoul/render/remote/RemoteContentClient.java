@@ -32,15 +32,17 @@ public class RemoteContentClient {
     
     public void run(){
         try {
-            s.connect(new InetSocketAddress(hostname, 34913), 15000);
+            s.connect(new InetSocketAddress(hostname, 34913), 10000);
             ois = new ObjectInputStream(s.getInputStream());
         } catch (UnknownHostException ex) {
             dialog.setStatus("Unknown host: " + ex.getMessage());
             return;
         } catch (IOException ex) {
-            dialog.setStatus("Unable to connect: " + ex.getMessage());
+            dialog.setStatus("Unable to connect");
             return;
         }
+        
+        dialog.setStatus("Connected");
 
         try {
             while(true){
