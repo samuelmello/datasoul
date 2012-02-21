@@ -34,7 +34,7 @@ import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
 import datasoul.config.DisplayControlConfig;
 import datasoul.config.WindowPropConfig;
-import datasoul.datashow.BackgroundConfigFrame;
+import datasoul.config.BackgroundConfigFrame;
 import datasoul.datashow.ImportServiceItemForm;
 import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;

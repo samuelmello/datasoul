@@ -205,7 +205,8 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
 
         @Override
         public void error(MediaPlayer mp) {
-            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(), "Unable to play video", "Datasoul", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(ObjectManager.getInstance().getDatasoulMainForm(), 
+                    java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ERROR PLAYING VIDEO"), "Datasoul", JOptionPane.ERROR_MESSAGE);
         }
 
         @Override

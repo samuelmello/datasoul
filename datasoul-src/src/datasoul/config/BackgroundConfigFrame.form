@@ -198,7 +198,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblVideo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="datasoul/internationalize.properties" key="" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnChangeVideo">
@@ -249,7 +251,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUseVlcMrl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Use VLC MRL"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="datasoul/internationalize.properties" key="USE VLC MRL" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUseVlcMrlActionPerformed"/>

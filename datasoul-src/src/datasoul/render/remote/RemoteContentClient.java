@@ -35,14 +35,14 @@ public class RemoteContentClient {
             s.connect(new InetSocketAddress(hostname, 34913), 10000);
             ois = new ObjectInputStream(s.getInputStream());
         } catch (UnknownHostException ex) {
-            dialog.setStatus("Unknown host: " + ex.getMessage());
+            dialog.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("UNABLE TO CONNECT. UNKNOWN HOST: ") + ex.getMessage());
             return;
         } catch (IOException ex) {
-            dialog.setStatus("Unable to connect");
+            dialog.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DISCONNECTED"));
             return;
         }
         
-        dialog.setStatus("Connected");
+        dialog.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("CONNECTED"));
 
         try {
             while(true){
@@ -51,15 +51,14 @@ public class RemoteContentClient {
                     o = ois.readObject();
                     if (o instanceof RemoteContentCommand){
                         RemoteContentCommand cmd = (RemoteContentCommand) o;
-                        //System.out.println(cmd);
                         cmd.run();
                     }
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(RemoteContentClient.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
             }
         }catch(IOException ex){
-            dialog.setStatus("Disconnected");
+            dialog.setStatus(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DISCONNECTED"));
             ex.printStackTrace();
         }
             

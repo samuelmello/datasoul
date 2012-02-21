@@ -28,7 +28,7 @@ import datasoul.config.ConfigFrame;
 import datasoul.config.ConfigObj;
 import datasoul.datashow.AlertControlPanel;
 import datasoul.datashow.AuxiliarPanel;
-import datasoul.datashow.BackgroundConfigFrame;
+import datasoul.config.BackgroundConfigFrame;
 import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;

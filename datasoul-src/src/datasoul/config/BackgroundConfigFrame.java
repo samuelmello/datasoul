@@ -18,7 +18,7 @@
  * Created on Mar 7, 2010, 11:23:04 PM
  */
 
-package datasoul.datashow;
+package datasoul.config;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -144,7 +144,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         buttonGroup1.add(rbVideo);
         rbVideo.setText(bundle.getString("VIDEO")); // NOI18N
 
-        lblVideo.setText("jLabel2");
+        lblVideo.setText("null");
 
         btnChangeVideo.setText(bundle.getString("SELECT VIDEO")); // NOI18N
         btnChangeVideo.addActionListener(new java.awt.event.ActionListener() {
@@ -172,7 +172,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
             }
         });
 
-        btnUseVlcMrl.setText("Use VLC MRL");
+        btnUseVlcMrl.setText(bundle.getString("USE VLC MRL")); // NOI18N
         btnUseVlcMrl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUseVlcMrlActionPerformed(evt);
@@ -187,36 +187,37 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(rbLive)
+                        .addGap(173, 173, 173))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(imageDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnColorMain)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnChangeMain))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
+                                        .addGap(12, 12, 12)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(imageDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(btnChangeVideo)
+                                                .addComponent(btnColorMain)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnUseVlcMrl))
-                                            .addComponent(lblVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(rbStatic)
-                            .addComponent(jLabel1)
-                            .addComponent(rbVideo))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(rbLive)
-                            .addGap(173, 173, 173))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnSave)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnDiscard)
-                            .addContainerGap()))))
+                                                .addComponent(btnChangeMain))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(btnChangeVideo)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(btnUseVlcMrl))
+                                                    .addComponent(lblVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(rbStatic)
+                                    .addComponent(jLabel1)
+                                    .addComponent(rbVideo))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDiscard)))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -267,7 +268,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     private void btnChangeMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeMainActionPerformed
 
         JFileChooser fc = new JFileChooser();
-        File dir = new File(System.getProperty("user.dir"));
+        File dir = new File(System.getProperty("user.dir")); //NOI18N
         fc.setCurrentDirectory(dir);
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.setMultiSelectionEnabled(false);
@@ -314,7 +315,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
 
     private void btnChangeVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeVideoActionPerformed
         JFileChooser fc = new JFileChooser();
-        File dir = new File(System.getProperty("user.dir"));
+        File dir = new File(System.getProperty("user.dir")); //NOI18N
         fc.setCurrentDirectory(dir);
         fc.setDialogType(JFileChooser.OPEN_DIALOG);
         fc.setMultiSelectionEnabled(false);
@@ -328,7 +329,7 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnChangeVideoActionPerformed
 
     private void btnUseVlcMrlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUseVlcMrlActionPerformed
-        String mrl = JOptionPane.showInputDialog(this, "Enter VLC MRL:", "Datasoul", JOptionPane.PLAIN_MESSAGE);
+        String mrl = JOptionPane.showInputDialog(this, java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("ENTER VLC MRL:"), "Datasoul", JOptionPane.PLAIN_MESSAGE);
         if (mrl != null){
             lblVideo.setText(mrl);
         }
