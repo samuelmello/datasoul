@@ -314,10 +314,17 @@ public class StartupManager {
              * Datasoul/
              *   datasoul.jar
              *   lib/*.jar
-             *   vlc-2.0/ <-- libvlc
+             *   vlc-x32/ <-- libvlc
+             *      plugins/
+             *   vlc-x64/ <-- libvlc
              *      plugins/
              */
-            String path = getJarPath() + File.separator + "vlc-2.0";
+            String path = getJarPath();
+            if (Platform.is64Bit()){
+                path += File.separator + "vlc-x64";
+            }else{
+                path += File.separator + "vlc-x32";
+            }
             NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), path);
         }
 
