@@ -284,6 +284,10 @@ public class StartupManager {
         }
 
         // Initialize VLC
+        if (Platform.isLinux()){
+           System.loadLibrary("jawt");
+        }
+       
         if (Platform.isMac()){
             /* In Mac, the directory structure is something like this:
              * 
