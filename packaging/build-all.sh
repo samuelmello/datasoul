@@ -4,6 +4,12 @@ SOURCEDIR=../datasoul-src
 DISTDIR=$SOURCEDIR/dist
 DSVERSION=$(awk -F= '/version/{ print $2 }' $SOURCEDIR/src/datasoul/version.properties)
 
+if [[ "$USER" != "root" ]]
+then
+	echo "Please run this script as root"
+	exit 0
+fi
+
 ##################################################
 
 # Clean up and build
@@ -17,13 +23,15 @@ mkdir installers
 ##################################################
 
 # Build debian
-mkdir -p debian/datasoul/usr/lib/datasoul
-cp -r $DISTDIR/* debian/datasoul/usr/lib/datasoul
+mkdir -p debian/datasoul/usr/share/datasoul
+cp -r $DISTDIR/* debian/datasoul/usr/share/datasoul
 cd debian
 sed -i "s/Version:.*/Version: ${DSVERSION}/" datasoul/DEBIAN/control
+chown -R root.root datasoul
+chmod g-w -R datasoul
 dpkg -b datasoul
 mv datasoul.deb ../installers/datasoul_${DSVERSION}_all.deb
-rm -Rf datasoul/usr/lib/datasoul/*
+rm -Rf datasoul/usr/share/datasoul/*
 cd ..
 
 # Build RPM
