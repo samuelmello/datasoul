@@ -46,10 +46,13 @@ public class TimerManager extends Thread {
     private long timerForwardCounter;
     private long timerBackwardCounter;
     private long timerBackwardTotal;
+    private boolean connectedAsRemote;
     
     /** Creates a new instance of TimerManager */
     private TimerManager() {
 
+        connectedAsRemote = false;
+        
         int format = ConfigObj.getActiveInstance().getClockModeIdx();
         
         // Select the format
@@ -145,37 +148,39 @@ public class TimerManager extends Thread {
             try{
                 t1 = System.currentTimeMillis();
 
-                // update the clock
-                cm.setClockLive( sdformat.format(new Date()) );
+                if (connectedAsRemote){
+                    // update the clock
+                    cm.setClockLive( sdformat.format(new Date()) );
 
 
-                // update the timer
-                if (timerDirection == TIMER_DIRECTION_FORWARD || timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
-                    timerForwardCounter += 1000;
-                    cm.setTimerLive( formatTimer( timerForwardCounter ));
-                    if (timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
-                        cm.setShowTimer( true );
-                    }else{
-                        cm.setShowTimer( false );
+                    // update the timer
+                    if (timerDirection == TIMER_DIRECTION_FORWARD || timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
+                        timerForwardCounter += 1000;
+                        cm.setTimerLive( formatTimer( timerForwardCounter ));
+                        if (timerDirection == TIMER_DIRECTION_BACKWARD_OVERDUE){
+                            cm.setShowTimer( true );
+                        }else{
+                            cm.setShowTimer( false );
+                        }
+                    }else if (timerDirection == TIMER_DIRECTION_BACKWARD){
+                        timerBackwardCounter += 1000;
+                        if ( timerBackwardTotal - timerBackwardCounter <= 0 ){
+                            setTimerBackwardOverdue(0);
+                        }else{
+                            cm.setTimerLive( formatTimer(timerBackwardTotal - timerBackwardCounter ));
+                        }
+                        cm.setTimerProgress( (float) timerBackwardCounter / (float) timerBackwardTotal );
+                        cm.setShowTimer(true);
+
+                    }else if (timerDirection == TIMER_DIRECTION_OFF){
+                        cm.setTimerLive("");
+                        cm.setShowTimer(false);
                     }
-                }else if (timerDirection == TIMER_DIRECTION_BACKWARD){
-                    timerBackwardCounter += 1000;
-                    if ( timerBackwardTotal - timerBackwardCounter <= 0 ){
-                        setTimerBackwardOverdue(0);
-                    }else{
-                        cm.setTimerLive( formatTimer(timerBackwardTotal - timerBackwardCounter ));
-                    }
-                    cm.setTimerProgress( (float) timerBackwardCounter / (float) timerBackwardTotal );
-                    cm.setShowTimer(true);
 
-                }else if (timerDirection == TIMER_DIRECTION_OFF){
-                    cm.setTimerLive("");
-                    cm.setShowTimer(false);
+                    // ok, changes done
+                    cm.slideChangeFromTimerManager();
                 }
-
-                // ok, changes done
-                cm.slideChangeFromTimerManager();
-
+                
                 // go sleep!
                 t2 = System.currentTimeMillis();
                 if ( (1000 - (t2 - t1)) > 1 ){
@@ -190,6 +195,20 @@ public class TimerManager extends Thread {
             }
         }
         
+    }
+
+    /**
+     * @return the connectedAsRemote
+     */
+    public boolean isConnectedAsRemote() {
+        return connectedAsRemote;
+    }
+
+    /**
+     * @param connectedAsRemote the connectedAsRemote to set
+     */
+    public void setConnectedAsRemote(boolean connectedAsRemote) {
+        this.connectedAsRemote = connectedAsRemote;
     }
     
     

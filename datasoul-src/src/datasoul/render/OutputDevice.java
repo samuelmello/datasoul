@@ -33,6 +33,7 @@ public class OutputDevice {
     private GraphicsConfiguration gconfig;
     private int usage;
     private boolean isDefault;
+    private boolean isNone; // Null output device, placeholder for remote only
 
     public static final int USAGE_MAIN = 0;
     public static final int USAGE_MONITOR = 1;
@@ -55,6 +56,13 @@ public class OutputDevice {
             }
         }
 
+        String none = java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NONE");
+        if (hintID.equals(none)){
+            isNone = true;
+        }else{
+            isNone = false;
+        }
+        
         /*
          * If not found, determine default monitor
          */
@@ -96,7 +104,11 @@ public class OutputDevice {
 
 
     public String getName(){
-        return device.getIDstring();
+        if (isNone){
+            return java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NONE");
+        }else{
+            return device.getIDstring();
+        }
     }
 
     /**
@@ -104,7 +116,8 @@ public class OutputDevice {
      * @return
      */
     public static boolean isMonitorAllowed(){
-        return (GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length > 1);
+        //return (GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length > 1);
+        return true;
     }
 
     /* Methods used by usage stats */
@@ -112,6 +125,10 @@ public class OutputDevice {
         return GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices().length;
     }
 
+    public boolean isNone(){
+        return isNone;
+    }
+    
     public String getDiplayGeometry(){
         if (usage == USAGE_MONITOR && ! isMonitorAllowed()){
             return "disabled";
@@ -121,7 +138,11 @@ public class OutputDevice {
     }
 
     public void setWindowFullScreen(JFrame frame){
-        frame.setResizable(true);
+        // For fake displays, just ignore it
+        if (isNone){
+            return;
+        }
+
         /**
          * Use setFullScreenWindow only for the default display.
          * This is required to cover OS taskbar and menus,
@@ -133,6 +154,7 @@ public class OutputDevice {
          * MacOS it does not cover the menu bar and dock, so we need platform
          * dependant code here.
          */
+        frame.setResizable(true);
         if (isDefault && Platform.isWindows() == false){
             if (device.getFullScreenWindow() == null){
                 device.setFullScreenWindow(frame);

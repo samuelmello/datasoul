@@ -62,7 +62,7 @@ public class RemoteContentServer {
         mainRender = new RemoteContentRender(RemoteContentCommand.Target.TARGET_MAIN);
         ContentManager.getInstance().registerMainRender(mainRender);
         monitorRender = new RemoteContentRender(RemoteContentCommand.Target.TARGET_MONITOR);
-        ContentManager.getInstance().registerMonitorRender(mainRender);
+        ContentManager.getInstance().registerMonitorRender(monitorRender);
     }
 
     public void sendCommand(RemoteContentCommand cmd) {
@@ -96,6 +96,7 @@ public class RemoteContentServer {
     public void initRemoteConnection(){
         ContentManager.getInstance().refreshLive();
         ObjectManager.getInstance().getAuxiliarPanel().getDisplayControlPanel().refreshStatus();
+        ContentManager.getInstance().updateBackgroundMode();
         // Update output visible
         RemoteContentCommand cmd = new RemoteContentCommand(RemoteContentCommand.Target.TARGET_MAIN, ObjectManager.getInstance().isOutputVisible());
         RemoteContentServer.getInstance().sendCommand(cmd);

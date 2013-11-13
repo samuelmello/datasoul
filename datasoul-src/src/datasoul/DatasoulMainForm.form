@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.3" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -330,7 +330,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="tbInfo" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="splMain" pref="451" max="32767" attributes="0"/>
+              <Component id="splMain" pref="455" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -951,7 +951,7 @@
                                   <Component id="lblAuthor" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="153" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="157" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1052,7 +1052,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="auxiliar" pref="119" max="32767" attributes="0"/>
+                              <Component id="auxiliar" pref="123" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="pnlLiveBox" min="-2" max="-2" attributes="0"/>
                           </Group>

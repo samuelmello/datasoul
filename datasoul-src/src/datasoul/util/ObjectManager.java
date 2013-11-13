@@ -214,10 +214,13 @@ public class ObjectManager {
 
         isOutputVisible = b;
 
-        mainVideo.setVisible(b);
-        mainDisplay.setVisible(b);
+        if (!ConfigObj.getActiveInstance().getMainOutputDeviceObj().isNone()){
+            mainVideo.setVisible(b);
+            mainDisplay.setVisible(b);
+        }
 
-        if (ConfigObj.getActiveInstance().getMonitorOutput()){
+        if (ConfigObj.getActiveInstance().getMonitorOutput() && 
+                !ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().isNone()){
             monitorVideo.setVisible(b);
             monitorDisplay.setVisible(b);
         }

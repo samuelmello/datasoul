@@ -522,6 +522,8 @@ public class ConfigFrame extends javax.swing.JFrame {
             cbMonitorDevice.addItem(gd.getIDstring());
         }
 
+        cbMainDevice.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NONE"));
+        cbMonitorDevice.addItem(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("NONE"));
     }
 
     private void registerComponent(Component component, String string){

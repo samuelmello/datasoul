@@ -29,7 +29,7 @@
 		<key>SplashFile</key>
 		<string>$JAVAROOT/splashScreen.png</string>
 		<key>JVMVersion</key>
-		<string>1.6*</string>
+		<string>1.6+</string>
 		<key>ClassPath</key>
 			<array>
 			<string>$JAVAROOT/datasoul.jar</string>

@@ -345,9 +345,9 @@ public class ContentManager {
     
     public void updateBackgroundMode(){
         if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
-            ContentManager.getInstance().setMainShowBackground(true);
+            ContentManager.getInstance().setShowBackground(true);
         }else{
-            ContentManager.getInstance().setMainShowBackground(false);
+            ContentManager.getInstance().setShowBackground(false);
         }
         slideChange(-1);
     }

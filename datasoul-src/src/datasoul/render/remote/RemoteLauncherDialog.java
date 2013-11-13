@@ -15,6 +15,8 @@
 package datasoul.render.remote;
 
 import datasoul.DatasoulMainForm;
+import datasoul.datashow.TimerManager;
+import datasoul.util.ObjectManager;
 
 /**
  *
@@ -157,6 +159,7 @@ public class RemoteLauncherDialog extends javax.swing.JDialog {
 
         @Override
         public void run(){
+            TimerManager.getInstance().setConnectedAsRemote(true);
             cli.run();
             
             // After disconnecting, re-enable buttons
@@ -164,6 +167,8 @@ public class RemoteLauncherDialog extends javax.swing.JDialog {
             cbRemoteHost.setEnabled(true);
             btnDisconnect.setEnabled(false);
             btnClose.setEnabled(true);
+            TimerManager.getInstance().setConnectedAsRemote(false);
+            ObjectManager.getInstance().getDatasoulMainForm().closeOutputs();
         }
     }
 

@@ -1501,7 +1501,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     private void actRemoteDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actRemoteDisplayActionPerformed
 
-        RemoteLauncherDialog dialog = new RemoteLauncherDialog(this, true);
+        RemoteLauncherDialog dialog = new RemoteLauncherDialog(this, false);
         dialog.setLocationRelativeTo(this);
         dialog.setVisible(true);
 
@@ -1521,7 +1521,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
 
     public void closeOutputs() {
 
-        if (btnShow.isSelected()) {
+        if (ObjectManager.getInstance().isOutputVisible()) {
             ObjectManager.getInstance().setOutputVisible(false);
             btnShow.setSelected(false);
         }
