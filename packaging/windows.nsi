@@ -1,4 +1,4 @@
-!define VERSION "2.1-b0"
+!define VERSION "2.1-b2"
 
 Name "Datasoul ${VERSION}"
 OutFile "Datasoul-${VERSION}.exe"
