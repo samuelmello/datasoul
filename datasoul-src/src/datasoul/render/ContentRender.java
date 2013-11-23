@@ -287,6 +287,9 @@ public class ContentRender implements ContentRenderItf {
     }
     
     public void alertShow(int transictionTime){
+        if (!alertActive)
+            return;
+
         alertTransition = TRANSITION_SHOW;
         if (transictionTime >= 0){
             alertTransTimer = transictionTime;
@@ -299,6 +302,9 @@ public class ContentRender implements ContentRenderItf {
     }
     
     public void alertHide(int transictionTime){
+        if (!alertActive)
+            return;
+
         alertTransition = TRANSITION_HIDE;
         if (transictionTime >= 0){
             alertTransTimer = transictionTime;

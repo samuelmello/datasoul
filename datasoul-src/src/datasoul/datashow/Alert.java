@@ -92,10 +92,14 @@ public class Alert extends Thread {
         if (showOnMain){
             ContentManager.getInstance().setAlertTemplateMain(getMainTemplate());
             ContentManager.getInstance().setAlertActiveMain(true);
+        }else{
+            ContentManager.getInstance().setAlertActiveMain(false);
         }
         if (showOnMonitor){
             ContentManager.getInstance().setAlertTemplateMonitor(getMonitorTemplate());
             ContentManager.getInstance().setAlertActiveMonitor(true);
+        }else{
+            ContentManager.getInstance().setAlertActiveMonitor(false);
         }
         cm.setAlertText(text);
         cm.alertShow( DisplayControlConfig.getInstance().getSlideShowHideTime() );
@@ -108,6 +112,8 @@ public class Alert extends Thread {
             //ex.printStackTrace();
         }
 
+        cm.alertHide(DisplayControlConfig.getInstance().getSlideShowHideTime());
+
         // hide
         if (showOnMain){
             ContentManager.getInstance().setAlertActiveMain(false);
@@ -115,7 +121,6 @@ public class Alert extends Thread {
         if (showOnMonitor){
             ContentManager.getInstance().setAlertActiveMonitor(false);
         }
-        cm.alertHide(DisplayControlConfig.getInstance().getSlideShowHideTime());
         
         panel.notifyAlertEnd();
 
