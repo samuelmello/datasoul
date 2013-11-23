@@ -148,7 +148,7 @@ public class TimerManager extends Thread {
             try{
                 t1 = System.currentTimeMillis();
 
-                if (connectedAsRemote){
+                if (!connectedAsRemote){
                     // update the clock
                     cm.setClockLive( sdformat.format(new Date()) );
 
