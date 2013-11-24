@@ -85,6 +85,10 @@ public class TimerManager extends Thread {
         
     }
     
+    public String formatDate(Date d){
+        return sdformat.format(d);
+    }
+    
     public void setTimerOff(){
         this.timerDirection = TIMER_DIRECTION_OFF;
     }

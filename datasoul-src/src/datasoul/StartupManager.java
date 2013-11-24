@@ -47,11 +47,7 @@ import datasoul.render.remote.RemoteContentServer;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.TemplateManager;
-import datasoul.util.AlertHTTPD;
-import datasoul.util.DatasoulKeyListener;
-import datasoul.util.ObjectManager;
-import datasoul.util.OnlineUpdateCheck;
-import datasoul.util.OnlineUsageStats;
+import datasoul.util.*;
 
 /**
  *
@@ -408,11 +404,13 @@ public class StartupManager {
         if (ConfigObj.getActiveInstance().getAcceptRemoteAlertsBool()){
             try{
                 new AlertHTTPD();
+                new PublicHTTPD();
+
             }catch(IOException e){
                 e.printStackTrace();
             }
         }
-
+        
     }
 
 }

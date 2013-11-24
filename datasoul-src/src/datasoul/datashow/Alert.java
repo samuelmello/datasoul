@@ -92,6 +92,7 @@ public class Alert extends Thread {
         if (showOnMain){
             ContentManager.getInstance().setAlertTemplateMain(getMainTemplate());
             ContentManager.getInstance().setAlertActiveMain(true);
+            LastAlertShown.getInstance().addAlert(text);
         }else{
             ContentManager.getInstance().setAlertActiveMain(false);
         }
