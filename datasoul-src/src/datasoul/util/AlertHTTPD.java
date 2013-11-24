@@ -27,6 +27,7 @@ import datasoul.datashow.Alert;
 import datasoul.templates.DisplayTemplate;
 import datasoul.templates.DisplayTemplateMetadata;
 import datasoul.templates.TemplateManager;
+import java.util.*;
 
 /**
  *
@@ -136,12 +137,19 @@ public class AlertHTTPD extends NanoHTTPD {
         sb.append("&nbsp;&nbsp;&nbsp;");
         sb.append(i18n.getString("TEMPLATE"));
         sb.append(": <select name='maintemplate'>");
+        List<String> tempalteList = new LinkedList<>();
         for(int i=0; i<TemplateManager.getInstance().getRowCount(); i++){
             DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(i);
             if (meta.getTargetContentIdx() == DisplayTemplate.TARGET_CONTENT_ALERT){
-                sb.append("<option name='"+meta.getName()+"'>"+meta.getName()+"</option>");
+                tempalteList.add(meta.getName());
             }
         }
+        Collections.sort(tempalteList);
+
+        for (String s : tempalteList){
+            sb.append("<option name='"+s+"'>"+s+"</option>");                
+        }
+ 
         sb.append("</select>");
         sb.append("</div>");
 
@@ -155,11 +163,8 @@ public class AlertHTTPD extends NanoHTTPD {
             sb.append("&nbsp;&nbsp;&nbsp;");
             sb.append(i18n.getString("TEMPLATE"));
             sb.append(": <select name='monitortemplate'>");
-            for(int i=0; i<TemplateManager.getInstance().getRowCount(); i++){
-                DisplayTemplateMetadata meta = TemplateManager.getInstance().getDisplayTemplateMetadata(i);
-                if (meta.getTargetContentIdx() == DisplayTemplate.TARGET_CONTENT_ALERT){
-                    sb.append("<option name='"+meta.getName()+"'>"+meta.getName()+"</option>");
-                }
+            for (String s : tempalteList){
+                sb.append("<option name='"+s+"'>"+s+"</option>");                
             }
             sb.append("</select>");
             sb.append("</div>");
