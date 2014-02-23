@@ -51,6 +51,10 @@ public class ConfigObj extends AbstractConfig {
     // These screen capturing applications does not handle windows with alpha
     private boolean disableOverlayAlpha; 
 
+    // Some capture devices may need extra parameters to VLC (ex: dshow-config)
+    // Add them to this config variable, split by spaces
+    private String vlcLiveExtraOptions;
+    
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
 
@@ -110,6 +114,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("AcceptRemoteDisplays");
         properties.add("AcceptRemoteAlerts");
         properties.add("DisableOverlayAlpha");
+        properties.add("VlcLiveExtraOptions");
     }
     
     public ArrayList<String> getProperties(){
@@ -463,6 +468,17 @@ public class ConfigObj extends AbstractConfig {
 
     public void setDisableOverlayAlpha(String s) {
         this.disableOverlayAlpha = s.equals("1");
+    }
+
+    public String getVlcLiveExtraOptions() {
+        if (vlcLiveExtraOptions == null)
+            return "";
+        else
+            return vlcLiveExtraOptions;
+    }
+
+    public void setVlcLiveExtraOptions(String vlcLiveExtraOptions) {
+        this.vlcLiveExtraOptions = vlcLiveExtraOptions;
     }
 
 

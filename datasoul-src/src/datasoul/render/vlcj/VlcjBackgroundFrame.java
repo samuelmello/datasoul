@@ -152,7 +152,13 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
             case BackgroundConfig.MODE_LIVE:
                 String url = getLiveURL();
                 if (url != null){
-                    mediaPlayer.playMedia(url, "no-audio");
+                    String useropts[] = ConfigObj.getActiveInstance().getVlcLiveExtraOptions().trim().split(" ");
+                    String opts[] = new String[useropts.length+1];
+                    opts[0] = "no-audio";
+                    for (int i = 0; i < useropts.length; i++){
+                        opts[i+1] = useropts[i];
+                    }
+                    mediaPlayer.playMedia(url, opts);
                 }
                 break;
         }
