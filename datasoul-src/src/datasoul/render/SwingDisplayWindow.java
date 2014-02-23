@@ -42,7 +42,8 @@ public class SwingDisplayWindow extends JWindow {
     
     public SwingDisplayWindow(){
         DatasoulMainForm.setDatasoulIcon(this);
-        setBackground(new Color(0,0,0,0));
+        if (!ConfigObj.getActiveInstance().getDisableOverlayAlphaBool())
+            setBackground(new Color(0,0,0,0));
         contentDisplay = new ContentDisplayRenderer() {
             @Override
             public void repaint() {

@@ -45,6 +45,11 @@ public class ConfigObj extends AbstractConfig {
     private String sofficePath;
     private boolean acceptRemoteDisplays;
     private boolean acceptRemoteAlerts;
+    
+    // Some users may want to use a screen recording software 
+    // or screen broadcasting system (such as NewTek's iVGA for TriCaster)
+    // These screen capturing applications does not handle windows with alpha
+    private boolean disableOverlayAlpha; 
 
     private OutputDevice mainOutputDevice;
     private OutputDevice monitorOutputDevice;
@@ -104,6 +109,7 @@ public class ConfigObj extends AbstractConfig {
         properties.add("SofficePath");
         properties.add("AcceptRemoteDisplays");
         properties.add("AcceptRemoteAlerts");
+        properties.add("DisableOverlayAlpha");
     }
     
     public ArrayList<String> getProperties(){
@@ -440,6 +446,23 @@ public class ConfigObj extends AbstractConfig {
 
     public void setAcceptRemoteAlerts(String s){
         acceptRemoteAlerts = s.equals("1");
+    }
+
+
+    public boolean getDisableOverlayAlphaBool() {
+        return disableOverlayAlpha;
+    }
+
+    public String getDisableOverlayAlpha() {
+        if (disableOverlayAlpha) { 
+            return "1";
+        }else{
+            return "0";
+        }
+    }
+
+    public void setDisableOverlayAlpha(String s) {
+        this.disableOverlayAlpha = s.equals("1");
     }
 
 
