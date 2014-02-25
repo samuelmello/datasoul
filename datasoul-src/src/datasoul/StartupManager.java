@@ -32,9 +32,6 @@ import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
-import uk.co.caprica.vlcj.binding.LibVlc;
-import uk.co.caprica.vlcj.runtime.RuntimeUtil;
-
 import com.sun.jna.Native;
 import com.sun.jna.NativeLibrary;
 import com.sun.jna.Platform;
@@ -43,6 +40,7 @@ import datasoul.config.ConfigObj;
 import datasoul.config.UsageStatsConfig;
 import datasoul.datashow.TimerManager;
 import datasoul.render.ContentManager;
+import datasoul.render.DatasoulVideoFactory;
 import datasoul.render.remote.RemoteContentServer;
 import datasoul.serviceitems.song.AllSongsListTable;
 import datasoul.templates.DisplayTemplate;
@@ -58,7 +56,7 @@ public class StartupManager {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void datasoulBaseMain(String args[]) {
 
         // If there is a file, first try to send a FileOpen notification to another instance
         if (args.length > 0){
@@ -237,21 +235,6 @@ public class StartupManager {
 
         }
     }
-    
-    private String getJarPath(){
-        File f;
-        try {
-            f = new File(StartupManager.class.getProtectionDomain().getCodeSource().getLocation().toURI());
-            String jarpath = f.getAbsolutePath();
-            String path = jarpath.substring(0, jarpath.lastIndexOf(File.separator));
-            return path;
-        
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(StartupManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-        
-    }
 
     void run(String initialFile) {
 
@@ -279,57 +262,7 @@ public class StartupManager {
             //ignore and fall back to java look and feel
         }
 
-        // Initialize VLC
-        if (Platform.isLinux()){
-           System.loadLibrary("jawt");
-        }
-       
-        if (Platform.isMac()){
-            /* In Mac, the directory structure is something like this:
-             * 
-             * Resources/
-             *    Java/
-             *      datasoul.jar
-             *      lib/*.jar
-             *    vlc-intel32/
-             *      lib/ <-- libvlc
-             *      plugins/
-             *    vlc-intel64/
-             *      lib/ <-- libvlc
-             *      plugins/
-             * 
-             */
-            String platform = "vlc-intel32";
-            if (Platform.is64Bit()){
-                platform = "vlc-intel64";
-            }
-            String path = getJarPath().substring(0, getJarPath().lastIndexOf(File.separator)) 
-                    + File.separator + platform + File.separator + "lib";
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), path);
-        }
-        
-        if (Platform.isWindows()){
-            /* In Windows, the directory structure is something like this:
-             * 
-             * Datasoul/
-             *   datasoul.jar
-             *   lib/*.jar
-             *   vlc-x32/ <-- libvlc
-             *      plugins/
-             *   vlc-x64/ <-- libvlc
-             *      plugins/
-             */
-            String path = getJarPath();
-            if (Platform.is64Bit()){
-                path += File.separator + "vlc-x64";
-            }else{
-                path += File.separator + "vlc-x32";
-            }
-            NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), path);
-        }
-
-        // Now load VLC
-        Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
+        DatasoulVideoFactory.getInstance().init();
         
         ConfigObj.getActiveInstance();
 

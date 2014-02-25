@@ -33,10 +33,10 @@ import datasoul.datashow.LivePanel;
 import datasoul.datashow.PreviewPanel;
 import datasoul.datashow.TimerControlPanel;
 import datasoul.render.ContentRender;
-import datasoul.render.SwingDisplayWindow;
+import datasoul.render.DatasoulVideoFactory;
+import datasoul.render.DatasoulVideoFrameItf;
 import datasoul.render.remote.RemoteContentCommand;
 import datasoul.render.remote.RemoteContentServer;
-import datasoul.render.vlcj.VlcjBackgroundFrame;
 import datasoul.templates.TemplateManagerForm;
 
 /**
@@ -59,10 +59,8 @@ public class ObjectManager {
     private TemplateManagerForm templateManagerForm;
     private ConfigFrame configFrame;
     
-    private SwingDisplayWindow mainDisplay;
-    private SwingDisplayWindow monitorDisplay;
-    private VlcjBackgroundFrame mainVideo;
-    private VlcjBackgroundFrame monitorVideo;
+    private DatasoulVideoFrameItf mainVideo;
+    private DatasoulVideoFrameItf monitorVideo;
     private boolean isOutputVisible;
 
 
@@ -184,12 +182,8 @@ public class ObjectManager {
     }
 
     public void initMainDisplay(){
-
-        mainDisplay = new SwingDisplayWindow();
-        mainDisplay.registerAsMain();
-        mainVideo= new VlcjBackgroundFrame();
+        mainVideo = DatasoulVideoFactory.getInstance().createNew();
         mainVideo.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MAIN DISPLAY"));
-        mainVideo.setOverlay(mainDisplay);
         mainVideo.registerAsMain();
         mainVideo.handleErrors();
     }
@@ -197,11 +191,8 @@ public class ObjectManager {
     public void initMonitorDisplay(){
 
         if (ConfigObj.getActiveInstance().getMonitorOutput() ){
-            monitorDisplay = new SwingDisplayWindow();
-            monitorDisplay.registerAsMonitor();
-            monitorVideo = new VlcjBackgroundFrame();
+            monitorVideo = DatasoulVideoFactory.getInstance().createNew();
             monitorVideo.setTitle(java.util.ResourceBundle.getBundle("datasoul/internationalize").getString("DATASOUL - MONITOR DISPLAY"));
-            monitorVideo.setOverlay(monitorDisplay);
             monitorVideo.registerAsMonitor();
         }
     }
@@ -216,13 +207,11 @@ public class ObjectManager {
 
         if (!ConfigObj.getActiveInstance().getMainOutputDeviceObj().isNone()){
             mainVideo.setVisible(b);
-            mainDisplay.setVisible(b);
         }
 
         if (ConfigObj.getActiveInstance().getMonitorOutput() && 
                 !ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().isNone()){
             monitorVideo.setVisible(b);
-            monitorDisplay.setVisible(b);
         }
 
         if (ConfigObj.getActiveInstance().getAcceptRemoteDisplaysBool()){
@@ -231,21 +220,21 @@ public class ObjectManager {
         }
     }
 
-    public VlcjBackgroundFrame getMainVideoFrame(){
+    public DatasoulVideoFrameItf getMainVideoFrame(){
         return mainVideo;
     }
     
-    public VlcjBackgroundFrame getMonitorVideoFrame(){
+    public DatasoulVideoFrameItf getMonitorVideoFrame(){
         return monitorVideo;
     }
     
     public ContentRender getMainContentRender(){
-        return mainDisplay.getContentRender();
+        return mainVideo.getContentRender();
     }
     
     public ContentRender getMonitorContentRender(){
         if (ConfigObj.getActiveInstance().getMonitorOutput()){
-            return monitorDisplay.getContentRender();
+            return monitorVideo.getContentRender();
         }else{
             return null;
         }

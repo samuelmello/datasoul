@@ -34,6 +34,9 @@ import datasoul.DatasoulMainForm;
 import datasoul.config.BackgroundConfig;
 import datasoul.config.ConfigObj;
 import datasoul.render.ContentManager;
+import datasoul.render.ContentRender;
+import datasoul.render.DatasoulVideoFrameItf;
+import datasoul.render.SwingDisplayWindow;
 import datasoul.serviceitems.ServiceItemTable;
 import datasoul.util.ObjectManager;
 
@@ -41,7 +44,7 @@ import datasoul.util.ObjectManager;
  *
  * @author samuel
  */
-public class VlcjBackgroundFrame extends javax.swing.JFrame {
+public class VlcjBackgroundFrame extends javax.swing.JFrame implements DatasoulVideoFrameItf {
     
     /**
 	 * 
@@ -51,7 +54,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
 	private MediaPlayerFactory factory;
     private EmbeddedMediaPlayer mediaPlayer;
     private boolean playingItem;
-    private JWindow overlayWindow;
+    private SwingDisplayWindow overlayWindow;
     private boolean handlingErrors;
     
     /**
@@ -63,6 +66,8 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         String[] args;
         if (Platform.isMac()){
             args = new String[] {"--no-video-title-show", "--vout=macosx"};
+        } else if (Platform.isLinux()){
+            args = new String[] {"--no-video-title-show", "--no-xlib"};
         }else{
             args = new String[] {"--no-video-title-show"};
         }
@@ -76,6 +81,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         mediaPlayer.setVideoSurface(factory.newVideoSurface(c));
     }
     
+    @Override
     public void handleErrors(){
         if (!handlingErrors){
             addWindowListener(new VlcjBackgroundFrameWindowAdapter());
@@ -83,7 +89,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         }
     }
 
-    public void setOverlay(JWindow win){
+    public void setOverlay(SwingDisplayWindow win){
         overlayWindow = win;
     }
     
@@ -113,14 +119,18 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @Override
     public void registerAsMain(){
         this.setBounds(ConfigObj.getActiveInstance().getMainOutputDeviceObj().getBounds());
+        overlayWindow.registerAsMain();
         overlayWindow.setBounds(ConfigObj.getActiveInstance().getMainOutputDeviceObj().getBounds());
     }
         
 
+    @Override
     public void registerAsMonitor(){
         this.setBounds(ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getBounds());
+        overlayWindow.registerAsMonitor();
         overlayWindow.setBounds(ConfigObj.getActiveInstance().getMonitorOutputDeviceObj().getBounds());
     }
 
@@ -140,6 +150,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /*
      * This method is responsible for setting the appropriate background when a item stop playing
      */
+    @Override
     public void playBackground(){
         int mode = BackgroundConfig.getInstance().getModeAsInt();
         switch (mode){
@@ -167,6 +178,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /*
      * Called to play a Video Item
      */
+    @Override
     public void playVideoItem(String path){
         playingItem = true;
         if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
@@ -179,6 +191,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /* 
      * Force stop for a video item
      */
+    @Override
     public void stopVideoItem(){
         if (playingItem){
             mediaPlayer.stop();
@@ -189,12 +202,14 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /* 
      * Pause a Video Item
      */
+    @Override
     public void pauseVideoItem(){
         if (playingItem){
             mediaPlayer.pause();
         }
     }
     
+    @Override
     public void seekVideoItem(float position){
         if (playingItem){
             mediaPlayer.setPosition(position);
@@ -208,6 +223,7 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
     /**
      * Called to clean up after video item finished
      */
+    @Override
     public void videoItemCompleted(){
         playingItem = false;
         if (BackgroundConfig.getInstance().getModeAsInt() == BackgroundConfig.MODE_STATIC){
@@ -262,6 +278,16 @@ public class VlcjBackgroundFrame extends javax.swing.JFrame {
         public void windowActivated(WindowEvent e) {
             overlayWindow.toFront();
         }
+    }
+    
+    @Override
+    public void setVisible(boolean visible){
+        super.setVisible(visible);
+        overlayWindow.setVisible(visible);
+    }
+    
+    public ContentRender getContentRender(){
+        return overlayWindow.getContentRender();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
