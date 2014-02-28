@@ -40,7 +40,7 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         DatasoulMainForm.setDatasoulIcon(this);
-        setSize(520,230);
+        pack();
     }
 
     /** This method is called from within the constructor to
@@ -75,9 +75,9 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
         cbOnlineStats.setSelected(true);
         cbOnlineStats.setText(bundle.getString("SEND ANONYMOUS USAGE STATISTICS")); // NOI18N
 
-        jTextArea1.setColumns(20);
         jTextArea1.setEditable(false);
-        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13));
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setText(bundle.getString("IF YOU LIVE IN A COUNTRY WHERE CHRISTIANS ARE PERSECUTED AND DO NOT WISH TO RISK DETECTION YOU SHOULD NOT USE ANY OF THESE FUNCTIONS.")); // NOI18N
         jTextArea1.setWrapStyleWord(true);
@@ -104,17 +104,15 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(cbOnlineUpdate)
-                    .addComponent(cbOnlineStats)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(453, Short.MAX_VALUE)
-                .addComponent(btnOk)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnOk)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addComponent(cbOnlineUpdate)
+                        .addComponent(cbOnlineStats)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,9 +127,9 @@ public class UsageStatsGrantDialog extends javax.swing.JDialog {
                 .addComponent(cbOnlineStats)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextArea1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnOk)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
