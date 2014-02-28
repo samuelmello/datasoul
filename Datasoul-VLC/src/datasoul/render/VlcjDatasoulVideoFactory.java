@@ -106,4 +106,8 @@ public class VlcjDatasoulVideoFactory implements DatasoulVideoFactoryItf {
         return obj;
     }
     
+    @Override
+    public boolean hasVideoEnabled() {
+        return true;
+    }
 }

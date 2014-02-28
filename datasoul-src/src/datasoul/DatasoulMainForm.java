@@ -46,6 +46,7 @@ import datasoul.help.HelpFrameAbout;
 import datasoul.help.HelpFrameKeyboard;
 import datasoul.render.ContentManager;
 import datasoul.render.ContentRender;
+import datasoul.render.DatasoulVideoFactory;
 import datasoul.render.remote.RemoteLauncherDialog;
 import datasoul.serviceitems.AttachmentServiceItem;
 import datasoul.serviceitems.ContentlessServiceItem;
@@ -94,6 +95,7 @@ public class DatasoulMainForm extends javax.swing.JFrame {
         ObjectManager.getInstance().setAuxiliarPanel(auxiliar);
         ObjectManager.getInstance().setLivePanel(live);
 
+        actAddVideo.setVisible(DatasoulVideoFactory.getInstance().hasVideoEnabled());
 
         tableServiceList.setModel(ServiceListTable.getActiveInstance());
         tableServiceList.setDraggable(false);

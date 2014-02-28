@@ -31,6 +31,7 @@ import javax.swing.JOptionPane;
 
 import datasoul.DatasoulMainForm;
 import datasoul.render.ContentManager;
+import datasoul.render.DatasoulVideoFactory;
 import datasoul.templates.ImageTemplateItem;
 import datasoul.util.ObjectManager;
 
@@ -69,7 +70,21 @@ public class BackgroundConfigFrame extends javax.swing.JFrame {
         }
 
         lblVideo.setText(BackgroundConfig.getInstance().getVideoFile());
+        
+        boolean isVideoEnabled = DatasoulVideoFactory.getInstance().hasVideoEnabled();
+        rbLive.setEnabled(isVideoEnabled);
+        rbVideo.setEnabled(isVideoEnabled);
+        lblVideo.setEnabled(isVideoEnabled);
+        btnChangeVideo.setEnabled(isVideoEnabled);
+        btnUseVlcMrl.setEnabled(isVideoEnabled);
+        rbLive.setVisible(isVideoEnabled);
+        rbVideo.setVisible(isVideoEnabled);
+        lblVideo.setVisible(isVideoEnabled);
+        btnChangeVideo.setVisible(isVideoEnabled);
+        btnUseVlcMrl.setVisible(isVideoEnabled);
 
+        this.pack();
+        
     }
 
     /** This method is called from within the constructor to

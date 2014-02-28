@@ -22,4 +22,11 @@ public interface DatasoulVideoFactoryItf {
      * @return new object
      */
     public DatasoulVideoFrameItf createNew();
+
+    /**
+     * Indicates if the implementation supports video
+     * @return
+     */
+    public boolean hasVideoEnabled();
+
 }

@@ -21,6 +21,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import datasoul.render.ContentManager;
+import datasoul.render.DatasoulVideoFactory;
 
 /**
  *
@@ -38,15 +39,17 @@ public class VideoServiceItem extends GenericAttachmentServiceItem {
 
     @Override
     public boolean getShowMediaControls(){
-        return true;
+        return DatasoulVideoFactory.getInstance().hasVideoEnabled();
     }
 
     @Override
     public void showItem(){
-        super.showItem();
-        ContentManager.getInstance().setMainShowBackground(false);
-        ContentManager.getInstance().setMainShowTemplate(false);
-        ContentManager.getInstance().playVideoItem(file.getAbsolutePath());
+        if (DatasoulVideoFactory.getInstance().hasVideoEnabled()){
+            super.showItem();
+            ContentManager.getInstance().setMainShowBackground(false);
+            ContentManager.getInstance().setMainShowTemplate(false);
+            ContentManager.getInstance().playVideoItem(file.getAbsolutePath());
+        }
     }
 
     private static final Icon icon = new ImageIcon(VideoServiceItem.class .getResource("/datasoul/icons/v2/video-x-generic.png"));

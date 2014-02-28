@@ -21,5 +21,10 @@ public class LiteDatasoulVideoFactory implements DatasoulVideoFactoryItf {
     public DatasoulVideoFrameItf createNew() {
         return new LiteDatasoulVideoFrame();
     }
+
+    @Override
+    public boolean hasVideoEnabled() {
+        return false;
+    }
     
 }

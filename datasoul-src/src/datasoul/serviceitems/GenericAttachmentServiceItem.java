@@ -14,6 +14,7 @@
 
 package datasoul.serviceitems;
 
+import datasoul.render.DatasoulVideoFactory;
 import java.awt.Color;
 import java.io.File;
 import java.io.FileInputStream;
@@ -186,7 +187,7 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
 
     @Override
     public boolean getShowSlideTable(){
-        return false;
+        return (DatasoulVideoFactory.getInstance().hasVideoEnabled() == false);
     }
 
     public String getIsLink(){
@@ -205,7 +206,7 @@ public class GenericAttachmentServiceItem extends ContentlessServiceItem {
         }
     }
 
-    public void setIsLink(boolean b){
+    public void sVideoServiceItemetIsLink(boolean b){
         isLink = b;
     }
 
